@@ -89,7 +89,7 @@ namespace ES
                 }
                 catch (Exception e)
                 {
-
+                    var u= e.Data;
                 }
                 
             }

@@ -32,6 +32,7 @@ namespace ES
         // 在Inspector顶部绘制自定义内容
         private static void DrawCustomHeader(Editor editor)
         {
+            if (!ESEditorOnlyPartMaster.Instance.Ins.Enable_) return;
             var cache = ESEditorOnlyPartMaster.Instance.Ins.cacheToggleFalseNames;
             if (editor.target is GameObject go)
             {
@@ -47,6 +48,12 @@ namespace ES
                         {
                             Undo.RecordObject(go.transform, "Reset Position");
                             go.transform.position = Vector3.zero;
+                        }
+                        if (GUILayout.Button("刷新显示"))
+                        {
+                            EditorUtility.SetDirty(go);
+                            Selection.activeGameObject = null;
+                            ESEditorHandle.AddHanldeTask(() => { Selection.activeGameObject = go; Debug.Log(886); });
                         }
                         //绘制脚本列
                         var cs = go.GetComponents<Component>();

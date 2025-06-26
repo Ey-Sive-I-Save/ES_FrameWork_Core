@@ -22,6 +22,11 @@ namespace ES
             return component != null ? component : gameObject.AddComponent<T>();
         }
 
+        public static Component[] EX_GetAllComponent(this GameObject gameObject)
+        {
+          return gameObject.GetComponents<Component>();
+        }
+
         // 43. 设置GameObject的激活状态
         public static void EX_SetActive(this GameObject gameObject, bool active)
         {

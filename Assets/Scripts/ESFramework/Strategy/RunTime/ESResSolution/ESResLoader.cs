@@ -15,17 +15,17 @@ namespace ES
         void LoadAll_Async(System.Action listener = null);
         void LoadAll_Sync();
     }
-    public class ESResLoader : IPoolablebSelfControl, IESResLoader
+    public class ESResLoader : IPoolablebAndSelfControlToWhere, IESResLoader
     {
         #region 池化
         public bool IsRecycled { get ; set; }
 
-        public void OnBePushedToPool()
+        public void OnResetAsPoolable()
         {
             
         }
 
-        public void TryAutoPushToPool()
+        public void TryAutoBePushedToPool()
         {
             if (AllResSources != null)
             {
@@ -99,7 +99,7 @@ namespace ES
                         {
                             var searchRule = ESResMaster.Instance.GetInPool_ResSourceSearchKey(depend, null,loadType: ResSourceLoadType.AssetBundle, typeof(AssetBundle));
                             Add2Load(searchRule);
-                            searchRule.TryAutoPushToPool();
+                            searchRule.TryAutoBePushedToPool();
                         }
                     }
                 }

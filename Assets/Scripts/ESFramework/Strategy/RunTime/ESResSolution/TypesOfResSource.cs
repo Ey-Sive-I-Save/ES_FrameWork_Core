@@ -279,14 +279,14 @@ namespace ES
             return true;
         }
 
-        public override void TryAutoPushToPool()
+        public override void TryAutoBePushedToPool()
         {
             ESResMaster.Instance.PoolForAssetBundleResSource.PushToPool(this);
         }
 
-        public override void OnBePushedToPool()
+        public override void OnResetAsPoolable()
         {
-            base.OnBePushedToPool();
+            base.OnResetAsPoolable();
             mUnloadFlag = true;
             needDepends = null;
         }
@@ -524,14 +524,14 @@ namespace ES
             return true;
         }
 
-        public override void TryAutoPushToPool()
+        public override void TryAutoBePushedToPool()
         {
             ESResMaster.Instance.PoolForABAssetResSource.PushToPool(this);
         }
 
-        public override void OnBePushedToPool()
+        public override void OnResetAsPoolable()
         {
-            base.OnBePushedToPool();
+            base.OnResetAsPoolable();
             mUnloadFlag = true;
             needDepends = null;
         }

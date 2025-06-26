@@ -7,6 +7,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
@@ -72,6 +75,7 @@ namespace ES
         private HashSet<GameObject> lastUseSet = new HashSet<GameObject>();
         private void Awake()
         {
+
             if (_instance == null || _instance == this)
             {
                 _instance = this;
@@ -193,7 +197,7 @@ namespace ES
             if (queue.Count <= 0) ExpandPool(key);
             GameObject g = queue.Dequeue();
             if (g == null) return GetInPool(key, pos);
-            g.transform.position = pos?? g.transform.position;
+            g.transform.position = pos ?? g.transform.position;
             g.SetActive(true);
             lastUseSet.Add(key);
             return g;
@@ -271,17 +275,17 @@ namespace ES
         #endregion
 
 
-      
+
     }
     #region 万能对象池
     public interface IPoolable
     {
-        void OnBePushedToPool();
+        void OnResetAsPoolable();
         bool IsRecycled { get; set; }
     }
-    public interface IPoolablebSelfControl : IPoolable
+    public interface IPoolablebAndSelfControlToWhere : IPoolable
     {
-        void TryAutoPushToPool();
+        void TryAutoBePushedToPool();
     }
     public interface IPool<T>
     {
@@ -344,7 +348,7 @@ namespace ES
 
     public class ESSimpleObjectPool<T> : Pool<T>
     {
-        readonly Action<T> mResetMethod;
+        protected readonly Action<T> mResetMethod;
 
         public ESSimpleObjectPool(Func<T> factoryMethod, Action<T> resetMethod = null, int initCount = 0)
         {

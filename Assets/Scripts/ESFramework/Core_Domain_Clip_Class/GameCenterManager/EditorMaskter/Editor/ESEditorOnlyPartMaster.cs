@@ -193,6 +193,8 @@ namespace ES
         [Serializable]
         public class ESInspectorControl 
         {
+            [LabelText("启用该功能")]
+            public bool Enable_ = true;
             [LabelText("缓存不显示名字")]
             public HashSet<string> cacheToggleFalseNames = new HashSet<string>();
         }
