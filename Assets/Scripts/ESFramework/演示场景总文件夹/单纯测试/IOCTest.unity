@@ -6768,14 +6768,14 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &147642196
 Transform:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147642195}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -52.179237, y: 99.60348, z: -112.27565}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -86432,13 +86432,10 @@ MonoBehaviour:
       Data: 1|System.Collections.Generic.HashSet`1[[System.String, mscorlib]], System.Core
     - Name: 
       Entry: 12
-      Data: 6
+      Data: 5
     - Name: 
       Entry: 1
       Data: Entity
-    - Name: 
-      Entry: 1
-      Data: Transform
     - Name: 
       Entry: 1
       Data: Rigidbody
@@ -101037,8 +101034,7 @@ PrefabInstance:
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 5597002298226779426, guid: 6a26c41f9f0efb342a826a4ce252c17f,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5597002298226779426, guid: 6a26c41f9f0efb342a826a4ce252c17f,
         type: 3}
       propertyPath: Normalprefabs.Array.data[0]
@@ -101085,7 +101081,7 @@ PrefabInstance:
         type: 3}
       propertyPath: FindParent_PreList.Array.data[0].targetParent
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 147642196}
     - target: {fileID: 5597002298226779426, guid: 6a26c41f9f0efb342a826a4ce252c17f,
         type: 3}
       propertyPath: targetScenePrefabs.Array.data[0].defaultCreate

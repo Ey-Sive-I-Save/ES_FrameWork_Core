@@ -476,7 +476,7 @@ namespace ES
         {
             hasChange = true;
         }
-        [InfoBox("建议修改一下文件名", infoMessageType: InfoMessageType.Warning, VisibleIf = "@!dirty")]
+        [InfoBox("建议修改一下文件名", infoMessageType: InfoMessageType.Warning, VisibleIf = "@!init")]
         [TabGroup("总", "新建配置"), Space(5), OnValueChanged("ChangeHappen"), LabelText("设置文件名")]
         public string fileName = "数据配置文件";
         [FolderPath, LabelText("选择文件夹")]
@@ -539,7 +539,7 @@ namespace ES
 
 
         [DetailedInfoBox("创建一个数据包包含大量数据！", "创建一个数据包！！将会支持Buff,技能,人物,物品等", infoMessageType: InfoMessageType.Warning)]
-        [InfoBox("请修改一下文件名否则会分配随机数字后缀", VisibleIf = "@!dirty", InfoMessageType = InfoMessageType.Warning)]
+        [InfoBox("请修改一下文件名否则会分配随机数字后缀", VisibleIf = "@!init", InfoMessageType = InfoMessageType.Warning)]
         [VerticalGroup("总组/数据"), LabelText("文件命名"), Space(5), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_04"), OnValueChanged("ChangeHappen")]
         public string createName_ = "Buff新建数据包";
         private bool hasChange = false;
@@ -759,7 +759,7 @@ namespace ES
         [VerticalGroup("总组/数据")]
         public string createText = "创建新数据组文件配置";
         [DetailedInfoBox("未选中任何数据组！", "创建一个数据组来快捷编辑数据内容！！将会支持Buff,技能,人物,物品等", infoMessageType: InfoMessageType.Warning)]
-        [InfoBox("请修改一下文件名否则会分配随机数字后缀", VisibleIf = "@!dirty", InfoMessageType = InfoMessageType.Warning)]
+        [InfoBox("请修改一下文件名否则会分配随机数字后缀", VisibleIf = "@!init", InfoMessageType = InfoMessageType.Warning)]
         [VerticalGroup("总组/数据"), LabelText("文件命名"), Space(5), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_04"), OnValueChanged("ChangeHappen")]
         public string createName_ = "Buff新建配置组";
         private bool hasChange = false;
@@ -902,7 +902,7 @@ namespace ES
         [DisplayAsString(fontSize: 30), HideLabel, GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_01")]
         [VerticalGroup("总组/数据组")]
         public string createText = "创建新单元配置";
-        [InfoBox("建议修改一下键名或者单元名防止重复！", VisibleIf = "@!dirty", InfoMessageType = InfoMessageType.Warning)]
+        [InfoBox("建议修改一下键名或者单元名防止重复！", VisibleIf = "@!init", InfoMessageType = InfoMessageType.Warning)]
         [InfoBox("该元素的键已经出现了！！请修改", VisibleIf = "@!group.CanStore(DataKey)", InfoMessageType = InfoMessageType.Error)]
         [OnValueChanged("Change"), LabelText("数据单元的键")]
         [VerticalGroup("总组/数据组")]
