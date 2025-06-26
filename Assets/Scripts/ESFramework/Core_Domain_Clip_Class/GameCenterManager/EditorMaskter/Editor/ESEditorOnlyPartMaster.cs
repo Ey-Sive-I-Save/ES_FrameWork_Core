@@ -1,20 +1,23 @@
 using ES;
 using ES.EvPointer;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
+using Sirenix.Utilities;
 using Sirenix.Utilities.Editor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 
 namespace ES
 {
     //必须纯编辑器环境才能用
-    public class ESEditorOnlyPartMaster : SingletonAsMono<ESEditorOnlyPartMaster>
+    public class ESEditorOnlyPartMaster : SingletonAsSeriMono<ESEditorOnlyPartMaster>
     {
-        #region 图标支持
+        #region 图标支持代码
         [LabelText("图标管理")]
         public ESIconControl ICON = new ESIconControl();
         [Serializable]
@@ -181,9 +184,63 @@ namespace ES
                  return EditorGUIUtility.IconContent(UnityEditorIcons.UnityEditorIconNames.AllChinese[contentName]);
              }
          }*/
+
+        #endregion
+        #endregion
+        #region 检查器控制支持代码
+        [LabelText("检查器控制"),NonSerialized,OdinSerialize]
+        public ESInspectorControl Ins = new ESInspectorControl();
+        [Serializable]
+        public class ESInspectorControl 
+        {
+            [LabelText("缓存不显示名字")]
+            public HashSet<string> cacheToggleFalseNames = new HashSet<string>();
+        }
+        #endregion
+        #region 类型名显示控制
+        [LabelText("类型名显示辅助"), NonSerialized, OdinSerialize]
+        public TypeDisplay TypeDis = new TypeDisplay();
+       
+        public class TypeDisplay
+        {
+            [LabelText("手动重命名(类型/显示名)(最高级)")]
+            public Dictionary<string, string> HandSelfRename = new Dictionary<string, string>();
+            [LabelText("支持Odin的注册表")]
+            public bool EnableOdinRegester = true;
+            [LabelText("支持ES的SoData分组命名")]
+            public bool EnableSoDataGroupUp = true;
+            [LabelText("带(原名)")]
+            public bool WithOriginal = true;
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public string GetNewName(string typeName)
+            {
+                if (HandSelfRename.ContainsKey(typeName)) return HandSelfRename[typeName] + ((WithOriginal) ? $"({typeName})" : "");
+                Type type = System.Type.GetType(typeName);
+                if (EnableOdinRegester)
+                {
+                    var ii = type.GetAttribute<TypeRegistryItemAttribute>();
+                    if (ii!=null)
+                    {
+                        return ii.Name + ((WithOriginal) ? $"({typeName})" : "");
+                    }
+                }
+                if (EnableSoDataGroupUp)
+                {
+                    var ii=type.GetAttribute<ESDisplayNameKeyToTypeAttribute>();
+                    if (ii != null)
+                    {
+                        return ii.DisplayKeyName+ ((WithOriginal) ? $"({typeName})" : "");
+                    }
+                }
+                return typeName;
+            }
+        }
+        #endregion
     }
-    #endregion
-    #region 静态获取
+
+
+
+    #region 静态图标获取
     public static class UnityEditorIcons
     {
         #region 属性
@@ -529,7 +586,6 @@ namespace ES
 
     #endregion
 
-    #endregion
 }
 
 

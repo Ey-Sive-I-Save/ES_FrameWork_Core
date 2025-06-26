@@ -102,6 +102,54 @@ namespace ES
 
         }
     }
+    public abstract class SingletonAsSeriMono<This> : SerializedMonoBehaviour where This : MonoBehaviour
+    {
+        [LabelText("不销毁")] public bool DontDestroy = true;
+        public static This Instance
+        {
+            get
+            {
+                if (_instance != null) return _instance;
+                This t = Object.FindAnyObjectByType<This>();
+                if (t != null)
+                {
+                    _instance = t;
+                    return t;
+                }
+                if (maxDebug > 0) { Debug.LogError($"单例类{typeof(This).Name}场景中不存在"); maxDebug--; }
+
+                /*GameObject g = GameObject.FindGameObjectWithTag("Manager");
+                if (g == null)
+                {
+                    g = new GameObject();
+                    g.name = $"临时的---单例类{typeof(This).Name}";
+                }*/
+                return _instance;
+
+            }
+            set { if (value != null) { _instance = value; }; }
+        }
+        private static int maxDebug = 6;
+
+        private static This _instance;
+        protected virtual void Awake()
+        {
+            //Debug.Log("awake");
+            if (_instance == null || _instance == this)
+            {
+                _instance = this as This;
+                if (_instance != null)
+                {
+                    if (DontDestroy) DontDestroyOnLoad(transform.root.gameObject);
+                }
+            }
+            else
+            {
+                DestroyImmediate(gameObject);
+            }
+
+        }
+    }
     public abstract class SingletonAsNormalClass<This> where  This:new()
     {
         [LabelText("不销毁")] public bool DontDestroy = true;

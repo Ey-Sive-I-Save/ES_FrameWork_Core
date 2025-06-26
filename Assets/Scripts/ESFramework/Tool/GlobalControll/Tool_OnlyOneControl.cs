@@ -7,6 +7,7 @@ namespace ES
 {
     
     [DefaultExecutionOrder(-3)]
+
     public class Tool_OnlyOneControl : MonoBehaviour
     {
         [LabelText("唯一标识")]

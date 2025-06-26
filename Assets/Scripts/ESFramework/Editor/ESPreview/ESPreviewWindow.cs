@@ -20,6 +20,7 @@ namespace ES
         #region 数据滞留
         public Page_ShowSystemICON systemICON;
         public Page_CacheObjects cacheObjects;
+        public Page_ViewFix viewFix;
         #endregion
         [MenuItem("Tools/ES工具/ES预览窗口")]
         public static void TryOpenWindow()
@@ -34,6 +35,7 @@ namespace ES
             base.ES_BuildMenuTree(tree);
             tree.Add("系统图标预览", systemICON ??= new Page_ShowSystemICON());
             MakePage_CacheObjects(tree, "缓存物体信息");
+            tree.Add("修复视觉", viewFix ??= new Page_ViewFix());
         }
 
         private void MakePage_CacheObjects(OdinMenuTree tree,string Menu)
@@ -68,7 +70,7 @@ namespace ES
                 tree.Add(ss,new Page_Index_Object() { Object=ii });
             }
         }
-
+        
         public override void ES_LoadData()
         {
             base.ES_LoadData();
@@ -163,7 +165,9 @@ namespace ES
             
         }
     }
+    #endregion
 
+    #region 缓冲物体表
     [Serializable,TypeRegistryItem("缓存物体表")]
     public class Page_CacheObjects
     {
@@ -178,6 +182,29 @@ namespace ES
         [InlineEditor,HideLabel()]
         public UnityEngine.Object Object;
     }
+    #endregion
+
+    #region 视觉修复
+    public class Page_ViewFix
+    {
+        [Button("修复选中物体的隐藏")]
+        public void Button_FixHideGameobjectFlags()
+        {
+            var a = Selection.activeGameObject;
+            if (a != null)
+            {
+                a.hideFlags = a.hideFlags  &  ~HideFlags.HideInInspector;
+                var use= a.GetComponents<Component>();
+                foreach(var i in use)
+                {
+                    a.hideFlags = a.hideFlags & ~HideFlags.HideInInspector;
+                }
+            }
+
+        }
+
+    }
+
     #endregion
 }
 

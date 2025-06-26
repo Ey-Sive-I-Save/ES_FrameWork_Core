@@ -24724,7 +24724,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &520839910
 Transform:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -58820,7 +58820,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &1201998643
 Transform:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -85999,6 +85999,98 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ecf27eb55a02f469a44a415cb89ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: Ins
+      Entry: 7
+      Data: 0|ES.ESEditorOnlyPartMaster+ESInspectorControl, EditorMaster_EditorOnly
+    - Name: cacheToggleFalseNames
+      Entry: 7
+      Data: 1|System.Collections.Generic.HashSet`1[[System.String, mscorlib]], System.Core
+    - Name: 
+      Entry: 12
+      Data: 6
+    - Name: 
+      Entry: 1
+      Data: Entity
+    - Name: 
+      Entry: 1
+      Data: Transform
+    - Name: 
+      Entry: 1
+      Data: Rigidbody
+    - Name: 
+      Entry: 1
+      Data: Animator
+    - Name: 
+      Entry: 1
+      Data: CapsuleCollider
+    - Name: 
+      Entry: 1
+      Data: CharacterController
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: TypeDis
+      Entry: 7
+      Data: 2|ES.ESEditorOnlyPartMaster+TypeDisplay, EditorMaster_EditorOnly
+    - Name: HandSelfRename
+      Entry: 7
+      Data: 3|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 4|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Entity
+    - Name: $v
+      Entry: 1
+      Data: "\u5B9E\u4F53"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: EnableOdinRegester
+      Entry: 5
+      Data: true
+    - Name: EnableSoDataGroupUp
+      Entry: 5
+      Data: true
+    - Name: WithOriginal
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
   DontDestroy: 1
   ICON:
     startOffset: -20
