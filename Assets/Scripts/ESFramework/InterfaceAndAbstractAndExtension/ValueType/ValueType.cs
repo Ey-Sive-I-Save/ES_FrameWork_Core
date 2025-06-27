@@ -298,15 +298,13 @@ namespace ES
         }
     }
     [Serializable/*安全列表IOC*/]
-    public abstract class SafeListIOC<Key, Element> : BaseESModule<IArchitecture>
-    {
+    public abstract class SafeListIOC<Key, Element>{
         [SerializeReference]
         [LabelText(@"@  IOCName ", icon: SdfIconType.ListColumnsReverse), GUIColor("IOCColor")]
         public Dictionary<Key, SafeUpdateList<Element>> IOC = new Dictionary<Key, SafeUpdateList<Element>>();
         public Action OnChange = () => { };
         public virtual string IOCName => "标准安全IOC表";
         public virtual Color IOCColor => Color.yellow;
-        public override IArchitecture GetHost => throw new NotImplementedException();
         public Element AddElementRuntime(Key k, Element e)
         {
             return AddElement(k, e, true);
@@ -379,7 +377,7 @@ namespace ES
         }
     }
     [Serializable/*基本列表IOC*/]
-    public abstract class BaseListIOC_Arch_KeyAndList<Key, Element> : ES.BaseESModule<IArchitecture>
+    public abstract class BaseListIOC_Arch_KeyAndList<Key, Element>
     {
         [SerializeReference]
         [LabelText(@"@  IOCName ", icon: SdfIconType.ListColumnsReverse), GUIColor("IOCColor")]
@@ -467,7 +465,7 @@ namespace ES
 
 
     [Serializable/*基本字典IOC*/]
-    public abstract class BaseDicIOC_TypeSelectAndKeyValue<TypeSelect_, Key, Element> : ES.BaseESModule<IArchitecture>, ES.IESModule<IArchitecture>
+    public abstract class BaseDicIOC_TypeSelectAndKeyValue<TypeSelect_, Key, Element>
     {
         [SerializeReference]
         [LabelText(@"@  IOCName ", icon: SdfIconType.ListColumnsReverse), GUIColor("IOCColor")]
@@ -542,7 +540,7 @@ namespace ES
             return IOC[k] = new Dictionary<Key, Element>();
         }
 
-        public bool OnSubmitHosting(IArchitecture hosting, bool asVirtual = false)
+        public bool Start(IArchitecture hosting, bool asVirtual = false)
         {
             throw new NotImplementedException();
         }

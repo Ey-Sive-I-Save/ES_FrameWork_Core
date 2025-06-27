@@ -30,12 +30,12 @@ namespace ES
         public ESItemSharedData SharedData { get => sharedData; set => sharedData = value; }
         public ESItemVariableData VariableData { get => defaultData; set => defaultData = value; }
         //注册前的操作
-        protected override void BeforeAwakeBroadCastRegester()
+        protected override void BeforeAwakeRegister()
         {
             if (dataInfo != null&&useDataApply)
                 KeyValueMatchingUtility.DataApply.CopyToClassSameType_WithSharedAndVariableDataCopyTo(dataInfo, this);
 
-            base.BeforeAwakeBroadCastRegester();
+            base.BeforeAwakeRegister();
         }
 }
 }

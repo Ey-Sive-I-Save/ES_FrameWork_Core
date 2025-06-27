@@ -11,7 +11,7 @@ using static UnityEngine.GraphicsBuffer;
 
 namespace ES
 {
-    public class AIDomainForEntity : BaseDomain<Entity, BaseAIClipForDomainForEntity>
+    public class AIDomainForEntity : Domain<Entity, BaseAIClipForDomainForEntity>
     {
         [NonSerialized] public ClipAI_AB_Target Module_AB_AITarget;//以抽象声明
 
@@ -41,9 +41,9 @@ namespace ES
         private float timerForNextPathUpdate = 0.5f;
 
         #endregion
-        protected override void CreateRelationship()
+        protected override void CreateRelationshipOnly()
         {
-            base.CreateRelationship();
+            base.CreateRelationshipOnly();
             Domain.Module_AB_AITarget = this;
             navMeshPath = new NavMeshPath();
         }
@@ -61,10 +61,10 @@ namespace ES
 
             Vector3 to = Core.transform.InverseTransformDirection((NextPoint - Core.transform.position).EX_NoY()).normalized;
 
-            Core.BaseDomain.Module_AB_Motion.CurrentSpeedMutiplerZ = to.z;
-            Core.BaseDomain.Module_AB_Motion.CurrentSpeedMutiplerX = to.x;
+            Core.NormalDomain.Module_AB_Motion.CurrentSpeedMutiplerZ = to.z;
+            Core.NormalDomain.Module_AB_Motion.CurrentSpeedMutiplerX = to.x;
 
-            Core.BaseDomain.Module_AB_Motion.CurrentRotationY = to.x * 100;
+            Core.NormalDomain.Module_AB_Motion.CurrentRotationY = to.x * 100;
             timerForNextPathUpdate -= Time.deltaTime;
             if (timerForNextPathUpdate < 0)
             {
@@ -109,9 +109,9 @@ namespace ES
         {
             base.Update();
         }
-        protected override void CreateRelationship()
+        protected override void CreateRelationshipOnly()
         {
-            base.CreateRelationship();
+            base.CreateRelationshipOnly();
 
         }
         protected override void OnEnable()
@@ -136,9 +136,9 @@ namespace ES
         [NonSerialized, ShowInInspector, ReadOnly]
         public Attackable attackableNow = null;
 
-        protected override void CreateRelationship()
+        protected override void CreateRelationshipOnly()
         {
-            base.CreateRelationship();
+            base.CreateRelationshipOnly();
             Domain.Module_AB_AttackControl = this;
         }
 

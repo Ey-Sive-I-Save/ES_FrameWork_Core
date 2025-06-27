@@ -9,7 +9,7 @@ using UnityEngine;
 namespace ES
 {
     
-    public class BuffDomainForEntity : BaseDomain<Entity, BuffClipForDomainForEntity>, IESHosting
+    public class BuffDomainForEntity : Domain<Entity, BuffClipForDomainForEntity>, IESHosting
     {
         #region 默认的
         [SerializeField,LabelText("Buff支配者")]
@@ -19,7 +19,7 @@ namespace ES
         {
             base.CreatRelationship();
             core.BuffDomain = this;
-            buffHosting.TrySubmitHosting(this);
+            buffHosting._TryStartWithHost(this);
         }
         public override void UpdateAsHosting()
         {
@@ -80,19 +80,10 @@ public class BuffHosting : BaseESHostingAndModule<BuffRunTimeLogic, BuffDomainFo
     #endregion
     public BuffDomainForEntity buffDomain;
 
-    public override IEnumerable<BuffRunTimeLogic> NormalBeHosted => buffRTLs.valuesNow_;
+    public override IEnumerable<BuffRunTimeLogic> Modules => buffRTLs.valuesNow_;
 
 
     //不要默认刷新
-    protected override bool OnSubmitHostingAsNormal(BuffDomainForEntity hosting)
-    {
-        if (hosting != null)
-        {
-            buffDomain = hosting;
-            return true;
-        }
-        return false;
-    }
     public  void AddHandle(IESModule i, object withKey = null)
     {
        // base.AddHandle(i);
@@ -106,7 +97,7 @@ public class BuffHosting : BaseESHostingAndModule<BuffRunTimeLogic, BuffDomainFo
                     return;
                 }
             }
-            if ((logic as IESModule).TrySubmitHosting(this,false))
+            if (logic._TryStartWithHost(this))
             {
                 buffRTLs.valuesToAdd.Add(logic);
                 logic.TryEnableSelf();
@@ -134,7 +125,7 @@ public class BuffHosting : BaseESHostingAndModule<BuffRunTimeLogic, BuffDomainFo
         }
     }
 
-    public override void TryRemoveModuleAsNormal(BuffRunTimeLogic use)
+    public override void TryRemoveModule(BuffRunTimeLogic use)
     {
         //
     }

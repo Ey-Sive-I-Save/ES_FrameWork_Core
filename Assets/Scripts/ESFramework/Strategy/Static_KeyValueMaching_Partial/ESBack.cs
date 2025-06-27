@@ -44,15 +44,15 @@ namespace ES
                 {
 
                     //查找把，找啊找r
-                    if (entity?.BaseDomain.Module_Cache != null)
+                    if (entity?.NormalDomain.Module_Cache != null)
                     {
                         if (useAndClear)
                         {
-                            return entity.BaseDomain.Module_Cache.CacheEntity.DequeueAll(Key).ToList();
+                            return entity.NormalDomain.Module_Cache.CacheEntity.DequeueAll(Key).ToList();
                         }
                         else
                         {
-                            return entity.BaseDomain.Module_Cache.CacheEntity.PeekAll(Key);
+                            return entity.NormalDomain.Module_Cache.CacheEntity.PeekAll(Key);
                         }
 
                     }
@@ -62,15 +62,15 @@ namespace ES
                 {
 
                     //查找把，找啊找r
-                    if (entity?.BaseDomain.Module_Cache != null)
+                    if (entity?.NormalDomain.Module_Cache != null)
                     {
                         if (useAndClear)
                         {
-                            return entity.BaseDomain.Module_Cache.CacheVector3.DequeueAll(Key).ToList();
+                            return entity.NormalDomain.Module_Cache.CacheVector3.DequeueAll(Key).ToList();
                         }
                         else
                         {
-                            return entity.BaseDomain.Module_Cache.CacheVector3.PeekAll(Key);
+                            return entity.NormalDomain.Module_Cache.CacheVector3.PeekAll(Key);
                         }
 
                     }

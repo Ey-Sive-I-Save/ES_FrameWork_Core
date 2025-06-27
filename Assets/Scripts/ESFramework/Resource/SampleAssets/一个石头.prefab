@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c0496bc887ae7f4895eb3fd406d6b19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NO: {fileID: 0}
   Rigid: {fileID: 0}
   HoldableDomain: {fileID: 0}
   HurtableDomain: {fileID: 0}
@@ -158,7 +159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540dc898634a7e540b3cebc338ae0230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnableFixupdate: 1
   readMe:
     edit: 1
     ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
@@ -166,31 +166,10 @@ MonoBehaviour:
     showColor: {r: 1, g: 1, b: 1, a: 1}
   core: {fileID: 0}
   Clips:
-    valuesNow_:
-    - rid: 165002894273937628
+    valuesNow_: []
   references:
     version: 2
-    RefIds:
-    - rid: 165002894273937628
-      type: {class: ClipHurtable_FlyingObject, ns: ES, asm: Assembly-CSharp}
-      data:
-        Domain: {fileID: 0}
-        Preset: "\u9884\u8BBE1"
-        source: {fileID: 0}
-        CurrentDirect: {x: 0, y: 0, z: 0}
-        TargetDirect: {x: 0, y: 0, z: 0}
-        selfSetTargetOption: 1
-        flyBaseOn: 0
-        directChangeSpeedLevel: 1
-        DamagePerUp: 0
-        DamageAdd: 0
-        Tags:
-          tagNames:
-          - Enemy
-        asTrigger: 1
-        TimesSubLayer:
-          serializedVersion: 2
-          m_Bits: 2112
+    RefIds: []
 --- !u!54 &3729179704472790371
 Rigidbody:
   m_ObjectHideFlags: 0

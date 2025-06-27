@@ -72,7 +72,7 @@ namespace ES
                 {
                     if (playSound != null) GameCenterManager.Instance.AudioMaster.PlayDirect_Sound_OneShot(playSound, 0.8f);
                     GameObject gg = prefabForEffector?.Pick();
-                    Who.BaseDomain.Module_Fire?.Fire(gg);
+                    Who.NormalDomain.Module_Fire?.Fire(gg);
                 }
             }
         }

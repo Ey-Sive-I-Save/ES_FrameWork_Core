@@ -13,7 +13,7 @@ namespace ESFramework
 }
 namespace ES
 {
-    public class HurtableDomainForItem : BaseDomain<Item, HurtableClipForItem>
+    public class HurtableDomainForItem : Domain<Item, HurtableClipForItem>
     {
         //捡起来！
         #region 剪影汇总
@@ -74,9 +74,9 @@ namespace ES
         public float delayTime = 0;
 
 
-        protected override void CreateRelationship()
+        protected override void CreateRelationshipOnly()
         {
-            base.CreateRelationship();
+            base.CreateRelationshipOnly();
             Domain.Module_Flying = this;
             flyingData = Core.sharedData as ESItem_FlyingSharedData ?? new ESItem_FlyingSharedData();
             if (flyingData == null) Domain.RemoveClip(this);//没有存在的必要了

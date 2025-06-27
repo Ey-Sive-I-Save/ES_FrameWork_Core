@@ -30,7 +30,7 @@ namespace ES
 
         [LabelText("共享数据", SdfIconType.Calendar2Date), FoldoutGroup("固有"),NonSerialized/*不让自动序列化*/] public SharedData_ sharedData;
         [LabelText("自变化数据", SdfIconType.Calendar3Range), FoldoutGroup("固有")] public VariableData_ variableData;
-        public bool OnSubmitHosting(Hosting host)
+        public bool Start(Hosting host)
         {
             this.host = host;
             return true;

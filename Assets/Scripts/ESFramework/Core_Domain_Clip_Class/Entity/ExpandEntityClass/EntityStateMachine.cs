@@ -201,7 +201,7 @@ namespace ES
             {
                 if (i != null)
                 {
-                    i.TryWithDrawHostingVirtual();
+                    i.TryDestroy();
                 }
             }
             SelfModule.Clear();
@@ -412,7 +412,7 @@ namespace ES
         protected override void RunStatePreparedLogic()
         {
             base.RunStatePreparedLogic();
-            motion = Entity.BaseDomain.Module_3DMotion;
+            motion = Entity.NormalDomain.Module_3DMotion;
             HasIn = 0;
         }
         protected override void RunStateUpdateLogic()
@@ -459,9 +459,9 @@ namespace ES
         protected override void RunStatePreparedLogic()
         {
             base.RunStatePreparedLogic();
-            motion = Entity.BaseDomain.Module_3DMotion;
+            motion = Entity.NormalDomain.Module_3DMotion;
             HasIn = 0;
-            motion = Entity.BaseDomain.Module_AB_Motion;
+            motion = Entity.NormalDomain.Module_AB_Motion;
             useRIGID = motion?.BaseOnRigid ?? false;
             startPos = Entity.transform.position;
             startDirec = Entity.transform.rotation;
@@ -562,7 +562,7 @@ namespace ES
                         else
                         {
                             Vector3 vv = data.vector - Entity.Rigid.position;
-                            Entity.BaseDomain.Module_AB_Motion.Move((vv).normalized * crashDodge.MaxSpeed * Time.deltaTime);
+                            Entity.NormalDomain.Module_AB_Motion.Move((vv).normalized * crashDodge.MaxSpeed * Time.deltaTime);
                             Entity.YV = vv.y * (1 - HasIn / data.duration);
                         }
                         if (Vector3.Distance(Entity.Rigid.position, data.vector) < crashDodge.EndDisSuit)
@@ -575,7 +575,7 @@ namespace ES
                         if (useRIGID) Entity.Rigid.position += data.vector * Time.deltaTime / data.duration;
                         else
                         {
-                            Entity.BaseDomain.Module_AB_Motion.Move((data.vector) * Time.deltaTime / data.duration);
+                            Entity.NormalDomain.Module_AB_Motion.Move((data.vector) * Time.deltaTime / data.duration);
                             Entity.YV = applyVector.y * (1 - HasIn / data.duration);
                         }
                     }
@@ -584,7 +584,7 @@ namespace ES
                         if (useRIGID) Entity.Rigid.position += (applyVector) * Time.deltaTime / data.duration;
                         else/* Entity.transform.position += (applyVector) * Time.deltaTime / data.duration;*/
                         {
-                            Entity.BaseDomain.Module_AB_Motion.Move((applyVector) * Time.deltaTime / data.duration);
+                            Entity.NormalDomain.Module_AB_Motion.Move((applyVector) * Time.deltaTime / data.duration);
                             Entity.YV = applyVector.y * (1 - HasIn / data.duration);
                         }
                     }
@@ -669,16 +669,16 @@ namespace ES
         protected override void RunStatePreparedLogic()
         {
             base.RunStatePreparedLogic();
-            ReferModule_Target = Entity.AIDomain.Module_AB_AITarget;
-            Refer_Vision = Entity.BaseDomain.Module_AB_Vision;
+           /* ReferModule_Target = Entity.AIDomain.Module_AB_AITarget;
+            Refer_Vision = Entity.NormalDomain.Module_AB_Vision;
             if (ReferModule_Target == null || Refer_Vision == null) { OnStateExit(); }
             ESEntityShared = Entity.SharedData ?? new ESEntitySharedData();
-            Entity.BaseDomain.Module_AB_Motion.StandardSpeed.y = ESEntityShared.PatrolSpeed;
+            Entity.NormalDomain.Module_AB_Motion.StandardSpeed.y = ESEntityShared.PatrolSpeed;*/
         }
         protected override void RunStateUpdateLogic()
         {
             base.RunStateUpdateLogic();
-            if (ReferModule_Target.Target != null)
+           /* if (ReferModule_Target.Target != null)
             {
                 TheEntityStateMachine.TryActiveStateByKey("追击状态");
             }
@@ -710,7 +710,7 @@ namespace ES
             {
 
                 ReferModule_Target.nextWayPointPosition = GameCenterManager.Instance.transform.parent.position;
-            }
+            }*/
         }
         public Vector3 RandomNavmeshLocation(float radius)
         {
@@ -740,7 +740,7 @@ namespace ES
             ReferModule_Target = Entity.AIDomain.Module_AB_AITarget;
             ReferModule_Attack = Entity.AIDomain.Module_AB_AttackControl;
             ESEntityShared = Entity.SharedData ?? new ESEntitySharedData();
-            Entity.BaseDomain.Module_AB_Motion.StandardSpeed.y = ESEntityShared.ChaseSpeed;
+            Entity.NormalDomain.Module_AB_Motion.StandardSpeed.y = ESEntityShared.ChaseSpeed;
 
             if (ReferModule_Target == null) OnStateExit();
         }
@@ -812,7 +812,7 @@ namespace ES
         protected override void RunStateEnterLogic()
         {
             base.RunStateEnterLogic();
-            Entity.BaseDomain.Module_AB_Motion.StandardSpeed.y = 0.2f;
+            Entity.NormalDomain.Module_AB_Motion.StandardSpeed.y = 0.2f;
 
             attackControl = Entity.AIDomain.Module_AB_AttackControl;
             hasAttack = false;

@@ -9,7 +9,7 @@ using UnityEngine;
 namespace ES
 {
     
-    public class  HoldableDomainForItem : BaseDomain<Item, HoldableClipForItem>
+    public class  HoldableDomainForItem : Domain<Item, HoldableClipForItem>
     {
         //捡起来！
         protected override void CreatRelationship()
@@ -34,13 +34,13 @@ namespace ES
         {
 
         }
-        protected override void CreateRelationship()
+        protected override void CreateRelationshipOnly()
         {
-            base.CreateRelationship();
+            base.CreateRelationshipOnly();
             //Domain.Module_XXX = this;  显性引用
         }
 
-        public override string[] allPreset => presetForThis;
+        public override string[] Editor_AllPresets => presetForThis;
         static string[] presetForThis = {"普通特效","珍贵特效","传奇特效" };
 
         protected override void SetupClipByPreset(string preset)
@@ -96,9 +96,9 @@ namespace ES
         {
             
         }
-        protected override void CreateRelationship()
+        protected override void CreateRelationshipOnly()
         {
-            base.CreateRelationship();
+            base.CreateRelationshipOnly();
             //Domain.Module_XXX = this;  显性引用
         }
     }

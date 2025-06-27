@@ -88,10 +88,9 @@ namespace ES
 
         }
         #endregion
-        protected override void OnSubmitHosting(BaseOriginalStateMachine host)
+        public override void _SetHost(BaseOriginalStateMachine host)
         {
             this.host = host;
-             base.OnSubmitHosting(host);
         }
     }
     [Serializable, TypeRegistryItem("抽象泛型元-带委托状态_纳米")]
@@ -219,8 +218,8 @@ namespace ES
         #region 生命周期_状态专属的
         [ShowInInspector,LabelText("状态进入状态"),ReadOnly,PropertyOrder(-1), FoldoutGroup("<汇总>运行情况")]
         public bool HasPrepared { get; set; }
-        IStateSharedData IESMicroState.SharedData { get => sharedData; set { if (value is SharedData_ sharedValue) sharedData = sharedValue; else Debug.LogWarning("不匹配"+value+typeof( SharedData_)); } }
-        IStateVariableData IESMicroState.VariableData { get => variableData; set { if (value is VariableData_ variableValue) variableData = variableValue; else Debug.LogWarning("不匹配" + value); } }
+        IStateSharedData IESMicroState.SharedData { get => sharedData; set { if (value is SharedData_ sharedValue) sharedData = sharedValue; /*else Debug.LogWarning("不匹配"+value+typeof( SharedData_));*/ } }
+        IStateVariableData IESMicroState.VariableData { get => variableData; set { if (value is VariableData_ variableValue) variableData = variableValue; /*else Debug.LogWarning("不匹配" + value);*/ } }
         public IESMicroState WithSharedData(IStateSharedData sharedData)
         {
             if(sharedData is SharedData_ use)
@@ -538,12 +537,6 @@ namespace ES
         {
             this.key = key.ToString();
         }
-#if UNITY_EDITOR
-        protected override void RunStateUpdateLogic()
-        {
-            base.RunStateUpdateLogic();
-        }
-#endif
     }
 
     [Serializable, TypeRegistryItem("标准可委托可继承状态元(String)")]

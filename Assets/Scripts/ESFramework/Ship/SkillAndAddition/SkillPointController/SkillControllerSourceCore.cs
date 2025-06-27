@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 namespace ES
 {
-    public class SkillControllerSourceCore :BaseCore, IWithArchitecture
+    public class SkillControllerSourceCore :Core, IWithArchitecture
     {
         [SerializeReference]
         public BaseArchitectureWithKeyValuePool SkillControllerKeyValueArchitecture = new BaseArchitectureWithKeyValuePool();

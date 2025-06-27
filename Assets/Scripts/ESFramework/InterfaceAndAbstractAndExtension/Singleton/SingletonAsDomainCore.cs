@@ -7,7 +7,7 @@ using UnityEngine;
 namespace ES
 {
     
-    public abstract class SingletonAsCore<This> : BaseCore where This : MonoBehaviour
+    public abstract class SingletonAsCore<This> : Core where This : MonoBehaviour
     {
         [LabelText("不销毁"),PropertyOrder(-5)]public bool DontDestroy = true;
         public static This Instance
@@ -40,7 +40,7 @@ namespace ES
                 _instance = this as This;
                 if (_instance != null)
                 {
-                    AwakeBroadCastRegester();
+                    AwakeRegisterAllDomain();
                    if (DontDestroy) DontDestroyOnLoad(transform.root.gameObject);
                 }
             }

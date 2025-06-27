@@ -11,10 +11,10 @@ namespace ES
     /*核心功能*/
     public interface ICore:IESHosting
     {
-        public void AwakeBroadCastRegester();//初始化创建链接
+        public void AwakeRegisterAllDomain();//初始化创建链接
     }
     [DefaultExecutionOrder(-2)]//顺序在前
-    public abstract class BaseCore : ESHostingMono, ICore
+    public abstract class Core : ESHostingMono, ICore
     {
         [TitleGroup("网络支持")]
         [Required(errorMessage: "如果你制作网络游戏，请考虑好他的必要性"), PropertyOrder(-10), PropertySpace(5, 15),InlineButton("DebugNO","输出NO信息")]
@@ -39,28 +39,31 @@ namespace ES
         protected virtual void Awake()
         {
            /* if (NO == null)*/
-                AwakeBroadCastRegester();
-            /*else Invoke(nameof(AwakeBroadCastRegester),0.1f);*/
+                AwakeRegisterAllDomain();
+            /*else Invoke(nameof(AwakeBroadCastRegister),0.1f);*/
         }
         //注册发生前发生的事儿
-        protected virtual void BeforeAwakeBroadCastRegester()
+        protected virtual void BeforeAwakeRegister()
         {
             
         }
         //注册完成后发生的事儿
-        protected virtual void AfterAwakeBroadCastRegester()
+        protected virtual void AfterAwakeRegister()
         {
 
         }
 
         //注册
-        public void AwakeBroadCastRegester()
+        
+        public void AwakeRegisterAllDomain()
         {
-            BeforeAwakeBroadCastRegester();
-            
-            BroadcastMessage("AwakeRegisterDomain", this, options: SendMessageOptions.DontRequireReceiver);
-
-            AfterAwakeBroadCastRegester();
+            BeforeAwakeRegister();
+            var allDomains = GetComponentsInChildren<IDomain>();
+            foreach(var i in allDomains)
+            {
+                i.RegisterAllWithCore(this);
+            }
+            AfterAwakeRegister();
         }
         
 
@@ -72,7 +75,7 @@ namespace ES
             var all = GetComponentsInChildren<IDomain>();
             foreach(var i in all)
             {
-                i.RegesterAllButOnlyCreateRelationship(this);
+                i.RegisterAllButOnlyCreateRelationship(this);
             }
         }
 #endif

@@ -356,7 +356,7 @@ namespace ES
                 }
                 else if (handlePos == EnumCollect.HandleCacheOption.ToMain)
                 {
-                    from.BaseDomain.Module_Cache?.CacheVector3.AddToQueue("Main", pos);
+                    from.NormalDomain.Module_Cache?.CacheVector3.AddToQueue("Main", pos);
                 }
                 else if (handlePos == EnumCollect.HandleCacheOption.ToSelf)
                 {
@@ -364,7 +364,7 @@ namespace ES
                 }
                 else
                 {
-                    from.BaseDomain.Module_Cache?.CacheVector3.AddToQueue(selfDefine, pos);
+                    from.NormalDomain.Module_Cache?.CacheVector3.AddToQueue(selfDefine, pos);
                 }
                 if (option == EnumCollect.HandleOnWhoEntityColOption.bySelectorYarnLauncher)
                 {
@@ -421,7 +421,7 @@ namespace ES
                 }
                 else if (handlePos == EnumCollect.HandleCacheOption.ToMain)
                 {
-                    from.BaseDomain.Module_Cache?.CacheVector3.AddToQueue("Main", pos);
+                    from.NormalDomain.Module_Cache?.CacheVector3.AddToQueue("Main", pos);
                 }
                 else if (handlePos == EnumCollect.HandleCacheOption.ToSelf)
                 {
@@ -429,7 +429,7 @@ namespace ES
                 }
                 else
                 {
-                    from.BaseDomain.Module_Cache?.CacheVector3.AddToQueue(selfDefine, pos);
+                    from.NormalDomain.Module_Cache?.CacheVector3.AddToQueue(selfDefine, pos);
                 }
                 if (option == EnumCollect.HandleOnWhoEntityColOption.bySelectorYarnLauncher)
                 {
@@ -990,7 +990,7 @@ namespace ES
 
         public object Pick(Entity on = null, Entity from = null, EntityState_Skill with = null)
         {
-            var use = on.BaseDomain?.Module_AB_Motion;
+            var use = on.NormalDomain?.Module_AB_Motion;
             if (use != null) use.timeForStay = sustainTime;
             return 5;
         }
@@ -1096,7 +1096,7 @@ namespace ES
                 float f = pointerForFloat?.Pick() ?? 0.5f;
                 if (UnityEngine.Random.value < f)
                 {
-                    from.BaseDomain.Module_Cache?.CacheEntity.AddToQueue("Main", on);
+                    from.NormalDomain.Module_Cache?.CacheEntity.AddToQueue("Main", on);
                 }
             }
             return 5;
@@ -1116,7 +1116,7 @@ namespace ES
                 if (UnityEngine.Random.value < f)
                 {
 
-                    from.BaseDomain.Module_Cache?.CacheEntity.AddToQueue(cacheName, on);
+                    from.NormalDomain.Module_Cache?.CacheEntity.AddToQueue(cacheName, on);
                 }
             }
             return 5;
@@ -1151,7 +1151,7 @@ namespace ES
                 float f = pointerForFloat?.Pick() ?? 0.5f;
                 if (UnityEngine.Random.value < f)
                 {
-                    on.BaseDomain.Module_Cache?.CacheVector3.AddToQueue("Main", on.transform.position);
+                    on.NormalDomain.Module_Cache?.CacheVector3.AddToQueue("Main", on.transform.position);
                 }
             }
             return 5;
@@ -1169,7 +1169,7 @@ namespace ES
                 float f = pointerForFloat?.Pick() ?? 0.5f;
                 if (UnityEngine.Random.value < f)
                 {
-                    on.BaseDomain.Module_Cache?.CacheVector3.AddToQueue(cacheName, on.transform.position);
+                    on.NormalDomain.Module_Cache?.CacheVector3.AddToQueue(cacheName, on.transform.position);
                 }
             }
             return 5;
@@ -1190,7 +1190,7 @@ namespace ES
 
 
                 /* var to = from.transform.InverseTransformDirection(vv);
-                 var y = from.BaseDomain.Module_3DMotion;
+                 var y = from.NormalDomain.Module_3DMotion;
 
                  y.banSource.Add(this);*/
                 with.OnExit += (f) =>
@@ -1242,7 +1242,7 @@ namespace ES
                     crash.TryAddCrashDodge(ref defaultDodge);
                 }
                 /* var to = from.transform.InverseTransformDirection(vv);
-                 var y = from.BaseDomain.Module_3DMotion;
+                 var y = from.NormalDomain.Module_3DMotion;
 
                  y.banSource.Add(this);*/
             }

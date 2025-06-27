@@ -10,7 +10,7 @@ using UnityEngine;
 namespace ES
 {
     [TypeRegistryItem("Entity,Item的父类")]
- public class  ESObject  : BaseCore
+ public class  ESObject  : Core
 {
        
         [FoldoutGroup("固有"), LabelText("刚体")] public Rigidbody Rigid;
@@ -32,13 +32,13 @@ namespace ES
         [NonSerialized] public Queue<Entity> ignoreEntities = new Queue<Entity>();
         #endregion
         //显性声明扩展域
-        //public BaseDomainForXXX BaseDomain;
+        //public NormalDomainForXXX NormalDomain;
         //public 02DomainForXXX StateMachineDomain;
 
         //注册前的操作
-        protected override void BeforeAwakeBroadCastRegester()
+        protected override void BeforeAwakeRegister()
         {
-            base.BeforeAwakeBroadCastRegester();
+            base.BeforeAwakeRegister();
             Rigid = GetComponent<Rigidbody>();
         }
 

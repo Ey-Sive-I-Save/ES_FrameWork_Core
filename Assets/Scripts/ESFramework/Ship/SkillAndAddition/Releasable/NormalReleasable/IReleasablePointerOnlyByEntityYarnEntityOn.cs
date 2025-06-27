@@ -173,14 +173,14 @@ namespace ES
                 }
                 else if(handlePos== OLDEnumCollect.HandleCacheOption.ToMain)
                 {
-                    yarn.BaseDomain.Module_Cache?.CacheVector3.AddToQueue("MainBundle",pos);
+                    yarn.NormalDomain.Module_Cache?.CacheVector3.AddToQueue("MainBundle",pos);
                 }else if(handlePos== OLDEnumCollect.HandleCacheOption.ToSelf)
                 {
-                    yarn.BaseDomain.Module_Cache?.CacheVector3.AddToQueue("MainBundle", pos);
+                    yarn.NormalDomain.Module_Cache?.CacheVector3.AddToQueue("MainBundle", pos);
                 }
                 else
                 {
-                    yarn.BaseDomain.Module_Cache?.CacheVector3.AddToQueue(selfDefine, pos);
+                    yarn.NormalDomain.Module_Cache?.CacheVector3.AddToQueue(selfDefine, pos);
                 }
                 if(option== OLDEnumCollect.HandleOnWhoEntityColOption.bySelectorYarnLauncher)
                 {
@@ -249,15 +249,15 @@ namespace ES
                 }
                 else if (handlePos == OLDEnumCollect.HandleCacheOption.ToMain)
                 {
-                    yarn.BaseDomain.Module_Cache?.CacheVector3.AddToQueue("MainBundle", pos);
+                    yarn.NormalDomain.Module_Cache?.CacheVector3.AddToQueue("MainBundle", pos);
                 }
                 else if (handlePos == OLDEnumCollect.HandleCacheOption.ToSelf)
                 {
-                    yarn.BaseDomain.Module_Cache?.CacheVector3.AddToQueue("MainBundle", pos);
+                    yarn.NormalDomain.Module_Cache?.CacheVector3.AddToQueue("MainBundle", pos);
                 }
                 else
                 {
-                    yarn.BaseDomain.Module_Cache?.CacheVector3.AddToQueue(selfDefine, pos);
+                    yarn.NormalDomain.Module_Cache?.CacheVector3.AddToQueue(selfDefine, pos);
                 }
                 if (option == OLDEnumCollect.HandleOnWhoEntityColOption.bySelectorYarnLauncher)
                 {
@@ -652,7 +652,7 @@ namespace ES
                 float f = pointerForFloat?.Pick() ?? 0.5f;
                 if (UnityEngine.Random.value < f)
                 {
-                    from.BaseDomain.Module_Cache?.CacheEntity.AddToQueue("Main", on);
+                    from.NormalDomain.Module_Cache?.CacheEntity.AddToQueue("Main", on);
                 }
             }
             return 5;
@@ -672,7 +672,7 @@ namespace ES
                 if (UnityEngine.Random.value < f)
                 {
 
-                    from.BaseDomain.Module_Cache?.CacheEntity.AddToQueue(cacheName, on);
+                    from.NormalDomain.Module_Cache?.CacheEntity.AddToQueue(cacheName, on);
                 }
             }
             return 5;
@@ -690,7 +690,7 @@ namespace ES
                 float f = pointerForFloat?.Pick() ?? 0.5f;
                 if (UnityEngine.Random.value < f)
                 {
-                    on.BaseDomain.Module_Cache?.CacheVector3.AddToQueue("Main", on.transform.position);
+                    on.NormalDomain.Module_Cache?.CacheVector3.AddToQueue("Main", on.transform.position);
                 }
             }
             return 5;
@@ -708,7 +708,7 @@ namespace ES
                 float f = pointerForFloat?.Pick() ?? 0.5f;
                 if (UnityEngine.Random.value < f)
                 {
-                    on.BaseDomain.Module_Cache?.CacheVector3.AddToQueue(cacheName, on.transform.position);
+                    on.NormalDomain.Module_Cache?.CacheVector3.AddToQueue(cacheName, on.transform.position);
                 }
             }
             return 5;
@@ -729,7 +729,7 @@ namespace ES
 
 
                 /* var to = from.transform.InverseTransformDirection(vv);
-                 var y = from.BaseDomain.Module_3DMotion;
+                 var y = from.NormalDomain.Module_3DMotion;
 
                  y.banSource.Add(this);*/
 
@@ -777,7 +777,7 @@ namespace ES
                     crash.TryAddCrashDodge(ref defaultDodge);
                 }
                 /* var to = from.transform.InverseTransformDirection(vv);
-                 var y = yarn.BaseDomain.Module_3DMotion;
+                 var y = yarn.NormalDomain.Module_3DMotion;
 
                  y.banSource.Add(this);*/
             }

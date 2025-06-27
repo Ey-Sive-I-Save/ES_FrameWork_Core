@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,33 +13,65 @@ namespace ES
     [TypeRegistryItem("空剪影")]
     public interface IClip : IESModule
     {
-        public void SetDomainAndCreateRelationship(IDomain Domain);
-        public void TrySetupClip();
+        public void _SetDomainAndCreateRelationshipOnly(IDomain Domain);
+        public void _TrySetupPresetClip();
         public void FixedUpdate_MustSelfDelegate();
-        
+
     }
     [TypeRegistryItem("抽象剪影定义")]
-    public abstract class Clip<Core_, Domain_> : BaseESModule<Domain_>, IClip where Core_ : BaseCore where Domain_ : class, IDomain<Core_>
+    public abstract class Clip<Core_, Domain_> : BaseESModule<Domain_>, IClip where Core_ : Core where Domain_ : class, IDomain<Core_>
     {
-        //所在域-
-        [HideInInspector] public Domain_ Domain;
-        [LabelText("更新网络权限")] public NetWorkUpdateOption updateOption = NetWorkUpdateOption.Always;
-        #region 只读便捷属性
-        public Core_ Core => Domain.Core;
-        public override Domain_ GetHost => Domain;
-        public GameCenterManager GameCenter => GameCenterManager.Instance;
-        public DomainForGameCenterManager GameBaseDomain => GameCenterManager.Instance.BaseDomain;
 
-        public ESNetManager ESNet => ESNetManager.Instance;
+        #region 总重要信息
+
+        [HideInInspector/*绑定扩展域*/]
+        public Domain_ Domain;//所在域-
+
+        [LabelText("更新网络权限")]
+        public NetWorkUpdateOption updateOption = NetWorkUpdateOption.Always;
 
         #endregion
-        public override bool CanUpdating
+
+        #region 只读便捷属性
+
+        public Core_ Core//核心
         {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => Domain.Core;
+        }
+        public sealed override Domain_ GetHost //重写-还是获取核心
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => Domain;
+        }
+        public GameCenterManager GameCenter //游戏核心
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => GameCenterManager.Instance;
+        }
+        public DomainForGameCenterManager GameNormalDomain//游戏核心常规域
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => GameCenterManager.Instance.NormalDomain;
+        }
+
+        public ESNetManager ESNet //ES网络管理器
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => ESNetManager.Instance;
+        }
+
+        #endregion
+
+        #region 补充逻辑
+        public sealed override bool CanUpdating
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get
             {
                 if (Core.NO == null ||
                 updateOption == NetWorkUpdateOption.Always) return true;
-                if(updateOption == NetWorkUpdateOption.OnlyOwner)
+                if (updateOption == NetWorkUpdateOption.OnlyOwner)
                 {
                     if (Core.NO.IsOwner) return true;
                     return false;
@@ -66,32 +99,80 @@ namespace ES
                 return true;
             }
         }
-        #region 托管相关
-        protected override void OnSubmitHosting(Domain_ hosting)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public sealed override void _SetHost(Domain_ host)
         {
-            Domain = hosting;
-            CreateRelationship();
-            base.OnSubmitHosting(hosting);
-            
-        }
-
-        protected override void OnWithDrawHosting(Domain_ hosting)
-        {
-            Domain = hosting;
-            base.OnWithDrawHosting(hosting);
-            
+            Domain = host;
+            CreateRelationshipOnly();
+            Start();
         }
         #endregion
 
-        #region 重写逻辑
-        //OnEnable
-        //OnDiable
-        //Update 都可以重写 √√√√
+        #region 托管相关
+        /*        protected override void Start(Domain_ hosting)
+                {
+                    Domain = hosting;
+                    CreateRelationship();
+                    base.Start(hosting);
+
+                }
+
+                protected override void OnWithDrawHosting(Domain_ hosting)
+                {
+                    Domain = hosting;
+                    base.OnWithDrawHosting(hosting);
+
+                }*/
+        #endregion
+
+        #region 可直接重写扩展逻辑(关键)
+        /*  
+         *  开始时(对于一次域和模块的绑定-只会进行一次)
+          protected override void Start()
+          {
+              base.Start();
+              &初始化数据，创建对象
+              &整个模块周期只执行一次
+          }
+        *  启用时(从禁用到启用进行--和脚本几乎一致)
+          protected override void OnEnable()
+          {
+              base.OnEnable();
+              &可配合OnDisable重复触发
+              &注销委托
+              &仅启用时相关逻辑的开启
+          }
+          protected override void OnDisable()
+          {
+              base.OnDisable();
+              &可配合OnEnable重复触发
+              &注销委托
+              &仅启用时相关逻辑的关闭
+          }
+          protected override void Update()
+          {   
+              &启用时每帧执行
+              base.Update();
+          }
+
+          protected override void OnDestroy()
+          {
+              &被销毁，解除绑定,整个生命周期只有一次(可重复)
+              base.OnDestroy();
+          }*/
         
-        //创建   域 对自己 的 显性引用关系
-        protected virtual void CreateRelationship()
+        //仅用于创建双向引用--不要写逻辑
+        protected virtual void CreateRelationshipOnly() //创建   域 对自己 的 显性引用关系
         {
             //演示：  Domain.Module_AABB=this;
+        }
+
+        #endregion
+
+        #region 自主扩展手动委托功能(为了性能考虑)
+        public virtual void FixedUpdate_MustSelfDelegate()
+        {
+
         }
         #endregion
 
@@ -99,7 +180,7 @@ namespace ES
         [ShowInInspector, GUIColor("ColorGetter"), LabelText(SdfIconType.CashCoin, Text = @"@ ""功能：""+ Description_  "),
             PropertyOrder(-100), Indent(-2), Tooltip("剪影细则")]
         protected virtual string Description_ => "描述";
-       
+
 
         protected virtual Color ColorGetter()
         {
@@ -108,45 +189,52 @@ namespace ES
         #endregion
 
         #region 辅助功能
-        public void SetDomainAndCreateRelationship(IDomain Domain)
+        //一般编辑器模式会用--用来单纯链接而不进行逻辑运行
+        public void _SetDomainAndCreateRelationshipOnly(IDomain Domain)
         {
             if (Domain is Domain_ domain_)
             {
                 this.Domain = domain_;
-                CreateRelationship();
+                CreateRelationshipOnly();
             }
         }
-        public void TrySetupClip()
+        //进行预设的设置
+        public void _TrySetupPresetClip()
         {
+#if UNITY_EDITOR
             if (Domain == null)
             {
                 Debug.LogError("请先通过核心创建临时关系");
-#if UNITY_EDITOR
-                if(Application.isEditor)
-                if (EditorUtility.DisplayDialog("尝试使用预设", $"您正在尝试应用预设<{Preset}>，在游戏未开始前,他需要核心先发起一次临时关系绑定！请去核心处》三小点》<ES>创建临时关系,创建临时的关系绑定后，再继续", "我这就去", "不去也得去！"))
-                {
-                    
-                }
-                else
-                {
-                    
-                }
-#endif
+
+                if (Application.isEditor)
+                    if (EditorUtility.DisplayDialog("尝试使用预设", $"您正在尝试应用预设<{Editor_Preset}>，在游戏未开始前,他需要核心先发起一次临时关系绑定！请去核心处》三小点》<ES>创建临时关系,创建临时的关系绑定后，再继续", "我这就去", "不去也得去！"))
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
                 return;
             }
-            SetupClipByPreset(Preset);
+            SetupClipByPreset(Editor_Preset);
+#endif
         }
         #endregion
 
         #region 预设相关
+#if UNITY_EDITOR
+        [ValueDropdown("Editor_AllPresets"), LabelText("选择预设", SdfIconType.CaretDownSquareFill), SerializeField, InlineButton("_TrySetupPresetClip", "使用该预设"), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_01")]
+        private string Editor_Preset = "预设1";
+#endif
+        public virtual string[] Editor_AllPresets => Editor_DefaultPresets;
+        public static string[] Editor_DefaultPresets = { "预设1", "预设2", "预设3" };
 
-        [ValueDropdown("allPreset"), LabelText("选择预设", SdfIconType.CaretDownSquareFill), InlineButton("TrySetupClip", "使用该预设"), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_01")]
-        public string Preset = "预设1";
-        public virtual string[] allPreset => defaultPresets;
-        public static string[] defaultPresets = { "预设1", "预设2", "预设3" };
-       
+        //重写该方法创建预设效果
         protected virtual void SetupClipByPreset(string preset)
         {
+            //演示
             /* switch (preset)
              {
                  case "预设1":
@@ -163,49 +251,8 @@ namespace ES
                      break;
              }*/
         }
-
-        public virtual void FixedUpdate_MustSelfDelegate()
-        {
-            
-        }
-
         #endregion
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-           
-        }
-        
-        protected override void Update()
-        {
-            base.Update();
-            /*if (GameCenterManager.Instance.NetSupport && Core.NO != null&&false)
-            {
-                Debug.Log("本人的" + Core.NO.IsOwner);
-                Debug.Log("客户的" + Core.NO.IsClientInitialized);
-                Debug.Log("服务器的" + Core.NO.IsServerInitialized);
-                if (Core.NO.IsOwner)//本人的：拦截
-                {
 
-                }
-                else //远程的：拦截
-                {
-                    var ban = ESNetManager.Instance.LocalDomain.Modole_BlockFunc.ForModuleOtherBan;
-                    if (ban != null)
-                    {
-                        foreach (var t in ban.TypeList)
-                        {
-                            if (t == this.GetType())
-                            {
-                                Domain.RemoveClip(this);
-                                this._TryInActiveAndDisable();
-                                break;
-                            }
-                        }
-                    }
-                }
-            }*/
-        }
     }
 
 }

@@ -23,15 +23,11 @@ using UnityEngine.UI;
 
 namespace ES
 {
-    public class DomainForGameCenterManager : BaseDomain<GameCenterManager, ClipForGamecenterManager> {
-        protected override void AwakeRegesterAllClip()
-        {
-            base.AwakeRegesterAllClip();
-        }
+    public class DomainForGameCenterManager : Domain<GameCenterManager, ClipForGamecenterManager> {
         protected override void CreatRelationship()
         {
             base.CreatRelationship();
-            core.BaseDomain = this;
+            core.NormalDomain = this;
         }
     }
 
@@ -49,20 +45,19 @@ namespace ES
         float f = 5;
         ESResLoader loader;
         public string StartWith = "来自模块1";
+        public override string[] Editor_AllPresets => base.Editor_AllPresets;
+        protected override void Start()
+        {
+            base.Start();
+            Debug.Log("开始");
+        }
         protected override void OnEnable()
         {
             loader ??= ESResMaster.Instance.GetInPool_ESLoader();
-
-           
-
-
          /*   var keyFor1 = ESResMaster.Instance.GetInPool_ResSourceSearchKey("方块_prefab", loadType: ResSourceLoadType.AssetBundle);
 
             loader.Add2Load(keyFor1, (b, ob) => { if (b) Debug.Log(StartWith + "加载成功" + keyFor1 + ob); else Debug.LogError(StartWith + "加载失败" + keyFor1); });
-           
             */
-
-
             var keyForOb = ESResMaster.Instance.GetInPool_ResSourceSearchKey("方块 4", "方块_prefab", loadType: ResSourceLoadType.ABAsset);
             loader.Add2Load(keyForOb ,(b, ob) => { if (b) Debug.Log(StartWith + "加载成功" + keyForOb + ob); else Debug.LogError(StartWith + "加载失败" + keyForOb); });
 
@@ -82,8 +77,6 @@ namespace ES
             //同步加载
             Debug.Log(StartWith+"全部开始加载" + Time.time);
             loader.LoadAll_Async(() => Debug.Log(StartWith+"加载全部完成" +Time.time));*/
-
-
             base.OnEnable();
            
         }
@@ -166,7 +159,7 @@ namespace ES
             base.Update();
         }
 
-        public override string[] allPreset => presetsForModule04;
+        public override string[] Editor_AllPresets => presetsForModule04;
         public static string[] presetsForModule04 = {"弱小的","强大的","特殊的" };
         protected override void SetupClipByPreset(string preset)
         {

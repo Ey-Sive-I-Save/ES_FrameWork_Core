@@ -18,7 +18,7 @@ namespace ES
         [FoldoutGroup("工具管理器引用"), LabelText("音效管理器")] public ESAudioMaster AudioMaster;
         
 
-        [LabelText("基本域")]public DomainForGameCenterManager BaseDomain;
+        [LabelText("基本域")]public DomainForGameCenterManager NormalDomain;
         
 
 
@@ -75,9 +75,9 @@ namespace ES
             
             GameCenterArchitecture.SendLink(new Link_DestrolyCollideWall());
         }
-        protected override void BeforeAwakeBroadCastRegester()
+        protected override void BeforeAwakeBroadCastRegister()
         {
-            base.BeforeAwakeBroadCastRegester();
+            base.BeforeAwakeBroadCastRegister();
             SceneManager.sceneLoaded += PassiveDelagateMethod_OnSceneLoaded;
         }
         
@@ -93,10 +93,10 @@ namespace ES
         {
             
             OnEnemyBeAttack?.Invoke(enemy,Class);
-            if(enemy!=null&&Class!=null&& BaseDomain.Module_PlayerState != null)
+            if(enemy!=null&&Class!=null&& NormalDomain.Module_PlayerState != null)
             {
-                BaseDomain.Module_PlayerState.m_healthPoint += Class.Damage * BaseDomain.Module_PlayerState.mm_VampirePercent*0.05f;
-                BaseDomain.Module_PlayerState.m_healthPoint = Mathf.Min(BaseDomain.Module_PlayerState.m_healthPoint, BaseDomain.Module_PlayerState.m_maxHealthPoint);
+                NormalDomain.Module_PlayerState.m_healthPoint += Class.Damage * NormalDomain.Module_PlayerState.mm_VampirePercent*0.05f;
+                NormalDomain.Module_PlayerState.m_healthPoint = Mathf.Min(NormalDomain.Module_PlayerState.m_healthPoint, NormalDomain.Module_PlayerState.m_maxHealthPoint);
             }
         }*/
         /// <summary>
@@ -108,21 +108,21 @@ namespace ES
         /* public bool ProactiveInvoke_OnPlayerBeEnemyAttack_BackApplyAttack(DamageClass Class)
          {
              OnPlayerBeEnemyAttack?.Invoke(Class.who, Class);
-             if (Class != null &&Class.who!=null&& BaseDomain.Module_PlayerState != null)
+             if (Class != null &&Class.who!=null&& NormalDomain.Module_PlayerState != null)
              {
                  Debug.Log("玩家被攻击" + Class.Type + Class.who);
-                 if (BaseDomain.Module_PlayerState.isSimpleDefending)
+                 if (NormalDomain.Module_PlayerState.isSimpleDefending)
                  {
                      //普通防御
-                     BaseDomain.Module_PlayerState.m_blockMeter -= 20;
-                     if (BaseDomain.Module_PlayerState.m_blockMeter < 0)
+                     NormalDomain.Module_PlayerState.m_blockMeter -= 20;
+                     if (NormalDomain.Module_PlayerState.m_blockMeter < 0)
                      {
                          OnGuardBreaked?.Invoke();
                          Debug.Log("护盾破碎");
                      }
                      Debug.Log("护盾抵挡");
                      return false;
-                 }else if (BaseDomain.Module_PlayerState.isSpecialGeDang)
+                 }else if (NormalDomain.Module_PlayerState.isSpecialGeDang)
                  {
 
                       if (Class.Type == DamageType.Melle)

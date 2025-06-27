@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 namespace ES
 {
-    public class StateMachineDomainForEntity : BaseDomain<Entity, StateMachineClipForDomainForEntity>,IWithESMachine
+    public class StateMachineDomainForEntity : Domain<Entity, StateMachineClipForDomainForEntity>,IWithESMachine
     {
         #region 固有
         [LabelText("标准角色总状态机")]public EntityStateMachine StateMachine=new EntityStateMachine();
@@ -69,12 +69,11 @@ namespace ES
             StateMachine.defaultStateKey = DefaultStateName;
         }
     }
-    [Serializable]
     public abstract class StateMachineClipForDomainForEntity : Clip<Entity, StateMachineDomainForEntity>
     {
         
     }
-    [Serializable, TypeRegistryItem("技能注册器")]
+   /* [Serializable, TypeRegistryItem("技能注册器")]
     public class ClipStateMachine_SkillRegister : StateMachineClipForDomainForEntity
     {
         [LabelText("注册技能的Info")]
@@ -82,9 +81,9 @@ namespace ES
         private Dictionary<string, EntityState_Skill> Skills = new Dictionary<string, EntityState_Skill>();
         [ShowInInspector, DisableInEditorMode]
         public string[] Keys => Skills.Keys.ToArray();
-        protected override void OnSubmitHosting(StateMachineDomainForEntity hosting)
+        public override bool _TryStartWithHost(StateMachineDomainForEntity hosting)
         {
-            base.OnSubmitHosting(hosting);
+            base._TryStartWithHost(hosting);
             foreach (var i in skillDataInfos)
             {
                 Debug.Log("t1");
@@ -105,8 +104,9 @@ namespace ES
 
 
             }
+            return true;
         }
-    }
+    }*/
     [Serializable, TypeRegistryItem("注册技能交付")]
     public class SkillRegisterMessage : ILink
     {
@@ -144,9 +144,9 @@ namespace ES
             [LabelText("实现模式")] public EnumCollect.ToDestionationBaseOn baseOn;
         }
        
-        protected override void CreateRelationship()
+        protected override void CreateRelationshipOnly()
         {
-            base.CreateRelationship();
+            base.CreateRelationshipOnly();
             Domain.Module_CrashDodge = this;
             if (dataInfo != null)
             {
@@ -158,11 +158,6 @@ namespace ES
                 }
                 Domain.StateMachine.RegisterNewState("闪身", Create);
             }
-        }
-        protected override void OnSubmitHosting(StateMachineDomainForEntity hosting)
-        {
-            base.OnSubmitHosting(hosting);
-
         }
         public override void FixedUpdate_MustSelfDelegate()
         {
@@ -243,10 +238,10 @@ namespace ES
         [ShowInInspector, DisableInEditorMode]
         public string[] Keys => Skills.Keys.ToArray();*/
         public BuffSoInfo info;
-        protected override void OnSubmitHosting(StateMachineDomainForEntity hosting)
+        public override bool _TryStartWithHost(StateMachineDomainForEntity hosting)
         {
-            base.OnSubmitHosting(hosting);
-            if (info == null) return;
+            base._TryStartWithHost(hosting);
+            if (info == null) return false;
             var Create = KeyValueMatchingUtility.Creator.CreateStateRunTimeLogicComplete(info.bindingState);
             if (Create is EntityState_Buff buff)
             {
@@ -254,6 +249,7 @@ namespace ES
 
                 Domain.StateMachine.RegisterNewState(info.key.str_direc, Create);
             }
+            return true;
             /*foreach (var i in skillDataInfos)
             {
                 Debug.Log("t1");

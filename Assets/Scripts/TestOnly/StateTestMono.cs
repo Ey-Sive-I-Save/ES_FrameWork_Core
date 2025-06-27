@@ -23,7 +23,7 @@ public class StateTestMono : ESHostingMono_BaseESModule, IWithESMachine
     {
        
         KeyValueMatchingUtility.DataApply.ApplyStatePackToMachine(pack,machine_);
-        machine_.TrySubmitHosting(this,true);
+        
         machine_.defaultStateKey = "静止";
         machine_.WithEnterState(machine_.GetStateByKey("攻击")); ;
         //第一层

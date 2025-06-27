@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aede5e8ea1488704b8c7cc8a4e475b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnableFixupdate: 1
   readMe:
     edit: 1
     ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
@@ -54,45 +53,10 @@ MonoBehaviour:
     showColor: {r: 1, g: 1, b: 1, a: 1}
   core: {fileID: 0}
   Clips:
-    valuesNow_:
-    - rid: 165002917983027212
-    - rid: 165002928870391900
-    - rid: 165002936398905345
+    valuesNow_: []
   references:
     version: 2
-    RefIds:
-    - rid: 165002917983027212
-      type: {class: ClipBase_3DMicroMotion, ns: ES, asm: Assembly-CSharp}
-      data:
-        Domain: {fileID: 0}
-        Preset: "\u9884\u8BBE1"
-        SelfControlWeight: 1
-        StandardSpeed: {x: 1, y: 3}
-        BaseOnRigid: 0
-        CurrentSpeedMutiplerZ: 0
-        CurrentSpeedMutiplerX: 0
-        UseRigid: 1
-        YUpwards: {x: 0, y: 1, z: 0}
-        MaxRotSpeed_: 360
-        CurrentRotationY: 0
-        timeForStay: 0
-    - rid: 165002928870391900
-      type: {class: ClipBase_Vision_MC, ns: ES, asm: Assembly-CSharp}
-      data:
-        Domain: {fileID: 0}
-        Preset: "\u9884\u8BBE1"
-        TargetSeeTags:
-          tagNames:
-          - Player
-        SeeESObjectList: []
-    - rid: 165002936398905345
-      type: {class: ClipBase_FireFlying, ns: ES, asm: Assembly-CSharp}
-      data:
-        Domain: {fileID: 0}
-        Preset: "\u9884\u8BBE1"
-        prefab: {fileID: 6999067622756423496, guid: f7323df0a908fbf42a2aecc83ff91288,
-          type: 3}
-        FirePoint: {fileID: 9106427508984474460}
+    RefIds: []
 --- !u!1 &1469390724965966527
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf49b8e8b250e94ab54189a312bff81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NO: {fileID: 0}
   Rigid: {fileID: 0}
   Anim: {fileID: 0}
   ESTagsC:
@@ -357,7 +322,7 @@ MonoBehaviour:
   YV: 0
   GroundCheck: {fileID: 0}
   IsGrounded: 0
-  BaseDomain: {fileID: 0}
+  NormalDomain: {fileID: 0}
   StateMachineDomain: {fileID: 0}
   AIDomain: {fileID: 0}
   BuffDomain: {fileID: 0}
@@ -511,7 +476,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6153cff379c40a94080b3653c41108d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnableFixupdate: 1
   readMe:
     edit: 1
     ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
@@ -521,7 +485,6 @@ MonoBehaviour:
   Clips:
     valuesNow_: []
   buffHosting:
-    host: {fileID: 0}
     buffRTLs:
       valuesNow_: []
       valuesToAdd: []
@@ -574,7 +537,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da29e1c831ece7847aebc5f9cc965ec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnableFixupdate: 1
   readMe:
     edit: 1
     ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
@@ -582,17 +544,33 @@ MonoBehaviour:
     showColor: {r: 1, g: 1, b: 1, a: 1}
   core: {fileID: 0}
   Clips:
-    valuesNow_:
-    - rid: 165002816914718725
+    valuesNow_: []
   StateMachine:
-    thisState:
-      rid: 165002816914718720
+    _enableSelf: 1
     _SelfRunningState:
       rid: -2
     _SelfRunningStates:
       valuesNow_: []
     entity: {fileID: 0}
     StateDomain: {fileID: 0}
+    SkillMachine:
+      _enableSelf: 1
+      _SelfRunningState:
+        rid: -2
+      _SelfRunningStates:
+        valuesNow_: []
+    BuffMachine:
+      _enableSelf: 1
+      _SelfRunningState:
+        rid: -2
+      _SelfRunningStates:
+        valuesNow_: []
+    InteractionMachine:
+      _enableSelf: 1
+      _SelfRunningState:
+        rid: -2
+      _SelfRunningStates:
+        valuesNow_: []
   RegisterPack: {fileID: 11400000, guid: ed7b4ded0826b504ba2e9b3d8dedec6d, type: 2}
   DefaultStateName: "\u6E38\u8361\u72B6\u6001"
   references:
@@ -600,20 +578,6 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 165002816914718720
-      type: {class: BaseESMicroStateOverrideRunTimeLogic_StringKey, ns: ES, asm: Assembly-CSharp}
-      data:
-        variableData:
-          hasEnterTime: 0
-        key: "\u7A7A\u72B6\u6001"
-        _RunningStatus: 0
-    - rid: 165002816914718725
-      type: {class: ClipStateMachine_SkillRegister, ns: ES, asm: Assembly-CSharp}
-      data:
-        Domain: {fileID: 0}
-        Preset: "\u9884\u8BBE1"
-        skillDataInfos:
-        - {fileID: -1901351340352760058, guid: 5df778371c5a7754f9dc05d597afc355, type: 2}
 --- !u!1 &8905706636859139223
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,7 +623,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb8943e87e4e40842a060beec8005d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnableFixupdate: 1
   readMe:
     edit: 1
     ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
@@ -667,30 +630,7 @@ MonoBehaviour:
     showColor: {r: 1, g: 1, b: 1, a: 1}
   core: {fileID: 0}
   Clips:
-    valuesNow_:
-    - rid: 165002917983027206
-    - rid: 165002928870391904
+    valuesNow_: []
   references:
     version: 2
-    RefIds:
-    - rid: 165002917983027206
-      type: {class: ClipAI_EnemyTarget, ns: ES, asm: Assembly-CSharp}
-      data:
-        Domain: {fileID: 0}
-        Preset: "\u9884\u8BBE1"
-        Target: {fileID: 0}
-        nextWayPointPosition: {x: 0, y: 0, z: 0}
-        EndPathVS: []
-        NextPoint: {x: 0, y: 0, z: 0}
-        nextWayPointIndex: 0
-        PathUpdateTimeDis: 1
-        nextMaxTargetTimeCount: 3
-        procedurallyNormalR: 10
-        targetSelectType: 2
-    - rid: 165002928870391904
-      type: {class: ClipAI_BaseEnemyAttackControl, ns: ES, asm: Assembly-CSharp}
-      data:
-        Domain: {fileID: 0}
-        Preset: "\u9884\u8BBE1"
-        SkillNames: []
-        minTimeDis: 6
+    RefIds: []

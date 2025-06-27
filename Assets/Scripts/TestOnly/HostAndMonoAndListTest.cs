@@ -42,9 +42,7 @@ public class HostAndMonoAndListTest : ESHostingMono_BaseESModule
     WithUpdate((self) => { if (startSkillTime > 1.5f && !hasHurt) { Debug.Log("测试攻击");hasHurt = true; } }).
     WithDisable((self) => {  });
 
-        释放技能.TrySubmitHosting(this,true);
-        技能组成1_移动.TrySubmitHosting(释放技能,true);
-        技能组成1_伤害.TrySubmitHosting(释放技能,true);
+        
     }
 
 
@@ -77,24 +75,7 @@ public class HostAndMonoAndListTest : ESHostingMono_BaseESModule
     public class ESModule_Move : BaseESModule
     {
         public GameObject g;
-        protected override void OnEnable()
-        {
-            if (g == null) TryWithDrawHostingVirtual();
-            g.transform.position = default;
-            base.OnEnable();
-        }
-        protected override void OnDisable()
-        {
-            if (g == null) TryWithDrawHostingVirtual();
-            g.transform.position = Vector3.zero;
-            base.OnDisable();
-        }
-        protected override void Update()
-        {
-            if (g == null) TryWithDrawHostingVirtual();
-            g.transform.position += Vector3.up * Time.deltaTime;
-            base.Update();
-        }
+       
     }
 
 

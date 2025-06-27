@@ -20,7 +20,7 @@ namespace ES
         public float YV = 0;
         public Transform GroundCheck;
         public bool IsGrounded = false;
-        [FoldoutGroup("扩展域")][LabelText("基本域")] public BaseDomainForEntity BaseDomain;
+        [FoldoutGroup("扩展域")][LabelText("基本域")] public NormalDomainForEntity NormalDomain;
         [FoldoutGroup("扩展域")][LabelText("标准状态机域")] public StateMachineDomainForEntity StateMachineDomain;
         [FoldoutGroup("扩展域")][LabelText("AI域")] public AIDomainForEntity AIDomain;
         [FoldoutGroup("扩展域")][LabelText("Buff域")] public BuffDomainForEntity BuffDomain;
@@ -74,9 +74,9 @@ namespace ES
         {
             OnTruelyAttack?.Invoke(who, damage);
         }
-        protected override void BeforeAwakeBroadCastRegester()
+        protected override void BeforeAwakeRegister()
         {
-            base.BeforeAwakeBroadCastRegester();
+            base.BeforeAwakeRegister();
             Anim = GetComponent<Animator>();
             CharacterController = GetComponent<CharacterController>();
 

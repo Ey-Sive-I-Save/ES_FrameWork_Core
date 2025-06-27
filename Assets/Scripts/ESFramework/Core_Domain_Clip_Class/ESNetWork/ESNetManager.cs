@@ -134,14 +134,14 @@ namespace ES
         #endregion
 
         //显性声明扩展域
-        //public BaseDomainForXXX BaseDomain;
+        //public NormalDomainForXXX NormalDomain;
         //public 02DomainForXXX StateMachineDomain;
         [FoldoutGroup("扩展域")] public ESNetLocalDomain LocalDomain;
         [FoldoutGroup("扩展域")] public ESNetRemoteDomain RemoteDomain;
         //注册前的操作
-        protected override void BeforeAwakeBroadCastRegester()
+        protected override void BeforeAwakeRegister()
         {
-            base.BeforeAwakeBroadCastRegester();
+            base.BeforeAwakeRegister();
             GameCenterManager.Instance.NetSupport = true;
 
             TheNetWorkManager = FindObjectOfType<NetworkManager>();

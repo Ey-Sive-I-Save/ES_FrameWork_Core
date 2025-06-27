@@ -13,7 +13,7 @@ using UnityEngine.InputSystem;
 namespace ES
 {
 
-    public class BaseDomainForEntity : BaseDomain<Entity, BaseClipForEntity>
+    public class NormalDomainForEntity : Domain<Entity, BaseClipForEntity>
     {
        
         #region 引用
@@ -33,7 +33,7 @@ namespace ES
         protected override void CreatRelationship()
         {
             base.CreatRelationship();
-            core.BaseDomain = this;
+            core.NormalDomain = this;
             
         }
         
@@ -51,7 +51,7 @@ namespace ES
          }*/
     }
     [Serializable]
-    public abstract class BaseClipForEntity : Clip<Entity, BaseDomainForEntity>
+    public abstract class BaseClipForEntity : Clip<Entity, NormalDomainForEntity>
     {
       
     }
@@ -70,9 +70,9 @@ namespace ES
         [FoldoutGroup("常规")][LabelText("当前Y角速度")] public float CurrentRotationY;
         [FoldoutGroup("其他效果"), LabelText("暂停移动")] public float timeForStay = 0;
 
-        protected override void CreateRelationship()
+        protected override void CreateRelationshipOnly()
         {
-            base.CreateRelationship();
+            base.CreateRelationshipOnly();
             Domain.Module_AB_Motion = this;
             if (Core.entitySharedData != null)
             {
@@ -126,8 +126,6 @@ namespace ES
         protected override void OnEnable()
         {
             base.OnEnable();
-            Debug.Log(Domain);
-            Debug.Log(Domain.OnFixedUpdate);
             Domain.OnFixedUpdate += FixedUpdate_MustSelfDelegate;
         }
         protected override void OnDisable()
@@ -164,10 +162,10 @@ namespace ES
         #endregion
 
         #region 绑定
-        protected override void CreateRelationship()
+        protected override void CreateRelationshipOnly()
         {
             Domain.Module_3DMotion = this;
-            base.CreateRelationship();
+            base.CreateRelationshipOnly();
         }
         protected override void Update()
         {
@@ -348,9 +346,9 @@ namespace ES
         public ESValueContainer_DicOverQueue_StringKeyEntity CacheEntity = new ESValueContainer_DicOverQueue_StringKeyEntity();
         [LabelText("坐标缓冲区")]
         public ESValueContainer_DicOverQueue_StringKeyVector3 CacheVector3 = new ESValueContainer_DicOverQueue_StringKeyVector3();
-        protected override void CreateRelationship()
+        protected override void CreateRelationshipOnly()
         {
-            base.CreateRelationship();
+            base.CreateRelationshipOnly();
             Domain.Module_Cache = this;
         }
     }
@@ -359,9 +357,9 @@ namespace ES
     [Serializable]
     public abstract class ClipBase_AB_Vision : BaseClipForEntity
     {
-        protected override void CreateRelationship()
+        protected override void CreateRelationshipOnly()
         {
-            base.CreateRelationship();
+            base.CreateRelationshipOnly();
             Domain.Module_AB_Vision = this;
         }
         public virtual void TrySee()
@@ -546,9 +544,9 @@ namespace ES
     {
         [LabelText("预制件")] public GameObject prefab;
         [LabelText("发射点和方向")] public Transform FirePoint;
-        protected override void CreateRelationship()
+        protected override void CreateRelationshipOnly()
         {
-            base.CreateRelationship();
+            base.CreateRelationshipOnly();
             Domain.Module_Fire = this;
         }
         public void Fire(GameObject newOne = null, bool rePlace = true)
@@ -597,9 +595,9 @@ namespace ES
         public EnumCollect.MouseTriggerOption triggerOption = EnumCollect.MouseTriggerOption.Down;
 
         private ClipBase_FireFlying Refer_ModuleFire;
-        protected override void CreateRelationship()
+        protected override void CreateRelationshipOnly()
         {
-            base.CreateRelationship();
+            base.CreateRelationshipOnly();
             Refer_ModuleFire = Domain.Module_Fire;
             if (FireInput == null || Refer_ModuleFire == null)
             {

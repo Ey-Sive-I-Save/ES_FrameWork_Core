@@ -9,7 +9,7 @@ using UnityEngine;
 namespace ES
 {
     
-    public class  ESNetLocalDomain : BaseDomain<ESNetManager, LocalClipForESNetManager>
+    public class  ESNetLocalDomain : Domain<ESNetManager, LocalClipForESNetManager>
     {
         [NonSerialized] public ClipLocal_LocalFunctionBlock Modole_BlockFunc;
         protected override void CreatRelationship()
@@ -30,9 +30,9 @@ namespace ES
         [LabelText("自己的拦截模块")] public ESTypeSelecter ForModuleSelfBan;
         [LabelText("别人的拦截脚本")] public ESTypeSelecter ForESmonoOther;
         protected override string Description_ => "这个功能用于拦截一些非自己掌控的脚本和模块的运转，防止运行问题";
-        protected override void CreateRelationship()
+        protected override void CreateRelationshipOnly()
         {
-            base.CreateRelationship();
+            base.CreateRelationshipOnly();
             Domain.Modole_BlockFunc = this;
         }
     }

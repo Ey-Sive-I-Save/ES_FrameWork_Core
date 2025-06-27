@@ -19,7 +19,6 @@ public class test501 : ESHostingMono_BaseESModule
             WithUpdate((i)=> { Debug.Log("运行中"); }).
             WithDisable((i) => { Debug.Log("停用"); });
         
-        aModule.TrySubmitHosting(SelfHosting, true);
 
         var 直接属于脚本的=new ESHostingAndModule_WithDelegate().
             WithEnable((i) => { Debug.Log("直接属于脚本的启用"); }).
@@ -31,8 +30,6 @@ public class test501 : ESHostingMono_BaseESModule
             WithUpdate((i) => { Debug.Log("更子级别的运行中"); }).
             WithDisable((i) => { Debug.Log("更子级别的停用"); });
 
-        直接属于脚本的.TrySubmitHosting(SelfHosting, true);
-        更子级别.TrySubmitHosting(直接属于脚本的,true);
     }
 
     // Update is called once per frame
@@ -42,7 +39,6 @@ public class test501 : ESHostingMono_BaseESModule
         if (Input.GetKeyDown(KeyCode.O))
         {
             Debug.Log("测试"+更子级别._HasSubmit);
-            更子级别.TryWithDrawHosting(null,false);
             Debug.Log("测试" + 更子级别._HasSubmit);
         }
     }

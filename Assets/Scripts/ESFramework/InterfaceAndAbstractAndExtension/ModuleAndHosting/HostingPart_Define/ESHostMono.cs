@@ -165,25 +165,23 @@ namespace ES
     [TypeRegistryItem("虚拟+带类型的托管脚本基类")]
     public abstract class ESHostingMono<USE_Module> : ESHostingMono, IESHosting<USE_Module> where USE_Module : class, IESModule
     {
-        public virtual IEnumerable<USE_Module> NormalBeHosted {get; }
+        public virtual IEnumerable<USE_Module> Modules {get; }
         
 
         #region 重写控制子模块
         public override void UpdateAsHosting()
         {
-            if (NormalBeHosted != null)
+            if (Modules != null)
             {
-                foreach (var i in NormalBeHosted)
+                foreach (var i in Modules)
                 {
-
                     if (!i._HasSubmit)
                     {
                         i._TryInActiveAndDisable();
                         //已经放弃
-                        TryRemoveModuleAsNormal(i);
+                        TryRemoveModule(i);
                         continue;
                     }
-                  
                     i.TryUpdate();
                 }
             }
@@ -192,9 +190,9 @@ namespace ES
         public override void EnableAsHosting()
         {
 
-            if (NormalBeHosted != null)
+            if (Modules != null)
             {
-                foreach (var i in NormalBeHosted)
+                foreach (var i in Modules)
                 {
                     i._TryActiveAndEnable();
                     
@@ -204,9 +202,9 @@ namespace ES
         }
         public override void DisableAsHosting()
         {
-            if (NormalBeHosted != null)
+            if (Modules != null)
             {
-                foreach (var i in NormalBeHosted)
+                foreach (var i in Modules)
                 {
                     i._TryInActiveAndDisable();
                     
@@ -215,7 +213,7 @@ namespace ES
             base.DisableAsHosting();
         }
 
-        public abstract void TryRemoveModuleAsNormal(USE_Module use);
+        public abstract void TryRemoveModule(USE_Module use);
 
         #endregion
     }

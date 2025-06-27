@@ -2,6 +2,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
@@ -39,14 +40,17 @@ namespace ES
         #endregion
 
         #region 虚拟列表
-       /* public SafeUpdateSet_EasyQueue_SeriNot_Dirty<IESModule> VirtualBeHosted => virtualBeHostedList;
-        [LabelText("虚拟托管列表"),FoldoutGroup("虚拟托管")] public SafeUpdateSet_EasyQueue_SeriNot_Dirty<IESModule> virtualBeHostedList = new SafeUpdateSet_EasyQueue_SeriNot_Dirty<IESModule>();
-       */ 
-       #endregion
+        /* public SafeUpdateSet_EasyQueue_SeriNot_Dirty<IESModule> VirtualBeHosted => virtualBeHostedList;
+         [LabelText("虚拟托管列表"),FoldoutGroup("虚拟托管")] public SafeUpdateSet_EasyQueue_SeriNot_Dirty<IESModule> virtualBeHostedList = new SafeUpdateSet_EasyQueue_SeriNot_Dirty<IESModule>();
+        */
+        #endregion
 
         #region 重写逻辑
-        public virtual bool CanUpdating => true;
-
+        
+        public virtual bool CanUpdating { 
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get { return true; } }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void Update()
         {
             if (UpdateIntervalFrameCount > 0)
@@ -60,6 +64,7 @@ namespace ES
             UpdateAsHosting();
             /*virtualBeHostedList.Update();*/
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void OnEnable()
         {
             if (UpdateIntervalFrameCount > 0&&SelfTargetModel < 0)
@@ -69,6 +74,7 @@ namespace ES
             IsActiveAndEnable = true;
             EnableAsHosting();
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void OnDisable()
         {
             IsActiveAndEnable = false;
@@ -79,11 +85,14 @@ namespace ES
         #region 关于开关逻辑与运行状态
         public bool IsActiveAndEnable { get; set; } = false;
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public virtual void TryEnableSelf()
         {
             if (IsActiveAndEnable) return;
             OnEnable();
         }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public virtual void TryDisableSelf()
         {
             if (!IsActiveAndEnable)
@@ -91,6 +100,7 @@ namespace ES
                 OnDisable();
             }
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void TryUpdate()
         {
             if (CanUpdating && IsActiveAndEnable)
@@ -101,6 +111,7 @@ namespace ES
         #endregion
 
         #region 与对子的控制
+        
         public virtual void UpdateAsHosting()
         {
            /* if (VirtualBeHosted != null)
@@ -118,6 +129,7 @@ namespace ES
                 }
             }*/
         }
+        
         public virtual void EnableAsHosting()
         {
           /*  if (VirtualBeHosted != null)
@@ -128,6 +140,7 @@ namespace ES
                 }
             }*/
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public virtual void DisableAsHosting()
         {
            
@@ -142,20 +155,20 @@ namespace ES
         #endregion
     }
     //以泛型声明
-    public interface IESHosting<With> : IESHosting where With : class,IESModule
+    public interface IESHosting<WithModule> : IESHosting where WithModule : class,IESModule
     {
-         IEnumerable<With> NormalBeHosted { get; }
-         public abstract void TryRemoveModuleAsNormal(With use);
+         IEnumerable<WithModule> Modules { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; }
+         public abstract void TryRemoveModule(WithModule use);
     }
     public abstract class BaseESHosting<With> : BaseESHosting, IESHosting<With> where With : class, IESModule
     {
         #region 对特定类型的托管支持
-        public abstract IEnumerable<With> NormalBeHosted { get; }
+        public abstract IEnumerable<With> Modules { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; }
         public override void EnableAsHosting()
         {
-            if (NormalBeHosted != null)
+            if (Modules != null)
             {
-                foreach (var i in NormalBeHosted)
+                foreach (var i in Modules)
                 {
                     i._TryActiveAndEnable();
                 }
@@ -164,9 +177,9 @@ namespace ES
         }
         public override void DisableAsHosting()
         {
-            if (NormalBeHosted != null)
+            if (Modules != null)
             {
-                foreach (var i in NormalBeHosted)
+                foreach (var i in Modules)
                 {
                     i._TryInActiveAndDisable();
                 }
@@ -175,9 +188,9 @@ namespace ES
         }
         public override void UpdateAsHosting()
         {
-            if (NormalBeHosted != null)
+            if (Modules != null)
             {
-                foreach (var i in NormalBeHosted)
+                foreach (var i in Modules)
                 {
                    
                         if (!i._HasSubmit)
@@ -193,76 +206,23 @@ namespace ES
             base.UpdateAsHosting();
         }
 
-        public abstract void TryRemoveModuleAsNormal(With use);
+        public abstract void TryRemoveModule(With use);
         #endregion
     }
     public abstract class BaseESHostingAndModule<USE, Host> : BaseESHosting<USE>, IESModule<Host> where Host : class, IESHosting where USE : class, IESModule
     {
         #region 与自己的Host关联
-        public Host GetHost => host;
-        [LabelText("托管核心", SdfIconType.Bullseye)]
-        public Host host;
+        public Host GetHost { [MethodImpl(MethodImplOptions.AggressiveInlining)] get => host; }
+        [LabelText("托管核心", SdfIconType.Bullseye),NonSerialized,ShowInInspector]
+        public Host host=null;
         #endregion
 
         //启用时逻辑
 
         #region 关于提交SubMit
-        public bool _HasSubmit { get; set; }
-        public bool TrySubmitHosting(IESHosting hosting, bool asVirtual = false)
-        {
-            if (_HasSubmit) return true;
-            if (asVirtual)
-            {
-                /*hosting.VirtualBeHosted.TryAdd(this);*/
-                return _HasSubmit = true;
-            }
-            return _HasSubmit = _OnSubmitAsNormal(hosting);
-        }
-        public bool TryWithDrawHosting(IESHosting hosting, bool asVirtual = false)
-        {
-            if (!_HasSubmit) return false;
-            if (asVirtual)
-            {
-                return _HasSubmit = false;
-            }
-            return _HasSubmit = _OnWithDrawAsNormal(hosting);
-        }
-        public bool TrySubmitHosting(Host hosting, bool asVirtual = false)
-        {
-            if (_HasSubmit) return true;
-            if (asVirtual)
-            {
-                /*hosting.VirtualBeHosted.TryAdd(this);*/
-                return _HasSubmit = true;
-            }
-            return _HasSubmit = _OnSubmitAsNormal(hosting);
-        }
-
-        public bool TryWithDrawHosting(Host hosting, bool asVirtual = false)
-        {
-            if (!_HasSubmit) return false;
-            if (asVirtual)
-            {
-                return _HasSubmit = false;
-            }
-            return _HasSubmit = _OnWithDrawAsNormal(hosting);
-        }
-        public void TryWithDrawHostingVirtual()
-        {
-            TryWithDrawHosting(null, true);
-        }
-        #endregion
-
-        #region 重写提交
-
-        protected virtual bool OnSubmitHostingAsNormal(Host host)
-        {
-            return true;
-        }
-        protected virtual bool OnWithDrawHostingAsNormal(Host host)
-        {
-            return false;
-        }
+        public bool _HasSubmit { 
+            [MethodImpl(MethodImplOptions.AggressiveInlining)] get;
+            [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
         #endregion
 
         #region 检查器显示控制与信息
@@ -274,28 +234,30 @@ namespace ES
 
         #region 开关逻辑
         
-        public bool EnabledSelf { get; set; } = true;
+        public bool EnabledSelf { 
+            [MethodImpl(MethodImplOptions.AggressiveInlining)] get;
+            [MethodImpl(MethodImplOptions.AggressiveInlining)] set; } = true;
 
         public override void TryEnableSelf()
         {
             if (EnabledSelf) return;
             EnabledSelf = true;
-           
         }
         public override void TryDisableSelf()
         {
             if (EnabledSelf)
             {
                 EnabledSelf = false;
-              
             }
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void _TryActiveAndEnable()
         {
             if (IsActiveAndEnable || !EnabledSelf) return;//不要你
             OnEnable();
 
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void _TryInActiveAndDisable()
         {
             if (IsActiveAndEnable)
@@ -303,68 +265,73 @@ namespace ES
                 OnDisable();
             }
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public bool _TryStartWithHost(Host host)
+        {
+            if (host == null||_HasSubmit) return false;
+            this.host = host;
+            _HasSubmit = true;
+            return true;
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void TryDestroy()
+        {
+            _HasSubmit = false;
+        }
+        public void _SetHost(Host host)
+        {
+            this.host = host;
+        }
         #endregion
 
         #region 实现隐蔽辅助方法
-        protected bool _OnSubmitAsNormal(IESHosting hosting)
-        {
-            return OnSubmitHostingAsNormal(hosting as Host);
-        }
-        protected  bool _OnWithDrawAsNormal(IESHosting hosting)
-        {
-            return OnWithDrawHostingAsNormal(hosting as Host);
-        }
-       
+
         #endregion
 
 
 
 
-    }
-    [Serializable,TypeRegistryItem("不限制模块类型托管器")]
-    public class ESHostingAndModule_NoNormalModule<Host> : BaseESHostingAndModule<BaseESModule, Host> where Host : class, IESHosting
-    {
-        public override IEnumerable<BaseESModule> NormalBeHosted => null;
-
-        public override void TryRemoveModuleAsNormal(BaseESModule use)
-        {
-           //无事发生
-        }
     }
     [Serializable, TypeRegistryItem("ES托管器＋模块_带委托的", "模块")]
     public class ESHostingAndModule_WithDelegate : BaseESHostingAndModule<BaseESModule, BaseESHosting> 
     {
-        public override IEnumerable<BaseESModule> NormalBeHosted => null;
+        public override IEnumerable<BaseESModule> Modules => null;
         [FoldoutGroup("默认委托")] private Action<ESHostingAndModule_WithDelegate> Action_Enable;
         [FoldoutGroup("默认委托")] private Action<ESHostingAndModule_WithDelegate> Action_Disable;
         [FoldoutGroup("默认委托")] private Action<ESHostingAndModule_WithDelegate> Action_OnUpdate;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected sealed override void OnEnable()
         {
             Action_Enable?.Invoke(this);
             base.OnEnable();
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected sealed override void OnDisable()
         {
             Action_Disable?.Invoke(this);
             base.OnDisable();
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected sealed override void Update()
         {
             Action_OnUpdate?.Invoke(this);
             base.Update();
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [Tooltip("规定启用时的事件")]
         public ESHostingAndModule_WithDelegate WithEnable(Action<ESHostingAndModule_WithDelegate> func)
         {
             Action_Enable = func;
             return this;
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [Tooltip("规定禁用时的事件")]
         public ESHostingAndModule_WithDelegate WithDisable(Action<ESHostingAndModule_WithDelegate> func)
         {
             Action_Disable = func;
             return this;
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [Tooltip("规定帧运行时的事件")]
         public ESHostingAndModule_WithDelegate WithUpdate(Action<ESHostingAndModule_WithDelegate> func)
         {
@@ -372,7 +339,7 @@ namespace ES
             return this;
         }
 
-        public override void TryRemoveModuleAsNormal(BaseESModule use)
+        public override void TryRemoveModule(BaseESModule use)
         {
             //无事发生
         }
@@ -385,10 +352,15 @@ namespace ES
         public override Host GetHost => host;
         [LabelText("托管核心", SdfIconType.Bullseye),NonSerialized,ShowInInspector]
         public Host host=null;
+        public sealed override void _SetHost(Host host)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 
     #endregion
+
     //初级托管器--IMoudle
 
     //完整托管器--IDelegatedUpdatable

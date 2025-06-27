@@ -49,7 +49,7 @@ namespace ES
         [NonSerialized] public IESNanoState StartWithState=null;
         [LabelText("设置默认状态的键(这里设置没用)"),ShowInInspector] public object defaultStateKey = null;
         //Host获取哈
-        protected bool OnSubmitHostingAsNormal(BaseOriginalStateMachine hosting)
+        protected bool StartAsNormal(BaseOriginalStateMachine hosting)
         {
             host = hosting;
             return true;
@@ -311,7 +311,7 @@ namespace ES
             }
         }
 
-        bool IESOriginalModule<BaseOriginalStateMachine>.OnSubmitHosting(BaseOriginalStateMachine host)
+        bool IESOriginalModule<BaseOriginalStateMachine>.Start(BaseOriginalStateMachine host)
         {
             this.host = host;
             return true;
@@ -477,7 +477,7 @@ namespace ES
         }
         public override void RegisterNewState_Original(object key, IESNanoState logic)
         {
-            RegesterNewState(KeyValueMatchingUtility.Matcher.SystemObjectToT<Key_>(key), logic);
+            RegisterNewState(KeyValueMatchingUtility.Matcher.SystemObjectToT<Key_>(key), logic);
         }
       
         [Button("初始化"), Tooltip("定义初始化的状态")]
@@ -498,7 +498,7 @@ namespace ES
             }
             base.OnStateEnter();
         }
-        public void RegesterNewState(Key_ key, IESNanoState logic)
+        public void RegisterNewState(Key_ key, IESNanoState logic)
         {
             if (allStates.ContainsKey(key))
             {
@@ -511,12 +511,12 @@ namespace ES
 
                 if (logic is IESOriginalModule<BaseOriginalStateMachine> logic1)
                 {
-                    logic1.OnSubmitHosting(this);
+                    logic1.Start(this);
                     Debug.Log("注册成功？" + logic.GetKey());
                 }
                 else if(logic is BaseOriginalStateMachine machine)
                 {
-                    machine.TrySubmitHosting(this,false);
+                    machine._TryStartWithHost(this);
                 }
                 /*else if(logic is BaseOriginalStateMachine standMachine)
                 {
@@ -579,10 +579,11 @@ namespace ES
                   }
               }
           }*/
-        protected override void OnSubmitHosting(BaseOriginalStateMachine host)
+        public override bool _TryStartWithHost(BaseOriginalStateMachine host)
         {
             this.host = host;
-            base.OnSubmitHosting(host);
+            base._TryStartWithHost(host);
+            return true;
         }
     }
     #endregion
@@ -1026,12 +1027,12 @@ namespace ES
                 }
                 if (logic is IESOriginalModule<BaseOriginalStateMachine> logic1)
                 {
-                    logic1.OnSubmitHosting(this);
+                    logic1.Start(this);
                     //Debug.Log("注册状态成功？" + logic.GetKey());
                 }
                 else if (logic is BaseOriginalStateMachine machine)
                 {
-                    machine.TrySubmitHosting(this, false);
+                    machine._TryStartWithHost(this);
                     //Debug.Log("注册状态机成功？" + logic.GetKey());
                 }
                 else
@@ -1284,10 +1285,6 @@ namespace ES
             {
                 MainRunningStates = standMachine.MainRunningStates;
             }
-        }
-        protected override void _Expand_UpdateHappenDesign()
-        {
-            base._Expand_UpdateHappenDesign();//照常更新
         }
         protected override void _Expand_ExitHappenDesign()
         {

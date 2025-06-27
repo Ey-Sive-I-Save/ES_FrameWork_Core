@@ -450,7 +450,6 @@ MonoBehaviour:
   Clips:
     valuesNow_: []
   buffHosting:
-    host: {fileID: 0}
     buffRTLs:
       valuesNow_: []
       valuesToAdd: []
@@ -597,19 +596,33 @@ MonoBehaviour:
     showColor: {r: 1, g: 1, b: 1, a: 1}
   core: {fileID: 0}
   Clips:
-    valuesNow_:
-    - rid: 165002816914718725
-    - rid: 165002840011702272
+    valuesNow_: []
   StateMachine:
     _enableSelf: 1
-    thisState:
-      rid: 165002816914718720
     _SelfRunningState:
       rid: -2
     _SelfRunningStates:
       valuesNow_: []
     entity: {fileID: 0}
     StateDomain: {fileID: 0}
+    SkillMachine:
+      _enableSelf: 1
+      _SelfRunningState:
+        rid: -2
+      _SelfRunningStates:
+        valuesNow_: []
+    BuffMachine:
+      _enableSelf: 1
+      _SelfRunningState:
+        rid: -2
+      _SelfRunningStates:
+        valuesNow_: []
+    InteractionMachine:
+      _enableSelf: 1
+      _SelfRunningState:
+        rid: -2
+      _SelfRunningStates:
+        valuesNow_: []
   RegisterPack: {fileID: 11400000, guid: 52c0340265d559047ab1c5709e7edbfe, type: 2}
   DefaultStateName: "\u9759\u6B62"
   references:
@@ -617,56 +630,6 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 165002816914718720
-      type: {class: BaseESMicroStateOverrideRunTimeLogic_StringKey, ns: ES, asm: Assembly-CSharp}
-      data:
-        variableData:
-          hasEnterTime: 0
-        key: "\u7A7A\u72B6\u6001"
-        _RunningStatus: 0
-    - rid: 165002816914718725
-      type: {class: ClipStateMachine_SkillRegister, ns: ES, asm: Assembly-CSharp}
-      data:
-        _enableSelf: 1
-        Domain: {fileID: 0}
-        updateOption: 0
-        Preset: "\u9884\u8BBE1"
-        skillDataInfos:
-        - useRename: 1
-          rename: "\u6280\u80FD1"
-          info: {fileID: -1901351340352760058, guid: 5df778371c5a7754f9dc05d597afc355,
-            type: 2}
-        - useRename: 1
-          rename: "\u6280\u80FD2"
-          info: {fileID: 2122311780919986368, guid: 5df778371c5a7754f9dc05d597afc355,
-            type: 2}
-    - rid: 165002840011702272
-      type: {class: ClipStateMachine_CrashDodge, ns: ES, asm: Assembly-CSharp}
-      data:
-        _enableSelf: 1
-        Domain: {fileID: 0}
-        updateOption: 0
-        Preset: "\u9884\u8BBE1"
-        dataInfo: {fileID: 3254679571482181224, guid: c7b7aee7df33f104ab9ee45b7a55d921,
-          type: 2}
-        MaxContain: 5
-        MaxContainTimeNext: 1
-        CoolDownNext: 0
-        StartPreventApply: 0.1
-        EndDisSuit: 0.5
-        MaxSpeed: 25
-        RayDistance: 2
-        WhatPrevent:
-          serializedVersion: 2
-          m_Bits: 0
-        HitAddition: 
-        test_applyable_Crash:
-          duration: 0.52
-          vector: {x: -2, y: 0, z: 0}
-          CoolDownNext: 0
-          vectorHandle: 0
-          pathType: 0
-          baseOn: 1
 --- !u!114 &8217904151637463281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -762,6 +725,8 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 165002870959374566
       type: {class: ClipBase_CacherPoolForSpecialCondition, ns: ES, asm: Assembly-CSharp}
       data:
@@ -1139,7 +1104,7 @@ MonoBehaviour:
   YV: 0
   GroundCheck: {fileID: 9128973464958825070}
   IsGrounded: 0
-  BaseDomain: {fileID: 0}
+  NormalDomain: {fileID: 0}
   StateMachineDomain: {fileID: 0}
   AIDomain: {fileID: 0}
   BuffDomain: {fileID: 0}

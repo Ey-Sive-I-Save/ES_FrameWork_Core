@@ -122,7 +122,7 @@ namespace ES.EvPointer
         public IPointerForInt_Only pointerForInt;
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            var useOn = GameCenterManager.Instance.BaseDomain.Module_PlayerState;
+            var useOn = GameCenterManager.Instance.NormalDomain.Module_PlayerState;
             int num;
             useOn.m_soul_ += num = pointerForInt?.Pick() ?? 1;
             useOn.m_soul_ = Mathf.Min(useOn.m_soul_, useOn.m_maxSoul);
@@ -137,7 +137,7 @@ namespace ES.EvPointer
         public IPointerForInt_Only pointerForInt;
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            var useOn = GameCenterManager.Instance.BaseDomain.Module_PlayerState;
+            var useOn = GameCenterManager.Instance.NormalDomain.Module_PlayerState;
             useOn.m_healthPoint += pointerForInt?.Pick() ?? 1;
             useOn.m_healthPoint = Mathf.Min(useOn.m_healthPoint, useOn.m_maxHealthPoint);
             return base.Pick(On, From, With);
@@ -153,7 +153,7 @@ namespace ES.EvPointer
         [SerializeReference, LabelText("初始状态")] public IPointerForBuffStatus startStatus;
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            Entity player = GameCenterManager.Instance.BaseDomain.Module_PlayerState.PlayerSelf;
+            Entity player = GameCenterManager.Instance.NormalDomain.Module_PlayerState.PlayerSelf;
             if (player != null)
             {
                 player.BuffDomain?.buffHosting.AddHandle(KeyValueMatchingUtility.Creator.CreateBuffRunTimeByKey(buffKey, startStatus?.Pick()));

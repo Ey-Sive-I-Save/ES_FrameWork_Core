@@ -7,14 +7,6 @@ using UnityEngine;
 namespace ES
 {
 
-    using Sirenix.OdinInspector;
-    using Sirenix.OdinInspector.Editor;
-    using Sirenix.Utilities;
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using UnityEditor;
-    using UnityEngine;
 
 
     // 1. 定义网格属性标记

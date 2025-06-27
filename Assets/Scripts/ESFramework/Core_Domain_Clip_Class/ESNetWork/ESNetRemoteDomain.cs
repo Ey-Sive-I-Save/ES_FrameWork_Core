@@ -10,7 +10,7 @@ using UnityEngine;
 namespace ES
 {
     
-    public class  ESNetRemoteDomain : BaseDomain<ESNetManager, RemoteClipForESNetManager>
+    public class  ESNetRemoteDomain : Domain<ESNetManager, RemoteClipForESNetManager>
     {
         protected override void CreatRelationship()
         {
@@ -47,9 +47,9 @@ namespace ES
         {
 
         }
-        protected override void CreateRelationship()
+        protected override void CreateRelationshipOnly()
         {
-            base.CreateRelationship();
+            base.CreateRelationshipOnly();
             //Domain.Module_XXX = this;  显性引用
         }
     }

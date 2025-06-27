@@ -13,7 +13,9 @@ namespace ES
     public interface IDomain : IESHosting
     {
         //编辑器情况下的链接创建
-        void RegesterAllButOnlyCreateRelationship(ICore core_);
+        void RegisterAllButOnlyCreateRelationship(ICore core_);
+        void RegisterAllWithCore(ICore core);
+        void TryRemoveNullClips();
     }
     public interface IDomain<Core_> : IDomain
     {
@@ -23,11 +25,11 @@ namespace ES
         public void RemoveClip(IClip clip, bool selfInvoke = true);
     }
     [DefaultExecutionOrder(-1)]
-    public abstract class BaseDomain<Core_, Clip> : ESHostingMono<Clip>, IDomain<Core_> where Core_ : BaseCore where Clip : class, IClip, IESModule
+    public abstract class Domain<Core_, Clip> : ESHostingMono<Clip>, IDomain<Core_> where Core_ : Core where Clip : class, IClip, IESModule
     {
         #region 常规属性字段
         //剪影就是我的常规列表
-        public override IEnumerable<Clip> NormalBeHosted => Clips.valuesNow_;
+        public sealed override IEnumerable<Clip> Modules => Clips.valuesNow_;
         public Core_ Core => core;
         [FoldoutGroup("扩展域原始"), LabelText("域功能解释", icon: SdfIconType.Palette), GUIColor("ColorGetter"), ShowInInspector, PropertyOrder(-100)] public ESReadMeClass readMe = new ESReadMeClass() { readMe = "这是一个扩展区域" };
         [FoldoutGroup("扩展域原始"), LabelText("链接的核", icon: SdfIconType.Water), ReadOnly, GUIColor("ColorGetter")] public Core_ core;
@@ -36,13 +38,13 @@ namespace ES
 
 
         #region 初始化
-        public void AwakeRegisterDomain(Core_ core)
+        public void RegisterAllWithCore(ICore core)
         {
-            if (core != null)
+            if (core is Core_ use)
             {
-                this.core = core;
+                this.core = use;
                 CreatRelationship();
-                AwakeRegesterAllClip();
+                AwakeRegisterAllClips();
             }
         }
         //显性引用时
@@ -51,12 +53,11 @@ namespace ES
 
         }
         //初始化注册时(一般不用改
-        protected virtual void AwakeRegesterAllClip()
+        public virtual void AwakeRegisterAllClips()
         {
-            foreach (var i in NormalBeHosted)
+            foreach (var i in Modules)
             {
-                
-                i.TrySubmitHosting(this, false);
+                i._TryStartWithHost(this);
             }
         }
         #endregion
@@ -79,15 +80,15 @@ namespace ES
             }
         }
         #region 辅助方法
-        public void RegesterAllButOnlyCreateRelationship(ICore core_)
+        public void RegisterAllButOnlyCreateRelationship(ICore core_)
         {
             if (core_ is Core_ use)
             {
                 this.core = use;
                 CreatRelationship();
-                foreach (var i in NormalBeHosted)
+                foreach (var i in Modules)
                 {
-                    i.SetDomainAndCreateRelationship(this);
+                    i._SetDomainAndCreateRelationshipOnly(this);
                 }
             }
         }
@@ -105,7 +106,7 @@ namespace ES
             if (clip is Clip use && !Clips.valuesNow_.Contains(use))
             {
                 Clips.TryAdd(use);
-                if (selfInvoke) clip.TrySubmitHosting(this, false);
+                if (selfInvoke) clip._SetDomainAndCreateRelationshipOnly(this);
             }
         }
 
@@ -115,17 +116,27 @@ namespace ES
             {
                 use.TryDisableSelf();
                 /* Clips.TryRemove(use);*/
-                if (selfInvoke) clip.TryWithDrawHosting(this, false);
+                if (selfInvoke) clip._TryStartWithHost(this);
             }
         }
-        public override void TryRemoveModuleAsNormal(Clip use)
+        public override void TryRemoveModule(Clip use)
         {
             Clips.TryRemove(use);
         }
-
+        public void TryRemoveNullClips()
+        {
+            foreach(var i in Clips.valuesNow_)
+            {
+                if (i == null)
+                {
+                    Clips.TryRemove(i);
+                }
+            }
+            Clips.Update();
+        }
         public T GetClip<T>()
         {
-            foreach (var i in NormalBeHosted)
+            foreach (var i in Modules)
             {
                 if (i is T t) return t;
             }
