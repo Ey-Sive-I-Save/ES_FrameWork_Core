@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using UnityEngine;
-using static ES.ClipStateMachine_CrashDodge;
+using static ES.ModuleStateMachine_CrashDodge;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 namespace ES
@@ -528,7 +528,7 @@ namespace ES
             {
                 Debug.Log("pick2");
                 Vector3 lookat = (from.transform.position - on.transform.position).normalized;
-                GameObject gg = UsePool ? ES_PoolMaster.Instance.GetInPool(prefab) : MonoBehaviour.Instantiate(prefab);
+                GameObject gg = UsePool ? ESPoolMaster.Instance.GetInPool(prefab) : MonoBehaviour.Instantiate(prefab);
                 Vector3 vv = vector_only?.Pick() ?? default;
                 Quaternion rot = quaternion_Only?.Pick() ?? default;
                 if (placePos == EnumCollect.PlacePosition.WorldSpace)
@@ -789,7 +789,7 @@ namespace ES
     [Serializable, TypeRegistryItem("H场景：播放音效(单个)")]
     public class EntityHandle_OnItem_PlaySound : IReleasablePointerOnlyByEntityYarnEntityOnItem
     {
-        [LabelText("使用的音效")] public AudioClip audioClip;
+        [LabelText("使用的音效")] public AudioClip AudioClip;
         [LabelText("音量"), SerializeReference] public IPointerForFloat_Only float_Only = new PointerForFloat_Direct() { float_ = 1 };
         [LabelText("是否播放为空间音效")] public bool playAs3D = false;
         [LabelText("没空间音频源是否强制创建")] public bool ForceCrate = false;
@@ -798,7 +798,7 @@ namespace ES
         {
             if (on != null)
             {
-                GameCenterManager.Instance.AudioMaster.PlayDirect_Sound_OneShot(audioClip, float_Only?.Pick() ?? 0.8f);
+                GameCenterManager.Instance.AudioMaster.PlayDirect_Sound_OneShot(AudioClip, float_Only?.Pick() ?? 0.8f);
             }
             return 5;
         }
@@ -807,16 +807,16 @@ namespace ES
     [Serializable, TypeRegistryItem("H场景：播放音效(随机)")]
     public class EntityHandle_OnItem_PlayOneOfSounds : IReleasablePointerOnlyByEntityYarnEntityOnItem
     {
-        [LabelText("使用的音效")] public AudioClip[] audioClips;
+        [LabelText("使用的音效")] public AudioClip[] AudioClips;
         [LabelText("音量"), SerializeReference] public IPointerForFloat_Only float_Only = new PointerForFloat_Direct() { float_ = 1 };
         [LabelText("是否播放为空间音效")] public bool playAs3D = false;
         [LabelText("没空间音频源是否强制创建")] public bool ForceCrate = false;
 
         public object Pick(Entity on = null, Entity from = null, Item with = null)
         {
-            if (on != null && audioClips?.Length > 0)
+            if (on != null && AudioClips?.Length > 0)
             {
-                var oneOf = audioClips[UnityEngine.Random.Range(0, audioClips.Length)];
+                var oneOf = AudioClips[UnityEngine.Random.Range(0, AudioClips.Length)];
                 GameCenterManager.Instance.AudioMaster.PlayDirect_Sound_OneShot(oneOf, float_Only?.Pick() ?? 0.8f);
             }
             return 5;

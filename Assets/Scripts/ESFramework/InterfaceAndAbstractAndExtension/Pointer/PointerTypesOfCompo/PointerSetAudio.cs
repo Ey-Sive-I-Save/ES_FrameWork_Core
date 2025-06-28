@@ -16,40 +16,40 @@ namespace ES.EvPointer
     //这里稍微写一点就  
 
 
-    #region 直接利用全局音源和Clip文件
+    #region 直接利用全局音源和Module文件
     [Serializable,TypeRegistryItem("直接播放BGM","音乐")]
     public class PointerSetAudio_BGM  : IPointerNone
     {
-        [LabelText("使用音乐资源")]public AudioClip clip;
+        [LabelText("使用音乐资源")]public AudioClip Module;
         [LabelText("音量(小于0用音源的)"),SerializeReference]public IPointerForFloat_Only volume = new PointerForFloat_Direct() { float_=1 };
 
         public object Pick(object on= null, object from = null, object with = null)
         {
-            GameCenterManager.Instance.AudioMaster.PlayDirect_BGM(clip, volume?.Pick() ?? -1);
+            GameCenterManager.Instance.AudioMaster.PlayDirect_BGM(Module, volume?.Pick() ?? -1);
             return null;
         }
     }
     [Serializable, TypeRegistryItem("直接播放附加音乐", "音乐")]
     public class PointerSetAudio_Addition : IPointerNone
     {
-        [LabelText("使用音乐资源")] public AudioClip clip;
+        [LabelText("使用音乐资源")] public AudioClip Module;
         [LabelText("音量(小于0用音源的)"), SerializeReference] public IPointerForFloat_Only volume = new PointerForFloat_Direct() { float_ = 1 };
 
         public object Pick(object on= null, object from = null, object with = null)
         {
-            GameCenterManager.Instance.AudioMaster.PlayDirect_Addition(clip, volume?.Pick() ?? -1);
+            GameCenterManager.Instance.AudioMaster.PlayDirect_Addition(Module, volume?.Pick() ?? -1);
             return null;
         }
     }
     [Serializable, TypeRegistryItem("直接播放音效", "音乐")]
     public class PointerSetAudio_Sound : IPointerNone
     {
-        [LabelText("使用音乐资源")] public AudioClip clip;
+        [LabelText("使用音乐资源")] public AudioClip Module;
         [LabelText("音量(小于0用音源的)"), SerializeReference] public IPointerForFloat_Only volume = new PointerForFloat_Direct() { float_ = 1 };
 
         public object Pick(object on= null, object from = null, object with = null)
         {
-            GameCenterManager.Instance.AudioMaster.PlayDirect_Sound_OneShot(clip, volume?.Pick() ?? -1);
+            GameCenterManager.Instance.AudioMaster.PlayDirect_Sound_OneShot(Module, volume?.Pick() ?? -1);
             return null;
         }
     }

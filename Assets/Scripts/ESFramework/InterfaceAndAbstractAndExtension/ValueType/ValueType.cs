@@ -10,7 +10,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 using static UnityEngine.Rendering.DebugUI;
-
+using System.Runtime.CompilerServices;
 
 namespace ES
 {
@@ -63,6 +63,7 @@ namespace ES
         {
             Update(true);
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Update(bool forceUpdate = false)
         {
             if (isDirty || forceUpdate)
@@ -77,6 +78,21 @@ namespace ES
                     valuesNow_.Remove(valuesToRemove.Dequeue());
                 }
             }
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void UpdateNoForce()
+        {
+            if (!isDirty) return;
+            isDirty = false;
+            while (valuesToAdd.Count > 0)
+            {
+                valuesNow_.Add(valuesToAdd.Dequeue());
+            }
+            while (valuesToRemove.Count > 0)
+            {
+                valuesNow_.Remove(valuesToRemove.Dequeue());
+            }
+
         }
     }
     [Serializable, TypeRegistryItem("队列安全脏集合_不持久")]
@@ -298,7 +314,8 @@ namespace ES
         }
     }
     [Serializable/*安全列表IOC*/]
-    public abstract class SafeListIOC<Key, Element>{
+    public abstract class SafeListIOC<Key, Element>
+    {
         [SerializeReference]
         [LabelText(@"@  IOCName ", icon: SdfIconType.ListColumnsReverse), GUIColor("IOCColor")]
         public Dictionary<Key, SafeUpdateList<Element>> IOC = new Dictionary<Key, SafeUpdateList<Element>>();
@@ -562,8 +579,8 @@ namespace ES
     {
 
     }
-    [Serializable,TypeRegistryItem("字符串分组+键 Type映射")]
-    public class DicIOCWithStringSelectStringKey_TypeValue: BaseDicIOCWithStringKeyAndStringSelect<Type>
+    [Serializable, TypeRegistryItem("字符串分组+键 Type映射")]
+    public class DicIOCWithStringSelectStringKey_TypeValue : BaseDicIOCWithStringKeyAndStringSelect<Type>
     {
 
     }

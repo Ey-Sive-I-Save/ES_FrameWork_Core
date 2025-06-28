@@ -5,80 +5,135 @@ using System.Collections.Generic;
 #if UNITY_EDITOR
 #endif
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace ES
 {
     /*核心功能*/
-    public interface ICore:IESHosting
+    public interface ICore
     {
-        public void AwakeRegisterAllDomain();//初始化创建链接
     }
     [DefaultExecutionOrder(-2)]//顺序在前
-    public abstract class Core : ESHostingMono, ICore
+    public abstract class Core : MonoBehaviour, ICore
     {
-        [TitleGroup("网络支持")]
-        [Required(errorMessage: "如果你制作网络游戏，请考虑好他的必要性"), PropertyOrder(-10), PropertySpace(5, 15),InlineButton("DebugNO","输出NO信息")]
-        [LabelText("链接为网络对象")] public NetworkObject NO;
-        //核域通常在一个层级结构下，而核必须为同级或者父级
+       
 
-        private void DebugNO()
+        #region 检查器专属
+
+        //域颜色赋予
+        public Color Editor_DomainTabColor(IDomain domain)
         {
-            
-            Debug.Log("本人的" +NO.IsOwner);
-            Debug.Log("客户的" + NO.IsClientInitialized);
-            Debug.Log("服务器的" +NO.IsServerInitialized);
+            if (domain == null) return Color.gray;
+            else return Color.yellow;
         }
 
-        //获取特定域
-        public T GetDomain<T>() where T : Component
-        {
-            return GetComponentInChildren<T>();
-        }
 
-        //Awake注册
-        protected virtual void Awake()
-        {
-           /* if (NO == null)*/
-                AwakeRegisterAllDomain();
-            /*else Invoke(nameof(AwakeBroadCastRegister),0.1f);*/
-        }
-        //注册发生前发生的事儿
-        protected virtual void BeforeAwakeRegister()
-        {
-            
-        }
-        //注册完成后发生的事儿
-        protected virtual void AfterAwakeRegister()
-        {
-
-        }
-
-        //注册
-        
-        public void AwakeRegisterAllDomain()
-        {
-            BeforeAwakeRegister();
-            var allDomains = GetComponentsInChildren<IDomain>();
-            foreach(var i in allDomains)
-            {
-                i.RegisterAllWithCore(this);
-            }
-            AfterAwakeRegister();
-        }
-        
 
         //编辑器模式下的临时关联
 #if UNITY_EDITOR
-        [ContextMenu("<ES>创建临时关系")] 
+        [ContextMenu("<ES>创建临时关系")]
         public void CreateCacheRelationship()
         {
             var all = GetComponentsInChildren<IDomain>();
-            foreach(var i in all)
+            foreach (var i in all)
             {
                 i.RegisterAllButOnlyCreateRelationship(this);
             }
         }
 #endif
+
+        #endregion
+
+        #region 补充信息
+
+        //获取特定域
+        private List<IDomain> domains = new List<IDomain>(3);
+
+
+
+        #endregion
+
+        #region Awake流程
+
+        //Awake回调
+        protected void Awake()
+        {
+            OnBeforeAwakeRegister();
+            OnAwakeRegisterOnly();
+            OnAfterAwakeRegister();
+        }
+
+
+        //注册扩展Domain前发生前
+        protected virtual void OnBeforeAwakeRegister()
+        {
+
+        }
+        //仅用于手动注册
+        protected virtual void OnAwakeRegisterOnly()
+        {
+            /* 演示 一句完成
+             * RegisterDomains(domain1,domain2,...);*/
+        }
+        //注册扩展Domain发生的事
+        protected virtual void OnAfterAwakeRegister()
+        {
+            /*RegisterDomains*/
+        }
+
+        #endregion
+
+        #region 重写逻辑
+
+        protected virtual void Update()
+        {
+            for(int i = 0; i < domains.Count; i++)
+            {
+                domains[i].TryUpdateSelf();
+            }
+        }
+
+        protected virtual void OnEnable()
+        {
+            for (int i = 0; i < domains.Count; i++)
+            {
+                domains[i].TryEnableSelf();
+            }
+        }
+
+        protected virtual void OnDisable()
+        {
+#if UNITY_EDITOR
+            if (ESEditorRuntimePartMaster.IsQuit) return;
+#endif
+            for (int i = 0; i < domains.Count; i++)
+            {
+                domains[i].TryDisableSelf();
+            }
+        }
+
+        protected virtual void OnDestroy()
+        {
+
+        }
+
+        #endregion
+
+        #region 常用功能
+
+        //手动注册
+        public void RegisterDomains(params IDomain[] rgdomains)
+        {
+            foreach (var i in rgdomains)
+            {
+                if (i == null) continue;
+                i.RegisterAllWithCore(this);
+                domains.Add(i);
+            }
+        }
+
+        #endregion
+
     }
 
 

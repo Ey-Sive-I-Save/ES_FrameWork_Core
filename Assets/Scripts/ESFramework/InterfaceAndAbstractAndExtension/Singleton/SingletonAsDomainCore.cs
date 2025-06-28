@@ -6,13 +6,14 @@ using UnityEngine;
 
 namespace ES
 {
-    
+
     public abstract class SingletonAsCore<This> : Core where This : MonoBehaviour
     {
-        [LabelText("不销毁"),PropertyOrder(-5)]public bool DontDestroy = true;
+        [LabelText("不销毁"), PropertyOrder(-5)] public bool DontDestroy = true;
         public static This Instance
         {
-            get {
+            get
+            {
                 if (_instance != null) return _instance;
                 This t = Object.FindAnyObjectByType<This>();
                 if (t != null)
@@ -33,26 +34,25 @@ namespace ES
         }
 
         private static This _instance;
-       protected override void Awake()
+        protected override void OnBeforeAwakeRegister()
         {
-            //Debug.Log("awake");
-            if (_instance == null || _instance == this) {
+            base.OnBeforeAwakeRegister();
+            if (_instance == null || _instance == this)
+            {
                 _instance = this as This;
                 if (_instance != null)
                 {
-                    AwakeRegisterAllDomain();
-                   if (DontDestroy) DontDestroyOnLoad(transform.root.gameObject);
+                    if (DontDestroy) DontDestroyOnLoad(transform.root.gameObject);
                 }
             }
             else
             {
                 DestroyImmediate(gameObject);
-            } 
-            
+            }
         }
         // Start is called before the first frame update
         // Update is called once per frame
-        
+
     }
     public abstract class SingletonAsMono<This> : MonoBehaviour where This : MonoBehaviour
     {
@@ -68,8 +68,10 @@ namespace ES
                     _instance = t;
                     return t;
                 }
-                if (maxDebug > 0) { Debug.LogError($"单例类{typeof(This).Name}场景中不存在");maxDebug--; }
-                
+#if UNITY_EDITOR
+
+                if (maxDebug > 0) { Debug.LogError($"单例类{typeof(This).Name}场景中不存在"); maxDebug--; }
+#endif
                 /*GameObject g = GameObject.FindGameObjectWithTag("Manager");
                 if (g == null)
                 {
@@ -81,10 +83,11 @@ namespace ES
             }
             set { if (value != null) { _instance = value; }; }
         }
+#if UNITY_EDITOR
         private static int maxDebug = 6;
-
+#endif
         private static This _instance;
-        protected virtual  void Awake()
+        protected virtual void Awake()
         {
             //Debug.Log("awake");
             if (_instance == null || _instance == this)
@@ -150,7 +153,7 @@ namespace ES
 
         }
     }
-    public abstract class SingletonAsNormalClass<This> where  This:new()
+    public abstract class SingletonAsNormalClass<This> where This : new()
     {
         [LabelText("不销毁")] public bool DontDestroy = true;
         public static This Instance
@@ -159,7 +162,7 @@ namespace ES
             {
                 if (_instance != null) return _instance;
                 Debug.LogError($"单例普通类{typeof(This).Name}中不存在");
-                return _instance=new This();
+                return _instance = new This();
 
             }
             set { if (value != null) { _instance = value; }; }

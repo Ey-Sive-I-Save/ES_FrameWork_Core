@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class StateTestMono : ESHostingMono_BaseESModule, IWithESMachine
 {
-    public ReleaseableSkillClip clip;
+    
     public ESStandardStateMachine_StringKey machine_ = new ESStandardStateMachine_StringKey();
 
     public BaseOriginalStateMachine TheMachine => machine_;

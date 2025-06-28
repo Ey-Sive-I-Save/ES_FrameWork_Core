@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2875296209414421963}
-  - component: {fileID: 2586085180015860554}
   m_Layer: 0
   m_Name: Base
   m_TagString: Untagged
@@ -34,29 +33,6 @@ Transform:
   - {fileID: 9106427508984474460}
   m_Father: {fileID: 2482873753321162614}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2586085180015860554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 901205783524462556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aede5e8ea1488704b8c7cc8a4e475b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  readMe:
-    edit: 1
-    ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-    readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-    showColor: {r: 1, g: 1, b: 1, a: 1}
-  core: {fileID: 0}
-  Clips:
-    valuesNow_: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &1469390724965966527
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,10 +298,6 @@ MonoBehaviour:
   YV: 0
   GroundCheck: {fileID: 0}
   IsGrounded: 0
-  NormalDomain: {fileID: 0}
-  StateMachineDomain: {fileID: 0}
-  AIDomain: {fileID: 0}
-  BuffDomain: {fileID: 0}
   dataInfo: {fileID: -3581201634888277133, guid: ef6fa3665d3cd4247a83d9c972c202ea,
     type: 2}
   entitySharedData:
@@ -441,7 +413,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4718879457306175759}
-  - component: {fileID: 2693123026697878077}
   m_Layer: 0
   m_Name: Buff
   m_TagString: Untagged
@@ -464,35 +435,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2482873753321162614}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2693123026697878077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4114113575519797126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6153cff379c40a94080b3653c41108d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  readMe:
-    edit: 1
-    ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-    readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-    showColor: {r: 1, g: 1, b: 1, a: 1}
-  core: {fileID: 0}
-  Clips:
-    valuesNow_: []
-  buffHosting:
-    buffRTLs:
-      valuesNow_: []
-      valuesToAdd: []
-      valuesToRemove: []
-    buffDomain: {fileID: 0}
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &8053752297583090398
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +444,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8373178262162691877}
-  - component: {fileID: 9213389005214308019}
   m_Layer: 0
   m_Name: State
   m_TagString: Untagged
@@ -525,59 +466,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2482873753321162614}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9213389005214308019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8053752297583090398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da29e1c831ece7847aebc5f9cc965ec7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  readMe:
-    edit: 1
-    ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-    readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-    showColor: {r: 1, g: 1, b: 1, a: 1}
-  core: {fileID: 0}
-  Clips:
-    valuesNow_: []
-  StateMachine:
-    _enableSelf: 1
-    _SelfRunningState:
-      rid: -2
-    _SelfRunningStates:
-      valuesNow_: []
-    entity: {fileID: 0}
-    StateDomain: {fileID: 0}
-    SkillMachine:
-      _enableSelf: 1
-      _SelfRunningState:
-        rid: -2
-      _SelfRunningStates:
-        valuesNow_: []
-    BuffMachine:
-      _enableSelf: 1
-      _SelfRunningState:
-        rid: -2
-      _SelfRunningStates:
-        valuesNow_: []
-    InteractionMachine:
-      _enableSelf: 1
-      _SelfRunningState:
-        rid: -2
-      _SelfRunningStates:
-        valuesNow_: []
-  RegisterPack: {fileID: 11400000, guid: ed7b4ded0826b504ba2e9b3d8dedec6d, type: 2}
-  DefaultStateName: "\u6E38\u8361\u72B6\u6001"
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
 --- !u!1 &8905706636859139223
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,7 +475,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 717657186634083457}
-  - component: {fileID: 8028558134265027888}
   m_Layer: 0
   m_Name: AI
   m_TagString: Untagged
@@ -611,26 +498,3 @@ Transform:
   - {fileID: 1951535457184233575}
   m_Father: {fileID: 2482873753321162614}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8028558134265027888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8905706636859139223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb8943e87e4e40842a060beec8005d18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  readMe:
-    edit: 1
-    ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-    readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-    showColor: {r: 1, g: 1, b: 1, a: 1}
-  core: {fileID: 0}
-  Clips:
-    valuesNow_: []
-  references:
-    version: 2
-    RefIds: []

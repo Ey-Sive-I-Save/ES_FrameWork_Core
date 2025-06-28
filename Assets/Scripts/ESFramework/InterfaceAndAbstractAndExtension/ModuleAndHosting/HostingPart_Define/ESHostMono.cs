@@ -24,7 +24,7 @@ namespace ES
         #endregion
 
         #region 自定义间隔帧更新
-        private short UpdateIntervalFrameCount = -1;
+       /* private short UpdateIntervalFrameCount = -1;
         private short SelfTargetModel = -1;
         public void ResetUpdateIntervalFrameCount(short interval = 10)
         {
@@ -33,7 +33,7 @@ namespace ES
             {
                 SelfTargetModel = (short)UnityEngine.Random.Range(0, UpdateIntervalFrameCount);
             }
-        }
+        }*/
         #endregion
 
         #region 控制子模块
@@ -57,7 +57,6 @@ namespace ES
                 }
             }*/
         }
-
         public virtual void EnableAsHosting()
         {
 
@@ -97,6 +96,7 @@ namespace ES
 
         #region 生命周期
         public bool IsActiveAndEnable { get; set; }
+
         public void TryEnableSelf()
         {
             if (IsActiveAndEnable) return;
@@ -111,7 +111,8 @@ namespace ES
                 enabled = false;
             }
         }
-        public void TryUpdate()
+
+        public void TryUpdateSelf()
         {
             if (CanUpdating && IsActiveAndEnable)
             {
@@ -127,23 +128,23 @@ namespace ES
 
         protected virtual void Update()
         {
-            if (UpdateIntervalFrameCount > 0)
+            /*if (UpdateIntervalFrameCount > 0)
             {
                 if (SelfTargetModel < 0) ResetUpdateIntervalFrameCount(UpdateIntervalFrameCount);
                 if (Time.frameCount % UpdateIntervalFrameCount != SelfTargetModel)
                 {
                     return;
                 }
-            }
+            }*/
             UpdateAsHosting();
             /*virtualBeHostedList.Update();*/
         }
         protected virtual void OnEnable()
         {
-            if (UpdateIntervalFrameCount > 0 && SelfTargetModel < 0)
+           /* if (UpdateIntervalFrameCount > 0 && SelfTargetModel < 0)
             {
                 ResetUpdateIntervalFrameCount(UpdateIntervalFrameCount);
-            }
+            }*/
             IsActiveAndEnable = true;
             EnableAsHosting();
         }
@@ -165,24 +166,22 @@ namespace ES
     [TypeRegistryItem("虚拟+带类型的托管脚本基类")]
     public abstract class ESHostingMono<USE_Module> : ESHostingMono, IESHosting<USE_Module> where USE_Module : class, IESModule
     {
-        public virtual IEnumerable<USE_Module> Modules {get; }
-        
-
+        public virtual IEnumerable<USE_Module> ModulesIEnumable { get; }
         #region 重写控制子模块
         public override void UpdateAsHosting()
         {
-            if (Modules != null)
+            if (ModulesIEnumable != null)
             {
-                foreach (var i in Modules)
+                foreach (var i in ModulesIEnumable)
                 {
                     if (!i._HasSubmit)
                     {
                         i._TryInActiveAndDisable();
                         //已经放弃
-                        TryRemoveModule(i);
+                        _RemoveModuleFromList(i);
                         continue;
                     }
-                    i.TryUpdate();
+                    i.TryUpdateSelf();
                 }
             }
             base.UpdateAsHosting();
@@ -190,9 +189,9 @@ namespace ES
         public override void EnableAsHosting()
         {
 
-            if (Modules != null)
+            if (ModulesIEnumable != null)
             {
-                foreach (var i in Modules)
+                foreach (var i in ModulesIEnumable)
                 {
                     i._TryActiveAndEnable();
                     
@@ -202,9 +201,9 @@ namespace ES
         }
         public override void DisableAsHosting()
         {
-            if (Modules != null)
+            if (ModulesIEnumable != null)
             {
-                foreach (var i in Modules)
+                foreach (var i in ModulesIEnumable)
                 {
                     i._TryInActiveAndDisable();
                     
@@ -213,7 +212,7 @@ namespace ES
             base.DisableAsHosting();
         }
 
-        public abstract void TryRemoveModule(USE_Module use);
+        public abstract void _RemoveModuleFromList(USE_Module use);
 
         #endregion
     }

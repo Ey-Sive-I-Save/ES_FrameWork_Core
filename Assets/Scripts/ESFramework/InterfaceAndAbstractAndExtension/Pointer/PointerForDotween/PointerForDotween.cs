@@ -100,7 +100,7 @@ namespace ES.EvPointer
         public override Tween head => headGetter?.Pick();
     }
     [Serializable, TypeRegistryItem("Dotween_<触发针包>->_序列生成", "其他插件支持")]
-    public class PointerForIPointerForTween_MakeSequence_PackerSelectSome : PointerPackerForSelectSome_BackSelfDefine<Tween, IPointer, IPointerForSequenceClip>, IPointerForTween
+    public class PointerForIPointerForTween_MakeSequence_PackerSelectSome : PointerPackerForSelectSome_BackSelfDefine<Tween, IPointer, IPointerForSequenceModule>, IPointerForTween
     {
         public override Tween Addition(List<IPointer> backs)
         {
@@ -827,12 +827,12 @@ namespace ES.EvPointer
     }
     #endregion
     #region Sequence
-    public interface IPointerForSequenceClip : IPointerForIPointer_Only
+    public interface IPointerForSequenceModule : IPointerForIPointer_Only
         {
 
         }
-        [Serializable, TypeRegistryItem("Dotween_序列剪影_Tween")]
-        public class PointerForSequenceClip_Tween : IPointerForSequenceClip
+        [Serializable, TypeRegistryItem("Dotween_序列模块_Tween")]
+        public class PointerForSequenceModule_Tween : IPointerForSequenceModule
         {
             [LabelText("嵌入Tween"), SerializeReference] public IPointerForTween forTween;
 
@@ -842,8 +842,8 @@ namespace ES.EvPointer
                 return forTween;
             }
         }
-        [Serializable, TypeRegistryItem("Dotween_序列剪影_回调", "其他插件支持")]
-        public class PointerForSequenceClip_TweenCallBack : IPointerForSequenceClip
+        [Serializable, TypeRegistryItem("Dotween_序列模块_回调", "其他插件支持")]
+        public class PointerForSequenceModule_TweenCallBack : IPointerForSequenceModule
         {
             [LabelText("嵌入TweenCallBack"), SerializeReference] public IPointerForTweenCallBack forTweenCallBack;
 
@@ -852,8 +852,8 @@ namespace ES.EvPointer
                 return forTweenCallBack;
             }
         }
-        [Serializable, TypeRegistryItem("Dotween_序列剪影_时间间隔", "其他插件支持")]
-        public class PointerForSequenceClip_Interval : IPointerForSequenceClip
+        [Serializable, TypeRegistryItem("Dotween_序列模块_时间间隔", "其他插件支持")]
+        public class PointerForSequenceModule_Interval : IPointerForSequenceModule
         {
             [LabelText("嵌入时间间隔"), SerializeReference] public IPointerForFloat_Only forInterval = new PointerForFloat_Direct() { float_ = 1 };
 

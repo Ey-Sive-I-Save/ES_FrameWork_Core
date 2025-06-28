@@ -18,7 +18,7 @@ namespace ES
         public string testElement = "测试";
 #endif
 
-        public ESUIRoot MyRoot { get { if (dirty) GetMyParentAndRegisteThis(); return _myRoot=_myRoot.EX_NotNullAndUse()??_myParentPanel.EX_NotNullAndUse().MyRoot; } set { _myRoot = value; } }
+        public ESUIRoot MyRoot { get { if (dirty) GetMyParentAndRegisteThis(); return _myRoot=_myRoot.EX_IsNotNullAndUse()??_myParentPanel.EX_IsNotNullAndUse().MyRoot; } set { _myRoot = value; } }
         [SerializeField, LabelText("所属根节点")] private ESUIRoot _myRoot;
         private void Awake()
         {

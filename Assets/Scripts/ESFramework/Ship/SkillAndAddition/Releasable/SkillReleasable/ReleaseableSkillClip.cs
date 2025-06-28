@@ -13,7 +13,7 @@ namespace ES
     [Serializable,TypeRegistryItem("技能序列")]
     public class ReleasableSkillsSequence
     {
-        public static ReleaseableSkillClip NullSkillCLip = new ReleaseableSkillClip() { name="这是NULL技能片段不可用，请点击右侧新建片段！！" };
+        public static ReleaseableSkillModule NullSkillModule = new ReleaseableSkillModule() { name="这是NULL技能片段不可用，请点击右侧新建片段！！" };
         [HorizontalGroup("总数据")]
 
         [VerticalGroup("总数据/数据"), PropertyOrder(-2)][LabelText("技能总时间",SdfIconType.ClockFill)] public float skillDuration = 1f;
@@ -21,7 +21,7 @@ namespace ES
        
         [Space(5)]
 
-        [LabelText("预览全部序列"),HideInInspector] public List<ReleaseableSkillClip> AllClips = new List<ReleaseableSkillClip>() { new ReleaseableSkillClip() { triggerAtTime=0.25f } };
+        [LabelText("预览全部序列"),HideInInspector] public List<ReleaseableSkillModule> AllModules = new List<ReleaseableSkillModule>() { new ReleaseableSkillModule() { triggerAtTime=0.25f } };
         [FoldoutGroup("总数据/数据/整个技能数据细节"),LabelText("前后摇曲线(<0.5视为)")] public AnimationCurve skillActiveCurve = AnimationCurve.Constant(0.1f,0.9f,1);
         [FoldoutGroup("总数据/数据/整个技能数据细节"), LabelText("技能绑定的ES状态配置")] public StateDataInfo bindingStateInfo; 
         [FoldoutGroup("总数据/数据/整个技能数据细节"), LabelText("词条")] public List<string> skillTags = new List<string>();
@@ -33,7 +33,7 @@ namespace ES
 
 
 
-        [InfoBox("空的技能序列！！", InfoMessageType.Warning, VisibleIf = "@GetClipsLength()==0")]
+        [InfoBox("空的技能序列！！", InfoMessageType.Warning, VisibleIf = "@GetModulesLength()==0")]
 
         [PropertyOrder(-1)]
 
@@ -58,21 +58,21 @@ namespace ES
        
         [BoxGroup("分栏目/当前"),HideLabel,InlineProperty]
 
-        public ReleaseableSkillClip currentEditClip_ = null;
+        public ReleaseableSkillModule currentEditModule_ = null;
         
         [HorizontalGroup("分栏目", width: 0.1f)]
         [PropertySpace(15)]
         [BoxGroup("分栏目/片段操作按钮列")]
         [Button("在末尾新建",ButtonHeight =50), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
         public void AddAtEnd() {
-            AllClips.Add(new ReleaseableSkillClip() { name="新建片段"+(AllClips.Count+1) });
+            AllModules.Add(new ReleaseableSkillModule() { name="新建片段"+(AllModules.Count+1) });
             HandleAndRefreshCurrentIndex();
         }
         [BoxGroup("分栏目/片段操作按钮列")]
         [PropertySpace(15)]
         [Button("在当前接着新建", ButtonHeight = 50), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
         public void AddAtHere() {
-            AllClips.Insert(CurrentIndex+1,new ReleaseableSkillClip() { name = "新建片段"+(CurrentIndex+2) });
+            AllModules.Insert(CurrentIndex+1,new ReleaseableSkillModule() { name = "新建片段"+(CurrentIndex+2) });
             HandleAndRefreshCurrentIndex();
         }
 
@@ -81,7 +81,7 @@ namespace ES
         [Button("按触发时间排序", ButtonHeight = 50), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
         public void Sort()
         {
-            AllClips.Sort((le, ri) => { if (le.triggerAtTime >= ri.triggerAtTime) return 1;return -1; });
+            AllModules.Sort((le, ri) => { if (le.triggerAtTime >= ri.triggerAtTime) return 1;return -1; });
             HandleAndRefreshCurrentIndex();
         }
 
@@ -89,59 +89,59 @@ namespace ES
         [PropertySpace(15)]
         [Button("删除", ButtonHeight = 50), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForCaster")]
         public void RemoveThis() {
-            if(currentEditClip_!=null)
-            AllClips.Remove(currentEditClip_);
-            currentEditClip_ = null;
+            if(currentEditModule_!=null)
+            AllModules.Remove(currentEditModule_);
+            currentEditModule_ = null;
             HandleAndRefreshCurrentIndex();
         }
         #region 辅助
         private string GetShowName()
         {
-            return "当前选中 第【" + (CurrentIndex+1) + "/" + GetClipsLength() + "】";
+            return "当前选中 第【" + (CurrentIndex+1) + "/" + GetModulesLength() + "】";
         }
         private string GetShowStartEditName()
         {
-            if (AllClips.Count == 0) return "警告！！目前没有片段，下面的片段为NULL状态不可使用";
-            return "开始编辑 第【" + (CurrentIndex + 1) + "/" + GetClipsLength() + "】 个片段";
+            if (AllModules.Count == 0) return "警告！！目前没有片段，下面的片段为NULL状态不可使用";
+            return "开始编辑 第【" + (CurrentIndex + 1) + "/" + GetModulesLength() + "】 个片段";
         }
         private Color GetShowStartEditColor()
         {
-            if (AllClips.Count == 0) return KeyValueMatchingUtility.ColorSelector.Color_02;
+            if (AllModules.Count == 0) return KeyValueMatchingUtility.ColorSelector.Color_02;
             return KeyValueMatchingUtility.ColorSelector.ColorForCatcher;
         }
-        private int GetClipsLength()
+        private int GetModulesLength()
         {
-            if (AllClips == null)
+            if (AllModules == null)
             {
-                AllClips = new List<ReleaseableSkillClip>() { new ReleaseableSkillClip() { name="新建技能片段1", triggerAtTime = 0.25f } };
-            }else if (AllClips.Count == 0)
+                AllModules = new List<ReleaseableSkillModule>() { new ReleaseableSkillModule() { name="新建技能片段1", triggerAtTime = 0.25f } };
+            }else if (AllModules.Count == 0)
             {
-                currentEditClip_ = NullSkillCLip;
+                currentEditModule_ = NullSkillModule;
             }
             
-            return AllClips.Count;
+            return AllModules.Count;
         }
         private int GetSliderMax()
         {
-            return GetClipsLength() - 1;
+            return GetModulesLength() - 1;
         }
         private void HandleAndRefreshCurrentIndex(bool reTry=false)
         {
-            if (AllClips.Contains(currentEditClip_))
+            if (AllModules.Contains(currentEditModule_))
             {
-                CurrentIndex = AllClips.IndexOf(currentEditClip_);
+                CurrentIndex = AllModules.IndexOf(currentEditModule_);
                 return;
             }
-            if (currentEditClip_ == null) { CurrentIndex = Mathf.Clamp(CurrentIndex, 0, GetClipsLength()-1); }
-            else { currentEditClip_ = null; }
+            if (currentEditModule_ == null) { CurrentIndex = Mathf.Clamp(CurrentIndex, 0, GetModulesLength()-1); }
+            else { currentEditModule_ = null; }
 
             OnChangeSlider();
         }
         public void OnChangeSlider()
         {
-            if (AllClips.Count == 0) return;
-            CurrentIndex = Mathf.Clamp(CurrentIndex,0,AllClips.Count - 1);
-            currentEditClip_ = AllClips[CurrentIndex];
+            if (AllModules.Count == 0) return;
+            CurrentIndex = Mathf.Clamp(CurrentIndex,0,AllModules.Count - 1);
+            currentEditModule_ = AllModules[CurrentIndex];
         }
         private void Next()
         {
@@ -163,7 +163,7 @@ namespace ES
     }
 
     [Serializable, TypeRegistryItem("单个技能片段")]
-    public class ReleaseableSkillClip
+    public class ReleaseableSkillModule
     {
         [HorizontalGroup("总数据")]
         [LabelText("该片段触发时机(秒)")] public float triggerAtTime = 0.25f;

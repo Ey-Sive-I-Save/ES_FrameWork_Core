@@ -13,7 +13,7 @@ namespace ES
 
     }
     //以Hosting声明
-    public interface IESHosting : IESOringinHosting, IESWithEnableLife
+    public interface IESHosting : IESOringinHosting, IESWithLife
     {
         #region 托管器专属
         //虚拟的
@@ -48,9 +48,9 @@ namespace ES
         #region 重写逻辑
         
         public virtual bool CanUpdating { 
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+             
             get { return true; } }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         
         protected virtual void Update()
         {
             if (UpdateIntervalFrameCount > 0)
@@ -64,7 +64,7 @@ namespace ES
             UpdateAsHosting();
             /*virtualBeHostedList.Update();*/
         }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         
         protected virtual void OnEnable()
         {
             if (UpdateIntervalFrameCount > 0&&SelfTargetModel < 0)
@@ -74,7 +74,7 @@ namespace ES
             IsActiveAndEnable = true;
             EnableAsHosting();
         }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         
         protected virtual void OnDisable()
         {
             IsActiveAndEnable = false;
@@ -85,14 +85,14 @@ namespace ES
         #region 关于开关逻辑与运行状态
         public bool IsActiveAndEnable { get; set; } = false;
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         
         public virtual void TryEnableSelf()
         {
             if (IsActiveAndEnable) return;
             OnEnable();
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         
         public virtual void TryDisableSelf()
         {
             if (!IsActiveAndEnable)
@@ -100,8 +100,8 @@ namespace ES
                 OnDisable();
             }
         }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void TryUpdate()
+         
+        public void TryUpdateSelf()
         {
             if (CanUpdating && IsActiveAndEnable)
             {
@@ -140,7 +140,7 @@ namespace ES
                 }
             }*/
         }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         
         public virtual void DisableAsHosting()
         {
            
@@ -157,18 +157,18 @@ namespace ES
     //以泛型声明
     public interface IESHosting<WithModule> : IESHosting where WithModule : class,IESModule
     {
-         IEnumerable<WithModule> Modules { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; }
-         public abstract void TryRemoveModule(WithModule use);
+         IEnumerable<WithModule> ModulesIEnumable {   get; }
+         
     }
     public abstract class BaseESHosting<With> : BaseESHosting, IESHosting<With> where With : class, IESModule
     {
         #region 对特定类型的托管支持
-        public abstract IEnumerable<With> Modules { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; }
+        public abstract IEnumerable<With> ModulesIEnumable {   get; }
         public override void EnableAsHosting()
         {
-            if (Modules != null)
+            if (ModulesIEnumable != null)
             {
-                foreach (var i in Modules)
+                foreach (var i in ModulesIEnumable)
                 {
                     i._TryActiveAndEnable();
                 }
@@ -177,9 +177,9 @@ namespace ES
         }
         public override void DisableAsHosting()
         {
-            if (Modules != null)
+            if (ModulesIEnumable != null)
             {
-                foreach (var i in Modules)
+                foreach (var i in ModulesIEnumable)
                 {
                     i._TryInActiveAndDisable();
                 }
@@ -188,9 +188,9 @@ namespace ES
         }
         public override void UpdateAsHosting()
         {
-            if (Modules != null)
+            if (ModulesIEnumable != null)
             {
-                foreach (var i in Modules)
+                foreach (var i in ModulesIEnumable)
                 {
                    
                         if (!i._HasSubmit)
@@ -200,19 +200,19 @@ namespace ES
 
                             continue;
                         }
-                    i.TryUpdate();
+                    i.TryUpdateSelf();
                 }
             }
             base.UpdateAsHosting();
         }
 
-        public abstract void TryRemoveModule(With use);
+        public abstract void _RemoveModuleFromList(With use);
         #endregion
     }
     public abstract class BaseESHostingAndModule<USE, Host> : BaseESHosting<USE>, IESModule<Host> where Host : class, IESHosting where USE : class, IESModule
     {
         #region 与自己的Host关联
-        public Host GetHost { [MethodImpl(MethodImplOptions.AggressiveInlining)] get => host; }
+        public Host GetHost {   get => host; }
         [LabelText("托管核心", SdfIconType.Bullseye),NonSerialized,ShowInInspector]
         public Host host=null;
         #endregion
@@ -221,8 +221,8 @@ namespace ES
 
         #region 关于提交SubMit
         public bool _HasSubmit { 
-            [MethodImpl(MethodImplOptions.AggressiveInlining)] get;
-            [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+              get;
+              set; }
         #endregion
 
         #region 检查器显示控制与信息
@@ -235,8 +235,8 @@ namespace ES
         #region 开关逻辑
         
         public bool EnabledSelf { 
-            [MethodImpl(MethodImplOptions.AggressiveInlining)] get;
-            [MethodImpl(MethodImplOptions.AggressiveInlining)] set; } = true;
+              get;
+              set; } = true;
 
         public override void TryEnableSelf()
         {
@@ -250,14 +250,14 @@ namespace ES
                 EnabledSelf = false;
             }
         }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         
         public void _TryActiveAndEnable()
         {
             if (IsActiveAndEnable || !EnabledSelf) return;//不要你
             OnEnable();
 
         }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         
         public void _TryInActiveAndDisable()
         {
             if (IsActiveAndEnable)
@@ -265,7 +265,7 @@ namespace ES
                 OnDisable();
             }
         }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         
         public bool _TryStartWithHost(Host host)
         {
             if (host == null||_HasSubmit) return false;
@@ -273,7 +273,7 @@ namespace ES
             _HasSubmit = true;
             return true;
         }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         
         public void TryDestroy()
         {
             _HasSubmit = false;
@@ -295,43 +295,43 @@ namespace ES
     [Serializable, TypeRegistryItem("ES托管器＋模块_带委托的", "模块")]
     public class ESHostingAndModule_WithDelegate : BaseESHostingAndModule<BaseESModule, BaseESHosting> 
     {
-        public override IEnumerable<BaseESModule> Modules => null;
+        public override IEnumerable<BaseESModule> ModulesIEnumable => null;
         [FoldoutGroup("默认委托")] private Action<ESHostingAndModule_WithDelegate> Action_Enable;
         [FoldoutGroup("默认委托")] private Action<ESHostingAndModule_WithDelegate> Action_Disable;
         [FoldoutGroup("默认委托")] private Action<ESHostingAndModule_WithDelegate> Action_OnUpdate;
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         
         protected sealed override void OnEnable()
         {
             Action_Enable?.Invoke(this);
             base.OnEnable();
         }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         
         protected sealed override void OnDisable()
         {
             Action_Disable?.Invoke(this);
             base.OnDisable();
         }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         
         protected sealed override void Update()
         {
             Action_OnUpdate?.Invoke(this);
             base.Update();
         }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         
         [Tooltip("规定启用时的事件")]
         public ESHostingAndModule_WithDelegate WithEnable(Action<ESHostingAndModule_WithDelegate> func)
         {
             Action_Enable = func;
             return this;
         }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         
         [Tooltip("规定禁用时的事件")]
         public ESHostingAndModule_WithDelegate WithDisable(Action<ESHostingAndModule_WithDelegate> func)
         {
             Action_Disable = func;
             return this;
         }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         
         [Tooltip("规定帧运行时的事件")]
         public ESHostingAndModule_WithDelegate WithUpdate(Action<ESHostingAndModule_WithDelegate> func)
         {
@@ -339,7 +339,7 @@ namespace ES
             return this;
         }
 
-        public override void TryRemoveModule(BaseESModule use)
+        public override void _RemoveModuleFromList(BaseESModule use)
         {
             //无事发生
         }

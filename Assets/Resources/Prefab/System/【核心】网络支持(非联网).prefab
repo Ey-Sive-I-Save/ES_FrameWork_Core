@@ -48,17 +48,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NO: {fileID: 0}
   DontDestroy: 1
-  NetBehaviourCore: {fileID: 0}
+  _netBehaviourCore: {fileID: 0}
+  NetBehaviourCorePrefab: {fileID: 0}
+  NetBehaviourCoreScenes: {fileID: 0}
   NetPlayer:
     PlayerID: 
     PlayerName: "\u662F\u4F9D\u8587\u5C14\u5417"
     RoomNumber: 5588
+    RoomPassword: 0
   Need_RoomIDMatch: 1
   TheNetWorkManager: {fileID: 0}
   ServerState: 0
   ClientState: 0
-  LocalDomain: {fileID: 0}
-  RemoteDomain: {fileID: 0}
 --- !u!1 &5123881737799621628
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +119,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 459854688243136869}
-  - component: {fileID: 3752093217593177809}
   m_Layer: 0
   m_Name: "\u8FDC\u7A0B\u6269\u5C55\u57DF"
   m_TagString: Untagged
@@ -141,37 +141,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5669683929580067075}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3752093217593177809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5993534828198471426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1fbf6e9610d4454baef3f169ee6a308, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  readMe:
-    edit: 1
-    ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-    readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-    showColor: {r: 1, g: 1, b: 1, a: 1}
-  core: {fileID: 0}
-  Clips:
-    valuesNow_:
-    - rid: 165003156314390639
-  references:
-    version: 2
-    RefIds:
-    - rid: 165003156314390639
-      type: {class: ClipRemote_ClientSendThisAuthentiacationMessage, ns: ES, asm: Assembly-CSharp}
-      data:
-        _enableSelf: 1
-        Domain: {fileID: 0}
-        updateOption: 0
-        Preset: "\u9884\u8BBE1"
 --- !u!1 &6220738578568357332
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +194,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4793836271988078371}
-  - component: {fileID: 1597641029204604721}
   m_Layer: 0
   m_Name: "\u672C\u5730\u6269\u5C55\u57DF"
   m_TagString: Untagged
@@ -248,29 +216,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5669683929580067075}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1597641029204604721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9170965540595833403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8663378871d93d248bd4e717608eab29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  readMe:
-    edit: 1
-    ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-    readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-    showColor: {r: 1, g: 1, b: 1, a: 1}
-  core: {fileID: 0}
-  Clips:
-    valuesNow_: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!1001 &6270549790260438807
 PrefabInstance:
   m_ObjectHideFlags: 0

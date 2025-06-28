@@ -1,0 +1,37 @@
+{
+  "name": "com.eysive.esframework",
+  "version": "0.0.1",
+  "displayName": "ES FrameWork Core",
+  "description": "\u4f9d\u8587\u5c14\u7684\u6846\u67b6\u5305",
+  "unity": "2019.1",
+  "unityRelease": "0b5",
+  "documentationUrl": "https://example.com/",
+  "changelogUrl": "https://example.com/changelog.html",
+  "licensesUrl": "https://example.com/licensing.html",
+  "dependencies": {
+    "com.unity.addressables": "1.22.3",
+    "com.unity.ai.navigation": "1.1.6",
+    "com.unity.render-pipelines.core": "14.0.11",
+    "com.unity.inputsystem": "1.11.2",
+    "com.unity.textmeshpro": "3.0.7",
+    "com.unity.timeline": "1.7.6"
+  },
+  "keywords": [
+    "ES",
+    "EySive",
+    "Everey"
+  ],
+  "author": {
+    "name": "Everey_Eysive",
+    "email": "2650026906@qq.com",
+    "url": "https://www.unity3d.com"
+  },
+  
+ "samples": [ 
+{
+    "displayName": "飞机大战",
+    "description": "飞机大战演示",
+    "path": "Samples~/PlaneBattle"
+ }
+]
+}

@@ -138,7 +138,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &562657131077205086
 CanvasRenderer:
@@ -179,8 +179,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278255594
+  m_fontColor: {r: 0.91649365, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 3184982016925175224}
   - component: {fileID: 4893894732649707550}
   m_Layer: 0
-  m_Name: "\u7EAF\u7F16\u8F91\u5668"
+  m_Name: "\u7EAFEditor\u7F16\u8F91\u5668"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -292,15 +292,160 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
+    - Name: ICON
+      Entry: 7
+      Data: 0|ES.ESEditorOnlyPartMaster+ESIconControl, ES
+    - Name: startOffset
+      Entry: 4
+      Data: -20
+    - Name: offsetPerTime
+      Entry: 4
+      Data: -20
+    - Name: width
+      Entry: 4
+      Data: 20
+    - Name: HierachySelectorS
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[ES.ESEditorOnlyPartMaster+HierachySelector,
+        ES]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 2|ES.ESEditorOnlyPartMaster+IconSelector_DependCompo_ClassName, ES
+    - Name: contentGetter
+      Entry: 7
+      Data: 3|ES.ESEditorOnlyPartMaster+ContentGetter_SystemIcon_Chinese, ES
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.961
+    - Name: 
+      Entry: 4
+      Data: 0.902
+    - Name: 
+      Entry: 4
+      Data: 0.788
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: scale
+      Entry: 4
+      Data: 1
+    - Name: contentName
+      Entry: 1
+      Data: "\u5185\u5B58\u5206\u6790\u5668\u56FE\u6807"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: typeName
+      Entry: 1
+      Data: ESUIRoot
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 4|ES.ESEditorOnlyPartMaster+IconSelector_DependCompo_ClassName, ES
+    - Name: contentGetter
+      Entry: 7
+      Data: 5|ES.ESEditorOnlyPartMaster+ContentGetter_SystemIcon_English, ES
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 0.5411765
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: scale
+      Entry: 4
+      Data: 1
+    - Name: contentName
+      Entry: 1
+      Data: d_Folder Icon
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: typeName
+      Entry: 1
+      Data: ESUIPanel
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 6|ES.ESEditorOnlyPartMaster+IconSelector_DependCompo_ClassName, ES
+    - Name: contentGetter
+      Entry: 7
+      Data: 7|ES.ESEditorOnlyPartMaster+ContentGetter_SystemIcon_English, ES
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 0.5137255
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: scale
+      Entry: 4
+      Data: 0.7
+    - Name: contentName
+      Entry: 1
+      Data: BuildSettings.Android
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: typeName
+      Entry: 1
+      Data: ESUIElement
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: Ins
       Entry: 7
-      Data: 0|ES.ESEditorOnlyPartMaster+ESInspectorControl, EditorMaster_EditorOnly
+      Data: 8|ES.ESEditorOnlyPartMaster+ESInspectorControl, ES
     - Name: EnableCompoentShowControl_
       Entry: 5
       Data: false
     - Name: cacheToggleFalseNames
       Entry: 7
-      Data: 1|System.Collections.Generic.HashSet`1[[System.String, mscorlib]], System.Core
+      Data: 9|System.Collections.Generic.HashSet`1[[System.String, mscorlib]], System.Core
     - Name: 
       Entry: 12
       Data: 4
@@ -327,14 +472,14 @@ MonoBehaviour:
       Data: 
     - Name: TypeDis
       Entry: 7
-      Data: 2|ES.ESEditorOnlyPartMaster+TypeDisplay, EditorMaster_EditorOnly
+      Data: 10|ES.ESEditorOnlyPartMaster+TypeDisplay, ES
     - Name: HandSelfRename
       Entry: 7
-      Data: 3|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.String,
+      Data: 11|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.String,
         mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 4|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+      Data: 12|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
@@ -373,59 +518,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
   DontDestroy: 1
-  ICON:
-    startOffset: -20
-    offsetPerTime: -15
-    width: 20
-    HierachySelectorS:
-    - rid: 2405588560814539696
-    - rid: 2405588560814539698
-    - rid: 2405588560814539711
-  references:
-    version: 2
-    RefIds:
-    - rid: 2405588560814539696
-      type: {class: ESEditorOnlyPartMaster/IconSelector_DependCompo_ClassName, ns: ES,
-        asm: EditorMaster_EditorOnly}
-      data:
-        contentGetter:
-          rid: 2405588560814539715
-        typeName: ESUIElement
-    - rid: 2405588560814539698
-      type: {class: ESEditorOnlyPartMaster/IconSelector_DependCompo_ClassName, ns: ES,
-        asm: EditorMaster_EditorOnly}
-      data:
-        contentGetter:
-          rid: 2405588560814539700
-        typeName: ESUIPanel
-    - rid: 2405588560814539700
-      type: {class: ESEditorOnlyPartMaster/ContentGetter_SystemIcon_Chinese, ns: ES,
-        asm: EditorMaster_EditorOnly}
-      data:
-        color: {r: 0.9843825, g: 1, b: 0, a: 1}
-        scale: 0.75
-        contentName: "\u753B\u5E03\u56FE\u6807"
-    - rid: 2405588560814539711
-      type: {class: ESEditorOnlyPartMaster/IconSelector_DependCompo_ClassName, ns: ES,
-        asm: EditorMaster_EditorOnly}
-      data:
-        contentGetter:
-          rid: 2405588560814539714
-        typeName: ESUIRoot
-    - rid: 2405588560814539714
-      type: {class: ESEditorOnlyPartMaster/ContentGetter_SystemIcon_Chinese, ns: ES,
-        asm: EditorMaster_EditorOnly}
-      data:
-        color: {r: 0.4029649, g: 1, b: 0.51960546, a: 1}
-        scale: 1
-        contentName: "\u7F51\u683C\u56FE\u6807"
-    - rid: 2405588560814539715
-      type: {class: ESEditorOnlyPartMaster/ContentGetter_SystemIcon_Chinese, ns: ES,
-        asm: EditorMaster_EditorOnly}
-      data:
-        color: {r: 0.84905654, g: 0.84905654, b: 0.84905654, a: 0.67058825}
-        scale: 0.75
-        contentName: "\u5B89\u5353\u5E73\u53F0\u56FE\u6807"
 --- !u!1 &4256614356071685642
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,7 +813,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5810370225477800718}
   - component: {fileID: 3520061699197729048}
-  - component: {fileID: 783585621533493035}
   m_Layer: 0
   m_Name: "\u4E3B\u8981\u7BA1\u7406\u5668"
   m_TagString: Untagged
@@ -761,10 +852,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa3eae5f98478a4ea306a5ab3d460e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NO: {fileID: 0}
+  NetObject: {fileID: 0}
   DontDestroy: 1
   AudioMaster: {fileID: 608958554771707050}
-  NormalDomain: {fileID: 0}
   OnSceneLoaded:
     m_PersistentCalls:
       m_Calls: []
@@ -855,38 +945,6 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   SkillPointSpritesReference: {fileID: 0}
---- !u!114 &783585621533493035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6040059378997878964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 212dbdae92c0df84c85c8d0011c324f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  readMe:
-    edit: 1
-    ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-    readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-    showColor: {r: 1, g: 1, b: 1, a: 1}
-  core: {fileID: 3520061699197729048}
-  Clips:
-    valuesNow_:
-    - rid: 2405589121223885257
-  references:
-    version: 2
-    RefIds:
-    - rid: 2405589121223885257
-      type: {class: module1, ns: ES, asm: ES}
-      data:
-        _enableSelf: 1
-        Domain: {fileID: 0}
-        updateOption: 0
-        Editor_Preset: "\u9884\u8BBE1"
-        StartWith: "\u6765\u81EA\u6A21\u57571"
 --- !u!1 &6140120845351843932
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,6 +1169,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TMP_Text: {fileID: 6917791762946709627}
+  UseTargetFrame: 1
+  TatetFrame: 120
+  next: 0.2
 --- !u!1 &8664027960306456845
 GameObject:
   m_ObjectHideFlags: 0

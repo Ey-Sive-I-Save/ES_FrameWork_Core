@@ -1,5 +1,18 @@
 {
   "dependencies": {
+    "com.eysive.esframework": {
+      "version": "file:ESPackages",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.addressables": "1.22.3",
+        "com.unity.ai.navigation": "1.1.6",
+        "com.unity.render-pipelines.core": "14.0.11",
+        "com.unity.inputsystem": "1.11.2",
+        "com.unity.textmeshpro": "3.0.7",
+        "com.unity.timeline": "1.7.6"
+      }
+    },
     "com.tuyoogame.yooasset": {
       "version": "2.3.8",
       "depth": 0,

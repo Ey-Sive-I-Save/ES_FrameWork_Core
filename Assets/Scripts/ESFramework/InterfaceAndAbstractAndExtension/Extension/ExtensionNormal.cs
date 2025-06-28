@@ -23,7 +23,7 @@ namespace ES
         {
             return p.Pick(t, yarn, on);
         }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         
        
        
         // 91. 执行Action并返回结果(链式调用)
@@ -49,6 +49,15 @@ namespace ES
         public static bool EX_IsNotNull<T>(this T obj) where T : class
         {
             return obj != null;
+        }
+        public static T EX_IsNotNullAndUseIt<T>(this T ob) where T:class
+        {
+            if (ob == null) return null;
+            return ob;
+            /*可以配合?.使用
+              someObject.NotNull()?.XXXX();
+              确保Miss判定
+             */
         }
 
         // 95. 如果对象为null则返回默认值

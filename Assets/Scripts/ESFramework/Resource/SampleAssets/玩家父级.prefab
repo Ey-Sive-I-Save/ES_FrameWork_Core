@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3314574936206056923}
-  - component: {fileID: 6425320499033934945}
   m_Layer: 11
   m_Name: State
   m_TagString: Untagged
@@ -32,173 +31,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3552004293402254565}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6425320499033934945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 292560691148195302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da29e1c831ece7847aebc5f9cc965ec7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  readMe:
-    edit: 1
-    ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-    readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-    showColor: {r: 1, g: 1, b: 1, a: 1}
-  core: {fileID: 0}
-  StateMachine:
-    _enableSelf: 1
-    _SelfRunningState:
-      rid: -2
-    _SelfRunningStates:
-      valuesNow_: []
-    entity: {fileID: 0}
-    StateDomain: {fileID: 0}
-    SkillMachine:
-      _enableSelf: 1
-      _SelfRunningState:
-        rid: -2
-      _SelfRunningStates:
-        valuesNow_: []
-    BuffMachine:
-      _enableSelf: 1
-      _SelfRunningState:
-        rid: -2
-      _SelfRunningStates:
-        valuesNow_: []
-    InteractionMachine:
-      _enableSelf: 1
-      _SelfRunningState:
-        rid: -2
-      _SelfRunningStates:
-        valuesNow_: []
-  RegisterPack: {fileID: 11400000, guid: 52c0340265d559047ab1c5709e7edbfe, type: 2}
-  DefaultStateName: "\u9759\u6B62"
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
---- !u!1 &404328522129038047
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6240746936732499622}
-  - component: {fileID: 5747530353957811938}
-  m_Layer: 0
-  m_Name: AI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6240746936732499622
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 404328522129038047}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3552004293402254565}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5747530353957811938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 404328522129038047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb8943e87e4e40842a060beec8005d18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  readMe:
-    edit: 1
-    ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-    readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-    showColor: {r: 1, g: 1, b: 1, a: 1}
-  core: {fileID: 0}
-  Clips:
-    valuesNow_: []
-  references:
-    version: 2
-    RefIds: []
---- !u!1 &605714275694961266
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2575685638014153084}
-  - component: {fileID: 5032537563382414714}
-  m_Layer: 0
-  m_Name: Buff
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2575685638014153084
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 605714275694961266}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3552004293402254565}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5032537563382414714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 605714275694961266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6153cff379c40a94080b3653c41108d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  readMe:
-    edit: 1
-    ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-    readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-    showColor: {r: 1, g: 1, b: 1, a: 1}
-  core: {fileID: 0}
-  Clips:
-    valuesNow_: []
-  buffHosting:
-    buffRTLs:
-      valuesNow_: []
-      valuesToAdd: []
-      valuesToRemove: []
-    buffDomain: {fileID: 0}
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &716563858022124626
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,111 +128,6 @@ Transform:
   - {fileID: 900514193792553259}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2453324930733881388
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7082117753208397566}
-  - component: {fileID: 1494981844696577394}
-  - component: {fileID: 92237021722612077}
-  - component: {fileID: 5748964320283764665}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7082117753208397566
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2453324930733881388}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.846, y: 0.517, z: 0}
-  m_LocalScale: {x: 1, y: 0.1, z: 0.1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 401247652243203448}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1494981844696577394
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2453324930733881388}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &92237021722612077
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2453324930733881388}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 3b106ff82a01aba4e8b7de001070e753, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5748964320283764665
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2453324930733881388}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3637001099541427605
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,111 +174,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Follow: {fileID: 3607247951385033450}
---- !u!1 &3754718582308400831
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5669080565592370622}
-  - component: {fileID: 7801786243764318561}
-  - component: {fileID: 7163757549610688391}
-  - component: {fileID: 76151584909357263}
-  m_Layer: 0
-  m_Name: Cube_1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5669080565592370622
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3754718582308400831}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.879, y: 0.517, z: 0}
-  m_LocalScale: {x: 1, y: 0.1, z: 0.1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 401247652243203448}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7801786243764318561
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3754718582308400831}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &7163757549610688391
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3754718582308400831}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 3b106ff82a01aba4e8b7de001070e753, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &76151584909357263
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3754718582308400831}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5569777161437917962
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,9 +183,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4441173686719477884}
-  - component: {fileID: 2123304425857487335}
   m_Layer: 0
-  m_Name: Base
+  m_Name: Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -586,114 +207,6 @@ Transform:
   - {fileID: 9050357372419942759}
   m_Father: {fileID: 3552004293402254565}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2123304425857487335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5569777161437917962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aede5e8ea1488704b8c7cc8a4e475b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  readMe:
-    edit: 1
-    ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-    readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-    showColor: {r: 1, g: 1, b: 1, a: 1}
-  core: {fileID: 0}
-  Clips:
-    valuesNow_: []
-  references:
-    version: 2
-    RefIds: []
---- !u!1 &5673426264877708506
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 401247652243203448}
-  - component: {fileID: 901189460777472164}
-  - component: {fileID: 4416711594155388095}
-  m_Layer: 0
-  m_Name: Capsule
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &401247652243203448
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5673426264877708506}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.8, z: 0}
-  m_LocalScale: {x: 1, y: 0.8, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7082117753208397566}
-  - {fileID: 5669080565592370622}
-  m_Father: {fileID: 3552004293402254565}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &901189460777472164
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5673426264877708506}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4416711594155388095
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5673426264877708506}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 67e1ba9f7a1245045ba011bc3be770a3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5732283538258740350
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,14 +406,11 @@ Transform:
   m_GameObject: {fileID: 8108457508976548315}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4441173686719477884}
-  - {fileID: 6240746936732499622}
-  - {fileID: 2575685638014153084}
-  - {fileID: 401247652243203448}
   - {fileID: 3314574936206056923}
   m_Father: {fileID: 5834244353524541995}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -916,8 +426,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf49b8e8b250e94ab54189a312bff81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NO: {fileID: 0}
+  NetObject: {fileID: 0}
   Rigid: {fileID: 0}
+  NormalDomain:
+    rid: 2405589145629753488
+  StateMachineDomain:
+    rid: 2405589128704426028
+  AIDomain:
+    rid: 2405589128704426233
+  BuffDomain:
+    rid: 2405589129531228995
   Anim: {fileID: 0}
   ESTagsC:
     Tags:
@@ -928,10 +446,6 @@ MonoBehaviour:
   YV: 0
   GroundCheck: {fileID: 9050357372419942759}
   IsGrounded: 0
-  NormalDomain: {fileID: 0}
-  StateMachineDomain: {fileID: 0}
-  AIDomain: {fileID: 0}
-  BuffDomain: {fileID: 0}
   dataInfo: {fileID: -701346399224484441, guid: ef6fa3665d3cd4247a83d9c972c202ea,
     type: 2}
   entitySharedData:
@@ -943,6 +457,294 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 2405589128704426028
+      type: {class: StateMachineDomainForEntity, ns: ES, asm: ES}
+      data:
+        readMe:
+          edit: 1
+          ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+          readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+          showColor: {r: 1, g: 1, b: 1, a: 1}
+        core: {fileID: 0}
+        Modules:
+          valuesNow_: []
+        StateMachine:
+          _enableSelf: 1
+          _SelfRunningState:
+            rid: -2
+          _SelfRunningStates:
+            valuesNow_: []
+          entity: {fileID: 0}
+          StateDomain:
+            readMe:
+              edit: 1
+              ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+              readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+              showColor: {r: 1, g: 1, b: 1, a: 1}
+            core: {fileID: 0}
+            Modules:
+              valuesNow_: []
+            StateMachine:
+              _enableSelf: 1
+              _SelfRunningState:
+                rid: -2
+              _SelfRunningStates:
+                valuesNow_: []
+              entity: {fileID: 0}
+              StateDomain:
+                readMe:
+                  edit: 1
+                  ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+                  readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+                  showColor: {r: 1, g: 1, b: 1, a: 1}
+                core: {fileID: 0}
+                Modules:
+                  valuesNow_: []
+                StateMachine:
+                  _enableSelf: 1
+                  _SelfRunningState:
+                    rid: -2
+                  _SelfRunningStates:
+                    valuesNow_: []
+                  entity: {fileID: 0}
+                  StateDomain:
+                    readMe:
+                      edit: 1
+                      ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+                      readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+                      showColor: {r: 1, g: 1, b: 1, a: 1}
+                    core: {fileID: 0}
+                    Modules:
+                      valuesNow_: []
+                    StateMachine:
+                      _enableSelf: 1
+                      _SelfRunningState:
+                        rid: -2
+                      _SelfRunningStates:
+                        valuesNow_: []
+                      entity: {fileID: 0}
+                      StateDomain:
+                        readMe:
+                          edit: 1
+                          ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+                          readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+                          showColor: {r: 1, g: 1, b: 1, a: 1}
+                        core: {fileID: 0}
+                        Modules:
+                          valuesNow_: []
+                        StateMachine:
+                          _enableSelf: 1
+                          _SelfRunningState:
+                            rid: -2
+                          _SelfRunningStates:
+                            valuesNow_: []
+                          entity: {fileID: 0}
+                          StateDomain:
+                            readMe:
+                              edit: 1
+                              ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+                              readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+                              showColor: {r: 1, g: 1, b: 1, a: 1}
+                            core: {fileID: 0}
+                            StateMachine:
+                              _enableSelf: 1
+                            RegisterPack: {fileID: 0}
+                            DefaultStateName: "\u9759\u6B62"
+                          SkillMachine:
+                            _enableSelf: 1
+                            _SelfRunningState:
+                              rid: -2
+                          BuffMachine:
+                            _enableSelf: 1
+                            _SelfRunningState:
+                              rid: -2
+                          InteractionMachine:
+                            _enableSelf: 1
+                            _SelfRunningState:
+                              rid: -2
+                        RegisterPack: {fileID: 0}
+                        DefaultStateName: "\u9759\u6B62"
+                      SkillMachine:
+                        _enableSelf: 1
+                        _SelfRunningState:
+                          rid: -2
+                        _SelfRunningStates:
+                          valuesNow_: []
+                      BuffMachine:
+                        _enableSelf: 1
+                        _SelfRunningState:
+                          rid: -2
+                        _SelfRunningStates:
+                          valuesNow_: []
+                      InteractionMachine:
+                        _enableSelf: 1
+                        _SelfRunningState:
+                          rid: -2
+                        _SelfRunningStates:
+                          valuesNow_: []
+                    RegisterPack: {fileID: 0}
+                    DefaultStateName: "\u9759\u6B62"
+                  SkillMachine:
+                    _enableSelf: 1
+                    _SelfRunningState:
+                      rid: -2
+                    _SelfRunningStates:
+                      valuesNow_: []
+                  BuffMachine:
+                    _enableSelf: 1
+                    _SelfRunningState:
+                      rid: -2
+                    _SelfRunningStates:
+                      valuesNow_: []
+                  InteractionMachine:
+                    _enableSelf: 1
+                    _SelfRunningState:
+                      rid: -2
+                    _SelfRunningStates:
+                      valuesNow_: []
+                RegisterPack: {fileID: 0}
+                DefaultStateName: "\u9759\u6B62"
+              SkillMachine:
+                _enableSelf: 1
+                _SelfRunningState:
+                  rid: -2
+                _SelfRunningStates:
+                  valuesNow_: []
+              BuffMachine:
+                _enableSelf: 1
+                _SelfRunningState:
+                  rid: -2
+                _SelfRunningStates:
+                  valuesNow_: []
+              InteractionMachine:
+                _enableSelf: 1
+                _SelfRunningState:
+                  rid: -2
+                _SelfRunningStates:
+                  valuesNow_: []
+            RegisterPack: {fileID: 0}
+            DefaultStateName: "\u9759\u6B62"
+          SkillMachine:
+            _enableSelf: 1
+            _SelfRunningState:
+              rid: -2
+            _SelfRunningStates:
+              valuesNow_: []
+          BuffMachine:
+            _enableSelf: 1
+            _SelfRunningState:
+              rid: -2
+            _SelfRunningStates:
+              valuesNow_: []
+          InteractionMachine:
+            _enableSelf: 1
+            _SelfRunningState:
+              rid: -2
+            _SelfRunningStates:
+              valuesNow_: []
+        RegisterPack: {fileID: 0}
+        DefaultStateName: "\u9759\u6B62"
+    - rid: 2405589128704426233
+      type: {class: AIDomainForEntity, ns: ES, asm: ES}
+      data:
+        readMe:
+          edit: 1
+          ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+          readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+          showColor: {r: 1, g: 1, b: 1, a: 1}
+        core: {fileID: 0}
+        Modules:
+          valuesNow_: []
+    - rid: 2405589129531228995
+      type: {class: BuffDomainForEntity, ns: ES, asm: ES}
+      data:
+        readMe:
+          edit: 1
+          ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+          readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+          showColor: {r: 1, g: 1, b: 1, a: 1}
+        core: {fileID: 0}
+        Modules:
+          valuesNow_: []
+        buffHosting:
+          buffRTLs:
+            valuesNow_: []
+            valuesToAdd: []
+            valuesToRemove: []
+          buffDomain:
+            readMe:
+              edit: 1
+              ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+              readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+              showColor: {r: 1, g: 1, b: 1, a: 1}
+            core: {fileID: 0}
+            Modules:
+              valuesNow_: []
+            buffHosting:
+              buffRTLs:
+                valuesNow_: []
+                valuesToAdd: []
+                valuesToRemove: []
+              buffDomain:
+                readMe:
+                  edit: 1
+                  ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+                  readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+                  showColor: {r: 1, g: 1, b: 1, a: 1}
+                core: {fileID: 0}
+                Modules:
+                  valuesNow_: []
+                buffHosting:
+                  buffRTLs:
+                    valuesNow_: []
+                    valuesToAdd: []
+                    valuesToRemove: []
+                  buffDomain:
+                    readMe:
+                      edit: 1
+                      ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+                      readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+                      showColor: {r: 1, g: 1, b: 1, a: 1}
+                    core: {fileID: 0}
+                    Modules:
+                      valuesNow_: []
+                    buffHosting:
+                      buffRTLs:
+                        valuesNow_: []
+                        valuesToAdd: []
+                        valuesToRemove: []
+                      buffDomain:
+                        readMe:
+                          edit: 1
+                          ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+                          readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+                          showColor: {r: 1, g: 1, b: 1, a: 1}
+                        core: {fileID: 0}
+                        Modules:
+                          valuesNow_: []
+                        buffHosting:
+                          buffRTLs:
+                            valuesNow_: []
+                            valuesToAdd: []
+                            valuesToRemove: []
+                          buffDomain:
+                            readMe:
+                              edit: 1
+                              ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+                              readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+                              showColor: {r: 1, g: 1, b: 1, a: 1}
+                            core: {fileID: 0}
+    - rid: 2405589145629753488
+      type: {class: NormalDomainForEntity, ns: ES, asm: ES}
+      data:
+        readMe:
+          edit: 1
+          ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+          readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+          showColor: {r: 1, g: 1, b: 1, a: 1}
+        core: {fileID: 0}
+        Modules:
+          valuesNow_: []
 --- !u!54 &3990971879090070970
 Rigidbody:
   m_ObjectHideFlags: 0
