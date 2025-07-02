@@ -86,14 +86,14 @@ namespace ES
             {
                 if (pageForSodataGroup != null)
                 {
-                    if (pageForSodataGroup.shouldRemake())
+                    if (pageForSodataGroup.ES_ShouldRemake())
                     {
                         ESWindow_RefreshWindow();
                     }
                 }
                 if (pageForChooseSceneArchitecture != null)
                 {
-                    pageForChooseSceneArchitecture.shouldRemake();
+                    pageForChooseSceneArchitecture.ES_ShouldRemake();
                 }
                 int now = GameCenterManager.Instance.ArchutectureIOC.IOC.Count;
                 if (now != rememberIOCCount)
@@ -154,7 +154,7 @@ namespace ES
             Part_AboutPage(tree);
 
             ES_LoadData();
-            pageForConfiguration.Setup();
+            pageForConfiguration.ES_Setup();
         }
 
         private void Part_BuildStartPage(OdinMenuTree tree)
@@ -344,9 +344,9 @@ namespace ES
                 /*
                   ESTool_ScriptMaker.Instance.CreateScript(文件夹路径,Class名,继承/实现,特性,命名空间=ES);
                  */
-                KeyValueMatchingUtility.ScriptMaker.CreateScript(toInfo, infoName, Attribute: $"[ESDisplayNameKeyToType(\"数据单元\", \"{ChineseDisplayName}数据单元\")]", parent: ": SoDataInfo");
-                KeyValueMatchingUtility.ScriptMaker.CreateScript(toGroup, EnglishCodeName + "DataGroup", Attribute: $"[ESDisplayNameKeyToType(\"数据组\", \"{ChineseDisplayName}数据组\")]", parent: $": SoDataGroup<{infoName}>");
-                KeyValueMatchingUtility.ScriptMaker.CreateScript(toPack, EnglishCodeName + "DataPack", Attribute: $"[ESDisplayNameKeyToType(\"数据包\", \"{ChineseDisplayName}数据包\")]", parent: $": SoDataPack<{infoName}>");
+                KeyValueMatchingUtility.ScriptMaker.CreateScriptEasy(toInfo, infoName, Attribute: $"[ESDisplayNameKeyToType(\"数据单元\", \"{ChineseDisplayName}数据单元\")]", parent: ": SoDataInfo");
+                KeyValueMatchingUtility.ScriptMaker.CreateScriptEasy(toGroup, EnglishCodeName + "DataGroup", Attribute: $"[ESDisplayNameKeyToType(\"数据组\", \"{ChineseDisplayName}数据组\")]", parent: $": SoDataGroup<{infoName}>");
+                KeyValueMatchingUtility.ScriptMaker.CreateScriptEasy(toPack, EnglishCodeName + "DataPack", Attribute: $"[ESDisplayNameKeyToType(\"数据包\", \"{ChineseDisplayName}数据包\")]", parent: $": SoDataPack<{infoName}>");
                 AssetDatabase.Refresh();
             }
             else
@@ -507,9 +507,9 @@ namespace ES
         [LabelText("RoomGenerate房间生成数据包"), TabGroup("总", "新建配置"), InfoBox("装填房间生成数据包", InfoMessageType.Warning, Icon = SdfIconType.Box), AssetSelector, GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_03")]
         public RoomGenerateDataPack PackForRoomGenerate;
 
-        public override void Setup()
+        public override void ES_Setup()
         {
-            base.Setup();
+            base.ES_Setup();
             if (configuration != null) cache = configuration;
         }
     }
@@ -645,13 +645,13 @@ namespace ES
             createName_ = "新建" + createPackType_;
         }
 
-        public override bool shouldRemake()
+        public override bool ES_ShouldRemake()
         {
             if (Selection.activeObject is ISoDataPack group2)
             {
                 return true;
             }
-            return base.shouldRemake();
+            return base.ES_ShouldRemake();
         }
         private bool TypeSelectorSettingForDataPack(Type type)
         {
@@ -750,7 +750,7 @@ namespace ES
         {
 
         }
-        public override bool shouldRemake()
+        public override bool ES_ShouldRemake()
         {
             return false;
         }
@@ -876,13 +876,13 @@ namespace ES
 
         }
 
-        public override bool shouldRemake()
+        public override bool ES_ShouldRemake()
         {
             if (Selection.activeObject is ISoDataGroup group2)
             {
                 return true;
             }
-            return base.shouldRemake();
+            return base.ES_ShouldRemake();
         }
         private bool TypeSelectorSettingForDataGroup(Type type)
         {
@@ -1056,7 +1056,7 @@ namespace ES
                 }
             }*/
         }
-        public override bool shouldRemake()
+        public override bool ES_ShouldRemake()
         {
             if (Selection.activeObject is ISoDataGroup group2)
             {
@@ -1066,7 +1066,7 @@ namespace ES
                 }
             }
             if (group == null) return true;
-            return base.shouldRemake();
+            return base.ES_ShouldRemake();
         }
     }
     //子层 数据单元配置页面
@@ -1153,11 +1153,11 @@ namespace ES
         [VerticalGroup("总组/数据")]
         [LabelText("运行时-单个原型", SdfIconType.Cpu), SerializeReference]
         public IArchitecture aArchitecture;
-        public override bool shouldRemake()
+        public override bool ES_ShouldRemake()
         {
             if (aArchitecture != null || Selection.activeObject == linkCompo) return false;
             Refresh();
-            return base.shouldRemake();
+            return base.ES_ShouldRemake();
         }
         [HorizontalGroup("总组", width: 100)]
         [VerticalGroup("总组/按钮")]
@@ -1236,15 +1236,15 @@ namespace ES
     [Serializable]
     public abstract class ESWindowPageBase
     {
-        public virtual void Setup()
+        public virtual void ES_Setup()
         {
 
         }
-        public virtual bool shouldRemake()
+        public virtual bool ES_ShouldRemake()
         {
             return false;
         }
-        public virtual ESWindowPageBase ReFresh()
+        public virtual ESWindowPageBase ES_ReFresh()
         {
             return this;
         }

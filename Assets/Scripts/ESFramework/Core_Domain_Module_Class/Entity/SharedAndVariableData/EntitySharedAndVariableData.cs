@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 
@@ -10,6 +11,7 @@ namespace ES {
     [Serializable,TypeRegistryItem("实体共享数据")]
     public class ESEntitySharedData : ISharedData
     {
+        
         [LabelText("怪物名称")] public string enemyName = "";
         [LabelText("特性表")] public List<string> characters = new List<string>();
         [LabelText("绑定怪物的预制件"), Required] public GameObject bindingEnemyPrefab;

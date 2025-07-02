@@ -1,4 +1,6 @@
 #if UNITY_EDITOR
+using UnityEditor;
+#endif
 using ES;
 using ES.EvPointer;
 using Sirenix.OdinInspector;
@@ -8,8 +10,7 @@ using Sirenix.Utilities;
 
 using System.Linq;
 using System.Runtime.CompilerServices;
-using UnityEditor;
-#endif
+
 using UnityEngine;
 using System.Collections;
 using System;
@@ -19,12 +20,14 @@ using GameKit.Dependencies.Utilities;
 
 namespace ES
 {
+
+    [TypeRegistryItem("纯编辑器控制器")]
     //必须纯编辑器环境才能用
     public class ESEditorOnlyPartMaster : SingletonAsSeriMono<ESEditorOnlyPartMaster>
     {
 #if UNITY_EDITOR
         #region 层级图标支持代码
-        [LabelText("图标管理"),NonSerialized,OdinSerialize]
+        [LabelText("图标管理"), NonSerialized, OdinSerialize]
         public ESIconControl ICON = new ESIconControl();
         [Serializable]
         public class ESIconControl
@@ -221,7 +224,7 @@ namespace ES
             public bool EnableSoDataGroupUp = true;
             [LabelText("带(原名)")]
             public bool WithOriginal = true;
-            
+
             public string GetNewName(string typeName)
             {
                 if (HandSelfRename.ContainsKey(typeName)) return HandSelfRename[typeName] + ((WithOriginal) ? $"({typeName})" : "");
@@ -257,10 +260,12 @@ namespace ES
             [LabelText("初始偏移")] public float startTextOffset_ = -50;
             [LabelText("默认宽度")] public float textwidth_ = 50;
             [LabelText("根据名字")] public List<ProjectShowHandle> nameToHandle = new List<ProjectShowHandle>();
+            [LabelText("网络包标识"), SerializeReference] public ContentGetter contentForNet;
+            [LabelText("本地包标识"), SerializeReference] public ContentGetter contentForLocal;
             [Serializable]
             public class ProjectShowHandle
             {
-                [LabelText("原名字"),InlineButton("seletion", "选中的资产名")] public string oldName = "ES";
+                [LabelText("原名字"), InlineButton("seletion", "选中的资产名")] public string oldName = "ES";
                 [LabelText("图标"), SerializeReference] public ContentGetter content = new ContentGetter_Label() { content = "名字" };
                 private void seletion()
                 {

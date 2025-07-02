@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,11 +47,21 @@ namespace ES {
         }
 
 
-        public static bool EX_HasChinese(this string input)
+        public static bool EX_ContainsChineseCharacterOnly(this string input)
         {
             return Regex.IsMatch(input, @"[\u4e00-\u9fa5]");
         }
+        public static bool EX_ContainChineseCharacterOrChineseSymbol(this string input)
+        {
+            return Regex.IsMatch(input, @"[\u4e00-\u9fa5]")||Regex.IsMatch(input, @"[。？！，、；：“”‘’（）《》——……·【】·^ ∧ ¶ =  # / ∞ △ ※ ●＋ － × ÷ ± ≌ ∽ ≤ ≥ ≠ ≡ ∫ ∮ ∑ ∏]");
+        }
+        public static bool EX_ContainChineseCharacterOrNormalSymbol(this string input)
+        {
+            return Regex.IsMatch(input, @"[\u4e00-\u9fa5]") 
+                || Regex.IsMatch(input, @"[。？！，、；：“”‘’（）《》——……·【】·^ ∧ ¶ =  # / ∞ △ ※ ●＋ － × ÷ ± ≌ ∽ ≤ ≥ ≠ ≡ ∫ ∮ ∑ ∏]")
+                || Regex.IsMatch(input, @"[. , ? ! ' "" : ; ... — –  ( )   { } + − × ÷ = ≠ ≈ ± ≤ ≥ % ° °C °F π ∫ ∑ ∏ √ ∞ / \ | # & * ~ @ $ £ € ¥ ¢ ^]");
 
+        }
 
         public static bool EX_AsHasSpace(this string input)
         {

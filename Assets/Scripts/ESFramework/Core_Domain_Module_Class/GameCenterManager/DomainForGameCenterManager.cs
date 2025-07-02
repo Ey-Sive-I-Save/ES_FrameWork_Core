@@ -24,6 +24,7 @@ using UnityEngine.UI;
 namespace ES
 {
     public class DomainForGameCenterManager : Domain<GameCenterManager, ModuleForGamecenterManager> {
+
     }
 
     #region 基本切片模范
@@ -94,7 +95,7 @@ namespace ES
         private IEnumerator DownLoad(string url)
         {
             
-            var path = Path.Combine(Application.persistentDataPath,"newAB_ab");
+            var path =Application.persistentDataPath+"/"+"newAB_ab";
             using (var unityWebRequest = UnityWebRequestAssetBundle.GetAssetBundle(url)){
                 unityWebRequest.downloadHandler = new DownloadHandlerFile(path);
                unityWebRequest.SendWebRequest();

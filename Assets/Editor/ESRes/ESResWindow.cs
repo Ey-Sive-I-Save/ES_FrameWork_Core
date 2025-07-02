@@ -1,13 +1,28 @@
+using DG.Tweening.Plugins.Core.PathCore;
 using ES;
+using GameKit.Dependencies.Utilities;
 using GluonGui.WorkspaceWindow.Views.WorkspaceExplorer;
+using NUnit.Framework.Interfaces;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Security.Policy;
+using System.Text;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.Rendering;
+using static Codice.Client.Commands.WkTree.WorkspaceTreeNode;
+using static Codice.CM.Common.Serialization.PacketFileReader;
+using static ES.ESResMaster;
+using static ES.SkillPointDataInfo.SkillPointLevelAllTransfomor.SkillPointSprites;
+using static UnityEngine.GraphicsBuffer;
+using Path = System.IO.Path;
 
 namespace ES
 {
@@ -23,7 +38,7 @@ namespace ES
         }
         #region 数据滞留
         public PartPageClass_AssetBundle Page_Assetbundle;
-        
+
 
         #endregion
         [MenuItem("Tools/ES工具/ES资源管理窗口")]
@@ -33,15 +48,15 @@ namespace ES
                 OpenWindow();
             else Debug.LogError("确保场景中有EditorMaster");
         }
-        
-     
+
+
         protected override void ES_BuildMenuTree(OdinMenuTree tree)
         {
             PartPage_AssetBundle(tree);
         }
         void PartPage_AssetBundle(OdinMenuTree tree)
         {
-            tree.Add("AB包管理", Page_Assetbundle ??= new PartPageClass_AssetBundle());
+            tree.Add("AB包管理", (Page_Assetbundle ??= new PartPageClass_AssetBundle()).ES_ReFresh());
         }
         #region 持久化
         public override void ES_LoadData()
@@ -54,75 +69,81 @@ namespace ES
             base.ES_SaveData();
         }
         #endregion
+
         #region 可序列化的组分
         //为AssetBundle提供的页面
         [Serializable]
         public class PartPageClass_AssetBundle : ESWindowPageBase
         {
-            [TitleGroup("全局设置",alignment:TitleAlignments.Centered),PropertyOrder(-3)]
-            [LabelText("更改AB打包模式"),ShowInInspector]public ESResMaster.ABPackType packType { get => ESResMaster.Instance.abPackType; set => ESResMaster.Instance.abPackType = value; }
-            [InfoBox("",Message = "@GetCodeInfo()",InfoMessageType = InfoMessageType.Warning)]
-            [LabelText("打AB包时，自动辅助代码生成格式"), PropertyOrder(-3), ShowInInspector,InlineButton("Handle_CodeGenAssetConstName", "手动生成常量名代码")] public ESResMaster.ABForAutoCodeGen codeType { get => ESResMaster.Instance.abFoeAutoCodeGen; set => ESResMaster.Instance.abFoeAutoCodeGen = value; }
-            string GetCodeInfo()
+            //刷新
+            public override ESWindowPageBase ES_ReFresh()
             {
-                switch (codeType)
-                {
-                    case ESResMaster.ABForAutoCodeGen.NoneCode: return "不生成代码";
-                    case ESResMaster.ABForAutoCodeGen.CodeAsOriginal: return "生成代码(完全按源文件名)";
-                    case ESResMaster.ABForAutoCodeGen.CodeAsLower: return "生成代码(源文件名转小写)";
-                    case ESResMaster.ABForAutoCodeGen.CodeAsUpper: return "生成代码(源文件名转大写)";
-                    default:return "不生成代码";
-                }
+                RefreshBundleList();
+                Handle_RefresgHotUpdateData();
+                apply_FromTarget();
+                return base.ES_ReFresh();
             }
-            
-            private void Handle_CodeGenAssetConstName()
-            {
 
-            }
-            [TitleGroup("使用功能", Alignment = TitleAlignments.Centered),PropertyOrder(-2)]
-            [FolderPath, LabelText("生成路径"), ShowInInspector,ReadOnly]
-            public string genarateFolder { get => ESResMaster.Instance.genarateFolder; set => ESResMaster.Instance.genarateFolder = value; }
-            [TitleGroup("使用功能")]
-            public RuntimePlatform applyPlatform = Application.platform;
-            [ButtonGroup("使用功能/AB按钮")]
-            [Button("生成AB包")]
 
+            #region  全局设置
+
+
+            //生成--按钮
+            [TabGroup("全局设置", TextColor = "@KeyValueMatchingUtility.ColorSelector.Color_03"), PropertyOrder(-4), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForApply")]
+            [Button("生成AB包 (需要额外确定)"), PropertySpace(15)]
             private void Handle_BuildAB()
             {
+
                 if (AssetDatabase.IsValidFolder(genarateFolder))
                 {
-                    if(applyPlatform== RuntimePlatform.WindowsPlayer||applyPlatform== RuntimePlatform.WindowsEditor)
-                    {
+                    EditorGUIUtility.PingObject(AssetDatabase.LoadAssetAtPath(genarateFolder, typeof(UnityEngine.Object)));
 
-                        BuildAB(genarateFolder, applyPlatform.ToString(), assetBundleOptions: BuildAssetBundleOptions.ForceRebuildAssetBundle, targetPlatform: BuildTarget.StandaloneWindows);
-                        BuildAB(genarateFolder, RuntimePlatform.WindowsEditor.ToString(), assetBundleOptions: BuildAssetBundleOptions.ForceRebuildAssetBundle, targetPlatform: BuildTarget.StandaloneWindows);
-                    }
-                    else if(applyPlatform == RuntimePlatform.Android)
-                    {
-                        BuildAB(genarateFolder , applyPlatform.ToString(), assetBundleOptions: BuildAssetBundleOptions.ForceRebuildAssetBundle, targetPlatform: BuildTarget.Android);
-                    }else if(applyPlatform== RuntimePlatform.IPhonePlayer)
-                    {
-                        BuildAB(genarateFolder,applyPlatform.ToString(), assetBundleOptions: BuildAssetBundleOptions.ForceRebuildAssetBundle, targetPlatform: BuildTarget.iOS);
-                    }
+                    ESEditorHandle.AddSimpleHanldeTask(
+                        () =>
+                        {
+                            if (EditorUtility.DisplayDialog("开始生成AB包", "准备生成AB，这将会覆盖原来的资源，请确定路径和平台正确", "知道了", "取消"))
+                            {
+
+                            }
+                            else
+                            {
+                                return;
+                            }
+                            var options = BuildAssetBundleOptions.ForceRebuildAssetBundle | BuildAssetBundleOptions.AppendHashToAssetBundleName;
+                            if (PlatformToApply == RuntimePlatform.WindowsPlayer || PlatformToApply == RuntimePlatform.WindowsEditor)
+                            {
+
+                                BuildAB(genarateFolder, RuntimePlatform.WindowsPlayer.ToString(),
+                                    assetBundleOptions: options,
+                                    targetPlatform: BuildTarget.StandaloneWindows);
+                                BuildAB(genarateFolder, RuntimePlatform.WindowsEditor.ToString(),
+                                    assetBundleOptions: options,
+                                    targetPlatform: BuildTarget.StandaloneWindows);
+                            }
+                            else if (PlatformToApply == RuntimePlatform.Android)
+                            {
+                                BuildAB(genarateFolder, PlatformToApply.ToString(),
+                                    assetBundleOptions: options,
+                                    targetPlatform: BuildTarget.Android);
+                            }
+                            else if (PlatformToApply == RuntimePlatform.IPhonePlayer)
+                            {
+                                BuildAB(genarateFolder, PlatformToApply.ToString(),
+                                    assetBundleOptions: options,
+                                    targetPlatform: BuildTarget.iOS);
+                            }
+                        }, 20);
                 }
                 else
                 {
                     EditorUtility.DisplayDialog("无效的文件夹路径", "这个文件夹路径是不合法的，请确定正确的文件夹再重试", "知道了");
                 }
-                
-            }
-            private void BuildAB(string parent,string theFolder, BuildAssetBundleOptions assetBundleOptions, BuildTarget targetPlatform)
-            {
-                string path = parent + "/" + theFolder;
-                if (!AssetDatabase.IsValidFolder(path))
-                {
-                    AssetDatabase.CreateFolder(parent,theFolder);
-                }
-                BuildPipeline.BuildAssetBundles(path, assetBundleOptions,targetPlatform);
-            }
-            [ButtonGroup("使用功能/AB按钮")]
-            [Button("清空AB包(需要额外确定)")]
 
+            }
+
+            //清空AB包 按钮
+            [TabGroup("全局设置"), PropertyOrder(-4), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForCaster")]
+            [Button("清空AB包 (需要额外确定)", DrawResult = false), PropertySpace(15)]
             private bool Handle_ClearAB()
             {
                 if (AssetDatabase.IsValidFolder(genarateFolder))
@@ -130,11 +151,11 @@ namespace ES
                     bool b = EditorUtility.DisplayDialog("是否清空AB包", "这会删除全部的已生成AB包(也包括目标文件夹下的全部内容)", "我确定", "放弃");
                     if (b)
                     {
-                        var guids= AssetDatabase.FindAssets("",new string[]{ genarateFolder });
-                        foreach(var i in guids)
+                        var guids = AssetDatabase.FindAssets("", new string[] { genarateFolder });
+                        foreach (var i in guids)
                         {
-                            
-                            string path= AssetDatabase.GUIDToAssetPath(i);
+
+                            string path = AssetDatabase.GUIDToAssetPath(i);
                             AssetDatabase.DeleteAsset(path);
                             AssetDatabase.Refresh();
                         }
@@ -142,7 +163,7 @@ namespace ES
                     }
                     else
                     {
-                       
+
                     }
                 }
                 else
@@ -152,69 +173,685 @@ namespace ES
                 return false;
             }
 
-            [TitleGroup("收集AB包标记数据",Alignment = TitleAlignments.Centered),ReadOnly,ListDrawerSettings(DefaultExpandedState =true)]
-            public List<string> AllPath = new List<string>();
-            [TitleGroup("收集AB包标记数据")]
-            [ButtonGroup("收集AB包标记数据/AB标记")]
-            [Button("刷新AB标记")]
-            public void ReFreshBundleList()
+
+            //更改AB打包模式
+            [LabelText("更改AB打包模式"), TabGroup("全局设置"), PropertyOrder(-3), PropertySpace(15)]
+            [ShowInInspector]
+            public ESResMaster.ABPackType packType { get => ESResMaster.Instance.abPackType; set { ESResMaster.Instance.abPackType = value; EditorUtility.SetDirty(ESResMaster.Instance); } }
+
+            //打AB包时，自动辅助代码生成格式
+            [LabelText("打AB包时自动辅助代码生成格式"), TabGroup("全局设置"), InfoBox("", Message = "@GetCodeInfo()", InfoMessageType = InfoMessageType.Warning)]
+            [PropertyOrder(-3), ShowInInspector, InlineButton("Handle_CodeGenAssetConstName", "手动生成常量名代码(默认不改大小写)")]
+            public ESResMaster.ABForAutoCodeGen codeType
+            {
+                get => ESResMaster.Instance.abFoeAutoCodeGen;
+                set { ESResMaster.Instance.abFoeAutoCodeGen = value; EditorUtility.SetDirty(ESResMaster.Instance); }
+            }
+            string GetCodeInfo()
+            {
+                switch (codeType)
+                {
+                    case ESResMaster.ABForAutoCodeGen.NoneCode: return "不生成代码";
+                    case ESResMaster.ABForAutoCodeGen.CodeAsOriginal: return "生成代码(完全按源文件名)";
+                    case ESResMaster.ABForAutoCodeGen.CodeAsLower: return "生成代码(源文件名转小写)";
+                    case ESResMaster.ABForAutoCodeGen.CodeAsUpper: return "生成代码(源文件名转大写)";
+                    default: return "不生成代码";
+                }
+            }
+
+            //↑生成代码Inline Button
+            private void Handle_CodeGenAssetConstName()
+            {
+                StringBuilder theContent = new StringBuilder();
+                //这个只是PreName的AB包
+                var allAssetBundles = AssetDatabase.GetAllAssetBundleNames();
+                string AllABDicContent = "";
+                string AllHashDicContent = "";
+
+                // 加载总AssetBundle（假设位于StreamingAssets）
+                #region 真实AB包
+                AssetBundle.UnloadAllAssetBundles(unloadAllObjects: false);
+                AssetBundle mainBundle = AssetBundle.LoadFromFile(Path.Combine(genarateFolder, PlatformToApply.ToString(), PlatformToApply.ToString()));
+                AssetBundleManifest manifest = mainBundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
+                string[] AllABWithHash = manifest.GetAllAssetBundles();
+
+                #endregion
+                foreach (var ab in allAssetBundleNames)
+                {
+
+                    string SingleABField = "";
+                    string showAB = ab;
+                    foreach (var withHash in AllABWithHash)
+                    {
+                        string pre = ESResMaster.Instance.GetPreNameFromCompleteNameWithHash(withHash);
+                        Debug.Log(pre + "*" + ab + "&" + (pre == ab) + "/" + withHash + "/" + ESResMaster.Instance.GetHashFromCompleteNameWithHash(withHash));
+                        if (pre == ab)
+                        {
+                            AllHashDicContent += "{\"" + ab + "\",\"" + withHash + "\"},\n";
+                            SingleABField += KeyValueMatchingUtility.ScriptMaker.CreateFieldContent
+                      ("string", "PreName", "public static", "=" + $"\"{ab}\"");
+
+                            SingleABField += KeyValueMatchingUtility.ScriptMaker.CreateFieldContent
+                               ("string", "WithHash", "public static", "=" + $"\"{withHash}\"");
+
+                            SingleABField += KeyValueMatchingUtility.ScriptMaker.CreateFieldContent
+                              ("string", "Hash", "public static", "=" + $"\"{ESResMaster.Instance.GetHashFromCompleteNameWithHash(withHash)}\"");
+                        }
+                    }
+                    //包名锁死为小写
+                    /*
+                     * if (codeType == ESResMaster.ABForAutoCodeGen.CodeAsUpper) showAB = showAB.ToUpper();
+                    else if (codeType == ESResMaster.ABForAutoCodeGen.CodeAsLower) showAB = showAB.ToLower();*/
+
+                    AllABDicContent += "{\"" + showAB + "\"," + showAB + ".AllPaths},\n";
+
+
+
+                    List<string> allPathsNoRepeatOriginal = new List<string>(allAssetBundleNames.Length);
+                    List<string> allPathsNoRepeatToUse = new List<string>(allAssetBundleNames.Length);
+                    List<string> allValueNoRepeat = new List<string>(allAssetBundleNames.Length);
+                    string[] allpath_ = AssetDatabase.GetAssetPathsFromAssetBundle(ab);
+
+
+                    foreach (var field in allpath_)
+                    {
+                        //为空    不存在   是文件夹  都忽略
+                        if (string.IsNullOrEmpty(field) || (!File.Exists(field) || AssetDatabase.IsValidFolder(field))) continue;
+                        DirectoryInfo dir = new DirectoryInfo(field);
+                        string origin = dir.Name.Replace('.', '_');
+                        string tryUse = origin.ToString();
+                        int repeat = 1;
+                        while (allPathsNoRepeatOriginal.Contains(tryUse))
+                        {
+                            tryUse = origin + "_" + repeat;
+                            repeat++;
+                        }
+                        string key = $"{KeyValueMatchingUtility.ScriptMaker.HandleString_RemoveExtension(KeyValueMatchingUtility.ScriptMaker.HandleString_ToValidName(tryUse))}";
+                        if (codeType == ESResMaster.ABForAutoCodeGen.CodeAsUpper) key = key.ToUpper();
+                        else if (codeType == ESResMaster.ABForAutoCodeGen.CodeAsLower) key = key.ToLower();
+                        string value = $"\"{KeyValueMatchingUtility.ScriptMaker.HandleString_RemoveExtension(dir.Name)}\"";
+                        allPathsNoRepeatOriginal.Add(tryUse);
+                        allPathsNoRepeatToUse.Add(key);
+                        allValueNoRepeat.Add(value);
+
+
+
+                        string aField = KeyValueMatchingUtility.ScriptMaker.CreateFieldContent
+                            ("string", key,
+                            modifier: "public static", valueDefine: $"={value}");
+                        SingleABField += aField;
+                    }
+                    string AllPathsKeyValueContent = "";
+                    for (int i = 0; i < allPathsNoRepeatToUse.Count; i++)
+                    {
+                        AllPathsKeyValueContent += "{\"" + allPathsNoRepeatToUse[i] + "\" ," + allValueNoRepeat[i] + "},\n";
+                        if (i % 4 == 0)
+                        {
+                            AllPathsKeyValueContent += '\n';
+                        }
+                    }
+                    string AllPathsListString = KeyValueMatchingUtility.ScriptMaker.CreateFieldContent
+                    ("Dictionary<string, string> ", "AllPaths",
+                            modifier: "public static", valueDefine: $"\n=new Dictionary<string, string> {{ {AllPathsKeyValueContent} }}");
+
+
+                    string ABClass = KeyValueMatchingUtility.ScriptMaker.CreateClassContentByString(showAB, "static", insideClass: SingleABField + AllPathsListString, parent: "");
+                    theContent.Append(ABClass);
+                }
+
+                string hashTest = KeyValueMatchingUtility.ScriptMaker.CreateNotes(AllHashDicContent);
+
+                string ABAssetDic = KeyValueMatchingUtility.ScriptMaker.CreateFieldContent("Dictionary<string, Dictionary<string,string>>",
+                    "AllPathsDic", "public static", "\n=new Dictionary<string, Dictionary<string, string>>()\n{" + AllABDicContent + "}");
+
+                string ABHashDic = KeyValueMatchingUtility.ScriptMaker.CreateFieldContent("Dictionary<string,string>",
+                    "AllABHashDic", "public static", "\n=new Dictionary<string, string>()\n{" + AllHashDicContent + "}");
+
+
+                KeyValueMatchingUtility.ScriptMaker.CreateScriptNormal
+                    (genarateCodeFolder, "ESAssetBundlePath", "static partial",
+                    insideClass: hashTest + ABAssetDic + ABHashDic + theContent.ToString(), parent: "", using_: "using System.Collections.Generic;");
+            }
+
+            //生成AB包路径
+            [LabelText("生成<AB包>路径"), TabGroup("全局设置"), PropertyOrder(-2)]
+            [FolderPath, ShowInInspector]
+            public string genarateFolder { get => ESResMaster.Instance.genarateFolder; set { ESResMaster.Instance.genarateFolder = value; EditorUtility.SetDirty(ESResMaster.Instance); } }
+
+            //生成代码路径
+            [LabelText("生成<代码>路径"), TabGroup("全局设置"), PropertyOrder(-2)]
+            [FolderPath, ShowInInspector]
+            public string genarateCodeFolder { get => ESResMaster.Instance.genarateCodeFolder_; set { ESResMaster.Instance.genarateCodeFolder_ = value; EditorUtility.SetDirty(ESResMaster.Instance); } }
+
+            //应用平台
+            [LabelText("应用平台"), TabGroup("全局设置"), ShowInInspector]
+            public RuntimePlatform PlatformToApply
+            {
+                get => ESResMaster.Instance.applyPlatform; set
+                {
+                    ESResMaster.Instance.applyPlatform = value;
+                    EditorUtility.SetDirty(ESResMaster.Instance);
+                }
+            }
+
+
+            //生成实际逻辑
+            private void BuildAB(string parent, string theFolder, BuildAssetBundleOptions assetBundleOptions, BuildTarget targetPlatform)
+            {
+                string path = parent + "/" + theFolder;
+                if (!AssetDatabase.IsValidFolder(path))
+                {
+                    AssetDatabase.CreateFolder(parent, theFolder);
+                }
+                BuildPipeline.BuildAssetBundles(path, assetBundleOptions, targetPlatform);
+            }
+
+            #endregion
+
+
+            #region 标记收集和查询
+
+
+            //按钮-刷新显示AB标记
+            [Button("刷新显示AB标记"), PropertySpace(15)]
+            [TabGroup("标记收集与查询", TextColor = "@KeyValueMatchingUtility.ColorSelector.ColorForCatcher"), PropertyOrder(-4), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForApply")]
+            public void RefreshBundleList()
             {
                 AllPath = new List<string>();
-                bundleNames = AssetDatabase.GetAllAssetBundleNames();
-                foreach (var i in bundleNames)
+                allAssetBundleNames = AssetDatabase.GetAllAssetBundleNames();
+                foreach (var i in allAssetBundleNames)
                 {
                     string[] path_ = AssetDatabase.GetAssetPathsFromAssetBundle(i);
                     AllPath.AddRange(path_);
-
                 }
-
             }
-            [ButtonGroup("收集AB包标记数据/AB标记")]
-            [Button("清除AB标记(需要额外确认)")]
+
+            //按钮-清除AB标记
+            [Button("清除AB标记(需要额外确认)"), PropertySpace(15)]
+            [TabGroup("标记收集与查询"), PropertyOrder(-1), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForCaster")]
             public void ClearBundleList()
             {
                 bool b = EditorUtility.DisplayDialog("是否清空AB包标记", "这会移除全部的AB包标记，意味着要重新标记", "我确定", "放弃");
                 if (b)
                 {
-                    bundleNames = AssetDatabase.GetAllAssetBundleNames();
-                    foreach (var i in bundleNames)
+
+                    string[] assetPaths = AssetDatabase.GetAllAssetPaths();
+                    Debug.Log("" + assetPaths);
+                    foreach (string path in assetPaths)
                     {
-                        AssetDatabase.RemoveAssetBundleName(i, forceRemove: true);
+                        // 跳过文件夹和未导入资产
+                        if (!AssetDatabase.IsMainAssetAtPathLoaded(path) || path.EndsWith(".cs"))
+                            continue;
+                        // 获取资产导入器
+                        AssetImporter importer = AssetImporter.GetAtPath(path);
+                        if (importer == null)
+                            continue;
+                        // 清除标记
+                        importer.assetBundleName = "XXXX";
+                        importer.assetBundleName = string.Empty; // 清除名称
+                        importer.assetBundleVariant ??= string.Empty;
+                        AssetDatabase.Refresh();
+                        AssetDatabase.SaveAssets();
+
+                        /*importer.assetBundleVariant=(string.Empty); // 清除变体后缀*/
+                        allAssetBundleNames = AssetDatabase.GetAllAssetBundleNames();
+                        foreach (var i in allAssetBundleNames)
+                        {
+                            AssetDatabase.RemoveAssetBundleName(i, forceRemove: true);
+                        }
+                        AssetDatabase.RemoveUnusedAssetBundleNames();
                     }
                 }
                 else
                 {
 
                 }
-               
+                RefreshBundleList();
+
             }
 
 
+            //缓存AB包名
+            private string[] allAssetBundleNames;
 
-            private string[] bundleNames;
-            [TitleGroup("AB包查询与标记", alignment: TitleAlignments.Centered)]
-            [ValueDropdown("bundleNames", AppendNextDrawer = true), LabelText("AB包名(可用于标记)"),ShowInInspector]
-            public string selectBundleName { get => ESResMaster.Instance.ABName; set => ESResMaster.Instance.ABName = value; }
-            [TitleGroup("AB包查询与标记")]
+            //警告信息
+            [TabGroup("标记收集与查询")]
+            [ShowIf("warnIfChineseOrSymbol"), ShowInInspector, HideLabel, DisplayAsString(fontSize: 22, Alignment = TextAlignment.Center, EnableRichText = true), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_03")]
+            private string warn_ = "！不要使用包含<b><withHash>中文或者违规符号</withHash></b> ,  \"_\"可用 包名！！！";
+
+            //警告信息
+            [TabGroup("标记收集与查询")]
+            [ShowIf("warnIfPoint"), ShowInInspector, HideLabel, DisplayAsString(fontSize: 18, Alignment = TextAlignment.Center, EnableRichText = true), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_02")]
+            private string warn2 = "！包名所有的<b><withHash>\".\"</withHash></b> 会被替换为 <b><withHash>\"_\"</withHash></b> ！";
+
+            //选中查询AB包名
+            [LabelText("", Text = "@showAssetBundleName()"), OnValueChanged("PingABAsset")]
+            [TabGroup("标记收集与查询"), PropertySpace(15)]
+            [ValueDropdown("allAssetBundleNames", AppendNextDrawer = true), ShowInInspector, GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForCaster")]
+            public string selectBundleName
+            {
+                get => ESResMaster.Instance.ABName; set
+                {
+                    ESResMaster.Instance.ABName = value;
+                    EditorUtility.SetDirty(ESResMaster.Instance);
+                }
+            }
+
+            //标记模式
             [LabelText("标记模式"), ShowInInspector]
-            public ESResMaster.ABMaskType maskType { get => ESResMaster.Instance.abMaskType; set => ESResMaster.Instance.abMaskType = value; }
+            [TabGroup("标记收集与查询")]
+            [InfoBox("", Message = "@desMaskType()"), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForCatcher")]
+            public ESResMaster.ABMaskType maskType { get => ESResMaster.Instance.abMaskType; set { ESResMaster.Instance.abMaskType = value; EditorUtility.SetDirty(ESResMaster.Instance); } }
 
-            [TitleGroup("AB包查询与标记")]
-            [LabelText("AB包对应的资源"),ListDrawerSettings(DefaultExpandedState=true),ReadOnly,ShowInInspector]
-            public string[] ShowAssets=>AssetDatabase.GetAssetPathsFromAssetBundle(selectBundleName);
+            [LabelText("该AB包名对应的资源")]
+            [TabGroup("标记收集与查询")]
+            [ListDrawerSettings(DefaultExpandedState = true/*, OnEndListElementGUI = "OnEndDrawItemTypes"*/), ReadOnly, ShowInInspector]
+            public string[] ShowAssets => AssetDatabase.GetAssetPathsFromAssetBundle(selectBundleName);
 
-          
+            /*#region 查询类型列表扩展
+
+
+            private void OnEndDrawItemTypes(int index)
+            {
+                if (Event.current.type == EventType.MouseDown && Event.current.button == 1)
+                {
+                    // 检测鼠标是否在当前项范围内
+                    Rect itemRect = GUILayoutUtility.GetLastRect();
+                    if (itemRect.Contains(Event.current.mousePosition))
+                    {
+                        ShowContextMenuTypes(index); // 显示右键菜单
+                        Event.current.Use();    // 阻止事件冒泡
+                    }
+                }
+            }
+
+            private void ShowContextMenuTypes(int index)
+            {
+                GenericMenu menu = new GenericMenu();
+                menu.AddItem(new GUIContent("查询位置"), false, () => { 
+                    string path = ShowAssets[index];
+                    EditorGUIUtility.PingObject(AssetDatabase.LoadAssetAtPath(path,typeof(UnityEngine.Object)));
+                });
+                menu.AddItem(new GUIContent("从AB包移除"), false, () => {
+                    string path = ShowAssets[index];
+                    AssetImporter importer = AssetImporter.GetAtPath(path);
+                    if (importer == null) return;
+                    // 清除标记
+                    importer.assetBundleName = "XXXX";
+                    importer.assetBundleName = string.Empty; // 清除名称
+                    importer.assetBundleVariant ??= string.Empty;
+                    AssetDatabase.Refresh();
+                    AssetDatabase.SaveAssets();
+                    RefreshBundleList();
+                });
+                menu.ShowAsContext();
+            }
+            #endregion*/
+
+            //补充描述信息--标记模式
+            private string desMaskType()
+            {
+                if (maskType == ESResMaster.ABMaskType.AsOrinal) return "!作为资源时，会标记自身为单独的AB包，作为文件夹时，标记该文件夹下所有资源为同一个AB包";
+                else if (maskType == ESResMaster.ABMaskType.AsFolder) return "作为资源时，会收纳到自身所在文件夹，作为文件夹时，标记该文件夹下所有资源为同一个AB包";
+                else /*if (maskType == ESResMaster.ABMaskType.SelfDefine)*/
+                    return "自定义模式，使用<上面输入或者选择的>作为标记收集包名";
+            }
+
+            //补充描述信息--显示AssetBundle名
+            private string showAssetBundleName()
+            {
+                if (maskType == ESResMaster.ABMaskType.SelfDefine) return "查询/标记收集到自定义包名";
+
+                return "查询的包名";
+            }
+            //补充描述信息--中文警告
+            private bool warnIfChineseOrSymbol()
+            {
+                return selectBundleName.EX_ContainChineseCharacterOrNormalSymbol();
+            }
+            //补充描述信息--点警告
+            private bool warnIfPoint()
+            {
+                return selectBundleName.Contains('.');
+            }
+            //标出AB资源
+            private void PingABAsset()
+            {
+                if (ShowAssets.Length > 0)
+                {
+                    EditorGUIUtility.PingObject(AssetDatabase.LoadAssetAtPath(ShowAssets[0], typeof(UnityEngine.Object)));
+                }
+            }
+            //末尾放置全部信息
+            [TabGroup("标记收集与查询"), LabelText("全部的资源路径"), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForDes")]
+            [PropertyOrder(1), ReadOnly, ListDrawerSettings(DefaultExpandedState = false)]
+            public List<string> AllPath = new List<string>();
+
+            /* #region 查询类型列表扩展
+
+
+             private void OnEndDrawItemAll(int index)
+             {
+                 if (Event.current.type == EventType.MouseDown && Event.current.button == 0)
+                 {
+                     // 检测鼠标是否在当前项范围内
+                     Rect itemRect = GUILayoutUtility.GetLastRect();
+                     if (itemRect.Contains(Event.current.mousePosition))
+                     {
+                         ShowContextMenuAll(index); // 显示右键菜单
+                         Event.current.Use();    // 阻止事件冒泡
+                     }
+                 }
+             }
+
+             private void ShowContextMenuAll(int index)
+             {
+                 GenericMenu menu = new GenericMenu();
+                 menu.AddItem(new GUIContent("查询位置"), false, () => {
+                     string path = AllPath[index];
+                     EditorGUIUtility.PingObject(AssetDatabase.LoadAssetAtPath(path, typeof(UnityEngine.Object)));
+                 });
+                 menu.AddItem(new GUIContent("从AB包移除"), false, () => {
+                     string path = AllPath[index];
+                     AssetImporter importer = AssetImporter.GetAtPath(path);
+                     if (importer == null) return;
+                     // 清除标记
+                     importer.assetBundleName = "XXXX";
+                     importer.assetBundleName = string.Empty; // 清除名称
+                     importer.assetBundleVariant ??= string.Empty;
+                     AssetDatabase.Refresh();
+                     AssetDatabase.SaveAssets();
+                     RefreshBundleList();
+                 });
+                 menu.ShowAsContext();
+             }
+             #endregion*/
+
+            #endregion
+
+            #region 热更新
+            [TabGroup("热更新配置", TextColor = "@KeyValueMatchingUtility.ColorSelector.Color_03"), PropertyOrder(-4), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForApply")]
+            [Button("创建热更新数据"), PropertySpace(15)]
+            private void Handle_CreateHotUpdateData()
+            {
+                if (AssetDatabase.IsValidFolder(genarateFolder))
+                {
+                    EditorGUIUtility.PingObject(AssetDatabase.LoadAssetAtPath(genarateFolder, typeof(UnityEngine.Object)));
+
+                    ESEditorHandle.AddSimpleHanldeTask(
+                        () =>
+                        {
+                            if (EditorUtility.DisplayDialog("开始生成热更新文件", "准备生成热更新文件，这将会覆盖原来的资源,可能产生新的依赖和包名，请确定路径和平台正确", "知道了", "取消"))
+                            {
+
+                            }
+                            else
+                            {
+                                return;
+                            }
+                            if (PlatformToApply == RuntimePlatform.WindowsPlayer || PlatformToApply == RuntimePlatform.WindowsEditor)
+                            {
+                                CreateHotUpdateFiles(RuntimePlatform.WindowsPlayer);
+                                CreateHotUpdateFiles(RuntimePlatform.WindowsEditor);
+                            }
+                            else if (PlatformToApply == RuntimePlatform.Android)
+                            {
+                                CreateHotUpdateFiles(RuntimePlatform.Android);
+                            }
+                            else if (PlatformToApply == RuntimePlatform.IPhonePlayer)
+                            {
+                                CreateHotUpdateFiles(RuntimePlatform.IPhonePlayer);
+                            }
+                        }, 20);
+                }
+                else
+                {
+                    EditorUtility.DisplayDialog("无效的文件夹路径", "这个文件夹路径是不合法的，请确定正确的文件夹再重试", "知道了");
+                }
+
+            }
+            private void CreateHotUpdateFiles(RuntimePlatform platform)
+            {
+                AssetBundle.UnloadAllAssetBundles(unloadAllObjects: false);
+                AssetBundle mainBundle = AssetBundle.LoadFromFile(Path.Combine(genarateFolder, platform.ToString(), platform.ToString()));
+                AssetBundleManifest manifest = mainBundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
+                string[] AllABWithHash = manifest.GetAllAssetBundles();
+                // 使用 Odin 序列化后的字典可直接转为 JSON
+                SerializedDictionary<string, string> dependenceDic = new SerializedDictionary<string, string>();
+                SerializedDictionary<string, string> preToHashDic = new SerializedDictionary<string, string>();
+                foreach (var ab in allAssetBundleNames)
+                {
+
+                    string showAB = ab;
+                    foreach (var withHash in AllABWithHash)
+                    {
+                        string pre = ESResMaster.Instance.GetPreNameFromCompleteNameWithHash(withHash);
+                        if (pre == ab)
+                        {
+                            preToHashDic.Add(ab, withHash);
+                            string[] abDepend = manifest.GetAllDependencies(withHash);
+                            string abDependPreLink = "";
+                            bool first = true;
+                            foreach (var i in abDepend)
+                            {
+                                if (!first) abDependPreLink += '&';
+                                abDependPreLink += ESResMaster.Instance.GetPreNameFromCompleteNameWithHash(i);
+                                first = false;
+                            }
+                            if (abDepend.Length > 0) dependenceDic.Add(ab, abDependPreLink);
+                        }
+                    }
+
+                }
+                string json = JsonUtility.ToJson(dependenceDic);
+                string dependPath = ESResMaster.Instance.GetLocalAssetBundlePath(platform.ToString()) + "/" + ESResMaster.Instance.HotUpdateDependenceFileName;
+                File.WriteAllText(dependPath, json);
+                string json2 = JsonUtility.ToJson(preToHashDic);
+
+                string hashPath = ESResMaster.Instance.GetLocalAssetBundlePath(platform.ToString()) + "/" + ESResMaster.Instance.HotUpdatePreToHashFileName;
+                File.WriteAllText(hashPath, json2);
+                AssetDatabase.Refresh();
+                AssetDatabase.SaveAssets();
+                EditorGUIUtility.PingObject(AssetDatabase.LoadAssetAtPath(dependPath, typeof(UnityEngine.Object)));
+            }
+
+
+            //清空AB包 按钮
+            [TabGroup("热更新配置"), PropertyOrder(-4), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForCaster")]
+            [Button("刷新热更新信息", DrawResult = false), PropertySpace(15)]
+            private void Handle_RefresgHotUpdateData()
+            {
+                if (AssetDatabase.IsValidFolder(genarateFolder))
+                {
+                    try
+                    {
+                        string forDepend = ESResMaster.Instance.GetLocalAssetBundlePath() + "/" + ESResMaster.Instance.HotUpdateDependenceFileName;
+                        string forHash = ESResMaster.Instance.GetLocalAssetBundlePath() + "/" + ESResMaster.Instance.HotUpdatePreToHashFileName;
+                        string jsonContentDepend = File.ReadAllText(forDepend);
+                        string jsonContentHash = File.ReadAllText(forHash);
+
+
+                        SerializedDictionary<string, string> handleAgo = JsonUtility.FromJson<SerializedDictionary<string, string>>(jsonContentDepend);
+                        Undo.RecordObject(ESResMaster.Instance, "set1");
+                        ESResMaster.Instance.Depend = new Dictionary<string, WrapListString>() { };
+                        foreach (var (i, k) in handleAgo)
+                        {
+                            Depend.Add(i, new WrapListString() { strings = k.Split('&').ToList() });
+                        }
+                        EditorUtility.SetDirty(ESResMaster.Instance);
+
+                        Undo.RecordObject(ESResMaster.Instance, "set");
+                        SerializedDictionary<string, string> handleAgo2 = JsonUtility.FromJson<SerializedDictionary<string, string>>(jsonContentHash);
+                        ESResMaster.Instance.toHash = new Dictionary<string, string>();
+                        foreach (var (i, k) in handleAgo2)
+                        {
+                            ESResMaster.Instance.toHash.Add(i, k);
+                        }
+
+                        EditorUtility.SetDirty(ESResMaster.Instance);
+
+
+                        Debug.Log("refresh");
+                        foreach (var (i, k) in toHash)
+                        {
+                            bool hasIt = false;
+                            foreach (var target in TargetLocations)
+                            {
+                                if (target.ABPreName == i)
+                                {
+                                    hasIt = true;
+                                    //
+                                }
+                            }
+                            if (!hasIt)
+                            {
+                                TargetLocations.Add(new ABTargetLocation() { ABPreName = i, ABTarget_ = ABTargetLocation.ABTarget.Net });
+                            }
+                        }
+                        //刷新设置列表
+                        // TargetLocations
+
+
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.Log("无文件"+e);
+                    }
+                }
+                #endregion
+            }
+
+            [TabGroup("热更新配置"), PropertyOrder(-4), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForCaster")]
+            [Button("打开下载目标文件夹(persistent)", DrawResult = false), PropertySpace(15)]
+            private void Handle_OpenDownloadHotUpdateDir()
+            {
+                string path = Application.persistentDataPath + "/" + ESResMaster.Instance.LocalDownLoadAdditionPath;
+
+                if (Directory.Exists(path) || Directory.CreateDirectory(path) != null)
+                {
+                    // 在默认文本编辑器中打开文件夹
+                    EditorUtility.OpenWithDefaultApp(path);
+                }
+            }
+
+            /*  [Button("Test2")]
+              private void ThisRefresh()
+              {
+                  ESResMaster.Instance.strings = new SerializedDictionary<string, string>();
+              }*/
+            [LabelText("下载到本地相对附加路径"), ShowInInspector, PropertyOrder(-3)]
+            public string DownloadAddition { get => ESResMaster.Instance.LocalDownLoadAdditionPath; set { ESResMaster.Instance.LocalDownLoadAdditionPath = value; EditorUtility.SetDirty(ESResMaster.Instance); } }
+
+
+            [LabelText("下载测试(仅测试)"), InlineButton("tryDownLoad", "下载测试"), ShowInInspector, PropertyOrder(-3)]
+            public string DownloadURL { get => ESResMaster.Instance.DownLoadURL; set { ESResMaster.Instance.DownLoadURL = value; EditorUtility.SetDirty(ESResMaster.Instance); } }
+            private void tryDownLoad()
+            {
+                TryLoad = !TryLoad;
+            }
+            private static bool TryLoad = false;
+            [InfoBox("不需要写平台路径！,可以直接写文件名(包括后缀)"), ShowIf("@TryLoad"), InlineButton("DownLoadIt", "下载"), PropertyOrder(-2)]
+            [LabelText("-》文件名(含后缀)")]
+            public string FileName = "";
+            [LabelText("下载资源测试本地地址"), ShowIf("@TryLoad"), ShowInInspector, PropertyOrder(-2), FolderPath]
+            public string DownloadLocalPath { get => ESResMaster.Instance.LocalTestDownLoadPath; set { ESResMaster.Instance.LocalTestDownLoadPath = value; EditorUtility.SetDirty(ESResMaster.Instance); } }
+            private float progress = 0;
+            private void DownLoadIt()
+            {
+                TryLoad = true;
+                string netpath = DownloadURL + "/" + PlatformToApply + "/" + FileName;
+
+                var unityWebRequest = UnityWebRequest.Get(netpath);
+
+                unityWebRequest.downloadHandler = new DownloadHandlerFile(DownloadLocalPath + "/" + FileName);
+                unityWebRequest.SendWebRequest();
+                Debug.Log("发送请求");
+                ESEditorHandle.AddRunningHanldeTask(
+                    () =>
+                    {
+                        Debug.Log("action");
+                        progress = Mathf.Max(unityWebRequest.downloadProgress, 1);
+                    },
+                    () =>
+                    {
+                        if (!unityWebRequest.isDone)
+                        {
+                            Debug.Log("progress");
+                            EditorUtility.DisplayCancelableProgressBar
+                            ("测试下载资源", "测试下载：" + FileName + ",进度：" + progress * 100 + "%", progress);
+
+                            return false;
+                        }
+                        else if (unityWebRequest.result == UnityWebRequest.Result.Success)
+                        {
+                            AssetDatabase.Refresh();
+                            AssetDatabase.SaveAssets();
+                            EditorUtility.ClearProgressBar();
+                            EditorGUIUtility.PingObject(AssetDatabase.LoadAssetAtPath(DownloadLocalPath + "/" + FileName, typeof(UnityEngine.Object)));
+                            ESEditorHandle.AddSimpleHanldeTask(() =>
+                            {
+                                EditorUtility.DisplayDialog("下载完成!", "测试下载：" + netpath + "\n下载到：" + DownloadLocalPath + "成功！", "好的");
+                            });
+                            Debug.Log("成功");
+                            /*                            unityWebRequest.downloadHandler.Dispose();
+                                                        unityWebRequest.Dispose();*/
+                            return true;
+                        }
+                        else
+                        {
+                            AssetDatabase.Refresh();
+                            AssetDatabase.SaveAssets();
+                            EditorUtility.ClearProgressBar();
+                            ESEditorHandle.AddSimpleHanldeTask(() =>
+                            {
+                                EditorUtility.DisplayDialog("下载失败!", "测试下载：" + netpath + "\n下载到：" + DownloadLocalPath + "失败！", "好的");
+                            });
+                            Debug.Log("失败");
+                            /*                            unityWebRequest.downloadHandler.Dispose();
+                                                        unityWebRequest.Dispose();*/
+                            return true;
+                        }
+                    });
+
+
+
+            }
+
+            [LabelText("Hash信息字典"), ShowInInspector]
+            public Dictionary<string, string> toHash { get => ESResMaster.Instance.toHash; }
+            [LabelText("依赖信息字典"), ShowInInspector]
+            public Dictionary<string, WrapListString> Depend { get => ESResMaster.Instance.Depend; }
+
+
+            [LabelText("AB优先加载目标"), ShowInInspector, HideReferenceObjectPicker, InlineButton("apply_ABTarget", "应用")]
+            public List<ABTargetLocation> TargetLocations = new List<ABTargetLocation>();
+
+            private void apply_ABTarget()
+            {
+                ESResMaster.Instance.TargetLocations = new List<ABTargetLocation>();
+                foreach (var i in TargetLocations)
+                {
+                    ESResMaster.Instance.TargetLocations.Add(i);
+                }
+                EditorUtility.SetDirty(ESResMaster.Instance);
+            }
+            private void apply_FromTarget()
+            {
+                TargetLocations = new List<ABTargetLocation>();
+                foreach (var i in ESResMaster.Instance.TargetLocations)
+                {
+                    TargetLocations.Add(i);
+                }
+                EditorUtility.SetDirty(ESResMaster.Instance);
+            }
+            #endregion
+
+            #region 值
+
+
+
+            #endregion
         }
-
-
-        #endregion
-
-        #region 值
- 
-
-
-        #endregion
     }
-
 
 }

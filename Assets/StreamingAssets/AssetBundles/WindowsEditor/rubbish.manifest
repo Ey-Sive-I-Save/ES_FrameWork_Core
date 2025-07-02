@@ -1,0 +1,31 @@
+ManifestFileVersion: 0
+CRC: 109595188
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e59a39171689cacd6c47e973cb49b339
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8b3a200ff2925d48fe29ff40da923b24
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: e59a39171689cacd6c47e973cb49b339
+HashAppended: 1
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: a9bb754817a50a345bb9dd311a30aff7, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 93d9f466383418340937c878cb752dd2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: efa5ab3b9fadb594f873ce6eb576bc4b, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: ES
+  ClassName: ES.EvPointer.KeyString_Direct
+- AssemblyName: Sirenix.Serialization
+  ClassName: Sirenix.Serialization.SerializationData
+Assets:
+- "Assets/Resources/Rubbish/USE/\u65B0\u5EFA\u5EFA\u7B51\u6570\u636E\u7EC419359.asset"
+- "Assets/Resources/Rubbish/USE/Buff\u65B0\u5EFA\u6570\u636E\u530551407.asset"
+Dependencies: []

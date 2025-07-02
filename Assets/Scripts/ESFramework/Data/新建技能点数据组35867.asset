@@ -1,0 +1,634 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a8c50d0368e9ae448fc7a2e0b696204, type: 3}
+  m_Name: "\u65B0\u5EFA\u6280\u80FD\u70B9\u6570\u636E\u7EC435867"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 4321241661595098360}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: keyValues
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.SkillPointDataInfo,
+        ES]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: "\u6570\u636E\u952E"
+    - Name: $v
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  name__: "\u6570\u636E\u7EC4"
+--- !u!114 &4321241661595098360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 314dd0c677c319e42addf2015bd3c159, type: 3}
+  m_Name: "\u6570\u636E\u5355\u5143\u6570\u636E\u952E76742"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: allLevel
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[ES.SkillPointDataInfo+SkillPointLevelAllTransfomor,
+        ES]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|ES.SkillPointDataInfo+SkillPointLevelAllTransfomor, ES
+    - Name: displayName
+      Entry: 1
+      Data: "\u6280\u80FD\u70B9-"
+    - Name: forNone2UnKnownDetail
+      Entry: 7
+      Data: 2|ES.SkillPointDataInfo+SkillPointLevelAllTransfomor+ADefaultBoolAndBoolAKVP,
+        ES
+    - Name: defaultForNull
+      Entry: 5
+      Data: true
+    - Name: pointer
+      Entry: 7
+      Data: 3|ES.PointerForBoolByArKVP_TagInPool, ES
+    - Name: defaultIfNull
+      Entry: 5
+      Data: false
+    - Name: key
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: forUnKnownDetail2CantUnlock
+      Entry: 7
+      Data: 4|ES.SkillPointDataInfo+SkillPointLevelAllTransfomor+ADefaultBoolAndBoolAKVP,
+        ES
+    - Name: defaultForNull
+      Entry: 5
+      Data: true
+    - Name: pointer
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: forCantUnlock2CanUnlockButNotFeet
+      Entry: 7
+      Data: 5|ES.SkillPointDataInfo+SkillPointLevelAllTransfomor+ADefaultBoolAndBoolAKVP,
+        ES
+    - Name: defaultForNull
+      Entry: 5
+      Data: true
+    - Name: pointer
+      Entry: 7
+      Data: 6|ES.PointerForBoolByArKVP_TagInPool, ES
+    - Name: defaultIfNull
+      Entry: 5
+      Data: false
+    - Name: key
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: forCanUnlockButNotFeet2CanUnlockComplete
+      Entry: 7
+      Data: 7|ES.SkillPointDataInfo+SkillPointLevelAllTransfomor+ADefaultBoolAndBoolAKVP,
+        ES
+    - Name: defaultForNull
+      Entry: 5
+      Data: true
+    - Name: pointer
+      Entry: 7
+      Data: 8|ES.PointerForBoolByArKVP_FloatInPool, ES
+    - Name: defaultIfNull
+      Entry: 5
+      Data: false
+    - Name: function
+      Entry: 3
+      Data: 5
+    - Name: key
+      Entry: 6
+      Data: 
+    - Name: compare
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: forCanUnlockComplete2Unlock
+      Entry: 7
+      Data: 9|ES.SkillPointDataInfo+SkillPointLevelAllTransfomor+ADefaultBoolAndBoolAKVP,
+        ES
+    - Name: defaultForNull
+      Entry: 5
+      Data: false
+    - Name: pointer
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: whenUnlock
+      Entry: 7
+      Data: 10|ES.PointerNonePackOnlyActionByArKVP_LoopOnce, ES
+    - Name: intHepler
+      Entry: 3
+      Data: 0
+    - Name: pointers
+      Entry: 7
+      Data: 11|System.Collections.Generic.List`1[[ES.PointerNoneByArchitectureKeyValuePoolTypeListIOC,
+        ES]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 12|ES.PointerNoneByArKVP_FloatInPool, ES
+    - Name: function
+      Entry: 3
+      Data: 2
+    - Name: key
+      Entry: 6
+      Data: 
+    - Name: handler
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 13|ES.PointerNoneByArKVP_AddTagInPool, ES
+    - Name: key
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: whenCancel_
+      Entry: 7
+      Data: 14|ES.PointerNonePackOnlyActionByArKVP_LoopOnce, ES
+    - Name: intHepler
+      Entry: 3
+      Data: 0
+    - Name: pointers
+      Entry: 7
+      Data: 15|System.Collections.Generic.List`1[[ES.PointerNoneByArchitectureKeyValuePoolTypeListIOC,
+        ES]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 16|ES.PointerNoneByArKVP_FloatInPool, ES
+    - Name: function
+      Entry: 3
+      Data: 1
+    - Name: key
+      Entry: 6
+      Data: 
+    - Name: handler
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 17|ES.PointerNoneByArKVP_RemoveTagInPool, ES
+    - Name: defaultIfNull
+      Entry: 5
+      Data: false
+    - Name: key
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: whenApply_
+      Entry: 7
+      Data: 18|ES.PointerNonePackOnlyActionByArKVP_LoopOnce, ES
+    - Name: intHepler
+      Entry: 3
+      Data: 0
+    - Name: pointers
+      Entry: 7
+      Data: 19|System.Collections.Generic.List`1[[ES.PointerNoneByArchitectureKeyValuePoolTypeListIOC,
+        ES]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 20|ES.PointerNoneByArKVP_IntInPool, ES
+    - Name: defaultIfNull
+      Entry: 5
+      Data: false
+    - Name: function
+      Entry: 3
+      Data: 0
+    - Name: key
+      Entry: 6
+      Data: 
+    - Name: handler
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: whenDeApply_
+      Entry: 7
+      Data: 21|ES.PointerNonePackOnlyActionByArKVP_LoopOnce, ES
+    - Name: intHepler
+      Entry: 3
+      Data: 0
+    - Name: pointers
+      Entry: 7
+      Data: 22|System.Collections.Generic.List`1[[ES.PointerNoneByArchitectureKeyValuePoolTypeListIOC,
+        ES]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 23|ES.PointerNoneByArKVP_IntInPool, ES
+    - Name: defaultIfNull
+      Entry: 5
+      Data: false
+    - Name: function
+      Entry: 3
+      Data: 0
+    - Name: key
+      Entry: 6
+      Data: 
+    - Name: handler
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: sprites
+      Entry: 7
+      Data: 24|ES.SkillPointDataInfo+SkillPointLevelAllTransfomor+SkillPointSprites,
+        ES
+    - Name: b
+      Entry: 5
+      Data: false
+    - Name: keyValues
+      Entry: 7
+      Data: 25|System.Collections.Generic.Dictionary`2[[ES.EnumCollect+SkillPointOneLevelState,
+        ES],[ES.SkillPointDataInfo+SkillPointLevelAllTransfomor+SkillPointSprites+show,
+        ES]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 26|System.Collections.Generic.EnumEqualityComparer`1[[ES.EnumCollect+SkillPointOneLevelState,
+        ES]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 6
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 27|ES.SkillPointDataInfo+SkillPointLevelAllTransfomor+SkillPointSprites+show,
+        ES
+    - Name: sprite
+      Entry: 6
+      Data: 
+    - Name: color_
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: 28|ES.SkillPointDataInfo+SkillPointLevelAllTransfomor+SkillPointSprites+show,
+        ES
+    - Name: sprite
+      Entry: 6
+      Data: 
+    - Name: color_
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: 29|ES.SkillPointDataInfo+SkillPointLevelAllTransfomor+SkillPointSprites+show,
+        ES
+    - Name: sprite
+      Entry: 6
+      Data: 
+    - Name: color_
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 7
+      Data: 30|ES.SkillPointDataInfo+SkillPointLevelAllTransfomor+SkillPointSprites+show,
+        ES
+    - Name: sprite
+      Entry: 6
+      Data: 
+    - Name: color_
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 7
+      Data: 31|ES.SkillPointDataInfo+SkillPointLevelAllTransfomor+SkillPointSprites+show,
+        ES
+    - Name: sprite
+      Entry: 6
+      Data: 
+    - Name: color_
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 7
+      Data: 32|ES.SkillPointDataInfo+SkillPointLevelAllTransfomor+SkillPointSprites+show,
+        ES
+    - Name: sprite
+      Entry: 6
+      Data: 
+    - Name: color_
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  DataKey:
+    str_direc: "\u6570\u636E\u952E"

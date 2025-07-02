@@ -154,7 +154,7 @@ namespace ES
                 }
                 ESResMaster.Instance.MainLoader.LoadAll_Sync();
             }
-            Asset_Bundle = AssetBundle.LoadFromFile(ESResMaster.ABHelper.StreamingAB + "/" + AssetPath) ?? Asset_Bundle;
+            Asset_Bundle = AssetBundle.LoadFromFile(ESResMaster.ABHelper.StreamingABWithPlatform + "/" + AssetPath) ?? Asset_Bundle;
             if (Asset_Bundle != null)
             {
                 State = ResSourceState.Ready;
@@ -252,7 +252,7 @@ namespace ES
         {
             if (Asset_Bundle == null)
             {
-                var request = AssetBundle.LoadFromFileAsync(ESResMaster.ABHelper.StreamingAB + "/" + AssetPath);
+                var request = AssetBundle.LoadFromFileAsync(ESResMaster.ABHelper.StreamingABWithPlatform + "/" + AssetPath);
                 yield return request;
                 Asset_Bundle = request.assetBundle;
                 if (Asset_Bundle == null)

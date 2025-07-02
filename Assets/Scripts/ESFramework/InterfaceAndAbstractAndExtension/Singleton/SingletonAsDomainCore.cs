@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -104,6 +105,22 @@ namespace ES
             }
 
         }
+
+      /*  [SerializeField, HideInInspector]
+        private SerializationData _serializationData; // Odin 序列化数据容器
+        void ISerializationCallbackReceiver.OnBeforeSerialize()
+        {
+            // Odin 序列化
+            UnitySerializationUtility.SerializeUnityObject(this, ref _serializationData);
+        }
+
+        void ISerializationCallbackReceiver.OnAfterDeserialize()
+        {
+            // Odin 反序列化
+            UnitySerializationUtility.DeserializeUnityObject(this, ref _serializationData);
+            Debug.Log("Trigger");
+        }*/
+
     }
     public abstract class SingletonAsSeriMono<This> : SerializedMonoBehaviour where This : MonoBehaviour
     {

@@ -34,66 +34,71 @@ namespace ES
         {
             if (!ESEditorOnlyPartMaster.Instance.Ins.EnableCompoentShowControl_) return;
             var cache = ESEditorOnlyPartMaster.Instance.Ins.cacheToggleFalseNames;
-            if (editor.target is GameObject go)
-            {
-                if (editor.targets.Length == 1)
+            try {
+                if (editor.target is GameObject go)
                 {
-
+                    if (editor.targets.Length == 1)
                     {
-                        // 1. 绘制标题
-                        EditorGUILayout.LabelField("ES控制面板", EditorStyles.boldLabel);
 
-                        // 2. 绘制按钮
-                        if (GUILayout.Button("重置位置(测试)"))
                         {
-                            Undo.RecordObject(go.transform, "Reset Position");
-                            go.transform.position = Vector3.zero;
-                        }
-                        if (GUILayout.Button("刷新显示"))
-                        {
-                            EditorUtility.SetDirty(go);
-                            Selection.activeGameObject = null;
-                            ESEditorHandle.AddHanldeTask(() => { Selection.activeGameObject = go; Debug.Log(886); });
-                        }
-                        //绘制脚本列
-                        var cs = go.GetComponents<Component>();
+                            // 1. 绘制标题
+                            EditorGUILayout.LabelField("ES控制面板", EditorStyles.boldLabel);
 
-
-                        foreach (var i in cs)
-                        {
-                            string forType = i.GetType().Name;
-                            string dis= ESEditorOnlyPartMaster.Instance.TypeDis.GetNewName(forType);
-                            bool NowShow = !cache.Contains(forType);
-                            bool newNowShow = EditorGUILayout.Toggle(dis, NowShow);
-                            
-                            if (NowShow && !newNowShow)
+                            // 2. 绘制按钮
+                            if (GUILayout.Button("重置位置(测试)"))
                             {
-                                cache.Add(forType);
-                                dirty = true;
+                                Undo.RecordObject(go.transform, "Reset Position");
+                                go.transform.position = Vector3.zero;
                             }
-                            else if (!NowShow && newNowShow)
+                            if (GUILayout.Button("刷新显示"))
                             {
-                                cache.Remove(forType);
-                                dirty = true;
-                            }
-                            if (dirty)
-                            {
-                                if (newNowShow) i.hideFlags &= ~HideFlags.HideInInspector;
-                                else i.hideFlags |=HideFlags.HideInInspector;
                                 EditorUtility.SetDirty(go);
-                                
+                                Selection.activeGameObject = null;
+                                ESEditorHandle.AddSimpleHanldeTask(() => { Selection.activeGameObject = go; Debug.Log(886); });
                             }
-                           
-                        }
-                        dirty = false;
-                        // 3. 绘制分隔线
-                        EditorGUILayout.Space();
-                        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-                        EditorGUILayout.Space();
-                    }
+                            //绘制脚本列
+                            var cs = go.GetComponents<Component>();
 
+
+                            foreach (var i in cs)
+                            {
+                                string forType = i.GetType().Name;
+                                string dis = ESEditorOnlyPartMaster.Instance.TypeDis.GetNewName(forType);
+                                bool NowShow = !cache.Contains(forType);
+                                bool newNowShow = EditorGUILayout.Toggle(dis, NowShow);
+
+                                if (NowShow && !newNowShow)
+                                {
+                                    cache.Add(forType);
+                                    dirty = true;
+                                }
+                                else if (!NowShow && newNowShow)
+                                {
+                                    cache.Remove(forType);
+                                    dirty = true;
+                                }
+                                if (dirty)
+                                {
+                                    if (newNowShow) i.hideFlags &= ~HideFlags.HideInInspector;
+                                    else i.hideFlags |= HideFlags.HideInInspector;
+                                    EditorUtility.SetDirty(go);
+
+                                }
+
+                            }
+                            dirty = false;
+                            // 3. 绘制分隔线
+                            EditorGUILayout.Space();
+                            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+                            EditorGUILayout.Space();
+                        }
+
+                    }
                 }
-            } 
+            } catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
             
 
         }

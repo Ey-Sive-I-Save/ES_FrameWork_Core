@@ -1,5 +1,6 @@
 using ES;
 using GluonGui.WorkspaceWindow.Views.WorkspaceExplorer;
+using Sirenix.OdinInspector.Editor.StateUpdaters;
 using Sirenix.Utilities.Editor;
 using System;
 using System.Collections;
@@ -27,7 +28,68 @@ namespace ES
             if (Show == null||!Show.EnableProjectShow) return;
             string assetPath = AssetDatabase.GUIDToAssetPath(guid);
             string myName= Path.GetFileName(assetPath);
-            foreach(var i in Show.nameToHandle)
+            bool net = false;
+            bool draw = false;
+            if (assetPath.Contains(ESResMaster.Instance.genarateFolder))
+            {
+                string preName = ESResMaster.Instance.GetPreNameFromCompleteNameWithHash(myName);
+                if (ESResMaster.Instance.toHash.ContainsKey(preName))
+                {
+                    //AB包
+                    foreach(var i in ESResMaster.Instance.TargetLocations)
+                    {
+                        if (i.ABPreName == preName)
+                        {
+                            if(i.ABTarget_== ESResMaster.ABTargetLocation.ABTarget.Net)
+                            {
+                                net = true;
+                                break;
+                            }
+                            else
+                            {
+                                net = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (myName == "preToHashDic.json" || myName == "dependenceDic.json")
+                    {
+                        //网络
+                        net = true;
+                    }
+                }
+                if (Show.contentForNet != null && net)
+                {
+                    //是否是网络
+                    Rect conRect = new Rect(selectionRect);
+                    conRect.x = conRect.xMax + Show.startTextOffset_;
+                    conRect.width = Show.textwidth_;
+                    GUIContent con = Show.contentForNet.GetContent();
+                    GUIHelper.PushColor(Show.contentForNet.color);
+                    GUI.Label(conRect, con);
+                    GUIHelper.PopColor();
+                    draw = true;
+                }
+                else if (Show.contentForLocal != null && !net)
+                {
+                    //是否是网络
+                    Rect conRect = new Rect(selectionRect);
+                    conRect.x = conRect.xMax + Show.startTextOffset_;
+                    conRect.width = Show.textwidth_;
+                    GUIContent con = Show.contentForLocal.GetContent();
+                    GUIHelper.PushColor(Show.contentForLocal.color);
+                    GUI.Label(conRect, con);
+                    GUIHelper.PopColor();
+                    draw = true;
+                }
+            }
+           
+
+            if(!draw)
+            foreach (var i in Show.nameToHandle)
             {
                 if (i.oldName == myName&&i.content!=null)
                 {
@@ -44,6 +106,8 @@ namespace ES
                     break;
                 }
             }
+
+           
             //名字判断
         }
 

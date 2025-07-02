@@ -1,14 +1,14 @@
 ManifestFileVersion: 0
-CRC: 2741519860
+CRC: 2332667689
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: "\u65B9\u5757_prefab"
-      Dependencies:
-        Dependency_0: blue_mat
+      Name: material_cf0868ae79727aa7d4541b36a731fc40
+      Dependencies: {}
     Info_1:
-      Name: blue_mat
+      Name: rubbish_e59a39171689cacd6c47e973cb49b339
       Dependencies: {}
     Info_2:
-      Name: yellow_mat
-      Dependencies: {}
+      Name: prefab_9f44f961911932cb582b625b3be28d7f
+      Dependencies:
+        Dependency_0: material_cf0868ae79727aa7d4541b36a731fc40

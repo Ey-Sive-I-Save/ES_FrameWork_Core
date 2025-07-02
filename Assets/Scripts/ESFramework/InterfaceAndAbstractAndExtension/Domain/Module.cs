@@ -94,8 +94,8 @@ namespace ES
                 {
                     if (Core.NetObject.IsHostInitialized) return true;
                     return false;
-                }*/
-                return true;
+                }
+                return true;*/
             }
         }
          

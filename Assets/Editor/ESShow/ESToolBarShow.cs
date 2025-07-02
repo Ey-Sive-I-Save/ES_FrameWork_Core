@@ -201,6 +201,30 @@ namespace ES
                             break;
                         }
                     });
+                    menu.AddItem(new GUIContent("<编辑器总文件夹>"), false, () =>
+                    {
+                        string[] guids = AssetDatabase.FindAssets("Editor");
+                        foreach (var i in guids)
+                        {
+                            string path = AssetDatabase.GUIDToAssetPath(i);
+                            var use = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path);
+                            Selection.activeObject = use;
+                            EditorGUIUtility.PingObject(use);
+                            break;
+                        }
+                    });
+                    menu.AddItem(new GUIContent("<静态策略工具总文件夹>"), false, () =>
+                    {
+                        string[] guids = AssetDatabase.FindAssets("Static_KeyValueMaching_Partial");
+                        foreach (var i in guids)
+                        {
+                            string path = AssetDatabase.GUIDToAssetPath(i);
+                            var use = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path);
+                            Selection.activeObject = use;
+                            EditorGUIUtility.PingObject(use);
+                            break;
+                        }
+                    });
                     menu.AddSeparator("");
                     menu.AddItem(new GUIContent("<玩家对象>"), false, () =>
                     {

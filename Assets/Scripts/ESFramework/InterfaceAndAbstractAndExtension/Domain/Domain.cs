@@ -44,12 +44,13 @@ namespace ES
         #region 只读便捷属性
 
         //模块的IEnumable
+        [HideInInspector]
         public IEnumerable<Module> ModulesIEnumable
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get { return Modules.valuesNow_; }
         }
-
+        [HideInInspector]
         //链接的核心
         public Core_ Core
         {
