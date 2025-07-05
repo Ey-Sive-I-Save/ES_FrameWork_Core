@@ -102,7 +102,7 @@ namespace ES
                     }
                 }
             }
-            public static BuffRunTimeLogic ApplyBuffInfoToEntity(BuffSoInfo buffSoInfo, Entity entity, BuffStatusTest? buffStatusTest = null)
+          /*  public static BuffRunTimeLogic ApplyBuffInfoToEntity(BuffSoInfo buffSoInfo, Entity entity, BuffStatusTest? buffStatusTest = null)
             {
                 if (buffSoInfo != null && entity != null)
                 {
@@ -126,7 +126,7 @@ namespace ES
                         }
                     }
                 }
-            }
+            }*/
         }
     }
 }

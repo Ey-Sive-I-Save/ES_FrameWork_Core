@@ -83,21 +83,21 @@ namespace ES
                 return clonedObject;
 
             }
-            //创建实时BUff逻辑
+           /* //创建实时BUff逻辑
             public static BuffRunTimeLogic CreateBuffRunTimeByKey_Rubbish(KeyString use, BuffStatusTest? statusTest = null)
             {
 
-                /*  BuffSoInfo info = KeyValueMatchingUtility.DataInfoPointer.PickBuffSoInfoByKey(use.Key());
+                *//*  BuffSoInfo info = KeyValueMatchingUtility.DataInfoPointer.PickBuffSoInfoByKey(use.Key());
                   if (info == null || info.BindingLogic == null)
                   {
                       return null;
-                  }*/
+                  }*//*
                 return null;
             }
             //创建实时BUff逻辑
             public static BuffRunTimeLogic CreateBuffRunTimeByInfo_Rubbish(BuffSoInfo buffSoInfo, BuffStatusTest? statusTest = null)
             {
-                /*BuffRunTimeLogic buffRunTime = Activator.CreateInstance(buffSoInfo.BindingLogic) as BuffRunTimeLogic;
+                *//*BuffRunTimeLogic buffRunTime = Activator.CreateInstance(buffSoInfo.BindingLogic) as BuffRunTimeLogic;
 
                 if (buffRunTime != null)
                 {
@@ -106,9 +106,9 @@ namespace ES
                     buffRunTime.buffStatus = statusTest ?? buffSoInfo.defaultStatus;
 
                     return buffRunTime;
-                }*/
+                }*//*
                 return null;
-            }
+            }*/
             //创建本体实时状态
             public static IESMicroState CreateStateRunTimeLogicOnlyOne(StateDataInfo info)
             {

@@ -1,3 +1,4 @@
+using ES.MonoTool;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
@@ -11,9 +12,11 @@ namespace ES
 
     public partial class ESEditorRuntimePartMaster : SingletonAsMono<ESEditorRuntimePartMaster>
     {
-        [LabelText("提示"),PropertyOrder(-5)]
-        public ESReadMeClass readme = new ESReadMeClass() { readMe= "请在尽量在窗口处进行调整,这里不推荐\n因为" };
-       
+#if UNITY_EDITOR
+        [LabelText("提示"), PropertyOrder(-5)]
+        public Tool_ESReadMeClass readme = new Tool_ESReadMeClass() { readMe = "请在尽量在窗口处进行调整,这里不推荐\n因为" };
+#endif
+        [ShowInInspector,LabelText("<静态>游戏已退出")]
         public static bool IsQuit = false;
         private void OnApplicationQuit()
         {
@@ -158,19 +161,19 @@ namespace ES
         private void LoadSST()
         {
             SearchDataTypeKey = new DicIOCWithStringSelectStringKey_TypeValue();
-             var assem= Assembly.GetExecutingAssembly();
+            var assem = Assembly.GetExecutingAssembly();
             var types = assem.GetTypes();
-             foreach(var i in types)
+            foreach (var i in types)
             {
                 var at = i.GetCustomAttribute<ESDisplayNameKeyToTypeAttribute>();
                 if (at != null)
                 {
-                    SearchDataTypeKey.AddElement(at.TeamCollect,at.DisplayKeyName,i);
+                    SearchDataTypeKey.AddElement(at.TeamCollect, at.DisplayKeyName, i);
                 }
             }
         }
         #endregion
-       
+
 
     }
 }

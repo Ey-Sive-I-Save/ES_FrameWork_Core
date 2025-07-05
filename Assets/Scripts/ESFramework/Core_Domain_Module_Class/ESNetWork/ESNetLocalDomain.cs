@@ -24,7 +24,7 @@ namespace ES
         [LabelText("别人的拦截模块")]public ESTypeSelecter ForModuleOtherBan;
         [LabelText("自己的拦截模块")] public ESTypeSelecter ForModuleSelfBan;
         [LabelText("别人的拦截脚本")] public ESTypeSelecter ForESmonoOther;
-        protected override string Description_ => "这个功能用于拦截一些非自己掌控的脚本和模块的运转，防止运行问题";
+        protected override string Editor_Description_ => "这个功能用于拦截一些非自己掌控的脚本和模块的运转，防止运行问题";
         protected override void CreateRelationshipOnly()
         {
             base.CreateRelationshipOnly();

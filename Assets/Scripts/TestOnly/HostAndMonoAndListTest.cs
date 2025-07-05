@@ -75,7 +75,11 @@ public class HostAndMonoAndListTest : ESHostingMono_BaseESModule
     public class ESModule_Move : BaseESModule
     {
         public GameObject g;
-       
+
+        public override void TryDestroySelf()
+        {
+            
+        }
     }
 
 

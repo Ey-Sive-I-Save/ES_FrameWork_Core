@@ -38,7 +38,7 @@ namespace ES
         public override string[] Editor_AllPresets => presetForThis;
         static string[] presetForThis = {"普通特效","珍贵特效","传奇特效" };
 
-        protected override void SetupModuleByPreset(string preset)
+        protected override void Editor_SetupModuleByPreset(string preset)
         {
             
             switch (preset)

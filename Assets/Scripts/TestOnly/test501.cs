@@ -38,8 +38,8 @@ public class test501 : ESHostingMono_BaseESModule
         base.Update();
         if (Input.GetKeyDown(KeyCode.O))
         {
-            Debug.Log("测试"+更子级别._HasSubmit);
-            Debug.Log("测试" + 更子级别._HasSubmit);
+            Debug.Log("测试"+更子级别.Signal_HasSubmit);
+            Debug.Log("测试" + 更子级别.Signal_HasSubmit);
         }
     }
 }

@@ -7,10 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static ES.EnumCollect;
 
-namespace ESFramework
-{
 
-}
 namespace ES
 {
     public class HurtableDomainForItem : Domain<Item, HurtableModuleForItem>
@@ -39,10 +36,10 @@ namespace ES
 
         [FoldoutGroup("移动相关")]
         [LabelText("设置目标的方向获取")]
-        public EnumCollect.SetTargetAboutDirecOption selfSetTargetOption = EnumCollect.SetTargetAboutDirecOption.Directly;
+        public EnumCollect.SetFlyingTargetAboutDirecOption selfSetTargetOption = EnumCollect.SetFlyingTargetAboutDirecOption.Directly;
         [FoldoutGroup("移动相关")]
         [LabelText("设置移动方式原理基于")]
-        public EnumCollect.FlyingBaseOn flyBaseOn = EnumCollect.FlyingBaseOn.RigidFixUpdate;
+        public EnumCollect.SetFlyingBaseOn flyBaseOn = EnumCollect.SetFlyingBaseOn.RigidFixUpdate;
         [FoldoutGroup("移动相关")]
         [LabelText("调转速度")]
         public float directChangeSpeedLevel = 5;
@@ -74,7 +71,7 @@ namespace ES
             base.CreateRelationshipOnly();
             Domain.Module_Flying = this;
             flyingData = Core.sharedData as ESItem_FlyingSharedData ?? new ESItem_FlyingSharedData();
-            if (flyingData == null) Domain.RemoveModule(this);//没有存在的必要了
+            if (flyingData == null) Domain.RemoveModuleWithoutTypeMatch(this);//没有存在的必要了
             lifeTimeHasGo = 0;
             canColTimes = flyingData.maxTimes;
             if (TargetDirect == default)
@@ -84,34 +81,34 @@ namespace ES
 
         }
         [Button("设置目标测试")]
-        public void SetTarget(Entity e, SetTargetAboutDirecOption setDirecQuick_ = SetTargetAboutDirecOption.BySelfDefault)
+        public void SetTarget(Entity e, SetFlyingTargetAboutDirecOption setDirecQuick_ = SetFlyingTargetAboutDirecOption.BySelfDefault)
         {
             if (e != null)
             {
                 target = e;
                 {
-                    if (setDirecQuick_ == SetTargetAboutDirecOption.BySelfDefault)
+                    if (setDirecQuick_ == SetFlyingTargetAboutDirecOption.BySelfDefault)
                     {
                         setDirecQuick_ = selfSetTargetOption;
                     }
-                    if (setDirecQuick_ == SetTargetAboutDirecOption.None)
+                    if (setDirecQuick_ == SetFlyingTargetAboutDirecOption.None)
                     {
 
                     }
-                    else if (setDirecQuick_ == SetTargetAboutDirecOption.Directly)
+                    else if (setDirecQuick_ == SetFlyingTargetAboutDirecOption.Directly)
                     {
                         TargetDirect = (e.transform.position + Vector3.up - (Core.transform.position)).normalized;
                     }
-                    else if (setDirecQuick_ == SetTargetAboutDirecOption.Parabola)
+                    else if (setDirecQuick_ == SetFlyingTargetAboutDirecOption.Parabola)
                     {
                         TargetDirect = (e.transform.position - Core.transform.position + Vector3.up).normalized;
                     }
-                    else if (setDirecQuick_ == SetTargetAboutDirecOption.RadAndFollow)
+                    else if (setDirecQuick_ == SetFlyingTargetAboutDirecOption.RadAndFollow)
                     {
                         TargetDirect = (Vector3.Lerp(e.transform.position - Core.transform.position, e.transform.right, UnityEngine.Random.Range(-0.5f, 0.5f))).normalized; ;
                     }
                 }
-                if (flyBaseOn == FlyingBaseOn.RigidVelocityOnce)
+                if (flyBaseOn == SetFlyingBaseOn.RigidVelocityOnce)
                 {
                     Core.Rigid.velocity = TargetDirect.normalized * flyingData.speed * (1 + SpeedPerUp);
                 }
@@ -123,7 +120,7 @@ namespace ES
             if (delayTime > 0) return;
             PrivateMethod_Lerp();
             PrivateMethod_LifeTime();
-            if (flyBaseOn == FlyingBaseOn.TransUpdate)
+            if (flyBaseOn == SetFlyingBaseOn.TransUpdate)
             {
                 Core.transform.position += CurrentDirect * Time.deltaTime * flyingData.speed * (1 + SpeedPerUp);
             }
@@ -133,11 +130,11 @@ namespace ES
         {
             base.FixedUpdate_MustSelfDelegate();
             if (delayTime > 0) return;
-            if (flyBaseOn == FlyingBaseOn.RigidVelocityUpdating)
+            if (flyBaseOn == SetFlyingBaseOn.RigidVelocityUpdating)
             {
                 Core.Rigid.velocity = CurrentDirect.normalized * flyingData.speed * (1 + SpeedPerUp);
             }
-            else if (flyBaseOn == FlyingBaseOn.RigidFixUpdate)
+            else if (flyBaseOn == SetFlyingBaseOn.RigidFixUpdate)
             {
                 Core.Rigid.position += CurrentDirect.normalized * Time.fixedDeltaTime * flyingData.speed * (1 + SpeedPerUp);
             }
@@ -151,7 +148,7 @@ namespace ES
             lifeTimeHasGo += Time.deltaTime;
             if (lifeTimeHasGo > flyingData.missileLife_)
             {
-                Core.whyDes = new Link_DestroyWhy() { options = DestroyWhyOption.LifeTime };
+                Core.whyDes = new Link_DestroyWhy() { options = SetFlyingDestroyWhyOption.LifeTime };
                 Core.TryDestroyThisESObject();
             }
         }
@@ -232,7 +229,7 @@ namespace ES
                 canColTimes--;
                 if (canColTimes <= 0)
                 {
-                    Core.whyDes.options = DestroyWhyOption.OnTriEntity;
+                    Core.whyDes.options = SetFlyingDestroyWhyOption.OnTriEntity;
                     Core.TryDestroyThisESObject();
                 }
             }

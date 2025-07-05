@@ -68,7 +68,7 @@ namespace ES
                             }
                             else if (state == 0)
                             {
-                                alert.text = "Need Update";
+                                alert.text = "Need ApplyBuffers";
                                 var use = DownLoad.colors;
                                 use.normalColor = Color.gray;
                                 DownLoad.colors = use;

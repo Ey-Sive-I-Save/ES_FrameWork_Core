@@ -201,7 +201,7 @@ namespace ES
             {
                 if (i != null)
                 {
-                    i.TryDestroy();
+                    i.TryDestroySelf();
                 }
             }
             SelfModule.Clear();
@@ -469,73 +469,73 @@ namespace ES
             data.duration = Mathf.Max(0.1f, data.duration);
             if (data.baseOn == EnumCollect.ToDestionationBaseOn.DotweenDoMove)
             {
-                if (data.pathType == EnumCollect.ToDestinationPath.Direct)
+                if (data.pathType == EnumCollect.ToDestinationPathType.Direct)
                 {
-                    if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.Target)
+                    if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.LerpLookAtSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(data.vector, data.duration);
                         else withTween = Entity.transform.DOMove(data.vector, data.duration);
                     }
-                    else if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.WorldSpace)
+                    else if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.WorldSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(data.vector, data.duration).SetRelative();
                         else withTween = Entity.transform.DOMove(data.vector, data.duration).SetRelative();
                     }
-                    else if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.SelfSpace)
+                    else if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.SelfSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(applyVector, data.duration).SetRelative();
                         else withTween = Entity.transform.DOMove(applyVector, data.duration).SetRelative();
                     }
                 }
-                else if (data.pathType == EnumCollect.ToDestinationPath.JumpAndDown)
+                else if (data.pathType == EnumCollect.ToDestinationPathType.JumpAndDown)
                 {
-                    if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.Target)
+                    if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.LerpLookAtSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(data.vector, data.duration);
                         else withTween = Entity.transform.DOMove(data.vector, data.duration);
                     }
-                    else if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.WorldSpace)
+                    else if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.WorldSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(data.vector, data.duration).SetRelative();
                         else withTween = Entity.transform.DOMove(data.vector, data.duration).SetRelative();
                     }
-                    else if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.SelfSpace)
+                    else if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.SelfSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(Entity.transform.TransformDirection(data.vector), data.duration);
                         else withTween = Entity.transform.DOMove(Entity.transform.TransformDirection(data.vector), data.duration);
                     }
                 }
-                else if (data.pathType == EnumCollect.ToDestinationPath.Rad)
+                else if (data.pathType == EnumCollect.ToDestinationPathType.Rad)
                 {
-                    if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.Target)
+                    if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.LerpLookAtSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(data.vector, data.duration);
                         else withTween = Entity.transform.DOMove(data.vector, data.duration);
                     }
-                    else if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.WorldSpace)
+                    else if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.WorldSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(data.vector, data.duration).SetRelative();
                         else withTween = Entity.transform.DOMove(data.vector, data.duration).SetRelative();
                     }
-                    else if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.SelfSpace)
+                    else if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.SelfSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(Entity.transform.TransformDirection(data.vector), data.duration);
                         else withTween = Entity.transform.DOMove(Entity.transform.TransformDirection(data.vector), data.duration);
                     }
                 }
-                else if (data.pathType == EnumCollect.ToDestinationPath.AIPath)
+                else if (data.pathType == EnumCollect.ToDestinationPathType.AIPath)
                 {
-                    if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.Target)
+                    if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.LerpLookAtSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(data.vector, data.duration);
                         else withTween = Entity.transform.DOMove(data.vector, data.duration);
                     }
-                    else if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.WorldSpace)
+                    else if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.WorldSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(data.vector, data.duration).SetRelative();
                         else withTween = Entity.transform.DOMove(data.vector, data.duration).SetRelative();
                     }
-                    else if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.SelfSpace)
+                    else if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.SelfSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(Entity.transform.TransformDirection(data.vector), data.duration);
                         else withTween = Entity.transform.DOMove(Entity.transform.TransformDirection(data.vector), data.duration);
@@ -552,11 +552,11 @@ namespace ES
             {
                 OnStateExit();
             }
-            if (data.baseOn == EnumCollect.ToDestionationBaseOn.ESCurveModule)
+            if (data.baseOn == EnumCollect.ToDestionationBaseOn.ESCurve)
             {
-                if (data.pathType == EnumCollect.ToDestinationPath.Direct)
+                if (data.pathType == EnumCollect.ToDestinationPathType.Direct)
                 {
-                    if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.Target)
+                    if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.LerpLookAtSpace)
                     {
                         if (useRIGID) Entity.Rigid.position = Vector3.MoveTowards(Entity.Rigid.position, data.vector, crashDodge.MaxSpeed * Time.deltaTime);
                         else
@@ -570,7 +570,7 @@ namespace ES
                             OnStateExit();
                         }
                     }
-                    else if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.WorldSpace)
+                    else if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.WorldSpace)
                     {
                         if (useRIGID) Entity.Rigid.position += data.vector * Time.deltaTime / data.duration;
                         else
@@ -579,7 +579,7 @@ namespace ES
                             Entity.YV = applyVector.y * (1 - HasIn / data.duration);
                         }
                     }
-                    else if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.SelfSpace)
+                    else if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.SelfSpace)
                     {
                         if (useRIGID) Entity.Rigid.position += (applyVector) * Time.deltaTime / data.duration;
                         else/* Entity.transform.position += (applyVector) * Time.deltaTime / data.duration;*/
@@ -589,50 +589,50 @@ namespace ES
                         }
                     }
                 }
-                else if (data.pathType == EnumCollect.ToDestinationPath.JumpAndDown)
+                else if (data.pathType == EnumCollect.ToDestinationPathType.JumpAndDown)
                 {
-                    if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.Target)
+                    if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.LerpLookAtSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(data.vector, data.duration);
                         else withTween = Entity.transform.DOMove(data.vector, data.duration);
                     }
-                    else if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.WorldSpace)
+                    else if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.WorldSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(data.vector, data.duration).SetRelative();
                         else withTween = Entity.transform.DOMove(data.vector, data.duration).SetRelative();
                     }
-                    else if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.SelfSpace)
+                    else if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.SelfSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(Entity.transform.TransformDirection(data.vector), data.duration);
                         else withTween = Entity.transform.DOMove(Entity.transform.TransformDirection(data.vector), data.duration);
                     }
                 }
-                else if (data.pathType == EnumCollect.ToDestinationPath.Rad)
+                else if (data.pathType == EnumCollect.ToDestinationPathType.Rad)
                 {
-                    if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.Target)
+                    if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.LerpLookAtSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(data.vector, data.duration);
                     }
-                    else if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.WorldSpace)
+                    else if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.WorldSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(data.vector, data.duration).SetRelative();
                     }
-                    else if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.SelfSpace)
+                    else if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.SelfSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(Entity.transform.TransformDirection(data.vector), data.duration);
                     }
                 }
-                else if (data.pathType == EnumCollect.ToDestinationPath.AIPath)
+                else if (data.pathType == EnumCollect.ToDestinationPathType.AIPath)
                 {
-                    if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.Target)
+                    if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.LerpLookAtSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(data.vector, data.duration);
                     }
-                    else if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.WorldSpace)
+                    else if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.WorldSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(data.vector, data.duration).SetRelative();
                     }
-                    else if (data.vectorHandle == EnumCollect.ToDestinationVectorSpace.SelfSpace)
+                    else if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.SelfSpace)
                     {
                         if (useRIGID) withTween = Entity.Rigid.DOMove(Entity.transform.TransformDirection(data.vector), data.duration);
                     }
@@ -663,7 +663,7 @@ namespace ES
         [NonSerialized] public ModuleAI_AB_Target ReferModule_Target;
         [NonSerialized] public ModuleBase_AB_Vision Refer_Vision;
         public float procedurallyNormalR = 10;
-        public EnumCollect.TargetSelectType targetSelectType = EnumCollect.TargetSelectType.ProcedurallyWaypoints;
+        public EnumCollect.EntityMotionTargetPosSelect targetSelectType = EnumCollect.EntityMotionTargetPosSelect.ProcedurallyWaypoints;
         [NonSerialized] public ESEntitySharedData ESEntityShared;
 
         protected override void RunStatePreparedLogic()
