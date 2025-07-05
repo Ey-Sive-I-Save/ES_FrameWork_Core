@@ -1084,19 +1084,19 @@ namespace ES
     {
         #region 当前并行
         [LabelText("自己的运行中状态"),FoldoutGroup("子状态")]
-        public SafeLoopList<IESMicroState> _SelfRunningStates = new SafeLoopList<IESMicroState>();
+        public SafeNormalList<IESMicroState> _SelfRunningStates = new SafeNormalList<IESMicroState>();
         public IEnumerable<IESMicroState> SelfRunningStates => _SelfRunningStates.ValuesNow;
         #endregion
 
         #region 设计层
         protected override void _Expand_PreparedHappenDesign()
         {
-            _SelfRunningStates?.ApplyBuffers();
+            _SelfRunningStates?.TryApplyBuffers();
             // base._Expand_PreparedHappenDesign();
         }
         protected override void _Expand_UpdateHappenDesign()
         {
-            _SelfRunningStates?.ApplyBuffers();
+            _SelfRunningStates?.TryApplyBuffers();
             if (_SelfRunningStates != null)
             {
                 foreach (var i in _SelfRunningStates.ValuesNow)
@@ -1141,7 +1141,7 @@ namespace ES
         }
         protected override void _Expand_ExitHappenDesign()
         {
-            _SelfRunningStates?.ApplyBuffers();
+            _SelfRunningStates?.TryApplyBuffers();
             if (_SelfRunningStates != null)
             {
                 foreach (var i in _SelfRunningStates.ValuesNow)
@@ -1298,7 +1298,7 @@ namespace ES
         }
         protected override void _Expand_ExitHappenDesign()
         {
-            _SelfRunningStates?.ApplyBuffers();
+            _SelfRunningStates?.TryApplyBuffers();
             base._Expand_ExitHappenDesign();//照常更新
         }
         #endregion

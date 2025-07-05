@@ -4,12 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ES
-{
 
-    public class Normal 
+namespace ES {
+    public static class Explicit 
     {
         
     }
 }
-

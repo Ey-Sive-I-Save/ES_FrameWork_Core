@@ -5,15 +5,68 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-/* 安全列表 就是允许在遍历时 进行增加和删除操作
+/* 安全循环列表 就是允许在遍历时 进行增加和删除操作
+ * 在这个基础上的线程安全列表，会加一个Thread  依赖Lock实现
    必须在每帧或者必要时，调用他的Update
 
-    SafeLoopUpdateList_EasyQueue_SeriNot_Dirty ->SafeLoopList
+    SafeLoopUpdateList_EasyQueue_SeriNot_Dirty ->SafeList
  */
 namespace ES
 {
-    [Serializable, TypeRegistryItem("队列循环安全安全脏列表_持久")]
-    public class SafeLoopList<T>
+    //帧刷新
+    [Serializable, TypeRegistryItem("队列循环安全列表_持久")]
+    public class SafeBasicList<T> : ISafeList<T>
+    {
+        [LabelText("正在更新", SdfIconType.ArrowRepeat), SerializeReference, GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
+        public List<T> ValuesNow = new List<T>(10);
+        [FoldoutGroup("缓冲")][LabelText("缓冲添加", SdfIconType.BoxArrowInLeft), SerializeReference] public List<T> ValuesBufferToAdd = new List<T>();
+        [FoldoutGroup("缓冲")][LabelText("缓冲移除", SdfIconType.BoxArrowRight), SerializeReference] public List<T> ValuesBufferToRemove = new List<T>();
+        public Action<bool, T> OnChange = (Add, What) => { };
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void TryAdd(T add)
+        {
+            ValuesBufferToAdd.Add(add);
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void TryRemove(T remove)
+        {
+            ValuesBufferToRemove.Add(remove);
+        }
+
+        public void TryApplyBuffers()
+        {
+            foreach (var i in ValuesBufferToAdd)
+            {
+                if (ValuesNow.Contains(i)) continue;
+                OnChange.Invoke(true, i);
+                ValuesNow.Add(i);
+            }
+            foreach (var i in ValuesBufferToRemove)
+            {
+                if (!ValuesNow.Contains(i)) continue;
+                OnChange.Invoke(false, i);
+                ValuesNow.Remove(i);
+            }
+            ValuesBufferToAdd.Clear();
+            ValuesBufferToRemove.Clear();
+        }
+
+        public bool TryContains(T who)
+        {
+            if (ValuesBufferToRemove.Contains(who)) return false;
+            if (ValuesBufferToAdd.Contains(who)) return true;
+            return ValuesNow.Contains(who);
+        }
+
+        public void ApplyBuffers(bool force = false)
+        {
+            TryApplyBuffers();
+        }
+    }
+
+    //Dirty 刷新
+    [Serializable, TypeRegistryItem("队列循环安全脏列表_持久")]
+    public class SafeNormalList<T> : ISafeList<T>
     {
         [LabelText("正在更新", SdfIconType.ArrowRepeat), SerializeReference, ShowInInspector, GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
         public List<T> ValuesNow = new List<T>(10);
@@ -62,9 +115,9 @@ namespace ES
             }
         }
 
-        //相比于 Update,性能更好
+        //Dirty模式>相比Update,性能更好
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void ApplyBuffersNoForce()
+        public void TryApplyBuffers()
         {
             if (!isDirty) return;
             isDirty = false;
@@ -99,7 +152,173 @@ namespace ES
 
 
     }
+    [Serializable, TypeRegistryItem("队列线程安全列表_持久")]
+    public class SafeThreadBasicList<T> : ISafeList<T>
+    {
+        [LabelText("正在更新", SdfIconType.ArrowRepeat), SerializeReference, GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
+        public List<T> ValuesNow = new List<T>(10);
+        [FoldoutGroup("缓冲")][LabelText("缓冲添加", SdfIconType.BoxArrowInLeft), SerializeReference] public List<T> ValuesBufferToAdd = new List<T>();
+        [FoldoutGroup("缓冲")][LabelText("缓冲移除", SdfIconType.BoxArrowRight), SerializeReference] public List<T> ValuesBufferToRemove = new List<T>();
+        public Action<bool, T> OnChange = (Add, What) => { };
+        private readonly object _lockObj = new object(); // 单一锁对象
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void TryAdd(T add)
+        {
+            lock (ValuesBufferToAdd)
+            {
+                ValuesBufferToAdd.Add(add);
+            }
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void TryRemove(T remove)
+        {
+            lock (ValuesBufferToRemove)
+            {
+                ValuesBufferToRemove.Add(remove);
+            }
+        }
+        public void TryApplyBuffers()
+        {
+            lock (ValuesBufferToAdd)
+            {
+                foreach (var i in ValuesBufferToAdd)
+                {
+                    if (ValuesNow.Contains(i)) continue;
+                    OnChange.Invoke(true, i);
+                    ValuesNow.Add(i);
+                }
+                ValuesBufferToAdd.Clear();
+            }
+            lock (ValuesBufferToRemove)
+            {
+                foreach (var i in ValuesBufferToRemove)
+                {
+                    if (!ValuesNow.Contains(i)) continue;
+                    OnChange.Invoke(false, i);
+                    ValuesNow.Remove(i);
+                }
+                ValuesBufferToRemove.Clear();
+            }
+        }
+        public bool TryContains(T who)
+        {
+            lock (ValuesBufferToAdd)
+            {
+                if (ValuesBufferToAdd.Contains(who)) return true;
+            }
+            lock (ValuesBufferToRemove)
+            {
+                if (ValuesBufferToRemove.Contains(who)) return false;
+            }
+            return ValuesNow.Contains(who);
+        }
+        public void ApplyBuffers(bool force = false)
+        {
+            TryApplyBuffers();
+        }
+    }
+    //Dirty 刷新
+    [Serializable, TypeRegistryItem("队列循环安全脏列表_持久")]
+    public class SafeThreadNormalList<T> : ISafeList<T>
+    {
+        [LabelText("正在更新", SdfIconType.ArrowRepeat), SerializeReference, ShowInInspector, GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
+        public List<T> ValuesNow = new List<T>(10);
+        [FoldoutGroup("缓冲")]
+        [ShowInInspector, LabelText("缓冲添加队列", SdfIconType.BoxArrowInLeft)]
+        private Queue<T> ValuesBufferToAdd = new Queue<T>();
+        [FoldoutGroup("缓冲")]
+        [ShowInInspector, LabelText("缓冲移除队列", SdfIconType.BoxArrowRight)]
+        private Queue<T> ValuesBufferToRemove = new Queue<T>();
+        private bool isDirty { get; set; }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void TryAdd(T add)
+        {
+            lock (ValuesBufferToAdd)
+            {
+                ValuesBufferToAdd.Enqueue(add);
+                isDirty = true;
+            }
+
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void TryRemove(T add)
+        {
+            lock (ValuesBufferToRemove)
+            {
+                ValuesBufferToRemove.Enqueue(add);
+                isDirty = true;
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public bool TryContains(T who)
+        {
+            lock (ValuesBufferToAdd) if (ValuesBufferToAdd.Contains(who)) return true;
+            lock (ValuesBufferToRemove) if (ValuesBufferToRemove.Contains(who)) return false;
+            return ValuesNow.Contains(who);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void ApplyBuffers(bool forceUpdate = false)
+        {
+            if (isDirty || forceUpdate)
+            {
+                isDirty = false;
+
+                lock (ValuesBufferToAdd)
+                    while (ValuesBufferToAdd.Count > 0)
+                    {
+                        ValuesNow.Add(ValuesBufferToAdd.Dequeue());
+                    }
+
+                lock (ValuesBufferToRemove)
+                    while (ValuesBufferToRemove.Count > 0)
+                    {
+                        ValuesNow.Remove(ValuesBufferToRemove.Dequeue());
+                    }
+            }
+        }
+
+        //Dirty模式>相比Update,性能更好
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void TryApplyBuffers()
+        {
+            if (!isDirty) return;
+            isDirty = false;
+            lock (ValuesBufferToAdd)
+                while (ValuesBufferToAdd.Count > 0)
+                {
+                    ValuesNow.Add(ValuesBufferToAdd.Dequeue());
+                }
+            lock (ValuesBufferToRemove)
+                while (ValuesBufferToRemove.Count > 0)
+                {
+                    ValuesNow.Remove(ValuesBufferToRemove.Dequeue());
+                }
+
+        }
+
+        #region 杂项
+
+
+        public void _ES_ClearWarnning()
+        {
+            //只是用来清除 Warn 项 没有任何意义
+            ForceUpdate();
+        }
+
+        [Button("强制更新")]
+        [FoldoutGroup("缓冲")]
+        private void ForceUpdate()
+        {
+            ApplyBuffers(true);
+        }
+
+        #endregion
+
+
+    }
 
     #region 废案
 

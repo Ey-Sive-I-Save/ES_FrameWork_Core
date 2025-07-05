@@ -324,7 +324,7 @@ namespace ES
     public class EntityState_Buff : EntityState
     {
         #region 类型支持
-        public class BufferContainer : BaseListIOC_Arch_KeyAndList<OutputOperationBuffBuffer, ValueBufferOperationFloat>
+        public class BufferContainer : KeyGroup<OutputOperationBuffBuffer, ValueBufferOperationFloat>
         {
             public Queue<(OutputOperationBuffBuffer operation, ValueBufferOperationFloat buffer)> ToDelete = new Queue<(OutputOperationBuffBuffer, ValueBufferOperationFloat)>();
         }

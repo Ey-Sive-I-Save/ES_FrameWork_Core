@@ -276,7 +276,7 @@ namespace ES
         #endregion
 
         #region 全局资源源加载和创建
-        public class ResTable : BaseListIOC_Arch_KeyAndList<string, ESResSource>
+        public class ResTable : KeyGroup<string, ESResSource>
         {
             internal ESResSource GetResBySearchKeys(ResSourceSearchKey resSearchKeys)
             {

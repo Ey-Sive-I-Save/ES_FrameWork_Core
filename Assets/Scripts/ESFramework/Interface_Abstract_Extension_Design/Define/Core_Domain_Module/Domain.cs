@@ -40,7 +40,7 @@ namespace ES
         public Core_ core;
 
         [FoldoutGroup("扩展域固有"), LabelText("全部模块"), OdinSerialize]
-        public SafeLoopList<Module_> Modules = new SafeLoopList<Module_>();
+        public SafeNormalList<Module_> Modules = new SafeNormalList<Module_>();
 
         #endregion
 
@@ -112,7 +112,7 @@ namespace ES
                     Modules.TryRemove(i);
                 }
             }
-            if (rightNow) Modules.ApplyBuffers();
+            if (rightNow) Modules.TryApplyBuffers();
         }
 
         #endregion
@@ -145,7 +145,7 @@ namespace ES
         //更新子模块
         public virtual void UpdateAsHosting()
         {
-            Modules.ApplyBuffersNoForce();
+            Modules.TryApplyBuffers();
             if (Modules != null)
             {
                 for (int i = 0; i < Modules.ValuesNow.Count; i++)

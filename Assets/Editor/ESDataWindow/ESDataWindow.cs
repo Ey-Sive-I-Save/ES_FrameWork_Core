@@ -271,7 +271,7 @@ namespace ES
                 //运行时才会加
                 foreach (var i in GameCenterManager.Instance.ArchutectureIOC.IOC)
                 {
-                    List<IArchitecture> architectures_ = i.Value.valuesNow_;
+                    List<IArchitecture> architectures_ = i.Value.ValuesNow;
                     string menuNow = menu + "/IOC运行时全集/类型分类：" + i.ToString();
                     tree.Add(menuNow, new Page_Index_RunTimeInGameCenterArchitectureIOC_TypeSelect() { architectures = architectures_ }, SdfIconType.Hdd); ;
                     if (architectures_ != null)

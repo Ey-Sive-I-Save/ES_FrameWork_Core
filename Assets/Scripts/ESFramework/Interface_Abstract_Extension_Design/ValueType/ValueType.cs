@@ -14,33 +14,7 @@ using System.Runtime.CompilerServices;
 
 namespace ES
 {
-    [Serializable]
-    public class SafeUpdateList<T>
-    {
-
-        [LabelText("正在更新", SdfIconType.ArrowRepeat), SerializeReference, GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")] public List<T> valuesNow_ = new List<T>(10);
-        [FoldoutGroup("缓冲")][LabelText("缓冲添加", SdfIconType.BoxArrowInLeft), SerializeReference] public List<T> valuesToAdd = new List<T>();
-        [FoldoutGroup("缓冲")][LabelText("缓冲移除", SdfIconType.BoxArrowRight), SerializeReference] public List<T> valuesToRemove = new List<T>();
-        public Action<bool, T> OnChange = (Add, What) => { };
-
-        public void Update()
-        {
-            foreach (var i in valuesToAdd)
-            {
-                if (valuesNow_.Contains(i)) continue;
-                OnChange.Invoke(true, i);
-                valuesNow_.Add(i);
-            }
-            foreach (var i in valuesToRemove)
-            {
-                if (!valuesNow_.Contains(i)) continue;
-                OnChange.Invoke(false, i);
-                valuesNow_.Remove(i);
-            }
-            valuesToAdd.Clear();
-            valuesToRemove.Clear();
-        }
-    }
+    
 
     [Serializable/*Link收发列表IOC*/]
     public class LinkRecieveSafeListIOC : TypeSafeListIOC<IReceiveLink>
@@ -144,7 +118,7 @@ namespace ES
         }
     }
     [Serializable/*类型列表IOC*/]
-    public class TypeListIOC<Element> : BaseListIOC_Arch_KeyAndList<Type, Element>
+    public class TypeListIOC<Element> : KeyGroup<Type, Element>
     {
         public override string IOCName => "类型键IOC表";
         public virtual Element Find<T>()
@@ -162,7 +136,7 @@ namespace ES
     {
         [SerializeReference]
         [LabelText(@"@  IOCName ", icon: SdfIconType.ListColumnsReverse), GUIColor("IOCColor")]
-        public Dictionary<Key, SafeUpdateList<Element>> IOC = new Dictionary<Key, SafeUpdateList<Element>>();
+        public Dictionary<Key, SafeBasicList<Element>> IOC = new Dictionary<Key, SafeBasicList<Element>>();
         public Action OnChange = () => { };
         public virtual string IOCName => "标准安全IOC表";
         public virtual Color IOCColor => Color.yellow;
@@ -174,18 +148,18 @@ namespace ES
         {
             if (e == null) return default;
 
-            SafeUpdateList<Element> elements = default;
+            SafeBasicList<Element> elements = default;
             if (IOC.ContainsKey(k))
             {
                 elements = IOC[k];
-                if (isRuntime) elements.valuesToAdd.Add(e);
-                else elements.valuesNow_.Add(e);
+                if (isRuntime) elements.ValuesBufferToAdd.Add(e);
+                else elements.ValuesNow.Add(e);
             }
             else
             {
-                elements = new SafeUpdateList<Element>();
-                if (isRuntime) elements.valuesToAdd.Add(e);
-                else elements.valuesNow_.Add(e);
+                elements = new SafeBasicList<Element>();
+                if (isRuntime) elements.ValuesBufferToAdd.Add(e);
+                else elements.ValuesNow.Add(e);
                 IOC.Add(k, elements);
             }
             OnChange.Invoke();
@@ -197,12 +171,12 @@ namespace ES
         }
         public void RemoveElement(Key k, Element e, bool isRuntime = false)
         {
-            SafeUpdateList<Element> elements = default;
+            SafeBasicList<Element> elements = default;
             if (IOC.ContainsKey(k))
             {
                 elements = IOC[k];
-                if (isRuntime) elements.valuesToRemove.Add(e);
-                else elements.valuesNow_.Remove(e);
+                if (isRuntime) elements.ValuesBufferToRemove.Add(e);
+                else elements.ValuesNow.Remove(e);
                 OnChange.Invoke();
             }
             else
@@ -217,7 +191,7 @@ namespace ES
 
             if (IOC.ContainsKey(k))
             {
-                foreach (var i in IOC[k].valuesNow_)
+                foreach (var i in IOC[k].ValuesNow)
                 {
                     return i;
                 }
@@ -231,14 +205,14 @@ namespace ES
             if (IOC.ContainsKey(k))
             {
 
-                return IOC[k].valuesNow_;
+                return IOC[k].ValuesNow;
             }
 
-            return (IOC[k] = new SafeUpdateList<Element>()).valuesNow_;
+            return (IOC[k] = new SafeBasicList<Element>()).ValuesNow;
         }
     }
     [Serializable/*基本列表IOC*/]
-    public abstract class BaseListIOC_Arch_KeyAndList<Key, Element>
+    public abstract class KeyGroup<Key, Element>
     {
         [SerializeReference]
         [LabelText(@"@  IOCName ", icon: SdfIconType.ListColumnsReverse), GUIColor("IOCColor")]
@@ -430,7 +404,7 @@ namespace ES
     }
     #region 特殊IOC —— 原型参数键池专属参数集合
     [Serializable, TypeRegistryItem("原型参数IOC")/*技能树参数分类-*/]
-    public class ArchitectureKeyValuePoolTypeListIOC : BaseListIOC_Arch_KeyAndList<EnumCollect.ArchitectureKeyValuePoolType, IArchitectureKeyValuePoolTypeValue>
+    public class ArchitectureKeyValuePoolTypeListIOC : KeyGroup<EnumCollect.ArchitectureKeyValuePoolType, IArchitectureKeyValuePoolTypeValue>
     {
         public Action<EnumCollect.ArchitectureKeyValuePoolType, IArchitectureKeyValuePoolTypeValue> OnHandle = (at, who) => { };
     }
