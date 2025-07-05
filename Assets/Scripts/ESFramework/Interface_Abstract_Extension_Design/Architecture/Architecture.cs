@@ -88,25 +88,25 @@ namespace ES
         {
             KeyValueParamIOC ??= new ArchitectureKeyValuePoolTypeListIOC();
             //
-            if (!KeyValueParamIOC.IOC.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.DynamicTag))
+            if (!KeyValueParamIOC.Groups.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.DynamicTag))
             {
-                KeyValueParamIOC.IOC.Add( EnumCollect.ArchitectureKeyValuePoolType.DynamicTag,new List<IArchitectureKeyValuePoolTypeValue>());
+                KeyValueParamIOC.Groups.Add( EnumCollect.ArchitectureKeyValuePoolType.DynamicTag,new List<IArchitectureKeyValuePoolTypeValue>());
             }
-            if (!KeyValueParamIOC.IOC.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.FloatValue))
+            if (!KeyValueParamIOC.Groups.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.FloatValue))
             {
-                KeyValueParamIOC.IOC.Add(EnumCollect.ArchitectureKeyValuePoolType.FloatValue, new List<IArchitectureKeyValuePoolTypeValue>());
+                KeyValueParamIOC.Groups.Add(EnumCollect.ArchitectureKeyValuePoolType.FloatValue, new List<IArchitectureKeyValuePoolTypeValue>());
             }
-            if (!KeyValueParamIOC.IOC.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.IntValue))
+            if (!KeyValueParamIOC.Groups.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.IntValue))
             {
-                KeyValueParamIOC.IOC.Add(EnumCollect.ArchitectureKeyValuePoolType.IntValue, new List<IArchitectureKeyValuePoolTypeValue>());
+                KeyValueParamIOC.Groups.Add(EnumCollect.ArchitectureKeyValuePoolType.IntValue, new List<IArchitectureKeyValuePoolTypeValue>());
             }
-            if (!KeyValueParamIOC.IOC.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.BoolValue))
+            if (!KeyValueParamIOC.Groups.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.BoolValue))
             {
-                KeyValueParamIOC.IOC.Add(EnumCollect.ArchitectureKeyValuePoolType.BoolValue, new List<IArchitectureKeyValuePoolTypeValue>());
+                KeyValueParamIOC.Groups.Add(EnumCollect.ArchitectureKeyValuePoolType.BoolValue, new List<IArchitectureKeyValuePoolTypeValue>());
             }
-            if (!KeyValueParamIOC.IOC.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.StringValue))
+            if (!KeyValueParamIOC.Groups.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.StringValue))
             {
-                KeyValueParamIOC.IOC.Add(EnumCollect.ArchitectureKeyValuePoolType.StringValue, new List<IArchitectureKeyValuePoolTypeValue>());
+                KeyValueParamIOC.Groups.Add(EnumCollect.ArchitectureKeyValuePoolType.StringValue, new List<IArchitectureKeyValuePoolTypeValue>());
             }
             if(applyPack != null)
             {
@@ -115,22 +115,22 @@ namespace ES
                     var arch = i.Value.getArch;
                     if(arch is ArchitectureTypeValue_DynamicTag tag)
                     {
-                        KeyValueParamIOC.AddElement(EnumCollect.ArchitectureKeyValuePoolType.DynamicTag, tag);
+                        KeyValueParamIOC.TryAdd(EnumCollect.ArchitectureKeyValuePoolType.DynamicTag, tag);
                     }else if (arch is ArchitectureTypeValue_Float f)
                     {
-                        KeyValueParamIOC.AddElement(EnumCollect.ArchitectureKeyValuePoolType.FloatValue, f);
+                        KeyValueParamIOC.TryAdd(EnumCollect.ArchitectureKeyValuePoolType.FloatValue, f);
                     }
                     else if (arch is ArchitectureTypeValue_Int int_)
                     {
-                        KeyValueParamIOC.AddElement(EnumCollect.ArchitectureKeyValuePoolType.IntValue, int_);
+                        KeyValueParamIOC.TryAdd(EnumCollect.ArchitectureKeyValuePoolType.IntValue, int_);
                     }
                     else if (arch is ArchitectureTypeValue_String str)
                     {
-                        KeyValueParamIOC.AddElement(EnumCollect.ArchitectureKeyValuePoolType.StringValue, str);
+                        KeyValueParamIOC.TryAdd(EnumCollect.ArchitectureKeyValuePoolType.StringValue, str);
                     }
                     else if (arch is ArchitectureTypeValue_Bool bo)
                     {
-                        KeyValueParamIOC.AddElement(EnumCollect.ArchitectureKeyValuePoolType.BoolValue, bo);
+                        KeyValueParamIOC.TryAdd(EnumCollect.ArchitectureKeyValuePoolType.BoolValue, bo);
                     }
                   /*  else if (arch is ArchitectureTypeValue_DynamicTag g)
                     {

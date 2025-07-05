@@ -157,10 +157,10 @@ namespace ES
 
         #region 可寻类型分组键
         [LabelText("可寻分组键")]
-        public DicIOCWithStringSelectStringKey_TypeValue SearchDataTypeKey = new DicIOCWithStringSelectStringKey_TypeValue();
+        public SelectDic_StringsToType SearchDataTypeKey = new SelectDic_StringsToType();
         private void LoadSST()
         {
-            SearchDataTypeKey = new DicIOCWithStringSelectStringKey_TypeValue();
+            SearchDataTypeKey = new SelectDic_StringsToType();
             var assem = Assembly.GetExecutingAssembly();
             var types = assem.GetTypes();
             foreach (var i in types)
@@ -168,7 +168,7 @@ namespace ES
                 var at = i.GetCustomAttribute<ESDisplayNameKeyToTypeAttribute>();
                 if (at != null)
                 {
-                    SearchDataTypeKey.AddElement(at.TeamCollect, at.DisplayKeyName, i);
+                    SearchDataTypeKey.TryAddOrSet(at.TeamCollect, at.DisplayKeyName, i);
                 }
             }
         }

@@ -7,9 +7,6 @@ using UnityEngine;
 namespace ES
 {
 
-    public class Dic_Dic 
-    {
-        
-    }
+    
 }
 

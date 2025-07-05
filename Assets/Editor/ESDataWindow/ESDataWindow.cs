@@ -1254,27 +1254,27 @@ namespace ES
     {
         public static string[] GetInfoNames()
         {
-            return ESEditorRuntimePartMaster.Instance.SearchDataTypeKey.FindDic("数据单元").Keys.ToArray();
+            return ESEditorRuntimePartMaster.Instance.SearchDataTypeKey.GetDic("数据单元").Keys.ToArray();
         }
         public static string[] GetGroupNames()
         {
-            return ESEditorRuntimePartMaster.Instance.SearchDataTypeKey.FindDic("数据组").Keys.ToArray();
+            return ESEditorRuntimePartMaster.Instance.SearchDataTypeKey.GetDic("数据组").Keys.ToArray();
         }
         public static string[] GetPackNames()
         {
-            return ESEditorRuntimePartMaster.Instance.SearchDataTypeKey.FindDic("数据包").Keys.ToArray();
+            return ESEditorRuntimePartMaster.Instance.SearchDataTypeKey.GetDic("数据包").Keys.ToArray();
         }
         public static Type GetInfoType(string name)
         {
-            return ESEditorRuntimePartMaster.Instance.SearchDataTypeKey.Find("数据单元", name);
+            return ESEditorRuntimePartMaster.Instance.SearchDataTypeKey.GetElement("数据单元", name);
         }
         public static Type GetGroupType(string name)
         {
-            return ESEditorRuntimePartMaster.Instance.SearchDataTypeKey.Find("数据组", name);
+            return ESEditorRuntimePartMaster.Instance.SearchDataTypeKey.GetElement("数据组", name);
         }
         public static Type GetPackType(string name)
         {
-            return ESEditorRuntimePartMaster.Instance.SearchDataTypeKey.Find("数据包", name);
+            return ESEditorRuntimePartMaster.Instance.SearchDataTypeKey.GetElement("数据包", name);
         }
         /*public enum DataType
         {

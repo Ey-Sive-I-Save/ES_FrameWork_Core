@@ -22,12 +22,40 @@ namespace ES
         [FoldoutGroup("缓冲")][LabelText("缓冲添加", SdfIconType.BoxArrowInLeft), SerializeReference] public List<T> ValuesBufferToAdd = new List<T>();
         [FoldoutGroup("缓冲")][LabelText("缓冲移除", SdfIconType.BoxArrowRight), SerializeReference] public List<T> ValuesBufferToRemove = new List<T>();
         public Action<bool, T> OnChange = (Add, What) => { };
+
+        public IEnumerable<T> ValuesIEnumable
+        {
+            get
+            {
+                // 内联迭代器：直接返回 ValuesNow 的枚举器
+                foreach (var item in ValuesNow)
+                {
+                    yield return item;
+                }
+            }
+        }
+
+
+        public bool Auto
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get;
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            set;
+        }
+
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void SetAutoApplyBuffers(bool b) => Auto = true;
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void TryAdd(T add)
         {
             ValuesBufferToAdd.Add(add);
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+
+
         public void TryRemove(T remove)
         {
             ValuesBufferToRemove.Add(remove);
@@ -62,6 +90,8 @@ namespace ES
         {
             TryApplyBuffers();
         }
+
+
     }
 
     //Dirty 刷新
@@ -76,7 +106,20 @@ namespace ES
         [FoldoutGroup("缓冲")]
         [ShowInInspector, LabelText("缓冲移除队列", SdfIconType.BoxArrowRight)]
         private Queue<T> ValuesBufferToRemove = new Queue<T>();
-        private bool isDirty { get; set; }
+        private bool isDirty;
+        public bool Auto { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+        public void SetAutoApplyBuffers(bool b) => Auto = true;
+        public IEnumerable<T> ValuesIEnumable
+        {
+            get
+            {
+                // 内联迭代器：直接返回 ValuesNow 的枚举器
+                foreach (var item in ValuesNow)
+                {
+                    yield return item;
+                }
+            }
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void TryAdd(T add)
@@ -90,15 +133,12 @@ namespace ES
             ValuesBufferToRemove.Enqueue(add);
             isDirty = true;
         }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool TryContains(T who)
         {
             if (ValuesBufferToRemove.Contains(who)) return false;
             if (ValuesBufferToAdd.Contains(who)) return true;
             return ValuesNow.Contains(who);
         }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ApplyBuffers(bool forceUpdate = false)
         {
             if (isDirty || forceUpdate)
@@ -152,6 +192,9 @@ namespace ES
 
 
     }
+
+
+
     [Serializable, TypeRegistryItem("队列线程安全列表_持久")]
     public class SafeThreadBasicList<T> : ISafeList<T>
     {
@@ -160,7 +203,11 @@ namespace ES
         [FoldoutGroup("缓冲")][LabelText("缓冲添加", SdfIconType.BoxArrowInLeft), SerializeReference] public List<T> ValuesBufferToAdd = new List<T>();
         [FoldoutGroup("缓冲")][LabelText("缓冲移除", SdfIconType.BoxArrowRight), SerializeReference] public List<T> ValuesBufferToRemove = new List<T>();
         public Action<bool, T> OnChange = (Add, What) => { };
-        private readonly object _lockObj = new object(); // 单一锁对象
+        /*private readonly object _lockObj = new object(); // 单一锁对象*/
+        public bool Auto { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void SetAutoApplyBuffers(bool b) => Auto = true;
+        public IEnumerable<T> ValuesIEnumable => ValuesNow;
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void TryAdd(T add)
         {
@@ -217,8 +264,9 @@ namespace ES
             TryApplyBuffers();
         }
     }
+
     //Dirty 刷新
-    [Serializable, TypeRegistryItem("队列循环安全脏列表_持久")]
+    [Serializable, TypeRegistryItem("队列线程安全脏列表_持久")]
     public class SafeThreadNormalList<T> : ISafeList<T>
     {
         [LabelText("正在更新", SdfIconType.ArrowRepeat), SerializeReference, ShowInInspector, GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
@@ -229,7 +277,10 @@ namespace ES
         [FoldoutGroup("缓冲")]
         [ShowInInspector, LabelText("缓冲移除队列", SdfIconType.BoxArrowRight)]
         private Queue<T> ValuesBufferToRemove = new Queue<T>();
-        private bool isDirty { get; set; }
+        private bool isDirty;
+        public bool Auto { get; set; }
+        public void SetAutoApplyBuffers(bool b) => Auto = true;
+        public IEnumerable<T> ValuesIEnumable => ValuesNow;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void TryAdd(T add)

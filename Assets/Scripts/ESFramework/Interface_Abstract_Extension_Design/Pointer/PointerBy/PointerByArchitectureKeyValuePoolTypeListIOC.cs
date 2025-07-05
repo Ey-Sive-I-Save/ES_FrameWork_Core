@@ -82,7 +82,7 @@ namespace ES
 
         public override bool Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
         {
-            var dic = by?.IOC;
+            var dic = by?.Groups;
             if (dic != null)
             {
                 
@@ -117,7 +117,7 @@ namespace ES
 
         public override bool Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
         {
-            var dic = by?.IOC;
+            var dic = by?.Groups;
             if (dic != null)
             {
                 if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.IntValue))
@@ -148,7 +148,7 @@ namespace ES
         [LabelText("输入取出键"), SerializeReference] public string key;
         public override bool Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
         {
-            var dic = by?.IOC;
+            var dic = by?.Groups;
             if (dic != null)
             {
                 if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.BoolValue))
@@ -182,7 +182,7 @@ namespace ES
 
         public override bool Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
         {
-            var dic = by?.IOC;
+            var dic = by?.Groups;
             if (dic != null)
             {
                 if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.EnumValue))
@@ -216,7 +216,7 @@ namespace ES
 
         public override bool Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
         {
-            var dic = by?.IOC;
+            var dic = by?.Groups;
             if (dic != null)
             {
                 if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.DynamicTag))
@@ -403,7 +403,7 @@ namespace ES
 
         public override object Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
         {
-            var dic = by?.IOC;
+            var dic = by?.Groups;
             if (dic != null)
             {
                 use = by;
@@ -469,7 +469,7 @@ namespace ES
         }
         public override object Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
         {
-            var dic = by?.IOC;
+            var dic = by?.Groups;
             if (dic != null)
             {
                 if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.IntValue))
@@ -509,7 +509,7 @@ namespace ES
         }
         public override object Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
         {
-            var dic = by?.IOC;
+            var dic = by?.Groups;
             if (dic != null)
             {
                 if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.BoolValue))
@@ -547,7 +547,7 @@ namespace ES
         }
         public override object Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
         {
-            var dic = by?.IOC;
+            var dic = by?.Groups;
             if (dic != null)
             {
                 if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.StringValue))
@@ -587,7 +587,7 @@ namespace ES
 
         public override object Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
         {
-            var dic = by?.IOC;
+            var dic = by?.Groups;
             if (dic != null)
             {
                 if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.DynamicTag))
@@ -630,7 +630,7 @@ namespace ES
 
         public override object Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
         {
-            var dic = by?.IOC;
+            var dic = by?.Groups;
             if (dic != null)
             {
                 if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.DynamicTag))

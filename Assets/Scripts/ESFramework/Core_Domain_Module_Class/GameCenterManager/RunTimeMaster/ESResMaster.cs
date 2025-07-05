@@ -282,7 +282,7 @@ namespace ES
             {
                 if (resSearchKeys == null) { Debug.LogError("空搜索键"); return null; }
                 var assetName = resSearchKeys.AssetPath;
-                if (!IOC.TryGetValue(assetName, out var theReses))
+                if (!Groups.TryGetValue(assetName, out var theReses))
                 {
                     return null;
                 }
@@ -346,7 +346,7 @@ namespace ES
 
             if (res != null)
             {
-                AllResSource.AddElement(res.AssetPath, res);
+                AllResSource.TryAdd(res.AssetPath, res);
             }
 
             return res;

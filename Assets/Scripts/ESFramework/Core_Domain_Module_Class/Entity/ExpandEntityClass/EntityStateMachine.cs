@@ -362,7 +362,7 @@ namespace ES
             }
             CacheActions.Clear();
             CacheSettles.Clear();
-            CacheBuffers.IOC.Clear();
+            CacheBuffers.Groups.Clear();
             base.RunStateExitLogic();
         }
         private float triggerTimer = 0;
@@ -388,12 +388,12 @@ namespace ES
             if(buffSharedData.EnableBuffer){//缓冲更迭
                 foreach (var toDelete in CacheBuffers.ToDelete)
                 {
-                    if (CacheBuffers.IOC.TryGetValue(toDelete.operation, out var list_))
+                    if (CacheBuffers.Groups.TryGetValue(toDelete.operation, out var list_))
                     {
                         list_.Remove(toDelete.buffer);
                     }
                 }
-                foreach (var thebuffers in CacheBuffers.IOC)
+                foreach (var thebuffers in CacheBuffers.Groups)
                 {
                     foreach (var buffer in thebuffers.Value)
                     {

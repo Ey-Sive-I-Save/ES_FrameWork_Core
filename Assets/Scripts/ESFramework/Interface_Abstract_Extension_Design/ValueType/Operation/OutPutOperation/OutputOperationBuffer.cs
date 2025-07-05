@@ -45,14 +45,14 @@ namespace ES
         public sealed override bool TryOpeation(Entity on, Entity from, EntityState_Buff with)
         {
             var use = MakeTheOpeation(on, from, with);
-            with.CacheBuffers.AddElement(this, use);
+            with.CacheBuffers.TryAdd(this, use);
             return true;
         }
         public sealed override bool TryCancel(Entity on, Entity from, EntityState_Buff with)
         {
-            if (with.CacheBuffers.IOC.TryGetValue(this, out var use))
+            if (with.CacheBuffers.Groups.TryGetValue(this, out var use))
             {
-                with.CacheBuffers.IOC.Remove(this);
+                with.CacheBuffers.Groups.Remove(this);
                 return true;
             }
             return true;
