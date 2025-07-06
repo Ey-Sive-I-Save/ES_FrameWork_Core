@@ -196,7 +196,7 @@ namespace ES.EvPointer
             if (t != null)
             {
                 last = t.gameObject;
-                if (usePlayerCaster) playerCaster_?.Recieve(last);
+                if (usePlayerCaster) playerCaster_?.Receive(last);
             }
             KeyValueMatchingUtility.TransformSetter.HandleTransformAtParent
                 (t, parent, pointerForVector3?.Pick() ?? default, atWorld, localScaleIndentity, localRotationIndentity);

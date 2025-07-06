@@ -8,16 +8,16 @@ namespace ES
     [TypeRegistryItem("Link接受器","Link")]
     public class PointerPlayerXXXReceiveLink<Link> : PointerPlayerSystemObjectCaster,IReceiveLink<Link> where Link:ILink
     {
-        public override IPointer Pointer => whenRecieveLink;
+        public override IPointer Pointer => whenReceiveLink;
         [LabelText("当成功接受接受Link时触发")]
-        public IPointer whenRecieveLink = new PointerPickerEveryThing();
+        public IPointer whenReceiveLink = new PointerPickerEveryThing();
         private void OnEnable()
         {
-            GameCenterManager.Instance.GameCenterArchitecture.AddRecieveLink(this);
+            GameCenterManager.Instance.GameCenterArchitecture.AddReceiveLink(this);
         }
         private void OnDisable()
         {
-            GameCenterManager.Instance.GameCenterArchitecture.RemoveRecieveLink(this);
+            GameCenterManager.Instance.GameCenterArchitecture.RemoveReceiveLink(this);
         }
         public void OnLink(Link link)
         {
@@ -25,7 +25,7 @@ namespace ES
             if (OnLinkOptionsMatch(link))
             {
                 ApplyThisLink(link);
-                whenRecieveLink?.Pick();
+                whenReceiveLink?.Pick();
             }
         }
         public virtual bool OnLinkOptionsMatch(Link link)

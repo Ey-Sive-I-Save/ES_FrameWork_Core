@@ -1,5 +1,4 @@
 using ES;
-using GluonGui.WorkspaceWindow.Views.WorkspaceExplorer;
 using Sirenix.OdinInspector.Editor.StateUpdaters;
 using Sirenix.Utilities.Editor;
 using System;

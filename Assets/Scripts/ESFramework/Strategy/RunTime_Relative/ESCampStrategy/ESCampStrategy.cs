@@ -7,10 +7,10 @@ using UnityEngine;
 
 namespace ES
 {
-    public class BaseESCampStrategy : BaseRunTimeStrategy<AllESCampStrategy, BaseESCampStrategy>
+    public class BaseESCampStrategy : BaseRunTimeStrategyCollection<AllESCampStrategy, BaseESCampStrategy>
     {
         /*public static Dictionary<>*/
-        public override Dictionary<AllESCampStrategy, BaseESCampStrategy> AllStrategy => _AllStrategies;
+        public override Dictionary<AllESCampStrategy, BaseESCampStrategy> AllStrategies => _AllStrategies;
         public static Dictionary<AllESCampStrategy, BaseESCampStrategy> _AllStrategies = new Dictionary<AllESCampStrategy, BaseESCampStrategy>() { 
             {AllESCampStrategy.NormalPlayer_PK_Enemy,new ESCampStrategy_NormalPlayer_PK_Enemy() }
 

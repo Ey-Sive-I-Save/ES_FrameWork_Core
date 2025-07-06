@@ -42,7 +42,7 @@ namespace ES
             }
             if (usePlayerCaster && playerCaster_ != null)
             {
-                playerCaster_.Recieve(type);
+                playerCaster_.Receive(type);
             }
             return type;
         }

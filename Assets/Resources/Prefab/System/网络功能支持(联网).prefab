@@ -9,9 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4122058710229816783}
-  - component: {fileID: 6486879691898475682}
-  - component: {fileID: 7104152619986638683}
-  - component: {fileID: 5345577383322807149}
+  - component: {fileID: 8715299975579268278}
+  - component: {fileID: 2935966172933958095}
   m_Layer: 0
   m_Name: "\u7F51\u7EDC\u529F\u80FD\u652F\u6301(\u8054\u7F51)"
   m_TagString: Untagged
@@ -34,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6486879691898475682
+--- !u!114 &8715299975579268278
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,29 +42,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6860505412348282983}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fd4b45f9189d94408d3ee4b72fce730, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tag: "\u8054\u7F51\u6838\u5FC3"
-  DontDes: 1
-  PrioityForToReplace: 0
-  PrioityForToBeReplaced: 0
---- !u!114 &7104152619986638683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6860505412348282983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3ee6ba11f1bf3e4dbb508c2b818b138, type: 3}
+  m_Script: {fileID: 11500000, guid: 88b8e23379a790446b99333c65a5626f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 5345577383322807149}
-  _networkObjectCache: {fileID: 5345577383322807149}
---- !u!114 &5345577383322807149
+  _addedNetworkObject: {fileID: 2935966172933958095}
+  _networkObjectCache: {fileID: 2935966172933958095}
+--- !u!114 &2935966172933958095
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -81,7 +64,7 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   _networkBehaviours:
-  - {fileID: 7104152619986638683}
+  - {fileID: 8715299975579268278}
   <SerializedRootNetworkBehaviour>k__BackingField: {fileID: 0}
   <NestedRootNetworkBehaviours>k__BackingField: []
   SerializedTransformProperties:
@@ -90,7 +73,7 @@ MonoBehaviour:
     LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1
   _isSpawnable: 1
-  _isGlobal: 1
+  _isGlobal: 0
   _initializeOrder: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
@@ -107,7 +90,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 2
+  <PrefabId>k__BackingField: 0
   <SpawnableCollectionId>k__BackingField: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 4908641050706474732

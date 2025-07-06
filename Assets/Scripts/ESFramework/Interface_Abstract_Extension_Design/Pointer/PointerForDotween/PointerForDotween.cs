@@ -1061,7 +1061,7 @@ namespace ES.EvPointer
             caster = t;
             if (usePlayerCaster && playerCaster_ != null)
             {
-                playerCaster_.Recieve(caster);
+                playerCaster_.Receive(caster);
             }
         }
         public virtual void InitValue()

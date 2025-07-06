@@ -49,7 +49,7 @@ namespace ES
                 }
                 else
                 {
-                    dic.Add(k,e);
+                    dic.Add(k, e);
                 }
             }
             else
@@ -109,15 +109,15 @@ namespace ES
         {
             if (Contents.TryGetValue(t, out var dic))
             {
-                foreach (var (k,v) in keyValues)
+                foreach (var (k, v) in keyValues)
                 {
-                    if(dic.TryGetValue(k,out _))
+                    if (dic.TryGetValue(k, out _))
                     {
 
                     }
                     else
                     {
-                        dic.Add(k,v);
+                        dic.Add(k, v);
                     }
                 }
             }
@@ -139,6 +139,7 @@ namespace ES
 #endif
                 }
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ClearSelect(Select t)
         {
             if (Contents.TryGetValue(t, out var dic))
@@ -151,6 +152,15 @@ namespace ES
                 throw new Exception("没有这种Select");
 #endif
             }
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Clear()
+        {
+            foreach (var (i, k) in Contents)
+            {
+                k.Clear();
+            }
+            Contents.Clear();
         }
     }
 

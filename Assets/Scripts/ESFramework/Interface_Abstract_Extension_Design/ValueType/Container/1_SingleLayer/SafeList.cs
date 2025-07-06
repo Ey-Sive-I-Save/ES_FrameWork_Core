@@ -36,17 +36,17 @@ namespace ES
         }
 
 
-        public bool Auto
+        public bool AutoApplyBuffers
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get;
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set;
-        }
+        } = true;
 
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void SetAutoApplyBuffers(bool b) => Auto = true;
+        public void SetAutoApplyBuffers(bool b) => AutoApplyBuffers = b;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void TryAdd(T add)
@@ -54,13 +54,20 @@ namespace ES
             ValuesBufferToAdd.Add(add);
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-
-
         public void TryRemove(T remove)
         {
             ValuesBufferToRemove.Add(remove);
         }
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void TryAddRange(IEnumerable<T> add)
+        {
+            ValuesBufferToAdd.AddRange(add);
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void TryRemoveRange(IEnumerable<T> remove)
+        {
+            ValuesBufferToRemove.AddRange(remove);
+        }
         public void TryApplyBuffers()
         {
             foreach (var i in ValuesBufferToAdd)
@@ -85,13 +92,18 @@ namespace ES
             if (ValuesBufferToAdd.Contains(who)) return true;
             return ValuesNow.Contains(who);
         }
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ApplyBuffers(bool force = false)
         {
             TryApplyBuffers();
         }
-
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Clear()
+        {
+            ValuesNow.Clear();
+            ValuesBufferToAdd.Clear();
+            ValuesBufferToRemove.Clear();
+        }
     }
 
     //Dirty 刷新
@@ -107,8 +119,9 @@ namespace ES
         [ShowInInspector, LabelText("缓冲移除队列", SdfIconType.BoxArrowRight)]
         private Queue<T> ValuesBufferToRemove = new Queue<T>();
         private bool isDirty;
-        public bool Auto { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
-        public void SetAutoApplyBuffers(bool b) => Auto = true;
+        public bool MayHasElement = true;
+        public bool AutoApplyBuffers { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; } = true;
+        public void SetAutoApplyBuffers(bool b) => AutoApplyBuffers = b;
         public IEnumerable<T> ValuesIEnumable
         {
             get
@@ -126,11 +139,30 @@ namespace ES
         {
             ValuesBufferToAdd.Enqueue(add);
             isDirty = true;
+            MayHasElement = true;
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void TryRemove(T add)
         {
             ValuesBufferToRemove.Enqueue(add);
+            isDirty = true;
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void TryAddRange(IEnumerable<T> add)
+        {
+            foreach (var i in add)
+            {
+                ValuesBufferToAdd.Enqueue(i);
+            }
+            isDirty = true;
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void TryRemoveRange(IEnumerable<T> remove)
+        {
+            foreach (var i in remove)
+            {
+                ValuesBufferToRemove.Enqueue(i);
+            }
             isDirty = true;
         }
         public bool TryContains(T who)
@@ -171,7 +203,14 @@ namespace ES
             }
 
         }
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Clear()
+        {
+            ValuesNow.Clear();
+            ValuesBufferToAdd.Clear();
+            ValuesBufferToRemove.Clear();
+            MayHasElement = false;
+        }
         #region 杂项
 
 
@@ -204,9 +243,9 @@ namespace ES
         [FoldoutGroup("缓冲")][LabelText("缓冲移除", SdfIconType.BoxArrowRight), SerializeReference] public List<T> ValuesBufferToRemove = new List<T>();
         public Action<bool, T> OnChange = (Add, What) => { };
         /*private readonly object _lockObj = new object(); // 单一锁对象*/
-        public bool Auto { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; }
+        public bool AutoApplyBuffers { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; } = true;
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void SetAutoApplyBuffers(bool b) => Auto = true;
+        public void SetAutoApplyBuffers(bool b) => AutoApplyBuffers = b;
         public IEnumerable<T> ValuesIEnumable => ValuesNow;
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void TryAdd(T add)
@@ -222,6 +261,22 @@ namespace ES
             lock (ValuesBufferToRemove)
             {
                 ValuesBufferToRemove.Add(remove);
+            }
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void TryAddRange(IEnumerable<T> add)
+        {
+            lock (ValuesBufferToAdd)
+            {
+                ValuesBufferToAdd.AddRange(add);
+            }
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void TryRemoveRange(IEnumerable<T> remove)
+        {
+            lock (ValuesBufferToRemove)
+            {
+                ValuesBufferToRemove.AddRange(remove);
             }
         }
         public void TryApplyBuffers()
@@ -259,9 +314,17 @@ namespace ES
             }
             return ValuesNow.Contains(who);
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ApplyBuffers(bool force = false)
         {
             TryApplyBuffers();
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Clear()
+        {
+            ValuesNow.Clear();
+            ValuesBufferToAdd.Clear();
+            ValuesBufferToRemove.Clear();
         }
     }
 
@@ -278,8 +341,8 @@ namespace ES
         [ShowInInspector, LabelText("缓冲移除队列", SdfIconType.BoxArrowRight)]
         private Queue<T> ValuesBufferToRemove = new Queue<T>();
         private bool isDirty;
-        public bool Auto { get; set; }
-        public void SetAutoApplyBuffers(bool b) => Auto = true;
+        public bool AutoApplyBuffers { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; } = true;
+        public void SetAutoApplyBuffers(bool b) => AutoApplyBuffers = b;
         public IEnumerable<T> ValuesIEnumable => ValuesNow;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -301,7 +364,30 @@ namespace ES
                 isDirty = true;
             }
         }
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void TryAddRange(IEnumerable<T> add)
+        {
+            lock (ValuesBufferToAdd)
+            {
+                foreach (var i in add)
+                {
+                    ValuesBufferToAdd.Enqueue(i);
+                }
+                isDirty = true;
+            }
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void TryRemoveRange(IEnumerable<T> remove)
+        {
+            lock (ValuesBufferToRemove)
+            {
+                foreach (var i in remove)
+                {
+                    ValuesBufferToRemove.Enqueue(i);
+                }
+                isDirty = true;
+            }
+        }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool TryContains(T who)
         {
@@ -349,7 +435,13 @@ namespace ES
                 }
 
         }
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Clear()
+        {
+            ValuesNow.Clear();
+            ValuesBufferToAdd.Clear();
+            ValuesBufferToRemove.Clear();
+        }
         #region 杂项
 
 

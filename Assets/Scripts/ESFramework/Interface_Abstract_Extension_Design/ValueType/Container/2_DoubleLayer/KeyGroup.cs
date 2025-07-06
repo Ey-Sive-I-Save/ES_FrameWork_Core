@@ -106,6 +106,15 @@ namespace ES
                 list.Clear();
             }
         }
+
+        public void Clear()
+        {
+            foreach(var (i,k) in Groups)
+            {
+                k.Clear();
+            }
+            Groups.Clear();
+        }
     }
 
     [Serializable,TypeRegistryItem("类型键-组")]

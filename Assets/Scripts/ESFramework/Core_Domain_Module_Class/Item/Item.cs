@@ -29,6 +29,18 @@ namespace ES
         [FoldoutGroup("属性")] public bool useDataApply = true;
         public ESItemSharedData SharedData { get => sharedData; set => sharedData = value; }
         public ESItemVariableData VariableData { get => defaultData; set => defaultData = value; }
+
+
+        public override void _InTable()
+        {
+            GameCenterManager.ItemIDPool.Add(ID,this);
+        }
+
+        public override void _OutTable()
+        {
+            GameCenterManager.ItemIDPool.Remove(ID);
+        }
+
         //注册前的操作
         protected override void OnBeforeAwakeRegister()
         {

@@ -1,7 +1,6 @@
 using DG.Tweening.Plugins.Core.PathCore;
 using ES;
 using GameKit.Dependencies.Utilities;
-using GluonGui.WorkspaceWindow.Views.WorkspaceExplorer;
 using NUnit.Framework.Interfaces;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
@@ -17,8 +16,6 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Rendering;
-using static Codice.Client.Commands.WkTree.WorkspaceTreeNode;
-using static Codice.CM.Common.Serialization.PacketFileReader;
 using static ES.ESResMaster;
 using static ES.SkillPointDataInfo.SkillPointLevelAllTransfomor.SkillPointSprites;
 using static UnityEngine.GraphicsBuffer;

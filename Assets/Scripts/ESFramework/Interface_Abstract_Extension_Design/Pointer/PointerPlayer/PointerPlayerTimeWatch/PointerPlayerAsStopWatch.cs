@@ -48,7 +48,7 @@ public class PointerPlayerAsStopWatch : PointerPlayer,IPointerForFloatCaster
             timer += Time.deltaTime;
             if (usePlayerCaster&& playerCaster_!=null)
             {
-                playerCaster_.Recieve(timer);
+                playerCaster_.Receive(timer);
             }
         }
     }

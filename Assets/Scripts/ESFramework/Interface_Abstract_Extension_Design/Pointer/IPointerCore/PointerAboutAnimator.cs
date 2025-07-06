@@ -361,7 +361,7 @@ namespace ES.EvPointer
             hash = Animator.StringToHash(name_);
             if (usePlayerCaster && playerCaster_ != null)
             {
-                playerCaster_.Recieve(hash);
+                playerCaster_.Receive(hash);
             }
             hasInit = true;
         }

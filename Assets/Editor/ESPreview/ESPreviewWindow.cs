@@ -1,5 +1,6 @@
 using ES;
 using ES.EvPointer;
+using Newtonsoft.Json;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using System;
@@ -7,14 +8,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
-using Unity.Plastic.Newtonsoft.Json;
-using Unity.Plastic.Newtonsoft.Json.Serialization;
 using UnityEditor;
 using UnityEngine;
 
 namespace ES
 {
-
+    
     public class ESPreviewWindow : ESWindowBase_Abstract<ESPreviewWindow>
     {
         public override GUIContent ESWindow_GetWindowGUIContent()

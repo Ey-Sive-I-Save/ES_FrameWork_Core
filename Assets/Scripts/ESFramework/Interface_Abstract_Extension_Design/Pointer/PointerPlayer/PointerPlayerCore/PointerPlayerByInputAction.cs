@@ -106,7 +106,7 @@ namespace ES
             }
             if (usePlayerCaster && playerCaster_ != null)
             {
-                playerCaster_.Recieve(readBool);
+                playerCaster_.Receive(readBool);
             }
         }
 

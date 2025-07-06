@@ -33,7 +33,7 @@ namespace ES
             return aObject;
            
         }
-        public object Recieve(object oo)
+        public object Receive(object oo)
         {
             return aObject = oo;
         }

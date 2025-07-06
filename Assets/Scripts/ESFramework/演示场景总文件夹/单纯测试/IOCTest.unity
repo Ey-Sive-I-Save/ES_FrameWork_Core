@@ -857,6 +857,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2935966172933958095, guid: 0d3343a371be8f544b5ac00dc18385e1,
+        type: 3}
+      propertyPath: <SceneId>k__BackingField
+      value: 2147414015
+      objectReference: {fileID: 0}
     - target: {fileID: 4122058710229816783, guid: 0d3343a371be8f544b5ac00dc18385e1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -907,25 +912,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5345577383322807149, guid: 0d3343a371be8f544b5ac00dc18385e1,
-        type: 3}
-      propertyPath: <SceneId>k__BackingField
-      value: 2012921343
-      objectReference: {fileID: 0}
     - target: {fileID: 6860505412348282983, guid: 0d3343a371be8f544b5ac00dc18385e1,
         type: 3}
       propertyPath: m_Name
-      value: "\u7F51\u7EDC\u529F\u80FD\u652F\u6301(\u8054\u7F51)"
+      value: "\u7F51\u7EDC\u5BA2\u6237\u7AEFRPC\u6A21\u5757"
       objectReference: {fileID: 0}
-    - target: {fileID: 6860505412348282983, guid: 0d3343a371be8f544b5ac00dc18385e1,
+    - target: {fileID: 8715299975579268278, guid: 0d3343a371be8f544b5ac00dc18385e1,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: _addedNetworkObject
+      value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8715299975579268278, guid: 0d3343a371be8f544b5ac00dc18385e1,
+        type: 3}
+      propertyPath: _networkObjectCache
+      value: 
+      objectReference: {fileID: 1031930139}
+    m_RemovedComponents:
+    - {fileID: 2935966172933958095, guid: 0d3343a371be8f544b5ac00dc18385e1, type: 3}
+    - {fileID: 8715299975579268278, guid: 0d3343a371be8f544b5ac00dc18385e1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6860505412348282983, guid: 0d3343a371be8f544b5ac00dc18385e1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1031930139}
+    - targetCorrespondingSourceObject: {fileID: 6860505412348282983, guid: 0d3343a371be8f544b5ac00dc18385e1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1031930138}
   m_SourcePrefab: {fileID: 100100000, guid: 0d3343a371be8f544b5ac00dc18385e1, type: 3}
 --- !u!1 &212290459
 GameObject:
@@ -1471,12 +1486,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!4 &289269137 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2864163513962935361, guid: 5408e699fc2a4944c96b43bb07b9b98e,
-    type: 3}
-  m_PrefabInstance: {fileID: 316635165220748288}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &337080719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,51 +1543,6 @@ MonoBehaviour:
   register: 1
   registerKey: "\u6CE8\u518CUI"
   _myParentPanel: {fileID: 0}
---- !u!1 &338345640
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 338345641}
-  - component: {fileID: 338345642}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &338345641
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338345640}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 528.9453, y: 625.78906, z: -40.45777}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &338345642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338345640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b1d8e3e8ab5b1449e618abb982b3fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aaasss: []
 --- !u!1 &415922420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,18 +1935,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcb9cd28b81d116419be700354cd5768, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &585378376 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7104152619986638683, guid: 0d3343a371be8f544b5ac00dc18385e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 198544076}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3ee6ba11f1bf3e4dbb508c2b818b138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &612548515
@@ -3207,6 +3159,75 @@ MonoBehaviour:
   register: 1
   registerKey: "\u6CE8\u518CUI1"
   _myParentPanel: {fileID: 0}
+--- !u!1 &1031930134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6860505412348282983, guid: 0d3343a371be8f544b5ac00dc18385e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 198544076}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1031930138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031930134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b8e23379a790446b99333c65a5626f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 1031930139}
+  _networkObjectCache: {fileID: 1031930139}
+  NetObject: {fileID: 1031930139}
+  IsNetWorked: 0
+--- !u!114 &1031930139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031930134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5d73935ea17f2042937f9e63dfe795b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <IsNested>k__BackingField: 0
+  <ComponentIndex>k__BackingField: 0
+  <PredictedSpawn>k__BackingField: {fileID: 0}
+  _networkBehaviours:
+  - {fileID: 1031930138}
+  <SerializedRootNetworkBehaviour>k__BackingField: {fileID: 0}
+  <NestedRootNetworkBehaviours>k__BackingField: []
+  SerializedTransformProperties:
+    Position: {x: -6.0967197, y: 9.472816, z: 94.44543}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    LocalScale: {x: 1, y: 1, z: 1}
+  _isNetworked: 1
+  _isSpawnable: 1
+  _isGlobal: 0
+  _initializeOrder: 0
+  _defaultDespawnType: 0
+  NetworkObserver: {fileID: 0}
+  _enablePrediction: 0
+  _predictionType: 0
+  _graphicalObject: {fileID: 0}
+  _detachGraphicalObject: 0
+  _enableStateForwarding: 1
+  _networkTransform: {fileID: 0}
+  _ownerInterpolation: 1
+  _ownerSmoothedProperties: 255
+  _adaptiveInterpolation: 3
+  _spectatorSmoothedProperties: 255
+  _spectatorInterpolation: 2
+  _enableTeleport: 0
+  _teleportThreshold: 1
+  <PrefabId>k__BackingField: 0
+  <SpawnableCollectionId>k__BackingField: 0
+  <SceneId>k__BackingField: 2147348479
+  <AssetPathHash>k__BackingField: 0
 --- !u!1 &1034012382
 GameObject:
   m_ObjectHideFlags: 0
@@ -5262,12 +5283,6 @@ MonoBehaviour:
   register: 1
   registerKey: "\u6CE8\u518CUI"
   _myParentPanel: {fileID: 763834594}
---- !u!4 &1524167655 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3184982016925175224, guid: 6a26c41f9f0efb342a826a4ce252c17f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2035003679}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1585071619
 GameObject:
   m_ObjectHideFlags: 0
@@ -5699,6 +5714,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[2405589145629753509].Modules.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[2405589145629753510].Modules.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].Modules.valuesNow_.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -5814,6 +5839,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.Modules.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine._SelfRunningStates.valuesNow_.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -5864,7 +5899,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.BuffMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.BuffMachine._SelfRunningStates.valuesNow_.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.SkillMachine._SelfRunningStates.ValuesNow.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -5919,6 +5964,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.InteractionMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.InteractionMachine._SelfRunningStates.valuesNow_.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -5931,6 +5981,16 @@ PrefabInstance:
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._enableSelf
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.Modules.ValuesNow.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -5984,7 +6044,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningStates.valuesNow_.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningStates.ValuesNow.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6039,6 +6109,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.InteractionMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.InteractionMachine._SelfRunningStates.valuesNow_.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -6051,6 +6126,16 @@ PrefabInstance:
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._enableSelf
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.Modules.ValuesNow.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -6104,7 +6189,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningStates.valuesNow_.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningStates.ValuesNow.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6159,6 +6254,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.InteractionMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.InteractionMachine._SelfRunningStates.valuesNow_.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -6171,6 +6271,16 @@ PrefabInstance:
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._enableSelf
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.Modules.ValuesNow.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -6224,7 +6334,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningStates.valuesNow_.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningStates.ValuesNow.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6274,6 +6394,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.InteractionMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.InteractionMachine._SelfRunningStates.valuesNow_.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -6286,6 +6411,11 @@ PrefabInstance:
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._enableSelf
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -8582,11 +8712,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3184982016925175224, guid: 6a26c41f9f0efb342a826a4ce252c17f,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 289269137}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a26c41f9f0efb342a826a4ce252c17f, type: 3}
 --- !u!1 &2041855904
@@ -9116,7 +9242,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1524167655}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2268774656035738534, guid: 5408e699fc2a4944c96b43bb07b9b98e,
         type: 3}
@@ -9152,26 +9278,26 @@ PrefabInstance:
         type: 3}
       propertyPath: _netBehaviourCore
       value: 
-      objectReference: {fileID: 585378376}
+      objectReference: {fileID: 0}
     - target: {fileID: 2421738266190962229, guid: 5408e699fc2a4944c96b43bb07b9b98e,
         type: 3}
       propertyPath: NetBehaviourCoreScenes
       value: 
-      objectReference: {fileID: 585378376}
+      objectReference: {fileID: 0}
     - target: {fileID: 2864163513962935361, guid: 5408e699fc2a4944c96b43bb07b9b98e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.075488
+      value: -6.0967197
       objectReference: {fileID: 0}
     - target: {fileID: 2864163513962935361, guid: 5408e699fc2a4944c96b43bb07b9b98e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.776172
+      value: 9.472816
       objectReference: {fileID: 0}
     - target: {fileID: 2864163513962935361, guid: 5408e699fc2a4944c96b43bb07b9b98e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 99.46278
+      value: 94.44543
       objectReference: {fileID: 0}
     - target: {fileID: 2864163513962935361, guid: 5408e699fc2a4944c96b43bb07b9b98e,
         type: 3}
@@ -9238,7 +9364,7 @@ PrefabInstance:
     - target: {fileID: 5123881737799621628, guid: 5408e699fc2a4944c96b43bb07b9b98e,
         type: 3}
       propertyPath: m_Name
-      value: "\u3010\u6838\u5FC3\u3011\u7F51\u7EDC\u652F\u6301(\u975E\u8054\u7F51)"
+      value: "\u3010\u6838\u5FC3\u3011\u7F51\u7EDC\u652F\u6301"
       objectReference: {fileID: 0}
     - target: {fileID: 5123881737799621628, guid: 5408e699fc2a4944c96b43bb07b9b98e,
         type: 3}
@@ -9284,10 +9410,10 @@ SceneRoots:
   - {fileID: 32021837}
   - {fileID: 1285812723}
   - {fileID: 2035003679}
+  - {fileID: 316635165220748288}
   - {fileID: 198544076}
   - {fileID: 1272316716}
   - {fileID: 1043675916}
   - {fileID: 2023553694}
   - {fileID: 1631734342}
   - {fileID: 687825620}
-  - {fileID: 338345641}

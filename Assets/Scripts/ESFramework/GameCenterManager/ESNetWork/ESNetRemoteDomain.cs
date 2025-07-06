@@ -31,7 +31,7 @@ namespace ES
         private void SendMessage()
         {
             Debug.Log("发送哈");
-            ESNet.NetBehaviourCore.Function_ClientSendStartWithPlayerAtServer(ESNet.SelfConnection, ESNet.NetPlayer);
+            /*ESNet.NetBehaviourCore.Function_ClientSendStartWithPlayerAtServer(ESNet.SelfConnection, ESNet.NetPlayer);*/
         }
         protected override void OnDisable()
         {

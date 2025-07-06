@@ -100,7 +100,7 @@ namespace ES.EvPointer
             }
             if (usePlayerCaster && playerCaster_ != null)
             {
-                playerCaster_.Recieve(s);
+                playerCaster_.Receive(s);
             }
             return cast = s;
         }

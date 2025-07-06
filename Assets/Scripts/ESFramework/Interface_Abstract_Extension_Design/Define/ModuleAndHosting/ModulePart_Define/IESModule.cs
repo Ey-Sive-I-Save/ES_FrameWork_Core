@@ -92,7 +92,7 @@ namespace ES
         //更新时逻辑
         protected virtual void Update() {
 #if TEST
-            Debug.Log("TryApplyBuffers");
+           
 #endif
         }
         protected virtual void Start() {

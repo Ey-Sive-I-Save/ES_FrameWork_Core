@@ -1,6 +1,8 @@
 using ES;
+using FishNet;
 using FishNet.Connection;
 using FishNet.Managing;
+using FishNet.Managing.Client;
 using FishNet.Managing.Server;
 using FishNet.Transporting;
 using Sirenix.OdinInspector;
@@ -13,32 +15,42 @@ namespace ES
 {
     [DefaultExecutionOrder(-4)]
     public class ESNetManager : SingletonAsCore<ESNetManager>
-    {
-        [FoldoutGroup("网络行为")]
-        [LabelText("网络行为核心"),ShowInInspector]
-        public ESNetBehaviourCore NetBehaviourCore { get {
-                if (_netBehaviourCore != null) return _netBehaviourCore;
-                else _netBehaviourCore = FindObjectOfType<ESNetBehaviourCore>();
-                Debug.Log("查询");
-                return _netBehaviourCore;
-                    } set { if (value != null) _netBehaviourCore = value; } }
-
-        [SerializeField,HideInInspector]private ESNetBehaviourCore _netBehaviourCore;
+    { 
 
         [FoldoutGroup("网络行为预制件")]
         [LabelText("网络行为核心预制件"), AssetsOnly]
-        public ESNetBehaviourCore NetBehaviourCorePrefab;
+        public ESNetRPCMaster ESNetRPCMasterPrefab;
 
         [FoldoutGroup("网络行为预制件")]
-        [LabelText("网络行为核心场景预备"), SceneObjectsOnly]
-        public ESNetBehaviourCore NetBehaviourCoreScenes;
+        [LabelText("网络行为核心场景预备"), SerializeField, SceneObjectsOnly]
+        private ESNetRPCMaster _NetBehaviourCoreScenes;
+
+        public ESNetRPCMaster ESNetRPC
+        {
+            get
+            {
+                if (_NetBehaviourCoreScenes != null) return _NetBehaviourCoreScenes;
+                if (ESNetRPCMasterPrefab != null) return _NetBehaviourCoreScenes = Instantiate(ESNetRPCMasterPrefab);
+                GameObject cache = new GameObject();
+                cache.AddComponent<ESNetObject>();
+                return _NetBehaviourCoreScenes=cache.AddComponent<ESNetRPCMaster>();
+            }
+
+            set {
+                if (_NetBehaviourCoreScenes==null&&value != null)
+                {
+                    _NetBehaviourCoreScenes = value;
+                }
+            }
+        }
+
         #region 快捷属性
         public NetworkConnection SelfConnection;
 
         #endregion
 
         #region 玩家信息
-        [FoldoutGroup("联网基础"),LabelText("玩家信息")]
+        [FoldoutGroup("联网基础"), LabelText("玩家信息")]
         public ESNetPlayer NetPlayer = new ESNetPlayer();
 
 
@@ -49,7 +61,7 @@ namespace ES
         public bool Need_RoomIDMatch = true;
         [FoldoutGroup("联网基础"), LabelText("网络管理器")]
         public NetworkManager TheNetWorkManager;
-        [FoldoutGroup("联网基础"), LabelText("服务器状态"),InlineButton("OnClick_Server", "服务器链接开关")]
+        [FoldoutGroup("联网基础"), LabelText("服务器状态"), InlineButton("OnClick_Server", "服务器链接开关")]
         public LocalConnectionState ServerState = LocalConnectionState.Stopped;
         [FoldoutGroup("联网基础"), LabelText("客户端状态"), InlineButton("OnClick_Client", "客户端链接开关")]
         public LocalConnectionState ClientState = LocalConnectionState.Stopped;
@@ -57,22 +69,26 @@ namespace ES
         public bool IsServer => TheNetWorkManager.IsServerStarted;
         public bool IsClient => TheNetWorkManager.IsClientStarted;
         public bool IsNet => TheNetWorkManager.IsClientStarted || TheNetWorkManager.IsServerStarted;
+
+        public static ServerManager ServerManager { get => InstanceFinder.ServerManager; }
+        public static ClientManager ClientManager { get => InstanceFinder.ClientManager; }
+
         public bool ConnectTest(NetworkConnection connection)
         {
-           /* if(connection.CustomData is ESNetPlayer netPlayer)
-            {
-                if (Need_RoomIDMatch)
-                {
-                    if (netPlayer.RoomNumber == NetPlayer.RoomNumber) return true;
-                    else { Debug.LogError("房间号不匹配，我需要"+NetPlayer.RoomNumber+"他却是"+ netPlayer.RoomNumber); return false; }
-                }
-            }
-            Debug.Log("Debug true"+ connection.CustomData);*/
+            /* if(connection.CustomData is ESNetPlayer netPlayer)
+             {
+                 if (Need_RoomIDMatch)
+                 {
+                     if (netPlayer.RoomNumber == NetPlayer.RoomNumber) return true;
+                     else { Debug.LogError("房间号不匹配，我需要"+NetPlayer.RoomNumber+"他却是"+ netPlayer.RoomNumber); return false; }
+                 }
+             }
+             Debug.Log("Debug true"+ connection.CustomData);*/
             return true;
         }
 
-     
-        
+
+
         public void OnClick_Server()
         {
             if (TheNetWorkManager == null)
@@ -85,7 +101,7 @@ namespace ES
 
         }
 
-        
+
         public void OnClick_Client()
         {
             if (TheNetWorkManager == null)
@@ -97,27 +113,26 @@ namespace ES
             {
                 Invoke_OnClientStartConnection();
             }
-                
+
         }
         private void _PassiveDelegate_ClientManager_OnClientConnectionState(ClientConnectionStateArgs obj)
         {
             ClientState = obj.ConnectionState;
-            if(ClientState== LocalConnectionState.Started)
+            if (ClientState == LocalConnectionState.Started)
             {
-                if(NetBehaviourCoreScenes!=null)
-                TheNetWorkManager.ServerManager.Spawn(NetBehaviourCoreScenes.gameObject);
+                if (_NetBehaviourCoreScenes != null)
+                    TheNetWorkManager.ServerManager.Spawn(_NetBehaviourCoreScenes.gameObject);
             }
         }
         private void _PassiveDelegate_ServerManager_OnServerConnectionState(ServerConnectionStateArgs obj)
         {
             ServerState = obj.ConnectionState;
-            
-        }
 
+        }
         public void Invoke_OnClientStartConnection()
         {
-            
-            
+
+
             TheNetWorkManager.ClientManager.StartConnection();
         }
         public void Invoke_OnServerStartConnection()
@@ -127,7 +142,7 @@ namespace ES
         #endregion
 
         #region 联网委托
-        public Action OnSelfClientStart=()=> { };
+        public Action OnSelfClientStart = () => { };
         public Action OnSelfServerStart = () => { };
         public Action OnSelfClientStop = () => { };
         public Action OnSelfServerStop = () => { };
@@ -155,14 +170,12 @@ namespace ES
                 TheNetWorkManager.ServerManager.OnServerConnectionState += _PassiveDelegate_ServerManager_OnServerConnectionState;
                 TheNetWorkManager.ClientManager.OnClientConnectionState += _PassiveDelegate_ClientManager_OnClientConnectionState;
             }
-
-            if (NetBehaviourCore == null) NetBehaviourCore = GetComponentInChildren<ESNetBehaviourCore>();
             SelfConnection = TheNetWorkManager.ClientManager.Connection;
         }
     }
     public enum NetWorkUpdateOption
     {
-        [InspectorName("总更新")]Always,
+        [InspectorName("总更新")] Always,
         [InspectorName("只有拥有者")] OnlyOwner,
         [InspectorName("只有其他人")] OnlyOther,
         [InspectorName("只有客户端")] OnlyClient,

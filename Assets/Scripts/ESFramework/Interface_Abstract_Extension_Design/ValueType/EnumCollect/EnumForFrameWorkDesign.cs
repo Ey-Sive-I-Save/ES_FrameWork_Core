@@ -60,6 +60,25 @@ namespace ES
             [InspectorName("辅助档位，不要单独选择")] DontBeUse_1 = 16,
             [InspectorName("按住足够时间并松手")] HoldForTimeAndUp = 22
         }
+
+        //Link被作为Task处理时，需要一个处理环境
+        public enum LinkTaskEnvironment
+        {
+            [InspectorName("任意")]Any=0,
+            [InspectorName("会在游戏核心进行处理")]GameCenter=1,
+            [InspectorName("在客户端处理")] Client=2,
+            [InspectorName("在服务器处理")] Server=4,
+            [InspectorName("在指定目标处理")] Target=8
+        }
+        public enum LinkTaskChannel
+        {
+            [InspectorName("无")]None=0,
+            [InspectorName("任意")] Any = GameCenter| ClientToServer| ServerToClients| ServerToTarget,
+            [InspectorName("会在游戏核心进行处理")] GameCenter = 1,
+            [InspectorName("从客户端发到服务器")] ClientToServer = 2,
+            [InspectorName("该事件将会在游戏核心进行处理")] ServerToClients = 4,
+            [InspectorName("该事件将会在游戏核心进行处理")] ServerToTarget = 8
+        }
     }
 }
 

@@ -122,7 +122,7 @@ namespace ES.EvPointer
             public abstract PointerPlayerSystemObjectCaster playerCaster { get; }
             public void Send(object oo)
             {
-                playerCaster?.Recieve(oo);
+                playerCaster?.Receive(oo);
             }
         }
         public interface IWithPointerPlayerWithESValue
@@ -141,7 +141,7 @@ namespace ES.EvPointer
         public object Pick(object on= null, object from = null, object with = null)
         {
             object oo = object_?.Pick();
-            if (usePlayerCaster) playerCaster_?.Recieve(oo);
+            if (usePlayerCaster) playerCaster_?.Receive(oo);
             return oo;
         }
 
@@ -163,7 +163,7 @@ namespace ES.EvPointer
         {
             if (usePlayerCaster && playerCaster_ != null)
             {
-                playerCaster_.Recieve(cast);
+                playerCaster_.Receive(cast);
             }
             return cast;
         }

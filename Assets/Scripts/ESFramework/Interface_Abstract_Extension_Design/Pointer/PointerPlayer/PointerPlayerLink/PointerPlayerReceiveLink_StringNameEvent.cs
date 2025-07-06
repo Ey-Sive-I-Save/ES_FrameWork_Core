@@ -13,7 +13,7 @@ public class PointerPlayerReceiveLink_StringNameEvent : PointerPlayerXXXReceiveL
     public override void ApplyThisLink(Link_StringNameEvent link)
     {
         //会把Link的参数存下来
-        Recieve(link.param);
+        Receive(link.param);
     }
     public override bool OnLinkOptionsMatch(Link_StringNameEvent link)
     {

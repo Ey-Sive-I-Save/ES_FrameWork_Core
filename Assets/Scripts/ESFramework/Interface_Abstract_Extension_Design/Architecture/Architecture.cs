@@ -26,7 +26,7 @@ namespace ES
     {
         
         [LabelText("配置")]public SoDataInfoConfiguration configuration;
-        [LabelText("Link池")]public LinkRecieveSafeListIOC LinkIOC = new LinkRecieveSafeListIOC();
+        [LabelText("Link池")]public LinkReceivePool LinkIOC = new LinkReceivePool();
         public string Name_ => description;
         
 
@@ -34,13 +34,13 @@ namespace ES
         [LabelText("<<↑原型>>", SdfIconType.CpuFill),GUIColor("descriptionGUIColor_"), ShowInInspector,PropertyOrder(-1)]
         public string description="标准原型";
         [HideInInspector]public Color descriptionGUIColor_ =new Color(1f,0.588f,1f,1);
-        public void AddRecieveLink<Link>(IReceiveLink<Link> link) where Link:ILink
+        public void AddReceiveLink<Link>(IReceiveLink<Link> link) where Link:ILink
         {
-            LinkIOC.AddElement<Link>(link);
+            LinkIOC.AddReceive<Link>(link);
         }
-        public void RemoveRecieveLink<Link>(IReceiveLink<Link> link) where Link : ILink
+        public void RemoveReceiveLink<Link>(IReceiveLink<Link> link) where Link : ILink
         {
-            LinkIOC.RemoveElement<Link>(link);
+            LinkIOC.RemoveReceive<Link>(link);
         }
         public void SendLink<Link>(Link link)where Link:ILink
         {

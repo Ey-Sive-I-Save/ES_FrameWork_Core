@@ -125,5 +125,14 @@ namespace ES
 
         }
 
+        public override void _InTable()
+        {
+            GameCenterManager.EntityIDPool.Add(ID,this);
+        }
+
+        public override void _OutTable()
+        {
+            GameCenterManager.EntityIDPool.Remove(ID);
+        }
     }
 }

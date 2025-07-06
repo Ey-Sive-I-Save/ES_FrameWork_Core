@@ -59,6 +59,15 @@ namespace ES
               确保Miss判定
              */
         }
+        public static T EX_IsNotNullAndUseItWithNullAction<T>(this T ob,Action<T> IfNull) where T : class
+        {
+            if (ob == null) { IfNull.Invoke(ob); return null; }
+            return ob;
+            /*可以配合?.使用
+              someObject.NotNull()?.XXXX();
+              确保Miss判定
+             */
+        }
 
         // 95. 如果对象为null则返回默认值
         public static T EX_IfNullOrDefault<T>(this T obj, T defaultValue) where T : class

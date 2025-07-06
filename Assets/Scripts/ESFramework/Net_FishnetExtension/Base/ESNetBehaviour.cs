@@ -10,7 +10,7 @@ using UnityEngine;
 namespace ES
 {
 
-    public class ESNetBehaviourCore : NetworkBehaviour
+    public class ESNetBehaviour : NetworkBehaviour
     {
         #region 默认支持
         [FoldoutGroup("ES默认功能"),LabelText("仅本地可运转")]
@@ -34,7 +34,6 @@ namespace ES
             base.OnStartClient();
             if (IsOwner) {
                 Debug.Log("客户端测试");
-                ESNetManager.Instance.NetBehaviourCore = this;
                 ESNetManager.Instance.OnSelfClientStart?.Invoke();
                 ServerManager.Spawn(gameObject);
             }
@@ -52,7 +51,6 @@ namespace ES
             base.OnStopClient();
             if (IsOwner)
             {
-                ESNetManager.Instance.NetBehaviourCore = null;
                 ESNetManager.Instance.OnSelfClientStop?.Invoke();
             }
         }

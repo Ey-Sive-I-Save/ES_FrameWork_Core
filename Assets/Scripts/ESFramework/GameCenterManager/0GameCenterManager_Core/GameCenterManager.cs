@@ -11,10 +11,11 @@ using static ES.SkillPointDataInfo.SkillPointLevelAllTransfomor;
 
 namespace ES
 {
+    
     [TypeRegistryItem("游戏核心管理器")]
     public partial class GameCenterManager : SingletonAsCore<GameCenterManager>,IWithArchitecture
     {
-       
+
 
         [NonSerialized]public bool NetSupport = false;
         [FoldoutGroup("工具管理器引用"), LabelText("音效管理器")] public ESAudioMaster AudioMaster;
@@ -34,9 +35,7 @@ namespace ES
 
 
 
-        [FoldoutGroup("游戏原型")]
-        [LabelText("原型全集IOC")]
-        public ArchutectureTypeMatchSafeListIOC ArchutectureIOC = new ArchutectureTypeMatchSafeListIOC();
+       
 
         [FoldoutGroup("游戏原型")]
         [LabelText("游戏核心原型")]
@@ -55,9 +54,12 @@ namespace ES
         protected override void OnBeforeAwakeRegister()
         {
             base.OnBeforeAwakeRegister();
-            ArchutectureIOC.AddElement(GameCenterArchitecture);//装载原型
+
+            Part_Link_OnBeforeAwakeRegister();
+
             SceneManager.sceneUnloaded += (a) => { this.StopAllCoroutines(); };
         }
+        
         [Button("发送任意Link")]
         public void SendLink<Link>(Link link) where Link:ILink
         {

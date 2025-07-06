@@ -65,12 +65,11 @@ namespace ES
         private void DelegateHandle()
         {
             HasDelegate = true;
-            rememberIOCCount = GameCenterManager.Instance.ArchutectureIOC.IOC.Count;
-            GameCenterManager.Instance.ArchutectureIOC.OnChange += () =>
+           /* GameCenterManager.Instance.ArchutectureIOC. += () =>
             {
 
                 GameCenterManager.Instance.StartCoroutine(_CoroutineMaker_Obsolete.DelayOneFrameCoroutine(() => { if (this != null) ESWindow_RefreshWindow(); }));
-            };
+            };*/
         }
 
         /// <summary>
@@ -95,12 +94,12 @@ namespace ES
                 {
                     pageForChooseSceneArchitecture.ES_ShouldRemake();
                 }
-                int now = GameCenterManager.Instance.ArchutectureIOC.IOC.Count;
+        /*        int now = GameCenterManager.Instance.ArchutectureIOC.Groups.Count;
                 if (now != rememberIOCCount)
                 {
                     rememberIOCCount = now;
                     ESWindow_RefreshWindow();
-                }
+                }*/
 
 
             }
@@ -265,11 +264,11 @@ namespace ES
             tree.Add(menu, new Page_Root_Architecture(), SdfIconType.CpuFill);
             tree.Add(menu + "/选中物体携带原型", pageForChooseSceneArchitecture = new Page_RunTimeGameObjectChooseSceneArchitecture(), SdfIconType.CompassFill);
             //场景中的IOC
-            tree.Add(menu + "/IOC运行时全集", new Page_RunTimeInGameCenterArchitectureIOC() { IOC = GameCenterManager.Instance.ArchutectureIOC }, SdfIconType.Cart4);
+           /* tree.Add(menu + "/IOC运行时全集", new Page_RunTimeInGameCenterArchitectureIOC() { IOC = GameCenterManager.Instance.ArchutectureIOC }, SdfIconType.Cart4);*/
             if (Application.isPlaying)
             {
                 //运行时才会加
-                foreach (var i in GameCenterManager.Instance.ArchutectureIOC.IOC)
+                /*foreach (var i in GameCenterManager.Instance.ArchutectureIOC.Groups)
                 {
                     List<IArchitecture> architectures_ = i.Value.ValuesNow;
                     string menuNow = menu + "/IOC运行时全集/类型分类：" + i.ToString();
@@ -281,7 +280,7 @@ namespace ES
                             tree.Add(menuNow + "/单元原型" + ii.Name_, new Page_Index_Index_RunTimeInGameCenterArchitectureIOC_SIngleShow() { aArchitecture = ii }, SdfIconType.Cpu); ;
                         }
                     }
-                }
+                }*/
             }
 
             //场景中的静态原型工具

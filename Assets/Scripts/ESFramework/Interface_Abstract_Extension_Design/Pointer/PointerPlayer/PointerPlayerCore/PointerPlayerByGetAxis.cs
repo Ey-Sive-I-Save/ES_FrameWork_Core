@@ -33,7 +33,7 @@ namespace ES
 
             if (usePlayerCaster && playerCaster_ != null)
             {
-                playerCaster_.Recieve(readFloat);
+                playerCaster_.Receive(readFloat);
             }
         }
 

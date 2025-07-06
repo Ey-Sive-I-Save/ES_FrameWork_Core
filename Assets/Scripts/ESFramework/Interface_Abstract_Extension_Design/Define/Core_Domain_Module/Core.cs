@@ -16,7 +16,6 @@ namespace ES
     [DefaultExecutionOrder(-2)]//顺序在前
     public abstract class Core : MonoBehaviour, ICore
     {
-       
 
         #region 检查器专属
 
@@ -56,13 +55,16 @@ namespace ES
         #region Awake流程
 
         //Awake回调
-        protected void Awake()
+        protected virtual void Awake()
+        {
+            _DoAwake();
+        }
+        public void _DoAwake()
         {
             OnBeforeAwakeRegister();
             OnAwakeRegisterOnly();
             OnAfterAwakeRegister();
         }
-
 
         //注册扩展Domain前发生前
         protected virtual void OnBeforeAwakeRegister()

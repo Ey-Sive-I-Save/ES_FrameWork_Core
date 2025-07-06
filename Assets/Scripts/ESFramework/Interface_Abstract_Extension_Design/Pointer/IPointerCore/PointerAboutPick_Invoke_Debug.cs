@@ -56,7 +56,7 @@ namespace ES.EvPointer
             if (Time.time - lastTime <( coolDown?.Pick() ?? 1)) return null;
             lastTime = Time.time;
             pointer1?.Pick(); 
-            playerCaster_?.Recieve(lastTime);
+            playerCaster_?.Receive(lastTime);
             return base.Pick(on,from,with);
         }
 
@@ -335,7 +335,7 @@ namespace ES.EvPointer
                 applyCancellationSource ? cancelSourceToken = new CancellationTokenSource() : default));
             if (applyCancellationSource && usePlayerCaster)
             {
-                playerCaster_.Recieve(cancelSourceToken);
+                playerCaster_.Receive(cancelSourceToken);
             }
             return -1;
         }
@@ -369,7 +369,7 @@ namespace ES.EvPointer
                 repeatTimes?.Pick() ?? 5,
                 applyCancellationSource ? cancelSourceToken = new CancellationTokenSource() : default
                 ));
-            if (applyCancellationSource && usePlayerCaster) playerCaster_?.Recieve(cancelSourceToken);
+            if (applyCancellationSource && usePlayerCaster) playerCaster_?.Receive(cancelSourceToken);
             return -1;
         }
     }
@@ -406,7 +406,7 @@ namespace ES.EvPointer
                 ));
             if (applyCancellationSource && usePlayerCaster && playerCaster_ != null)
             {
-                playerCaster_.Recieve(cancelSourceToken);
+                playerCaster_.Receive(cancelSourceToken);
             }
             return -1;
         }
@@ -421,13 +421,13 @@ namespace ES.EvPointer
         public abstract string methodName { get; }
         public abstract object pa { get; }
         public abstract bool needPa { get; }
-        [LabelText("是否必需接受者")] public bool needRecieve = false;
+        [LabelText("是否必需接受者")] public bool needReceive = false;
         public EnumCollect.UnitySendMessageType messageType;
 
         public object Pick(object on= null, object from = null, object with = null)
         {
             if (com == null) return default;
-            SendMessageOptions options = needRecieve ? SendMessageOptions.RequireReceiver : SendMessageOptions.DontRequireReceiver;
+            SendMessageOptions options = needReceive ? SendMessageOptions.RequireReceiver : SendMessageOptions.DontRequireReceiver;
             switch (messageType)
             {
                 case EnumCollect.UnitySendMessageType.SendMessage:
