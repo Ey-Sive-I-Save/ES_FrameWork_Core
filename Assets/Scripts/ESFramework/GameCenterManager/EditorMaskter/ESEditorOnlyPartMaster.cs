@@ -15,8 +15,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-using System.Collections.Generic;
-using GameKit.Dependencies.Utilities;
+using System.Collections.Generic;  
 
 namespace ES
 {
