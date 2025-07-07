@@ -1,4 +1,5 @@
 using ES;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +15,9 @@ namespace ES
     public partial class GameCenterManager
     {
         #region ID容器(因为对性能要求高，这里写为一步静态/)
+        [ShowInInspector]
         public static IDToWhoTable<Entity> EntityIDPool = new IDToWhoTable<Entity>();
+        [ShowInInspector]
         public static IDToWhoTable<Item> ItemIDPool = new IDToWhoTable<Item>();
 
         public static int LocalIDCount {

@@ -15,7 +15,7 @@ namespace ES
 
         #region 总重要信息
         #region 联网
-        [FoldoutGroup("【固有】"), LabelText("唯一ID"), ReadOnly]
+        [FoldoutGroup("【固有】"), LabelText("唯一ID"),ShowInInspector, ReadOnly]
         public int ID
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -25,12 +25,12 @@ namespace ES
             {
                 if (_id != value)
                 {
-                    _id = value;
-                    if (_id == -1) _OnIDNO();
-                    else _OnIDYes();
+                    if (value == -1) { _id = -1; _OnIDNO(); }
+                    if (_id == -1) { _id = value; _OnIDYes(); }
                 }
             }
         }//-1代表未分配状态
+        
         private int _id = -1;//ID=-1时，认为无身份
         #endregion
 #if UNITY_EDITOR
@@ -50,6 +50,7 @@ namespace ES
 #endif
 
         public ESNetObject NetObject;
+        public ESNetBehaviour NetBehaviour;
         [ShowInInspector, LabelText("是联网的")]
         public bool IsNet
         {
@@ -82,8 +83,10 @@ namespace ES
             base.Awake();
         }
         #endregion
+
         protected override void OnEnable()
         {
+            Debug.Log("Enable ESOBject"+IsNet);
             if (_id == -1 && IsNet)
             {
                 SendIDRequest();//发送ID分配请求
@@ -157,12 +160,14 @@ namespace ES
         public abstract void _OutTable();
         public virtual void _OnIDYes()
         {
+            _InTable();
             OnIDYesTask.Invoke();
             OnIDYesTask = GameCenterManager.NULLAction;
             base.OnEnable();//
         }
         public virtual void _OnIDNO()
         {
+            _OutTable();
             OnIDNOTask.Invoke();
             OnIDNOTask = GameCenterManager.NULLAction;
             base.OnDisable();
@@ -170,9 +175,13 @@ namespace ES
 
         public void SendIDRequest()
         {
+            Debug.Log("ID Request "+IsNet);
             if (IsNet)
             {
-
+                NetBehaviour.SendSelfLinkToServer(new Link_IDRequest());
+                NetBehaviour.SendSelfLinkToServer(new Link_IDRequest());
+                NetBehaviour.SendSelfLinkToServer(new Link_IDRequest());
+                NetBehaviour.SendSelfLinkToServer(new Link_IDRequest());
             }
             else
             {

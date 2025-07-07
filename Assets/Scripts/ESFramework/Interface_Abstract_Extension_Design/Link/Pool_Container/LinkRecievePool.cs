@@ -77,7 +77,7 @@ namespace ES
         }
         public void AddRecieveWithNet<Link>(IReceiveLink<Link> e,bool isServer) where Link :struct,ILink
         {
-            if(TryAddAndBackIsNewList(typeof(Link), e))
+           /* if(TryAddAndBackIsNewList(typeof(Link), e))
             {
                 if (isServer) ESNetManager.ServerManager.RegisterBroadcast<Link>(SendLink_ToServer_Internal);
                 else ESNetManager.ClientManager.RegisterBroadcast<Link>(SendLink_Internal);
@@ -115,7 +115,7 @@ namespace ES
                     }
                     else RemoveReceive<Link>(null);
                 }
-            }
+            }*/
         }
         public void RemoveReceive<Link>(IReceiveLink<Link> e) where Link : ILink
         {

@@ -24,6 +24,17 @@ namespace ES
         [LabelText("销毁原因")]
         public EnumCollect.SetFlyingDestroyWhyOption options;
     }
+
+    [Serializable]
+    public struct Link_aaa : ILink
+    {
+
+    }
+    [Serializable]
+    public struct Link_bbb: ILink
+    {
+
+    }
     public class LinkTable : MonoBehaviour
     {
         // Start is called before the first frame update
