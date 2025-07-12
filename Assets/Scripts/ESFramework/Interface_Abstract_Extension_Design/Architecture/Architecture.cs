@@ -25,7 +25,7 @@ namespace ES
     public class BaseArchitectureWithLinkAndConfiguration :BaseESHosting, IArchitecture
     {
         
-        [LabelText("配置")]public SoDataInfoConfiguration configuration;
+        
         [LabelText("Link池")]public LinkReceivePool LinkIOC = new LinkReceivePool();
         public string Name_ => description;
         
@@ -110,7 +110,7 @@ namespace ES
             }
             if(applyPack != null)
             {
-                foreach(var i in applyPack.allInfo)
+                foreach(var i in applyPack.allInfos)
                 {
                     var arch = i.Value.getArch;
                     if(arch is ArchitectureTypeValue_DynamicTag tag)

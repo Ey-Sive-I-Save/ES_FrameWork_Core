@@ -40,7 +40,7 @@ namespace FishNet.Upgrading.Mirror.Editing
 #endif
         }
 
-        [MenuItem("Tools/Fish-Networking/Utility/Upgrading/From Mirror/Remove Defines", false, 2)]
+        [MenuItem("Tools/Fish-Networking/Utility/Upgrading/From Mirror/RemoveInfo Defines", false, 2)]
         private static void RemoveDefines()
         {
             string currentDefines = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);

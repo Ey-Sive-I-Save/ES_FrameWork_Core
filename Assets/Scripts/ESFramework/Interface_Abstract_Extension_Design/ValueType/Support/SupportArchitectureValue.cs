@@ -92,7 +92,7 @@ namespace ES {
     {
         public IArchitectureKeyValuePoolTypeValue getArch => this;
 
-        public object TheKey => this.key.Key();
+        public object TheKey => this.key.KeySelf();
 
         public object TheValue => this.Value();
 

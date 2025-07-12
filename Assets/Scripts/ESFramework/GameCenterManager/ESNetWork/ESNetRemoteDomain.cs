@@ -1,5 +1,4 @@
 using ES;
-using FishNet.Managing;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
@@ -20,7 +19,7 @@ namespace ES
     }
 
 
-    [Serializable, TypeRegistryItem("房间支持：客户端发送验证消息")]
+ /*   [Serializable, TypeRegistryItem("房间支持：客户端发送验证消息")]
     public class ModuleRemote_ClientSendThisAuthentiacationMessage : RemoteModuleForESNetManager
     {
         protected override void OnEnable()
@@ -31,7 +30,7 @@ namespace ES
         private void SendMessage()
         {
             Debug.Log("发送哈");
-            /*ESNet.NetBehaviourCore.Function_ClientSendStartWithPlayerAtServer(ESNet.SelfConnection, ESNet.NetPlayer);*/
+            *//*ESNet.NetBehaviourCore.Function_ClientSendStartWithPlayerAtServer(ESNet.SelfConnection, ESNet.NetPlayer);*//*
         }
         protected override void OnDisable()
         {
@@ -47,6 +46,6 @@ namespace ES
             base.CreateRelationshipOnly();
             //Domain.Module_XXX = this;  显性引用
         }
-    }
+    }*/
 
 }

@@ -243,7 +243,7 @@ namespace ES
                 {
                     case OperationHandleTypeForFloat.Add: return value - Value;
                     case OperationHandleTypeForFloat.Sub: return value + Value;
-                    case OperationHandleTypeForFloat.PerUp: return value.EX_SafeDivide(1 + Value);
+                    case OperationHandleTypeForFloat.PerUp: return value._SafeDivide(1 + Value);
                     case OperationHandleTypeForFloat.Max: return Mathf.Clamp(value, value, Value);
                     case OperationHandleTypeForFloat.Min: return Mathf.Clamp(value, Value, value);
                     case OperationHandleTypeForFloat.Wave: return value + UnityEngine.Random.Range(-Value, Value);

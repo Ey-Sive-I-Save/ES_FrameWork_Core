@@ -26,7 +26,7 @@ namespace ES
 
                 if (gameObject != null)
                 {
-                    var ins = ESEditorOnlyPartMaster.Instance;
+                    var ins = GlobalDataForEditorOnly.Instance;
                     if (ins == null) return;
                     var ICON = ins.ICON;
                     //右侧图标系
@@ -36,7 +36,7 @@ namespace ES
                         foreach (var i in ICON.HierachySelectorS)
                         {
                             if (i == null) continue;
-                            (bool Macth, ESEditorOnlyPartMaster.BackMessage Back) s = i.IsAppliable(gameObject);
+                            (bool Macth, GlobalDataForEditorOnly.BackMessage Back) s = i.IsAppliable(gameObject);
                             if (s.Macth)
                             {
                                 Rect iconRect = new Rect(selectionRect);
@@ -83,7 +83,7 @@ namespace ES
                         enable.width = 16;
                         enable.height = 16;
                         bool pre = gameObject.activeSelf;
-                        GUIHelper.PushColor(Color.white.EX_WithAlpha(pre ? 0.75f : 1f).EX_WithRGBMuti(pre ? 0.95f : 0.5f));
+                        GUIHelper.PushColor(Color.white._WithAlpha(pre ? 0.75f : 1f)._WithRGBMuti(pre ? 0.95f : 0.5f));
                         bool b = GUI.Toggle(enable, pre, "");
                         GUIHelper.PopColor();
                         if (b != pre)

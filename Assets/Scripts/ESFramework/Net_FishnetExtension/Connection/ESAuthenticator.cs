@@ -1,7 +1,7 @@
 using ES;
-using FishNet.Authenticating;
+/*using FishNet.Authenticating;
 using FishNet.Connection;
-using FishNet.Managing;
+using FishNet.Managing;*/
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace ES
 {
-
+/*
     public class ESAuthenticator  : Authenticator
     {
         
@@ -36,7 +36,7 @@ namespace ES
             if (ESNetManager.Instance.ConnectTest(network)) return true;
             return true;
         }
-    }
+    }*/
 
     
 }

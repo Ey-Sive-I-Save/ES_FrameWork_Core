@@ -31,6 +31,21 @@ namespace ES
             public static Color ColorForBinding = new Color(0, 0.97f, 1);//绑定色
             public static Color ColorForSearch = new Color(0.4f, 0.804f, 0.667f);//选择色
             public static Color ColorForApply = new Color(0, 0.804f, 0);//应用色
+
+            public static readonly Dictionary<string, Color> normalColors = new Dictionary<string, Color>(StringComparer.OrdinalIgnoreCase)
+    {
+        { "red", Color.red },
+        { "green", Color.green },
+        { "blue", Color.blue },
+        { "yellow", Color.yellow },
+        { "cyan", Color.cyan },
+        { "magenta", Color.magenta },
+        { "black", Color.black },
+        { "white", Color.white },
+        { "gray", Color.gray },
+        { "grey", Color.grey },
+        { "clear", Color.clear }
+    };
             static void test()
             {
 

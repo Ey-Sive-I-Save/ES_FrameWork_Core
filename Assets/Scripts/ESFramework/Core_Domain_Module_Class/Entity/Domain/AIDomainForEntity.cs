@@ -51,7 +51,7 @@ namespace ES
             //输入到移动了
             if (NextPoint == default) NextPoint = nextWayPointPosition;
 
-            Vector3 to = Core.transform.InverseTransformDirection((NextPoint - Core.transform.position).EX_NoY()).normalized;
+            Vector3 to = Core.transform.InverseTransformDirection((NextPoint - Core.transform.position)._NoY()).normalized;
 
             Core.NormalDomain.Module_AB_Motion.CurrentSpeedMutiplerZ = to.z;
             Core.NormalDomain.Module_AB_Motion.CurrentSpeedMutiplerX = to.x;

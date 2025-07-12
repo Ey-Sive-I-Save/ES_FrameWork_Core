@@ -9,46 +9,42 @@ using UnityEngine;
 namespace ES
 {
     //  [CreateAssetMenu(fileName = "SoDataInfoGroup",menuName = "EvData/SoGroup")]
-    public interface ISoDataGroup {
-    string name_ { get; }
-        Type getSoType();
-        bool CanStore(string s);
-        void Add(string s,ScriptableObject o);
-        List<string> keys { get; }
-        ISoDataInfo GetOne(string k);
-        void Remove(string s);
-        void SetKey(string or, string now);
-    }
-    public abstract class SoDataGroup<SoType> : SerializedScriptableObject, ISoDataGroup where SoType:ScriptableObject,ISoDataInfo 
+    public interface ISoDataGroup
     {
-        
-        [LabelText("数据组名字"),GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_03")]public string name__="数据组";
+        string _name { get; }
+        Type getSoInfoType();
+        bool ContainsInfo(string s);
+        void AddInfo(string key, ScriptableObject o);
+        List<string> AllKeys { get; }
+        ISoDataInfo GetInfoByKey(string k);
+        void RemoveInfo(string s);
+    }
+    public abstract class SoDataGroup<SoType> : SerializedScriptableObject, ISoDataGroup where SoType : ScriptableObject, ISoDataInfo
+    {
+
+        [LabelText("数据组名字"), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_03")] public string name__ = "数据组";
         [LabelText("数据组字典")]
         public Dictionary<string, SoType> keyValues = new Dictionary<string, SoType>();
-
-        public string name_ => name__;
-        public List<string> keys => keyValues.Keys.ToList();
-        
-
-        public void Add(string s, ScriptableObject o)
+        public string _name => name__;
+        public List<string> AllKeys => keyValues.Keys.ToList();
+        public void AddInfo(string s, ScriptableObject o)
         {
             if (keyValues.ContainsKey(s))
             {
-
+                //键重复
             }
-            else if(o is SoType typeMatch)
+            else if (o is SoType typeMatch)
             {
                 keyValues.Add(s, typeMatch);
             }
-            
         }
-        public bool CanStore(string s)
+        public bool ContainsInfo(string s)
         {
             if (keyValues.ContainsKey(s)) return false;
             else return true;
         }
 
-        public ISoDataInfo GetOne(string k)
+        public ISoDataInfo GetInfoByKey(string k)
         {
             if (keyValues.ContainsKey(k))
             {
@@ -60,34 +56,17 @@ namespace ES
             }
         }
 
-        public Type getSoType()
+        public Type getSoInfoType()
         {
             return typeof(SoType);
         }
-
-        public void Remove(string k)
+        public void RemoveInfo(string k)
         {
-            if (keyValues.ContainsKey(k))
+            if (keyValues.TryGetValue(k, out var info))
             {
                 keyValues.Remove(k);
-            }   
-        }
 
-        public void SetKey(string or, string now)
-        {
-            
-        }
-
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
+            }
         }
     }
 }

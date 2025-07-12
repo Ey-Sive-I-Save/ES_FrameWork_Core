@@ -88,7 +88,7 @@ namespace ES
             {
                 if (pack != null && machine != null)
                 {
-                    foreach (var i in pack.allInfo)
+                    foreach (var i in pack.allInfos)
                     {
                         var use = i.Value;
                         if (use == null) continue;

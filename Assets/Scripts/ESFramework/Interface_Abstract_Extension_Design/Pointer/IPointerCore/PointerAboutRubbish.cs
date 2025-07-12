@@ -40,34 +40,11 @@ namespace ES.EvPointer
     {
         public virtual ISoDataPack packFrom { get; }
     }
-    [Serializable]
-    public class PSDG_Buff : PointerStringData_GameCenter
-    {
-        public override string[] Keys => KeyValueMatchingUtility.KeyPointer.PickBuffAllKeys();
-    }
-    [Serializable]
-    public class PSDG_Item : PointerStringData_GameCenter
-    {
-        public override string[] Keys => KeyValueMatchingUtility.KeyPointer.PickItemAllKeys();
-    }
-    [Serializable]
-    public class PSDG_Actor : PointerStringData_GameCenter
-    {
-        public override string[] Keys => KeyValueMatchingUtility.KeyPointer.PickActorAllKeys();
-    }
-    [Serializable]
-    public class PSDG_Skill : PointerStringData_GameCenter
-    {
-        public override string[] Keys => KeyValueMatchingUtility.KeyPointer.PickSKillAllKeys();
-    }
+   
 
     public abstract class PointerStringData_GameCenter : PointerStringDataKey
     {
 
-    }
-    public abstract class PointerStrinfData_InArchitecture : PointerStringDataKey
-    {
-        public virtual SoDataInfoConfiguration Configuration { get; }
     }
 
     #endregion
@@ -414,7 +391,7 @@ namespace ES.EvPointer
     public class KeyInt_Direct : KeyInt
     {
         [LabelText("直接输入Int键")] public int int_direc = 6;
-        public override int Key()
+        public override int KeySelf()
         {
             return int_direc;
             //return base.TypeSelect_();
@@ -425,10 +402,10 @@ namespace ES.EvPointer
     {
         [LabelText("Buff的键"), ValueDropdown("@ValueGetTestOnly.buffsNames")]
         public string buffKey;
-        public override string Key()
+        public override string KeySelf()
         {
             if (buffKey != null) return buffKey;
-            return base.Key();
+            return base.KeySelf();
             
         }
     }
@@ -436,20 +413,20 @@ namespace ES.EvPointer
     public class KeyString_Direct : KeyString
     {
         [LabelText("直接输入字符串键")] public string str_direc = "键";
-        public override string Key()
+        public override string KeySelf()
         {
             if (str_direc != null) return str_direc;
-            return base.Key();
+            return base.KeySelf();
         }
     }
     [Serializable, TypeRegistryItem("IOC支持键")]
     public class KeyString_IOCKey : KeyString
     {
         [LabelText("输入字符串键")] public string str_direc = "IOC键";
-        public override string Key()
+        public override string KeySelf()
         {
             if (str_direc != null) return str_direc;
-            return base.Key();
+            return base.KeySelf();
         }
     }
     public abstract class KeyEnum<Enum_> : BaseKey<Enum_> where Enum_ : Enum
@@ -461,17 +438,20 @@ namespace ES.EvPointer
 
     public abstract class KeyString : BaseKey<string>
     {
-
+        public override string KeySelf()
+        {
+            return "";
+        }
     }
     public abstract class BaseKey<KeyType> : IKey<KeyType>
     {
-        public virtual KeyType Key()
+        public virtual KeyType KeySelf()
         {
             return default(KeyType);
         }
         public override int GetHashCode()
         {
-            return Key()?.GetHashCode() ?? base.GetHashCode();
+            return KeySelf()?.GetHashCode() ?? base.GetHashCode();
         }
         public override bool Equals(object obj)
         {
@@ -479,33 +459,33 @@ namespace ES.EvPointer
             if (obj is IKey<KeyType> Ikey)
             {
                 // Debug.Log("EqualsKey" + typeof(GameKeyType)+"handler"+TypeSelect_()+"  and  "+ IValue.TypeSelect_()+"end"+ TypeSelect_()?.Equals(IValue.TypeSelect_()));
-                return (Key()?.Equals(Ikey.Key())) ?? false;
+                return (KeySelf()?.Equals(Ikey.KeySelf())) ?? false;
             }
             else if (obj is string s && typeof(string) == typeof(KeyType))
             {
                 //  Debug.Log("str" + (TypeSelect_())+"/ "+s);
-                return (Key())?.Equals(s) ?? false;
+                return (KeySelf())?.Equals(s) ?? false;
             }
             else if (obj is int i && typeof(int) == typeof(KeyType))
             {
                 // Debug.Log("int" + typeof(GameKeyType));
-                return (Key()?.Equals(i)) ?? false;
+                return (KeySelf()?.Equals(i)) ?? false;
             }
             else if (obj is Enum e && obj.GetType() == typeof(KeyType))
             {
-                return (Key()?.Equals(e)) ?? false;
+                return (KeySelf()?.Equals(e)) ?? false;
             }
             else if (obj != null && typeof(KeyType) == obj.GetType())
             {
                 Debug.Log("other" + typeof(KeyType));
-                return Key()?.Equals((KeyType)obj) ?? false;
+                return KeySelf()?.Equals((KeyType)obj) ?? false;
             }
             return base.Equals(obj);
         }
     }
     public interface IKey<out KeyType> : IKey
     {
-        KeyType Key();
+        KeyType KeySelf();
     }
     public interface IKey
     {

@@ -1,9 +1,10 @@
 using ES;
 using ES.EvPointer;
-using FishNet;
+using FishNet.Connection;
+/*using FishNet;
 
 using FishNet.Connection;
-using FishNet.Managing;
+using FishNet.Managing;*/
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,9 +23,13 @@ namespace ES
 
         //仅游戏核心
         public static LinkReceivePool LinkReceivePoolGameCenter = new LinkReceivePool();
-        //
+
+
+        //作为服务器 
         public static LinkReceivePoolNet LinkReceivePoolAsServer = new LinkReceivePoolNet();
 
+
+        //作为客户端
         public static LinkReceivePoolNet LinkReceivePoolAsClient = new LinkReceivePoolNet();
 
         public static LinkReceivePool LinkReceivePoolAsTarget = new LinkReceivePool();
@@ -37,11 +42,11 @@ namespace ES
             }
             if (channel.HasFlag(LinkTaskChannel.ClientToServer))
             {
-                ESNetManager.ClientManager.Broadcast(link);
+                ESNetManager.Instance.ESNetRPC.SendLinkToServerT(link, connection);
             }
             if (channel.HasFlag(LinkTaskChannel.ServerToClients))
             {
-                ESNetManager.ServerManager.Broadcast(link);
+                ESNetManager.Instance.ESNetRPC.SendLinkToClientsT(link, connection);
             }
             if (channel.HasFlag(LinkTaskChannel.ServerToTarget))
             {

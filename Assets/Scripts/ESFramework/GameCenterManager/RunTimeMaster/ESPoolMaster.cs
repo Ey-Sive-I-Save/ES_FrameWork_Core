@@ -17,7 +17,7 @@ namespace ES
 {
     public class ESPoolMaster : SerializedMonoBehaviour
     {
-        #region 声明
+        #region 单例声明
         public static ESPoolMaster Instance
         {
             get

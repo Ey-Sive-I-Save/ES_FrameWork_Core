@@ -39,7 +39,7 @@ namespace ES
         [MethodImpl(methodImplOptions: MethodImplOptions.AggressiveInlining)]
         private void Internal_TryRemove(IReceiveLink<Link> ir)
         {
-            Debug.Log("Remove");
+            Debug.Log("RemoveInfo");
             IRS.TryRemove(ir);
         }
         [MethodImpl(methodImplOptions: MethodImplOptions.AggressiveInlining)]

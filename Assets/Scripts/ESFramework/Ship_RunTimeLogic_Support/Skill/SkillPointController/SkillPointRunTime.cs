@@ -170,15 +170,16 @@ namespace ES
         }
         private void ShowReset(SkillPointDataInfo.SkillPointLevelAllTransfomor level_=null, EnumCollect.SkillPointOneLevelState state=EnumCollect.SkillPointOneLevelState.None)
         {
+/*es update*/
             
-            if (showImage == null||bindingInfo==null||bindingInfo.allLevel.Count<=currentLevel) return;
+          /*  if (showImage == null||bindingInfo==null||bindingInfo.allLevel.Count<=currentLevel) return;
             level_ ??= bindingInfo.allLevel[currentLevel];
             Debug.Log("setset");
             Sprite sprite = level_?.sprites?.keyValues[state].sprite ?? GameCenterManager.Instance.SkillPointSpritesReference.defaultSpritesForSkillPoint.keyValues[state].sprite;
             Color c = level_?.sprites?.keyValues[state].color_??Color.white;
             Color color=(c!=Color.white)?c:GameCenterManager.Instance.SkillPointSpritesReference.defaultSpritesForSkillPoint.keyValues[state].color_;
             showImage.sprite = sprite;
-            showImage.color = color;
+            showImage.color = color;*/
         }
         private void OnDrawGizmos()
         {

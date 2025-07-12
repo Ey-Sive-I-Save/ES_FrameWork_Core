@@ -10,21 +10,21 @@ namespace ES
     public static class ExtensionForEnumable 
     {
         // 21. 随机获取数组元素
-        public static T EX_RandomItem<T>(this T[] array)
+        public static T _RandomItem<T>(this T[] array)
         {
             if (array == null || array.Length == 0) return default;
             return array[UnityEngine.Random.Range(0, array.Length)];
         }
 
         // 22. 随机获取列表元素
-        public static T EX_RandomItem<T>(this List<T> list)
+        public static T _RandomItem<T>(this List<T> list)
         {
             if (list == null || list.Count == 0) return default;
             return list[UnityEngine.Random.Range(0, list.Count)];
         }
 
         // 23. 打乱列表顺序
-        public static void EX_RandomShuffle<T>(this List<T> list)
+        public static void _RandomShuffle<T>(this List<T> list)
         {
             for (int i = 0; i < list.Count; i++)
             {
@@ -34,33 +34,33 @@ namespace ES
         }
 
         // 24. 检查数组是否为空或null
-        public static bool EX_IsNullOrEmpty<T>(this T[] array)
+        public static bool _IsNullOrEmpty<T>(this T[] array)
         {
             return array == null || array.Length == 0;
         }
 
         // 25. 检查列表是否为空或null
-        public static bool EX_IsNullOrEmpty<T>(this List<T> list)
+        public static bool _IsNullOrEmpty<T>(this List<T> list)
         {
             return list == null || list.Count == 0;
         }
 
         // 26. 遍历数组并执行操作
-        public static void EX_ForEach<T>(this T[] array, Action<T> action)
+        public static void _ForEach<T>(this T[] array, Action<T> action)
         {
             if (array == null || action == null) return;
             foreach (var item in array) action(item);
         }
 
         // 27. 遍历列表并执行操作
-        public static void EX_ForEach<T>(this List<T> list, Action<T> action)
+        public static void _ForEach<T>(this List<T> list, Action<T> action)
         {
             if (list == null || action == null) return;
             foreach (var item in list) action(item);
         }
 
         // 28. 查找满足条件的第一个元素的索引
-        public static int EX_FindIndex<T>(this T[] array, Predicate<T> predicate)
+        public static int _FindIndex<T>(this T[] array, Predicate<T> predicate)
         {
             if (array == null || predicate == null) return -1;
             for (int i = 0; i < array.Length; i++)
@@ -69,7 +69,7 @@ namespace ES
         }
 
         // 29. 查找满足条件的最后一个元素的索引
-        public static int EX_FindLastIndex<T>(this T[] array, Predicate<T> predicate)
+        public static int _FindLastIndex<T>(this T[] array, Predicate<T> predicate)
         {
             if (array == null || predicate == null) return -1;
             for (int i = array.Length - 1; i >= 0; i--)
@@ -78,9 +78,9 @@ namespace ES
         }
 
         // 30. 检查数组是否包含满足条件的元素
-        public static bool EX_ContainsFeetCondition<T>(this T[] array, Predicate<T> predicate)
+        public static bool _ContainsFeetCondition<T>(this T[] array, Predicate<T> predicate)
         {
-            return array.EX_FindIndex(predicate) != -1;
+            return array._FindIndex(predicate) != -1;
         }
     }
 }

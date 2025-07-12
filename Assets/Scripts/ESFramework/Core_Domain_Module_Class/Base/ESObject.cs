@@ -15,7 +15,7 @@ namespace ES
 
         #region 总重要信息
         #region 联网
-        [FoldoutGroup("【固有】"), LabelText("唯一ID"),ShowInInspector, ReadOnly]
+        [FoldoutGroup("【固有】"), LabelText("唯一ID"), ShowInInspector, ReadOnly]
         public int ID
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -30,7 +30,7 @@ namespace ES
                 }
             }
         }//-1代表未分配状态
-        
+
         private int _id = -1;//ID=-1时，认为无身份
         #endregion
 #if UNITY_EDITOR
@@ -86,18 +86,28 @@ namespace ES
 
         protected override void OnEnable()
         {
-            Debug.Log("Enable ESOBject"+IsNet);
+            gameObject.name = "尝试启用";
             if (_id == -1 && IsNet)
             {
-                SendIDRequest();//发送ID分配请求
-                DoWhenIDYes(() => { if (this != null) base.OnEnable(); });
-            }
-            else base.OnEnable();//会完成子模块的OnEnable
-        }
+                Debug.Log("When Send +" + NetObject.IsOwner);
+                gameObject.name = "无ID网络";
+                NetBehaviour.WaitingTaskAtClient.Enqueue(() =>
+                {
+                    SendIDRequest();//发送ID分配请求
+                    DoWhenIDYes(() => { if (this != null) base.OnEnable(); });
+                });
 
-        #region 检查器专属
-        //输出网络信息
-        private void DebugNO()
+            }
+            else
+            {
+                base.OnEnable();//会完成子模块的OnEnable
+                gameObject.name += "《正式启用";
+            }
+            }
+
+            #region 检查器专属
+            //输出网络信息
+            private void DebugNO()
         {
             Debug.Log("本人的" + NetObject.IsOwner);
             Debug.Log("客户的" + NetObject.IsClientInitialized);
@@ -175,12 +185,10 @@ namespace ES
 
         public void SendIDRequest()
         {
-            Debug.Log("ID Request "+IsNet);
+            Debug.Log("ID Request " + IsNet);
             if (IsNet)
             {
-                NetBehaviour.SendSelfLinkToServer(new Link_IDRequest());
-                NetBehaviour.SendSelfLinkToServer(new Link_IDRequest());
-                NetBehaviour.SendSelfLinkToServer(new Link_IDRequest());
+                if(NetObject.IsOwner)
                 NetBehaviour.SendSelfLinkToServer(new Link_IDRequest());
             }
             else

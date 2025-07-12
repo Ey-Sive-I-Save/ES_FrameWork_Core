@@ -23,6 +23,7 @@ namespace ES
      *  ##KeyPointer           取键器 通常配合编辑器扩展使用
      *  ##Matcher              进行键值匹配 或者解析 曲线/数据 
      *  ##Reflection           简化反射操作
+     *  ##SafeEditor           提供运行时可调用但是已经被预编辑功能的编辑器功能，或者只是完成了简化
      *  ##ScriptMaker          脚本生成工具(编辑器下使用)
      *  ##Sorter               数值/空间 上的 排序 操作
      *  ##TransformSetter      对变换的比较复杂的操作

@@ -30,7 +30,14 @@ namespace ES
             get
             {
                 if (_NetBehaviourCoreScenes != null) return _NetBehaviourCoreScenes;
-                if (ESNetRPCMasterPrefab != null) return _NetBehaviourCoreScenes = Instantiate(ESNetRPCMasterPrefab);
+                if (ESNetRPCMasterPrefab != null)
+                {
+                    _NetBehaviourCoreScenes = Instantiate(ESNetRPCMasterPrefab);
+                    ServerManager.Spawn(_NetBehaviourCoreScenes.gameObject);
+                    return _NetBehaviourCoreScenes;
+
+
+                }
                 GameObject cache = new GameObject();
                 cache.AddComponent<ESNetObject>();
                 return _NetBehaviourCoreScenes=cache.AddComponent<ESNetRPCMaster>();
@@ -171,6 +178,13 @@ namespace ES
                 TheNetWorkManager.ClientManager.OnClientConnectionState += _PassiveDelegate_ClientManager_OnClientConnectionState;
             }
             SelfConnection = TheNetWorkManager.ClientManager.Connection;
+        }
+
+        [Button("出")]
+        public void TrySpawn(GameObject g)
+        {
+            ESNetRPC.ServerSpawnPrefab(g,ClientManager.Connection); 
+           
         }
     }
     public enum NetWorkUpdateOption

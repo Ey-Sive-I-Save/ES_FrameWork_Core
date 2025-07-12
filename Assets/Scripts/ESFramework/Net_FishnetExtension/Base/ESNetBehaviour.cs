@@ -1,4 +1,3 @@
-using ES;
 using FishNet.Connection;
 using FishNet.Object;
 using Sirenix.OdinInspector;
@@ -10,19 +9,27 @@ using UnityEngine;
 namespace ES
 {
 
-    public class ESNetBehaviour : NetworkBehaviour
+    public partial class ESNetBehaviour : NetworkBehaviour
     {
         public ESObject ConnectedObject;
+        public bool StartSpawn = false;
         #region 默认支持
         [FoldoutGroup("ES默认功能"), LabelText("仅本地可运转")]
         public List<Transform> AllOnlyOwmer = new List<Transform>();
 
         #endregion
         [ShowInInspector]
-        public Queue<ILink> WaitingLinkAtServer = new Queue<ILink>();
+        public Queue<ILink> WaitingSendLinkAtServer = new Queue<ILink>();
         [ShowInInspector]
-        public Queue<ILink> WaitingLinkAtClient = new Queue<ILink>();
+        public Queue<ILink> WaitingSendLinkAtClient = new Queue<ILink>();
 
+        [ShowInInspector]
+        public Queue<Action> WaitingTaskAtServer = new Queue<Action>();
+
+        [ShowInInspector]
+        public Queue<Action> WaitingTaskAtClient = new Queue<Action>();
+        private float maxWait = 2;
+        private float startClientTime;
         private void Awake()
         {
 
@@ -31,17 +38,24 @@ namespace ES
         {
             Debug.Log("NetWork测试");
             base.OnStartNetwork();
-
+            
         }
         public override void OnStartClient()
         {
             Debug.Log("客户端测试");
+            startClientTime = Time.time;
             base.OnStartClient();
+            if (IsOwner&& StartSpawn)
+            {
+                SpawnThis(gameObject,LocalConnection);
+               
+            }
             StartCoroutine(RunSelfClientWaitingRPC());
+            StartCoroutine(RunTaskClientWaiting());
             if (IsOwner)
             {
 
-                Debug.Log("客户端测试");
+                Debug.Log("客户端Owner"+gameObject.name);
                 /*ESNetManager.Instance.OnSelfClientStart?.Invoke();*/
                 ServerManager.Spawn(gameObject);
             }
@@ -66,9 +80,12 @@ namespace ES
         {
             base.OnStartServer();
             StartCoroutine(RunSelfServerWaitingRPC());
+            StartCoroutine(RunTaskServerWaiting());
+
             if (IsServerInitialized)
             {
                 ESNetManager.Instance.OnSelfServerStart?.Invoke();
+                
             }
         }
         public override void OnStopServer()
@@ -79,41 +96,69 @@ namespace ES
                 ESNetManager.Instance.OnSelfServerStop?.Invoke();
             }
         }
-
-        public void OnSelfRPCLinkAtClient(ILink link)
+        public void DoSelfRPCLinkAtClient(ILink link)
         {
-            Debug.Log("Client DO"+ link);
+            Debug.Log("Client DO" + link);
             if (link is Link_IDSet set)
             {
                 Debug.Log(set.id);
                 ConnectedObject.ID = set.id;
             }
         }
-        public void OnSelfRPCLinkAtServer(ILink link)
+
+        public void DoSelfRPCLinkAtServer(ILink link)
         {
             Debug.Log("Server DO" + link);
             if (link is Link_IDRequest request)
             {
                 int ID = GameCenterManager.NetIDCount;
-                SendSelfLinkToClient(new Link_IDSet() { id=ID });
+                SendSelfLinkToClient(new Link_IDSet() { id = ID });
             }
         }
         public IEnumerator RunSelfServerWaitingRPC()
         {
-            while (WaitingLinkAtServer.Count > 0)
+            while (WaitingSendLinkAtServer.Count > 0)
             {
-                var next = WaitingLinkAtServer.Dequeue();
-                OnSelfRPCLinkAtServer(next);
+                var next = WaitingSendLinkAtServer.Dequeue();
+                DoSelfRPCLinkAtServer(next);
                 yield return null;
             }
             yield return null;
         }
         public IEnumerator RunSelfClientWaitingRPC()
         {
-            while (WaitingLinkAtClient.Count > 0)
+            while (Time.time-startClientTime<maxWait|| WaitingTaskAtServer.Count > 0)
             {
-                var next = WaitingLinkAtClient.Dequeue();
-                OnSelfRPCLinkAtClient(next);
+                if (WaitingSendLinkAtClient.Count > 0)
+                {
+                    var next = WaitingSendLinkAtClient.Dequeue();
+                    DoSelfRPCLinkAtClient(next);
+                }
+                yield return null;
+            }
+            yield return null;
+        }
+
+        public IEnumerator RunTaskServerWaiting()
+        {
+            while (Time.time - startClientTime < maxWait|| WaitingTaskAtServer.Count > 0)
+            {
+                if (WaitingTaskAtServer.Count > 0)
+                {
+                    var next = WaitingTaskAtServer.Dequeue();
+                    next?.Invoke();
+                }
+                yield return null;
+            }
+            yield return null;
+        }
+        public IEnumerator RunTaskClientWaiting()
+        {
+            
+            while (WaitingTaskAtClient.Count > 0)
+            {
+                var next = WaitingTaskAtClient.Dequeue();
+                next?.Invoke();
                 yield return null;
             }
             yield return null;
@@ -135,25 +180,29 @@ namespace ES
             }
         }
 
-       /* [ServerRpc(RequireOwnership = false)]*/
+       [ServerRpc(RequireOwnership = false)]
         public void SendSelfLinkToServer(Link_IDRequest link)
         {
-            Debug.Log("ToServer"+ IsServerInitialized);
             if (IsServerInitialized)
-                OnSelfRPCLinkAtServer(link);
-            else WaitingLinkAtServer.Enqueue(link);
+                DoSelfRPCLinkAtServer(link);
+            else WaitingSendLinkAtServer.Enqueue(link);
         }
 
-       /* [ObserversRpc()]*/
+        [ObserversRpc(BufferLast =true)]
         public void SendSelfLinkToClient(Link_IDSet link)
         {
             if (IsServerInitialized)
-                OnSelfRPCLinkAtClient(link);
-            else WaitingLinkAtClient.Enqueue(link);
-
+                DoSelfRPCLinkAtClient(link);
+            else WaitingSendLinkAtClient.Enqueue(link);
         }
 
+       
 
+        [ServerRpc]
+        public void SpawnThis(GameObject g,NetworkConnection connection=null)
+        {
+            ServerManager.Spawn(g,connection);
+        }
     }
 }
 

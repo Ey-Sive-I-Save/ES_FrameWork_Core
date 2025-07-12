@@ -41,7 +41,8 @@ namespace ES
         }
         private void ShowReset(SkillPointDataInfo.SkillPointLevelAllTransfomor level_ = null, EnumCollect.SkillPointOneLevelState state = EnumCollect.SkillPointOneLevelState.None)
         {
-
+/*es update*/
+/*
             if (showImage == null || lastBinding?.bindingInfo == null || lastBinding?.bindingInfo.allLevel.Count <= lastBinding.currentLevel) return;
             level_ ??= lastBinding?.bindingInfo.allLevel[lastBinding.currentLevel];
             Debug.Log("setset");
@@ -49,7 +50,7 @@ namespace ES
             Color c = level_?.sprites?.keyValues[state].color_ ?? Color.white;
             Color color = (c != Color.white) ? c : GameCenterManager.Instance.SkillPointSpritesReference.defaultSpritesForSkillPoint.keyValues[state].color_;
             showImage.sprite = sprite;
-            showImage.color = color;
+            showImage.color = color;*/
         }
         // Update is called once per frame
         void Update()

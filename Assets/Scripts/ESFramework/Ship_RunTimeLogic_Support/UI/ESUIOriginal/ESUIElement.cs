@@ -18,7 +18,7 @@ namespace ES
         protected bool dirty = false;
         public virtual ESUIPanel GetMyParentAndRegisteThis()
         {
-            var use = this.EX_GetCompoentInParentExcludeSelf<ESUIPanel>(includeInactive:true);
+            var use = this._GetCompoentInParentExcludeSelf<ESUIPanel>(includeInactive:true);
             if (use != null) { 
                 _myParentPanel = use;
                 if (register)

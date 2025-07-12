@@ -50,7 +50,6 @@ MonoBehaviour:
     ReadMe: 
     readMe: 
     showColor: {r: 1, g: 1, b: 1, a: 1}
-  ESTagsSO_: {fileID: 11400000, guid: f143e840114030e4c944bef944ba2dbe, type: 2}
 --- !u!1 &445659966007824723
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,14 +94,87 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24aca10204e94cd44902b20e51f66627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: PoolForResSourceSearchKey
+      Entry: 7
+      Data: 0|ES.ESSimpleObjectPool`1[[ES.ResSourceSearchKey, ES]], ES
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: PoolForInternalResSource
+      Entry: 7
+      Data: 1|ES.ESSimpleObjectPool`1[[ES.InternalResourceRes, ES]], ES
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: PoolForAssetResSource
+      Entry: 7
+      Data: 2|ES.ESSimpleObjectPool`1[[ES.AssetResSource, ES]], ES
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: PoolForAssetBundleResSource
+      Entry: 7
+      Data: 3|ES.ESSimpleObjectPool`1[[ES.LocalAssetBundleResSource, ES]], ES
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: PoolForABAssetResSource
+      Entry: 7
+      Data: 4|ES.ESSimpleObjectPool`1[[ES.LocalABAssetResSource, ES]], ES
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: PoolForESLoader
+      Entry: 7
+      Data: 5|ES.ESSimpleObjectPool`1[[ES.ESResLoader, ES]], ES
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: AllResSource
+      Entry: 7
+      Data: 6|ES.ESResMaster+ResTable, ES
+    - Name: Groups
+      Entry: 7
+      Data: 7|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Collections.Generic.List`1[[ES.ESResSource,
+        ES]], mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 8|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: MainLoader
+      Entry: 7
+      Data: 9|ES.ESResLoader, ES
+    - Name: 
+      Entry: 8
+      Data: 
   DontDestroy: 1
-  abPackType: 0
-  abFoeAutoCodeGen: 0
-  genarateFolder: Assets/StreamingAssets/AssetBundles
-  abMaskType: 0
-  ABName: "\u65B9\u5757_prefab"
   MainBundle: {fileID: 0}
   MainManifest: {fileID: 0}
+  IsFileCompareComplete: 0
 --- !u!1 &1121673527598231172
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,232 +363,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: ICON
-      Entry: 7
-      Data: 0|ES.ESEditorOnlyPartMaster+ESIconControl, ES
-    - Name: startOffset
-      Entry: 4
-      Data: -20
-    - Name: offsetPerTime
-      Entry: 4
-      Data: -20
-    - Name: width
-      Entry: 4
-      Data: 20
-    - Name: HierachySelectorS
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[ES.ESEditorOnlyPartMaster+HierachySelector,
-        ES]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 3
-    - Name: 
-      Entry: 7
-      Data: 2|ES.ESEditorOnlyPartMaster+IconSelector_DependCompo_ClassName, ES
-    - Name: contentGetter
-      Entry: 7
-      Data: 3|ES.ESEditorOnlyPartMaster+ContentGetter_SystemIcon_Chinese, ES
-    - Name: color
-      Entry: 7
-      Data: UnityEngine.Color, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0.961
-    - Name: 
-      Entry: 4
-      Data: 0.902
-    - Name: 
-      Entry: 4
-      Data: 0.788
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: scale
-      Entry: 4
-      Data: 1
-    - Name: contentName
-      Entry: 1
-      Data: "\u5185\u5B58\u5206\u6790\u5668\u56FE\u6807"
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: typeName
-      Entry: 1
-      Data: ESUIRoot
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 4|ES.ESEditorOnlyPartMaster+IconSelector_DependCompo_ClassName, ES
-    - Name: contentGetter
-      Entry: 7
-      Data: 5|ES.ESEditorOnlyPartMaster+ContentGetter_SystemIcon_English, ES
-    - Name: color
-      Entry: 7
-      Data: UnityEngine.Color, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 4
-      Data: 0.5411765
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: scale
-      Entry: 4
-      Data: 1
-    - Name: contentName
-      Entry: 1
-      Data: d_Folder Icon
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: typeName
-      Entry: 1
-      Data: ESUIPanel
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 6|ES.ESEditorOnlyPartMaster+IconSelector_DependCompo_ClassName, ES
-    - Name: contentGetter
-      Entry: 7
-      Data: 7|ES.ESEditorOnlyPartMaster+ContentGetter_SystemIcon_English, ES
-    - Name: color
-      Entry: 7
-      Data: UnityEngine.Color, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 4
-      Data: 0.5137255
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: scale
-      Entry: 4
-      Data: 0.7
-    - Name: contentName
-      Entry: 1
-      Data: BuildSettings.Android
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: typeName
-      Entry: 1
-      Data: ESUIElement
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Ins
-      Entry: 7
-      Data: 8|ES.ESEditorOnlyPartMaster+ESInspectorControl, ES
-    - Name: EnableCompoentShowControl_
-      Entry: 5
-      Data: false
-    - Name: cacheToggleFalseNames
-      Entry: 7
-      Data: 9|System.Collections.Generic.HashSet`1[[System.String, mscorlib]], System.Core
-    - Name: 
-      Entry: 12
-      Data: 4
-    - Name: 
-      Entry: 1
-      Data: Rigidbody
-    - Name: 
-      Entry: 1
-      Data: Animator
-    - Name: 
-      Entry: 1
-      Data: CapsuleCollider
-    - Name: 
-      Entry: 1
-      Data: CharacterController
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: TypeDis
-      Entry: 7
-      Data: 10|ES.ESEditorOnlyPartMaster+TypeDisplay, ES
-    - Name: HandSelfRename
-      Entry: 7
-      Data: 11|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.String,
-        mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 12|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: Entity
-    - Name: $v
-      Entry: 1
-      Data: "\u5B9E\u4F53"
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: EnableOdinRegester
-      Entry: 5
-      Data: true
-    - Name: EnableSoDataGroupUp
-      Entry: 5
-      Data: true
-    - Name: WithOriginal
-      Entry: 5
-      Data: true
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   DontDestroy: 1
 --- !u!1 &4256614356071685642
 GameObject:
@@ -852,7 +699,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa3eae5f98478a4ea306a5ab3d460e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NetObject: {fileID: 0}
   DontDestroy: 1
   AudioMaster: {fileID: 608958554771707050}
   OnSceneLoaded:

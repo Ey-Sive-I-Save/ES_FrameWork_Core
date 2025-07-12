@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f0cd8c35d5a674aac12cf777b89932, type: 3}
+  m_Name: "\u5168\u5C40\u6570\u636E-\u8D44\u6E90\u7BA1\u7406"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: toHash
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: material
+    - Name: $v
+      Entry: 1
+      Data: material_cf0868ae79727aa7d4541b36a731fc40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: prefab
+    - Name: $v
+      Entry: 1
+      Data: prefab_9f44f961911932cb582b625b3be28d7f
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: rubbish
+    - Name: $v
+      Entry: 1
+      Data: rubbish_e59a39171689cacd6c47e973cb49b339
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Depend
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.WrapListString,
+        AOTHotUpdate]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 1
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: prefab
+    - Name: $v
+      Entry: 7
+      Data: 3|ES.WrapListString, AOTHotUpdate
+    - Name: strings
+      Entry: 7
+      Data: 4|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: material
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  HasConfirm: 1
+  abPackType: 0
+  abFoeAutoCodeGen: 1
+  genarateCodeFolder_: Assets/Scripts/ESFramework/CodeGen/Res
+  genarateFolder: Assets/StreamingAssets/AssetBundles
+  genarateHotUpdateFolder_: Assets/StreamingAssets/AssetBundles
+  abMaskType: 1
+  ABName: defaultABName
+  applyPlatform: 7
+  DownLoadURL: https://eysive-teset.oss-cn-beijing.aliyuncs.com
+  LocalTestDownLoadPath: Assets/StreamingAssets/AssetBundles/DownLoadTest
+  LocalDownLoadAdditionPath: DownLoad
+  TargetLocations: []

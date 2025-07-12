@@ -17,6 +17,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Rendering;
 using static ES.ESResMaster;
+using static ES.GlobalDataForResMaster;
 using static ES.SkillPointDataInfo.SkillPointLevelAllTransfomor.SkillPointSprites;
 using static UnityEngine.GraphicsBuffer;
 using Path = System.IO.Path;
@@ -41,9 +42,8 @@ namespace ES
         [MenuItem("Tools/ES工具/ES资源管理窗口")]
         public static void TryOpenWindow()
         {
-            if (ESEditorRuntimePartMaster.Instance != null)
+            if (GlobalDataForEditorRunTime.Instance != null)
                 OpenWindow();
-            else Debug.LogError("确保场景中有EditorMaster");
         }
 
 
@@ -174,24 +174,24 @@ namespace ES
             //更改AB打包模式
             [LabelText("更改AB打包模式"), TabGroup("全局设置"), PropertyOrder(-3), PropertySpace(15)]
             [ShowInInspector]
-            public ESResMaster.ABPackType packType { get => ESResMaster.Instance.abPackType; set { ESResMaster.Instance.abPackType = value; EditorUtility.SetDirty(ESResMaster.Instance); } }
+            public GlobalDataForResMaster.ABPackType packType { get => GlobalDataForResMaster.Instance.abPackType; set { GlobalDataForResMaster.Instance.abPackType = value; EditorUtility.SetDirty(GlobalDataForResMaster.Instance); } }
 
             //打AB包时，自动辅助代码生成格式
             [LabelText("打AB包时自动辅助代码生成格式"), TabGroup("全局设置"), InfoBox("", Message = "@GetCodeInfo()", InfoMessageType = InfoMessageType.Warning)]
             [PropertyOrder(-3), ShowInInspector, InlineButton("Handle_CodeGenAssetConstName", "手动生成常量名代码(默认不改大小写)")]
-            public ESResMaster.ABForAutoCodeGen codeType
+            public GlobalDataForResMaster.ABForAutoCodeGen codeType
             {
-                get => ESResMaster.Instance.abFoeAutoCodeGen;
-                set { ESResMaster.Instance.abFoeAutoCodeGen = value; EditorUtility.SetDirty(ESResMaster.Instance); }
+                get => GlobalDataForResMaster.Instance.abFoeAutoCodeGen;
+                set { GlobalDataForResMaster.Instance.abFoeAutoCodeGen = value; EditorUtility.SetDirty(GlobalDataForResMaster.Instance); }
             }
             string GetCodeInfo()
             {
                 switch (codeType)
                 {
-                    case ESResMaster.ABForAutoCodeGen.NoneCode: return "不生成代码";
-                    case ESResMaster.ABForAutoCodeGen.CodeAsOriginal: return "生成代码(完全按源文件名)";
-                    case ESResMaster.ABForAutoCodeGen.CodeAsLower: return "生成代码(源文件名转小写)";
-                    case ESResMaster.ABForAutoCodeGen.CodeAsUpper: return "生成代码(源文件名转大写)";
+                    case GlobalDataForResMaster.ABForAutoCodeGen.NoneCode: return "不生成代码";
+                    case GlobalDataForResMaster.ABForAutoCodeGen.CodeAsOriginal: return "生成代码(完全按源文件名)";
+                    case GlobalDataForResMaster.ABForAutoCodeGen.CodeAsLower: return "生成代码(源文件名转小写)";
+                    case GlobalDataForResMaster.ABForAutoCodeGen.CodeAsUpper: return "生成代码(源文件名转大写)";
                     default: return "不生成代码";
                 }
             }
@@ -220,8 +220,8 @@ namespace ES
                     string showAB = ab;
                     foreach (var withHash in AllABWithHash)
                     {
-                        string pre = ESResMaster.Instance.GetPreNameFromCompleteNameWithHash(withHash);
-                        Debug.Log(pre + "*" + ab + "&" + (pre == ab) + "/" + withHash + "/" + ESResMaster.Instance.GetHashFromCompleteNameWithHash(withHash));
+                        string pre = GlobalDataForResMaster.Instance.GetPreNameFromCompleteNameWithHash(withHash);
+                        Debug.Log(pre + "*" + ab + "&" + (pre == ab) + "/" + withHash + "/" + GlobalDataForResMaster.Instance.GetHashFromCompleteNameWithHash(withHash));
                         if (pre == ab)
                         {
                             AllHashDicContent += "{\"" + ab + "\",\"" + withHash + "\"},\n";
@@ -232,13 +232,13 @@ namespace ES
                                ("string", "WithHash", "public static", "=" + $"\"{withHash}\"");
 
                             SingleABField += KeyValueMatchingUtility.ScriptMaker.CreateFieldContent
-                              ("string", "Hash", "public static", "=" + $"\"{ESResMaster.Instance.GetHashFromCompleteNameWithHash(withHash)}\"");
+                              ("string", "Hash", "public static", "=" + $"\"{GlobalDataForResMaster.Instance.GetHashFromCompleteNameWithHash(withHash)}\"");
                         }
                     }
                     //包名锁死为小写
                     /*
-                     * if (codeType == ESResMaster.ABForAutoCodeGen.CodeAsUpper) showAB = showAB.ToUpper();
-                    else if (codeType == ESResMaster.ABForAutoCodeGen.CodeAsLower) showAB = showAB.ToLower();*/
+                     * if (codeType == GlobalDataForResMaster.ABForAutoCodeGen.CodeAsUpper) showAB = showAB.ToUpper();
+                    else if (codeType == GlobalDataForResMaster.ABForAutoCodeGen.CodeAsLower) showAB = showAB.ToLower();*/
 
                     AllABDicContent += "{\"" + showAB + "\"," + showAB + ".AllPaths},\n";
 
@@ -264,8 +264,8 @@ namespace ES
                             repeat++;
                         }
                         string key = $"{KeyValueMatchingUtility.ScriptMaker.HandleString_RemoveExtension(KeyValueMatchingUtility.ScriptMaker.HandleString_ToValidName(tryUse))}";
-                        if (codeType == ESResMaster.ABForAutoCodeGen.CodeAsUpper) key = key.ToUpper();
-                        else if (codeType == ESResMaster.ABForAutoCodeGen.CodeAsLower) key = key.ToLower();
+                        if (codeType == GlobalDataForResMaster.ABForAutoCodeGen.CodeAsUpper) key = key.ToUpper();
+                        else if (codeType == GlobalDataForResMaster.ABForAutoCodeGen.CodeAsLower) key = key.ToLower();
                         string value = $"\"{KeyValueMatchingUtility.ScriptMaker.HandleString_RemoveExtension(dir.Name)}\"";
                         allPathsNoRepeatOriginal.Add(tryUse);
                         allPathsNoRepeatToUse.Add(key);
@@ -313,21 +313,21 @@ namespace ES
             //生成AB包路径
             [LabelText("生成<AB包>路径"), TabGroup("全局设置"), PropertyOrder(-2)]
             [FolderPath, ShowInInspector]
-            public string genarateFolder { get => ESResMaster.Instance.genarateFolder; set { ESResMaster.Instance.genarateFolder = value; EditorUtility.SetDirty(ESResMaster.Instance); } }
+            public string genarateFolder { get => GlobalDataForResMaster.Instance.genarateFolder; set { GlobalDataForResMaster.Instance.genarateFolder = value; EditorUtility.SetDirty(GlobalDataForResMaster.Instance); } }
 
             //生成代码路径
             [LabelText("生成<代码>路径"), TabGroup("全局设置"), PropertyOrder(-2)]
             [FolderPath, ShowInInspector]
-            public string genarateCodeFolder { get => ESResMaster.Instance.genarateCodeFolder_; set { ESResMaster.Instance.genarateCodeFolder_ = value; EditorUtility.SetDirty(ESResMaster.Instance); } }
+            public string genarateCodeFolder { get => GlobalDataForResMaster.Instance.genarateCodeFolder_; set { GlobalDataForResMaster.Instance.genarateCodeFolder_ = value; EditorUtility.SetDirty(GlobalDataForResMaster.Instance); } }
 
             //应用平台
             [LabelText("应用平台"), TabGroup("全局设置"), ShowInInspector]
             public RuntimePlatform PlatformToApply
             {
-                get => ESResMaster.Instance.applyPlatform; set
+                get => GlobalDataForResMaster.Instance.applyPlatform; set
                 {
-                    ESResMaster.Instance.applyPlatform = value;
-                    EditorUtility.SetDirty(ESResMaster.Instance);
+                    GlobalDataForResMaster.Instance.applyPlatform = value;
+                    EditorUtility.SetDirty(GlobalDataForResMaster.Instance);
                 }
             }
 
@@ -427,10 +427,10 @@ namespace ES
             [ValueDropdown("allAssetBundleNames", AppendNextDrawer = true), ShowInInspector, GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForCaster")]
             public string selectBundleName
             {
-                get => ESResMaster.Instance.ABName; set
+                get => GlobalDataForResMaster.Instance.ABName; set
                 {
-                    ESResMaster.Instance.ABName = value;
-                    EditorUtility.SetDirty(ESResMaster.Instance);
+                    GlobalDataForResMaster.Instance.ABName = value;
+                    EditorUtility.SetDirty(GlobalDataForResMaster.Instance);
                 }
             }
 
@@ -438,7 +438,7 @@ namespace ES
             [LabelText("标记模式"), ShowInInspector]
             [TabGroup("标记收集与查询")]
             [InfoBox("", Message = "@desMaskType()"), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForCatcher")]
-            public ESResMaster.ABMaskType maskType { get => ESResMaster.Instance.abMaskType; set { ESResMaster.Instance.abMaskType = value; EditorUtility.SetDirty(ESResMaster.Instance); } }
+            public GlobalDataForResMaster.ABMaskType maskType { get => GlobalDataForResMaster.Instance.abMaskType; set { GlobalDataForResMaster.Instance.abMaskType = value; EditorUtility.SetDirty(GlobalDataForResMaster.Instance); } }
 
             [LabelText("该AB包名对应的资源")]
             [TabGroup("标记收集与查询")]
@@ -488,23 +488,23 @@ namespace ES
             //补充描述信息--标记模式
             private string desMaskType()
             {
-                if (maskType == ESResMaster.ABMaskType.AsOrinal) return "!作为资源时，会标记自身为单独的AB包，作为文件夹时，标记该文件夹下所有资源为同一个AB包";
-                else if (maskType == ESResMaster.ABMaskType.AsFolder) return "作为资源时，会收纳到自身所在文件夹，作为文件夹时，标记该文件夹下所有资源为同一个AB包";
-                else /*if (maskType == ESResMaster.ABMaskType.SelfDefine)*/
+                if (maskType == GlobalDataForResMaster.ABMaskType.AsOrinal) return "!作为资源时，会标记自身为单独的AB包，作为文件夹时，标记该文件夹下所有资源为同一个AB包";
+                else if (maskType == GlobalDataForResMaster.ABMaskType.AsFolder) return "作为资源时，会收纳到自身所在文件夹，作为文件夹时，标记该文件夹下所有资源为同一个AB包";
+                else /*if (maskType == GlobalDataForResMaster.ABMaskType.SelfDefine)*/
                     return "自定义模式，使用<上面输入或者选择的>作为标记收集包名";
             }
 
             //补充描述信息--显示AssetBundle名
             private string showAssetBundleName()
             {
-                if (maskType == ESResMaster.ABMaskType.SelfDefine) return "查询/标记收集到自定义包名";
+                if (maskType == GlobalDataForResMaster.ABMaskType.SelfDefine) return "查询/标记收集到自定义包名";
 
                 return "查询的包名";
             }
             //补充描述信息--中文警告
             private bool warnIfChineseOrSymbol()
             {
-                return selectBundleName.EX_ContainChineseCharacterOrNormalSymbol();
+                return selectBundleName._ContainChineseCharacterOrNormalSymbol();
             }
             //补充描述信息--点警告
             private bool warnIfPoint()
@@ -622,7 +622,7 @@ namespace ES
                     string showAB = ab;
                     foreach (var withHash in AllABWithHash)
                     {
-                        string pre = ESResMaster.Instance.GetPreNameFromCompleteNameWithHash(withHash);
+                        string pre = GlobalDataForResMaster.Instance.GetPreNameFromCompleteNameWithHash(withHash);
                         if (pre == ab)
                         {
                             preToHashDic.Add(ab, withHash);
@@ -632,7 +632,7 @@ namespace ES
                             foreach (var i in abDepend)
                             {
                                 if (!first) abDependPreLink += '&';
-                                abDependPreLink += ESResMaster.Instance.GetPreNameFromCompleteNameWithHash(i);
+                                abDependPreLink += GlobalDataForResMaster.Instance.GetPreNameFromCompleteNameWithHash(i);
                                 first = false;
                             }
                             if (abDepend.Length > 0) dependenceDic.Add(ab, abDependPreLink);
@@ -641,11 +641,11 @@ namespace ES
 
                 }
                 string json = JsonUtility.ToJson(dependenceDic);
-                string dependPath = ESResMaster.Instance.GetLocalAssetBundlePath(platform.ToString()) + "/" + ESResMaster.Instance.HotUpdateDependenceFileName;
+                string dependPath = GlobalDataForResMaster.Instance.GetLocalAssetBundlePath(platform.ToString()) + "/" + GlobalDataForResMaster.Instance.HotUpdateDependenceFileName;
                 File.WriteAllText(dependPath, json);
                 string json2 = JsonUtility.ToJson(preToHashDic);
 
-                string hashPath = ESResMaster.Instance.GetLocalAssetBundlePath(platform.ToString()) + "/" + ESResMaster.Instance.HotUpdatePreToHashFileName;
+                string hashPath = GlobalDataForResMaster.Instance.GetLocalAssetBundlePath(platform.ToString()) + "/" + GlobalDataForResMaster.Instance.HotUpdatePreToHashFileName;
                 File.WriteAllText(hashPath, json2);
                 AssetDatabase.Refresh();
                 AssetDatabase.SaveAssets();
@@ -662,30 +662,30 @@ namespace ES
                 {
                     try
                     {
-                        string forDepend = ESResMaster.Instance.GetLocalAssetBundlePath() + "/" + ESResMaster.Instance.HotUpdateDependenceFileName;
-                        string forHash = ESResMaster.Instance.GetLocalAssetBundlePath() + "/" + ESResMaster.Instance.HotUpdatePreToHashFileName;
+                        string forDepend = GlobalDataForResMaster.Instance.GetLocalAssetBundlePath() + "/" + GlobalDataForResMaster.Instance.HotUpdateDependenceFileName;
+                        string forHash = GlobalDataForResMaster.Instance.GetLocalAssetBundlePath() + "/" + GlobalDataForResMaster.Instance.HotUpdatePreToHashFileName;
                         string jsonContentDepend = File.ReadAllText(forDepend);
                         string jsonContentHash = File.ReadAllText(forHash);
 
 
                         SerializedDictionary<string, string> handleAgo = JsonUtility.FromJson<SerializedDictionary<string, string>>(jsonContentDepend);
-                        Undo.RecordObject(ESResMaster.Instance, "set1");
-                        ESResMaster.Instance.Depend = new Dictionary<string, WrapListString>() { };
+                        Undo.RecordObject(GlobalDataForResMaster.Instance, "set1");
+                        GlobalDataForResMaster.Instance.Depend = new Dictionary<string, WrapListString>() { };
                         foreach (var (i, k) in handleAgo)
                         {
                             Depend.Add(i, new WrapListString() { strings = k.Split('&').ToList() });
                         }
-                        EditorUtility.SetDirty(ESResMaster.Instance);
+                        EditorUtility.SetDirty(GlobalDataForResMaster.Instance);
 
-                        Undo.RecordObject(ESResMaster.Instance, "set");
+                        Undo.RecordObject(GlobalDataForResMaster.Instance, "set");
                         SerializedDictionary<string, string> handleAgo2 = JsonUtility.FromJson<SerializedDictionary<string, string>>(jsonContentHash);
-                        ESResMaster.Instance.toHash = new Dictionary<string, string>();
+                        GlobalDataForResMaster.Instance.toHash = new Dictionary<string, string>();
                         foreach (var (i, k) in handleAgo2)
                         {
-                            ESResMaster.Instance.toHash.Add(i, k);
+                            GlobalDataForResMaster.Instance.toHash.Add(i, k);
                         }
 
-                        EditorUtility.SetDirty(ESResMaster.Instance);
+                        EditorUtility.SetDirty(GlobalDataForResMaster.Instance);
 
 
                         Debug.Log("refresh");
@@ -722,7 +722,7 @@ namespace ES
             [Button("打开下载目标文件夹(persistent)", DrawResult = false), PropertySpace(15)]
             private void Handle_OpenDownloadHotUpdateDir()
             {
-                string path = Application.persistentDataPath + "/" + ESResMaster.Instance.LocalDownLoadAdditionPath;
+                string path = Application.persistentDataPath + "/" + GlobalDataForResMaster.Instance.LocalDownLoadAdditionPath;
 
                 if (Directory.Exists(path) || Directory.CreateDirectory(path) != null)
                 {
@@ -734,14 +734,14 @@ namespace ES
             /*  [Button("Test2")]
               private void ThisRefresh()
               {
-                  ESResMaster.Instance.strings = new SerializedDictionary<string, string>();
+                  GlobalDataForResMaster.Instance.strings = new SerializedDictionary<string, string>();
               }*/
             [LabelText("下载到本地相对附加路径"), ShowInInspector, PropertyOrder(-3)]
-            public string DownloadAddition { get => ESResMaster.Instance.LocalDownLoadAdditionPath; set { ESResMaster.Instance.LocalDownLoadAdditionPath = value; EditorUtility.SetDirty(ESResMaster.Instance); } }
+            public string DownloadAddition { get => GlobalDataForResMaster.Instance.LocalDownLoadAdditionPath; set { GlobalDataForResMaster.Instance.LocalDownLoadAdditionPath = value; EditorUtility.SetDirty(GlobalDataForResMaster.Instance); } }
 
 
             [LabelText("下载测试(仅测试)"), InlineButton("tryDownLoad", "下载测试"), ShowInInspector, PropertyOrder(-3)]
-            public string DownloadURL { get => ESResMaster.Instance.DownLoadURL; set { ESResMaster.Instance.DownLoadURL = value; EditorUtility.SetDirty(ESResMaster.Instance); } }
+            public string DownloadURL { get => GlobalDataForResMaster.Instance.DownLoadURL; set { GlobalDataForResMaster.Instance.DownLoadURL = value; EditorUtility.SetDirty(GlobalDataForResMaster.Instance); } }
             private void tryDownLoad()
             {
                 TryLoad = !TryLoad;
@@ -751,7 +751,7 @@ namespace ES
             [LabelText("-》文件名(含后缀)")]
             public string FileName = "";
             [LabelText("下载资源测试本地地址"), ShowIf("@TryLoad"), ShowInInspector, PropertyOrder(-2), FolderPath]
-            public string DownloadLocalPath { get => ESResMaster.Instance.LocalTestDownLoadPath; set { ESResMaster.Instance.LocalTestDownLoadPath = value; EditorUtility.SetDirty(ESResMaster.Instance); } }
+            public string DownloadLocalPath { get => GlobalDataForResMaster.Instance.LocalTestDownLoadPath; set { GlobalDataForResMaster.Instance.LocalTestDownLoadPath = value; EditorUtility.SetDirty(GlobalDataForResMaster.Instance); } }
             private float progress = 0;
             private void DownLoadIt()
             {
@@ -815,9 +815,9 @@ namespace ES
             }
 
             [LabelText("Hash信息字典"), ShowInInspector]
-            public Dictionary<string, string> toHash { get => ESResMaster.Instance.toHash; }
+            public Dictionary<string, string> toHash { get => GlobalDataForResMaster.Instance.toHash; }
             [LabelText("依赖信息字典"), ShowInInspector]
-            public Dictionary<string, WrapListString> Depend { get => ESResMaster.Instance.Depend; }
+            public Dictionary<string, WrapListString> Depend { get => GlobalDataForResMaster.Instance.Depend; }
 
 
             [LabelText("AB优先加载目标"), ShowInInspector, HideReferenceObjectPicker, InlineButton("apply_ABTarget", "应用")]
@@ -825,21 +825,21 @@ namespace ES
 
             private void apply_ABTarget()
             {
-                ESResMaster.Instance.TargetLocations = new List<ABTargetLocation>();
+                GlobalDataForResMaster.Instance.TargetLocations = new List<ABTargetLocation>();
                 foreach (var i in TargetLocations)
                 {
-                    ESResMaster.Instance.TargetLocations.Add(i);
+                    GlobalDataForResMaster.Instance.TargetLocations.Add(i);
                 }
-                EditorUtility.SetDirty(ESResMaster.Instance);
+                EditorUtility.SetDirty(GlobalDataForResMaster.Instance);
             }
             private void apply_FromTarget()
             {
                 TargetLocations = new List<ABTargetLocation>();
-                foreach (var i in ESResMaster.Instance.TargetLocations)
+                foreach (var i in GlobalDataForResMaster.Instance.TargetLocations)
                 {
                     TargetLocations.Add(i);
                 }
-                EditorUtility.SetDirty(ESResMaster.Instance);
+                EditorUtility.SetDirty(GlobalDataForResMaster.Instance);
             }
             #endregion
 

@@ -78,7 +78,7 @@ namespace ES
             State = ResSourceState.Loading;
 
 
-            if (ESResMaster.Instance.abPackType == ESResMaster.ABPackType.Simulate)
+            if (GlobalDataForResMaster.Instance.abPackType == GlobalDataForResMaster.ABPackType.Simulate)
             {
 
             }
@@ -349,7 +349,7 @@ namespace ES
             State = ResSourceState.Loading;
 
 
-            if (ESResMaster.Instance.abPackType == ESResMaster.ABPackType.Simulate)
+            if (GlobalDataForResMaster.Instance.abPackType == GlobalDataForResMaster.ABPackType.Simulate)
             {
 
             }

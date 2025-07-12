@@ -50,8 +50,7 @@ namespace FishNet.CodeGenerating.ILCore
         }
         public override ILPostProcessor GetInstance() => this;
         public override ILPostProcessResult Process(ICompiledAssembly compiledAssembly)
-        {
-            return null;
+        { 
             AssemblyDefinition assemblyDef = ILCoreHelper.GetAssemblyDefinition(compiledAssembly);
             if (assemblyDef == null)
                 return null;

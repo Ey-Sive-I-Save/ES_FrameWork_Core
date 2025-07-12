@@ -9,6 +9,7 @@ using static UnityEngine.Rendering.DebugUI.MessageBox;
 using UnityEngine.Events;
 using static ES.EnumCollect;
 using FishNet.Broadcast;
+using FishNet.Serializing;
 
 namespace ES
 {
@@ -35,11 +36,53 @@ namespace ES
     //Link本质上上是一个事件数据(相当于一个Action?.Invoke())，
     //由于类型信息也是独立的，
     //Link也就可以规定一类事件
-    public interface ILink : IBroadcast
+    public interface ILink 
     {
 
     }
+    public interface fff : IBroadcast
+    {
 
+    }
+    [Serializable]
+    public struct IESTESET : ILink, IBroadcast
+    {
+
+    }
+    public interface ILinkTest : IBroadcast
+    {
+        void WriterApply();
+        void ReadApply();
+    }
+    public static class Hepler
+    {
+        public static void WriteILinkCaster(this Writer writer, ILinkTest value)
+        {
+            
+        }
+
+        // Read and return a Vector2.
+        public static ILinkTest ReadILinkCaster(this Reader reader)
+        {
+            return null;
+        }
+        public static void Writefff(this Writer writer, fff value)
+        {
+            writer.WriteInt16(3);
+        }
+
+        // Read and return a Vector2.
+        public static fff Readfff(this Reader reader)
+        {
+            return null;
+        }
+    }
+
+    [Serializable]
+    public class aa : IBroadcast
+    {
+
+    }
     //IReceiveLink本质上上是一个接受事件处理,
     //相当于被委托的对象和方法
     public interface IReceiveLink
@@ -152,7 +195,7 @@ namespace ES
         [Button(name: "发射(自定义Link)", icon: SdfIconType.SendPlusFill, Style = ButtonStyle.FoldoutButton, ButtonHeight = 40), GUIColor("orange"), PropertyOrder(2)]
         public void SendLinkSelf(BaseArchitectureWithLinkAndConfiguration architecture, Link link)
         {
-            switch (triggerType)
+           /* switch (triggerType)
             {
                 case EnumCollect.LinkEventType.SendThenInvoke:
                     architecture ??= GetArchitecture();
@@ -173,13 +216,8 @@ namespace ES
                     break;
                 default: break;
             }
+*/
 
-
-        }
-
-        public virtual BaseArchitectureWithLinkAndConfiguration GetArchitecture()
-        {
-            return GameCenterManager.Instance.GameCenterArchitecture;
         }
 
     }

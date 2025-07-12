@@ -114,7 +114,7 @@ namespace ES {
     public class ESStandardStateSharedData : IStateSharedData
     {
         [LabelText("冲突与合并")]
-        public StateDataModule_StringKeyMergeAndConflict MergePart_ = new StateDataModule_StringKeyMergeAndConflict() { channel = StateDataModule_Index_ESStandardChannel.AllBodyActive };
+        public StateDataModule_StringKeyMergeAndConflict MergePart_ = new StateDataModule_StringKeyMergeAndConflict() { channel = StateDataModule_Ind_ESStandardChannel.AllBodyActive };
 
         #region 实现共享状态属性
         public int Order => MergePart_.BeHitOrder+MergePart_.HitOrder;
@@ -138,8 +138,8 @@ namespace ES {
             [Header("第三级别")]
             [LabelText("是否可被打断")] public HitOption CanBeHit;//不发生,碾压,仅测试同级别
             [LabelText("是否可打断")] public HitOption CanHit;//不发生,碾压,仅测试同级别
-            [LabelText("逻辑层"), Tooltip("有重合时可同级别判断，无重合时直接碾压判断,Rub层就没啥打断能力了")] public StateDataModule_Index_LogicAtLayer logicLayer;
-            [LabelText("占据通道"), Tooltip("占据相同通道后开始判断是否可以打断等")] public StateDataModule_Index_ESStandardChannel channel;
+            [LabelText("逻辑层"), Tooltip("有重合时可同级别判断，无重合时直接碾压判断,Rub层就没啥打断能力了")] public StateDataModule_Ind_LogicAtLayer logicLayer;
+            [LabelText("占据通道"), Tooltip("占据相同通道后开始判断是否可以打断等")] public StateDataModule_Ind_ESStandardChannel channel;
 
             //第三级别
             //可以相容吗
@@ -154,7 +154,7 @@ namespace ES {
         }
         //逻辑层级--优先级的断档体现
         [Flags]
-        public enum StateDataModule_Index_LogicAtLayer
+        public enum StateDataModule_Ind_LogicAtLayer
         {
             [InspectorName("垃圾层")] Rubbish = 0,//---永远不依赖优先级，层级总是不交和，必定打断
             [InspectorName("低等级")] Low = 1,
@@ -170,7 +170,7 @@ namespace ES {
             [InspectorName("永远不发生")] Never,
         }
         [Flags]//基本状态合并机制通道枚举定义
-        public enum StateDataModule_Index_ESStandardChannel
+        public enum StateDataModule_Ind_ESStandardChannel
         {
             [InspectorName("右手")] RightHand = 1 << 0,
             [InspectorName("左手")] LeftHand = 1 << 1,

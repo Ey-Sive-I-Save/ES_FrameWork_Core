@@ -101,13 +101,13 @@ namespace ES
                         Menu.SetChecked(_ConstString_MenuForMarkAssetBundle, true);
                         Debug.Log("Check True");
                         
-                        if (ESResMaster.Instance.abMaskType == ESResMaster.ABMaskType.AsOrinal)
+                        if (GlobalDataForResMaster.Instance.abMaskType == GlobalDataForResMaster.ABMaskType.AsOrinal)
                         {
                             ai.assetBundleName = dir.Name.Replace(".", "_");
                             AssetDatabase.SaveAssets();
                             AssetDatabase.Refresh();
                         }
-                        else if (ESResMaster.Instance.abMaskType == ESResMaster.ABMaskType.AsFolder)
+                        else if (GlobalDataForResMaster.Instance.abMaskType == GlobalDataForResMaster.ABMaskType.AsFolder)
                         {
                             //文件夹维持自身
                             if(AssetDatabase.IsValidFolder(path)) ai.assetBundleName = dir.Name.Replace(".", "_");
@@ -119,7 +119,7 @@ namespace ES
                         else
                         {
                             //自定义
-                            ai.assetBundleName = ESResMaster.Instance.ABName.Replace(".", "_");
+                            ai.assetBundleName = GlobalDataForResMaster.Instance.ABName.Replace(".", "_");
                             AssetDatabase.SaveAssets();
                             AssetDatabase.Refresh();
                         }

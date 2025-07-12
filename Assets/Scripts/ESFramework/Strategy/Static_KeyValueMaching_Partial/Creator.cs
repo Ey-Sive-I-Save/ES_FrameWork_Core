@@ -52,7 +52,7 @@ namespace ES
                 if (typeof(IEnumerable).IsAssignableFrom(type))
                 {
                     var copiedCollection = Activator.CreateInstance(type);
-                    var addMethod = type.GetMethod("Add");
+                    var addMethod = type.GetMethod("AddInfo");
                     foreach (var item in (IEnumerable)obj)
                     {
                         addMethod.Invoke(copiedCollection, new[] { DeepCloneObject(item) });
@@ -147,7 +147,7 @@ namespace ES
                     {
                         IESMicroState stateii = Creator.CreateStateRunTimeLogicComplete(ii);
                         if (ii == null) continue;
-                        sonMachine.RegisterNewState_Original(ii.key.Key(), stateii);
+                        sonMachine.RegisterNewState_Original(ii.key.KeySelf(), stateii);
                     }
                 }
                 return state;

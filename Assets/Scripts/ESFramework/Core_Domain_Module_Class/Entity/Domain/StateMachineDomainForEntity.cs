@@ -26,7 +26,7 @@ namespace ES
         {
             if (RegisterPack != null)
             {
-                return RegisterPack.allInfo.Keys.ToArray();
+                return RegisterPack.allInfos.Keys.ToArray();
             }
             return new string[] { "先绑定" };
         }

@@ -31,14 +31,14 @@ namespace ES
         }
         public void _AddKeyReleThis(ESUIPanel element, List<string> toAdd)
         {
-            var parent = element.EX_GetCompoentInParentExcludeSelf<ESUIPanel>();
+            var parent = element._GetCompoentInParentExcludeSelf<ESUIPanel>();
             if (parent == null) toAdd.Add(element.RegisterKey);
             else {/*忽略*/ }/*GetKeyReleThis(parent, toAdd, "/" + element.RegisterKey + post);*/
         }
         [Button("注册全部面板")]
         public void RegisterAllPanels()
         {
-            var es = transform.EX_GetCompoentsInChildExcludeSelf<ESUIPanel>();
+            var es = transform._GetCompoentsInChildExcludeSelf<ESUIPanel>();
             foreach (var i in es)
             {
                 i.GetMyParentAndRegisteThis();
@@ -48,7 +48,7 @@ namespace ES
         [Button("注册全部元素(包括面板)")]
         public void RegisterAllElements()
         {
-            var es = transform.EX_GetCompoentsInChildExcludeSelf<ESUIElement>();
+            var es = transform._GetCompoentsInChildExcludeSelf<ESUIElement>();
             foreach (var i in es)
             {
                 i.GetMyParentAndRegisteThis();

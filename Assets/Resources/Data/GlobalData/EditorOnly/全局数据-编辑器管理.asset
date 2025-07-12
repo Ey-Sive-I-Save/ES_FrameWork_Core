@@ -1,0 +1,161 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6631aa4d453584abf9bf27c1a6b0eb, type: 3}
+  m_Name: "\u5168\u5C40\u6570\u636E-\u7F16\u8F91\u5668\u7BA1\u7406"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: ICON
+      Entry: 7
+      Data: 0|ES.GlobalDataForEditorOnly+ESIconControl, ES
+    - Name: startOffset
+      Entry: 4
+      Data: -20
+    - Name: offsetPerTime
+      Entry: 4
+      Data: -20
+    - Name: width
+      Entry: 4
+      Data: 20
+    - Name: HierachySelectorS
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[ES.GlobalDataForEditorOnly+HierachySelector,
+        ES]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 2|ES.GlobalDataForEditorOnly+IconSelector_DependCompo_ClassName, ES
+    - Name: contentGetter
+      Entry: 7
+      Data: 3|ES.GlobalDataForEditorOnly+ContentGetter_SystemIcon_English, ES
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: scale
+      Entry: 4
+      Data: 1
+    - Name: contentName
+      Entry: 1
+      Data: d_GameObject Icon
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: typeName
+      Entry: 1
+      Data: Transform
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Ins
+      Entry: 7
+      Data: 4|ES.GlobalDataForEditorOnly+ESInspectorControl, ES
+    - Name: EnableCompoentShowControl_
+      Entry: 5
+      Data: true
+    - Name: cacheToggleFalseNames
+      Entry: 7
+      Data: 5|System.Collections.Generic.HashSet`1[[System.String, mscorlib]], System.Core
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: TypeDis
+      Entry: 7
+      Data: 6|ES.GlobalDataForEditorOnly+TypeDisplay, ES
+    - Name: HandSelfRename
+      Entry: 7
+      Data: 7|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 8|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: EnableOdinRegester
+      Entry: 5
+      Data: true
+    - Name: EnableSoDataGroupUp
+      Entry: 5
+      Data: true
+    - Name: WithOriginal
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+  HasConfirm: 1
+  Project:
+    EnableProjectShow: 0
+    startTextOffset_: -50
+    textwidth_: 50
+    nameToHandle: []
+    contentForNet:
+      rid: -2
+    contentForLocal:
+      rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

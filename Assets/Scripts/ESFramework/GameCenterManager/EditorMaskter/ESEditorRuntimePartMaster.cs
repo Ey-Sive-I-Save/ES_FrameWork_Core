@@ -16,6 +16,12 @@ namespace ES
         [LabelText("提示"), PropertyOrder(-5)]
         public Tool_ESReadMeClass readme = new Tool_ESReadMeClass() { readMe = "请在尽量在窗口处进行调整,这里不推荐\n因为" };
 #endif
+        [Button("test")]
+        public void test()
+        {
+            var i= GlobalDataForEditorRunTime.Instance;
+            Debug.Log(i);
+        }
         [ShowInInspector,LabelText("<静态>游戏已退出")]
         public static bool IsQuit = false;
         private void OnApplicationQuit()
@@ -23,13 +29,11 @@ namespace ES
             IsQuit = true;
         }
         #region 加载到
-        public static List<string> ESTags = new List<string>();
-        public static List<string> BuffKeys = new List<string>();
-
+     
         #endregion 
 
         #region 配置源
-        [LabelText("配置的ESTags包")] public ESLayerStringSO ESTagsSO_;
+
         #endregion
 
         #region LayerMask
@@ -137,14 +141,14 @@ namespace ES
         }
         private void LoadESTags()
         {
-            ESEditorRuntimePartMaster.ESTags = new List<string>();
-            if (ESTagsSO_ != null)
+            GlobalDataForEditorRunTime.ESTags = new List<string>();
+            if (GlobalDataForEditorRunTime.Instance.ESTagsSO_ != null)
             {
-                foreach (var i in ESTagsSO_.LayerStrings)
+                foreach (var i in GlobalDataForEditorRunTime.Instance.ESTagsSO_.LayerStrings)
                 {
                     foreach (var ii in i.Value)
                     {
-                        ESEditorRuntimePartMaster.ESTags.Add(i.Key + "/" + ii);
+                        GlobalDataForEditorRunTime.ESTags.Add(i.Key + "/" + ii);
                     }
                 }
             }
@@ -156,11 +160,10 @@ namespace ES
         #endregion
 
         #region 可寻类型分组键
-        [LabelText("可寻分组键")]
-        public SelectDic_StringsToType SearchDataTypeKey = new SelectDic_StringsToType();
+  
         private void LoadSST()
         {
-            SearchDataTypeKey = new SelectDic_StringsToType();
+            GlobalDataForEditorRunTime.Instance.SearchDataTypeKey = new SelectDic_StringsToType();
             var assem = Assembly.GetExecutingAssembly();
             var types = assem.GetTypes();
             foreach (var i in types)
@@ -168,7 +171,7 @@ namespace ES
                 var at = i.GetCustomAttribute<ESDisplayNameKeyToTypeAttribute>();
                 if (at != null)
                 {
-                    SearchDataTypeKey.TryAddOrSet(at.TeamCollect, at.DisplayKeyName, i);
+                    GlobalDataForEditorRunTime.Instance.SearchDataTypeKey.TryAddOrSet(at.TeamCollect, at.DisplayKeyName, i);
                 }
             }
         }

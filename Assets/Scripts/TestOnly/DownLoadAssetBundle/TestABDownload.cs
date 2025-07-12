@@ -15,7 +15,7 @@ namespace ES
 
         private void Awake()
         {
-            var AllAssetBundleMessage = ESResMaster.Instance.TargetLocations;
+            var AllAssetBundleMessage = GlobalDataForResMaster.Instance.TargetLocations;
             var sort = AllAssetBundleMessage.OrderBy((n)=>(n.MustDownLoad?-1:1)+(n.ABTarget_== ESResMaster.ABTargetLocation.ABTarget.Net?0f:0.5f));
 
             foreach(var i in sort)

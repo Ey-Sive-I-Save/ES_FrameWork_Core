@@ -192,7 +192,7 @@ namespace ES
         public bool Signal_IsActiveAndEnable
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => core.EX_IsNotNullAndUseIt()?.enabled ?? false;
+            get => core._IsNotNullAndUseIt()?.enabled ?? false;
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { if (core != null) core.enabled = value; }
         }

@@ -1,4 +1,4 @@
-using FishNet.Object;
+/*using FishNet.Object;*/
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
@@ -97,6 +97,7 @@ namespace ES
 
         protected virtual void OnEnable()
         {
+            gameObject.name = "EnableBase";
             for (int i = 0; i < domains.Count; i++)
             {
                 domains[i].TryEnableSelf();

@@ -11,9 +11,9 @@ using static ES.SkillPointDataInfo.SkillPointLevelAllTransfomor;
 
 namespace ES
 {
-    
+    [DefaultExecutionOrder(-8)]
     [TypeRegistryItem("游戏核心管理器")]
-    public partial class GameCenterManager : SingletonAsCore<GameCenterManager>,IWithArchitecture
+    public partial class GameCenterManager : SingletonAsCore<GameCenterManager>
     {
 
 
@@ -37,18 +37,13 @@ namespace ES
 
        
 
-        [FoldoutGroup("游戏原型")]
-        [LabelText("游戏核心原型")]
-        public BaseArchitectureWithLinkAndConfiguration GameCenterArchitecture = new BaseArchitectureWithLinkAndConfiguration();
-        //GUI 渲染支持
+     
 
         [FoldoutGroup("编辑器支持"),LabelText("默认GUI Style")]
         public GUIStyle style;
 
         
-        [FoldoutGroup("垃圾场")]
-        [LabelText("引用默认的技能精灵图表")]public SkillPointSpritesReference SkillPointSpritesReference;
-        public IArchitecture GetArchitecture => GameCenterArchitecture;
+      
 
 
         protected override void OnBeforeAwakeRegister()
@@ -63,7 +58,7 @@ namespace ES
         [Button("发送任意Link")]
         public void SendLink<Link>(Link link) where Link:ILink
         {
-            this.GameCenterArchitecture.SendLink(link);
+         
         }
 
 

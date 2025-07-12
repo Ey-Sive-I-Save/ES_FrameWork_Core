@@ -17,7 +17,7 @@ namespace ES
         public string testElement = "测试";
 #endif
 
-        public ESUIRoot MyRoot { get { if (dirty) GetMyParentAndRegisteThis(); return _myRoot=_myRoot.EX_IsNotNullAndUse()??_myParentPanel.EX_IsNotNullAndUse().MyRoot; } set { _myRoot = value; } }
+        public ESUIRoot MyRoot { get { if (dirty) GetMyParentAndRegisteThis(); return _myRoot=_myRoot._IsNotNullAndUse()??_myParentPanel._IsNotNullAndUse().MyRoot; } set { _myRoot = value; } }
         [SerializeField, LabelText("所属根节点")] private ESUIRoot _myRoot;
         private void Awake()
         {
@@ -38,20 +38,20 @@ namespace ES
         }
         public void AddKeyReleThis(ESUIElement element, List<string> toAdd,string post="")
         {
-            var parent = element.EX_GetCompoentInParentExcludeSelf<ESUIPanel>();
+            var parent = element._GetCompoentInParentExcludeSelf<ESUIPanel>();
             if (parent == this||parent==null) toAdd.Add(element.RegisterKey+post);
             else AddKeyReleThis(parent,toAdd,"/"+ element.RegisterKey + post); 
         }
         public string GetKeyReleThis(ESUIElement element,string post = "")
         {
-            var parent = element.EX_GetCompoentInParentExcludeSelf<ESUIPanel>();
+            var parent = element._GetCompoentInParentExcludeSelf<ESUIPanel>();
             if (parent == this || parent == null) return element.RegisterKey+post;
             else return GetKeyReleThis(parent, "/" + element.RegisterKey + post);
         }
         [Button("注册全部元素")]
         public void RegisterAllElements()
         {
-            var es = transform.EX_GetCompoentsInChildExcludeSelf<ESUIElement>();
+            var es = transform._GetCompoentsInChildExcludeSelf<ESUIElement>();
             foreach (var i in es)
             {
                 i.GetMyParentAndRegisteThis();
@@ -89,7 +89,7 @@ namespace ES
 
         public override ESUIPanel GetMyParentAndRegisteThis()
         {
-            var root = this.EX_GetCompoentInParentExcludeSelf<ESUIRoot>();
+            var root = this._GetCompoentInParentExcludeSelf<ESUIRoot>();
             if (root != null)
             {
                 _myRoot = root;

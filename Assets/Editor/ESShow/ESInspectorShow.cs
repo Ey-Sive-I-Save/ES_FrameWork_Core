@@ -32,8 +32,9 @@ namespace ES
         // 在Inspector顶部绘制自定义内容
         private static void DrawCustomHeader(Editor editor)
         {
-            if (!ESEditorOnlyPartMaster.Instance.Ins.EnableCompoentShowControl_) return;
-            var cache = ESEditorOnlyPartMaster.Instance.Ins.cacheToggleFalseNames;
+            if (!GlobalDataForEditorOnly.Instance?.Ins.EnableCompoentShowControl_??false) return;
+            var cache = GlobalDataForEditorOnly.Instance.Ins?.cacheToggleFalseNames;
+            if (cache == null) return;
             try {
                 if (editor.target is GameObject go)
                 {
@@ -63,7 +64,7 @@ namespace ES
                             foreach (var i in cs)
                             {
                                 string forType = i.GetType().Name;
-                                string dis = ESEditorOnlyPartMaster.Instance.TypeDis.GetNewName(forType);
+                                string dis = GlobalDataForEditorOnly.Instance.TypeDis.GetNewName(forType);
                                 bool NowShow = !cache.Contains(forType);
                                 bool newNowShow = EditorGUILayout.Toggle(dis, NowShow);
 

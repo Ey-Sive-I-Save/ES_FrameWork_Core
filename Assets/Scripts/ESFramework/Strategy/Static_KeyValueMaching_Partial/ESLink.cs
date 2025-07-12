@@ -41,14 +41,15 @@ namespace ES
                             link_Attack_Try.attacker.Invoke_TrulyAttack(link_Attack_Try.victim, link_Attack_Try.damage);
                             //被攻击者追加
                             link_Attack_Try.victim.Invoke_TrulyBeAttack(link_Attack_Try.attacker, link_Attack_Try.damage);
-                            GameCenterManager.Instance.GameCenterArchitecture.SendLink(
+/*es update*/
+                           /* GameCenterManager.Instance.GameCenterArchitecture.SendLink(
                                 new Link_EntityAttackEntityTruely()
                                 {
                                     attacker = link_Attack_Try.attacker,
                                     victim = link_Attack_Try.victim,
                                     damage = link_Attack_Try.damage
                                 }
-                              ); ;
+                              ); ;*/
                         }
                     }
 

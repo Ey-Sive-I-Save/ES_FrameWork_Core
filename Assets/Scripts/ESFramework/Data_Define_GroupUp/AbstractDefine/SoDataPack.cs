@@ -9,29 +9,27 @@ using UnityEngine;
 
 namespace ES
 {
-    public interface ISoDataPack: IWithStringKey
+    public interface ISoDataPack : IWithStringKey
     {
-        string name_ { get; }
-        Type getSoType();
-        void AddGroup(ISoDataGroup group);
-        void AddInfo(string s, SerializedScriptableObject so);
-        IDictionary allInfo_ { get; }
-        
-    }
-    public abstract class SoDataPack<Info> : SerializedScriptableObject, ISoDataPack where Info : ScriptableObject,ISoDataInfo
-    {
-        [LabelText("包键")] public KeyString_Direct keyString = new KeyString_Direct();
-        public KeyString key => keyString;
-        [LabelText("已经应用过的数据组 列表 "),NonSerialized,OdinSerialize]
-        public List<ISoDataGroup> applyingGroups = new List<ISoDataGroup>();
-        [LabelText("预览全部数据")]
-        public Dictionary<string, Info> allInfo = new Dictionary<string, Info>();
-        public IDictionary allInfo_ => allInfo;
-        public string name_ => keyString.str_direc;
+        string _name { get; }
+        Type GetSoInfoType();
+        void AddInfosByGroup(ISoDataGroup group);
+        void AddInfo(string s, ScriptableObject so);
+        IDictionary AllInfos { get; }
 
-        
-        
-        public Type getSoType()
+    }
+    public abstract class SoDataPack<Info> : SerializedScriptableObject, ISoDataPack where Info : ScriptableObject, ISoDataInfo
+    {
+        [LabelText("该包的键")] public KeyString_Direct keyString = new KeyString_Direct();
+        public KeyString key => keyString;
+        [LabelText("已经应用过的数据组 列表"), NonSerialized, OdinSerialize]
+        public List<ISoDataGroup> ApplingGroups = new List<ISoDataGroup>();
+        [LabelText("预览全部数据")]
+        public Dictionary<string, Info> allInfos = new Dictionary<string, Info>();
+        public IDictionary AllInfos => allInfos;
+        public string _name => keyString.str_direc;
+
+        public Type GetSoInfoType()
         {
             return typeof(Info);
         }
@@ -41,47 +39,46 @@ namespace ES
             keyString.str_direc = o.ToString();
         }
 
-        public void AddInfo(string s, SerializedScriptableObject so)
+        public void AddInfo(string k, ScriptableObject so)
         {
-            if (allInfo.ContainsKey(s))
+            if (allInfos.ContainsKey(k) && allInfos[k] != null)
             {
-                Debug.LogWarning($"发现重复的键{s}，默认跳过处理");
-
+                Debug.LogWarning($"发现重复的键{k}，默认跳过处理");
             }
-            else if(so is Info info)
+            else if (so is Info info)
             {
-                allInfo.Add(s, info);
+                allInfos[k]=info;
             }
             else
             {
-                Debug.LogWarning($"发现无效或者已经销毁的内容，键{s}，值{so}");
+                Debug.LogWarning($"发现无效或者已经销毁的内容，键{k}，值{so}");
             }
         }
 
-        public void AddGroup(ISoDataGroup group)
+        public void AddInfosByGroup(ISoDataGroup group)
         {
-            if (group.getSoType() != typeof(Info)) {
-                Debug.LogError("试图加入不合法数据组:"+group.name_);
+            if (group.getSoInfoType() != typeof(Info))
+            {
+                Debug.LogError("试图加入不合法数据组:" + group._name);
                 return;
-            } 
-            var keys = group.keys;
+            }
+            var keys = group.AllKeys;
             //加入已经缓存
-            if (applyingGroups.Contains(group))
+            if (ApplingGroups.Contains(group))
             {
 
             }
             else
             {
-                applyingGroups.Add(group);
+                ApplingGroups.Add(group);
             }
             foreach (var k in keys)
             {
-                ISoDataInfo use = group.GetOne(k);
-
+                ISoDataInfo use = group.GetInfoByKey(k);
                 this.AddInfo(use.key.str_direc, use as SerializedScriptableObject);
             }
         }
     }
 
-   
+
 }

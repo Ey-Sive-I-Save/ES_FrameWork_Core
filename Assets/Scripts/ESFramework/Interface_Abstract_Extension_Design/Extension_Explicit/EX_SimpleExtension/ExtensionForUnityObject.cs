@@ -9,7 +9,7 @@ namespace ES
 
     public static class ExtensionForUnityObject
     {
-        public static T EX_IsNotNullAndUse<T>(this T ob) where T : UnityEngine.Object
+        public static T _IsNotNullAndUse<T>(this T ob) where T : UnityEngine.Object
         {
             if (ob == null) return null;
             return ob;

@@ -20,22 +20,22 @@ namespace ES
             // 监听Project绘制前的回调
             EditorApplication.projectWindowItemOnGUI += ProjectItemDraw;
         }
-        public static ESEditorOnlyPartMaster.ProjectShow Show;
+        public static GlobalDataForEditorOnly.ProjectShow Show;
         public static void ProjectItemDraw(string guid, Rect selectionRect)
         {
-            Show ??= ESEditorOnlyPartMaster.Instance.Project;
+            Show ??= GlobalDataForEditorOnly.Instance?.Project;
             if (Show == null||!Show.EnableProjectShow) return;
             string assetPath = AssetDatabase.GUIDToAssetPath(guid);
             string myName= Path.GetFileName(assetPath);
             bool net = false;
             bool draw = false;
-            if (assetPath.Contains(ESResMaster.Instance.genarateFolder))
+            if (assetPath.Contains(GlobalDataForResMaster.Instance.genarateFolder))
             {
-                string preName = ESResMaster.Instance.GetPreNameFromCompleteNameWithHash(myName);
-                if (ESResMaster.Instance.toHash.ContainsKey(preName))
+                string preName = GlobalDataForResMaster.Instance.GetPreNameFromCompleteNameWithHash(myName);
+                if (GlobalDataForResMaster.Instance.toHash.ContainsKey(preName))
                 {
                     //AB包
-                    foreach(var i in ESResMaster.Instance.TargetLocations)
+                    foreach(var i in GlobalDataForResMaster.Instance.TargetLocations)
                     {
                         if (i.ABPreName == preName)
                         {

@@ -27,8 +27,8 @@ namespace ES
         [HideInInspector/*绑定扩展域*/, SerializeReference]
         public Domain_ Domain;//所在域-
 
-        [LabelText("更新网络权限")]
-        public NetWorkUpdateOption updateOption = NetWorkUpdateOption.Always;
+        /*[LabelText("更新网络权限")]
+        public NetWorkUpdateOption updateOption = NetWorkUpdateOption.Always;*/
 
         #endregion
 

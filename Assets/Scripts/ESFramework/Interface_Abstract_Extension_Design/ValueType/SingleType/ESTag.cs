@@ -28,7 +28,7 @@ namespace ES {
         }
         public List<string> GetTags()
         {
-            return ESEditorRuntimePartMaster.ESTags;
+            return GlobalDataForEditorRunTime.ESTags;
         }
     }
     [Serializable]
