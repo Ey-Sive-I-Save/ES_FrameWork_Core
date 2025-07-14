@@ -25,7 +25,7 @@ namespace ES
             #region 改变选择对象——调整Check
             static ESResEditorForAssetMenu()
             {
-                Selection.selectionChanged = OnSelectionChanged;
+                Selection.selectionChanged += OnSelectionChanged;
             }
             //选择目标改变，修改标记状态
             public static void OnSelectionChanged()

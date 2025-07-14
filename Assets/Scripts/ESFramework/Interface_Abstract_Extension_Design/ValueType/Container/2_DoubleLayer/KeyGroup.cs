@@ -44,9 +44,10 @@ namespace ES
             {
                 list.Remove(e);
             }
-            else
+
 
 #if UNITY_EDITOR
+            else
                 throw new Exception("KeyGroup没有这种键");
 #endif
 
@@ -75,8 +76,9 @@ namespace ES
                     list.Remove(i);
                 }
             }
-            else
+
 #if UNITY_EDITOR
+            else
                 throw new Exception("KeyGroup没有这种键");
 #endif
         }

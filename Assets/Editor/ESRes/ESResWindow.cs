@@ -53,7 +53,7 @@ namespace ES
         }
         void PartPage_AssetBundle(OdinMenuTree tree)
         {
-            tree.Add("AB包管理", (Page_Assetbundle ??= new PartPageClass_AssetBundle()).ES_ReFresh());
+            tree.Add("AB包管理", (Page_Assetbundle ??= new PartPageClass_AssetBundle()).ES_Refresh());
         }
         #region 持久化
         public override void ES_LoadData()
@@ -73,12 +73,12 @@ namespace ES
         public class PartPageClass_AssetBundle : ESWindowPageBase
         {
             //刷新
-            public override ESWindowPageBase ES_ReFresh()
+            public override ESWindowPageBase ES_Refresh()
             {
                 RefreshBundleList();
                 Handle_RefresgHotUpdateData();
                 apply_FromTarget();
-                return base.ES_ReFresh();
+                return base.ES_Refresh();
             }
 
 

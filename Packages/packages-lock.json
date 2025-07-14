@@ -7,6 +7,12 @@
       "dependencies": {},
       "url": "https://packages.unity.cn"
     },
+    "com.code-philosophy.luban": {
+      "version": "file:luban_unity-main",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.eysive.esframework": {
       "version": "file:ESPackages",
       "depth": 0,

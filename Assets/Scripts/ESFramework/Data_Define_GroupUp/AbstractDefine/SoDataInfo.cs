@@ -26,7 +26,7 @@ namespace ES
             if (o is string s)
             {
                 if (DataKey == null) DataKey = new KeyString_Direct() { str_direc = s };
-
+                else DataKey.str_direc = s;
             }
         }
 

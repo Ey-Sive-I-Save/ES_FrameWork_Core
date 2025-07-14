@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2813773154235578810
+--- !u!114 &-6043941554733008528
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0ff4bdd0ffdfaf48a79197abde84fd0, type: 3}
-  m_Name: "\u6570\u636E\u5355\u5143\u6570\u636E\u952E30328"
+  m_Name: "\u6570\u636E\u5355\u5143\u6570\u636E\u952E59755"
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -23,6 +23,50 @@ MonoBehaviour:
     SerializationNodes: []
   DataKey:
     str_direc: "\u6570\u636E\u952E"
+  bindingState: {fileID: 0}
+  buffSharedData:
+    EnableBuffer: 0
+    EnableTimeDisTrigger: 1
+    triggerTimeStart: 1
+    triggerTimeDis: 1
+    opeationForTimeDis:
+      rid: -2
+    EnableOnOffTrigger: 0
+    opeationForOnOff:
+      rid: -2
+    icon: {fileID: 0}
+    buffGoodOrBad: 0
+  defaultVariableData:
+    level: 1
+    timeRemain: 10
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+--- !u!114 &-5628681696980226649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ff4bdd0ffdfaf48a79197abde84fd0, type: 3}
+  m_Name: "\u6570\u636E\u5355\u5143444"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  DataKey:
+    str_direc: 444
   bindingState: {fileID: 0}
   buffSharedData:
     EnableBuffer: 0
@@ -60,7 +104,9 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: -2813773154235578810}
+    - {fileID: -5628681696980226649}
+    - {fileID: -6043941554733008528}
+    - {fileID: 1387703095282018834}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -79,7 +125,19 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: 444
+    - Name: $v
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 7
       Data: 
@@ -88,7 +146,19 @@ MonoBehaviour:
       Data: "\u6570\u636E\u952E"
     - Name: $v
       Entry: 10
-      Data: 0
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: 555
+    - Name: $v
+      Entry: 10
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -99,3 +169,47 @@ MonoBehaviour:
       Entry: 8
       Data: 
   name__: "\u6570\u636E\u7EC4"
+--- !u!114 &1387703095282018834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ff4bdd0ffdfaf48a79197abde84fd0, type: 3}
+  m_Name: "\u6570\u636E\u5355\u5143555"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  DataKey:
+    str_direc: 555
+  bindingState: {fileID: 0}
+  buffSharedData:
+    EnableBuffer: 0
+    EnableTimeDisTrigger: 1
+    triggerTimeStart: 1
+    triggerTimeDis: 1
+    opeationForTimeDis:
+      rid: -2
+    EnableOnOffTrigger: 0
+    opeationForOnOff:
+      rid: -2
+    icon: {fileID: 0}
+    buffGoodOrBad: 0
+  defaultVariableData:
+    level: 1
+    timeRemain: 10
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

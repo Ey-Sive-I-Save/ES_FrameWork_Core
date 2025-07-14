@@ -3,7 +3,9 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace ES
@@ -152,6 +154,8 @@ namespace ES
     {
        
     }
+
+#if UNITY_EDITOR
     [InitializeOnLoad]
     [DefaultExecutionOrder(-10)]
     public static class GlobalDataEditorIniter
@@ -162,6 +166,7 @@ namespace ES
             KeyValueMatchingUtility.SafeEditor.InitAsset<GlobalSerializedScriptableObject>();
         }
     }
+#endif
     [Serializable]
     public class GlobalDataRefer<This> : ESRefer<This> where This : GlobalDataSupport<This>
     {

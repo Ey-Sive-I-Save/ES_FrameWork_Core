@@ -9,20 +9,24 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using static ES.ESResMaster;
 
 namespace ES
 {
+#if UNITY_EDITOR
     [InitializeOnLoad]
+#endif
     [DefaultExecutionOrder(-10)]
     [CreateAssetMenu(fileName = "全局数据-纯编辑器管理", menuName = "全局数据/纯编辑器管理")]
     public class GlobalDataForEditorOnly : GlobalDataSupport<GlobalDataForEditorOnly>
     {
-        
+#if UNITY_EDITOR
 
-       
+
         #region 纯编辑器部分
         #region 层级图标支持代码
         [LabelText("图标管理"), NonSerialized, OdinSerialize]
@@ -277,8 +281,8 @@ namespace ES
 
         #endregion
         #endregion
-
+#endif
     }
-   
+
 }
 

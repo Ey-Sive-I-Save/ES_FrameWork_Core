@@ -1,10 +1,13 @@
 using ES;
+#if UNITY_EDITOR
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities.Editor;
+using UnityEditor;
+#endif
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+
 using UnityEngine;
 
 namespace ES
@@ -49,7 +52,7 @@ namespace ES
             color.a = a;
         }
     }
-
+#if UNITY_EDITOR
     public class BackGroundAttributeDrawer : OdinAttributeDrawer<ESBackGroundAttribute>
     {
         private float lastHeight;
@@ -58,7 +61,7 @@ namespace ES
             EditorGUILayout.Space(0);
             var space = GUILayoutUtility.GetLastRect();
             var startY1 = space.yMax;
-            SirenixEditorGUI.DrawBorders(space, (int)space.width, 0, (int)lastHeight + 2, 0/* (int)lastHeight*/, this.Attribute.color);
+            SirenixEditorGUI.DrawBorders(space, (int)space.width, 0, (int)lastHeight + 2, 0, this.Attribute.color);
             this.CallNextDrawer(label);
             float startY2 = GUILayoutUtility.GetLastRect().yMax;
             float f = startY2 - startY1;
@@ -66,6 +69,7 @@ namespace ES
         }
 
     }
-    #endregion
+#endif
+#endregion
 }
 

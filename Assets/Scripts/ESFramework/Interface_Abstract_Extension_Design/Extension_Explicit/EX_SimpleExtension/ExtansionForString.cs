@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -187,6 +188,64 @@ namespace ES
 
             int index = source.LastIndexOf(separator);
             return index < 0 ? source : source.Substring(index + 1);
+        }
+
+        public static bool _IsValidEmail(this string str)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(str);
+                return addr.Address == str;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static string _RemoveExtraSpaces(this string str)
+        {
+            return Regex.Replace(str, @"\s+", " ").Trim();
+        }
+        public static string _ToMD5Hash(this string str)
+        {
+            using (var md5 = System.Security.Cryptography.MD5.Create())
+            {
+                var hashBytes = md5.ComputeHash(Encoding.UTF8.GetBytes(str));
+                return BitConverter.ToString(hashBytes).Replace("-", "").ToLowerInvariant();
+            }
+        }
+
+        public static string _ToSHA1Hash(this string str)
+        {
+            using (var sha1 = System.Security.Cryptography.SHA1.Create())
+            {
+                var hashBytes = sha1.ComputeHash(Encoding.UTF8.GetBytes(str));
+                return BitConverter.ToString(hashBytes).Replace("-", "").ToLowerInvariant();
+            }
+        }
+        public static string _ToSha256Hash(this string str)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(str));
+                return BitConverter.ToString(bytes).Replace("-", "").ToLower();
+            }
+        }
+        public static bool _IsValidUrl(this string str)
+        {
+            Uri uriResult;
+            return Uri.TryCreate(str, UriKind.Absolute, out uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+        }
+        public static string _KeepBeforeByMaxLengthWithEllipsis(this string str, int maxLength)
+        {
+            if (string.IsNullOrEmpty(str) || str.Length <= maxLength)
+                return str;
+
+            return str.Substring(0, maxLength) + "...";
+        }
+        public static bool _IsNumeric(this string str)
+        {
+            return double.TryParse(str, out _);
         }
     }
 

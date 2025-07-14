@@ -13,7 +13,7 @@ namespace ES
     {
         string _name { get; }
         Type getSoInfoType();
-        bool ContainsInfo(string s);
+        bool NotContainsInfo(string s);
         void AddInfo(string key, ScriptableObject o);
         List<string> AllKeys { get; }
         ISoDataInfo GetInfoByKey(string k);
@@ -22,10 +22,9 @@ namespace ES
     public abstract class SoDataGroup<SoType> : SerializedScriptableObject, ISoDataGroup where SoType : ScriptableObject, ISoDataInfo
     {
 
-        [LabelText("数据组名字"), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_03")] public string name__ = "数据组";
         [LabelText("数据组字典")]
         public Dictionary<string, SoType> keyValues = new Dictionary<string, SoType>();
-        public string _name => name__;
+        public string _name => name;
         public List<string> AllKeys => keyValues.Keys.ToList();
         public void AddInfo(string s, ScriptableObject o)
         {
@@ -38,7 +37,7 @@ namespace ES
                 keyValues.Add(s, typeMatch);
             }
         }
-        public bool ContainsInfo(string s)
+        public bool NotContainsInfo(string s)
         {
             if (keyValues.ContainsKey(s)) return false;
             else return true;

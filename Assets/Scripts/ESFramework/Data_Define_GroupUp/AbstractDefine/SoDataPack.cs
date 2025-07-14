@@ -4,7 +4,8 @@ using Sirenix.Serialization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using UnityEngine;
 
 namespace ES
@@ -15,19 +16,30 @@ namespace ES
         Type GetSoInfoType();
         void AddInfosByGroup(ISoDataGroup group);
         void AddInfo(string s, ScriptableObject so);
+        ISoDataInfo GetInfoByKey(string key);
         IDictionary AllInfos { get; }
-
+        IEnumerable<string> InfoKeys { get; }
+        List<ISoDataGroup> ApplingGroups { get; }
+        bool EnableAutoRefresh { get; }
+        void Check();
     }
     public abstract class SoDataPack<Info> : SerializedScriptableObject, ISoDataPack where Info : ScriptableObject, ISoDataInfo
     {
         [LabelText("该包的键")] public KeyString_Direct keyString = new KeyString_Direct();
         public KeyString key => keyString;
+        [LabelText("启用自动更新")] public bool enableAutoRefresh = true;
         [LabelText("已经应用过的数据组 列表"), NonSerialized, OdinSerialize]
-        public List<ISoDataGroup> ApplingGroups = new List<ISoDataGroup>();
+        public List<ISoDataGroup> applingGroups = new List<ISoDataGroup>();
         [LabelText("预览全部数据")]
         public Dictionary<string, Info> allInfos = new Dictionary<string, Info>();
         public IDictionary AllInfos => allInfos;
         public string _name => keyString.str_direc;
+
+        public List<ISoDataGroup> ApplingGroups => applingGroups;
+
+        public bool EnableAutoRefresh => enableAutoRefresh;
+
+        public IEnumerable<string> InfoKeys => allInfos.Keys;
 
         public Type GetSoInfoType()
         {
@@ -64,18 +76,48 @@ namespace ES
             }
             var keys = group.AllKeys;
             //加入已经缓存
-            if (ApplingGroups.Contains(group))
+            if (applingGroups.Contains(group))
             {
 
             }
             else
             {
-                ApplingGroups.Add(group);
+                applingGroups.Add(group);
             }
             foreach (var k in keys)
             {
                 ISoDataInfo use = group.GetInfoByKey(k);
-                this.AddInfo(use.key.str_direc, use as SerializedScriptableObject);
+                var so = use as SerializedScriptableObject;
+                if(so!=null)
+                this.AddInfo(use.key.str_direc, so);
+            }
+        }
+
+        public ISoDataInfo GetInfoByKey(string key)
+        {
+            if(allInfos.TryGetValue(key,out var value))
+            {
+                return value;
+            }
+            return null;
+        }
+
+        public void Check()
+        {
+            var keys = allInfos.Keys.ToArray();
+            for(int i = 0; i < keys.Length; i++)
+            {
+                var info = allInfos[keys[i]];
+                if ((info as UnityEngine.Object) == null) { allInfos.Remove(keys[i]);continue; }
+                if (info.key.str_direc != keys[i])
+                {
+                    allInfos.Remove(keys[i]);
+                    allInfos.Add(info.key.str_direc, info);
+                }
+            }
+            foreach(var (i,k) in allInfos)
+            {
+               
             }
         }
     }

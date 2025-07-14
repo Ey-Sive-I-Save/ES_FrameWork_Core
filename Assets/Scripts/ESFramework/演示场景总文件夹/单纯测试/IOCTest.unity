@@ -3011,11 +3011,17 @@ MonoBehaviour:
       edit: 1
       ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
       readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-      showColor: {r: 1, g: 1, b: 1, a: 1}
+      showColor:
+        r: 1
+        g: 1
+        b: 1
+        a: 1
     core: {fileID: 0}
     Modules:
       ValuesNow: []
+      isDirty: 0
       MayHasElement: 1
+      <AutoApplyBuffers>k__BackingField: 1
   references:
     version: 2
     RefIds: []

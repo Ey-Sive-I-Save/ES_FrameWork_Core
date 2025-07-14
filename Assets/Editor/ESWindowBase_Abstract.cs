@@ -16,6 +16,7 @@ namespace ES
     public abstract class ESWindowBase_Abstract<T> : OdinMenuEditorWindow where T : ESWindowBase_Abstract<T>
     {
         public static T usingWindow;
+        public static OdinMenuTree menuTree;
         private static Texture2D blackTexture;
         /*public static OdinMenuStyle style = OdinMenuStyle.TreeViewStyle;*/
         public static Dictionary<string, OdinMenuItem> Items = new Dictionary<string, OdinMenuItem>();
@@ -83,7 +84,7 @@ namespace ES
         }
         protected sealed override OdinMenuTree BuildMenuTree()
         {
-            OdinMenuTree tree = new OdinMenuTree();
+            OdinMenuTree tree= menuTree = new OdinMenuTree();
           /*  tree.DefaultMenuStyle = style;*/ 
             ES_BuildMenuTree(tree);
             ES_LoadData();
@@ -95,7 +96,8 @@ namespace ES
         }
         public void QuickBuildRootMenu<P>(OdinMenuTree tree,string name,ref P pageBase, SdfIconType sdfIcon) where P : ESWindowPageBase,new()
         {
-            Items[name] = tree.Add(name, pageBase ??= new P(),sdfIcon).First();
+            Items[name] = tree.Add(name, (pageBase ??= new P()),sdfIcon).First();
+            pageBase.ES_Refresh();
         }
         protected override void OnImGUI()
         {
@@ -145,7 +147,7 @@ namespace ES
         {
             return false;
         }
-        public virtual ESWindowPageBase ES_ReFresh()
+        public virtual ESWindowPageBase ES_Refresh()
         {
             return this;
         }
