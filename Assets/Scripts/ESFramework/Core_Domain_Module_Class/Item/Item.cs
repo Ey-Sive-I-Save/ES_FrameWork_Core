@@ -45,7 +45,7 @@ namespace ES
         protected override void OnBeforeAwakeRegister()
         {
             if (dataInfo != null&&useDataApply)
-                KeyValueMatchingUtility.DataApply.CopyToClassSameType_WithSharedAndVariableDataCopyTo(dataInfo, this);
+                KeyValueMatchingUtility.DataApply.CopyToClassSameType(dataInfo, this);
 
             base.OnBeforeAwakeRegister();
         }

@@ -343,7 +343,7 @@ namespace ES
             if (on != null)
             {
 
-                KeyValueMatchingUtility.ESLink.Global.GlobalLink_EntityAttackEntityTryStart(
+                KeyValueMatchingUtility.ESProcess.Global.GlobalLink_EntityAttackEntityTryStart(
                     new Link_EntityAttackEntityTryStart() { attacker = from, victim = on, damage = ApplyDamage });
                 //Link_EntityAttackEntityTruely 备忘录
             }

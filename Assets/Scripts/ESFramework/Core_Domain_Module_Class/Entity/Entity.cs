@@ -41,7 +41,7 @@ namespace ES
         public ESEntitySharedData entitySharedData = null;
         [FoldoutGroup("属性")]
         [LabelText("实体变量数据"), SerializeReference]
-        public ESEntityVariableData entityVariableData;
+        public ESEntityVariableData entityVariableData; 
 
         [FoldoutGroup("委托"), LabelText("尝试被攻击时")] public Action<Entity, Damage> OnTryBeAttack = (a, b) => { };
         [FoldoutGroup("委托"), LabelText("尝试攻击时")] public Action<Entity, Damage> OnTryAttack = (a, b) => { };
@@ -54,10 +54,11 @@ namespace ES
         protected override void OnAfterAwakeRegister()
         {
             if (dataInfo != null)
-                KeyValueMatchingUtility.DataApply.CopyToClassSameType_WithSharedAndVariableDataCopyTo(dataInfo, this);
+                KeyValueMatchingUtility.DataApply.
+                    CopyToClassSameType(dataInfo, this);
 
             base.OnAfterAwakeRegister();
-        }
+        }  
         public void OnLink(ILink link)
         {
 

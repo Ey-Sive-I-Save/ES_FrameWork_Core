@@ -11,7 +11,7 @@ namespace ES
     public static partial class KeyValueMatchingUtility
     {
         //Link事件
-        public static class ESLink
+        public static class ESProcess
         {
             public static class ForEntityLink
             {

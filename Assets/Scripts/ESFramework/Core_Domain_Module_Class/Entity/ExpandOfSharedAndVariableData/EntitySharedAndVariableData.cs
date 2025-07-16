@@ -49,6 +49,12 @@ namespace ES {
         [FoldoutGroup("属性值"), LabelText("速度加成(1+%)")] public float SpeedPerUp = 0;
 
         [FoldoutGroup("结算"), LabelText("计算攻击力")] public SettlementFloat Attack = new SettlementFloat(10);
+
+        public void DeepCloneFrom(object from)
+        {
+            
+        }
+
         public void Init(params object[] ps)
         {
             

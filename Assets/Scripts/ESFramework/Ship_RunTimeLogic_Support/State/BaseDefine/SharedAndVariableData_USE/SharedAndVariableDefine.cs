@@ -102,6 +102,12 @@ namespace ES {
     public struct ESMicroStateStatus : IStateVariableData
     {
         [LabelText("状态开始时间")] public float hasEnterTime;
+
+        public void DeepCloneFrom(object from)
+        {
+           
+        }
+
         public void Init(params object[] ps)
         {
 
@@ -274,6 +280,12 @@ namespace ES {
     public class ESStandardStateVariableData : IStateVariableData
     {
         [LabelText("状态开始时间")] public float hasEnterTime;
+
+        public void DeepCloneFrom(object from)
+        {
+          
+        }
+
         public void Init(params object[] ps)
         {
 

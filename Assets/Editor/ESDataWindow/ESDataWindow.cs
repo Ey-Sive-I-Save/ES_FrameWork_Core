@@ -79,6 +79,10 @@ namespace ES
         public string selectPackType_ = "Buff数据";
         public string selectGroupType_ = "Buff数据";
         private bool HasDelegate = false;
+
+        public static string guidForCopyGroup = "";
+        public static string CopyInfoKey = "";
+        public static ScriptableObject CopyGroup;
         #endregion
         protected override void OnImGUI()
         {
@@ -107,10 +111,29 @@ namespace ES
         public override void ES_LoadData()
         {
             Debug.Log("加载DataWindow");
+            if (EditorPrefs.HasKey("guidForCopyGroup"))
+            {
+                guidForCopyGroup = EditorPrefs.GetString("guidForCopyGroup");
+                CopyGroup = KeyValueMatchingUtility.SafeEditor.LoadAssetByGUIDString<ScriptableObject>(guidForCopyGroup) ?? CopyGroup;
+            }
+            if (EditorPrefs.HasKey("CopyInfoKey"))
+            {
+                CopyInfoKey = EditorPrefs.GetString("CopyInfoKey");
+            }
         }
         public override void ES_SaveData()
         {
             Debug.Log("保存DataWindow");
+            if (CopyGroup != null)
+            {
+                guidForCopyGroup = KeyValueMatchingUtility.SafeEditor.GetAssetGUID(CopyGroup) ?? guidForCopyGroup;
+                if (guidForCopyGroup != null)
+                {
+                    EditorPrefs.SetString("guidForCopyGroup", guidForCopyGroup);
+                    EditorPrefs.SetString("CopyInfoKey", CopyInfoKey);
+                }
+                
+            }
         }
         protected override void ES_BuildMenuTree(OdinMenuTree tree)
         {
@@ -755,11 +778,11 @@ namespace ES
         [InfoBox("请修改一下文件名否则会分配随机数字后缀", VisibleIf = "@!hasChange", InfoMessageType = InfoMessageType.Warning)]
         [VerticalGroup("总组/数据"), LabelText("文件命名"), Space(5), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_04"), OnValueChanged("ChangeHappen")]
         public string createName_ = "Buff新建配置组";
-      
+
         private bool hasChange = false;
         private void ChangeHappen()
         {
-            
+
             hasChange = true;
 
         }
@@ -868,7 +891,9 @@ namespace ES
         [VerticalGroup("总组/数据组")]
         public string DataFileName = "数据单元";
 
-        [VerticalGroup("总组/数据"), LabelText("从本组复制"), Space(5), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_04"), ValueDropdown("@group.AllKeys")]
+
+        [VerticalGroup("总组/数据组"), LabelText("从本组复制"), Space(5), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_04"), ValueDropdown("@group.AllKeys")
+            , InlineButton("pastePersis", "持久粘贴"), InlineButton("copyPersis", "持久复制")]
         public string copyFrom = "fromInfo";
 
         private bool hasChange = false;
@@ -931,18 +956,25 @@ namespace ES
 
         [VerticalGroup("总组/按钮组")]
         [PropertySpace(15)]
-        [Button("复制单元数据", ButtonHeight = 20), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_03")]
+        [Button("拷贝本组单元", ButtonHeight = 20), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_03")]
         public void CopyFromSoDataInfo()
         {
-            Type type = group.getSoInfoType();
-            ScriptableObject @object = ScriptableObject.CreateInstance(type);
-            @object.name = DataFileName + DataKey + (hasChange ? "" : UnityEngine.Random.Range(0, 99999));
-            if (@object is IWithKey with && group.NotContainsInfo(DataKey))
+            var from = group.GetInfoByKey(copyFrom) as ScriptableObject;
+            if (from == null||!group.getSoInfoType().IsAssignableFrom(from.GetType()))
+            {
+                if(from!=null) KeyValueMatchingUtility.SafeEditor.DisplayDialog("类型不匹配！", $"想要拷贝单元数据为{from}({from?.GetType()})" +
+                    $"，但是这个类型和当前数据组{group.getSoInfoType()}不符");
+                else KeyValueMatchingUtility.SafeEditor.DisplayDialog("为空！", $"没有可用的拷贝源");
+                return;
+            }
+            ScriptableObject copy = ScriptableObject.Instantiate(from);
+            copy.name = DataFileName + DataKey + (hasChange ? "" : UnityEngine.Random.Range(0, 99999));
+            if (copy is IWithKey with && group.NotContainsInfo(DataKey))
             {
                 with.SetKey(DataKey);
                 Debug.Log(DataKey + "Info Register");
-                group.AddInfo(DataKey, @object);
-                AssetDatabase.AddObjectToAsset(@object, AssetDatabase.GetAssetPath(group as ScriptableObject));
+                group.AddInfo(DataKey, copy);
+                AssetDatabase.AddObjectToAsset(copy, AssetDatabase.GetAssetPath(group as ScriptableObject));
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
             }
@@ -951,6 +983,53 @@ namespace ES
                 Debug.LogError("不合理的值或者重复键");
             }
 
+        }
+
+        private void copyPersis()
+        {
+            var Ifrom = group.GetInfoByKey(copyFrom);
+            var from = Ifrom as ScriptableObject;
+            if (from != null)
+            {
+                ESDataWindow.CopyGroup = group as ScriptableObject;
+                ESDataWindow.CopyInfoKey = Ifrom.key.str_direc;
+            }
+        }
+        private void pastePersis()
+        {
+            if (ESDataWindow.CopyGroup != null)
+            {
+                var groupcopy = ESDataWindow.CopyGroup as ISoDataGroup;
+                if (groupcopy == null)
+                {
+                    KeyValueMatchingUtility.SafeEditor.DisplayDialog("为空！", $"没有可用的拷贝源<数据组不存在>");
+                    return;
+                }
+                var from = groupcopy.GetInfoByKey(ESDataWindow.CopyInfoKey) as ScriptableObject;
+                Debug.Log(group.getSoInfoType().IsAssignableFrom(from?.GetType())+ ESDataWindow.CopyInfoKey);
+                if (from == null || !group.getSoInfoType().IsAssignableFrom(from.GetType()))
+                {
+                    if (from != null) KeyValueMatchingUtility.SafeEditor.DisplayDialog("类型不匹配！", $"想要拷贝单元数据为{from}({from?.GetType()})" +
+                        $"，但是这个类型和当前数据组需要的{group.getSoInfoType()}不符");
+                    else KeyValueMatchingUtility.SafeEditor.DisplayDialog("为空！", $"没有可用的拷贝信息<数据组>"+ groupcopy+"<键>"+ESDataWindow.CopyInfoKey);
+                    return;
+                }
+                ScriptableObject copy = ScriptableObject.Instantiate(from);
+                copy.name = DataFileName + DataKey + (hasChange ? "" : UnityEngine.Random.Range(0, 99999));
+                if (copy is IWithKey with && group.NotContainsInfo(DataKey))
+                {
+                    with.SetKey(DataKey);
+                    Debug.Log(DataKey + "Info Register");
+                    group.AddInfo(DataKey, copy);
+                    AssetDatabase.AddObjectToAsset(copy, AssetDatabase.GetAssetPath(group as ScriptableObject));
+                    AssetDatabase.SaveAssets();
+                    AssetDatabase.Refresh();
+                }
+                else
+                {
+                    Debug.LogError("不合理的值或者重复键");
+                }
+            }
         }
         public void RefreshInfos()
         {
@@ -969,6 +1048,15 @@ namespace ES
                 if (group == null) group = Selection.activeObject as ISoDataGroup;
                 if (group != null) item.Name = ESDataWindow.PageName_DataGroupOnChooseEditInfo + "<" + group._name.Replace("新建", "") + ">";
             }
+            if (group != null)
+            {
+                var info= group.GetInfoByKey(copyFrom);
+                if (info == null&&group.AllKeys.Count>0)
+                {
+                    copyFrom = group?.AllKeys.First();
+                }
+            }
+            Check();
             return base.ES_Refresh();
         }
 
@@ -983,6 +1071,7 @@ namespace ES
             AssetDatabase.Refresh();
             AssetDatabase.SaveAssets();
             bool hasChange = false;
+            if(group!=null)
             foreach (var i in group.AllKeys)
             {
 

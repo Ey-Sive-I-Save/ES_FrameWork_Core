@@ -14,7 +14,7 @@ namespace ES
     }
 
     //变量数据->变量数据可以创建副本，并且每个对象持有独立的
-    public interface IVariableData : IInittable//可初始化的 运行的情形，也可以认为是不共享的，容易变化的数据
+    public interface IVariableData : IInittable,IDeepClone//可初始化的 运行的情形，也可以认为是不共享的，容易变化的数据
     {
 
     }

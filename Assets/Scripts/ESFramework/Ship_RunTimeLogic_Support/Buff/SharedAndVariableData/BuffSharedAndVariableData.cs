@@ -32,6 +32,12 @@ namespace ES
     {
         [LabelText("等级")]public int level = 1;
         [LabelText("剩余时间")]public float timeRemain = 10;
+
+        public void DeepCloneFrom(object from)
+        {
+           
+        }
+
         public void Init(params object[] ps)
         {
             

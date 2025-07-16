@@ -190,7 +190,7 @@ namespace ES
             if (Tags.tagNames.Contains(who.tag))
             {
 
-                KeyValueMatchingUtility.ESLink.Global.GlobalLink_EntityAttackEntityTryStart
+                KeyValueMatchingUtility.ESProcess.Global.GlobalLink_EntityAttackEntityTryStart
                     (new Link_EntityAttackEntityTryStart()
                     {
                         attacker = source,

@@ -1483,63 +1483,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &318112385
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 318112387}
-  - component: {fileID: 318112386}
-  m_Layer: 0
-  m_Name: Dolly Track
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &318112386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318112385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a200b19ca1a9685429ed7e043c28e904, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Resolution: 20
-  m_Appearance:
-    pathColor: {r: 0, g: 1, b: 0, a: 1}
-    inactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    width: 0.2
-  m_Looped: 0
-  m_Waypoints:
-  - position: {x: 0, y: 0, z: -5}
-    roll: 0
-  - position: {x: -9.1813965, y: 0, z: 3.55941}
-    roll: 0
-  - position: {x: 6.2979126, y: 0, z: 12.11882}
-    roll: 0
---- !u!4 &318112387
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318112385}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 528.9453, y: 625.78906, z: -40.45777}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &336444969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,6 +1493,7 @@ GameObject:
   m_Component:
   - component: {fileID: 336444971}
   - component: {fileID: 336444970}
+  - component: {fileID: 336444972}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1593,6 +1537,261 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &336444972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336444969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017edcaaa1566064b910202d89c8c790, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: aaa
+      Entry: 7
+      Data: 0|System.Collections.Generic.Stack`1[[ES.Attackable, ES]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 1|ES.Attackable, ES
+    - Name: Damage
+      Entry: 4
+      Data: 10
+    - Name: AttackRangeDis
+      Entry: 4
+      Data: 1
+    - Name: AttackSpeed
+      Entry: 4
+      Data: 1
+    - Name: attackType
+      Entry: 3
+      Data: 1
+    - Name: require
+      Entry: 3
+      Data: 0
+    - Name: attackOn
+      Entry: 3
+      Data: 1
+    - Name: preDelay
+      Entry: 4
+      Data: 0.25
+    - Name: attackExit_
+      Entry: 4
+      Data: 0.8
+    - Name: playSound
+      Entry: 6
+      Data: 
+    - Name: prefabForShow
+      Entry: 7
+      Data: 2|ES.EvPointer.PointerForGameObject_Direct, ES
+    - Name: g
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: prefabForEffector
+      Entry: 7
+      Data: 3|ES.EvPointer.PointerForGameObject_Direct, ES
+    - Name: g
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 4|ES.Attackable_SimpleEnemy, ES
+    - Name: Damage
+      Entry: 4
+      Data: 35.49
+    - Name: AttackRangeDis
+      Entry: 4
+      Data: 1
+    - Name: AttackSpeed
+      Entry: 4
+      Data: 1
+    - Name: attackType
+      Entry: 3
+      Data: 1
+    - Name: require
+      Entry: 3
+      Data: 0
+    - Name: attackOn
+      Entry: 3
+      Data: 1
+    - Name: preDelay
+      Entry: 4
+      Data: 0.25
+    - Name: attackExit_
+      Entry: 4
+      Data: 0.8
+    - Name: playSound
+      Entry: 6
+      Data: 
+    - Name: prefabForShow
+      Entry: 7
+      Data: 5|ES.EvPointer.PointerForGameObject_Direct, ES
+    - Name: g
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: prefabForEffector
+      Entry: 7
+      Data: 6|ES.EvPointer.PointerForGameObject_Direct, ES
+    - Name: g
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: AttackRangeAngle
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: aaa2
+      Entry: 7
+      Data: 7|System.Collections.Generic.Stack`1[[ES.Attackable, ES]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 8|ES.Attackable, ES
+    - Name: Damage
+      Entry: 4
+      Data: 10
+    - Name: AttackRangeDis
+      Entry: 4
+      Data: 1
+    - Name: AttackSpeed
+      Entry: 4
+      Data: 1
+    - Name: attackType
+      Entry: 3
+      Data: 1
+    - Name: require
+      Entry: 3
+      Data: 0
+    - Name: attackOn
+      Entry: 3
+      Data: 1
+    - Name: preDelay
+      Entry: 4
+      Data: 0.25
+    - Name: attackExit_
+      Entry: 4
+      Data: 0.8
+    - Name: playSound
+      Entry: 6
+      Data: 
+    - Name: prefabForShow
+      Entry: 7
+      Data: 9|ES.EvPointer.PointerForGameObject_Direct, ES
+    - Name: g
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: prefabForEffector
+      Entry: 7
+      Data: 10|ES.EvPointer.PointerForGameObject_Direct, ES
+    - Name: g
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 11|ES.Attackable_SimpleEnemy, ES
+    - Name: Damage
+      Entry: 4
+      Data: 35.49
+    - Name: AttackRangeDis
+      Entry: 4
+      Data: 1
+    - Name: AttackSpeed
+      Entry: 4
+      Data: 1
+    - Name: attackType
+      Entry: 3
+      Data: 1
+    - Name: require
+      Entry: 3
+      Data: 0
+    - Name: attackOn
+      Entry: 3
+      Data: 1
+    - Name: preDelay
+      Entry: 4
+      Data: 0.25
+    - Name: attackExit_
+      Entry: 4
+      Data: 0.8
+    - Name: playSound
+      Entry: 6
+      Data: 
+    - Name: prefabForShow
+      Entry: 7
+      Data: 12|ES.EvPointer.PointerForGameObject_Direct, ES
+    - Name: g
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: prefabForEffector
+      Entry: 7
+      Data: 13|ES.EvPointer.PointerForGameObject_Direct, ES
+    - Name: g
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: AttackRangeAngle
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
 --- !u!1 &337080719
 GameObject:
   m_ObjectHideFlags: 0
@@ -2939,92 +3138,6 @@ MonoBehaviour:
   register: 1
   registerKey: "\u6CE8\u518CUI4"
   _myParentPanel: {fileID: 0}
---- !u!1 &817248804
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 817248806}
-  - component: {fileID: 817248805}
-  - component: {fileID: 817248807}
-  m_Layer: 0
-  m_Name: Dolly Cart
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &817248805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 817248804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99a9c787e5d1bbf48a389834c4a9641c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Path: {fileID: 318112386}
-  m_UpdateMethod: 0
-  m_PositionUnits: 1
-  m_Speed: 0
-  m_Position: 0
---- !u!4 &817248806
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 817248804}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.5064087, z: 0, w: 0.86229366}
-  m_LocalPosition: {x: 528.9453, y: 625.78906, z: -45.45777}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &817248807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 817248804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59fd2c340ffe7194eb58100abb34a0a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vv: {x: 0, y: 0}
-  vvv: {x: 0, y: 0, z: 0}
-  vv1: {x: 0, y: 0}
-  vvv2: {x: 0, y: 0, z: 0}
-  vv3: {x: 0, y: 0}
-  vvv4:
-    readMe:
-      edit: 1
-      ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-      readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-      showColor:
-        r: 1
-        g: 1
-        b: 1
-        a: 1
-    core: {fileID: 0}
-    Modules:
-      ValuesNow: []
-      isDirty: 0
-      MayHasElement: 1
-      <AutoApplyBuffers>k__BackingField: 1
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &824173664
 GameObject:
   m_ObjectHideFlags: 0
@@ -5156,7 +5269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418e42c7d0405cc48a7b83f63ea53bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Path: {fileID: 318112386}
+  m_Path: {fileID: 0}
   m_PathPosition: 0
   m_PositionUnits: 0
   m_PathOffset: {x: 0, y: 0, z: 0}
@@ -7233,37 +7346,37 @@ PrefabInstance:
     - target: {fileID: 8132746829774600724, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 528.9453
+      value: 555.38007
       objectReference: {fileID: 0}
     - target: {fileID: 8132746829774600724, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 620.21106
+      value: 629.443
       objectReference: {fileID: 0}
     - target: {fileID: 8132746829774600724, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -45.84177
+      value: -32.383453
       objectReference: {fileID: 0}
     - target: {fileID: 8132746829774600724, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.65248823
+      value: 0.6524605
       objectReference: {fileID: 0}
     - target: {fileID: 8132746829774600724, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.110084854
+      value: 0.10992068
       objectReference: {fileID: 0}
     - target: {fileID: 8132746829774600724, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7393119
+      value: -0.7393363
       objectReference: {fileID: 0}
     - target: {fileID: 8132746829774600724, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.124733336
+      value: 0.124878235
       objectReference: {fileID: 0}
     - target: {fileID: 8536433584810035289, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -8076,6 +8189,140 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948278172}
   m_CullTransparentMesh: 1
+--- !u!1 &1994288721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1994288723}
+  - component: {fileID: 1994288722}
+  - component: {fileID: 1994288724}
+  m_Layer: 0
+  m_Name: Square
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &1994288722
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994288721}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1994288723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994288721}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 476.31168, y: 607.3446, z: -41.902927}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1994288724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994288721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb528c0d07f29a489d995cd643b29c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  from:
+    <SharedData>k__BackingField:
+      allDrinks:
+      - kele
+      - juice
+      - water
+      size: {x: 2.03, y: 0, z: 0}
+      brand: "\u54C1\u724C"
+    <VariableData>k__BackingField:
+      pos: {x: -5.41, y: 0, z: 0}
+      hasEarn: 555
+      hasStay: 555
+  to1:
+    <SharedData>k__BackingField:
+      allDrinks:
+      - kele
+      - juice
+      - water
+      size: {x: 2.03, y: 0, z: 0}
+      brand: "\u54C1\u724C"
+    <VariableData>k__BackingField:
+      pos: {x: -5.41, y: 36.33, z: 0}
+      hasEarn: 0
+      hasStay: 0
+  to2:
+    <SharedData>k__BackingField:
+      allDrinks:
+      - kele
+      - juice
+      - water
+      size: {x: 2.03, y: 0, z: 0}
+      brand: "\u54C1\u724C"
+    <VariableData>k__BackingField:
+      pos: {x: -14.22, y: 0, z: 0}
+      hasEarn: 0
+      hasStay: 0
 --- !u!1 &1996289902
 GameObject:
   m_ObjectHideFlags: 0
@@ -10350,8 +10597,7 @@ SceneRoots:
   - {fileID: 2023553694}
   - {fileID: 1631734342}
   - {fileID: 687825620}
-  - {fileID: 318112387}
-  - {fileID: 817248806}
   - {fileID: 1236482513}
   - {fileID: 264615170}
   - {fileID: 336444971}
+  - {fileID: 1994288723}

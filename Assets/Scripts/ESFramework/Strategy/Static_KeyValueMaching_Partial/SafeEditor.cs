@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.Utilities;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -81,7 +82,7 @@ namespace ES
             public static T CreateSOAsset<T>(string folderPath, string assetName, bool appendRandomIfNotChangedDefaultName = false, bool hasChange = false, Action<T> beforeSave = null) where T : ScriptableObject
             {
 #if UNITY_EDITOR
-                
+
                 if (!AssetDatabase.IsValidFolder(folderPath))
                 {
                     Debug.LogError($"Invalid folder path: {folderPath}");
@@ -100,7 +101,7 @@ namespace ES
                 return null;
 #endif
             }
-            public static ScriptableObject CreateSOAsset(Type type,string folderPath, string assetName, bool appendRandomIfNotChangedDefaultName = false, bool hasChange = false, Action<ScriptableObject> beforeSave = null) 
+            public static ScriptableObject CreateSOAsset(Type type, string folderPath, string assetName, bool appendRandomIfNotChangedDefaultName = false, bool hasChange = false, Action<ScriptableObject> beforeSave = null)
             {
 #if UNITY_EDITOR
                 if (type == null) return null;
@@ -178,7 +179,7 @@ namespace ES
                 {
                     GUID id = default; GUID.TryParse(i, out id);
                     Type type = AssetDatabase.GetMainAssetTypeFromGUID(id);
-                    
+
                     if (typeUse.IsAssignableFrom(type))
                     {
                         string path = AssetDatabase.GUIDToAssetPath(id);
@@ -215,6 +216,47 @@ namespace ES
 #else
                 return  new List<T>();
 #endif
+            }
+
+            public static T LoadAssetByGUIDString<T>(string s) where T : class
+            {
+#if UNITY_EDITOR
+                GUID id = default;
+                GUID.TryParse(s, out id);
+                Type type = AssetDatabase.GetMainAssetTypeFromGUID(id);
+                if (typeof(T).IsAssignableFrom(type))
+                {
+                    string path = AssetDatabase.GUIDToAssetPath(id);
+                    UnityEngine.Object ob = AssetDatabase.LoadAssetAtPath(path, type);
+                    return ob as T;
+                }
+#endif
+                return null;
+            }
+            public static UnityEngine.Object LoadAssetByGUIDString(string s)
+            {
+#if UNITY_EDITOR
+                GUID id = default;
+                GUID.TryParse(s, out id);
+                Type type = AssetDatabase.GetMainAssetTypeFromGUID(id);
+                if (typeof(UnityEngine.Object).IsAssignableFrom(type))
+                {
+                    string path = AssetDatabase.GUIDToAssetPath(id);
+                    UnityEngine.Object ob = AssetDatabase.LoadAssetAtPath(path, type);
+                    return ob;
+                }
+#endif
+                return null;
+            }
+
+            public static  string GetAssetGUID(UnityEngine.Object s)
+            {
+#if UNITY_EDITOR
+                string path = AssetDatabase.GetAssetPath(s);
+               string guid=AssetDatabase.AssetPathToGUID(path);
+                if (guid != null && !guid.IsNullOrWhitespace()) return guid;
+#endif
+                return null;
             }
         }
     }

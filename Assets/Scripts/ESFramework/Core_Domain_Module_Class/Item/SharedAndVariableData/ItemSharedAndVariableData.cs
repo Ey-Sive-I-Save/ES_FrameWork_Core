@@ -22,7 +22,11 @@ namespace ES {
     [Serializable, TypeRegistryItem("物品变量数据")]
     public class ESItemVariableData : IVariableData
     {
-        
+        public void DeepCloneFrom(object from)
+        {
+            
+        }
+
         public void Init(params object[] ps)
         {
             

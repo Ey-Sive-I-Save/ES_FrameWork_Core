@@ -9,7 +9,7 @@ namespace ES
 {
     //Key_Value Matching 是一系列键值对映射或者静态处理方法，用于解耦的功能合集
 
-    /*  XX Key_Value Matchin 又名 静态策略 ，很多情况下 可以和<动态策略>互为转化 
+    /*  XX Key&Value Matching 又名 静态策略 ，很多情况下 可以和<动态策略>互为转化 
      *   使用时 ： KeyValueMatchingUtility.ColorSelector.XXX
      *  ##ColorSelector        存储大量自定义颜色 主要用于编辑器美化
      *  ##Couroutine           提供了一些快速创建协程的方法
@@ -17,7 +17,7 @@ namespace ES
      *  ##DataApply            提供一句完成把Data应用到目标身上，做到代码简化
      *  ##DataInfoPointer      使用键取出某个数据源(通常是So类型)
      *  ##ESBack               大型 "返回" 逻辑 %比如获得实体周围的其他实体
-     *  ##ESLink               大型的 基于Link体系 的 事件处理 流
+     *  ##ESProcess            大型的 基于Link体系 的 事件处理 流
      *  ##Foreach              常用的循环操作 或者 递归手段
      *  ##Function             常用的 数学/容器 操作
      *  ##KeyPointer           取键器 通常配合编辑器扩展使用

@@ -8,62 +8,70 @@ using UnityEngine;
 
 public class testCopyTo : MonoBehaviour
 {
-    [Serializable]
-    public class WithDoubleData001 : IWithSharedAndVariableData<SharedData001, VariableData001>
-    {
-        [ShowInInspector]public SharedData001 SharedData { get; set; }
-        [ShowInInspector] public VariableData001 VariableData { get; set; }
-    }
-    [Serializable]
-    public class WithDoubleData002 : IWithSharedAndVariableData<SharedData001, VariableData002>
-    {
-        [ShowInInspector] public SharedData001 SharedData { get; set; }
-        [ShowInInspector] public VariableData002 VariableData { get; set; }
-    }
-    [Serializable]
-    public class SharedData001 : ISharedData
-    {
+    public SHJ from;
+    public SuperSHJ from2;
 
-    }
-    
-    [Serializable]
-    public class VariableData001 : IVariableData,ICopyToClass<VariableData001>
+    public SHJ to1;
+    public SHJ to2;
+    [Button]
+    void copyTo()
     {
-        public float f1;
-        public float f2;
+        to1.SharedData = from.SharedData;
+        to1.VariableData.DeepCloneFrom(from.VariableData);
 
-        public void CopyTo(VariableData001 other)
+        KeyValueMatchingUtility.DataApply.CopyToClassSameType(from, to2);
+
+        KeyValueMatchingUtility.DataApply.CopyTo<SHJSharedData, SHJVariableData>(from, to2);
+
+        KeyValueMatchingUtility.DataApply.CopyToClassDynamic(from2, to1);
+    }
+    [Serializable]
+    public class SHJ : IWithSharedAndVariableData<SHJSharedData, SHJVariableData>
+    {
+        [field:SerializeField]public SHJSharedData SharedData { get; set; }
+        [field: SerializeField] public SHJVariableData VariableData { get; set; }
+    }
+    [Serializable]
+    public class SuperSHJ : IWithSharedAndVariableData<SuperSHJSharedData, SHJVariableData>
+    {
+        [field: SerializeField] public SuperSHJSharedData SharedData { get; set; }
+        [field: SerializeField] public SHJVariableData VariableData { get; set; }
+    }
+
+    [Serializable]
+    public class SHJSharedData : ISharedData
+    {
+        public List<string> allDrinks = new List<string>();
+        public Vector3 size;
+        public string brand = "品牌";
+    }
+    [Serializable]
+    public class SuperSHJSharedData : SHJSharedData
+    {
+        public float ffff;
+        public float bbb;
+    }
+
+    [Serializable]
+    public class SHJVariableData : IVariableData,IDeepClone<SHJVariableData>
+    {
+        public Vector3 pos;
+        public float hasEarn = 0;
+        public float hasStay = 0;
+
+        public void DeepCloneFrom(SHJVariableData t)
         {
-            other.f1 = f1+0.114514f;
-            other.f2 = f2+0.114514f;
+            pos = t.pos;
+            /*hasEarn = t.hasEarn;
+            hasStay = t.hasStay;*/
         }
 
         public void Init(params object[] ps)
         {
-            
+            hasEarn = 0;
+            hasStay = 0;
         }
     }
-    [Serializable]
-    public class VariableData002 : VariableData001
-    {
-        public float ff3;
-    }
 
-    public WithDoubleData002 from;
-    public WithDoubleData002 to_;
-    [Button("CopyTo")]
-    public void Test()
-    {
-        KeyValueMatchingUtility.DataApply.CopyToClassDynamic_WithSharedAndVariableDataCopyTo(from,to_);
-    }
-    void Start()
-    {
-        
-    }
-
-    
-    void Update()
-    {
-        
-    }
+   
 }
