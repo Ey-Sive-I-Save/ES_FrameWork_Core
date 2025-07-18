@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -11,79 +12,7 @@ namespace ES
 {
     public static class ExtensionForString
     {
-
-        public static StringBuilder _GetBuilder(this string selfStr)
-        {
-            return new StringBuilder(selfStr);
-        }
-
-
-        public static StringBuilder _AddPre(this StringBuilder self, string prefixString)
-        {
-            self.Insert(0, prefixString);
-            return self;
-        }
-        public static int _AsInt(this string selfStr, int defaulValue = 0)
-        {
-            var retValue = defaulValue;
-            return int.TryParse(selfStr, out retValue) ? retValue : defaulValue;
-        }
-
-        public static long _AsLong(this string self, long defaultValue = 0)
-        {
-            var retValue = defaultValue;
-            return long.TryParse(self, out retValue) ? retValue : defaultValue;
-        }
-
-
-        public static DateTime _AsDateTime(this string selfStr, DateTime defaultValue = default(DateTime))
-        {
-            return DateTime.TryParse(selfStr, out var retValue) ? retValue : defaultValue;
-        }
-
-
-
-        public static float _AsFloat(this string selfStr, float defaultValue = 0)
-        {
-            return float.TryParse(selfStr, out var retValue) ? retValue : defaultValue;
-        }
-
-
-        public static bool _ContainsChineseCharacterOnly(this string input)
-        {
-            return Regex.IsMatch(input, @"[\u4e00-\u9fa5]");
-        }
-        public static bool _ContainChineseCharacterOrChineseSymbol(this string input)
-        {
-            return Regex.IsMatch(input, @"[\u4e00-\u9fa5]") || Regex.IsMatch(input, @"[。？！，、；：“”‘’（）《》——……·【】·^ ∧ ¶ =  # / ∞ △ ※ ●＋ － × ÷ ± ≌ ∽ ≤ ≥ ≠ ≡ ∫ ∮ ∑ ∏]");
-        }
-        public static bool _ContainChineseCharacterOrNormalSymbol(this string input)
-        {
-            return Regex.IsMatch(input, @"[\u4e00-\u9fa5]")
-                || Regex.IsMatch(input, @"[。？！，、；：“”‘’（）《》——……·【】·^ ∧ ¶ =  # / ∞ △ ※ ●＋ － × ÷ ± ≌ ∽ ≤ ≥ ≠ ≡ ∫ ∮ ∑ ∏]")
-                || Regex.IsMatch(input, @"[. , ? ! ' "" : ; ... — –  ( )   { } + − × ÷ = ≠ ≈ ± ≤ ≥ % ° °C °F π ∫ ∑ ∏ √ ∞ / \ | # & * ~ @ $ £ € ¥ ¢ ^]");
-
-        }
-
-        public static bool _HasSpace(this string input)
-        {
-            return input.Contains(" ");
-        }
-
-
-        public static string _RemoveString(this string str, params string[] targets)
-        {
-            return targets.Aggregate(str, (current, t) => current.Replace(t, string.Empty));
-        }
-
-
-        public static string _StringJoin(this IEnumerable<string> self, string separator)
-        {
-            return string.Join(separator, self);
-        }
-
-
-
+        #region 截取系列
         // ================== 基础截取方法 ==================
 
         /// <summary>
@@ -190,6 +119,16 @@ namespace ES
             return index < 0 ? source : source.Substring(index + 1);
         }
 
+        public static string _KeepBeforeByMaxLengthWithEllipsis(this string str, int maxLength)
+        {
+            if (string.IsNullOrEmpty(str) || str.Length <= maxLength)
+                return str;
+
+            return str.Substring(0, maxLength) + "...";
+        }
+        #endregion
+
+        #region 特征部分
         public static bool _IsValidEmail(this string str)
         {
             try
@@ -202,10 +141,219 @@ namespace ES
                 return false;
             }
         }
+        public static bool _IsValidUrl(this string str)
+        {
+            Uri uriResult;
+            return Uri.TryCreate(str, UriKind.Absolute, out uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+        }
+        public static bool _IsNumeric(this string str)
+        {
+            return double.TryParse(str, out _);
+        }
+
+        public static bool _HasSpace(this string input)
+        {
+            return input.Contains(" ");
+        }
+        public static bool _ContainsChineseCharacterOnly(this string input)
+        {
+            return Regex.IsMatch(input, @"[\u4e00-\u9fa5]");
+        }
+        public static bool _ContainChineseCharacterOrChineseSymbol(this string input)
+        {
+            return Regex.IsMatch(input, @"[\u4e00-\u9fa5]") || Regex.IsMatch(input, @"[。？！，、；：“”‘’（）《》——……·【】·^ ∧ ¶ =  # / ∞ △ ※ ●＋ － × ÷ ± ≌ ∽ ≤ ≥ ≠ ≡ ∫ ∮ ∑ ∏]");
+        }
+        public static bool _ContainChineseCharacterOrNormalSymbol(this string input)
+        {
+            return Regex.IsMatch(input, @"[\u4e00-\u9fa5]")
+                || Regex.IsMatch(input, @"[。？！，、；：“”‘’（）《》——……·【】·^ ∧ ¶ =  # / ∞ △ ※ ●＋ － × ÷ ± ≌ ∽ ≤ ≥ ≠ ≡ ∫ ∮ ∑ ∏]")
+                || Regex.IsMatch(input, @"[. , ? ! ' "" : ; ... — –  ( )   { } + − × ÷ = ≠ ≈ ± ≤ ≥ % ° °C °F π ∫ ∑ ∏ √ ∞ / \ | # & * ~ @ $ £ € ¥ ¢ ^]");
+
+        }
+        private static bool _IsCSharpKeyword(this string value)
+        {
+            string[] keywords = {
+            "abstract", "as", "base", "bool", "break", "byte", "case", "catch",
+            "char", "checked", "class", "const", "continue", "decimal", "default",
+            "delegate", "do", "double", "else", "enum", "event", "explicit", "extern",
+            "false", "finally", "fixed", "float", "for", "foreach", "goto", "if", "implicit",
+            "in", "int", "interface", "internal", "is", "lock", "long", "namespace", "new",
+            "null", "object", "operator", "out", "override", "params", "private", "protected",
+            "public", "readonly", "ref", "return", "sbyte", "sealed", "short", "sizeof",
+            "stackalloc", "static", "string", "struct", "switch", "this", "throw", "true",
+            "try", "typeof", "uint", "ulong", "unchecked", "unsafe", "ushort", "using",
+            "virtual", "void", "volatile", "while"
+        };
+            return Array.Exists(keywords, k => k.Equals(value, StringComparison.Ordinal));
+        }
+        public static bool _IsValidIdentName(this string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return false;
+
+            // 步骤1：查询是否包含所有非字母、数字、下划线的字符[6,7](@ref)
+            if (Regex.IsMatch(input, @"\W"))
+                return false;
+
+
+            // 步骤2：查询是否以数字开头
+            if (char.IsDigit(input[0]))
+                return false;
+
+            // 步骤3：查询连续下划线
+            if (Regex.IsMatch(input, @"_{2,}"))
+                return false;
+
+            // 步骤4：防止C#关键字冲突
+            if (input._IsCSharpKeyword())
+                return false;
+
+            return false;
+        }
+
+        #endregion
+
+        #region 操作部分
         public static string _RemoveExtraSpaces(this string str)
         {
             return Regex.Replace(str, @"\s+", " ").Trim();
         }
+        public static string _StringJoin(this IEnumerable<string> self, string separator)
+        {
+            return string.Join(separator, self);
+        }
+        public static string _RemoveString(this string str, params string[] targets)
+        {
+            return targets.Aggregate(str, (current, t) => current.Replace(t, string.Empty));
+        }
+        public static string _RemoveExtension(this string str)
+        {
+            int thePoint = str.LastIndexOf('.');
+            if (thePoint >= 0) return str.Substring(0, thePoint);
+            return str;
+        }
+
+        public static string _FirstCharToUpperCapitalize(this string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+                return input;
+
+            // 查找第一个非空白字符的索引
+            int firstCharIndex = 0;
+            while (firstCharIndex < input.Length && char.IsWhiteSpace(input[firstCharIndex]))
+            {
+                firstCharIndex++;
+            }
+
+            if (firstCharIndex >= input.Length)
+                return input;
+
+            // 大写化第一个有效字符
+            return input.Substring(0, firstCharIndex) +
+                   char.ToUpper(input[firstCharIndex]) +
+                   input.Substring(firstCharIndex + 1);
+        }
+
+        public static string _FirstUpper(this string input, CultureInfo culture)
+        {
+            // 处理单字符情况
+            if (input.Length == 1)
+                return char.ToUpper(input[0], culture).ToString();
+
+            // 处理已大写的情况（避免重复操作）
+            if (char.IsUpper(input[0]))
+                return input;
+
+            // 核心处理：首字母大写 + 剩余部分保持不变
+            return char.ToUpper(input[0], culture) + input.Substring(1);
+        }
+
+        /// <summary>
+        /// 将字符串首字母小写（保持其他字母不变）
+        /// </summary>
+        public static string _FirstLower(this string input, CultureInfo culture)
+        {
+            // 处理单字符情况
+            if (input.Length == 1)
+                return char.ToLower(input[0], culture).ToString();
+
+            // 处理已小写的情况（避免重复操作）
+            if (char.IsLower(input[0]))
+                return input;
+
+            // 核心处理：首字母小写 + 剩余部分保持不变
+            return char.ToLower(input[0], culture) + input.Substring(1);
+        }
+
+        public static string _ToValidIdentName(this string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return "_";
+
+            // 步骤1：替换所有非字母、数字、下划线的字符为下划线[6,7](@ref)
+            string normalized = Regex.Replace(input, @"[\W]", "_");
+
+            // 步骤2：处理开头数字（添加下划线前缀）[3,4](@ref)
+            if (char.IsDigit(normalized[0]))
+                normalized = "_" + normalized;
+
+            // 步骤3：合并连续下划线[6](@ref)
+            normalized = Regex.Replace(normalized, @"_{2,}", "_");
+
+            // 步骤4：处理C#关键字冲突（添加@前缀）[3,10](@ref)
+            if (normalized._IsCSharpKeyword())
+                return "@" + normalized;
+
+            return normalized;
+        }
+        #endregion
+
+        #region Buffer专属
+        public static StringBuilder _GetBuilder(this string selfStr)
+        {
+            return new StringBuilder(selfStr);
+        }
+
+
+        public static StringBuilder _AddPre(this StringBuilder self, string prefixString)
+        {
+            self.Insert(0, prefixString);
+            return self;
+        }
+
+        #endregion
+
+        #region 转化部分
+        public static string _AsStringValue(this string selfStr)
+        {
+            return $"\"{selfStr}\"";
+        }
+
+        public static int _AsInt(this string selfStr, int defaulValue = 0)
+        {
+            var retValue = defaulValue;
+            return int.TryParse(selfStr, out retValue) ? retValue : defaulValue;
+        }
+
+        public static long _AsLong(this string self, long defaultValue = 0)
+        {
+            var retValue = defaultValue;
+            return long.TryParse(self, out retValue) ? retValue : defaultValue;
+        }
+
+
+        public static DateTime _AsDateTime(this string selfStr, DateTime defaultValue = default(DateTime))
+        {
+            return DateTime.TryParse(selfStr, out var retValue) ? retValue : defaultValue;
+        }
+
+        public static float _AsFloat(this string selfStr, float defaultValue = 0)
+        {
+            return float.TryParse(selfStr, out var retValue) ? retValue : defaultValue;
+        }
+
+
+
         public static string _ToMD5Hash(this string str)
         {
             using (var md5 = System.Security.Cryptography.MD5.Create())
@@ -231,22 +379,11 @@ namespace ES
                 return BitConverter.ToString(bytes).Replace("-", "").ToLower();
             }
         }
-        public static bool _IsValidUrl(this string str)
-        {
-            Uri uriResult;
-            return Uri.TryCreate(str, UriKind.Absolute, out uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
-        }
-        public static string _KeepBeforeByMaxLengthWithEllipsis(this string str, int maxLength)
-        {
-            if (string.IsNullOrEmpty(str) || str.Length <= maxLength)
-                return str;
+       
+        #endregion
 
-            return str.Substring(0, maxLength) + "...";
-        }
-        public static bool _IsNumeric(this string str)
-        {
-            return double.TryParse(str, out _);
-        }
+
+
     }
 
 }

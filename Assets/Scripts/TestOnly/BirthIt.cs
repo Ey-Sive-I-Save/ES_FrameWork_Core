@@ -9,7 +9,7 @@ namespace ES
     {
         public GameObject use;
         public int once = 10;
-        public LinkMono LinkMono;
+        public TestRefer LinkMono;
         void Start()
         {
 

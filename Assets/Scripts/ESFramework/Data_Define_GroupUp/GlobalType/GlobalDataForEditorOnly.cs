@@ -1,6 +1,7 @@
 using ES;
 using ES.EvPointer;
 using Sirenix.OdinInspector;
+using Sirenix.OdinInspector.Editor;
 using Sirenix.Serialization;
 using Sirenix.Utilities;
 using System;
@@ -280,8 +281,66 @@ namespace ES
         }
 
         #endregion
+        #region 标签和层级辅助
+        [LabelText("标签和层级辅助"), NonSerialized, OdinSerialize]
+        public TagsAndLayers TagAndLayer = new TagsAndLayers();
+        [Serializable, TypeRegistryItem("标签和层级辅助")]
+        public class TagsAndLayers
+        {
+            [LabelText("自动更新")]
+            public bool autoRefresh = true;
+            [LabelText("记忆标签")]
+            public List<string> memoryTags = new List<string>();
+            [NonSerialized, OdinSerialize]
+            [LabelText("记忆层级")]
+            public Dictionary<int, string> memoryLayers = new Dictionary<int, string>();
+
+            public bool GetDirty()
+            {
+                bool dirty = false;
+                var nowTags = KeyValueMatchingUtility.SafeEditor.GetAllTags();
+                foreach (var i in nowTags)
+                {
+                    //不包含当前的任意值
+                    if (!memoryTags.Contains(i))
+                    {
+                        memoryTags = nowTags.ToList();
+                        dirty =true;
+                        break;
+                    }
+                }
+
+                var nowLayers = KeyValueMatchingUtility.SafeEditor.GetAllLayers();
+                foreach(var (k,v) in nowLayers)
+                {
+                    if(memoryLayers.TryGetValue(k,out var value))
+                    {
+                        if (v != value)
+                        {
+                            dirty = true;
+                            memoryLayers = nowLayers.ToDictionary((f)=>f.Key,(f)=>f.Value);
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        memoryLayers = nowLayers.ToDictionary((f) => f.Key, (f) => f.Value);
+                        dirty = true;
+                        break;
+                    }
+                }
+                if (dirty)
+                {
+                    EditorUtility.SetDirty(GlobalDataForEditorOnly.Instance);
+                }
+                return dirty;
+            }
+        }
+
+        #endregion
         #endregion
 #endif
+
     }
 
 }

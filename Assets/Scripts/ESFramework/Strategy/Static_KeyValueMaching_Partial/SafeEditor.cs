@@ -22,6 +22,34 @@ namespace ES
         //
         public class SafeEditor
         {
+            public static string[] GetAllTags()
+            {
+#if UNITY_EDITOR
+                // 获取Tags
+                var tags = UnityEditorInternal.InternalEditorUtility.tags;
+                return tags;
+#else
+                return new List<string>();
+#endif
+            }
+            public static Dictionary<int,string> GetAllLayers()
+            {
+               
+#if UNITY_EDITOR
+                Dictionary<int, string> keyValuePairs = new Dictionary<int, string>();
+                // 获取Tags管理器
+                var layers = UnityEditorInternal.InternalEditorUtility.layers;
+                foreach(var i in layers)
+                {
+                    int mask=LayerMask.GetMask(i);
+                    int layer=mask>0?(int)Mathf.Round(Mathf.Log(mask,(2))):0 ;
+                    keyValuePairs.TryAdd(layer,i);
+                }
+                return keyValuePairs;
+#else
+                return new Dictionary<int, string>();
+#endif
+            }
             public static void SetDirty(UnityEngine.Object who, bool withRefresh = true)
             {
 #if UNITY_EDITOR
@@ -49,7 +77,7 @@ namespace ES
             {
 #if UNITY_EDITOR
                 return EditorUtility.OpenFolderPanel(title, targetPath, "");
-#else 
+#else
                return targetPath;
 #endif
             }

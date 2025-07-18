@@ -168,7 +168,7 @@ namespace ES
     }
 #endif
     [Serializable]
-    public class GlobalDataRefer<This> : ESRefer<This> where This : GlobalDataSupport<This>
+    public class GlobalDataRefer<This> : ESReferAbstract<This> where This : GlobalDataSupport<This>
     {
         public override This HandleIfNull()
         {

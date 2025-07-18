@@ -107,6 +107,8 @@ namespace ES
             base.ESWindow_RefreshWindow();
             ES_SaveData();
         }
+
+
         public string pathForDefaultSetting;
         public override void ES_LoadData()
         {
@@ -366,9 +368,9 @@ namespace ES
                 /*
                   ESTool_ScriptMaker.Instance.CreateScript(文件夹路径,Class名,继承/实现,特性,命名空间=ES);
                  */
-                KeyValueMatchingUtility.ScriptMaker.CreateScriptEasy(toInfo, infoName, Attribute: $"[ESDisplayNameKeyToType(\"数据单元\", \"{ChineseDisplayName}数据单元\")]", parent: ": SoDataInfo");
-                KeyValueMatchingUtility.ScriptMaker.CreateScriptEasy(toGroup, EnglishCodeName + "DataGroup", Attribute: $"[ESDisplayNameKeyToType(\"数据组\", \"{ChineseDisplayName}数据组\")]", parent: $": SoDataGroup<{infoName}>");
-                KeyValueMatchingUtility.ScriptMaker.CreateScriptEasy(toPack, EnglishCodeName + "DataPack", Attribute: $"[ESDisplayNameKeyToType(\"数据包\", \"{ChineseDisplayName}数据包\")]", parent: $": SoDataPack<{infoName}>");
+                KeyValueMatchingUtility.SimpleScriptMaker.CreateScriptEasy(toInfo, infoName, Attribute: $"[ESDisplayNameKeyToType(\"数据单元\", \"{ChineseDisplayName}数据单元\")]", parent: ": SoDataInfo");
+                KeyValueMatchingUtility.SimpleScriptMaker.CreateScriptEasy(toGroup, EnglishCodeName + "DataGroup", Attribute: $"[ESDisplayNameKeyToType(\"数据组\", \"{ChineseDisplayName}数据组\")]", parent: $": SoDataGroup<{infoName}>");
+                KeyValueMatchingUtility.SimpleScriptMaker.CreateScriptEasy(toPack, EnglishCodeName + "DataPack", Attribute: $"[ESDisplayNameKeyToType(\"数据包\", \"{ChineseDisplayName}数据包\")]", parent: $": SoDataPack<{infoName}>");
                 AssetDatabase.Refresh();
             }
             else

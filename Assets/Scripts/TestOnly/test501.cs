@@ -50,7 +50,7 @@ public class test501 : SerializedMonoBehaviour
           /*  _deepcloneT _DeepcloneT_ = KeyValueMatchingUtility.Creator.DeepClone(source5);
 */
             //显示调用IDeepClone
-            _deepcloneT _DeepcloneT = new _deepcloneT();
+            //_deepcloneT _DeepcloneT = new _deepcloneT();
         }
     }
     [Serializable]

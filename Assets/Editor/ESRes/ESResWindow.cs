@@ -213,6 +213,7 @@ namespace ES
                 string[] AllABWithHash = manifest.GetAllAssetBundles();
 
                 #endregion
+
                 foreach (var ab in allAssetBundleNames)
                 {
 
@@ -221,17 +222,17 @@ namespace ES
                     foreach (var withHash in AllABWithHash)
                     {
                         string pre = GlobalDataForResMaster.Instance.GetPreNameFromCompleteNameWithHash(withHash);
-                        Debug.Log(pre + "*" + ab + "&" + (pre == ab) + "/" + withHash + "/" + GlobalDataForResMaster.Instance.GetHashFromCompleteNameWithHash(withHash));
+                        //Debug.Log(pre + "*" + ab + "&" + (pre == ab) + "/" + withHash + "/" + GlobalDataForResMaster.Instance.GetHashFromCompleteNameWithHash(withHash));
                         if (pre == ab)
                         {
                             AllHashDicContent += "{\"" + ab + "\",\"" + withHash + "\"},\n";
-                            SingleABField += KeyValueMatchingUtility.ScriptMaker.CreateFieldContent
+                            SingleABField += KeyValueMatchingUtility.SimpleScriptMaker.CreateFieldContent
                       ("string", "PreName", "public static", "=" + $"\"{ab}\"");
 
-                            SingleABField += KeyValueMatchingUtility.ScriptMaker.CreateFieldContent
+                            SingleABField += KeyValueMatchingUtility.SimpleScriptMaker.CreateFieldContent
                                ("string", "WithHash", "public static", "=" + $"\"{withHash}\"");
 
-                            SingleABField += KeyValueMatchingUtility.ScriptMaker.CreateFieldContent
+                            SingleABField += KeyValueMatchingUtility.SimpleScriptMaker.CreateFieldContent
                               ("string", "Hash", "public static", "=" + $"\"{GlobalDataForResMaster.Instance.GetHashFromCompleteNameWithHash(withHash)}\"");
                         }
                     }
@@ -263,17 +264,17 @@ namespace ES
                             tryUse = origin + "_" + repeat;
                             repeat++;
                         }
-                        string key = $"{KeyValueMatchingUtility.ScriptMaker.HandleString_RemoveExtension(KeyValueMatchingUtility.ScriptMaker.HandleString_ToValidName(tryUse))}";
+                        string key = $"{KeyValueMatchingUtility.SimpleScriptMaker.HandleString_RemoveExtension(KeyValueMatchingUtility.SimpleScriptMaker.HandleString_ToValidName(tryUse))}";
                         if (codeType == GlobalDataForResMaster.ABForAutoCodeGen.CodeAsUpper) key = key.ToUpper();
                         else if (codeType == GlobalDataForResMaster.ABForAutoCodeGen.CodeAsLower) key = key.ToLower();
-                        string value = $"\"{KeyValueMatchingUtility.ScriptMaker.HandleString_RemoveExtension(dir.Name)}\"";
+                        string value = $"\"{KeyValueMatchingUtility.SimpleScriptMaker.HandleString_RemoveExtension(dir.Name)}\"";
                         allPathsNoRepeatOriginal.Add(tryUse);
                         allPathsNoRepeatToUse.Add(key);
                         allValueNoRepeat.Add(value);
 
 
 
-                        string aField = KeyValueMatchingUtility.ScriptMaker.CreateFieldContent
+                        string aField = KeyValueMatchingUtility.SimpleScriptMaker.CreateFieldContent
                             ("string", key,
                             modifier: "public static", valueDefine: $"={value}");
                         SingleABField += aField;
@@ -287,25 +288,25 @@ namespace ES
                             AllPathsKeyValueContent += '\n';
                         }
                     }
-                    string AllPathsListString = KeyValueMatchingUtility.ScriptMaker.CreateFieldContent
+                    string AllPathsListString = KeyValueMatchingUtility.SimpleScriptMaker.CreateFieldContent
                     ("Dictionary<string, string> ", "AllPaths",
                             modifier: "public static", valueDefine: $"\n=new Dictionary<string, string> {{ {AllPathsKeyValueContent} }}");
 
 
-                    string ABClass = KeyValueMatchingUtility.ScriptMaker.CreateClassContentByString(showAB, "static", insideClass: SingleABField + AllPathsListString, parent: "");
+                    string ABClass = KeyValueMatchingUtility.SimpleScriptMaker.CreateClassContentByString(showAB, "static", insideClass: SingleABField + AllPathsListString, parent: "");
                     theContent.Append(ABClass);
                 }
 
-                string hashTest = KeyValueMatchingUtility.ScriptMaker.CreateNotes(AllHashDicContent);
+                string hashTest = KeyValueMatchingUtility.SimpleScriptMaker.CreateNotes(AllHashDicContent);
 
-                string ABAssetDic = KeyValueMatchingUtility.ScriptMaker.CreateFieldContent("Dictionary<string, Dictionary<string,string>>",
+                string ABAssetDic = KeyValueMatchingUtility.SimpleScriptMaker.CreateFieldContent("Dictionary<string, Dictionary<string,string>>",
                     "AllPathsDic", "public static", "\n=new Dictionary<string, Dictionary<string, string>>()\n{" + AllABDicContent + "}");
 
-                string ABHashDic = KeyValueMatchingUtility.ScriptMaker.CreateFieldContent("Dictionary<string,string>",
+                string ABHashDic = KeyValueMatchingUtility.SimpleScriptMaker.CreateFieldContent("Dictionary<string,string>",
                     "AllABHashDic", "public static", "\n=new Dictionary<string, string>()\n{" + AllHashDicContent + "}");
 
 
-                KeyValueMatchingUtility.ScriptMaker.CreateScriptNormal
+                KeyValueMatchingUtility.SimpleScriptMaker.CreateScriptNormal
                     (genarateCodeFolder, "ESAssetBundlePath", "static partial",
                     insideClass: hashTest + ABAssetDic + ABHashDic + theContent.ToString(), parent: "", using_: "using System.Collections.Generic;");
             }
@@ -414,12 +415,12 @@ namespace ES
             //警告信息
             [TabGroup("标记收集与查询")]
             [ShowIf("warnIfChineseOrSymbol"), ShowInInspector, HideLabel, DisplayAsString(fontSize: 22, Alignment = TextAlignment.Center, EnableRichText = true), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_03")]
-            private string warn_ = "！不要使用包含<b><withHash>中文或者违规符号</withHash></b> ,  \"_\"可用 包名！！！";
+            private string warn_ = "！不要使用包含<b><i>中文或者违规符号</i></b> ,  \"_\"可用 包名！！！";
 
             //警告信息
             [TabGroup("标记收集与查询")]
             [ShowIf("warnIfPoint"), ShowInInspector, HideLabel, DisplayAsString(fontSize: 18, Alignment = TextAlignment.Center, EnableRichText = true), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_02")]
-            private string warn2 = "！包名所有的<b><withHash>\".\"</withHash></b> 会被替换为 <b><withHash>\"_\"</withHash></b> ！";
+            private string warn2 = "！包名所有的<b><i>\".\"</i></b> 会被替换为 <b><i>\"_\"</i></b> ！";
 
             //选中查询AB包名
             [LabelText("", Text = "@showAssetBundleName()"), OnValueChanged("PingABAsset")]

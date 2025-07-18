@@ -3,9 +3,11 @@ using ES;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using static ES.EnumCollect;
 
 namespace ES
 {
@@ -15,6 +17,7 @@ namespace ES
         //函数器
         public static class Function
         {
+            #region 数学
             //操作两个FLoat
             public static float FunctionForTwoFloat(float f1, float f2, EnumCollect.HandleTwoFloatFunction twoFloatFunction)
             {
@@ -68,6 +71,29 @@ namespace ES
                 }
                 return false;
             }
+            #endregion
+
+            #region 字符串
+            public static string FunctionForStringAsIndentNameCase(string input, HandleIndentStringName handleType)
+            {
+                if (string.IsNullOrEmpty(input))
+                    return input;
+
+                // 使用不变文化设置确保跨平台一致性
+                CultureInfo culture = CultureInfo.InvariantCulture;
+
+                return handleType switch
+                {
+                    HandleIndentStringName.StartToUpper => input._FirstUpper(culture),
+                    HandleIndentStringName.StartToLower => input._FirstLower(culture),
+                    HandleIndentStringName.AllUpper => input.ToUpper(culture),
+                    HandleIndentStringName.AllLower => input.ToLower(culture),
+                    _ => input // 默认返回原字符串
+                };
+            }
+            #endregion
+
+            #region 容器
             //取出一个
             public static T GetOne<T>(List<T> values, EnumCollect.PointerSelectOneType selectOneType, ref int lastIndex)
             {
@@ -160,6 +186,9 @@ namespace ES
                 }
                 return default;
             }
+            #endregion
+
+            #region 集成Dotween
             //dotween集成
             public static Delegate GetCallBackFromTween(Tween use, EnumCollect.CallBackType callBackType)
             {
@@ -250,6 +279,7 @@ namespace ES
                     default: return value;
                 }
             }
+            #endregion
         }
     }
 }

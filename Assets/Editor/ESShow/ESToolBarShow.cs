@@ -13,6 +13,7 @@ using UnityEditor.SceneManagement;
 using System.IO;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 using FishNet.Demo.AdditiveScenes;
+using static FishNet.Component.Transforming.NetworkTransform;
 
 namespace ES
 {
@@ -225,6 +226,19 @@ namespace ES
                             break;
                         }
                     });
+                    menu.AddItem(new GUIContent("<全局数据总文件夹>"), false, () =>
+                    {
+                        string[] guids = AssetDatabase.FindAssets("GlobalData");
+                        foreach (var i in guids)
+                        {
+                            string path = AssetDatabase.GUIDToAssetPath(i);
+                            var use = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path);
+                            Selection.activeObject = use;
+                            EditorGUIUtility.PingObject(use);
+                            break;
+                        }
+                    });
+                    
                     menu.AddSeparator("");
                     menu.AddItem(new GUIContent("<玩家对象>"), false, () =>
                     {

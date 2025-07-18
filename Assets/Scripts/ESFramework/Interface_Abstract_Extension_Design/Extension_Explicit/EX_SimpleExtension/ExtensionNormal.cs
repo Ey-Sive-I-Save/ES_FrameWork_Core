@@ -30,12 +30,14 @@ namespace ES
         // 93. 检查对象是否为null
         public static bool _IsNull<T>(this T obj) where T : class
         {
+            if (obj is UnityEngine.Object O) return O == null;
             return obj == null;
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         // 94. 检查对象是否不为null
         public static bool _IsNotNull<T>(this T obj) where T : class
         {
+            if (obj is UnityEngine.Object O) return O != null;
             return obj != null;
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

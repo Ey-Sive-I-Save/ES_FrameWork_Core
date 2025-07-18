@@ -4,19 +4,19 @@ using UnityEngine;
 namespace ES
 {
     #ROOTNAMESPACEBEGIN#
-public class #SCRIPTNAME# : MonoBehaviour
-{
-    
-    void Start()
+    public class #SCRIPTNAME# : MonoBehaviour
     {
-        #NOTRIM#
-    }
+    
+        void Start()
+        {
+            #NOTRIM#
+        }
 
     
-    void Update()
-    {
-        #NOTRIM#
+        void Update()
+        {
+            #NOTRIM#
+        }
     }
-}
 }
 #ROOTNAMESPACEEND#

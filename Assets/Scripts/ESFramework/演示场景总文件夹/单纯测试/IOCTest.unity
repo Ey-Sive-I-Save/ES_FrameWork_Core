@@ -1285,7 +1285,7 @@ MonoBehaviour:
   m_ComponentOwner: {fileID: 1385734941}
 --- !u!4 &264615170
 Transform:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1493,7 +1493,6 @@ GameObject:
   m_Component:
   - component: {fileID: 336444971}
   - component: {fileID: 336444970}
-  - component: {fileID: 336444972}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1537,261 +1536,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &336444972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 336444969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017edcaaa1566064b910202d89c8c790, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: aaa
-      Entry: 7
-      Data: 0|System.Collections.Generic.Stack`1[[ES.Attackable, ES]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 2
-    - Name: 
-      Entry: 7
-      Data: 1|ES.Attackable, ES
-    - Name: Damage
-      Entry: 4
-      Data: 10
-    - Name: AttackRangeDis
-      Entry: 4
-      Data: 1
-    - Name: AttackSpeed
-      Entry: 4
-      Data: 1
-    - Name: attackType
-      Entry: 3
-      Data: 1
-    - Name: require
-      Entry: 3
-      Data: 0
-    - Name: attackOn
-      Entry: 3
-      Data: 1
-    - Name: preDelay
-      Entry: 4
-      Data: 0.25
-    - Name: attackExit_
-      Entry: 4
-      Data: 0.8
-    - Name: playSound
-      Entry: 6
-      Data: 
-    - Name: prefabForShow
-      Entry: 7
-      Data: 2|ES.EvPointer.PointerForGameObject_Direct, ES
-    - Name: g
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: prefabForEffector
-      Entry: 7
-      Data: 3|ES.EvPointer.PointerForGameObject_Direct, ES
-    - Name: g
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 4|ES.Attackable_SimpleEnemy, ES
-    - Name: Damage
-      Entry: 4
-      Data: 35.49
-    - Name: AttackRangeDis
-      Entry: 4
-      Data: 1
-    - Name: AttackSpeed
-      Entry: 4
-      Data: 1
-    - Name: attackType
-      Entry: 3
-      Data: 1
-    - Name: require
-      Entry: 3
-      Data: 0
-    - Name: attackOn
-      Entry: 3
-      Data: 1
-    - Name: preDelay
-      Entry: 4
-      Data: 0.25
-    - Name: attackExit_
-      Entry: 4
-      Data: 0.8
-    - Name: playSound
-      Entry: 6
-      Data: 
-    - Name: prefabForShow
-      Entry: 7
-      Data: 5|ES.EvPointer.PointerForGameObject_Direct, ES
-    - Name: g
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: prefabForEffector
-      Entry: 7
-      Data: 6|ES.EvPointer.PointerForGameObject_Direct, ES
-    - Name: g
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: AttackRangeAngle
-      Entry: 4
-      Data: 60
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: aaa2
-      Entry: 7
-      Data: 7|System.Collections.Generic.Stack`1[[ES.Attackable, ES]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 2
-    - Name: 
-      Entry: 7
-      Data: 8|ES.Attackable, ES
-    - Name: Damage
-      Entry: 4
-      Data: 10
-    - Name: AttackRangeDis
-      Entry: 4
-      Data: 1
-    - Name: AttackSpeed
-      Entry: 4
-      Data: 1
-    - Name: attackType
-      Entry: 3
-      Data: 1
-    - Name: require
-      Entry: 3
-      Data: 0
-    - Name: attackOn
-      Entry: 3
-      Data: 1
-    - Name: preDelay
-      Entry: 4
-      Data: 0.25
-    - Name: attackExit_
-      Entry: 4
-      Data: 0.8
-    - Name: playSound
-      Entry: 6
-      Data: 
-    - Name: prefabForShow
-      Entry: 7
-      Data: 9|ES.EvPointer.PointerForGameObject_Direct, ES
-    - Name: g
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: prefabForEffector
-      Entry: 7
-      Data: 10|ES.EvPointer.PointerForGameObject_Direct, ES
-    - Name: g
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 11|ES.Attackable_SimpleEnemy, ES
-    - Name: Damage
-      Entry: 4
-      Data: 35.49
-    - Name: AttackRangeDis
-      Entry: 4
-      Data: 1
-    - Name: AttackSpeed
-      Entry: 4
-      Data: 1
-    - Name: attackType
-      Entry: 3
-      Data: 1
-    - Name: require
-      Entry: 3
-      Data: 0
-    - Name: attackOn
-      Entry: 3
-      Data: 1
-    - Name: preDelay
-      Entry: 4
-      Data: 0.25
-    - Name: attackExit_
-      Entry: 4
-      Data: 0.8
-    - Name: playSound
-      Entry: 6
-      Data: 
-    - Name: prefabForShow
-      Entry: 7
-      Data: 12|ES.EvPointer.PointerForGameObject_Direct, ES
-    - Name: g
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: prefabForEffector
-      Entry: 7
-      Data: 13|ES.EvPointer.PointerForGameObject_Direct, ES
-    - Name: g
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: AttackRangeAngle
-      Entry: 4
-      Data: 60
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
 --- !u!1 &337080719
 GameObject:
   m_ObjectHideFlags: 0
@@ -4775,7 +4519,7 @@ Camera:
   m_StereoSeparation: 0.022
 --- !u!4 &1236482513
 Transform:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -8200,6 +7944,8 @@ GameObject:
   - component: {fileID: 1994288723}
   - component: {fileID: 1994288722}
   - component: {fileID: 1994288724}
+  - component: {fileID: 1994288726}
+  - component: {fileID: 1994288725}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -8284,45 +8030,99 @@ MonoBehaviour:
   m_GameObject: {fileID: 1994288721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5eb528c0d07f29a489d995cd643b29c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 85e271e1f7f0a3f43b36f1e41e4ca13f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  from:
-    <SharedData>k__BackingField:
-      allDrinks:
-      - kele
-      - juice
-      - water
-      size: {x: 2.03, y: 0, z: 0}
-      brand: "\u54C1\u724C"
-    <VariableData>k__BackingField:
-      pos: {x: -5.41, y: 0, z: 0}
-      hasEarn: 555
-      hasStay: 555
-  to1:
-    <SharedData>k__BackingField:
-      allDrinks:
-      - kele
-      - juice
-      - water
-      size: {x: 2.03, y: 0, z: 0}
-      brand: "\u54C1\u724C"
-    <VariableData>k__BackingField:
-      pos: {x: -5.41, y: 36.33, z: 0}
-      hasEarn: 0
-      hasStay: 0
-  to2:
-    <SharedData>k__BackingField:
-      allDrinks:
-      - kele
-      - juice
-      - water
-      size: {x: 2.03, y: 0, z: 0}
-      brand: "\u54C1\u724C"
-    <VariableData>k__BackingField:
-      pos: {x: -14.22, y: 0, z: 0}
-      hasEarn: 0
-      hasStay: 0
+  count: 1000
+  col: {fileID: 0}
+  has: 0
+--- !u!183 &1994288725
+Cloth:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994288721}
+  m_Enabled: 1
+  m_StretchingStiffness: 1
+  m_BendingStiffness: 0
+  m_UseTethers: 1
+  m_UseGravity: 1
+  m_Damping: 0
+  m_ExternalAcceleration: {x: 0, y: 0, z: 0}
+  m_RandomAcceleration: {x: 0, y: 0, z: 0}
+  m_WorldVelocityScale: 0.5
+  m_WorldAccelerationScale: 1
+  m_Friction: 0.5
+  m_CollisionMassScale: 0
+  m_UseContinuousCollision: 1
+  m_UseVirtualParticles: 1
+  m_SolverFrequency: 120
+  m_SleepThreshold: 0.1
+  m_Coefficients: []
+  m_CapsuleColliders: []
+  m_SphereColliders: []
+  m_SelfCollisionDistance: 0
+  m_SelfCollisionStiffness: 0.2
+  m_SelfAndInterCollisionIndices: 
+  m_VirtualParticleWeights:
+  - {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+  - {x: 0.6666667, y: 0.16666667, z: 0.16666667}
+  - {x: 0.5, y: 0.5, z: 0}
+  m_VirtualParticleIndices: 
+--- !u!137 &1994288726
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994288721}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 0}
+  m_Bones: []
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 0}
+  m_AABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_DirtyAABB: 0
 --- !u!1 &1996289902
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - PlayerBullet
   - EnemyBullet
+  - New tag
+  - ' asd sad ) ++'
+  - New tag_1
   layers:
   - Default
   - TransparentFX
@@ -28,7 +31,7 @@ TagManager:
   - 
   - 
   - Weapon
-  - 
+  - Test()
   - 
   - 
   - 

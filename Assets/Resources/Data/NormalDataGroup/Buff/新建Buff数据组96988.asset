@@ -75,7 +75,7 @@ MonoBehaviour:
     triggerTimeDis: 1
     opeationForTimeDis:
       rid: -2
-    EnableOnOffTrigger: 0
+    EnableOnOffTrigger: 1
     opeationForOnOff:
       rid: -2
     icon: {fileID: 0}
