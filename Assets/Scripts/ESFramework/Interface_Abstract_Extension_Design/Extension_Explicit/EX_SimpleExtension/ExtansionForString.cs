@@ -1,12 +1,17 @@
-﻿using System;
+﻿#define USE_ES
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.Windows;
+using static UnityEditor.PlayerSettings.SplashScreen;
 
 namespace ES
 {
@@ -18,7 +23,7 @@ namespace ES
         /// <summary>
         /// 从字符串前端截取到指定分隔符
         /// </summary>
-        public static string _KeepBefore(this string source, string separator,
+        public static string _KeepBeforeByFirst(this string source, string separator,
                                         bool includeSeparator = false,
                                         StringComparison comparison = StringComparison.Ordinal)
         {
@@ -31,17 +36,43 @@ namespace ES
                 source.Substring(0, index + separator.Length) :
                 source.Substring(0, index);
         }
+        public static string _KeepBeforeByLast(this string source, string separator,
+                                        bool includeSeparator = false,
+                                        StringComparison comparison = StringComparison.Ordinal)
+        {
+            if (string.IsNullOrEmpty(source)) return source;
+
+            int index = source.LastIndexOf(separator, comparison);
+            if (index < 0) return source; // 未找到分隔符返回原字符串
+
+            return includeSeparator ?
+                source.Substring(0, index + separator.Length) :
+                source.Substring(0, index);
+        }
 
         /// <summary>
         /// 从字符串后端截取到指定分隔符
         /// </summary>
-        public static string _KeepAfter(this string source, string separator,
+        public static string _KeepAfterByLast(this string source, string separator,
                                            bool includeSeparator = false,
                                            StringComparison comparison = StringComparison.Ordinal)
         {
             if (string.IsNullOrEmpty(source)) return source;
 
             int index = source.LastIndexOf(separator, comparison);
+            if (index < 0) return source; // 未找到分隔符返回原字符串
+
+            return includeSeparator ?
+                source.Substring(index) :
+                source.Substring(index + separator.Length);
+        }
+        public static string _KeepAfterByFirst(this string source, string separator,
+                                         bool includeSeparator = false,
+                                         StringComparison comparison = StringComparison.Ordinal)
+        {
+            if (string.IsNullOrEmpty(source)) return source;
+
+            int index = source.IndexOf(separator, comparison);
             if (index < 0) return source; // 未找到分隔符返回原字符串
 
             return includeSeparator ?
@@ -57,7 +88,7 @@ namespace ES
         public static string _KeepBeforeCutFlag(this string source, string separator,
                                        StringComparison comparison = StringComparison.Ordinal)
         {
-            return source._KeepBefore(separator, false, comparison);
+            return source._KeepBeforeByFirst(separator, false, comparison);
         }
 
         /// <summary>
@@ -66,7 +97,7 @@ namespace ES
         public static string _KeepAfterCutFlag(this string source, string separator,
                                       StringComparison comparison = StringComparison.Ordinal)
         {
-            return source._KeepAfter(separator, false, comparison);
+            return source._KeepAfterByLast(separator, false, comparison);
         }
 
         /// <summary>
@@ -100,22 +131,36 @@ namespace ES
         /// <summary>
         /// 保留指定字符之前的内容
         /// </summary>
-        public static string _KeepBeforeByChar(this string source, char separator)
+        public static string _KeepBeforeByFirstChar(this string source, char separator)
         {
             if (string.IsNullOrEmpty(source)) return source;
 
             int index = source.IndexOf(separator);
             return index < 0 ? source : source.Substring(0, index);
         }
-
-        /// <summary>
-        /// 保留指定字符之后的内容
-        /// </summary>
-        public static string _KeepAfterByChar(this string source, char separator)
+        public static string _KeepBeforeByLastChar(this string source, char separator)
         {
             if (string.IsNullOrEmpty(source)) return source;
 
             int index = source.LastIndexOf(separator);
+            return index < 0 ? source : source.Substring(0, index);
+        }
+
+        /// <summary>
+        /// 保留指定字符之后的内容
+        /// </summary>
+        public static string _KeepAfterByLastChar(this string source, char separator)
+        {
+            if (string.IsNullOrEmpty(source)) return source;
+
+            int index = source.LastIndexOf(separator);
+            return index < 0 ? source : source.Substring(index + 1);
+        }
+        public static string _KeepAfterByFirstChar(this string source, char separator)
+        {
+            if (string.IsNullOrEmpty(source)) return source;
+
+            int index = source.IndexOf(separator);
             return index < 0 ? source : source.Substring(index + 1);
         }
 
@@ -128,7 +173,7 @@ namespace ES
         }
         #endregion
 
-        #region 特征部分
+        #region 特征查询部分
         public static bool _IsValidEmail(this string str)
         {
             try
@@ -233,6 +278,11 @@ namespace ES
             return str;
         }
 
+        public static string _AddPreAndLast(this string str, string pre, string last)
+        {
+            return pre + str + last;
+        }
+
         public static string _FirstCharToUpperCapitalize(this string input)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -305,6 +355,32 @@ namespace ES
                 return "@" + normalized;
 
             return normalized;
+        }
+
+        public static string _ToCode(this string code)
+        {
+            int indentLevel = 0;
+            string cleanedCode = Regex.Replace(code, @"\r?\n", "\n"); // 统一换行符
+            string pattern = @"[ \t]+";  // \s 匹配使用的空白符（空格、制表符等）
+            cleanedCode = Regex.Replace(cleanedCode, pattern, " "); // 最多保留两个连续空行和空格
+            
+            StringBuilder sb = new StringBuilder();
+            foreach (char c in cleanedCode)
+            {
+                if (c == '{') indentLevel++;
+                else if (c == '}')
+                {
+                    indentLevel = Math.Max(0, indentLevel - 1);
+                }
+
+                sb.Append(c);
+                if (c == '\n')
+                {
+                    sb.Append(new string(' ', indentLevel * 4));
+                }
+            }
+
+            return sb.ToString()+"\n//ES已修正";
         }
         #endregion
 
@@ -379,7 +455,7 @@ namespace ES
                 return BitConverter.ToString(bytes).Replace("-", "").ToLower();
             }
         }
-       
+
         #endregion
 
 

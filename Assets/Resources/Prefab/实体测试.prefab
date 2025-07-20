@@ -82,6 +82,8 @@ MonoBehaviour:
   ESTagsC:
     Tags: []
   NetObject: {fileID: 0}
+  NetBehaviour: {fileID: 0}
+  _isNet: 0
   NormalDomain:
     rid: 2405589129531228996
   StateMachineDomain:
@@ -114,7 +116,8 @@ MonoBehaviour:
           showColor: {r: 1, g: 1, b: 1, a: 1}
         core: {fileID: 0}
         Modules:
-          valuesNow_: []
+          ValuesNow: []
+          MayHasElement: 1
     - rid: 2405589129531228997
       type: {class: StateMachineDomainForEntity, ns: ES, asm: ES}
       data:
@@ -125,13 +128,15 @@ MonoBehaviour:
           showColor: {r: 1, g: 1, b: 1, a: 1}
         core: {fileID: 0}
         Modules:
-          valuesNow_: []
+          ValuesNow: []
+          MayHasElement: 1
         StateMachine:
           _enableSelf: 1
           _SelfRunningState:
             rid: -2
           _SelfRunningStates:
-            valuesNow_: []
+            ValuesNow: []
+            MayHasElement: 1
           entity: {fileID: 0}
           StateDomain:
             readMe:
@@ -141,13 +146,15 @@ MonoBehaviour:
               showColor: {r: 1, g: 1, b: 1, a: 1}
             core: {fileID: 0}
             Modules:
-              valuesNow_: []
+              ValuesNow: []
+              MayHasElement: 1
             StateMachine:
               _enableSelf: 1
               _SelfRunningState:
                 rid: -2
               _SelfRunningStates:
-                valuesNow_: []
+                ValuesNow: []
+                MayHasElement: 1
               entity: {fileID: 0}
               StateDomain:
                 readMe:
@@ -157,13 +164,15 @@ MonoBehaviour:
                   showColor: {r: 1, g: 1, b: 1, a: 1}
                 core: {fileID: 0}
                 Modules:
-                  valuesNow_: []
+                  ValuesNow: []
+                  MayHasElement: 1
                 StateMachine:
                   _enableSelf: 1
                   _SelfRunningState:
                     rid: -2
                   _SelfRunningStates:
-                    valuesNow_: []
+                    ValuesNow: []
+                    MayHasElement: 1
                   entity: {fileID: 0}
                   StateDomain:
                     readMe:
@@ -173,13 +182,15 @@ MonoBehaviour:
                       showColor: {r: 1, g: 1, b: 1, a: 1}
                     core: {fileID: 0}
                     Modules:
-                      valuesNow_: []
+                      ValuesNow: []
+                      MayHasElement: 1
                     StateMachine:
                       _enableSelf: 1
                       _SelfRunningState:
                         rid: -2
                       _SelfRunningStates:
-                        valuesNow_: []
+                        ValuesNow: []
+                        MayHasElement: 1
                       entity: {fileID: 0}
                       StateDomain:
                         readMe:
@@ -189,13 +200,15 @@ MonoBehaviour:
                           showColor: {r: 1, g: 1, b: 1, a: 1}
                         core: {fileID: 0}
                         Modules:
-                          valuesNow_: []
+                          ValuesNow: []
+                          MayHasElement: 1
                         StateMachine:
                           _enableSelf: 1
                           _SelfRunningState:
                             rid: -2
                           _SelfRunningStates:
-                            valuesNow_: []
+                            ValuesNow: []
+                            MayHasElement: 1
                           entity: {fileID: 0}
                           StateDomain:
                             readMe:
@@ -204,6 +217,8 @@ MonoBehaviour:
                               readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
                               showColor: {r: 1, g: 1, b: 1, a: 1}
                             core: {fileID: 0}
+                            Modules:
+                              MayHasElement: 1
                             StateMachine:
                               _enableSelf: 1
                             RegisterPack: {fileID: 0}
@@ -212,14 +227,20 @@ MonoBehaviour:
                             _enableSelf: 1
                             _SelfRunningState:
                               rid: -2
+                            _SelfRunningStates:
+                              MayHasElement: 1
                           BuffMachine:
                             _enableSelf: 1
                             _SelfRunningState:
                               rid: -2
+                            _SelfRunningStates:
+                              MayHasElement: 1
                           InteractionMachine:
                             _enableSelf: 1
                             _SelfRunningState:
                               rid: -2
+                            _SelfRunningStates:
+                              MayHasElement: 1
                         RegisterPack: {fileID: 0}
                         DefaultStateName: "\u9759\u6B62"
                       SkillMachine:
@@ -227,19 +248,22 @@ MonoBehaviour:
                         _SelfRunningState:
                           rid: -2
                         _SelfRunningStates:
-                          valuesNow_: []
+                          ValuesNow: []
+                          MayHasElement: 1
                       BuffMachine:
                         _enableSelf: 1
                         _SelfRunningState:
                           rid: -2
                         _SelfRunningStates:
-                          valuesNow_: []
+                          ValuesNow: []
+                          MayHasElement: 1
                       InteractionMachine:
                         _enableSelf: 1
                         _SelfRunningState:
                           rid: -2
                         _SelfRunningStates:
-                          valuesNow_: []
+                          ValuesNow: []
+                          MayHasElement: 1
                     RegisterPack: {fileID: 0}
                     DefaultStateName: "\u9759\u6B62"
                   SkillMachine:
@@ -247,19 +271,22 @@ MonoBehaviour:
                     _SelfRunningState:
                       rid: -2
                     _SelfRunningStates:
-                      valuesNow_: []
+                      ValuesNow: []
+                      MayHasElement: 1
                   BuffMachine:
                     _enableSelf: 1
                     _SelfRunningState:
                       rid: -2
                     _SelfRunningStates:
-                      valuesNow_: []
+                      ValuesNow: []
+                      MayHasElement: 1
                   InteractionMachine:
                     _enableSelf: 1
                     _SelfRunningState:
                       rid: -2
                     _SelfRunningStates:
-                      valuesNow_: []
+                      ValuesNow: []
+                      MayHasElement: 1
                 RegisterPack: {fileID: 0}
                 DefaultStateName: "\u9759\u6B62"
               SkillMachine:
@@ -267,19 +294,22 @@ MonoBehaviour:
                 _SelfRunningState:
                   rid: -2
                 _SelfRunningStates:
-                  valuesNow_: []
+                  ValuesNow: []
+                  MayHasElement: 1
               BuffMachine:
                 _enableSelf: 1
                 _SelfRunningState:
                   rid: -2
                 _SelfRunningStates:
-                  valuesNow_: []
+                  ValuesNow: []
+                  MayHasElement: 1
               InteractionMachine:
                 _enableSelf: 1
                 _SelfRunningState:
                   rid: -2
                 _SelfRunningStates:
-                  valuesNow_: []
+                  ValuesNow: []
+                  MayHasElement: 1
             RegisterPack: {fileID: 0}
             DefaultStateName: "\u9759\u6B62"
           SkillMachine:
@@ -287,19 +317,22 @@ MonoBehaviour:
             _SelfRunningState:
               rid: -2
             _SelfRunningStates:
-              valuesNow_: []
+              ValuesNow: []
+              MayHasElement: 1
           BuffMachine:
             _enableSelf: 1
             _SelfRunningState:
               rid: -2
             _SelfRunningStates:
-              valuesNow_: []
+              ValuesNow: []
+              MayHasElement: 1
           InteractionMachine:
             _enableSelf: 1
             _SelfRunningState:
               rid: -2
             _SelfRunningStates:
-              valuesNow_: []
+              ValuesNow: []
+              MayHasElement: 1
         RegisterPack: {fileID: 0}
         DefaultStateName: "\u9759\u6B62"
     - rid: 2405589129531228998
@@ -312,7 +345,8 @@ MonoBehaviour:
           showColor: {r: 1, g: 1, b: 1, a: 1}
         core: {fileID: 0}
         Modules:
-          valuesNow_: []
+          ValuesNow: []
+          MayHasElement: 1
     - rid: 2405589129531228999
       type: {class: BuffDomainForEntity, ns: ES, asm: ES}
       data:
@@ -323,75 +357,8 @@ MonoBehaviour:
           showColor: {r: 1, g: 1, b: 1, a: 1}
         core: {fileID: 0}
         Modules:
-          valuesNow_: []
-        buffHosting:
-          buffRTLs:
-            valuesNow_: []
-            valuesToAdd: []
-            valuesToRemove: []
-          buffDomain:
-            readMe:
-              edit: 1
-              ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-              readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-              showColor: {r: 1, g: 1, b: 1, a: 1}
-            core: {fileID: 0}
-            Modules:
-              valuesNow_: []
-            buffHosting:
-              buffRTLs:
-                valuesNow_: []
-                valuesToAdd: []
-                valuesToRemove: []
-              buffDomain:
-                readMe:
-                  edit: 1
-                  ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-                  readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-                  showColor: {r: 1, g: 1, b: 1, a: 1}
-                core: {fileID: 0}
-                Modules:
-                  valuesNow_: []
-                buffHosting:
-                  buffRTLs:
-                    valuesNow_: []
-                    valuesToAdd: []
-                    valuesToRemove: []
-                  buffDomain:
-                    readMe:
-                      edit: 1
-                      ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-                      readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-                      showColor: {r: 1, g: 1, b: 1, a: 1}
-                    core: {fileID: 0}
-                    Modules:
-                      valuesNow_: []
-                    buffHosting:
-                      buffRTLs:
-                        valuesNow_: []
-                        valuesToAdd: []
-                        valuesToRemove: []
-                      buffDomain:
-                        readMe:
-                          edit: 1
-                          ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-                          readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-                          showColor: {r: 1, g: 1, b: 1, a: 1}
-                        core: {fileID: 0}
-                        Modules:
-                          valuesNow_: []
-                        buffHosting:
-                          buffRTLs:
-                            valuesNow_: []
-                            valuesToAdd: []
-                            valuesToRemove: []
-                          buffDomain:
-                            readMe:
-                              edit: 1
-                              ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-                              readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-                              showColor: {r: 1, g: 1, b: 1, a: 1}
-                            core: {fileID: 0}
+          ValuesNow: []
+          MayHasElement: 1
 --- !u!1 &5655718423670873274
 GameObject:
   m_ObjectHideFlags: 0

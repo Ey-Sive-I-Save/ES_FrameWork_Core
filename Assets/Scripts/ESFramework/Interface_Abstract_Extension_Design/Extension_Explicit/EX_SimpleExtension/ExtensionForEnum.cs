@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using UnityEngine;
 
 namespace ES
@@ -11,7 +12,7 @@ namespace ES
 
     public static class ExtensionForEnum 
     {
-
+        #region 常规
         // 81. 检查枚举是否包含特定标志
         public static bool HasFlag<T>(this T enumValue, T flag) where T : Enum
         {
@@ -78,6 +79,24 @@ namespace ES
             T[] values = (T[])Enum.GetValues(typeof(T));
             return values[UnityEngine.Random.Range(0, values.Length)];
         }
+        #endregion
+        #region ES扩展
+        public static ESMessage _Get_ATT_ESMessage<T>(this T enumValue) where T : Enum
+        {
+            Type type = enumValue.GetType();
+            FieldInfo field = type.GetField(enumValue.ToString());
+            var att = field.GetCustomAttribute<ESMessage>();
+            return att;
+        }
+
+        public static string _Get_ATT_ESStringMessage<T>(this T enumValue,string defaultValue="") where T : Enum
+        {
+            Type type = enumValue.GetType();
+            FieldInfo field = type.GetField(enumValue.ToString());
+            var att = field.GetCustomAttribute<ESMessage>();
+            return att?.message ?? defaultValue;
+        }
+        #endregion
     }
 }
 

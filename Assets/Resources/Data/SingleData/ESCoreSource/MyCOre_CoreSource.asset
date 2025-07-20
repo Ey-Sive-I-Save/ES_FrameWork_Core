@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37f30394300b68f488c165f502a8937a, type: 3}
+  m_Name: MyCOre_CoreSource
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  path: Assets/Scripts/ESFramework/CodeGen/Target/Core_Domain_Module
+  CoreClassName: MyCOre
+  CoreClassChinaName: "\u65B0\u6838\u5FC3"
+  Domains:
+  - DomainClassName: Normal
+    DomainChinaClassName: "\u65B0\u7684\u57DF"
+    Modules:
+    - ModuleClassName: Run
+      ModuleChinaClassName: "\u8DD1"
+      DefineAtDomain: 1
+    - ModuleClassName: Jump
+      ModuleChinaClassName: "\u8DF3"
+      DefineAtDomain: 1
+    - ModuleClassName: Eat
+      ModuleChinaClassName: "\u5403"
+      DefineAtDomain: 0
+  - DomainClassName: Next
+    DomainChinaClassName: "\u4E0B\u4E00\u4E2A"
+    Modules:
+    - ModuleClassName: Special
+      ModuleChinaClassName: "\u7279\u6B8A"
+      DefineAtDomain: 0
+    - ModuleClassName: Net
+      ModuleChinaClassName: "\u7F51\u7EDC"
+      DefineAtDomain: 1

@@ -22,6 +22,7 @@ namespace ES
         //
         public class SafeEditor
         {
+            #region 获取特殊数据
             public static string[] GetAllTags()
             {
 #if UNITY_EDITOR
@@ -50,6 +51,11 @@ namespace ES
                 return new Dictionary<int, string>();
 #endif
             }
+
+
+            #endregion
+
+            #region 简单包装
             public static void SetDirty(UnityEngine.Object who, bool withRefresh = true)
             {
 #if UNITY_EDITOR
@@ -91,84 +97,17 @@ namespace ES
 #endif
             }
 
-            public static T CreateSO<T>(string savePath, string name) where T : UnityEngine.ScriptableObject
-            {
-                Debug.Log("创建 SO :" + name + "在" + savePath);
-                var ins = ScriptableObject.CreateInstance<T>();
-                if (ins != null)
-                {
-#if UNITY_EDITOR
-                    ins.name = name;
-                    AssetDatabase.CreateAsset(ins, savePath + "/" + ins.name + ".asset");
-                    AssetDatabase.Refresh();
-                    AssetDatabase.SaveAssets();
-#endif
-                    return ins;
-                }
-                return null;
-            }
-            public static T CreateSOAsset<T>(string folderPath, string assetName, bool appendRandomIfNotChangedDefaultName = false, bool hasChange = false, Action<T> beforeSave = null) where T : ScriptableObject
+            public static void CreateFolderDic(string path,string name)
             {
 #if UNITY_EDITOR
-
-                if (!AssetDatabase.IsValidFolder(folderPath))
-                {
-                    Debug.LogError($"Invalid folder path: {folderPath}");
-                    return null;
-                }
-                T asset = ScriptableObject.CreateInstance<T>();
-                asset.name = assetName + (appendRandomIfNotChangedDefaultName && !hasChange ? UnityEngine.Random.Range(0, 99999).ToString() : "");
-                string path = $"{folderPath}/{asset.name}.asset";
-
-                AssetDatabase.CreateAsset(asset, path);
-                beforeSave?.Invoke(asset);
-                AssetDatabase.SaveAssets();
-                AssetDatabase.Refresh();
-                return asset;
-#else
-                return null;
+                AssetDatabase.CreateFolder(path, name);
 #endif
             }
-            public static ScriptableObject CreateSOAsset(Type type, string folderPath, string assetName, bool appendRandomIfNotChangedDefaultName = false, bool hasChange = false, Action<ScriptableObject> beforeSave = null)
-            {
-#if UNITY_EDITOR
-                if (type == null) return null;
-                if (!AssetDatabase.IsValidFolder(folderPath))
-                {
-                    Debug.LogError($"Invalid folder path: {folderPath}");
-                    return null;
-                }
-                ScriptableObject asset = ScriptableObject.CreateInstance(type);
-                asset.name = assetName + (appendRandomIfNotChangedDefaultName && !hasChange ? UnityEngine.Random.Range(0, 99999).ToString() : "");
-                string path = $"{folderPath}/{asset.name}.asset";
+#endregion
 
-                AssetDatabase.CreateAsset(asset, path);
-                beforeSave?.Invoke(asset);
-                AssetDatabase.SaveAssets();
-                AssetDatabase.Refresh();
-                return asset;
-#else
-                return null;
-#endif
-            }
+            #region 资产查询
 
-            public static void InitAsset<T>() where T : UnityEngine.Object
-            {
-#if UNITY_EDITOR
-                List<T> results = new List<T>();
-                string[] guids = AssetDatabase.FindAssets($"t:{typeof(T).Name}");
-                foreach (string guid in guids)
-                {
-                    string path = AssetDatabase.GUIDToAssetPath(guid);
-                    T asset = AssetDatabase.LoadAssetAtPath<T>(path);
-                    if (asset != null)
-                    {
-                        results.Add(asset);
-                        EditorUtility.SetDirty(asset);
-                    }
-                }
-#endif
-            }
+
 
             public static List<T> FindSOAssets<T>() where T : class
             {
@@ -286,6 +225,111 @@ namespace ES
 #endif
                 return null;
             }
+
+
+
+            #endregion
+
+            #region 快捷功能
+            public static void PingAssetByPath(string path)
+            {
+#if UNITY_EDITOR
+                var asset = AssetDatabase.LoadAssetAtPath(path, typeof(UnityEngine.Object));
+                if (asset != null)
+                {
+                    EditorGUIUtility.PingObject(asset);
+                }
+                else
+                {
+                    Debug.LogError("未发现资产在路径" + path);
+                }
+#endif
+            }
+
+            public static void InitAsset<T>() where T : UnityEngine.Object
+            {
+#if UNITY_EDITOR
+                List<T> results = new List<T>();
+                string[] guids = AssetDatabase.FindAssets($"t:{typeof(T).Name}");
+                foreach (string guid in guids)
+                {
+                    string path = AssetDatabase.GUIDToAssetPath(guid);
+                    T asset = AssetDatabase.LoadAssetAtPath<T>(path);
+                    if (asset != null)
+                    {
+                        results.Add(asset);
+                        EditorUtility.SetDirty(asset);
+                    }
+                }
+#endif
+            }
+            #endregion
+
+            #region 资产创建
+            public static T CreateSO<T>(string savePath, string name) where T : UnityEngine.ScriptableObject
+            {
+                Debug.Log("创建 SO :" + name + "在" + savePath);
+                var ins = ScriptableObject.CreateInstance<T>();
+                if (ins != null)
+                {
+#if UNITY_EDITOR
+                    ins.name = name;
+                    AssetDatabase.CreateAsset(ins, savePath + "/" + ins.name + ".asset");
+                    AssetDatabase.Refresh();
+                    AssetDatabase.SaveAssets();
+#endif
+                    return ins;
+                }
+                return null;
+            }
+            public static T CreateSOAsset<T>(string folderPath, string assetName, bool appendRandomIfNotChangedDefaultName = false, bool hasChange = false, Action<T> beforeSave = null) where T : ScriptableObject
+            {
+#if UNITY_EDITOR
+
+                if (!AssetDatabase.IsValidFolder(folderPath))
+                {
+                    Debug.LogError($"Invalid folder path: {folderPath}");
+                    return null;
+                }
+                T asset = ScriptableObject.CreateInstance<T>();
+                asset.name = assetName + (appendRandomIfNotChangedDefaultName && !hasChange ? UnityEngine.Random.Range(0, 99999).ToString() : "");
+                string path = $"{folderPath}/{asset.name}.asset";
+
+                AssetDatabase.CreateAsset(asset, path);
+                beforeSave?.Invoke(asset);
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
+                return asset;
+#else
+                return null;
+#endif
+            }
+            public static ScriptableObject CreateSOAsset(Type type, string folderPath, string assetName, bool appendRandomIfNotChangedDefaultName = false, bool hasChange = false, Action<ScriptableObject> beforeSave = null)
+            {
+#if UNITY_EDITOR
+                if (type == null) return null;
+                if (!AssetDatabase.IsValidFolder(folderPath))
+                {
+                    Debug.LogError($"Invalid folder path: {folderPath}");
+                    return null;
+                }
+                ScriptableObject asset = ScriptableObject.CreateInstance(type);
+                asset.name = assetName + (appendRandomIfNotChangedDefaultName && !hasChange ? UnityEngine.Random.Range(0, 99999).ToString() : "");
+                string path = $"{folderPath}/{asset.name}.asset";
+
+                AssetDatabase.CreateAsset(asset, path);
+                beforeSave?.Invoke(asset);
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
+                return asset;
+#else
+                return null;
+#endif
+            }
+
+
+
+            #endregion
         }
     }
 }

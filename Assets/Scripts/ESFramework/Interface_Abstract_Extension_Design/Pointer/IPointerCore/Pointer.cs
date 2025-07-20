@@ -48,7 +48,7 @@ namespace ES.EvPointer
     //接口
     public interface IPointer<out Back, in ByON, in From, in With> : IPointer
     {
-        Back Pick(ByON by = default, From yarn = default, With on = default);
+        Back Pick(ByON on = default, From from = default, With with = default);
     }
     public interface IPointerOnlyBackList<Single> : IPointerOnlyBackIEnumerable<List<Single>>
     {

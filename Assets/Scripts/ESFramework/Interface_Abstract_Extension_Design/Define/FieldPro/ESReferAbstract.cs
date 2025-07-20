@@ -60,7 +60,7 @@ namespace ES
             }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set
-            { SetDirty(_value = value); }
+            { _SetDirtyInternal(_value = value); }
         }
         
         private T _value;
@@ -86,7 +86,7 @@ namespace ES
         {
             if (Time.time - lastTime > 0.5f)
             {
-                SetDirty(_value = ValueSourceGetter?.Invoke());
+                _SetDirtyInternal(_value = ValueSourceGetter?.Invoke());
                 lastTime = Time.time;
             }
         }
@@ -126,14 +126,27 @@ namespace ES
             return from.Value;
         }
 
-        public void SetDirty(T who)
+        private void _SetDirtyInternal(T who)
         {
-            if(!HasValue&& who._IsNotNull())
+            if (!HasValue&& who._IsNotNull())
             {
                 HasValue = true;
                 ValueToDo?.Invoke(who);
             }
             else HasValue = false;
+        }
+        public void SetDirty()
+        {
+            if (!HasValue && _value._IsNotNull())
+            {
+                HasValue = true;
+                ValueToDo?.Invoke(_value);
+            }
+            else HasValue = false;
+        }
+        public void SetSafeMode(bool safe=false)
+        {
+            this.safe = safe;
         }
         public static bool operator !=(ESReferLazy<T> a, ESReferLazy<T> b)
         {

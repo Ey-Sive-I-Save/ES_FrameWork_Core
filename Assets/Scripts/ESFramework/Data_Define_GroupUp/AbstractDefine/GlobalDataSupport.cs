@@ -50,7 +50,7 @@ namespace ES
                         ("配置缺失，准备创建", "检测不到可用的【" + typeof(This) + "】SO数据,准备新建一个，是否继续"))
                     {
                         string path = KeyValueMatchingUtility.SafeEditor.SelectorFolder(title: "创建数据到：");
-                        path = path._KeepAfter("Asset", true);
+                        path = path._KeepAfterByLast("Asset", true);
                         Debug.Log(path+ ""+ KeyValueMatchingUtility.SafeEditor.IsValidFolder(path));
                         if (KeyValueMatchingUtility.SafeEditor.IsValidFolder(path))
                         {

@@ -14,7 +14,7 @@ namespace ES
 
     /*  XX 更多的枚举仍然散落在到处的脚本和作为类的子成员
      *  ##EnumForFrameWorkDesign        用于框架的底层设计
-     *  ##EnumForFrameWorkDesign        用于框架的底层设计
+     *  ##EnumForESCode                 用于辅助ESCodeTree
      *  ##EnumForUnitySelfOperation     和Unity原生内容紧密相关
      *  ##EnumForGameCoreLogic          用于游戏的核心逻辑
      *  ##EnumForIO_AndEditor_System    用户系统构建，编辑器或者文件操作

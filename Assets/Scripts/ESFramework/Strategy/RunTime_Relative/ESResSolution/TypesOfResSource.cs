@@ -312,7 +312,7 @@ namespace ES
 
         public override string ToString()
         {
-            return $"Type:AssetBundle\t {base.ToString()}";
+            return $"T:AssetBundle\t {base.ToString()}";
         }
     }
 
@@ -557,7 +557,7 @@ namespace ES
 
         public override string ToString()
         {
-            return $"Type:AssetBundle\t {base.ToString()}";
+            return $"T:AssetBundle\t {base.ToString()}";
         }
     }
 

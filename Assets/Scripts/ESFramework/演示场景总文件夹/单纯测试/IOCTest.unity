@@ -1285,7 +1285,7 @@ MonoBehaviour:
   m_ComponentOwner: {fileID: 1385734941}
 --- !u!4 &264615170
 Transform:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4519,7 +4519,7 @@ Camera:
   m_StereoSeparation: 0.022
 --- !u!4 &1236482513
 Transform:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5740,7 +5740,7 @@ PrefabInstance:
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: AIDomain
-      value: -2
+      value: 3913062264832262148
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -5765,7 +5765,7 @@ PrefabInstance:
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: StateMachineDomain
-      value: 2405589145629753509
+      value: 3913062264832262147
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -5804,6 +5804,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262144]
+      value: ES ES.AIDomainForEntity
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262145]
+      value: ES ES.ModuleStateMachine_CrashDodge
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262146]
+      value: ES ES.ModuleStateMachine_SlowAction
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147]
+      value: ES ES.StateMachineDomainForEntity
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262148]
+      value: ES ES.AIDomainForEntity
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].core
       value: 
       objectReference: {fileID: 0}
@@ -5815,6 +5840,21 @@ PrefabInstance:
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: managedReferences[3913061998321205248].core
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262144].core
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].core
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262148].core
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -5849,6 +5889,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262145].Domain
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262146].Domain
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753511].UseRigid
       value: 1
       objectReference: {fileID: 0}
@@ -5856,6 +5906,16 @@ PrefabInstance:
         type: 3}
       propertyPath: managedReferences[3913061998321205250].UseRigid
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262145].MaxSpeed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262145].dataInfo
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -5891,6 +5951,16 @@ PrefabInstance:
         type: 3}
       propertyPath: managedReferences[3913061998321205250].YUpwards.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262145].EndDisSuit
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262145].MaxContain
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -5954,6 +6024,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262144].readMe.edit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262145].HitAddition
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262145].RayDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262145]._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262146]._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].readMe.edit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262148].readMe.edit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].RegisterPack
       value: 
       objectReference: {fileID: 0}
@@ -5976,6 +6081,16 @@ PrefabInstance:
         type: 3}
       propertyPath: managedReferences[3913061998321205250].MaxRotSpeed_
       value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262145].CoolDownNext
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].RegisterPack
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -6039,6 +6154,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262144].readMe.ReadMe
+      value: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262144].readMe.readMe
+      value: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262145].Editor_Preset
+      value: "\u9884\u8BBE1"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262146].Editor_Preset
+      value: "\u9884\u8BBE1"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].readMe.ReadMe
+      value: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].readMe.readMe
+      value: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262148].readMe.ReadMe
+      value: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262148].readMe.readMe
+      value: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753511].StandardSpeed.x
       value: 1
       objectReference: {fileID: 0}
@@ -6074,6 +6229,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].DefaultStateName
+      value: "\u9759\u6B62"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753511].SelfControlWeight
       value: 1
       objectReference: {fileID: 0}
@@ -6081,6 +6241,11 @@ PrefabInstance:
         type: 3}
       propertyPath: managedReferences[3913061998321205250].SelfControlWeight
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262145].StartPreventApply
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -6144,7 +6309,82 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262144].readMe.showColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262144].readMe.showColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262144].readMe.showColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262144].readMe.showColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262145].MaxContainTimeNext
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262145].WhatPrevent.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].readMe.showColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].readMe.showColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].readMe.showColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].readMe.showColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262148].readMe.showColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262148].readMe.showColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262148].readMe.showColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262148].readMe.showColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.entity
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.entity
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6184,8 +6424,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262144].Modules.MayHasElement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].Modules.MayHasElement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262148].Modules.MayHasElement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine._enableSelf
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262145].test_applyable_Crash.baseOn
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -6200,6 +6465,21 @@ PrefabInstance:
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: managedReferences[3913061998321205248].Modules.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262144].Modules.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].Modules.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262148].Modules.ValuesNow.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6219,8 +6499,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262145].test_applyable_Crash.duration
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262145].test_applyable_Crash.pathType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262145].test_applyable_Crash.vector.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262145].test_applyable_Crash.vector.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262145].test_applyable_Crash.vector.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.core
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine._SelfRunningState
       value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[2405589145629753509].Modules.ValuesNow.Array.data[0]
+      value: 3913062264832262146
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[2405589145629753509].Modules.ValuesNow.Array.data[1]
+      value: 3913062264832262146
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -6244,12 +6569,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262145].test_applyable_Crash.CoolDownNext
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262145].test_applyable_Crash.vectorHandle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.BuffMachine._enableSelf
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.readMe.edit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.BuffMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.readMe.edit
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6264,6 +6609,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.SkillMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.RegisterPack
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.readMe.ReadMe
       value: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
       objectReference: {fileID: 0}
@@ -6274,12 +6629,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.readMe.ReadMe
+      value: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.readMe.readMe
+      value: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.DefaultStateName
       value: "\u9759\u6B62"
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.DefaultStateName
+      value: "\u9759\u6B62"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.BuffMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.BuffMachine._SelfRunningState
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6314,7 +6689,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.InteractionMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.SkillMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.readMe.showColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.readMe.showColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.readMe.showColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.readMe.showColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.entity
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.entity
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6324,8 +6734,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine._SelfRunningStates.MayHasElement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.Modules.MayHasElement
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.Modules.MayHasElement
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -6339,7 +6759,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.InteractionMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine._SelfRunningStates.ValuesNow.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6354,6 +6789,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.Modules.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.Modules.valuesNow_.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -6364,7 +6804,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.core
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine._SelfRunningState
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6374,8 +6824,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.BuffMachine._SelfRunningStates.MayHasElement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.SkillMachine._SelfRunningStates.MayHasElement
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.SkillMachine._SelfRunningStates.MayHasElement
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -6385,6 +6845,16 @@ PrefabInstance:
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.readMe.edit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.BuffMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.readMe.edit
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6399,12 +6869,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.SkillMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.RegisterPack
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.readMe.ReadMe
       value: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.readMe.readMe
+      value: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.readMe.ReadMe
+      value: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.readMe.readMe
       value: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6419,12 +6909,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.BuffMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.InteractionMachine._SelfRunningStates.MayHasElement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.BuffMachine._SelfRunningStates.valuesNow_.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.SkillMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.SkillMachine._SelfRunningStates.ValuesNow.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6439,7 +6944,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.DefaultStateName
+      value: "\u9759\u6B62"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningState
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6474,13 +6989,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.InteractionMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.readMe.showColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.readMe.showColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.readMe.showColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.readMe.showColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.entity
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.entity
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine._SelfRunningStates.MayHasElement
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine._SelfRunningStates.MayHasElement
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -6491,6 +7046,16 @@ PrefabInstance:
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.Modules.MayHasElement
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.InteractionMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.Modules.MayHasElement
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -6509,7 +7074,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.InteractionMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine._SelfRunningStates.ValuesNow.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6524,6 +7104,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.Modules.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.Modules.valuesNow_.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -6534,7 +7119,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.core
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningState
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6544,8 +7139,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningStates.MayHasElement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningStates.MayHasElement
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningStates.MayHasElement
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -6555,6 +7160,16 @@ PrefabInstance:
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.edit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.edit
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6569,12 +7184,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.SkillMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.RegisterPack
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.ReadMe
       value: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.readMe
+      value: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.ReadMe
+      value: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.readMe
       value: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6589,12 +7224,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.InteractionMachine._SelfRunningStates.MayHasElement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningStates.valuesNow_.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningStates.ValuesNow.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6609,7 +7259,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.DefaultStateName
+      value: "\u9759\u6B62"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningState
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6644,13 +7304,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.InteractionMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.showColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.showColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.showColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.showColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.entity
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.entity
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningStates.MayHasElement
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningStates.MayHasElement
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -6661,6 +7361,16 @@ PrefabInstance:
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.Modules.MayHasElement
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.InteractionMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.Modules.MayHasElement
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -6679,7 +7389,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.InteractionMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningStates.ValuesNow.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6694,6 +7419,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.Modules.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.Modules.valuesNow_.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -6704,7 +7434,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.core
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningState
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6714,8 +7454,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningStates.MayHasElement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningStates.MayHasElement
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningStates.MayHasElement
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -6725,6 +7475,16 @@ PrefabInstance:
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.edit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.edit
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6739,12 +7499,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.SkillMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.RegisterPack
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.ReadMe
       value: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.readMe
+      value: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.ReadMe
+      value: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.readMe
       value: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6759,12 +7539,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.InteractionMachine._SelfRunningStates.MayHasElement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningStates.valuesNow_.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningStates.ValuesNow.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6779,7 +7574,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.DefaultStateName
+      value: "\u9759\u6B62"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningState
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6814,13 +7619,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.InteractionMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.showColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.showColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.showColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.showColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.entity
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.entity
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningStates.MayHasElement
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningStates.MayHasElement
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -6831,6 +7676,16 @@ PrefabInstance:
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.Modules.MayHasElement
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.InteractionMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.Modules.MayHasElement
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -6849,7 +7704,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.InteractionMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningStates.ValuesNow.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6864,6 +7734,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.Modules.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.Modules.valuesNow_.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -6874,7 +7749,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.core
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningState
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6884,8 +7769,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningStates.MayHasElement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningStates.MayHasElement
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningStates.MayHasElement
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -6895,6 +7790,16 @@ PrefabInstance:
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.edit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.edit
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6909,12 +7814,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.SkillMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.RegisterPack
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.ReadMe
       value: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.readMe
+      value: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.ReadMe
+      value: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.readMe
       value: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6929,12 +7854,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.InteractionMachine._SelfRunningStates.MayHasElement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningStates.valuesNow_.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningStates.ValuesNow.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6949,7 +7889,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.DefaultStateName
+      value: "\u9759\u6B62"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningState
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -6984,8 +7934,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.InteractionMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.showColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.showColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.showColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.readMe.showColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningStates.MayHasElement
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningStates.MayHasElement
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -6996,6 +7981,16 @@ PrefabInstance:
         type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.Modules.MayHasElement
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.InteractionMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.Modules.MayHasElement
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -7014,7 +8009,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.InteractionMachine._SelfRunningState
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningStates.ValuesNow.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine._SelfRunningStates.ValuesNow.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -7029,13 +8039,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.BuffMachine._SelfRunningStates.MayHasElement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningStates.MayHasElement
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.SkillMachine._SelfRunningStates.MayHasElement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589145629753509].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.InteractionMachine._SelfRunningStates.MayHasElement
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062264832262147].StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.StateDomain.StateMachine.InteractionMachine._SelfRunningStates.MayHasElement
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5834244353524541995, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -7946,6 +8971,9 @@ GameObject:
   - component: {fileID: 1994288724}
   - component: {fileID: 1994288726}
   - component: {fileID: 1994288725}
+  - component: {fileID: 1994288727}
+  - component: {fileID: 1994288729}
+  - component: {fileID: 1994288728}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -8006,21 +9034,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &1994288723
-Transform:
+--- !u!224 &1994288723
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1994288721}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 476.31168, y: 607.3446, z: -41.902927}
+  m_LocalPosition: {x: 0, y: 0, z: -41.902927}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 476.31168, y: 607.3446}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1994288724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8033,9 +9065,277 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e271e1f7f0a3f43b36f1e41e4ca13f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 1000
-  col: {fileID: 0}
-  has: 0
+  Target:
+    preview: "using Sirenix.Serialization;\nusing Sirenix.Utilities;\nusing System;\nusing
+      System.Collections;\nusing System.Collections.Generic;\nusing UnityEngine;\nusing
+      static ES.EnumCollect;\n\n namespace ES{ \n     /*\n     \u8BE5\u811A\u672C\u4E3AES\u4EE3\u7801\u751F\u6210\uFF0C\n   
+      \u65F6\u95F4\uFF1A2025/7/20 22:09:58\n    \n    */\n     }\n\n//ES\u5DF2\u4FEE\u6B63"
+    folderPath: Assets/Scripts/ESFramework/CodeGen/Default
+    fileName: _CodeGen2
+    UseClassNameAtFirst: 1
+    UseExtesionAtLast: 1
+    MyNameSpace: ES
+    HandNameSpaces:
+    - ' Sirenix.Serialization'
+    - ' Sirenix.Utilities'
+    - ' System'
+    - ' System.Collections'
+    - ' System.Collections.Generic'
+    - ' UnityEngine'
+    - ' static ES.EnumCollect'
+    rune:
+      rid: -2
+    trees:
+    - rid: 3913062284300648480
+  field:
+    preview: "         [NonSerialized] \r\n            public  int a ;\n\r\n"
+    modifier_Access: 0
+    modifier_addition: 0
+    fieldName: a
+    typeAndInit:
+      rid: 3913062264832262177
+    attribute:
+      rid: 3913062264832262179
+  comment:
+    preview: 
+    nextLine: 1
+    mutiLines: 1
+    content: "\u6CE8\u91CA\u5185\u5BB9"
+  method:
+    preview: "\r\n                [Button]\r\n                 protected virtual 
+      float TestMethod  ( int a , Transform trans =null, Vector2 v2 =default)\r\n               
+      {\r\n                        \r\n                        return 5;\r\n               
+      }\r\n                \r\n"
+    modifier_Access: 1
+    modifier_addition: 2
+    methodName: TestMethod
+    UseReturn: 1
+    typeAndInit:
+      rid: 3913062264832262170
+    param:
+      rid: 3913062264832262180
+    attribute:
+      rid: 3913062264832262189
+    UseGeneric: 0
+  Class:
+    intHepler: 0
+    pointers:
+    - rid: 3913062284300648461
+    - rid: 3913062284300648451
+    preview: "\r\n                    [Serializable,TypeRegistryItem(\"\u6CE8\u518C\u540D\",\"\u7EC4\")]\r\n                   
+      public   class MyClass : MonoBehaviour\r\n                    {\r\n                                
+      [NonSerialized] \r\n            public  int a ;\n\r\n\r\n                [Button]\r\n                
+      protected virtual  float TestMethod  ( int a , Transform trans =null, Vector2
+      v2 =default)\r\n                {\r\n                        \r\n                       
+      return 5;\r\n                }\r\n                \r\n\r\n                   
+      }\r\n                \r\n"
+    modifier_addition: 0
+    className: MyClass
+    AsSubclass: 1
+    typeAndInit:
+      rid: 3913062284300648448
+    attribute:
+      rid: 3913062284300648450
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 3913062264832262170
+      type: {class: ESCodePart_TypeDefineAndInit_SelectOrignial, ns: ES, asm: ES}
+      data:
+        fieldInitValue: 1
+        inputValue: 5
+        with: "\u6682\u65F6\u4E0D\u652F\u6301"
+        orignial: 1
+    - rid: 3913062264832262177
+      type: {class: ESCodePart_TypeDefineAndInit_SelectOrignial, ns: ES, asm: ES}
+      data:
+        fieldInitValue: 0
+        inputValue: ...
+        with: "\u6682\u65F6\u4E0D\u652F\u6301"
+        orignial: 0
+    - rid: 3913062264832262179
+      type: {class: ESCodePart_AttributeGive_Field_OdinSerialize, ns: ES, asm: ES}
+      data: 
+    - rid: 3913062264832262180
+      type: {class: ESCodePart_ParamList, ns: ES, asm: ES}
+      data:
+        Parts:
+        - rid: 3913062264832262181
+        - rid: 3913062264832262183
+        - rid: 3913062264832262186
+    - rid: 3913062264832262181
+      type: {class: ESCodePart_Param_Standard, ns: ES, asm: ES}
+      data:
+        paraName: a
+        typeAndInit:
+          rid: 3913062264832262182
+    - rid: 3913062264832262182
+      type: {class: ESCodePart_TypeDefineAndInit_SelectOrignial, ns: ES, asm: ES}
+      data:
+        fieldInitValue: 0
+        inputValue: ...
+        with: "\u6682\u65F6\u4E0D\u652F\u6301"
+        orignial: 0
+    - rid: 3913062264832262183
+      type: {class: ESCodePart_Param_Standard, ns: ES, asm: ES}
+      data:
+        paraName: trans
+        typeAndInit:
+          rid: 3913062264832262185
+    - rid: 3913062264832262185
+      type: {class: ESCodePart_TypeDefineAndInit_SelectUnityCore, ns: ES, asm: ES}
+      data:
+        fieldInitValue: 3
+        inputValue: ...
+        with: "\u6682\u65F6\u4E0D\u652F\u6301"
+        core: 0
+    - rid: 3913062264832262186
+      type: {class: ESCodePart_Param_Standard, ns: ES, asm: ES}
+      data:
+        paraName: v2
+        typeAndInit:
+          rid: 3913062264832262188
+    - rid: 3913062264832262188
+      type: {class: ESCodePart_TypeDefineAndInit_SelectMath, ns: ES, asm: ES}
+      data:
+        fieldInitValue: 4
+        inputValue: ...
+        with: "\u6682\u65F6\u4E0D\u652F\u6301"
+        math: 2
+    - rid: 3913062264832262189
+      type: {class: ESCodePart_AttributeGiveList_Method_HandMake, ns: ES, asm: ES}
+      data:
+        HandMake: Button
+    - rid: 3913062284300648448
+      type: {class: ESCodePart_TypeDefineAndInit_SelectUnityCore, ns: ES, asm: ES}
+      data:
+        fieldInitValue: 0
+        inputValue: ...
+        with: "\u6682\u65F6\u4E0D\u652F\u6301"
+        core: 1
+    - rid: 3913062284300648450
+      type: {class: ESCodePart_AttributeGiveList_Class, ns: ES, asm: ES}
+      data: 
+    - rid: 3913062284300648451
+      type: {class: ESCodeNode_Method, ns: ES, asm: ES}
+      data:
+        preview: "\r\n                [Button]\r\n                 protected virtual 
+          float TestMethod  ( int a , Transform trans =null, Vector2 v2 =default)\r\n               
+          {\r\n                        \r\n                        return 5;\r\n               
+          }\r\n                \r\n"
+        modifier_Access: 1
+        modifier_addition: 2
+        methodName: TestMethod
+        UseReturn: 1
+        typeAndInit:
+          rid: 3913062284300648452
+        param:
+          rid: 3913062284300648453
+        attribute:
+          rid: 3913062284300648454
+        UseGeneric: 0
+    - rid: 3913062284300648452
+      type: {class: ESCodePart_TypeDefineAndInit_SelectOrignial, ns: ES, asm: ES}
+      data:
+        fieldInitValue: 1
+        inputValue: 5
+        with: "\u6682\u65F6\u4E0D\u652F\u6301"
+        orignial: 1
+    - rid: 3913062284300648453
+      type: {class: ESCodePart_ParamList, ns: ES, asm: ES}
+      data:
+        Parts:
+        - rid: 3913062284300648455
+        - rid: 3913062284300648456
+        - rid: 3913062284300648457
+    - rid: 3913062284300648454
+      type: {class: ESCodePart_AttributeGiveList_Method_HandMake, ns: ES, asm: ES}
+      data:
+        HandMake: Button
+    - rid: 3913062284300648455
+      type: {class: ESCodePart_Param_Standard, ns: ES, asm: ES}
+      data:
+        paraName: a
+        typeAndInit:
+          rid: 3913062284300648458
+    - rid: 3913062284300648456
+      type: {class: ESCodePart_Param_Standard, ns: ES, asm: ES}
+      data:
+        paraName: trans
+        typeAndInit:
+          rid: 3913062284300648459
+    - rid: 3913062284300648457
+      type: {class: ESCodePart_Param_Standard, ns: ES, asm: ES}
+      data:
+        paraName: v2
+        typeAndInit:
+          rid: 3913062284300648460
+    - rid: 3913062284300648458
+      type: {class: ESCodePart_TypeDefineAndInit_SelectOrignial, ns: ES, asm: ES}
+      data:
+        fieldInitValue: 0
+        inputValue: ...
+        with: "\u6682\u65F6\u4E0D\u652F\u6301"
+        orignial: 0
+    - rid: 3913062284300648459
+      type: {class: ESCodePart_TypeDefineAndInit_SelectUnityCore, ns: ES, asm: ES}
+      data:
+        fieldInitValue: 3
+        inputValue: ...
+        with: "\u6682\u65F6\u4E0D\u652F\u6301"
+        core: 0
+    - rid: 3913062284300648460
+      type: {class: ESCodePart_TypeDefineAndInit_SelectMath, ns: ES, asm: ES}
+      data:
+        fieldInitValue: 4
+        inputValue: ...
+        with: "\u6682\u65F6\u4E0D\u652F\u6301"
+        math: 2
+    - rid: 3913062284300648461
+      type: {class: ESCodeNode_Field, ns: ES, asm: ES}
+      data:
+        preview: "         [NonSerialized] \r\n            public  int a ;\n\r\n"
+        modifier_Access: 0
+        modifier_addition: 0
+        fieldName: a
+        typeAndInit:
+          rid: 3913062284300648462
+        attribute:
+          rid: 3913062284300648463
+    - rid: 3913062284300648462
+      type: {class: ESCodePart_TypeDefineAndInit_SelectOrignial, ns: ES, asm: ES}
+      data:
+        fieldInitValue: 0
+        inputValue: ...
+        with: "\u6682\u65F6\u4E0D\u652F\u6301"
+        orignial: 0
+    - rid: 3913062284300648463
+      type: {class: ESCodePart_AttributeGive_Field_OdinSerialize, ns: ES, asm: ES}
+      data: 
+    - rid: 3913062284300648480
+      type: {class: ESCodeTree_Class, ns: ES, asm: ES}
+      data:
+        intHepler: 0
+        pointers: []
+        preview: "\r\n                    \r\n                    public   class
+          MyClass \r\n                    {\r\n                        \r\n                   
+          }\r\n                \r\n"
+        modifier_addition: 0
+        className: MyClass
+        AsSubclass: 0
+        typeAndInit:
+          rid: 3913062284300648481
+        attribute:
+          rid: -2
+    - rid: 3913062284300648481
+      type: {class: ESCodePart_TypeDefineAndInit_SelectUnityCore, ns: ES, asm: ES}
+      data:
+        fieldInitValue: 0
+        inputValue: ...
+        with: "\u6682\u65F6\u4E0D\u652F\u6301"
+        core: 1
 --- !u!183 &1994288725
 Cloth:
   m_ObjectHideFlags: 0
@@ -8123,6 +9423,79 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_DirtyAABB: 0
+--- !u!114 &1994288727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994288721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af9de662e0d270044bab49789d16cfc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalDomain:
+    readMe:
+      edit: 1
+      ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow:
+      - rid: 3913062239654379520
+      MayHasElement: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 3913062239654379520
+      type: {class: NormalModule, ns: ES, asm: ES}
+      data:
+        _enableSelf: 1
+        Domain:
+          rid: -2
+        Editor_Preset: "\u9884\u8BBE1"
+--- !u!114 &1994288728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994288721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1994288729
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994288721}
+  m_CullTransparentMesh: 1
 --- !u!1 &1996289902
 GameObject:
   m_ObjectHideFlags: 0

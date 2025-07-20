@@ -20,6 +20,43 @@ namespace ES
             public static string defaultCodeClassName = "NewCSharp";
             public static string defaultSavePath = "Assets/Scripts/ESFramework/CodeGen/Default";
 
+            public static string CreateScriptBounds(string Folderpath, string fileName,string using_="", string nameSpace = "ES",string content="",bool TruelyCreate=false)
+            {
+                if (string.IsNullOrEmpty(fileName))
+                {
+                    Debug.LogError("文件名不可为空!");
+                    return "";
+                }
+
+                string fullPath = Path.Combine(Folderpath, fileName);
+
+                // 基础脚本模板
+                string scriptContent =
+$@"{using_}
+    namespace {nameSpace}{{   
+             {content}
+    }}
+";
+                scriptContent = scriptContent._ToCode();
+                // 创建目录（如果不存在）
+                if (TruelyCreate)
+                {
+#if UNITY_EDITOR
+                    if (!AssetDatabase.IsValidFolder(Folderpath))
+#endif
+                        Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
+
+                    // 写入文件
+                    File.WriteAllText(fullPath, scriptContent, encoding: Encoding.UTF8);
+#if UNITY_EDITOR
+                    AssetDatabase.Refresh();
+                    AssetDatabase.SaveAssets();
+#endif
+                        Debug.Log($"创建脚本: {fullPath}");
+                }
+                return scriptContent;
+               
+            }
 
             public static void CreateScriptEasy(string Folderpath, string className, string parent = ":MonoBehaviour", string Attribute = "", string nameSpace = "ES",string AdditonFileName="")
             {
@@ -43,7 +80,7 @@ using UnityEngine;
         }}
     }}
 ";
-
+                scriptContent = scriptContent._ToCode();
                 // 创建目录（如果不存在）
 #if UNITY_EDITOR
                 if (!AssetDatabase.IsValidFolder(Folderpath))
@@ -78,7 +115,7 @@ using UnityEngine;
         }}
     }}
 ";
-
+                scriptContent = scriptContent._ToCode();
                 // 创建目录（如果不存在）
 #if UNITY_EDITOR
                 if (!AssetDatabase.IsValidFolder(Folderpath))
@@ -127,6 +164,12 @@ $@"         {attribute}
 ";
                 return fieldContent;
             }
+            public static string CreateParaOrDefineContent(string typeName, string itName, string modifier = "", string valueDefine = "",bool isDefine=true)
+            {
+                string defineContent =
+$@"{(isDefine?"\n"+modifier:"")} {typeName} {HandleString_ToValidName(itName).Replace(" ", "")} {valueDefine+(isDefine ? ";" : "")}";
+                return defineContent;
+            }
             public static string CreateDicElement(string key, string value)
             {
                 return "{" + key + "," + value + "},";
@@ -148,16 +191,17 @@ $@"         {attribute}
 ";
                 return IfContent;
             }
-            public static string CreateMethod(string methodName, string beforeClassName = "",
-                string back="void",string betweenNameAndKH="", string betweenKHAndInside = ""
-                ,string para="", string insideClass = "", string Attribute = "")
+            public static string CreateMethod(string methodName, string modifier = "public",
+                string back="void",string betweenNameAndParams="", string betweenParamsAndInside = ""
+                ,string para="", string insideClass = "", string Attribute = "",string last="")
             {
                 string scriptContent =
      $@"
                 {Attribute}
-                public {beforeClassName}  {back} {methodName} {betweenNameAndKH} ({para}){betweenKHAndInside}
+                 {modifier}  {back} {methodName} {betweenNameAndParams} ({para}){betweenParamsAndInside}
                 {{
                         {insideClass}
+                        {last}
                 }}
                 
 ";

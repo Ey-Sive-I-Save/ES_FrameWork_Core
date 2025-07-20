@@ -677,7 +677,7 @@ namespace ES
 
         public override string ToString()
         {
-            return string.Format("Type:Asset\t {0}\t FromAssetBundle:{1}", base.ToString(), AssetBundleName);
+            return string.Format("T:Asset\t {0}\t FromAssetBundle:{1}", base.ToString(), AssetBundleName);
         }
     }
 

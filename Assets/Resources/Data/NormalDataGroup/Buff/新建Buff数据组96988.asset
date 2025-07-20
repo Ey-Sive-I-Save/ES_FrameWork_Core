@@ -31,9 +31,9 @@ MonoBehaviour:
     triggerTimeDis: 1
     opeationForTimeDis:
       rid: -2
-    EnableOnOffTrigger: 0
+    EnableOnOffTrigger: 1
     opeationForOnOff:
-      rid: -2
+      rid: 3913062264832262149
     icon: {fileID: 0}
     buffGoodOrBad: 0
   defaultVariableData:
@@ -44,6 +44,31 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 3913062264832262149
+      type: {class: OutputOpeationBuffDelegateAsExpand_WhenAttack, ns: ES, asm: ES}
+      data:
+        AlwaysRemakeAction: 0
+        WhenHanppen:
+          rid: 3913062264832262150
+        TriggerNum: 99
+    - rid: 3913062264832262150
+      type: {class: OutputOpeationBuffDelegateAsExpand_WhenAttack, ns: ES, asm: ES}
+      data:
+        AlwaysRemakeAction: 0
+        WhenHanppen:
+          rid: 3913062264832262151
+        TriggerNum: 99
+    - rid: 3913062264832262151
+      type: {class: OutputOpeationValueBuff_Target_LevelUp, ns: ES, asm: ES}
+      data:
+        selectType: 0
+        target:
+          rid: 3913062264832262152
+        floor: 1
+        offsetPerLevel: 0.1
+    - rid: 3913062264832262152
+      type: {class: Target_Helath, ns: ES, asm: ES}
+      data: 
 --- !u!114 &-4691132041063303791
 MonoBehaviour:
   m_ObjectHideFlags: 0

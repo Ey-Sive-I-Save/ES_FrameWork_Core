@@ -1,0 +1,40 @@
+﻿using ES;
+using Sirenix.OdinInspector;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+ namespace ES{ 
+     /*MyCOreNormalDomain （新核心新的域扩展域）的*/
+     [Serializable, TypeRegistryItem("扩展模块_跑")]
+     public class MyCOreNormalModule_Run :MyCOreNormalModule
+     {
+         protected override void CreateRelationshipOnly()
+         {
+             Domain.Module_Run = this;
+             base.CreateRelationshipOnly();
+             }
+         }
+     
+    
+     [Serializable, TypeRegistryItem("扩展模块_跳")]
+     public class MyCOreNormalModule_Jump :MyCOreNormalModule
+     {
+         protected override void CreateRelationshipOnly()
+         {
+             Domain.Module_Jump = this;
+             base.CreateRelationshipOnly();
+             }
+         }
+     
+    
+     [Serializable, TypeRegistryItem("扩展模块_吃")]
+     public class MyCOreNormalModule_Eat :MyCOreNormalModule
+     {
+         
+         }
+     
+    
+     }
+
+//ES已修正

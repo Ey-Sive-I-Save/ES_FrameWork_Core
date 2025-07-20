@@ -17,6 +17,7 @@ namespace ES
      *  ##DataApply            提供一句完成把Data应用到目标身上，做到代码简化
      *  ##DataInfoPointer      使用键取出某个数据源(通常是So类型)
      *  ##ESBack               大型 "返回" 逻辑 %比如获得实体周围的其他实体
+     *  ##ESCodeTree           可视化多态序列化的代码生成辅助功能(详见CodeGen/Define/ESCodeTree)
      *  ##ESProcess            大型的 基于Link体系 的 事件处理 流
      *  ##Foreach              常用的循环操作 或者 递归手段
      *  ##Function             常用的 数学/容器/字符串 操作(一般配合特定枚举)

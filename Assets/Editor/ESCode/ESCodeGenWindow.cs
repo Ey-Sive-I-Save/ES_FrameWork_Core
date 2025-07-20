@@ -1,9 +1,11 @@
 using ES;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
+using Sirenix.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 using static ES.EnumCollect;
@@ -30,7 +32,14 @@ namespace ES
 
         #region 数据滞留
         public PageRoot_StartUseCodeGen pageForStartUseCodeGen;
-        public Page_TagsAndLayers pageForTagsAndLayers;
+        public PageRoot_TagsAndLayers pageForTagsAndLayers;
+        public PageRoot_CoreDomainModule pageForCoreDomain;
+
+
+        public const string PageNameTagAndLayer = "标签与层级";
+        public const string PageNameCoreDomain = "核域代码生成";
+        public const string PageNameLink = "Link代码生成";
+        public const string PageNameUI = "UI代码生成";
         #endregion
 
         protected override void ES_BuildMenuTree(OdinMenuTree tree)
@@ -41,6 +50,7 @@ namespace ES
             Part_BuildStartPage(tree);
             {
                 Part_BuildTagsAndLayers(tree);
+                Part_BuildCoreDomain(tree);
             }
             /*
             {//独立功能块
@@ -59,7 +69,19 @@ namespace ES
         }
         private void Part_BuildTagsAndLayers(OdinMenuTree tree)
         {
-            QuickBuildRootMenu(tree, "标签与层级", ref pageForTagsAndLayers, SdfIconType.SunFill);
+            QuickBuildRootMenu(tree, PageNameTagAndLayer, ref pageForTagsAndLayers, SdfIconType.SunFill);
+        }
+        private void Part_BuildCoreDomain(OdinMenuTree tree)
+        {
+            QuickBuildRootMenu(tree, PageNameCoreDomain, ref pageForCoreDomain, SdfIconType.SunFill);
+            var AllSoCoreSource = KeyValueMatchingUtility.SafeEditor.FindSOAssets<ESCode_CoreDomainSource>();
+            foreach(var i in AllSoCoreSource)
+            {
+                if (i != null && !i.CoreClassName.IsNullOrWhitespace())
+                {
+                    tree.Add(PageNameCoreDomain+"/"+i.CoreClassName,i);
+                }
+            }
         }
         [Serializable]
         public class PageRoot_StartUseCodeGen : ESWindowPageBase
@@ -90,15 +112,15 @@ namespace ES
          " ******【#】标识名一般会以大写开头，并不允许有空格等，";
 
 
-            [TabGroup("概念", "关于数据组"), HideLabel, TextArea(5, 10), DisplayAsString(alignment: TextAlignment.Left)]
-            public string aboutDataGroup = "" +
-         "数据组，数据组把数个具有同特征的数据单元包含其中，作为独立的资产的最小格式！\n" +
-          "组最大的作用是分组，以一个资产包含多个子单元\n" +
-         " 通常来说不推荐直接把组用来引用至游戏，而是以后面的包来完成\n，" +
-         "其中\n******【1】数据组是一个数据单元的持久字典，并且原则上把子单元都作为子资产包含其中，推荐容纳5-10个为佳\n" +
-         " ******【2】数据组一般只有分组和编辑功能，不推荐用于游戏引用，加载和取用，这只是一个建议和规范，可以自己定\n " +
-         " ******【3】英文Group,为它的专属名词\n" +
-         " ******【#】以一个资产容纳一系列数据单元,高效分类整理，可以绑定到数据包来做到输出最新的内容";
+            [TabGroup("概念", "关于核域模块"), HideLabel, TextArea(5, 10), DisplayAsString(alignment: TextAlignment.Left)]
+            public string aboutDataGroup = "核域代码生成，生成会附带核脚本(不要修改)和记录下来源,以后还可以修改调整" +
+         "核是以一个核心脚本生成的大型运行时逻辑单元，比如实体，武器，建筑物！\n" +
+          "核本体包含数个Domain扩展域，而每个域可放置自定义组合的扩展模块，按需求选用\n" +
+         " 他们使用多态序列化，内存和运行消耗都比较低\n，" +
+         "其中\n******【1】核是Mono脚本，为大型逻辑单元，可以写入必要代码\n" +
+         " ******【2】域是可序列化类显式声明，可选启用的一类功能的收集，容纳大量扩展模块\n " +
+         " ******【3】模块是可序列化类，可选装载在域的模块列表中，可以开始就生成或者中途加入移除\n" +
+         " ******【#】这块为框架构建大型逻辑的重要部分，需要查看更多文档和使用，严格规范处可以用本工具一键生成";
 
             [TabGroup("概念", "关于数据包"), HideLabel, TextArea(5, 10), DisplayAsString(alignment: TextAlignment.Left)]
             public string aboutDataPack = "" +
@@ -133,13 +155,15 @@ namespace ES
         }
 
         [Serializable]
-        public class Page_TagsAndLayers : ESWindowPageBase
+        public class PageRoot_TagsAndLayers : ESWindowPageBase
         {
             [ShowInInspector,InlineProperty,LabelText("记忆")]
             public TagsAndLayers TagAndLayer =>GlobalDataForEditorOnly.Instance.TagAndLayer;
             [LabelText("自动更新")]
             public bool AutoRefresh { get=> TagAndLayer.autoRefresh; set{ if (TagAndLayer.autoRefresh != value) { TagAndLayer.autoRefresh = value; EditorUtility.SetDirty(GlobalDataForEditorOnly.Instance); }  } }
             [LabelText("保存路径"), FolderPath]
+            [Title("标签与层级辅助代码生成", "完全静态的显式可用字符串(标签)和数字(Layers),帮助简化代码和防止出错", TitleAlignments.Centered), PropertyOrder(-1)]
+
             public string pathToSave = DefaultSavePath;
             [LabelText("处理标识符方式"),InlineButton("reGenCode","手动更新")]
             public HandleIndentStringName handleIndentNames = HandleIndentStringName.StartToUpper;
@@ -196,6 +220,45 @@ namespace ES
                 return base.ES_Refresh();
             }
         }
+
+        [Serializable]
+        public class PageRoot_CoreDomainModule : ESWindowPageBase
+        {
+            [Title("核域代码生成", "，生成会附带核脚本(不要修改)和记录下来源,以后还可以修改调整", TitleAlignments.Centered), PropertyOrder(-1)]
+            [LabelText("生成脚本路径"), FolderPath] public string genePathFolder = "Assets/Scripts/ESFramework/CodeGen/Target/Core_Domain_Module";
+            [LabelText("生成源路径"), FolderPath,ReadOnly] public string geneSourcePathFolder = "Assets/Resources/Data/SingleData/ESCoreSource";
+
+            [LabelText("核心命名"),InlineButton("Gene","生成源"), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForCaster")] 
+            public string CoreClassName = "NewCore";
+            [LabelText("核心中文命名"),GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForCaster")]
+            public string CoreClassChinaName = "新核心";
+            [LabelText("全部扩展域")] public List<DomainSource> Domains = new List<DomainSource>() { new DomainSource() { DomainClassName = "Normal" } };
+
+
+            private void Gene()
+            {
+                ESCode_CoreDomainSource source = ScriptableObject.CreateInstance<ESCode_CoreDomainSource>();
+                string ss = CoreClassName._ToValidIdentName();
+                source.CoreClassName = ss;
+                source.CoreClassChinaName = CoreClassChinaName._ToValidIdentName();
+                source.Domains = new List<DomainSource>();
+                source.name = ss + "_CoreSource";
+
+                source.path = genePathFolder;
+                foreach (var i in Domains)
+                {
+                    source.Domains.Add(i);
+                }
+                EditorUtility.SetDirty(source);
+                AssetDatabase.Refresh();
+                AssetDatabase.SaveAssets();
+                AssetDatabase.CreateAsset(source,Path.Combine(geneSourcePathFolder,source.name+".asset"));
+                EditorGUIUtility.PingObject(source);
+               /* source.Generate();*/
+            }
+           
+        }
+     
     }
 }
 
