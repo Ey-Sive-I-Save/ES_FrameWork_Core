@@ -135,7 +135,9 @@ namespace ES
         {
             foreach (var i in rgdomains)
             {
+                Debug.Log("RE2");
                 if (i == null) continue;
+                Debug.Log("RE3");
                 i.RegisterAllWithCore(this);
                 domains.Add(i);
             }

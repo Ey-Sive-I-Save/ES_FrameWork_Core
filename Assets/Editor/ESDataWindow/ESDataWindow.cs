@@ -17,6 +17,7 @@ using YooAsset.Editor;
 using UnityEditor.PackageManager.UI;
 using UnityEditor.Sprites;
 using DG.Tweening.Plugins.Core.PathCore;
+using System.Security.Cryptography;
 
 namespace ES
 {
@@ -1226,7 +1227,14 @@ namespace ES
             if (Selection.activeObject is ISoDataGroup group)
             {
                 var page = ESDataWindow.usingWindow?.pageForGroupOnChoose;
-                if (page != null)
+                if(page==null|| ESDataWindow.usingWindow.MenuTree == null)
+                {
+                    ESDataWindow.OpenWindow();
+                    ESDataWindow.usingWindow.ESWindow_RefreshWindow();
+                    Debug.Log("自动打开数据窗口");
+                    page = ESDataWindow.usingWindow.pageForGroupOnChoose;
+                }
+                if (page != null&& ESDataWindow.usingWindow.MenuTree!=null)
                 {
                     page.group = group;
                     SelectSoGroup(group as ScriptableObject);
@@ -1234,6 +1242,8 @@ namespace ES
                     if (ESDataWindow.Items.TryGetValue(ESDataWindow.PageName_DataGroupOnChooseEditInfo, out var item))
                     {
                         item.Name = ESDataWindow.PageName_DataGroupOnChooseEditInfo + "<" + group._name.Replace("新建", "") + ">";
+                        Debug.Log("Selection" + ESDataWindow.usingWindow);
+                        Debug.Log("Selection"+ ESDataWindow.usingWindow.MenuTree.Selection);
                         ESDataWindow.usingWindow.MenuTree.Selection.Add(item);
                     }
                 }

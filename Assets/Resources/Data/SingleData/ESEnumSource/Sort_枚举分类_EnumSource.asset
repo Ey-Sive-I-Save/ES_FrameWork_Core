@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f09e4a947b0215408625947f00a140c, type: 3}
+  m_Name: "Sort_\u679A\u4E3E\u5206\u7C7B_EnumSource"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  EnumSortName_: SortEnum
+  path_: Assets/Scripts/ESFramework/CodeGen/Enum
+  EnumTypes:
+  - IsFlag: 1
+    EDIT: 1
+    EnumTypeName: WeaponType
+    EnumChineseName: "\u6B66\u5668\u7C7B\u578B"
+    All:
+    - enumElementName: Jin
+      enumChinaName: "\u8FD1\u6218\u7684"
+      WIthMessage: 1
+      withSTR: message
+      withFloat: 55
+      withInt: 77
+      defineType: 1
+      Input: 1
+      CompoNum: 2
+      Compo1: 
+      Compo2: 
+      Compo3: 
+      Compo4: 
+    - enumElementName: Range
+      enumChinaName: "\u8FDC\u7A0B\u7684"
+      WIthMessage: 1
+      withSTR: message
+      withFloat: 888
+      withInt: 0
+      defineType: 0
+      Input: 0
+      CompoNum: 2
+      Compo1: 
+      Compo2: 
+      Compo3: 
+      Compo4: 
+    - enumElementName: Speical
+      enumChinaName: "\u7279\u6B8A\u7684"
+      WIthMessage: 0
+      withSTR: message
+      withFloat: 0
+      withInt: 0
+      defineType: 0
+      Input: 0
+      CompoNum: 2
+      Compo1: 
+      Compo2: 
+      Compo3: 
+      Compo4: 
+    - enumElementName: MelleAndRange
+      enumChinaName: "\u8FDC\u8FD1\u517C\u4FEE\u7684"
+      WIthMessage: 1
+      withSTR: message
+      withFloat: 0
+      withInt: 744
+      defineType: 2
+      Input: 0
+      CompoNum: 2
+      Compo1: Jin
+      Compo2: Range
+      Compo3: 
+      Compo4: 
+    - enumElementName: MelleAndRangeAndMagic
+      enumChinaName: "\u8FDC\u8FD1\u517C\u4FEE\u8FD8\u4F1A\u9B54\u6CD5\u7684"
+      WIthMessage: 1
+      withSTR: message
+      withFloat: -5
+      withInt: 744
+      defineType: 2
+      Input: 0
+      CompoNum: 3
+      Compo1: Jin
+      Compo2: Range
+      Compo3: MelleAndRange
+      Compo4: 

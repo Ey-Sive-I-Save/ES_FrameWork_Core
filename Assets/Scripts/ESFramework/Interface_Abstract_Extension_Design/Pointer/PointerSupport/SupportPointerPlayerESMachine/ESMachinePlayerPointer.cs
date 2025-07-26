@@ -20,7 +20,7 @@ namespace ES {
             TryBind();
         }
         [ReadOnly, LabelText("已经绑定"),ShowInInspector] public bool hasBind => binding != null;
-        [HideInInspector]public BaseOriginalStateMachine binding;
+        [HideInInspector,SerializeReference]public BaseOriginalStateMachine binding=null;
 
         [Header("测试键")]
         [ValueDropdown("GetKeys",AppendNextDrawer =true),LabelText("触发状态")]

@@ -22,14 +22,14 @@ namespace ES
         {
             
         }
-        [Button("注入1号")] void Add1() { float1.TryStartHandle(Attack); }
-        [Button("注入2号")] void Add2() { float2.TryStartHandle(Attack); }
-        [Button("注入3号")] void Add3() { float3.TryStartHandle(Attack); }
-        [Button("注入4号")] void Add4() { float4.TryStartHandle(Attack); }
-        [Button("取消1号")] void Remove1() { float1.TryStopHandle(Attack); }
-        [Button("取消2号")] void Remove2() { float2.TryStopHandle(Attack); }
-        [Button("取消3号")] void Remove3() { float3.TryStopHandle(Attack); }
-        [Button("取消4号")] void Remove4() { float4.TryStopHandle(Attack); }
+        [Button("注入1号")] void Add1() { float1.TryStart(Attack); }
+        [Button("注入2号")] void Add2() { float2.TryStart(Attack); }
+        [Button("注入3号")] void Add3() { float3.TryStart(Attack); }
+        [Button("注入4号")] void Add4() { float4.TryStart(Attack); }
+        [Button("取消1号")] void Remove1() { float1.TryStop(Attack); }
+        [Button("取消2号")] void Remove2() { float2.TryStop(Attack); }
+        [Button("取消3号")] void Remove3() { float3.TryStop(Attack); }
+        [Button("取消4号")] void Remove4() { float4.TryStop(Attack); }
         void Update()
         {
             if (AutoSettment)

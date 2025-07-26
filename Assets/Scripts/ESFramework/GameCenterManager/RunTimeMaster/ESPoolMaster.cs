@@ -1,10 +1,12 @@
 
 using ES;
+using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -368,6 +370,23 @@ namespace ES
             mObjectStack.Push(obj);
 
             return true;
+        }
+    }
+    public class ESSimpleObjectPoolSingleton<T> : ESSimpleObjectPool<T> where T: IPoolable,new()
+    {
+        private static ESSimpleObjectPoolSingleton<T> pool;
+        public static ESSimpleObjectPoolSingleton<T> Pool { [MethodImpl(MethodImplOptions.AggressiveInlining)]get { if (pool != null) return pool; return CreatePool(); } set { } }
+        public ESSimpleObjectPoolSingleton(Func<T> factoryMethod, Action<T> resetMethod, int initCount)
+        : base(factoryMethod, resetMethod, initCount) {
+            pool = this;
+        }
+        public static ESSimpleObjectPoolSingleton<T> CreatePool(){
+           return pool=new ESSimpleObjectPoolSingleton<T>(()=>new T(),null,10);
+        }
+        public override bool PushToPool(T obj)
+        {
+            obj.OnResetAsPoolable();
+            return base.PushToPool(obj);
         }
     }
     #endregion

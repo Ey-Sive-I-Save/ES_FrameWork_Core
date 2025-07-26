@@ -7,8 +7,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using static ES.EnumCollect;
+using static ES.ESCodeGenWindow.PageRoot_CoreDomainModule;
+using static ES.ESCodeGenWindow.PageRoot_Enum;
 using static ES.GlobalDataForEditorOnly;
 using static ES.KeyValueMatchingUtility;
 namespace ES
@@ -34,10 +37,11 @@ namespace ES
         public PageRoot_StartUseCodeGen pageForStartUseCodeGen;
         public PageRoot_TagsAndLayers pageForTagsAndLayers;
         public PageRoot_CoreDomainModule pageForCoreDomain;
-
+        public PageRoot_Enum pageForEnum;
 
         public const string PageNameTagAndLayer = "标签与层级";
         public const string PageNameCoreDomain = "核域代码生成";
+        public const string PageNameEnum = "枚举生成";
         public const string PageNameLink = "Link代码生成";
         public const string PageNameUI = "UI代码生成";
         #endregion
@@ -51,6 +55,7 @@ namespace ES
             {
                 Part_BuildTagsAndLayers(tree);
                 Part_BuildCoreDomain(tree);
+                Part_BuildEnum(tree);
             }
             /*
             {//独立功能块
@@ -69,17 +74,29 @@ namespace ES
         }
         private void Part_BuildTagsAndLayers(OdinMenuTree tree)
         {
-            QuickBuildRootMenu(tree, PageNameTagAndLayer, ref pageForTagsAndLayers, SdfIconType.SunFill);
+            QuickBuildRootMenu(tree, PageNameTagAndLayer, ref pageForTagsAndLayers, SdfIconType.BookmarkPlusFill);
         }
         private void Part_BuildCoreDomain(OdinMenuTree tree)
         {
-            QuickBuildRootMenu(tree, PageNameCoreDomain, ref pageForCoreDomain, SdfIconType.SunFill);
+            QuickBuildRootMenu(tree, PageNameCoreDomain, ref pageForCoreDomain, SdfIconType.Diagram2);
             var AllSoCoreSource = KeyValueMatchingUtility.SafeEditor.FindSOAssets<ESCode_CoreDomainSource>();
             foreach(var i in AllSoCoreSource)
             {
                 if (i != null && !i.CoreClassName.IsNullOrWhitespace())
                 {
-                    tree.Add(PageNameCoreDomain+"/"+i.CoreClassName,i);
+                    tree.Add(PageNameCoreDomain+"/"+i.CoreClassName,new Page_Index_Core_ASource() { source=i });
+                }
+            }
+        }
+        private void Part_BuildEnum(OdinMenuTree tree)
+        {
+            QuickBuildRootMenu(tree, PageNameEnum, ref pageForEnum, SdfIconType.FlagFill);
+            var AllSoCoreSource = KeyValueMatchingUtility.SafeEditor.FindSOAssets<ESCode_EnumSource>();
+            foreach (var i in AllSoCoreSource)
+            {
+                if (i != null && !i.EnumSortName_.IsNullOrWhitespace())
+                {
+                    tree.Add(PageNameEnum + "/" + i.EnumSortName_, new Page_Index_Enum_ASource() { source = i }.ES_Refresh());
                 }
             }
         }
@@ -232,9 +249,9 @@ namespace ES
             public string CoreClassName = "NewCore";
             [LabelText("核心中文命名"),GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForCaster")]
             public string CoreClassChinaName = "新核心";
-            [LabelText("全部扩展域")] public List<DomainSource> Domains = new List<DomainSource>() { new DomainSource() { DomainClassName = "Normal" } };
+            [LabelText("全部扩展域"), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_03")] public List<DomainSource> Domains = new List<DomainSource>() { new DomainSource() { DomainClassName = "Normal" } };
 
-
+ 
             private void Gene()
             {
                 ESCode_CoreDomainSource source = ScriptableObject.CreateInstance<ESCode_CoreDomainSource>();
@@ -256,9 +273,61 @@ namespace ES
                 EditorGUIUtility.PingObject(source);
                /* source.Generate();*/
             }
-           
+            [Serializable]
+            public class Page_Index_Core_ASource : ESWindowPageBase
+            {
+                [InlineEditor(inlineEditorMode:InlineEditorModes.GUIOnly,Expanded =true)]
+                public ESCode_CoreDomainSource source;
+
+            }
         }
-     
+        [Serializable]
+        public class PageRoot_Enum : ESWindowPageBase
+        {
+            [Title("枚举代码生成", "一个枚举源可以容纳多份，最终放到一个文件里，这样有利于压缩文件数", TitleAlignments.Centered), PropertyOrder(-1)]
+            [LabelText("生成脚本路径"), FolderPath] public string genePathFolder = "Assets/Scripts/ESFramework/CodeGen/Enum";
+            [LabelText("生成源路径"), FolderPath, ReadOnly] public string geneSourcePathFolder = "Assets/Resources/Data/SingleData/ESEnumSource";
+
+            [LabelText("枚举分类命名"), InlineButton("Gene", "生成源"), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForCaster")]
+            public string EnumSortName = "EnumSort";
+            [LabelText("全部枚举"), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_03"),] public List<ESCode_EnumSource.EnumType> EnumTypes = new List<ESCode_EnumSource.EnumType>() {  };
+
+
+            private void Gene()
+            {
+                ESCode_EnumSource source = ScriptableObject.CreateInstance<ESCode_EnumSource>();
+                string ss = EnumSortName._ToValidIdentName();
+                source.EnumSortName_ = ss;
+                source.EnumTypes= new List<ESCode_EnumSource.EnumType>();
+                source.name ="Sort_"+ ss + "_EnumSource";
+
+                source.path_   = genePathFolder;
+                foreach (var i in EnumTypes)
+                {
+                    i.EDIT = false;
+                    source.EnumTypes.Add(i);
+                }
+                EnumTypes.Clear();
+                EnumSortName = "New";
+                EditorUtility.SetDirty(source);
+                AssetDatabase.Refresh();
+                AssetDatabase.SaveAssets();
+                AssetDatabase.CreateAsset(source, Path.Combine(geneSourcePathFolder, source.name + ".asset"));
+                EditorGUIUtility.PingObject(source);
+                /* source.Generate();*/
+            }
+            [Serializable]
+            public class Page_Index_Enum_ASource : ESWindowPageBase
+            {
+                [InlineEditor(inlineEditorMode: InlineEditorModes.GUIOnly, Expanded = true)]
+                public ESCode_EnumSource source;
+                public override ESWindowPageBase ES_Refresh()
+                {
+                    source?.load();
+                    return base.ES_Refresh();
+                }
+            }
+        }
     }
 }
 

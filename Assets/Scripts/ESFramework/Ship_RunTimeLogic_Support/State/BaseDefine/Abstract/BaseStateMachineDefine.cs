@@ -1187,7 +1187,7 @@ namespace ES
                             {
                                 state.OnStateExit();
                                 ESMicro.OnStatePrepare();
-                                _SelfRunningState = ESMicro;
+                                _SelfRunningState = ESMicro; 
                                 Debug.Log("单-合并--打断  原有的  " + leftKey + " 被 新的  " + rightKey + "  打断!");
                             }
                             else if (back ==HandleMergeBack.MergeComplete)

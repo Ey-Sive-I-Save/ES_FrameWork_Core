@@ -63,6 +63,7 @@ namespace ES
 
                             foreach (var i in cs)
                             {
+                                if (i == null) continue;
                                 string forType = i.GetType().Name;
                                 string dis = GlobalDataForEditorOnly.Instance.TypeDis.GetNewName(forType);
                                 bool NowShow = !cache.Contains(forType);

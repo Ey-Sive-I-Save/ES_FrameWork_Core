@@ -17,7 +17,7 @@ using FishNet.Object.Prediction;
 using GameKit.Dependencies.Utilities;
 #if UNITY_EDITOR
 using UnityEditor;
-#endif
+#endif 
 
 namespace FishNet.Object
 {

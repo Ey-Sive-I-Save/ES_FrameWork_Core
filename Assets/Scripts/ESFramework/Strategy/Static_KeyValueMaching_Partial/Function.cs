@@ -252,30 +252,30 @@ namespace ES
             }
             //Function_OperationValue_InLine
             [MethodImpl(methodImplOptions: MethodImplOptions.AggressiveInlining)]
-            public static float OpearationFloat_Inline(float value, float Value, OperationHandleTypeForFloat settleType)
+            public static float OpearationFloat_Inline(float value, float Value, OperationOptionsForFloat settleType)
             {
                 switch (settleType)
                 {
-                    case OperationHandleTypeForFloat.Add: return value + Value;
-                    case OperationHandleTypeForFloat.Sub: return value - Value;
-                    case OperationHandleTypeForFloat.PerUp: return value * (1 + Value);
-                    case OperationHandleTypeForFloat.Max: return Mathf.Clamp(value, value, Value);
-                    case OperationHandleTypeForFloat.Min: return Mathf.Clamp(value, Value, value);
-                    case OperationHandleTypeForFloat.Wave: return value + UnityEngine.Random.Range(-Value, Value);
+                    case OperationOptionsForFloat.Add: return value + Value;
+                    case OperationOptionsForFloat.Sub: return value - Value;
+                    case OperationOptionsForFloat.PerUp: return value * (1 + Value);
+                    case OperationOptionsForFloat.Max: return Mathf.Clamp(value, value, Value);
+                    case OperationOptionsForFloat.Min: return Mathf.Clamp(value, Value, value);
+                    case OperationOptionsForFloat.Wave: return value + UnityEngine.Random.Range(-Value, Value);
                     default: return value;
                 }
             }
             [MethodImpl(methodImplOptions: MethodImplOptions.AggressiveInlining)]
-            public static float OpearationFloat_Cancel_Inline(float value, float Value, OperationHandleTypeForFloat settleType)
+            public static float OpearationFloat_Cancel_Inline(float value, float Value, OperationOptionsForFloat settleType)
             {
                 switch (settleType)
                 {
-                    case OperationHandleTypeForFloat.Add: return value - Value;
-                    case OperationHandleTypeForFloat.Sub: return value + Value;
-                    case OperationHandleTypeForFloat.PerUp: return value._SafeDivide(1 + Value);
-                    case OperationHandleTypeForFloat.Max: return Mathf.Clamp(value, value, Value);
-                    case OperationHandleTypeForFloat.Min: return Mathf.Clamp(value, Value, value);
-                    case OperationHandleTypeForFloat.Wave: return value + UnityEngine.Random.Range(-Value, Value);
+                    case OperationOptionsForFloat.Add: return value - Value;
+                    case OperationOptionsForFloat.Sub: return value + Value;
+                    case OperationOptionsForFloat.PerUp: return value._SafeDivide(1 + Value);
+                    case OperationOptionsForFloat.Max: return Mathf.Clamp(value, value, Value);
+                    case OperationOptionsForFloat.Min: return Mathf.Clamp(value, Value, value);
+                    case OperationOptionsForFloat.Wave: return value + UnityEngine.Random.Range(-Value, Value);
                     default: return value;
                 }
             }

@@ -23,6 +23,7 @@ using UnityEngine.UI;
 
 namespace ES
 {
+    [Serializable]
     public class DomainForGameCenterManager : Domain<GameCenterManager, ModuleForGamecenterManager> {
 
     }

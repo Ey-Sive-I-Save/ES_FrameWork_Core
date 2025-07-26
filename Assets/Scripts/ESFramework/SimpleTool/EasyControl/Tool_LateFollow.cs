@@ -7,7 +7,7 @@ namespace ES.MonoTool
     [AddComponentMenu("<ES>Tool/LateFollowIt(在LateUpdate跟随)")]
     public class Tool_LateFollow : MonoBehaviour
     {
-        public Transform Follow;
+        public Transform Follow; 
         void Start()
         {
 

@@ -103,6 +103,11 @@ namespace ES
                 AssetDatabase.CreateFolder(path, name);
 #endif
             }
+
+            public static void Copy(string content)
+            {
+                GUIUtility.systemCopyBuffer = content;
+            }
 #endregion
 
             #region 资产查询
@@ -246,6 +251,18 @@ namespace ES
 #endif
             }
 
+            public static string CreateEasySelectMenu(string title, string[] select,string[] back)
+            {
+#if UNITY_EDITOR
+                GenericMenu menu = new GenericMenu();
+                for(int i = 0; i < select.Length; i++)
+                {
+
+                }
+                return null;
+#endif
+            }
+
             public static void InitAsset<T>() where T : UnityEngine.Object
             {
 #if UNITY_EDITOR
@@ -288,7 +305,7 @@ namespace ES
 
                 if (!AssetDatabase.IsValidFolder(folderPath))
                 {
-                    Debug.LogError($"Invalid folder path: {folderPath}");
+                    Debug.LogError($"Invalid folder path_: {folderPath}");
                     return null;
                 }
                 T asset = ScriptableObject.CreateInstance<T>();
@@ -310,7 +327,7 @@ namespace ES
                 if (type == null) return null;
                 if (!AssetDatabase.IsValidFolder(folderPath))
                 {
-                    Debug.LogError($"Invalid folder path: {folderPath}");
+                    Debug.LogError($"Invalid folder path_: {folderPath}");
                     return null;
                 }
                 ScriptableObject asset = ScriptableObject.CreateInstance(type);

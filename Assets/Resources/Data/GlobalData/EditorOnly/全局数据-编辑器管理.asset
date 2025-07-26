@@ -108,7 +108,7 @@ MonoBehaviour:
       Data: 1
     - Name: contentName
       Entry: 1
-      Data: Image Icon
+      Data: CanvasRenderer Icon
     - Name: 
       Entry: 8
       Data: 

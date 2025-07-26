@@ -110,13 +110,13 @@ namespace ES
     [Serializable, TypeRegistryItem("队列循环安全脏列表_持久")]
     public class SafeNormalList<T> : ISafeList<T>
     {
-        [LabelText("正在更新", SdfIconType.ArrowRepeat), SerializeReference, ShowInInspector, GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
+        [LabelText("正在更新", SdfIconType.ArrowRepeat), SerializeReference, GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
         public List<T> ValuesNow = new List<T>(10);
         [FoldoutGroup("缓冲")]
-        [ShowInInspector, LabelText("缓冲添加队列", SdfIconType.BoxArrowInLeft)]
+        [ShowInInspector, NonSerialized, LabelText("缓冲添加队列", SdfIconType.BoxArrowInLeft)]
         private Queue<T> ValuesBufferToAdd = new Queue<T>();
         [FoldoutGroup("缓冲")]
-        [ShowInInspector, LabelText("缓冲移除队列", SdfIconType.BoxArrowRight)]
+        [ShowInInspector,NonSerialized,LabelText("缓冲移除队列", SdfIconType.BoxArrowRight)]
         private Queue<T> ValuesBufferToRemove = new Queue<T>();
         private bool isDirty;
         public bool MayHasElement = true;

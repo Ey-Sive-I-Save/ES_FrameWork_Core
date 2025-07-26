@@ -151,33 +151,8 @@ namespace ES
         {
             return this;
         }
-        [OdinDontRegister]
-        public class BlackBackgroundDrawer : OdinValueDrawer<ESWindowPageBase>
-        {
-            protected override void DrawPropertyLayout(GUIContent label)
-            {
-                var blackTexture = Texture2D.whiteTexture; // 使用白色纹理然后通过颜色控制
-                                                           // 保存原始颜色
-                var originalColor = GUI.color;
-
-                // 设置黑色背景
-                Rect rect = EditorGUILayout.BeginVertical();
-                GUI.color = Color.black;
-                GUI.DrawTexture(rect, blackTexture);
-                EditorGUILayout.EndVertical();
-
-                // 恢复颜色
-                GUI.color = originalColor;
-                Debug.Log(666);
-                // 在背景之上绘制内容
-                EditorGUILayout.BeginVertical();
-                this.CallNextDrawer(label);
-                
-                EditorGUILayout.EndVertical();
-            }
-
-        }
        
+        
     }
 
     public class BlackBackgroundDrawer : OdinValueDrawer<ESWindowPageBase>
@@ -196,4 +171,5 @@ namespace ES
         }
 
     }
+   
 }

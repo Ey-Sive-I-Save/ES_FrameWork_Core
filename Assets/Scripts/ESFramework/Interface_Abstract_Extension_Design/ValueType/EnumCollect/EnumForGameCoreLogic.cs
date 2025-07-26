@@ -79,7 +79,7 @@ namespace ES
 
         //实体(或者任意攻击)的基准攻击形式
         [Flags]
-        public enum EntityAttackBaseType
+        public enum EntityAttackBaseType 
         {
             [InspectorName("未定义")]None=0,
             [InspectorName("近战成分")] Melle = 1,
@@ -103,6 +103,8 @@ namespace ES
             [InspectorName("必须有目标即可")] MustTargetAlive,
             [InspectorName("无条件攻击")] Anyway,
         }
+
+        
     }
 }
 

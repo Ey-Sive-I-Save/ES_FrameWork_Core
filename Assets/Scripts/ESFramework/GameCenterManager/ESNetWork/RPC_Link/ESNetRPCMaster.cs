@@ -9,6 +9,7 @@ using UnityEngine;
 
 namespace ES
 {
+
     public class ESNetRPCMaster : ESNetBehaviour
     {
         public ESNetObject NetObject;

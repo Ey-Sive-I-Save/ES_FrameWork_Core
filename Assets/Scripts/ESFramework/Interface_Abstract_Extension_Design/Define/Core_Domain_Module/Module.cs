@@ -24,7 +24,7 @@ namespace ES
 
         #region 总重要信息
 
-        [HideInInspector/*绑定扩展域*/, SerializeReference]
+        [/*绑定扩展域*/ NonSerialized]
         public Domain_ Domain;//所在域-
 
         /*[LabelText("更新网络权限")]
@@ -47,11 +47,11 @@ namespace ES
 
             get => GameCenterManager.Instance;
         }
-        public DomainForGameCenterManager GameNormalDomain//游戏核心常规域
+      /*  public DomainForGameCenterManager GameNormalDomain//游戏核心常规域
         {
 
-            get => GameCenterManager.Instance.NormalDomain;
-        }
+            get =>null GameCenterManager.Instance.NormalDomain;
+        }*/
 
         public ESNetManager ESNet //ES网络管理器
         {

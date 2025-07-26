@@ -17,20 +17,23 @@ using UnityEngine.AI;
 using static ES.ModuleStateMachine_CrashDodge;
 using static UnityEngine.EventSystems.EventTrigger;
 using Sirenix.Serialization;
+using static UnityEngine.GraphicsBuffer;
+
 
 namespace ES
 {
+    using EEBOOPBuffer = OutputOperationBufferFloat_TargetAndDirectInput<Entity, Entity, EntityState_Buff, ITargetOperationFloatEEB>;
 
     [Serializable, TypeRegistryItem("实体标准状态机")]
     public class EntityStateMachine : ESStandardStateMachine_StringKey
     {
         [HideInInspector] public Entity entity;
-        [HideInInspector] public StateMachineDomainForEntity StateDomain;
+        [HideInInspector, NonSerialized] public StateMachineDomainForEntity StateDomain;
         [LabelText("技能子状态机")] public ESStandardStateMachine_StringKey SkillMachine = new ESStandardStateMachine_StringKey();
         [LabelText("Buff子状态机")] public ESStandardStateMachine_StringKey BuffMachine = new ESStandardStateMachine_StringKey();
         [LabelText("交互子状态机")] public ESStandardStateMachine_StringKey InteractionMachine = new ESStandardStateMachine_StringKey();
-        
-        
+
+
         public bool TryActiveSkill(string name)
         {
             return SkillMachine.TryActiveStateByKey(name);
@@ -65,7 +68,7 @@ namespace ES
                 this.RegisterNewState("技能", SkillMachine);
                 this.RegisterNewState("Buff", BuffMachine);
                 this.RegisterNewState("交互", InteractionMachine);
-                
+
                 //
             }
         }
@@ -106,6 +109,9 @@ namespace ES
         {
             TheEntityStateMachine = host as EntityStateMachine;
             Entity = TheEntityStateMachine?.StateDomain.core;
+            Debug.Log("Statemachine" + TheEntityStateMachine);
+            Debug.Log("Statemachine2" + TheEntityStateMachine.StateDomain);
+            Debug.Log("Statemachine3" + TheEntityStateMachine.StateDomain.core);
             base.RunStatePreparedLogic();
 
         }
@@ -210,8 +216,8 @@ namespace ES
         private void PrivateMethod_TriggerSkillModule(ReleaseableSkillModule Module)
         {
             //动画器相关
-            if(Module.useStateSwitch)
-            Entity.Anim?.CrossFade(Module.st,Module.crossFade?.Pick()??0.2f,Module.layer);
+            if (Module.useStateSwitch)
+                Entity.Anim?.CrossFade(Module.st, Module.crossFade?.Pick() ?? 0.2f, Module.layer);
             //开始筛选
             List<Entity> MyEntites = new List<Entity>();
             var overrideOption = Module.optionForOverrideLast;
@@ -269,7 +275,8 @@ namespace ES
                 foreach (var e in MyEntites)
                 {
                     if (e == null) continue;
-                    se.AppendCallback(() => {
+                    se.AppendCallback(() =>
+                    {
                         if (e != null && Entity != null)
                             foreach (var handle in Module.Applier.handles)
                             {
@@ -320,34 +327,31 @@ namespace ES
         #endregion
     }
 
-    [Serializable,TypeRegistryItem("实体标准Buff状态")]
-    public class EntityState_Buff : EntityState
-    {
-        #region 类型支持
-        public class BufferContainer : KeyGroup<OutputOperationBuffBuffer, ValueBufferOperationFloat>
-        {
-            public Queue<(OutputOperationBuffBuffer operation, ValueBufferOperationFloat buffer)> ToDelete = new Queue<(OutputOperationBuffBuffer, ValueBufferOperationFloat)>();
-        }
+    [Serializable, TypeRegistryItem("实体标准Buff状态")]
+    public class EntityState_Buff : EntityState,
+        ICacheKeyValueForOutputOpeation<IOperation, DeleAndCount, OutputOpeationDelegateFlag>,
+         ICacheKeyValueForOutputOpeation<EEBOOPBuffer, BufferOperationFloat, OutputOpeationBufferFlag>,
+          ICacheKeyValueForOutputOpeation<IOperation, ISettleOperation, OutputOpeationSettleFlag>
 
-        #endregion
-        [LabelText("Buff共享数据")]public ESBuffSharedData buffSharedData;
-        [LabelText("Buff变量数据")]public ESBuffVariableData buffVariableData=new ESBuffVariableData();
-        [NonSerialized]/*缓存-委托行为*/
-        public Dictionary<OutputOpeationBuffDelegate,  (Delegate,int)> CacheActions = new Dictionary<OutputOpeationBuffDelegate, (Delegate, int)>();
-        [NonSerialized]/*缓存-结算*/
-        public Dictionary<OutputOpeationBuffSettle, SettleOperationFloat> CacheSettles = new  Dictionary<OutputOpeationBuffSettle, SettleOperationFloat>();
-        [NonSerialized]/*缓存-缓冲变动*/
-        public BufferContainer CacheBuffers =new BufferContainer();
+    {
+        #region 常规
+        [LabelText("Buff共享数据")] public ESBuffSharedData buffSharedData;
+        [LabelText("Buff变量数据")] public ESBuffVariableData buffVariableData = new ESBuffVariableData();
         public Entity from;
         //这个Buff效果要用的
+        private float triggerTimer = 0;
         public float Level => buffVariableData.level;
+        #endregion
         protected override void RunStateEnterLogic()
         {
+            //初始化时间
             triggerTimer = buffSharedData.triggerTimeStart;
             if (buffVariableData.timeRemain < 0)
             {
                 buffVariableData.timeRemain = 10;
             }
+
+            //启用操作
             if (buffSharedData.EnableOnOffTrigger)
             {
                 buffSharedData.opeationForOnOff.TryOpeation(Entity, from, this);
@@ -355,26 +359,39 @@ namespace ES
             base.RunStateEnterLogic();
         }
         protected override void RunStateExitLogic()
-        {
+        {  //清理缓冲
+            if (buffSharedData.EnableBuffer)
+            {
+                var keys = CahceBuffer.Keys.ToArray();
+                foreach (var i in keys)
+                {
+                    Debug.Log("BU3");
+                    i.TryStopTheBuffer(Entity, from, this, CahceBuffer[i]);
+                }
+            }
+            //禁用操作
             if (buffSharedData.EnableOnOffTrigger)
             {
                 buffSharedData.opeationForOnOff.TryCancel(Entity, from, this);
             }
-            CacheActions.Clear();
-            CacheSettles.Clear();
-            CacheBuffers.Groups.Clear();
+
+            //清除缓存
+            CacheDele.Clear();
+            CacheSettle.Clear();
+            CahceBuffer.Clear();
             base.RunStateExitLogic();
         }
-        private float triggerTimer = 0;
-        
+
         protected override void RunStateUpdateLogic()
         {
             base.RunStateUpdateLogic();
+            //自动退出
             buffVariableData.timeRemain -= Time.deltaTime;
             if (buffVariableData.timeRemain < 0)
             {
                 OnStateExit();//退出状态 
             }
+            //按时间执行操作
             if (buffSharedData.EnableTimeDisTrigger)
             {
                 triggerTimer -= Time.deltaTime;
@@ -385,22 +402,31 @@ namespace ES
                     buffSharedData.opeationForTimeDis.TryOpeation(Entity, from, this);
                 }
             }
-            if(buffSharedData.EnableBuffer){//缓冲更迭
-                foreach (var toDelete in CacheBuffers.ToDelete)
+            //缓冲支持更迭
+            if (buffSharedData.EnableBuffer)
+            {
+                var keys = CahceBuffer.Keys.ToArray();
+                foreach (var i in keys)
                 {
-                    if (CacheBuffers.Groups.TryGetValue(toDelete.operation, out var list_))
-                    {
-                        list_.Remove(toDelete.buffer);
-                    }
-                }
-                foreach (var thebuffers in CacheBuffers.Groups)
-                {
-                    foreach (var buffer in thebuffers.Value)
-                    {
-                        thebuffers.Key.TryUpdateTheBuffer(buffer, Entity, null, this);
-                    }
+                    i.TryUpdateTheBuffer(Entity, from, this, CahceBuffer[i]);
                 }
             }
+        }
+        public Dictionary<IOperation, DeleAndCount> CacheDele = new Dictionary<IOperation, DeleAndCount>();
+        public Dictionary<IOperation, DeleAndCount> GetCache(OutputOpeationDelegateFlag flag = null)
+        {
+            return CacheDele;
+        }
+        public Dictionary<EEBOOPBuffer, BufferOperationFloat> CahceBuffer = new Dictionary<EEBOOPBuffer, BufferOperationFloat>();
+
+        public Dictionary<EEBOOPBuffer, BufferOperationFloat> GetCache(OutputOpeationBufferFlag flag = null)
+        {
+            return CahceBuffer;
+        }
+        public Dictionary<IOperation, ISettleOperation> CacheSettle = new Dictionary<IOperation, ISettleOperation>();
+        public Dictionary<IOperation, ISettleOperation> GetCache(OutputOpeationSettleFlag flag = null)
+        {
+            return CacheSettle;
         }
     }
 
@@ -669,48 +695,48 @@ namespace ES
         protected override void RunStatePreparedLogic()
         {
             base.RunStatePreparedLogic();
-           /* ReferModule_Target = Entity.AIDomain.Module_AB_AITarget;
-            Refer_Vision = Entity.NormalDomain.Module_AB_Vision;
-            if (ReferModule_Target == null || Refer_Vision == null) { OnStateExit(); }
-            ESEntityShared = Entity.SharedData ?? new ESEntitySharedData();
-            Entity.NormalDomain.Module_AB_Motion.StandardSpeed.y = ESEntityShared.PatrolSpeed;*/
+            /* ReferModule_Target = Entity.AIDomain.Module_AB_AITarget;
+             Refer_Vision = Entity.NormalDomain.Module_AB_Vision;
+             if (ReferModule_Target == null || Refer_Vision == null) { OnStateExit(); }
+             ESEntityShared = Entity.SharedData ?? new ESEntitySharedData();
+             Entity.NormalDomain.Module_AB_Motion.StandardSpeed.y = ESEntityShared.PatrolSpeed;*/
         }
         protected override void RunStateUpdateLogic()
         {
             base.RunStateUpdateLogic();
-           /* if (ReferModule_Target.Target != null)
-            {
-                TheEntityStateMachine.TryActiveStateByKey("追击状态");
-            }
-            nextHasTargetPosTimeCount -= Time.deltaTime;
-            nextHasSeeTargetTimeCount -= Time.deltaTime;
-            if (nextHasSeeTargetTimeCount < 0)
-            {
-                nextHasSeeTargetTimeCount = nextSeeTargetTimeCount;
-                Refer_Vision.TrySee();
-                Refer_Vision.MakeSeeAsTarget();
-            }
-            if (nextHasTargetPosTimeCount < 0)
-            {
-                nextHasTargetPosTimeCount = UnityEngine.Random.Range(nextMaxTargetTimeCount / 2, nextMaxTargetTimeCount);
-                if (targetSelectType == EnumCollect.TargetSelectType.Numerically)
-                {
+            /* if (ReferModule_Target.Target != null)
+             {
+                 TheEntityStateMachine.TryActiveStateByKey("追击状态");
+             }
+             nextHasTargetPosTimeCount -= Time.deltaTime;
+             nextHasSeeTargetTimeCount -= Time.deltaTime;
+             if (nextHasSeeTargetTimeCount < 0)
+             {
+                 nextHasSeeTargetTimeCount = nextSeeTargetTimeCount;
+                 Refer_Vision.TrySee();
+                 Refer_Vision.MakeSeeAsTarget();
+             }
+             if (nextHasTargetPosTimeCount < 0)
+             {
+                 nextHasTargetPosTimeCount = UnityEngine.Random.Range(nextMaxTargetTimeCount / 2, nextMaxTargetTimeCount);
+                 if (targetSelectType == EnumCollect.TargetSelectType.Numerically)
+                 {
 
-                }
-                else if (targetSelectType == EnumCollect.TargetSelectType.Random)
-                {
+                 }
+                 else if (targetSelectType == EnumCollect.TargetSelectType.Random)
+                 {
 
-                }
-                else if (targetSelectType == EnumCollect.TargetSelectType.ProcedurallyWaypoints)
-                {
-                    ReferModule_Target.nextWayPointPosition = RandomNavmeshLocation(procedurallyNormalR);
-                }
-            }
-            if (targetSelectType == EnumCollect.TargetSelectType.PlayerTarget)
-            {
+                 }
+                 else if (targetSelectType == EnumCollect.TargetSelectType.ProcedurallyWaypoints)
+                 {
+                     ReferModule_Target.nextWayPointPosition = RandomNavmeshLocation(procedurallyNormalR);
+                 }
+             }
+             if (targetSelectType == EnumCollect.TargetSelectType.PlayerTarget)
+             {
 
-                ReferModule_Target.nextWayPointPosition = GameCenterManager.Instance.transform.parent.position;
-            }*/
+                 ReferModule_Target.nextWayPointPosition = GameCenterManager.Instance.transform.parent.position;
+             }*/
         }
         public Vector3 RandomNavmeshLocation(float radius)
         {

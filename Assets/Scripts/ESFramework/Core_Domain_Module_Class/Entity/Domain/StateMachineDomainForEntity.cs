@@ -60,10 +60,9 @@ namespace ES
         [NonSerialized] public ModuleStateMachine_CrashDodge Module_CrashDodge;
 
         #endregion
-
-        protected override void Start()
+        public override void AwakeRegisterAllModules()
         {
-            base.Start();
+            base.AwakeRegisterAllModules();
             StateMachine.CreateRelationShip(core, this);//重建实体状态机
             KeyValueMatchingUtility.DataApply.ApplyStatePackToMachine(RegisterPack, StateMachine);
             StateMachine.defaultStateKey = DefaultStateName;

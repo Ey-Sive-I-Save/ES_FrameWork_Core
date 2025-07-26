@@ -85,6 +85,7 @@ namespace ES
                 var all = g.GetComponents<Component>();
                 foreach (var i in all)
                 {
+                    if (i == null) continue;
                     if (i.GetType().Name == typeName) return (true, new BackMessage() { component = i });
                 }
                 return (false, default);

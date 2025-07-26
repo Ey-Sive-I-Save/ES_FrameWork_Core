@@ -21,7 +21,7 @@ namespace ES
         [FoldoutGroup("工具管理器引用"), LabelText("音效管理器")] public ESAudioMaster AudioMaster;
         
 
-        [LabelText("基本域")]public DomainForGameCenterManager NormalDomain;
+      /*  [LabelText("基本域")]public DomainForGameCenterManager NormalDomain;*/
         
 
 

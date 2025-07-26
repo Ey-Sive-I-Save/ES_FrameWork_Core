@@ -1,0 +1,504 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8280413418902923667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ff4bdd0ffdfaf48a79197abde84fd0, type: 3}
+  m_Name: "Buff1\u53F7"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  DataKey:
+    str_direc: "Buff1\u53F7"
+  bindingState: {fileID: -8128683674681279882, guid: 2cea36b5672232d4ca25aae02c68752d,
+    type: 2}
+  buffSharedData:
+    EnableTimeDisTrigger: 0
+    triggerTimeStart: 1
+    triggerTimeDis: 1
+    opeationForTimeDis:
+      rid: 3913062410175905941
+    EnableOnOffTrigger: 1
+    opeationForOnOff:
+      rid: 3913062421260926976
+    EnableBuffer: 1
+    icon: {fileID: 0}
+    buffGoodOrBad: 0
+  defaultVariableData:
+    level: 1
+    timeRemain: 10
+  references:
+    version: 2
+    RefIds:
+    - rid: 3913062410175905941
+      type: {class: OutputOperationBufferrFloatEEB_TargetAndDirectInput, ns: ES, asm: ES}
+      data:
+        bufferSource:
+          mutipler: 1
+          allTime: 1
+          curve:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 0.19523811
+              value: 1.8
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.9314598
+              value: 1.8
+              inSlope: -0.46472162
+              outSlope: -0.46472162
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        target:
+          rid: 3913062410175905942
+    - rid: 3913062410175905942
+      type: {class: TargetOP_DamageAdd, ns: ES, asm: ES}
+      data: 
+    - rid: 3913062421260926976
+      type: {class: OnKill, ns: ES, asm: ES}
+      data:
+        GiveCount: 2
+        WhenHappen:
+          rid: 3913062421260927028
+    - rid: 3913062421260927028
+      type: {class: OnTryTake, ns: ES, asm: ES}
+      data:
+        GiveCount: 1
+        WhenHappen:
+          rid: 3913062421260927029
+    - rid: 3913062421260927029
+      type: {class: OutputOperationFloatValue_CompositeWithSupportAndTarget_EEB, ns: ES,
+        asm: ES}
+      data:
+        support:
+          rid: 3913062421260927030
+        target:
+          rid: 3913062421260927031
+    - rid: 3913062421260927030
+      type: {class: SupportOperation_EEB_DirectFloat, ns: ES, asm: ES}
+      data:
+        opValue: 5
+        opType: 0
+    - rid: 3913062421260927031
+      type: {class: TargetOP_DamageAdd, ns: ES, asm: ES}
+      data: 
+--- !u!114 &-6754377651021281120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ff4bdd0ffdfaf48a79197abde84fd0, type: 3}
+  m_Name: "\u6570\u636E\u5355\u5143Buff2\u53F7"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  DataKey:
+    str_direc: "Buff2\u53F7"
+  bindingState: {fileID: -8128683674681279882, guid: 2cea36b5672232d4ca25aae02c68752d,
+    type: 2}
+  buffSharedData:
+    EnableTimeDisTrigger: 0
+    triggerTimeStart: 1
+    triggerTimeDis: 1
+    opeationForTimeDis:
+      rid: 3913062410175905941
+    EnableOnOffTrigger: 1
+    opeationForOnOff:
+      rid: 3913062410175905954
+    EnableBuffer: 1
+    icon: {fileID: 0}
+    buffGoodOrBad: 0
+  defaultVariableData:
+    level: 1
+    timeRemain: 10
+  references:
+    version: 2
+    RefIds:
+    - rid: 3913062410175905941
+      type: {class: OutputOperationBufferrFloatEEB_TargetAndDirectInput, ns: ES, asm: ES}
+      data:
+        bufferSource:
+          mutipler: 1
+          allTime: 1
+          curve:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 0.19523811
+              value: 1.8
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.9314598
+              value: 1.8
+              inSlope: -0.46472162
+              outSlope: -0.46472162
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        target:
+          rid: 3913062410175905942
+    - rid: 3913062410175905942
+      type: {class: TargetOP_DamageAdd, ns: ES, asm: ES}
+      data: 
+    - rid: 3913062410175905954
+      type: {class: OutputOperationBufferrFloatEEB_TargetAndDirectInput, ns: ES, asm: ES}
+      data:
+        bufferSource:
+          mutipler: 1
+          allTime: 999
+          curve:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 0.19523811
+              value: 1.8
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.9314598
+              value: 1.8
+              inSlope: -0.46472162
+              outSlope: -0.46472162
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        target:
+          rid: 3913062410175905955
+    - rid: 3913062410175905955
+      type: {class: TargetOP_DamageAdd, ns: ES, asm: ES}
+      data: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ef589ecd90337542b96d746c46cbd23, type: 3}
+  m_Name: "Buff\u65B0\u5EFA\u914D\u7F6E\u7EC456415"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: -8280413418902923667}
+    - {fileID: -6754377651021281120}
+    - {fileID: 8637436045197678547}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: keyValues
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.BuffSoInfo,
+        ES]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: "Buff1\u53F7"
+    - Name: $v
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: "Buff2\u53F7"
+    - Name: $v
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: "Buff3\u53F7"
+    - Name: $v
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+--- !u!114 &8637436045197678547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ff4bdd0ffdfaf48a79197abde84fd0, type: 3}
+  m_Name: "\u6570\u636E\u5355\u5143Buff3\u53F7"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  DataKey:
+    str_direc: "Buff3\u53F7"
+  bindingState: {fileID: -8128683674681279882, guid: 2cea36b5672232d4ca25aae02c68752d,
+    type: 2}
+  buffSharedData:
+    EnableTimeDisTrigger: 0
+    triggerTimeStart: 1
+    triggerTimeDis: 1
+    opeationForTimeDis:
+      rid: 3913062410175905941
+    EnableOnOffTrigger: 1
+    opeationForOnOff:
+      rid: 3913062410175905954
+    EnableBuffer: 1
+    icon: {fileID: 0}
+    buffGoodOrBad: 0
+  defaultVariableData:
+    level: 1
+    timeRemain: 10
+  references:
+    version: 2
+    RefIds:
+    - rid: 3913062410175905941
+      type: {class: OutputOperationBufferrFloatEEB_TargetAndDirectInput, ns: ES, asm: ES}
+      data:
+        bufferSource:
+          mutipler: 1
+          allTime: 1
+          curve:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 0.19523811
+              value: 1.8
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.9314598
+              value: 1.8
+              inSlope: -0.46472162
+              outSlope: -0.46472162
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        target:
+          rid: 3913062410175905942
+    - rid: 3913062410175905942
+      type: {class: TargetOP_DamageAdd, ns: ES, asm: ES}
+      data: 
+    - rid: 3913062410175905954
+      type: {class: OutputOperationBufferrFloatEEB_TargetAndDirectInput, ns: ES, asm: ES}
+      data:
+        bufferSource:
+          mutipler: 1
+          allTime: 999
+          curve:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 0.19523811
+              value: 1.8
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.9314598
+              value: 1.8
+              inSlope: -0.46472162
+              outSlope: -0.46472162
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        target:
+          rid: 3913062410175905955
+    - rid: 3913062410175905955
+      type: {class: TargetOP_DamageAdd, ns: ES, asm: ES}
+      data: 

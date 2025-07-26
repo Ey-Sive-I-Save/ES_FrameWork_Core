@@ -24,6 +24,7 @@ MonoBehaviour:
   path: Assets/Scripts/ESFramework/CodeGen/Target/Core_Domain_Module
   CoreClassName: MyCOre
   CoreClassChinaName: "\u65B0\u6838\u5FC3"
+  parent: 0
   Domains:
   - DomainClassName: Normal
     DomainChinaClassName: "\u65B0\u7684\u57DF"
@@ -31,18 +32,92 @@ MonoBehaviour:
     - ModuleClassName: Run
       ModuleChinaClassName: "\u8DD1"
       DefineAtDomain: 1
+      modules:
+      - ModuleClassName: TestModule
+        ModuleChinaClassName: "\u65B0\u7684\u526A\u5F71"
+      - ModuleClassName: TestModule2
+        ModuleChinaClassName: "\u5B9E\u6253\u5B9E"
     - ModuleClassName: Jump
       ModuleChinaClassName: "\u8DF3"
       DefineAtDomain: 1
+      modules: []
     - ModuleClassName: Eat
       ModuleChinaClassName: "\u5403"
       DefineAtDomain: 0
+      modules: []
   - DomainClassName: Next
     DomainChinaClassName: "\u4E0B\u4E00\u4E2A"
     Modules:
     - ModuleClassName: Special
       ModuleChinaClassName: "\u7279\u6B8A"
       DefineAtDomain: 0
+      modules:
+      - ModuleClassName: TestModule1ss
+        ModuleChinaClassName: "\u65B0\u7684\u526A\u5F71"
+      - ModuleClassName: TestModule244
+        ModuleChinaClassName: "\u65B0\u7684\u526A\u5F71"
     - ModuleClassName: Net
       ModuleChinaClassName: "\u7F51\u7EDC"
       DefineAtDomain: 1
+      modules:
+      - ModuleClassName: "TestModule\u53D1\u5C04"
+        ModuleChinaClassName: "\u65B0\u7684\u526A\u5F71"
+      - ModuleClassName: TestModuless
+        ModuleChinaClassName: "\u65B0\u7684\u526A\u5F71"
+  pathForLogic_: Assets/Scripts/ESFramework/Core_Domain_Module_Class
+  domains_copycontent:
+  - domainChineseName: "\u65B0\u6838\u5FC3\u65B0\u7684\u57DF\u6269\u5C55\u57DF"
+    domainName: MyCOreNormalDomain
+    content: "\r\n                    //\u65B0\u6838\u5FC3\u65B0\u7684\u57DF\u6269\u5C55\u57DF\r\n                   
+      public partial  class MyCOreNormalDomain \r\n                    {\r\n                        
+      protected override void OnEnable()\r\n        {\r\n            base.OnEnable();\r\n       
+      }\r\n        protected override void Update()\r\n        {\r\n            base.Update();\r\n       
+      }\r\n        protected override void OnDisable()\r\n        {\r\n           
+      base.OnDisable();\r\n        }\r\n                    }\r\n               
+      \r\n"
+    modules:
+    - ModuleChineseName: "\u6269\u5C55\u6A21\u5757_\u8DD1"
+      ModuleName: MyCOreNormalModule_Run
+      content: "\r\n                    //\u6269\u5C55\u6A21\u5757_\u8DD1\r\n                   
+        public partial  class MyCOreNormalModule_Run :MyCOreNormalModule\r\n                   
+        {\r\n                         protected override void OnEnable()\r\n       
+        {\r\n            base.OnEnable();\r\n        }\r\n        protected override
+        void Update()\r\n        {\r\n            base.Update();\r\n        }\r\n       
+        protected override void OnDisable()\r\n        {\r\n            base.OnDisable();\r\n       
+        }\r\n                    }\r\n                \r\n"
+    - ModuleChineseName: "\u6269\u5C55\u6A21\u5757_\u8DD1_\u65B0\u7684\u526A\u5F71"
+      ModuleName: MyCOreNormalModule_Run_TestModule
+      content: "\r\n                    //\u6269\u5C55\u6A21\u5757_\u8DD1_\u65B0\u7684\u526A\u5F71\r\n                   
+        public partial  class MyCOreNormalModule_Run_TestModule :MyCOreNormalModule_Run\r\n                   
+        {\r\n                         protected override void OnEnable()\r\n       
+        {\r\n            base.OnEnable();\r\n        }\r\n        protected override
+        void Update()\r\n        {\r\n            base.Update();\r\n        }\r\n       
+        protected override void OnDisable()\r\n        {\r\n            base.OnDisable();\r\n       
+        }\r\n                    }\r\n                \r\n"
+    - ModuleChineseName: "\u6269\u5C55\u6A21\u5757_\u8DD1_\u5B9E\u6253\u5B9E"
+      ModuleName: MyCOreNormalModule_Run_TestModule2
+      content: "\r\n                    //\u6269\u5C55\u6A21\u5757_\u8DD1_\u5B9E\u6253\u5B9E\r\n                   
+        public partial  class MyCOreNormalModule_Run_TestModule2 :MyCOreNormalModule_Run\r\n                   
+        {\r\n                         protected override void OnEnable()\r\n       
+        {\r\n            base.OnEnable();\r\n        }\r\n        protected override
+        void Update()\r\n        {\r\n            base.Update();\r\n        }\r\n       
+        protected override void OnDisable()\r\n        {\r\n            base.OnDisable();\r\n       
+        }\r\n                    }\r\n                \r\n"
+    - ModuleChineseName: "\u6269\u5C55\u6A21\u5757_\u8DF3"
+      ModuleName: MyCOreNormalModule_Jump
+      content: "\r\n                    //\u6269\u5C55\u6A21\u5757_\u8DF3\r\n                   
+        public partial  class MyCOreNormalModule_Jump :MyCOreNormalModule\r\n                   
+        {\r\n                         protected override void OnEnable()\r\n       
+        {\r\n            base.OnEnable();\r\n        }\r\n        protected override
+        void Update()\r\n        {\r\n            base.Update();\r\n        }\r\n       
+        protected override void OnDisable()\r\n        {\r\n            base.OnDisable();\r\n       
+        }\r\n                    }\r\n                \r\n"
+    - ModuleChineseName: "\u6269\u5C55\u6A21\u5757_\u5403"
+      ModuleName: MyCOreNormalModule_Eat
+      content: "\r\n                    //\u6269\u5C55\u6A21\u5757_\u5403\r\n                   
+        public partial  class MyCOreNormalModule_Eat :MyCOreNormalModule\r\n                   
+        {\r\n                         protected override void OnEnable()\r\n       
+        {\r\n            base.OnEnable();\r\n        }\r\n        protected override
+        void Update()\r\n        {\r\n            base.Update();\r\n        }\r\n       
+        protected override void OnDisable()\r\n        {\r\n            base.OnDisable();\r\n       
+        }\r\n                    }\r\n                \r\n"

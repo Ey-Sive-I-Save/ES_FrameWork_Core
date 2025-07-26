@@ -122,8 +122,10 @@ namespace ES
         //注册到核心
         public void RegisterAllWithCore(ICore core)
         {
+            Debug.Log("RE4");
             if (core is Core_ use)
             {
+                Debug.Log("RE5");
                 this.core = use;
                 AwakeRegisterAllModules();
             }

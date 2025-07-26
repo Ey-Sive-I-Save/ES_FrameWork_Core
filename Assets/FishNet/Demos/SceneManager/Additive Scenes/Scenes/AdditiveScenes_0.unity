@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 163306475}
+  - component: {fileID: 163306476}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -154,6 +155,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &163306476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163306474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a64ae20ec7606646bdd11fa6fcefbc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Domain_Normal:
+    rid: 3913062328474533891
+  Domain_Next:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 3913062328474533891
+      type: {class: MyCOreNormalDomain, ns: ES, asm: ES}
+      data:
+        readMe:
+          edit: 1
+          ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+          readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+          showColor: {r: 1, g: 1, b: 1, a: 1}
+        core: {fileID: 0}
+        Modules:
+          ValuesNow:
+          - rid: 3913062328474533892
+          MayHasElement: 1
+    - rid: 3913062328474533892
+      type: {class: MyCOreNormalModule_Eat, ns: ES, asm: ES}
+      data:
+        _enableSelf: 1
+        Editor_Preset: "\u9884\u8BBE1"
 --- !u!114 &309548902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -903,7 +943,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1617785157
 Transform:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}

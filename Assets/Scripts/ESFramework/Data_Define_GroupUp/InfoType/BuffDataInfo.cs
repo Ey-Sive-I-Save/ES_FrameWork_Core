@@ -14,12 +14,11 @@ namespace ES
     {
         [LabelText("绑定状态基")]
         public StateDataInfo bindingState;
-        [LabelText("实体共享数据")]
+        [LabelText("Buff共享数据"),]
         public ESBuffSharedData buffSharedData;
 
-        [LabelText("实体变量数据")]
+        [LabelText("Buff变量数据"), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_03")]
         public ESBuffVariableData defaultVariableData;
-
         public ESBuffSharedData SharedData { get => buffSharedData; set => buffSharedData = value; }
         public ESBuffVariableData VariableData { get => defaultVariableData; set => defaultVariableData = value; }
     }

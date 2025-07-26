@@ -46,9 +46,22 @@ namespace ES.EvPointer
 
     }
     //接口
-    public interface IPointer<out Back, in ByON, in From, in With> : IPointer
+    public interface IPointer<out Back, in ON, in From, in With> : IPointer
     {
-        Back Pick(ByON on = default, From from = default, With with = default);
+        Back Pick(ON on = default, From from = default, With with = default);
+        
+    }
+    public interface IPointerNotBack<in ON, in From, in With> : IPointer<object, ON,From, With>
+    {
+        new void Pick(ON on = default, From from = default, With with = default);
+        object IPointer<object, ON, From, With>.Pick(ON on, From from, With with) {
+            Pick(on,from,with);
+            return null;
+        }
+        object IPointer.Pick(object a, object b , object c) {
+            Pick(a,b,c);
+            return null;
+        }
     }
     public interface IPointerOnlyBackList<Single> : IPointerOnlyBackIEnumerable<List<Single>>
     {

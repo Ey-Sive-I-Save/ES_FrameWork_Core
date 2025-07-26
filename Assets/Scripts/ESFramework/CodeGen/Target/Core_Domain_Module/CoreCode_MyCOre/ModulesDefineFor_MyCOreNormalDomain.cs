@@ -7,7 +7,29 @@ using UnityEngine;
  namespace ES{ 
      /*MyCOreNormalDomain （新核心新的域扩展域）的*/
      [Serializable, TypeRegistryItem("扩展模块_跑")]
-     public class MyCOreNormalModule_Run :MyCOreNormalModule
+     public partial class MyCOreNormalModule_Run :MyCOreNormalModule
+     {
+         protected override void CreateRelationshipOnly()
+         {
+             Domain.Module_Run = this;
+             base.CreateRelationshipOnly();
+             }
+         }
+     
+    
+     [Serializable, TypeRegistryItem("扩展模块_跑_新的剪影")]
+     public partial class MyCOreNormalModule_Run_TestModule :MyCOreNormalModule_Run
+     {
+         protected override void CreateRelationshipOnly()
+         {
+             Domain.Module_Run = this;
+             base.CreateRelationshipOnly();
+             }
+         }
+     
+    
+     [Serializable, TypeRegistryItem("扩展模块_跑_实打实")]
+     public partial class MyCOreNormalModule_Run_TestModule2 :MyCOreNormalModule_Run
      {
          protected override void CreateRelationshipOnly()
          {
@@ -18,7 +40,7 @@ using UnityEngine;
      
     
      [Serializable, TypeRegistryItem("扩展模块_跳")]
-     public class MyCOreNormalModule_Jump :MyCOreNormalModule
+     public partial class MyCOreNormalModule_Jump :MyCOreNormalModule
      {
          protected override void CreateRelationshipOnly()
          {
@@ -29,7 +51,7 @@ using UnityEngine;
      
     
      [Serializable, TypeRegistryItem("扩展模块_吃")]
-     public class MyCOreNormalModule_Eat :MyCOreNormalModule
+     public partial class MyCOreNormalModule_Eat :MyCOreNormalModule
      {
          
          }

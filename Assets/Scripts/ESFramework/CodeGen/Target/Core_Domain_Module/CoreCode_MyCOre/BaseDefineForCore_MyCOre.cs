@@ -9,6 +9,10 @@ using UnityEngine;
      
      public partial class MyCOre :Core
      {
+         protected override void OnAwakeRegisterOnly()
+         {
+             RegisterDomains(Domain_Normal,Domain_Next);
+             }
          [TabGroup("新的域", TextColor = "@Editor_DomainTabColor(Domain_Normal)")]
          [SerializeReference,InlineProperty, HideLabel] 
          public MyCOreNormalDomain Domain_Normal; [TabGroup("下一个", TextColor = "@Editor_DomainTabColor(Domain_Next)")]
