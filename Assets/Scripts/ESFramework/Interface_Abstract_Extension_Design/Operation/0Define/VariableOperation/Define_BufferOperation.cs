@@ -22,7 +22,6 @@ namespace ES
         public float timeHasGo = 0;
 
         public abstract bool IsRecycled { get; set; }
-
         public abstract void OnResetAsPoolable();
         public abstract void TryAutoBePushedToPool();
     }
@@ -39,7 +38,6 @@ namespace ES
 
         #region 池化
         public sealed override bool IsRecycled { get; set; }
-      
         public sealed override void OnResetAsPoolable()
         {
             source = null;
@@ -85,6 +83,7 @@ namespace ES
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public ValueType EvaluateToEndFrame(ref float timeHasGoFrom)
         {
+            Debug.Log(" TTB "+EvaluateAt(timeHasGoFrom) + "  "+ EvaluateAt(allTime));
             return Offset(EvaluateAt(timeHasGoFrom), EvaluateAt(allTime));
         }
         public abstract ValueType EvaluateAt(float timeHasGo);

@@ -11,7 +11,7 @@ using UnityEngine;
 namespace ES
 {
     [Serializable,TypeRegistryItem("安全键组")]
-    public abstract class SafeKeyGroup<Key, Element> : IKeyGroup<Key, Element> ,ISafe
+    public  class SafeKeyGroup<Key, Element> : IKeyGroup<Key, Element> ,ISafe
     {
         [SerializeReference]
         [LabelText(@"@ Editor_ShowDes ", icon: SdfIconType.ListColumnsReverse), GUIColor("Editor_ShowColor")]

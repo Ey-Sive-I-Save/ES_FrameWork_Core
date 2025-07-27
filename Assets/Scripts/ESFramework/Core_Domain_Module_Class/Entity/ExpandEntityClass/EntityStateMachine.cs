@@ -330,7 +330,7 @@ namespace ES
     [Serializable, TypeRegistryItem("实体标准Buff状态")]
     public class EntityState_Buff : EntityState,
         ICacheKeyValueForOutputOpeation<IOperation, DeleAndCount, OutputOpeationDelegateFlag>,
-         ICacheKeyValueForOutputOpeation<EEBOOPBuffer, BufferOperationFloat, OutputOpeationBufferFlag>,
+         ICacheSafeKeyGroupForOutputOpeation<EEBOOPBuffer, BufferOperationFloat, OutputOpeationBufferFlag>,
           ICacheKeyValueForOutputOpeation<IOperation, ISettleOperation, OutputOpeationSettleFlag>
 
     {
@@ -362,11 +362,15 @@ namespace ES
         {  //清理缓冲
             if (buffSharedData.EnableBuffer)
             {
-                var keys = CahceBuffer.Keys.ToArray();
+                var keys = CahceBuffer.Groups.Keys.ToArray();
                 foreach (var i in keys)
                 {
-                    Debug.Log("BU3");
-                    i.TryStopTheBuffer(Entity, from, this, CahceBuffer[i]);
+                    var group = CahceBuffer.GetGroup(i);
+                    foreach (var buffer in group)
+                    {
+                        Debug.Log(Entity.VariableData.Health);
+                        i.TryStopTheBuffer(Entity, from, this, buffer);
+                    }
                 }
             }
             //禁用操作
@@ -405,24 +409,32 @@ namespace ES
             //缓冲支持更迭
             if (buffSharedData.EnableBuffer)
             {
-                var keys = CahceBuffer.Keys.ToArray();
+                CahceBuffer.TryApplyBuffers();
+                var keys = CahceBuffer.Groups.Keys.ToArray();
                 foreach (var i in keys)
                 {
-                    i.TryUpdateTheBuffer(Entity, from, this, CahceBuffer[i]);
-                }
+                    var group= CahceBuffer.GetGroup(i);
+                    foreach(var buffer in group)
+                    {
+                        i.TryUpdateTheBuffer(Entity, from, this, buffer);
+                    }
+                } 
             }
         }
+        [ShowInInspector]
         public Dictionary<IOperation, DeleAndCount> CacheDele = new Dictionary<IOperation, DeleAndCount>();
         public Dictionary<IOperation, DeleAndCount> GetCache(OutputOpeationDelegateFlag flag = null)
         {
             return CacheDele;
         }
-        public Dictionary<EEBOOPBuffer, BufferOperationFloat> CahceBuffer = new Dictionary<EEBOOPBuffer, BufferOperationFloat>();
+        [ShowInInspector]
+        public SafeKeyGroup<EEBOOPBuffer, BufferOperationFloat> CahceBuffer = new SafeKeyGroup<EEBOOPBuffer, BufferOperationFloat>();
 
-        public Dictionary<EEBOOPBuffer, BufferOperationFloat> GetCache(OutputOpeationBufferFlag flag = null)
+        public SafeKeyGroup<EEBOOPBuffer, BufferOperationFloat> GetCache(OutputOpeationBufferFlag flag = null)
         {
             return CahceBuffer;
         }
+        [ShowInInspector]
         public Dictionary<IOperation, ISettleOperation> CacheSettle = new Dictionary<IOperation, ISettleOperation>();
         public Dictionary<IOperation, ISettleOperation> GetCache(OutputOpeationSettleFlag flag = null)
         {

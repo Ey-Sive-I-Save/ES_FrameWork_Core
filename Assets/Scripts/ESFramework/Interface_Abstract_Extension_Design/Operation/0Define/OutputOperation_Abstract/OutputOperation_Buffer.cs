@@ -9,12 +9,12 @@ using static UnityEngine.GraphicsBuffer;
 
 namespace ES
 {
-    public class OutputOpeationBufferFlag : Flag<OutputOpeationBufferFlag>
+    public class OutputOpeationBufferFlag : OverLoadFlag<OutputOpeationBufferFlag>
     {
 
     }
     public abstract class OutputOperationBuffer<On, From, With, ValueType, Buffer, BufferSource, This> : IOutputOperation<On, From, With>
-        where With : ICacheKeyValueForOutputOpeation<This, Buffer, OutputOpeationBufferFlag>
+        where With : ICacheSafeKeyGroupForOutputOpeation<This, Buffer, OutputOpeationBufferFlag>
         where Buffer : BufferOperationAbstract, new()
         where BufferSource : BufferDataSource<ValueType>
         where This : OutputOperationBuffer<On, From, With, ValueType, Buffer, BufferSource, This>
@@ -24,16 +24,19 @@ namespace ES
         public Buffer GetBufferOnEnableExpand(On on, From from, With with)
         {
             var use = MakeTheOpeation(on, from, with);
-            with.GetCache(OutputOpeationBufferFlag.flag).Add(this as This, use);
+            with.GetCache(OutputOpeationBufferFlag.flag).TryAdd(this as This, use);
             return use;
         }
         public Buffer GetBufferOnDisableExpand(On on, From from, With with)
         {
             var cacher = with.GetCache(OutputOpeationBufferFlag.flag);
-            if (cacher.TryGetValue(this as This, out var use))
+            if (cacher.Groups.TryGetValue(this as This, out var use))
             {
-                cacher.Remove(this as This);
-                use.TryAutoBePushedToPool();
+                cacher.Groups.Remove(this as This);
+                foreach(var i in use)
+                {
+                    i.TryAutoBePushedToPool();
+                }
                 return use as Buffer;
             }
             return default;
@@ -48,7 +51,7 @@ namespace ES
     //数值导向+直接输入(这种可以绕过数值传递直接Update)
     public abstract class OutputOperationBuffer_TargetAndDirectInput<On, From, With, ValueType, Buffer, BufferSource, Target, This> :
         OutputOperationBuffer<On, From, With, ValueType, Buffer, BufferSource, This>
-        where With : ICacheKeyValueForOutputOpeation<This, Buffer, OutputOpeationBufferFlag>
+        where With : ICacheSafeKeyGroupForOutputOpeation<This, Buffer, OutputOpeationBufferFlag>
         where Buffer : BufferOperation<ValueType, BufferSource, Buffer>, new()
         where BufferSource : BufferDataSource<ValueType>
         where Target : ITargetOperation<On, From, With, ValueType, ValueType, OperationOptionsForFloat>
@@ -80,15 +83,17 @@ namespace ES
         {
             Debug.Log("BU4");
             var cacher = with.GetCache(OutputOpeationBufferFlag.flag);
-            if (cacher.TryGetValue(this as This, out var use))
+            if (cacher.Groups.TryGetValue(this as This, out var use))
             {
                 if (target != null)
                 {
-                    Debug.Log("BU5");
                     target.TargetOpeation(on, from, with, bufferSource.EvaluateToEndFrame(ref buffer.timeHasGo), OperationOptionsForFloat.Add);
+                    use.TryRemove(buffer);
+                } 
+                foreach(var i in use)
+                {
+                    i.TryAutoBePushedToPool();
                 }
-                cacher.Remove(this as This);
-                use.TryAutoBePushedToPool();
             }
            
         }
@@ -96,7 +101,7 @@ namespace ES
 
     //浮点缓冲 直接指向
     public abstract class OutputOperationBufferFloat_TargetAndDirectInput<On, From, With, Target> : OutputOperationBuffer_TargetAndDirectInput<On, From, With, float, BufferOperationFloat, BufferDataFloatSource, Target, OutputOperationBufferFloat_TargetAndDirectInput<On, From, With, Target>>
-          where With : ICacheKeyValueForOutputOpeation<OutputOperationBufferFloat_TargetAndDirectInput<On, From, With, Target>, BufferOperationFloat, OutputOpeationBufferFlag>
+          where With : ICacheSafeKeyGroupForOutputOpeation<OutputOperationBufferFloat_TargetAndDirectInput<On, From, With, Target>, BufferOperationFloat, OutputOpeationBufferFlag>
          where Target : ITargetOperation<On, From, With, float, float, OperationOptionsForFloat>
     {
 

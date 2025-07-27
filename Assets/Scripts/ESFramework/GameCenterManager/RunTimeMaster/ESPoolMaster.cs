@@ -289,13 +289,13 @@ namespace ES
     {
         void TryAutoBePushedToPool();
     }
-    public interface IPool<T>
+    public interface IPool<T> where T : IPoolable
     {
         T GetInPool();
         bool PushToPool(T obj);
     }
 
-    public abstract class Pool<T> : IPool<T>
+    public abstract class Pool<T> : IPool<T> where T : IPoolable
     {
         public int CurCount
         {
@@ -340,15 +340,17 @@ namespace ES
 
         public virtual T GetInPool()
         {
-            return mObjectStack.Count == 0
+            var use = mObjectStack.Count == 0
                 ? mFactory.Create()
                 : mObjectStack.Pop();
+            use.IsRecycled = false;
+            return use;
         }
 
         public abstract bool PushToPool(T obj);
     }
 
-    public class ESSimpleObjectPool<T> : Pool<T>
+    public class ESSimpleObjectPool<T> : Pool<T> where T : IPoolable
     {
         protected readonly Action<T> mResetMethod;
 
@@ -366,7 +368,7 @@ namespace ES
         public override bool PushToPool(T obj)
         {
             mResetMethod?.Invoke(obj);
-
+            obj.IsRecycled = true;
             mObjectStack.Push(obj);
 
             return true;

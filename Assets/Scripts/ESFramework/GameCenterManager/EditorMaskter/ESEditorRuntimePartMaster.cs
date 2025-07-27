@@ -14,7 +14,7 @@ namespace ES
     {
 #if UNITY_EDITOR
         [LabelText("提示"), PropertyOrder(-5)]
-        public Tool_ESReadMeClass readme = new Tool_ESReadMeClass() { readMe = "请在尽量在窗口处进行调整,这里不推荐\n因为" };
+        public Tool_ESReadMeClass readme = new Tool_ESReadMeClass() { readMeIn = "请在尽量在窗口处进行调整,这里不推荐\n因为" };
 #endif
         [Button("test")]
         public void test()

@@ -1,5 +1,6 @@
 using ES;
 using ES.EvPointer;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,6 +24,45 @@ namespace ES
         }
 
     }
+    public abstract class OutputOperation_Abstract<On, From, With> : IOutputOperation<On, From, With>
+    {
+        public static void  DefaultAction(On on, From from, With with)
+        {
+
+        }
+        public Action<On, From, With> OnCancel = DefaultAction;
+        public  abstract void TryOpeation(On on, From from, With with);
+        public virtual void TryCancel(On on, From from, With with) {
+            OnCancel?.Invoke(on,from,with);
+        }
+    }
+    public interface IOutputOperationFlag_MustCancel
+    {
+
+    }
+
     public interface IOutputOperationEEB : IOutputOperation<Entity, Entity, EntityState_Buff> { }
 
+
+    [Serializable, TypeRegistryItem("执行多个")]
+    public class OutputOperationEEB_HandleList : IOutputOperationEEB
+    {
+        [LabelText("执行列表"), SerializeReference]
+        public List<IOutputOperationEEB> handles = new List<IOutputOperationEEB>();
+        public void TryCancel(Entity on, Entity from, EntityState_Buff with)
+        {
+            foreach(var i in handles)
+            {
+                i.TryOpeation(on,from,with);
+            }
+        }
+
+        public void TryOpeation(Entity on, Entity from, EntityState_Buff with)
+        {
+            foreach (var i in handles)
+            {
+                i.TryCancel(on, from, with);
+            }
+        }
+    }
 }

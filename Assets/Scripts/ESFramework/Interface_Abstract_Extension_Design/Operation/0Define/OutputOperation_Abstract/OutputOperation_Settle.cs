@@ -7,7 +7,7 @@ using UnityEngine;
 
 
 namespace ES {
-    public class OutputOpeationSettleFlag : Flag<OutputOpeationSettleFlag>
+    public class OutputOpeationSettleFlag : OverLoadFlag<OutputOpeationSettleFlag>
     {
 
     }

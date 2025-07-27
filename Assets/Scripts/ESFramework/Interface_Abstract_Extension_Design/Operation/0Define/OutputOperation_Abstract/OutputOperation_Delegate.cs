@@ -9,7 +9,7 @@ using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 namespace ES
 {
-    public class OutputOpeationDelegateFlag : Flag<OutputOpeationDelegateFlag>
+    public class OutputOpeationDelegateFlag : OverLoadFlag<OutputOpeationDelegateFlag>
     {
 
     }
@@ -20,12 +20,12 @@ namespace ES
     }
     [Serializable]
     public abstract class OutputOpeationDelegate<On, From, With, MakeAction> :
-        IOutputOperation<On, From, With>
+        OutputOperation_Abstract<On, From, With>, IOutputOperationFlag_MustCancel
         where MakeAction : Delegate
         where With : ICacheKeyValueForOutputOpeation<IOperation, DeleAndCount, OutputOpeationDelegateFlag>
     {
-        public abstract void TryOpeation(On on, From from, With with);
-        public abstract void TryCancel(On on, From from, With with);
+       
+        
         [LabelText("给与触发次数")]
         public int GiveCount = 99;
         public MakeAction GetActionOnEnableExpand(On on, From from, With with)
@@ -90,10 +90,15 @@ namespace ES
         public IOutputOperationEEB WhenHappen;
         protected void GetDelegateHappenExpand(Entity on, Entity from, EntityState_Buff with)
         {
-            WhenHappen?.TryOpeation(on, from, with);
+            if (WhenHappen != null)
+            {
+                WhenHappen.TryOpeation(on, from, with);
+                if(WhenHappen is IOutputOperationFlag_MustCancel) OnCancel += WhenHappen.TryCancel;
+            }
             SetWhenActionHappenCountChange(on, from, with);
             Debug.Log("COUNT1     " + "dfsd");
         }
+        
     }
 
     [Serializable,TypeRegistryItem("委托输出-输出操作-真实攻击他人时")]
@@ -106,6 +111,7 @@ namespace ES
         public override void TryCancel(Entity on, Entity from, EntityState_Buff with)
         {
             on.OnTruelyAttack -= GetActionOnDisableExpand(on, from, with);
+            base.TryCancel(on, from, with);
         }
         protected override Action<Entity, Damage> MakeTheAction(Entity on, Entity from, EntityState_Buff with)
         {
@@ -122,6 +128,7 @@ namespace ES
         public override void TryCancel(Entity on, Entity from, EntityState_Buff with)
         {
             on.OnTruelyBeAttack -= GetActionOnDisableExpand(on, from, with);
+            base.TryCancel(on, from, with);
         }
         protected override Action<Entity, Damage> MakeTheAction(Entity on, Entity from, EntityState_Buff with)
         {
@@ -138,6 +145,7 @@ namespace ES
         public override void TryCancel(Entity on, Entity from, EntityState_Buff with)
         {
             on.OnTryAttack -= GetActionOnDisableExpand(on, from, with);
+            base.TryCancel(on, from, with);
         }
         protected override Action<Entity, Damage> MakeTheAction(Entity on, Entity from, EntityState_Buff with)
         {
@@ -154,6 +162,7 @@ namespace ES
         public override void TryCancel(Entity on, Entity from, EntityState_Buff with)
         {
             on.OnTryBeAttack -= GetActionOnDisableExpand(on, from, with);
+            base.TryCancel(on, from, with);
         }
         protected override Action<Entity, Damage> MakeTheAction(Entity on, Entity from, EntityState_Buff with)
         {
@@ -171,6 +180,7 @@ namespace ES
         public override void TryCancel(Entity on, Entity from, EntityState_Buff with)
         {
             on.OnTestOnly_TakeAObject -= GetActionOnDisableExpand(on, from, with);
+            base.TryCancel(on, from, with);
         }
         protected override Action<Entity, Damage> MakeTheAction(Entity on, Entity from, EntityState_Buff with)
         {
@@ -187,6 +197,7 @@ namespace ES
         public override void TryCancel(Entity on, Entity from, EntityState_Buff with)
         {
             on.OnTestOnly_Kill -= GetActionOnDisableExpand(on, from, with);
+            base.TryCancel(on, from, with);
         }
         protected override Action<Entity, Damage> MakeTheAction(Entity on, Entity from, EntityState_Buff with)
         {

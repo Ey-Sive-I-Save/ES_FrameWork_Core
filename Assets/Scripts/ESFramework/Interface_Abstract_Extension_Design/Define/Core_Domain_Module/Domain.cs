@@ -34,7 +34,7 @@ namespace ES
         #region 总重要信息
 #if UNITY_EDITOR //只在编辑器下有用
         [FoldoutGroup("扩展域固有"), LabelText("域功能解释", icon: SdfIconType.Palette), GUIColor("Editor_ColorGetter"), ShowInInspector, PropertyOrder(-100), SerializeField]
-        private Tool_ESReadMeClass readMe = new Tool_ESReadMeClass() { readMe = "这是一个扩展区域" };
+        private Tool_ESReadMeClass readMe = new Tool_ESReadMeClass() { readMeIn = "这是一个扩展区域" };
 #endif
         [HideInInspector]
         public Core_ core;

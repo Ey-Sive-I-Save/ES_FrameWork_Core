@@ -21,7 +21,22 @@ namespace ES
         public void SendLink<Link>(Link link) where Link : ILink
         {
             var links = GetGroupDirectly(typeof(Link));
-            foreach (var i in links)
+            links.ApplyBuffers();
+            int count = links.ValuesNow.Count;
+            for(int i=0;i< count; i++)
+            {
+                if (links.ValuesNow[i] is IReceiveLink<Link> irl)
+                {
+                    if (irl is UnityEngine.Object ob)
+                    {
+                        if (ob != null) irl.OnLink(link);
+                        else links.TryRemove(irl);
+                    }
+                    else if (irl != null) irl.OnLink(link);
+                }
+                else RemoveReceive<Link>(null);
+            }
+           /* foreach (var i in links)
             {
                 if (i is IReceiveLink<Link> irl)
                 {
@@ -33,7 +48,7 @@ namespace ES
                     else if (irl != null) irl.OnLink(link);
                 }
                 else RemoveReceive<Link>(null);
-            }
+            }*/
         }
         public void AddReceive<Link>(IReceiveLink<Link> e) where Link : ILink
         {

@@ -54,7 +54,7 @@ namespace ES
         [FoldoutGroup("委托"), LabelText("真的攻击时")] public Action<Entity, Damage> OnTruelyAttack = (a, b) => { };
         [FoldoutGroup("委托"), LabelText("拿起道具")] public Action<Entity, Damage> OnTestOnly_TakeAObject = (a, b) => { };
         [FoldoutGroup("委托"), LabelText("击杀敌人")] public Action<Entity, Damage> OnTestOnly_Kill = (a, b) => { };
-
+        
         [FoldoutGroup("模拟委托触发"), Button("模拟尝试被攻击", ButtonHeight = 40)]
         public void TestTryBeAttack()
         {
@@ -86,10 +86,20 @@ namespace ES
             OnTestOnly_Kill?.Invoke(this, null);
         }
         [FoldoutGroup("加buff")]
-        public BuffSoInfo info;
+        public BuffSoInfo info_1;
+        [FoldoutGroup("加buff")]
+        public BuffSoInfo info_2;
+        [FoldoutGroup("加buff")]
+        public BuffSoInfo info_3;
         [FoldoutGroup("加buff")]
         [Button("加Buff", ButtonHeight = 40)]
-        public void AddThisBuff()
+        public void AddBuff3()
+        {
+            AddThisBuff(info_1);
+            AddThisBuff(info_2);
+            AddThisBuff(info_3);
+        }
+        public void AddThisBuff(BuffSoInfo info)
         {
             if (info != null)
             {
@@ -117,6 +127,7 @@ namespace ES
                 }
             }
         }
+
         public ESEntitySharedData SharedData { get => entitySharedData; set => entitySharedData = value; }
         public ESEntityVariableData VariableData { get => entityVariableData; set => entityVariableData = value; }
 

@@ -33,7 +33,7 @@ MonoBehaviour:
       rid: 3913062410175905941
     EnableOnOffTrigger: 1
     opeationForOnOff:
-      rid: 3913062421260926976
+      rid: 3913062422637183404
     EnableBuffer: 1
     icon: {fileID: 0}
     buffGoodOrBad: 0
@@ -43,6 +43,8 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 3913062410175905941
       type: {class: OutputOperationBufferrFloatEEB_TargetAndDirectInput, ns: ES, asm: ES}
       data:
@@ -96,34 +98,62 @@ MonoBehaviour:
     - rid: 3913062410175905942
       type: {class: TargetOP_DamageAdd, ns: ES, asm: ES}
       data: 
-    - rid: 3913062421260926976
-      type: {class: OnKill, ns: ES, asm: ES}
+    - rid: 3913062422637183404
+      type: {class: OutputOperationEEB_HandleList, ns: ES, asm: ES}
       data:
-        GiveCount: 2
-        WhenHappen:
-          rid: 3913062421260927028
-    - rid: 3913062421260927028
+        handles:
+        - rid: 3913062422637183405
+        - rid: 3913062422637183406
+        - rid: 3913062422637183407
+        - rid: 3913062422637183408
+        - rid: 3913062422637183410
+    - rid: 3913062422637183405
       type: {class: OnTryTake, ns: ES, asm: ES}
       data:
-        GiveCount: 1
+        GiveCount: 99
         WhenHappen:
-          rid: 3913062421260927029
-    - rid: 3913062421260927029
+          rid: -2
+    - rid: 3913062422637183406
+      type: {class: OutputOpeationBuffSettle_Test_Attack, ns: ES, asm: ES}
+      data:
+        ForceNormal: 0
+        settleType: 0
+        selfType: 0
+        Priority: 0
+        baseValue: 1
+        offsetPerLevel: 0.1
+    - rid: 3913062422637183407
+      type: {class: OnKill, ns: ES, asm: ES}
+      data:
+        GiveCount: 99
+        WhenHappen:
+          rid: -2
+    - rid: 3913062422637183408
       type: {class: OutputOperationFloatValue_CompositeWithSupportAndTarget_EEB, ns: ES,
         asm: ES}
       data:
         support:
-          rid: 3913062421260927030
+          rid: 3913062422637183409
         target:
-          rid: 3913062421260927031
-    - rid: 3913062421260927030
+          rid: -2
+    - rid: 3913062422637183409
       type: {class: SupportOperation_EEB_DirectFloat, ns: ES, asm: ES}
       data:
-        opValue: 5
+        opValue: 0
         opType: 0
-    - rid: 3913062421260927031
-      type: {class: TargetOP_DamageAdd, ns: ES, asm: ES}
-      data: 
+    - rid: 3913062422637183410
+      type: {class: OutputOperationFloatValue_CompositeWithSupportAndTarget_EEB, ns: ES,
+        asm: ES}
+      data:
+        support:
+          rid: 3913062422637183411
+        target:
+          rid: -2
+    - rid: 3913062422637183411
+      type: {class: SupportOperation_EEB_DirectFloat, ns: ES, asm: ES}
+      data:
+        opValue: 0
+        opType: 0
 --- !u!114 &-6754377651021281120
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,17 @@
+using ES;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+namespace ES {
+    [AddComponentMenu("<ES>ESM支持/物理/3D触发出-指定接收目标")]
+    public class EMS_Trigger3DExit_LinkSingle : EMS_Abstract_LinkSingle<Link_EMS_Trigger3DExit>
+    {
+        private void OnTriggerExit3D(Collider collider3D)
+        {
+            OnLink(new Link_EMS_Trigger3DExit() { collider = collider3D, posAT = collider3D.ClosestPoint(transform.position) }); ;
+        }
+    }
+}

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace ES.MonoTool
 {
-    [AddComponentMenu("<ES>Tool/ReadMe(备注描述)")]
+    [AddComponentMenu("<ES>Tool/ReadMeOut(备注描述)")]
     [TypeRegistryItem("ES提示文字")]
     public class Tool_ESReadMeMono : MonoBehaviour
     {
