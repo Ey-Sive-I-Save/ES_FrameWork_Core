@@ -12,8 +12,21 @@ namespace ES
     [TypeRegistryItem("Entity,Item的父类")]
     public abstract class ESObject : Core, IWithID
     {
+        #region 原始通用域
+        [LabelText("ES原始扩展域"), TabGroup("【固有】")]
+        public ESObjectOriginalDomain OriginalDomain;
+
+        #endregion
 
         #region 总重要信息
+
+        //载入固定的原始域
+        public sealed override void RegisterAllDomains(params IDomain[] rgdomains)
+        {
+            if (OriginalDomain != null) OriginalDomain.RegisterAllWithCore(this);
+            base.RegisterAllDomains(rgdomains);
+        }
+
         #region 联网
         [FoldoutGroup("【固有】"), LabelText("唯一ID"), ShowInInspector, ReadOnly]
         public int ID
@@ -34,12 +47,12 @@ namespace ES
         private int _id = -1;//ID=-1时，认为无身份
         #endregion
 #if UNITY_EDITOR
-        [FoldoutGroup("【固有】"), LabelText("是联网的"), SerializeField] private bool Editor_IsNetObject = false;
+        [TabGroup("【固有】"), LabelText("是联网的"), SerializeField] private bool Editor_IsNetObject = false;
 #endif
 
-        [FoldoutGroup("【固有】"), LabelText("刚体")] public Rigidbody Rigid;
-        [FoldoutGroup("【固有】"), LabelText("原始动画器")] public Animator Anim;
-        [FoldoutGroup("【固有】"), LabelText("ES超级标签")]
+        [TabGroup("【固有】"), LabelText("刚体")] public Rigidbody Rigid;
+        [TabGroup("【固有】"), LabelText("原始动画器")] public Animator Anim;
+        [TabGroup("【固有】"), LabelText("ES超级标签")]
         public ESTagCollection ESTagsC = new ESTagCollection();
 
 
@@ -86,11 +99,8 @@ namespace ES
 
         protected override void OnEnable()
         {
-            gameObject.name = "尝试启用";
             if (_id == -1 && IsNet)
             {
-                Debug.Log("When Send +" + NetObject.IsOwner);
-                gameObject.name = "无ID网络";
                 NetBehaviour.WaitingTaskAtClient.Enqueue(() =>
                 {
                     SendIDRequest();//发送ID分配请求
@@ -101,18 +111,10 @@ namespace ES
             else
             {
                 base.OnEnable();//会完成子模块的OnEnable
-                gameObject.name += "《正式启用";
             }
-            }
-
-            #region 检查器专属
-            //输出网络信息
-            private void DebugNO()
-        {
-            Debug.Log("本人的" + NetObject.IsOwner);
-            Debug.Log("客户的" + NetObject.IsClientInitialized);
-            Debug.Log("服务器的" + NetObject.IsServerInitialized);
         }
+
+        #region 检查器专属
 
         #endregion
 
@@ -135,7 +137,6 @@ namespace ES
         #endregion
 
         #region 回调
-
         public virtual void TryDestroyThisESObject()
         {
             OnDestroyHappen?.Invoke(whyDes);
@@ -151,10 +152,9 @@ namespace ES
             }
         }
 
-
         #endregion
 
-        #region 寻ID
+        #region 寻全局ID
 
         private Action OnIDYesTask = GameCenterManager.NULLAction;
         private Action OnIDNOTask = GameCenterManager.NULLAction;
@@ -188,8 +188,8 @@ namespace ES
             Debug.Log("ID Request " + IsNet);
             if (IsNet)
             {
-                if(NetObject.IsOwner)
-                NetBehaviour.SendSelfLinkToServer(new Link_IDRequest());
+                if (NetObject.IsOwner)
+                    NetBehaviour.SendSelfLinkToServer(new Link_IDRequest());
             }
             else
             {

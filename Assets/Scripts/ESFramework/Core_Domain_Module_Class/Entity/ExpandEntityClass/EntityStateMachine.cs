@@ -116,7 +116,7 @@ namespace ES
 
         }
     }
-    [Serializable, TypeRegistryItem("实体标准技能状态")]
+   /* [Serializable, TypeRegistryItem("实体标准技能状态")]
     public class EntityState_Skill : EntityState
     {
         #region 技能数据
@@ -263,7 +263,7 @@ namespace ES
 
                     foreach (var handle in Module.Applier.handles)
                     {
-                        /* Debug.Log(MyEntites.Count + "/" + Module.name + "/" + Module.Applier.handles_.Count + "/" + handle);*/
+                        *//* Debug.Log(MyEntites.Count + "/" + Module.name + "/" + Module.Applier.handles_.Count + "/" + handle);*//*
                         handle.Pick(e, Entity, this);
                     }
                 }
@@ -325,7 +325,7 @@ namespace ES
             }
         }
         #endregion
-    }
+    }*/
 
     [Serializable, TypeRegistryItem("实体标准Buff状态")]
     public class EntityState_Buff : EntityState,
@@ -601,7 +601,7 @@ namespace ES
                         {
                             Vector3 vv = data.vector - Entity.Rigid.position;
                             Entity.NormalDomain.Module_AB_Motion.Move((vv).normalized * crashDodge.MaxSpeed * Time.deltaTime);
-                            Entity.YV = vv.y * (1 - HasIn / data.duration);
+                            Entity.YSpeed = vv.y * (1 - HasIn / data.duration);
                         }
                         if (Vector3.Distance(Entity.Rigid.position, data.vector) < crashDodge.EndDisSuit)
                         {
@@ -614,7 +614,7 @@ namespace ES
                         else
                         {
                             Entity.NormalDomain.Module_AB_Motion.Move((data.vector) * Time.deltaTime / data.duration);
-                            Entity.YV = applyVector.y * (1 - HasIn / data.duration);
+                            Entity.YSpeed = applyVector.y * (1 - HasIn / data.duration);
                         }
                     }
                     else if (data.vectorHandle == EnumCollect.TransformHandleSpaceWithTarget.SelfSpace)
@@ -623,7 +623,7 @@ namespace ES
                         else/* Entity.transform.position += (applyVector) * Time.deltaTime / data.duration;*/
                         {
                             Entity.NormalDomain.Module_AB_Motion.Move((applyVector) * Time.deltaTime / data.duration);
-                            Entity.YV = applyVector.y * (1 - HasIn / data.duration);
+                            Entity.YSpeed = applyVector.y * (1 - HasIn / data.duration);
                         }
                     }
                 }

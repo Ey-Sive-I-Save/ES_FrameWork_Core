@@ -13,6 +13,7 @@ namespace ES
     [TypeRegistryItem("空模块")]
     public interface IModule : IESModule
     {
+        public Core Core_Object { get; }
         public void _SetDomainAndCreateRelationshipOnly(IDomain Domain);
         public void _TrySetupPresetModule();
         public void FixedUpdate_MustSelfDelegate();
@@ -38,6 +39,8 @@ namespace ES
         {
             get => Domain.Core;
         }
+        public Core Core_Object => Core;
+
         public sealed override Domain_ GetHost //重写-还是获取核心
         {
             get => Domain;
@@ -235,6 +238,8 @@ namespace ES
         private string Editor_Preset = "预设1";
 #endif
         public virtual string[] Editor_AllPresets => Editor_DefaultPresets;
+
+      
         public static string[] Editor_DefaultPresets = { "预设1", "预设2", "预设3" };
 
         //重写该方法创建预设效果

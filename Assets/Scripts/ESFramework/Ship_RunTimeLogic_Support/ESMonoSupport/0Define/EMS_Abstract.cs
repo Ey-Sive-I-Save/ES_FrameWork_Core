@@ -13,6 +13,7 @@ namespace ES {
     {
        
     }
+    #region 抽象定义
     [HideMonoScript]
     public abstract class EMS_Abstract_LinkList<Link> : EMS_Abstract where Link:ILink
     {
@@ -58,4 +59,6 @@ namespace ES {
             if (Link_ == t) Link_ = null;
         }
     }
+    #endregion
+
 }

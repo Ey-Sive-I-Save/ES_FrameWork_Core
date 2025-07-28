@@ -15,6 +15,7 @@ namespace ES
 {
     public interface IDomain : IESHosting
     {
+        Core Core_Object { get; }
         //编辑器情况下的链接创建
         void RegisterAllButOnlyCreateRelationship(ICore core_);
         void RegisterAllWithCore(ICore core);
@@ -38,6 +39,9 @@ namespace ES
 #endif
         [HideInInspector]
         public Core_ core;
+
+        public Core Core_Object => core;
+
 
         [FoldoutGroup("扩展域固有"), LabelText("全部模块"), OdinSerialize]
         public SafeNormalList<Module_> Modules = new SafeNormalList<Module_>();
@@ -234,6 +238,7 @@ namespace ES
         //是否可Update更新
         public virtual bool CanUpdating => true;
 
+       
 
         //Start时
         protected virtual void Start() { }

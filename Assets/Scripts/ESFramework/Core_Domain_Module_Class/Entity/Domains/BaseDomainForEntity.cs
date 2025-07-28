@@ -100,7 +100,7 @@ namespace ES
             float X = StandardSpeed.x * CurrentSpeedMutiplerX;//相对X
 
             Vector3 combine = Vector3.ProjectOnPlane(Core.transform.forward, YUpwards).normalized * Z
-                + Vector3.ProjectOnPlane(Core.transform.right, YUpwards).normalized * X + Vector3.up * Core.YV;
+                + Vector3.ProjectOnPlane(Core.transform.right, YUpwards).normalized * X + Vector3.up * Core.YSpeed;
 
             Move(combine * SelfControlWeight * Time.fixedDeltaTime);
            
@@ -197,7 +197,7 @@ namespace ES
             float X = StandardSpeed.x * (1 + SpeedGain.x) * CurrentSpeedMutiplerX;//相对X
 
             Vector3 combine = Vector3.ProjectOnPlane(Core.transform.forward, YUpwards).normalized * Z
-                + Vector3.ProjectOnPlane(Core.transform.right, YUpwards).normalized * X + Vector3.up * Core.YV;
+                + Vector3.ProjectOnPlane(Core.transform.right, YUpwards).normalized * X + Vector3.up * Core.YSpeed;
             Move(combine * SelfControlWeight * Time.fixedDeltaTime);
         }
         public void Set_TargetVZ(float f, object who)
@@ -270,7 +270,7 @@ namespace ES
             PrivateMethod_ControlCamera();
             if (Core.IsGrounded && Jump.WasPressedThisFrame())
             {
-                Core.YV = 3.5f;
+                Core.YSpeed = 3.5f;
                 Core.IsGrounded = false;
             }
         }

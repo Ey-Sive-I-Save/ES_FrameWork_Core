@@ -131,13 +131,12 @@ namespace ES
         #region 常用功能
 
         //手动注册
-        public void RegisterDomains(params IDomain[] rgdomains)
+        public virtual void RegisterAllDomains(params IDomain[] rgdomains)
         {
+           
             foreach (var i in rgdomains)
             {
-                Debug.Log("RE2");
                 if (i == null) continue;
-                Debug.Log("RE3");
                 i.RegisterAllWithCore(this);
                 domains.Add(i);
             }

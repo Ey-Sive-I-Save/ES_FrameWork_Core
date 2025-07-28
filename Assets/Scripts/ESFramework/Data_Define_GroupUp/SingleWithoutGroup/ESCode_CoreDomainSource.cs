@@ -142,7 +142,7 @@ namespace ES
             corePart = KeyValueMatchingUtility.SimpleScriptMaker.CreateClassContentByString(
                     className: CoreName,
                     beforeClassName: "partial",
-                    insideClass: $" protected override void OnAwakeRegisterOnly()\r\n        {{\r\n            RegisterDomains({domainFieldNames});\r\n        }}\n" + domainInDefine,
+                    insideClass: $" protected override void OnAwakeRegisterOnly()\r\n        {{\r\n            RegisterAllDomains({domainFieldNames});\r\n        }}\n" + domainInDefine,
                     parent: ":" + $"{parent.ToString()}",
                     Attribute: $""
                     );

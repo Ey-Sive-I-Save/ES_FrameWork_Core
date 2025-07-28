@@ -36,3 +36,11 @@ public static class Channel_Example_HealType
 
 }
 
+//默认选通
+public enum Channel_DefaultLink
+{
+    [InspectorName("无类型")]None,
+    [InspectorName("从外到内")] OutToIn,
+    [InspectorName("从内到外")] InToOut
+}
+

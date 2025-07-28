@@ -10,11 +10,11 @@ namespace ES
     {
         [ DisplayAsString(fontSize: 25), HideLabel, GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForApply")]
         public string start = "开始创建技能序列！！";
-        [HideLabel]
-        public ReleasableSkillsSequence sequence;
-        private void OnValidate()
+       /* [HideLabel]
+        public ReleasableSkillsSequence sequence;*/
+     /*   private void OnValidate()
         {
             sequence.OnChangeSlider();
-        }
+        }*/
     }
 }

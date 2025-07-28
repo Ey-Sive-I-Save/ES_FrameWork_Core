@@ -10,6 +10,8 @@ using UnityEngine.Events;
 using static ES.EnumCollect;
 using FishNet.Broadcast;
 using FishNet.Serializing;
+using UnityEngine.Rendering;
+using FishNet.Transporting;
 
 namespace ES
 {
@@ -119,9 +121,16 @@ namespace ES
         }
 
     }
-    public interface IReceiveLink<in Link> : IReceiveLink where Link : ILink
+
+    public interface IReceiveLink<in Link> : IReceiveChannelLink<Channel_DefaultLink,Link> where Link : ILink
     {
         void OnLink(Link link);
+        void IReceiveChannelLink<Channel_DefaultLink, Link>.OnLink(Channel_DefaultLink channel, Link link) { 
+            OnLink( Channel_DefaultLink.None, link); }
+    }
+    public interface IReceiveChannelLink<Channel,in Link> : IReceiveLink where Link : ILink
+    {
+        void OnLink(Channel channel, Link link);
     }
     public interface IReceiveAnyLink : IReceiveLink<ILink>
     {
@@ -161,6 +170,7 @@ namespace ES
 
     }
     #endregion
+
     #region UnityEvent支持
     [Serializable]
     public class LinkUnityEvent<Link> where Link : ILink

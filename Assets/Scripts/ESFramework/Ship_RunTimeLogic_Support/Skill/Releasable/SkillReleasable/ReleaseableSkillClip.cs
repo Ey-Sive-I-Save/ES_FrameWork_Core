@@ -1,4 +1,4 @@
-using ES;
+/*using ES;
 using ES.EvPointer;
 using Sirenix.OdinInspector;
 using System;
@@ -172,7 +172,7 @@ namespace ES
         
 
 
-        [/*TabGroup("绑定状态与动画",true,TabName ="【绑定源】") ,*/GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForBinding")]
+        [*//*TabGroup("绑定状态与动画",true,TabName ="【绑定源】") ,*//*GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForBinding")]
         [LabelText("切换状态")]
         [TabGroup("【绑定状态与动画】", TextColor = "@KeyValueMatchingUtility.ColorSelector.ColorForBinding")]
         public bool useStateSwitch = false;
@@ -185,7 +185,7 @@ namespace ES
         [TabGroup("【绑定状态与动画】", TextColor = "@KeyValueMatchingUtility.ColorSelector.ColorForBinding")]
         public string st = "技能/技能1";
 
-        /* [TabGroup("绑定状态与动画")]*/
+        *//* [TabGroup("绑定状态与动画")]*//*
         [TabGroup("【绑定状态与动画】")]
         [LabelText("过渡时间(归一化)")]
         public PointerForFloat_DirectClamp01 crossFade = new PointerForFloat_DirectClamp01() { @float = 0.2f };
@@ -205,7 +205,7 @@ namespace ES
         public SelectorOverrideOptions optionForOverrideLast = SelectorOverrideOptions.UpdateAll;
         [TabGroup("【筛选对象】")][LabelText("筛选传递机制"), Space(10)]
         public SelectorNextOptions optionForNext = SelectorNextOptions.UpdateAll;
-        [/*LabelText("筛选对象"),*/ SerializeReference]
+        [*//*LabelText("筛选对象"),*//* SerializeReference]
         [Space(20)]
         [TabGroup("【筛选对象】"), HideLabel] public IPointerForSomeEntity_Only Selector = new SomeEntitySelectorFromSelf();
 
@@ -228,7 +228,7 @@ namespace ES
         
 
         [TabGroup("【作用效果】")]
-        [/*LabelText("对筛选目标逐个执行"),*/InlineProperty,HideLabel]
+        [*//*LabelText("对筛选目标逐个执行"),*//*InlineProperty,HideLabel]
         public EntityHandle Applier =new EntityHandle();
 
 
@@ -253,3 +253,4 @@ namespace ES
 
 
 }
+*/

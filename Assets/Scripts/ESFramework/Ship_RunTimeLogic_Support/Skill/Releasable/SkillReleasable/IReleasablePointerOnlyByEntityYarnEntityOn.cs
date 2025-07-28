@@ -9,10 +9,9 @@ using UnityEngine;
 using static ES.ModuleStateMachine_CrashDodge;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
-namespace ES
-{
-    #region Link表//性能未知，先不用
-    /*
+
+   /* #region Link表//性能未知，先不用
+    *//*
     [Serializable,TypeRegistryItem("Link_一个实体")]
     public struct Link_AEntity : ILink
     {
@@ -22,7 +21,7 @@ namespace ES
     public struct Link_SomeEntity : ILink
     {
         [LabelText("一个实体")] public List<Entity> entity;
-    }*/
+    }*//*
 
     #endregion
     #region 原始声明
@@ -54,17 +53,17 @@ namespace ES
             return Pick(a as Entity, b as Entity, c as EntityState_Skill);
         }
     }
-    /*从一个实体获得多个实体*/
+    *//*从一个实体获得多个实体*//*
     public interface IPointerForSomeEntityByEntityYarnEntityOnSkill : IPointerChainAny<List<Entity>, Entity, Entity, EntityState_Skill>
     {
         //on 被操作 from 发起人 back 最终目的 with 技能
     }
-    /*从多个实体获得多个实体*/
+    *//*从多个实体获得多个实体*//*
     public interface IPointerForSomeEntityBySomeEntityYarnEntityOnSKill : IPointerChainAny<List<Entity>, List<Entity>, Entity, EntityState_Skill>
     {
 
     }
-    /*释放专用：单实体变多实体*/
+    *//*释放专用：单实体变多实体*//*
     public interface IReleasablePointerForSomeEntityByEntityYarnEntityOnSKill : IPointerForSomeEntityByEntityYarnEntityOnSkill, IReleasablePointerChain
     {
         object IPointer.Pick(object a, object b, object c)
@@ -80,7 +79,7 @@ namespace ES
             return null;
         }
     }
-    /*释放专用：多实体变多实体*/
+    *//*释放专用：多实体变多实体*//*
     public interface IReleasablePointerForSomeEntityBySomeEntityYarnEntityOnSKill : IPointerForSomeEntityBySomeEntityYarnEntityOnSKill, IReleasablePointerChain
     {
         object IPointer.Pick(object a, object b, object c)
@@ -531,7 +530,7 @@ namespace ES
         {
             if (on != null)
             {
-              /*  var use = useInfo;
+              *//*  var use = useInfo;
 
                 if (use == null)
                 {
@@ -541,7 +540,7 @@ namespace ES
                 {
                     KeyValueMatchingUtility.DataApply.ApplyBuffInfoToEntity(use, on, IsSelfDefineStartBuffStatus ? BuffStatusTest : null);
 
-                }*/
+                }*//*
             }
             return null;
         }
@@ -559,7 +558,7 @@ namespace ES
 
             if (on != null)
             {
-              /*  if (on != null)
+              *//*  if (on != null)
                 {
                     var use = useInfo;
                     if (use == null)
@@ -567,7 +566,7 @@ namespace ES
                         use = KeyValueMatchingUtility.DataInfoPointer.PickBuffSoInfoByKey(key.Key());
                     }
                     if (use != null) KeyValueMatchingUtility.DataApply.Apply_Remove_BuffInfoToEntity(useInfo, on);
-                }*/
+                }*//*
             }
             return 5;
         }
@@ -1189,14 +1188,14 @@ namespace ES
                 Tween use = from.transform.DORotateQuaternion(end, faceTime);
 
 
-                /* var to = from.transform.InverseTransformDirection(vv);
+                *//* var to = from.transform.InverseTransformDirection(vv);
                  var y = from.NormalDomain.Module_3DMotion;
 
-                 y.banSource.Add(this);*/
+                 y.banSource.Add(this);*//*
                 with.OnExit += (f) =>
                 {
                     use.Kill();
-                    /*y.banSource.Remove(this);*/
+                    *//*y.banSource.Remove(this);*//*
                 };
             }
             return 5;
@@ -1241,10 +1240,10 @@ namespace ES
                     }
                     crash.TryAddCrashDodge(ref defaultDodge);
                 }
-                /* var to = from.transform.InverseTransformDirection(vv);
+                *//* var to = from.transform.InverseTransformDirection(vv);
                  var y = from.NormalDomain.Module_3DMotion;
 
-                 y.banSource.Add(this);*/
+                 y.banSource.Add(this);*//*
             }
             return 5;
         }
@@ -1315,7 +1314,7 @@ namespace ES
         }
     }
     #endregion
-    /*创建筛选器*/
+    *//*创建筛选器*//*
 
     [Serializable, TypeRegistryItem("目标筛选链(自己出发，获得实体列表)")]
     public class SomeEntitySelectorFromSelf : PointerPackForDynamicChain<List<Entity>, IPointerForSomeEntityByEntityYarnEntityOnSkill, IReleasablePointerChain, IPointerForSomeEntityBySomeEntityYarnEntityOnSKill>
@@ -1344,11 +1343,12 @@ namespace ES
         [SerializeReference]
         public List<IReleasablePointerOnlyByEntityYarnEntityOn> handles = new List<IReleasablePointerOnlyByEntityYarnEntityOn>();
     }
-    /*  [Serializable, TypeRegistryItem("坐标执行列(使用一系列坐标完成功能)")]
+    *//*  [Serializable, TypeRegistryItem("坐标执行列(使用一系列坐标完成功能)")]
       public class EntityHandle
       {
           [SerializeReference]
           public List<IReleasablePointerOnlyByEntityYarnEntityOn> handles_ = new List<IReleasablePointerOnlyByEntityYarnEntityOn>();
-      }*/
+      }*//*
 
 }
+*/
