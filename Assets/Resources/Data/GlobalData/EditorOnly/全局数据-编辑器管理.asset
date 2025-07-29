@@ -138,7 +138,22 @@ MonoBehaviour:
       Data: 7|System.Collections.Generic.HashSet`1[[System.String, mscorlib]], System.Core
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 5
+    - Name: 
+      Entry: 1
+      Data: PointerPlayerByCollider3D
+    - Name: 
+      Entry: 1
+      Data: CharacterController
+    - Name: 
+      Entry: 1
+      Data: Animator
+    - Name: 
+      Entry: 1
+      Data: CapsuleCollider
+    - Name: 
+      Entry: 1
+      Data: Rigidbody
     - Name: 
       Entry: 13
       Data: 

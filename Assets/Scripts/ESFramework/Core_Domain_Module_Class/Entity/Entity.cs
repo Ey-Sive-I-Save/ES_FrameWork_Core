@@ -11,8 +11,7 @@ using UnityEngine;
 namespace ES
 {
     public sealed class Entity : ESObject
-        , IReceiveAnyLink, IWithSharedAndVariableData<ESEntitySharedData, ESEntityVariableData>
-        
+        ,  IWithSharedAndVariableData<ESEntitySharedData, ESEntityVariableData>
     {
         #region 专属扩展域
 
@@ -124,16 +123,12 @@ namespace ES
         #endregion
 
 
-        [FoldoutGroup("事件收发选通")]
+        [FoldoutGroup("实体攻击事件收发选通")]
         public LinkReceiveChannelList<Channel_EntityAttackLink, Link_EntityAttack>
             LinksForTest = new();
-       
         void test()
         {
-            LinksForTest.SendLink(Channel_EntityAttackLink.TryAttack,new Link_EntityAttack ());
-            LinksForTest.SendLink(Channel_EntityAttackLink.TryBeAttack, new Link_EntityAttack());
-            LinksForTest.SendLink(Channel_EntityAttackLink.TrulyAttack, new Link_EntityAttack());
-            LinksForTest.SendLink(Channel_EntityAttackLink.TryBeAttack, new Link_EntityAttack());
+    
         }
 
         [FoldoutGroup("委托"), LabelText("尝试被攻击时")] public Action<Entity, Damage> OnTryBeAttack = (a, b) => { };
@@ -246,6 +241,9 @@ namespace ES
             OnTruelyAttack?.Invoke(who, damage);
         }
 
-
+        public void OnLink(Enum channel, ILink link)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -79,7 +79,7 @@ namespace ES
             [InspectorName("动画控制器")][ESMessage("Animator")] _Animator,
             [InspectorName("摄像机")][ESMessage("Camera")] _Camera,
             [InspectorName("碰撞体")][ESMessage("Collider")] _Collider,
-            [InspectorName("碰撞体2D")][ESMessage("Collider2D")] _Collider2D,
+            [InspectorName("碰撞体2D")][ESMessage("collider")] _Collider2D,
 
         }
         public enum TypeDefine_UI_OLD

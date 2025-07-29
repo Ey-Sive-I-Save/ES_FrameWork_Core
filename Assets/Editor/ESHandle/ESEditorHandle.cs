@@ -75,7 +75,7 @@ namespace ES {
         public bool OnlyOnce = true;
         public int MaxFrame = 1000;
         public Func<bool> CanExit = () => false;
-        public bool IsRecycled { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool IsRecycled { get; set; }
 
         public void OnResetAsPoolable()
         {

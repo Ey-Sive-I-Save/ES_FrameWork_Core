@@ -7,14 +7,51 @@ using UnityEngine;
 
 
 //只是一种定义 用来规范架构 师出有名 没有实际逻辑
-/* Channel非常简单 ，一般就是一个枚举或者静态类
+/* Channel非常简单 ，一般就是一个带类型标识的类
  * 他旨在为同参数，同类型的事件进行一个特征鲜明的初步划分
  * 用来减少频繁事件的遍历if 损耗 和 用于决定接下来的任务走向
  * 主要的 和 Link收发事件  集成
- * (比如 FishNet 的channel "可靠"和"不可靠")
+ *  由于 逆变不支持 数据类型 所以推荐使用的是class static channel 的形式
  * 一般只对于设计层进行 大部分的零碎枚举 分布在各自的文件或者EnumCollect里
  */
+public interface IChannel
+{
 
+}
+public class Channel<T> : IChannel where T : Channel<T>,new()
+{
+    public static T channel = new T();
+}
+
+public interface IChannel_Example_ItemGetter_ : IChannel
+{
+
+}
+public class Channel_Example_ItemGetter_<T> : Channel<T>, IChannel_Example_ItemGetter_ where T : Channel_Example_ItemGetter_<T>, new()
+{
+
+}
+
+public class Channel_Example_ItemGetter_GetByPick : Channel_Example_ItemGetter_<Channel_Example_ItemGetter_GetByPick>
+{
+
+}
+public class Channel_Example_ItemGetter_GetBySplit : Channel_Example_ItemGetter_<Channel_Example_ItemGetter_GetBySplit>
+{
+
+}
+public class Channel_Example_ItemGetter_GetByBuy : Channel_Example_ItemGetter_<Channel_Example_ItemGetter_GetByBuy>
+{
+
+}
+public class Channel_Example_ItemGetter_GetByReward : Channel_Example_ItemGetter_<Channel_Example_ItemGetter_GetByReward>
+{
+
+}
+public class Channel_Example_ItemGetter_GetByOtherGive : Channel_Example_ItemGetter_<Channel_Example_ItemGetter_GetByOtherGive>
+{
+
+}
 //例子 收集物品时 物品获取来源
 public enum Channel_Example_ItemGetter
 {

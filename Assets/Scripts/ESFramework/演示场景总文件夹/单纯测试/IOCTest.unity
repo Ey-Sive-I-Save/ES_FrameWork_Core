@@ -3192,7 +3192,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &834491985
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -3548,6 +3548,11 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: _isNet
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: info_1
       value: 
       objectReference: {fileID: -8280413418902923667, guid: 5b7e0e6a82fd78d42b0346431f8078d7,
@@ -3567,6 +3572,11 @@ PrefabInstance:
         type: 3}
       propertyPath: NormalDomain
       value: 3913062410175905799
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: Editor_IsNetObject
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -3717,6 +3727,16 @@ PrefabInstance:
         type: 3}
       propertyPath: managedReferences[3913062410175905799].Modules.ValuesNow.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423596183265540930, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423596183265540930, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5834244353524541995, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}

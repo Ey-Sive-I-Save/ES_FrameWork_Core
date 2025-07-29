@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace ES {
     [AddComponentMenu("<ES>ESM支持/物理/3D触发出-可接收列表")]
-    public class EMS_Trigger3DExit_LinkList : EMS_Abstract_LinkList<Link_EMS_Trigger3DExit>
+    public class EMS_Trigger3DExit_LinkList : EMS_Coliider_Abstract_LinkList<Link_EMS_Trigger3DExit>
     {
         private void OnTriggerExit3D(Collider collider)
         {

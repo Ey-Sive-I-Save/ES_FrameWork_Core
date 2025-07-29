@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace ES
 {
-    public enum Channel_EntityAttackLink
+    public enum Channel_EntityAttackLink : int
     {
         /// <summary>
         /// 尝试攻击他人

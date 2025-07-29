@@ -8,65 +8,75 @@ using UnityEngine;
 namespace ES
 {
     /*此处针对碰撞事件制造Link 声明通用的Link*/
-    public struct Link_EMS_Collider3DEnter : ILink
+    public interface ILink_EMS_Collider : ILink
     {
-        public Collider collider;
-        public Vector3 posAT;
+        public Collider collider { get; set; }
+        public Vector3 posAT { get; set; }
     }
-    public struct Link_EMS_Collider3DStay : ILink
+    public interface ILink_EMS_Collider2D : ILink
     {
-        public Collider collider;
-        public Vector3 posAT;
+        public Collider2D collider { get; set; }
+        public Vector3 posAT { get; set; }
     }
-    public struct Link_EMS_Collider3DExit : ILink
+    public struct Link_EMS_Collider3DEnter : ILink_EMS_Collider
     {
-        public Collider collider;
-        public Vector3 posAT;
+        public Collider collider { get; set; }
+        public Vector3 posAT { get; set; }
     }
-    public struct Link_EMS_Collider2DEnter : ILink
+    public struct Link_EMS_Collider3DStay : ILink_EMS_Collider
     {
-        public Collider2D Collider2D;
-        public Vector3 posAT;
+        public Collider collider { get; set; }
+        public Vector3 posAT { get; set; }
     }
-    public struct Link_EMS_Collider2DStay : ILink
+    public struct Link_EMS_Collider3DExit : ILink_EMS_Collider
     {
-        public Collider2D Collider2D;
-        public Vector3 posAT;
+        public Collider collider { get; set; }
+        public Vector3 posAT { get; set; }
     }
-    public struct Link_EMS_Collider2DExit : ILink
+    public struct Link_EMS_Collider2DEnter : ILink_EMS_Collider2D
     {
-        public Collider2D Collider2D;
-        public Vector3 posAT;
+        public Collider2D collider { get; set; }
+        public Vector3 posAT { get; set; }
     }
-    public struct Link_EMS_Trigger3DEnter : ILink
+    public struct Link_EMS_Collider2DStay : ILink_EMS_Collider2D
     {
-        public Collider collider;
-        public Vector3 posAT;
+        public Collider2D collider { get; set; }
+        public Vector3 posAT { get; set; }
     }
-    public struct Link_EMS_Trigger3DStay : ILink
+    public struct Link_EMS_Collider2DExit : ILink_EMS_Collider2D
     {
-        public Collider collider;
-        public Vector3 posAT;
+        public Collider2D collider { get; set; }
+        public Vector3 posAT { get; set; }
     }
-    public struct Link_EMS_Trigger3DExit : ILink
+    public struct Link_EMS_Trigger3DEnter : ILink_EMS_Collider
     {
-        public Collider collider;
-        public Vector3 posAT;
+        public Collider collider { get; set; }
+        public Vector3 posAT { get; set; }
     }
-    public struct Link_EMS_Trigger2DEnter : ILink
+    public struct Link_EMS_Trigger3DStay : ILink_EMS_Collider
     {
-        public Collider2D Trigger2D;
-        public Vector3 posAT;
+        public Collider collider { get; set; }
+        public Vector3 posAT { get; set; }
     }
-    public struct Link_EMS_Trigger2DStay : ILink
+    public struct Link_EMS_Trigger3DExit : ILink_EMS_Collider
     {
-        public Collider2D Trigger2D;
-        public Vector3 posAT;
+        public Collider collider { get; set; }
+        public Vector3 posAT { get; set; }
     }
-    public struct Link_EMS_Trigger2DExit : ILink
+    public struct Link_EMS_Trigger2DEnter : ILink_EMS_Collider2D
     {
-        public Collider2D Trigger2D;
-        public Vector3 posAT;
+        public Collider2D collider { get; set; }
+        public Vector3 posAT { get; set; }
+    }
+    public struct Link_EMS_Trigger2DStay : ILink_EMS_Collider2D
+    {
+        public Collider2D collider { get; set; }
+        public Vector3 posAT { get; set; }
+    }
+    public struct Link_EMS_Trigger2DExit : ILink_EMS_Collider2D
+    {
+        public Collider2D collider { get; set; }
+        public Vector3 posAT { get; set; }
     }
    
 }

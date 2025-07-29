@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace ES {
     [AddComponentMenu("<ES>ESM支持/物理/3D碰撞入-可接收列表")]
-    public class EMS_Collider3DEnter_LinkList : EMS_Abstract_LinkList<Link_EMS_Collider3DEnter>
+    public class EMS_Collider3DEnter_LinkList : EMS_Coliider_Abstract_LinkList<Link_EMS_Collider3DEnter>
     {
         private void OnCollisionEnter3D(Collision collision)
         {

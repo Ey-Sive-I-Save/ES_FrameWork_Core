@@ -8,7 +8,9 @@ using UnityEngine;
 namespace ES {
     public partial class TestCore : IReceiveAnyLink
     {
-        public void OnLink(ILink link)
+       
+
+        public void OnLink(IChannel channel, ILink link)
         {
             throw new NotImplementedException();
         }

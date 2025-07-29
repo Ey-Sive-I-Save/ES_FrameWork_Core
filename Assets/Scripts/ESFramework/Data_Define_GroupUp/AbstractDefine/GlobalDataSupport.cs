@@ -79,12 +79,12 @@ namespace ES
         private void OnValidate()
         {
             Refresh();
-            Debug.Log("Channel1");
+           
         }
         private void OnEnable()
         {
             Refresh();
-            Debug.Log("Channel2");
+           
         }
         private void OnDestroy()
         {

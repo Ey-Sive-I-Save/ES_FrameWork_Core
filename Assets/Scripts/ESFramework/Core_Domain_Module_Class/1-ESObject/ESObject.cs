@@ -28,7 +28,7 @@ namespace ES
         }
 
         #region 联网
-        [FoldoutGroup("【固有】"), LabelText("唯一ID"), ShowInInspector, ReadOnly]
+        [TabGroup("【固有】"), LabelText("唯一ID"), ShowInInspector, ReadOnly]
         public int ID
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -46,9 +46,6 @@ namespace ES
 
         private int _id = -1;//ID=-1时，认为无身份
         #endregion
-#if UNITY_EDITOR
-        [TabGroup("【固有】"), LabelText("是联网的"), SerializeField] private bool Editor_IsNetObject = false;
-#endif
 
         [TabGroup("【固有】"), LabelText("刚体")] public Rigidbody Rigid;
         [TabGroup("【固有】"), LabelText("原始动画器")] public Animator Anim;
@@ -57,14 +54,25 @@ namespace ES
 
 
 #if UNITY_EDITOR
-        [BoxGroup("网络支持", VisibleIf = "Editor_IsNetObject")]
-        [Required(errorMessage: "如果你制作网络游戏，一般需要配置给他一个FinshnetNetworkObject"), PropertyOrder(-10), PropertySpace(5, 15), InlineButton("DebugNO", "输出NO信息")]
+
+        #region 检查器专属
+        //输出网络信息
+        private void DebugNO()
+        {
+            Debug.Log("本人的" + NetObject.IsOwner);
+            Debug.Log("客户的" + NetObject.IsClientInitialized);
+            Debug.Log("服务器的" + NetObject.IsServerInitialized);
+        }
+        #endregion
+        [Required(errorMessage: "如果你制作网络游戏，一般需要配置给他一个FinshnetNetworkObject"), PropertyOrder(-10), PropertySpace(5, 15)
+            , InlineButton("DebugNO", "输出NO信息")]
         [LabelText("链接为网络对象")]
 #endif
-
+        [ ToggleGroup("IsNet"), ShowIf("IsNet"),ESBackGround("yellow",0.25f)]
         public ESNetObject NetObject;
+        [ToggleGroup("IsNet"), ShowIf("IsNet"), ESBackGround("yellow", 0.25f)]
         public ESNetBehaviour NetBehaviour;
-        [ShowInInspector, LabelText("是联网的")]
+        [ToggleGroup("IsNet","联网对象"), ShowInInspector, LabelText("是联网的")]
         public bool IsNet
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -75,17 +83,17 @@ namespace ES
                 if (_isNet != value)
                 {
                     _isNet = value;
-                    if (value)
+                   /* if (value)
                     {
                         if (NetObject == null)
                         {
                             NetObject.GetComponentInParent<ESNetObject>();
                             if (NetObject == null)
                             {
-                                NetObject = gameObject.AddComponent<ESNetObject>();
+                                *//*NetObject = gameObject.AddComponent<ESNetObject>();*//*
                             }
                         }
-                    }
+                    }*/
                 }
             }
         }

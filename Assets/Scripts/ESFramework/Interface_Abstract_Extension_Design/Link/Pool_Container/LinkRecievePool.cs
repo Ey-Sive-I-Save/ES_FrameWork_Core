@@ -96,7 +96,7 @@ namespace ES
                /* if (isServer) ESNetManager.ServerManager.RegisterBroadcast<Link>(SendLink_ToServer_Internal);
                 else ESNetManager.ClientManager.RegisterBroadcast<Link>(SendLink_Internal);*/
             }
-            void SendLink_ToServer_Internal(NetworkConnection connection, Link link, Channel channel)
+            void SendLink_ToServer_Internal(NetworkConnection connection, Link link, FishNet.Transporting.Channel channel)
             {
                 var links = GetGroupDirectly(typeof(Link));
                 foreach (var i in links)
@@ -110,10 +110,10 @@ namespace ES
                         }
                         else if (irl != null) irl.OnLink(link);
                     }
-                    else RemoveReceive<Link>(null);
+                    else RemoveReceive((IReceiveLink<Link>)null);
                 }
             }
-            void SendLink_Internal(Link link, Channel channel)
+            void SendLink_Internal(Link link, FishNet.Transporting.Channel channel)
             {
                 var links = GetGroupDirectly(typeof(Link));
                 foreach (var i in links)
@@ -127,7 +127,7 @@ namespace ES
                         }
                         else if (irl != null) irl.OnLink(link);
                     }
-                    else RemoveReceive<Link>(null);
+                    else RemoveReceive((IReceiveLink<Link>)null);
                 }
             }
         }

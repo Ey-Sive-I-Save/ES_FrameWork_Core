@@ -122,17 +122,25 @@ namespace ES
 
     }
 
-    public interface IReceiveLink<in Link> : IReceiveChannelLink<Channel_DefaultLink,Link> where Link : ILink
+    public interface IReceiveLink<in Link> : IReceiveLink where Link : ILink
     {
         void OnLink(Link link);
-        void IReceiveChannelLink<Channel_DefaultLink, Link>.OnLink(Channel_DefaultLink channel, Link link) { 
-            OnLink( Channel_DefaultLink.None, link); }
+      
     }
-    public interface IReceiveChannelLink<Channel,in Link> : IReceiveLink where Link : ILink
+    public interface IReceiveChannelLink<in Channel,in Link> : IReceiveLink<Link> where Link : ILink
     {
         void OnLink(Channel channel, Link link);
+        void IReceiveLink<Link>.OnLink(Link link)
+        {
+            OnLink(default,link);
+        }
     }
-    public interface IReceiveAnyLink : IReceiveLink<ILink>
+
+    public interface IReceiveAnyChanneLink<Link> : IReceiveChannelLink<IChannel, Link> where Link:ILink
+    {
+
+    }
+    public interface IReceiveAnyLink : IReceiveAnyChanneLink<ILink>
     {
 
     }
