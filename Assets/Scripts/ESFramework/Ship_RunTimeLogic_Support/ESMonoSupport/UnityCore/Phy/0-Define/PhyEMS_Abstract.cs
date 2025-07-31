@@ -1,4 +1,4 @@
-using ES;
+ using ES;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
@@ -8,23 +8,24 @@ using UnityEngine;
 
 namespace ES
 {
+   
     [HideMonoScript]
-    public abstract class EMS_Coliider_Abstract_LinkList<ColiiderLink> : EMS_Abstract_LinkList<ColiiderLink> where ColiiderLink:ILink_EMS_Collider
+    public abstract class EMS_ColEvent_2D_LinkSingle_Abstract : EMS_Abstract_ChannelLinkSingle<Channel_ColEvent, Link_ColEvent_2D>
     {
 
     }
     [HideMonoScript]
-    public abstract class EMS_Coliider2D_Abstract_LinkList<Coliider2DLink> : EMS_Abstract_LinkList<Coliider2DLink> where Coliider2DLink : ILink_EMS_Collider2D
+    public abstract class EMS_ColEvent_3D_LinkSingle_Abstract : EMS_Abstract_ChannelLinkSingle<Channel_ColEvent, Link_ColEvent_3D>
     {
 
     }
     [HideMonoScript]
-    public abstract class EMS_Coliider_Abstract_LinkSingle<ColiiderLink> : EMS_Abstract_LinkSingle<ColiiderLink> where ColiiderLink : ILink_EMS_Collider
+    public abstract class EMS_ColEvent_2D_LinkList_Abstract : EMS_Abstract_ChannelLinkList<Channel_ColEvent, Link_ColEvent_2D>
     {
 
     }
     [HideMonoScript]
-    public abstract class EMS_Coliider2D_Abstract_LinkSingle<Coliider2DLink> : EMS_Abstract_LinkSingle<Coliider2DLink> where Coliider2DLink : ILink_EMS_Collider2D
+    public abstract class EMS_ColEvent_3D_LinkList_Abstract : EMS_Abstract_ChannelLinkList<Channel_ColEvent, Link_ColEvent_3D>
     {
 
     }

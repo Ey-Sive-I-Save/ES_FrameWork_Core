@@ -7,11 +7,11 @@ using UnityEngine;
 
 namespace ES {
     [AddComponentMenu("<ES>ESM支持/物理/2D碰撞入-可接收列表")]
-    public class EMS_Collider2DEnter_LinkList : EMS_Coliider2D_Abstract_LinkList<Link_EMS_Collider2DEnter>
+    public class EMS_Collider2DEnter_LinkList : EMS_ColEvent_2D_LinkList_Abstract
     {
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            Links.SendLink(new Link_EMS_Collider2DEnter() { collider = collision.collider, posAT = collision.contacts[0].point });
+            Links.SendLink( Channel_ColEvent.Enter,new Link_ColEvent_2D() { collider = collision.collider, posAT = collision.contacts[0].point });
         }
     }
 }

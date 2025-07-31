@@ -7,11 +7,11 @@ using UnityEngine.EventSystems;
 
 namespace ES {
     [AddComponentMenu("<ES>ESM支持/输入/轴输入移动-指定接收目标")]
-    public class EMS_Move_LinkSingle : EMS_Abstract_LinkSingle<Link_EMS_Move>, IMoveHandler
+    public class EMS_Move_LinkSingle : EMS_InputBaseEvent_LinkSingle_Abstarct, IMoveHandler
     {
         public void OnMove(AxisEventData eventData)
         {
-           OnLink(new Link_EMS_Move() { eventData = eventData });
+            Link_?.OnLink(Channel_InputBaseEvent.Move, new Link_InputBaseEvent() { eventData = eventData });
         }
     }
 }

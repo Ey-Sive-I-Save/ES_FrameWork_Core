@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 namespace ES {
     [AddComponentMenu("<ES>ESM支持/输入/拖动中-指定接收目标")]
     [HideMonoScript]
-    public class EMS_Drag_LinkSingle : EMS_Abstract_LinkSingle<Link_EMS_Drag>, IDragHandler
+    public class EMS_Drag_LinkSingle : EMS_InputPointerEvent_LinkSingle_Abstarct, IDragHandler
     {
         
 #if UNITY_EDITOR
@@ -24,7 +24,7 @@ namespace ES {
 #endif
         public void OnDrag(PointerEventData eventData)
         {
-            SendLink(new Link_EMS_Drag() { eventData = eventData });
+            Link_?.OnLink(Channel_InputPointerEvent.Drag, new Link_InputPointerEvent() { eventData = eventData });
         }
     }
 }

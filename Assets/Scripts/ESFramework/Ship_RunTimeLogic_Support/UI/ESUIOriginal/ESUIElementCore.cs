@@ -8,17 +8,17 @@ using UnityEngine;
 namespace ES
 {
 
-    public class ESUIElement : ESUIOriginal
+    public class ESUIElementCore : ESUICore_Original
     {
         [LabelText("注册到Panel")] public bool register = false;
         [LabelText("唯一标识"),SerializeField] private string registerKey = "注册UI";
         public string RegisterKey { get { return registerKey; } set { registerKey = value; } }
-        public ESUIPanel MyPanel { get { if (dirty) GetMyParentAndRegisteThis(); return _myParentPanel; } set { _myParentPanel = value; } }
-        [SerializeField,LabelText("所属面板")] protected ESUIPanel _myParentPanel;
+        public ESUIPanelCore MyPanel { get { if (dirty) GetMyParentAndRegisteThis(); return _myParentPanel; } set { _myParentPanel = value; } }
+        [SerializeField,LabelText("所属面板")] protected ESUIPanelCore _myParentPanel;
         protected bool dirty = false;
-        public virtual ESUIPanel GetMyParentAndRegisteThis()
+        public virtual ESUIPanelCore GetMyParentAndRegisteThis()
         {
-            var use = this._GetCompoentInParentExcludeSelf<ESUIPanel>(includeInactive:true);
+            var use = this._GetCompoentInParentExcludeSelf<ESUIPanelCore>(includeInactive:true);
             if (use != null) { 
                 _myParentPanel = use;
                 if (register)
@@ -28,7 +28,7 @@ namespace ES
             }
             return _myParentPanel;
         }
-        private void Awake()
+        protected override void Awake()
         {
             GetMyParentAndRegisteThis();
             

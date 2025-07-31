@@ -7,12 +7,12 @@ using UnityEngine.EventSystems;
 
 namespace ES {
     [AddComponentMenu("<ES>ESM支持/输入/选择中-指定接收目标")]
-    public class EMS_UpdateSelected_LinkSingle : EMS_Abstract_LinkSingle<Link_EMS_UpdateSelected>, IUpdateSelectedHandler
+    public class EMS_UpdateSelected_LinkSingle : EMS_InputBaseEvent_LinkSingle_Abstarct, IUpdateSelectedHandler
     {
    
         public void OnUpdateSelected(BaseEventData eventData)
         {
-            OnLink(new Link_EMS_UpdateSelected() { eventData = eventData });
+            Link_?.OnLink( Channel_InputBaseEvent.UpdateSelected ,new Link_InputBaseEvent() { eventData = eventData });
         }
     }
 }

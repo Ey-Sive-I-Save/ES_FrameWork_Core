@@ -89,23 +89,6 @@ namespace ES
         #endregion
 
 
-        class EXAMPLE : IReceiveLink<Link_EMS_BeginDrag>
-        {
-            public MonoBehaviour mb;
-            public IDomain domain1;
-            public IModule module;
-            void OnEnable()
-            {
-                mb._GetOrAddAnyEMS<EMS_BeginDrag_LinkList>();
-
-                domain1._GetOrAddAnyEMSInChildren<EMS_BeginDrag_LinkSingle>();
-
-                module._GetOrAddAnyEMSInParent<EMS_Drop_LinkList>();
-            }
-            public void OnLink(Link_EMS_BeginDrag link)
-            {
-                throw new NotImplementedException();
-            }
-        }
+        
     }
 }

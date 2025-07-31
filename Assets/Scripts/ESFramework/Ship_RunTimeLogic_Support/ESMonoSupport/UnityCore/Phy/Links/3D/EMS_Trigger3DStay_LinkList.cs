@@ -8,11 +8,11 @@ using UnityEngine;
 namespace ES
 {
     [AddComponentMenu("<ES>ESM支持/物理/3D触发中-可接收列表")]
-    public class EMS_Trigger3DStay_LinkList : EMS_Coliider_Abstract_LinkList<Link_EMS_Trigger3DStay>
+    public class EMS_Trigger3DStay_LinkList : EMS_ColEvent_3D_LinkList_Abstract
     {
         private void OnTriggerStay3D(Collider collider)
         {
-            SendLink(new Link_EMS_Trigger3DStay() { collider = collider, posAT = collider.ClosestPoint(transform.position) }); ;
+            Links.SendLink(Channel_ColEvent.Stay, new Link_ColEvent_3D() { collider = collider, posAT = collider.ClosestPoint(transform.position) });
         }
     }
 }

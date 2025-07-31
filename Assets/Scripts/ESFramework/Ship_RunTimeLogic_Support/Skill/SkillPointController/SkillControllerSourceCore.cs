@@ -10,11 +10,11 @@ namespace ES
     public class SkillControllerSourceCore :Core, IWithArchitecture
     {
         [SerializeReference]
-        public BaseArchitectureWithKeyValuePool SkillControllerKeyValueArchitecture = new BaseArchitectureWithKeyValuePool();
-        public IArchitecture GetArchitecture => SkillControllerKeyValueArchitecture;
+        public _OBSULUTE_ArchitecturePool_OBSULUTE SkillControllerArchitecture = new _OBSULUTE_ArchitecturePool_OBSULUTE();
+        public IArchitecture GetArchitecture => SkillControllerArchitecture;
         private void Start()
         {
-            SkillControllerKeyValueArchitecture.Init();
+            SkillControllerArchitecture.Init();
             StartCoroutine(_CoroutineMaker_Obsolete.DelayOneFrameCoroutine(RefreshAll));
         }
         // Start is called before the first frame update

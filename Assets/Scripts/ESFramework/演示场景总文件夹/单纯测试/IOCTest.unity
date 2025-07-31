@@ -311,10 +311,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI5"
   _myParentPanel: {fileID: 170878113}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &82181348
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,10 +381,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI3"
   _myParentPanel: {fileID: 1062989489}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &83953388
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +461,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: AllElements
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElement,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElementCore,
         ES]], mscorlib
     - Name: comparer
       Entry: 7
@@ -501,12 +527,25 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u5B50\u9762\u677F\xB7"
   _myParentPanel: {fileID: 1072790468}
   testElement: "\u5B59\u5B50\u9762\u677F/\u66FE\u5B59\u5B50\u5B59\u5B50\u9762\u677F"
-  _myRoot: {fileID: 1043675915}
+  _myRoot: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &92842722
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,8 +558,7 @@ GameObject:
   - component: {fileID: 92842727}
   - component: {fileID: 92842726}
   - component: {fileID: 92842725}
-  - component: {fileID: 92842724}
-  - component: {fileID: 92842723}
+  - component: {fileID: 92842729}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -528,35 +566,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &92842723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 92842722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e94e3a4ca6a1c947a1b1f1ac180d6e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &92842724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 92842722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f2cf487cdced5a46a7864376d50e509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  readme:
-    edit: 0
-    ReadMeOut: "\u4F7F\u7528 Link_PointerData \u4F20\u9012\u4E8B\u4EF6\u4FE1\u606F"
-    readMeIn: "\u4F7F\u7528 Link_PointerData \u4F20\u9012\u4E8B\u4EF6\u4FE1\u606F"
-    showColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!65 &92842725
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -637,12 +646,40 @@ Transform:
   m_GameObject: {fileID: 92842722}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1454366522}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &92842729
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92842722}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &122737628
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,7 +788,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 14
   m_CollisionDetection: 0
@@ -776,6 +813,136 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 2.220446e-16, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &138000101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 138000102}
+  - component: {fileID: 138000104}
+  - component: {fileID: 138000103}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &138000102
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138000101}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1454366522}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &138000103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138000101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca03b0337b564d4bb142c54b34a802e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  des: "\u5907\u6CE8"
+  edit: 1
+  ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+  readMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+  showColor: {r: 0.49, g: 0.2353, b: 0.596, a: 1}
+  UseTimerPick:
+    rid: 3913062545118199808
+  startDelay:
+    rid: 3913062545118199809
+  pickTimeDis:
+    rid: 3913062545118199810
+  pointerForTimer:
+    rid: 3913062545118199811
+  references:
+    version: 2
+    RefIds:
+    - rid: 3913062545118199808
+      type: {class: PointerForBool_Direc, ns: ES.EvPointer, asm: ES}
+      data:
+        bool_: 0
+    - rid: 3913062545118199809
+      type: {class: PointerForFloat_Random30, ns: ES.EvPointer, asm: ES}
+      data:
+        float_range: {x: 5, y: 10}
+    - rid: 3913062545118199810
+      type: {class: PointerForFloat_Random30, ns: ES.EvPointer, asm: ES}
+      data:
+        float_range: {x: 3, y: 5}
+    - rid: 3913062545118199811
+      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: ES}
+      data:
+        pointer1:
+          rid: 3913062545118199812
+    - rid: 3913062545118199812
+      type: {class: PointerNoneByArKVP_StrInPool, ns: ES, asm: ES}
+      data:
+        key: 
+        handler: 
+--- !u!114 &138000104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138000101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecb6b1df256e9b4491beb52132c61ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
+  IsLoading: 0
+  register: 0
+  registerKey: "\u6CE8\u518CUI"
+  _myParentPanel: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &152137756
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,10 +996,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI3"
-  _myParentPanel: {fileID: 0}
+  _myParentPanel: {fileID: 2135619809}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &163988816
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,10 +1066,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI4"
   _myParentPanel: {fileID: 763834594}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &168656538
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,10 +1136,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI1"
   _myParentPanel: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &170878112
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,7 +1197,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: AllElements
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElement,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElementCore,
         ES]], mscorlib
     - Name: comparer
       Entry: 7
@@ -1057,12 +1263,25 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u5B50\u9762\u677F\xB7"
   _myParentPanel: {fileID: 763834594}
   testElement: "\u5B59\u5B50\u9762\u677F/\u66FE\u5B59\u5B50\u5B59\u5B50\u9762\u677F"
-  _myRoot: {fileID: 1043675915}
+  _myRoot: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &170878114
 Transform:
   m_ObjectHideFlags: 0
@@ -1171,10 +1390,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI5"
   _myParentPanel: {fileID: 1062989489}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &215892406
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,10 +1460,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI4"
   _myParentPanel: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &216997703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1285,10 +1530,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI5"
   _myParentPanel: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &222664277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,10 +1600,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI4"
   _myParentPanel: {fileID: 1437878306}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &226467689
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,10 +1745,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI4"
   _myParentPanel: {fileID: 170878113}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &264615167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,10 +1905,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI"
-  _myParentPanel: {fileID: 0}
+  _myParentPanel: {fileID: 785059015}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &287596972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1667,7 +1964,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: AllElements
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElement,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElementCore,
         ES]], mscorlib
     - Name: comparer
       Entry: 7
@@ -1697,12 +1994,25 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u7B2C\u4E8C\u9762\u677F"
   _myParentPanel: {fileID: 0}
   testElement: "\u5B50\u9762\u677F\xB7/\u5B59\u5B50\u9762\u677F/\u66FE\u5B59\u5B50\u5B59\u5B50\u9762\u677F/\u6CE8\u518CUI"
-  _myRoot: {fileID: 1043675915}
+  _myRoot: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!224 &287596974
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1805,10 +2115,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI"
   _myParentPanel: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &415922420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1862,10 +2185,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI3"
   _myParentPanel: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &417693426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1919,10 +2255,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI3"
   _myParentPanel: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &418812371 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2434249452983885943, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -1997,10 +2346,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI3"
   _myParentPanel: {fileID: 1437878306}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &451741459
 GameObject:
   m_ObjectHideFlags: 0
@@ -2167,7 +2529,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: AllElements
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElement,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElementCore,
         ES]], mscorlib
     - Name: comparer
       Entry: 7
@@ -2185,12 +2547,25 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u66FE\u5B59\u5B50\u5B59\u5B50\u9762\u677F"
   _myParentPanel: {fileID: 1828204753}
   testElement: "\u6D4B\u8BD5"
-  _myRoot: {fileID: 1043675915}
+  _myRoot: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &493577127
 Transform:
   m_ObjectHideFlags: 0
@@ -2265,10 +2640,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI5"
   _myParentPanel: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &666096785
 GameObject:
   m_ObjectHideFlags: 0
@@ -2322,10 +2710,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI1"
   _myParentPanel: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &680144752
 GameObject:
   m_ObjectHideFlags: 0
@@ -2367,7 +2768,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: AllElements
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElement,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElementCore,
         ES]], mscorlib
     - Name: comparer
       Entry: 7
@@ -2397,12 +2798,25 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u5B50\u9762\u677F\xB7"
   _myParentPanel: {fileID: 287596973}
   testElement: "\u5B59\u5B50\u9762\u677F/\u66FE\u5B59\u5B50\u5B59\u5B50\u9762\u677F"
-  _myRoot: {fileID: 1043675915}
+  _myRoot: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &680144754
 Transform:
   m_ObjectHideFlags: 0
@@ -2649,10 +3063,209 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI"
-  _myParentPanel: {fileID: 0}
+  _myParentPanel: {fileID: 83953390}
+  references:
+    version: 2
+    RefIds: []
+--- !u!90 &757680072
+Avatar:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Automatic Avatar
+  m_AvatarSize: 1280
+  m_Avatar:
+    serializedVersion: 3
+    m_AvatarSkeleton:
+      data:
+        m_Node:
+        - m_ParentId: -1
+          m_AxesId: -1
+        - m_ParentId: 0
+          m_AxesId: -1
+        - m_ParentId: 1
+          m_AxesId: -1
+        - m_ParentId: 2
+          m_AxesId: -1
+        - m_ParentId: 3
+          m_AxesId: -1
+        - m_ParentId: 0
+          m_AxesId: -1
+        - m_ParentId: 0
+          m_AxesId: -1
+        - m_ParentId: 0
+          m_AxesId: -1
+        m_ID: 00000000d26d2926e45672d03571eb3a21d8d317ad96bd69b1ed508747c4f028
+        m_AxesArray: []
+    m_AvatarSkeletonPose:
+      data:
+        m_X:
+        - t: {x: -4.46, y: 0.968, z: 0}
+          q: {x: -0, y: -0, z: -0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+        - t: {x: 0, y: 0, z: 0}
+          q: {x: 0, y: 0, z: 0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+        - t: {x: 0, y: 0.578, z: 0.384}
+          q: {x: 0, y: 0, z: 0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+        - t: {x: 0, y: 0, z: 0}
+          q: {x: 0, y: 0, z: 0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+        - t: {x: 0, y: -0.27300018, z: 0.0119999945}
+          q: {x: -0, y: -0, z: -0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+        - t: {x: 0, y: 0, z: 0}
+          q: {x: 0, y: 0, z: 0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+        - t: {x: 0, y: 0, z: 0}
+          q: {x: 0, y: 0, z: 0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+        - t: {x: 0, y: 0, z: 0}
+          q: {x: 0, y: 0, z: 0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+    m_DefaultPose:
+      data:
+        m_X:
+        - t: {x: -4.46, y: 0.968, z: 0}
+          q: {x: -0, y: -0, z: -0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+        - t: {x: 0, y: 0, z: 0}
+          q: {x: 0, y: 0, z: 0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+        - t: {x: 0, y: 0.578, z: 0.384}
+          q: {x: 0, y: 0, z: 0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+        - t: {x: 0, y: 0, z: 0}
+          q: {x: 0, y: 0, z: 0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+        - t: {x: 0, y: -0.27300018, z: 0.0119999945}
+          q: {x: -0, y: -0, z: -0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+        - t: {x: 0, y: 0, z: 0}
+          q: {x: 0, y: 0, z: 0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+        - t: {x: 0, y: 0, z: 0}
+          q: {x: 0, y: 0, z: 0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+        - t: {x: 0, y: 0, z: 0}
+          q: {x: 0, y: 0, z: 0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+    m_SkeletonNameIDArray: 00000000d26d2926c7400ef050617d9e65a1ad17ad96bd69b1ed508747c4f028
+    m_Human:
+      data:
+        serializedVersion: 2
+        m_RootX:
+          t: {x: 0, y: 0, z: 0}
+          q: {x: 0, y: 0, z: 0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+        m_Skeleton:
+          data:
+            m_Node: []
+            m_ID: 
+            m_AxesArray: []
+        m_SkeletonPose:
+          data:
+            m_X: []
+        m_LeftHand:
+          data:
+            m_HandBoneIndex: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        m_RightHand:
+          data:
+            m_HandBoneIndex: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        m_HumanBoneIndex: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        m_HumanBoneMass:
+        - 0.14545456
+        - 0.12121213
+        - 0.12121213
+        - 0.048484854
+        - 0.048484854
+        - 0.009696971
+        - 0.009696971
+        - 0.030303033
+        - 0.14545456
+        - 0.14545456
+        - 0.012121214
+        - 0.048484854
+        - 0.006060607
+        - 0.006060607
+        - 0.024242427
+        - 0.024242427
+        - 0.01818182
+        - 0.01818182
+        - 0.006060607
+        - 0.006060607
+        - 0.0024242427
+        - 0.0024242427
+        - 0
+        - 0
+        - 0
+        m_Scale: 1
+        m_ArmTwist: 0.5
+        m_ForeArmTwist: 0.5
+        m_UpperLegTwist: 0.5
+        m_LegTwist: 0.5
+        m_ArmStretch: 0.05
+        m_LegStretch: 0.05
+        m_FeetSpacing: 0
+        m_HasLeftHand: 0
+        m_HasRightHand: 0
+        m_HasTDoF: 0
+    m_HumanSkeletonIndexArray: 
+    m_HumanSkeletonReverseIndexArray: 
+    m_RootMotionBoneIndex: -1
+    m_RootMotionBoneX:
+      t: {x: 0, y: 0, z: 0}
+      q: {x: 0, y: 0, z: 0, w: 1}
+      s: {x: 1, y: 1, z: 1}
+    m_RootMotionSkeleton:
+      data:
+        m_Node: []
+        m_ID: 
+        m_AxesArray: []
+    m_RootMotionSkeletonPose:
+      data:
+        m_X: []
+    m_RootMotionSkeletonIndexArray: 
+  m_TOS:
+    3497154276: Normal/Group_Camara
+    2270227889: Hand
+    1774032557: Foot
+    686867527: OutLine
+    399759393: "Normal/Group_Camara/\u76F8\u673A\u5BF9\u51C6/FirePoint"
+    0: 
+    988508469: "Normal/Group_Camara/\u76F8\u673A\u5BF9\u51C6"
+    640249298: Normal
+  m_HumanDescription:
+    serializedVersion: 3
+    m_Human: []
+    m_Skeleton: []
+    m_ArmTwist: 0.5
+    m_ForeArmTwist: 0.5
+    m_UpperLegTwist: 0.5
+    m_LegTwist: 0.5
+    m_ArmStretch: 0.05
+    m_LegStretch: 0.05
+    m_FeetSpacing: 0
+    m_GlobalScale: 1
+    m_RootMotionBoneName: 
+    m_HasTranslationDoF: 0
+    m_HasExtraRoot: 0
+    m_SkeletonHasParents: 1
 --- !u!1 &763834593
 GameObject:
   m_ObjectHideFlags: 0
@@ -2700,7 +3313,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: AllElements
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElement,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElementCore,
         ES]], mscorlib
     - Name: comparer
       Entry: 7
@@ -2802,12 +3415,25 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u7B2C\u4E09\u9762\u677F"
   _myParentPanel: {fileID: 0}
   testElement: "\u5B50\u9762\u677F\xB7/\u5B59\u5B50\u9762\u677F/\u66FE\u5B59\u5B50\u5B59\u5B50\u9762\u677F/\u6CE8\u518CUI"
-  _myRoot: {fileID: 1043675915}
+  _myRoot: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &763834595
 Transform:
   m_ObjectHideFlags: 0
@@ -2897,7 +3523,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: AllElements
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElement,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElementCore,
         ES]], mscorlib
     - Name: comparer
       Entry: 7
@@ -2987,12 +3613,25 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u66FE\u5B59\u5B50\u5B59\u5B50\u9762\u677F"
   _myParentPanel: {fileID: 2135619809}
   testElement: "\u6D4B\u8BD5"
-  _myRoot: {fileID: 1043675915}
+  _myRoot: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &792108029
 GameObject:
   m_ObjectHideFlags: 0
@@ -3046,10 +3685,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI4"
-  _myParentPanel: {fileID: 0}
+  _myParentPanel: {fileID: 83953390}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &803101233
 GameObject:
   m_ObjectHideFlags: 0
@@ -3103,10 +3755,117 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI4"
   _myParentPanel: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
+--- !u!1 &819841139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 819841140}
+  - component: {fileID: 819841142}
+  - component: {fileID: 819841141}
+  - component: {fileID: 819841143}
+  m_Layer: 11
+  m_Name: Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &819841140
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819841139}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.31}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 918602556}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &819841141
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819841139}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 0.8, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &819841142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819841139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5929b4c1d5b200b42a886f4b0f19c101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &819841143
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819841139}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &824173664
 GameObject:
   m_ObjectHideFlags: 0
@@ -3190,110 +3949,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 918602555}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &834491985
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 834491977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a99eb8eb65a1d51448195407743db312, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  des: "\u5907\u6CE8"
-  edit: 1
-  ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-  readMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-  showColor: {r: 0.49, g: 0.2353, b: 0.596, a: 1}
-  boolForColliderEnter:
-    rid: 3913062422637183412
-  boolForColliderStay:
-    rid: 3913062422637183413
-  boolForColliderExit:
-    rid: 3913062422637183414
-  pointerForEnter:
-    rid: 3913062422637183415
-  pointerForStay:
-    rid: 3913062422637183416
-  pointerForExit:
-    rid: 3913062422637183417
-  useTagCheck: 0
-  tags:
-    tagNames: []
-  collider_:
-    rid: -2
-  v3_:
-    rid: 3913062422637183418
-  collider_Match:
-    rid: -2
-  v3_Match:
-    rid: 3913062422637183419
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
-    - rid: 3913062422637183412
-      type: {class: PointerForBool_Direc, ns: ES.EvPointer, asm: ES}
-      data:
-        bool_: 0
-    - rid: 3913062422637183413
-      type: {class: PointerForBool_Direc, ns: ES.EvPointer, asm: ES}
-      data:
-        bool_: 0
-    - rid: 3913062422637183414
-      type: {class: PointerForBool_Direc, ns: ES.EvPointer, asm: ES}
-      data:
-        bool_: 1
-    - rid: 3913062422637183415
-      type: {class: PointerPickerByBool, ns: ES.EvPointer, asm: ES}
-      data:
-        when:
-          rid: -2
-        pointer1:
-          rid: -2
-    - rid: 3913062422637183416
-      type: {class: PointerPickerByBool, ns: ES.EvPointer, asm: ES}
-      data:
-        when:
-          rid: -2
-        pointer1:
-          rid: -2
-    - rid: 3913062422637183417
-      type: {class: PointerPickerByBool, ns: ES.EvPointer, asm: ES}
-      data:
-        when:
-          rid: -2
-        pointer1:
-          rid: 3913062422637183420
-    - rid: 3913062422637183418
-      type: {class: PointerForVector3Caster, ns: ES.EvPointer, asm: ES}
-      data:
-        cast: {x: 0, y: 0, z: 0}
-        usePlayerCaster: 0
-        playerCaster_: {fileID: 0}
-    - rid: 3913062422637183419
-      type: {class: PointerForVector3Caster, ns: ES.EvPointer, asm: ES}
-      data:
-        cast: {x: 0, y: 0, z: 0}
-        usePlayerCaster: 0
-        playerCaster_: {fileID: 0}
-    - rid: 3913062422637183420
-      type: {class: PointerOnlyDebug, ns: ES.EvPointer, asm: ES}
-      data:
-        type: 3
-        debug: "\u4F60\u597D\u554A"
 --- !u!1 &841458498
 GameObject:
   m_ObjectHideFlags: 0
@@ -3313,7 +3968,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &841458499
 Transform:
   m_ObjectHideFlags: 0
@@ -3466,10 +4121,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI2"
   _myParentPanel: {fileID: 1437878306}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &857773445
 GameObject:
   m_ObjectHideFlags: 0
@@ -3523,10 +4191,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI4"
   _myParentPanel: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &918602555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3535,6 +4216,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 119263845375684680, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 757680072}
     - target: {fileID: 2434249452983885943, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       propertyPath: m_Name
@@ -3570,6 +4256,11 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: GroundCheck
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: NormalDomain
       value: 3913062410175905799
       objectReference: {fileID: 0}
@@ -3595,6 +4286,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062524333326336]
+      value: ES ES.ModuleOR_Collider
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: OriginalDomain.Modules.ValuesNow.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[3913062410175905799].core
       value: 
       objectReference: {fileID: 0}
@@ -3602,6 +4303,11 @@ PrefabInstance:
         type: 3}
       propertyPath: managedReferences[3913062410175905798].Health
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: OriginalDomain.Modules.ValuesNow.Array.data[0]
+      value: 3913062524333326336
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -3630,6 +4336,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062524333326336]._enableSelf
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[2405589128704426028].RegisterPack
       value: 
       objectReference: {fileID: 0}
@@ -3642,6 +4353,11 @@ PrefabInstance:
         type: 3}
       propertyPath: managedReferences[3913062410175905799].readMe.readMe
       value: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062524333326336].Editor_Preset
+      value: "\u9884\u8BBE1"
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -3715,6 +4431,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062524333326336].ToReSource.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[3913062410175905798].Attack._settlementValue
       value: 0
       objectReference: {fileID: 0}
@@ -3725,8 +4446,88 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
+      propertyPath: managedReferences[3913062524333326336].ToReSource.Array.data[0].ob
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062524333326336].ToReSource.Array.data[1].ob
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062524333326336].ToReSource.Array.data[2].ob
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062524333326336].ToReSource.Array.data[3].ob
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
       propertyPath: managedReferences[3913062410175905799].Modules.ValuesNow.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062524333326336].ToReSource.Array.data[0].ems
+      value: 
+      objectReference: {fileID: 918602557}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062524333326336].ToReSource.Array.data[1].ems
+      value: 
+      objectReference: {fileID: 1137502190}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062524333326336].ToReSource.Array.data[2].ems
+      value: 
+      objectReference: {fileID: 819841142}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062524333326336].ToReSource.Array.data[3].ems
+      value: 
+      objectReference: {fileID: 1458311299}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062524333326336].ToReSource.Array.data[0].channel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062524333326336].ToReSource.Array.data[1].channel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062524333326336].ToReSource.Array.data[2].channel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175558331838916258, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: managedReferences[3913062524333326336].ToReSource.Array.data[3].channel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3552004293402254565, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 3552004293402254565, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.968
+      objectReference: {fileID: 0}
+    - target: {fileID: 3552004293402254565, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423596183265540930, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      propertyPath: m_Height
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5423596183265540930, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -3788,10 +4589,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 119263845375684680, guid: 67128c24351d81049ac7ab276c2c6420, type: 3}
+    - {fileID: 2393313974894140880, guid: 67128c24351d81049ac7ab276c2c6420, type: 3}
+    - {fileID: 7298453647440259210, guid: 67128c24351d81049ac7ab276c2c6420, type: 3}
     m_RemovedGameObjects:
     - {fileID: 292560691148195302, guid: 67128c24351d81049ac7ab276c2c6420, type: 3}
-    m_AddedGameObjects: []
+    - {fileID: 9039758277402938937, guid: 67128c24351d81049ac7ab276c2c6420, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3552004293402254565, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1137502188}
+    - targetCorrespondingSourceObject: {fileID: 3552004293402254565, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 819841140}
+    - targetCorrespondingSourceObject: {fileID: 3552004293402254565, guid: 67128c24351d81049ac7ab276c2c6420,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1458311297}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2434249452983885943, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
@@ -3800,8 +4617,26 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8108457508976548315, guid: 67128c24351d81049ac7ab276c2c6420,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 834491985}
+      addedObject: {fileID: 918602557}
   m_SourcePrefab: {fileID: 100100000, guid: 67128c24351d81049ac7ab276c2c6420, type: 3}
+--- !u!4 &918602556 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3552004293402254565, guid: 67128c24351d81049ac7ab276c2c6420,
+    type: 3}
+  m_PrefabInstance: {fileID: 918602555}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &918602557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834491977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5929b4c1d5b200b42a886f4b0f19c101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &941770232
 GameObject:
   m_ObjectHideFlags: 0
@@ -3891,10 +4726,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI5"
   _myParentPanel: {fileID: 1437878306}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &995502991
 GameObject:
   m_ObjectHideFlags: 0
@@ -3948,10 +4796,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI2"
   _myParentPanel: {fileID: 763834594}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1028066069
 GameObject:
   m_ObjectHideFlags: 0
@@ -4005,10 +4866,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI1"
-  _myParentPanel: {fileID: 0}
+  _myParentPanel: {fileID: 785059015}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1034012382
 GameObject:
   m_ObjectHideFlags: 0
@@ -4062,10 +4936,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI4"
   _myParentPanel: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1041293582
 GameObject:
   m_ObjectHideFlags: 0
@@ -4208,7 +5095,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1043675916}
-  - component: {fileID: 1043675915}
   m_Layer: 0
   m_Name: HomeUIRoot
   m_TagString: Untagged
@@ -4216,126 +5102,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1043675915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1043675914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 232f5b9b472f4804d8ef13df1d017c47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 1072790468}
-    - {fileID: 83953390}
-    - {fileID: 2135619809}
-    - {fileID: 785059015}
-    - {fileID: 287596973}
-    - {fileID: 763834594}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: AllPanels
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElement,
-        ES]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 6
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: "\u7B2C\u4E00\u9762\u677F"
-    - Name: $v
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: "\u5B50\u9762\u677F\xB7"
-    - Name: $v
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: "\u5B59\u5B50\u9762\u677F"
-    - Name: $v
-      Entry: 10
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: "\u66FE\u5B59\u5B50\u5B59\u5B50\u9762\u677F"
-    - Name: $v
-      Entry: 10
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: "\u7B2C\u4E8C\u9762\u677F"
-    - Name: $v
-      Entry: 10
-      Data: 4
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: "\u7B2C\u4E09\u9762\u677F"
-    - Name: $v
-      Entry: 10
-      Data: 5
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  testPanel: "\u7B2C\u4E00\u9762\u677F"
 --- !u!4 &1043675916
 Transform:
   m_ObjectHideFlags: 0
@@ -4399,7 +5165,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: AllElements
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElement,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElementCore,
         ES]], mscorlib
     - Name: comparer
       Entry: 7
@@ -4465,12 +5231,25 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u5B59\u5B50\u9762\u677F"
   _myParentPanel: {fileID: 170878113}
   testElement: "\u6D4B\u8BD5"
-  _myRoot: {fileID: 1043675915}
+  _myRoot: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &1062989490
 Transform:
   m_ObjectHideFlags: 0
@@ -4543,10 +5322,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI5"
   _myParentPanel: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1072790466
 GameObject:
   m_ObjectHideFlags: 0
@@ -4623,7 +5415,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: AllElements
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElement,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElementCore,
         ES]], mscorlib
     - Name: comparer
       Entry: 7
@@ -4725,12 +5517,25 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u7B2C\u4E00\u9762\u677F"
   _myParentPanel: {fileID: 0}
   testElement: "\u5B50\u9762\u677F\xB7/\u5B59\u5B50\u9762\u677F/\u66FE\u5B59\u5B50\u5B59\u5B50\u9762\u677F/\u6CE8\u518CUI"
-  _myRoot: {fileID: 1043675915}
+  _myRoot: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &1072790469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4937,10 +5742,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI5"
-  _myParentPanel: {fileID: 0}
+  _myParentPanel: {fileID: 785059015}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1136174747
 GameObject:
   m_ObjectHideFlags: 0
@@ -5067,6 +5885,100 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136174747}
   m_CullTransparentMesh: 1
+--- !u!1 &1137502187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1137502188}
+  - component: {fileID: 1137502190}
+  - component: {fileID: 1137502189}
+  - component: {fileID: 1137502191}
+  m_Layer: 11
+  m_Name: Foot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1137502188
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137502187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.336, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 918602556}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1137502189
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137502187}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1137502190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137502187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5929b4c1d5b200b42a886f4b0f19c101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &1137502191
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137502187}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1190359610
 GameObject:
   m_ObjectHideFlags: 0
@@ -5120,10 +6032,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI3"
   _myParentPanel: {fileID: 763834594}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1225131081
 GameObject:
   m_ObjectHideFlags: 0
@@ -5627,10 +6552,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI"
   _myParentPanel: {fileID: 170878113}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1314678783
 GameObject:
   m_ObjectHideFlags: 0
@@ -5684,10 +6622,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI4"
-  _myParentPanel: {fileID: 0}
+  _myParentPanel: {fileID: 785059015}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1323121230
 GameObject:
   m_ObjectHideFlags: 0
@@ -5741,10 +6692,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI1"
   _myParentPanel: {fileID: 1437878306}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1339447167
 GameObject:
   m_ObjectHideFlags: 0
@@ -5798,10 +6762,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI2"
-  _myParentPanel: {fileID: 0}
+  _myParentPanel: {fileID: 785059015}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1385734940
 GameObject:
   m_ObjectHideFlags: 3
@@ -5956,10 +6933,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI"
   _myParentPanel: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1398528972
 GameObject:
   m_ObjectHideFlags: 0
@@ -6013,10 +7003,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI5"
-  _myParentPanel: {fileID: 0}
+  _myParentPanel: {fileID: 2135619809}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1406332043
 GameObject:
   m_ObjectHideFlags: 0
@@ -6070,10 +7073,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI2"
   _myParentPanel: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1437878305
 GameObject:
   m_ObjectHideFlags: 0
@@ -6120,7 +7136,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: AllElements
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElement,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElementCore,
         ES]], mscorlib
     - Name: comparer
       Entry: 7
@@ -6210,12 +7226,25 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u66FE\u5B59\u5B50\u5B59\u5B50\u9762\u677F"
   _myParentPanel: {fileID: 1062989489}
   testElement: "\u6D4B\u8BD5"
-  _myRoot: {fileID: 1043675915}
+  _myRoot: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &1437878307
 Transform:
   m_ObjectHideFlags: 0
@@ -6236,6 +7265,99 @@ Transform:
   - {fileID: 222664278}
   - {fileID: 990443837}
   m_Father: {fileID: 1062989490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1454366520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1454366522}
+  - component: {fileID: 1454366521}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1454366521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454366520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edcde16c1e8f0174b9e37dcf84345cec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: AllElements
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElementCore,
+        ES]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
+  IsLoading: 0
+  register: 1
+  registerKey: "\u6CE8\u518CUI"
+  _myParentPanel: {fileID: 0}
+  testElement: "\u6D4B\u8BD5"
+  _myRoot: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
+--- !u!4 &1454366522
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454366520}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 138000102}
+  m_Father: {fileID: 92842728}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1455516945
 GameObject:
@@ -6290,10 +7412,117 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI4"
-  _myParentPanel: {fileID: 0}
+  _myParentPanel: {fileID: 2135619809}
+  references:
+    version: 2
+    RefIds: []
+--- !u!1 &1458311296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1458311297}
+  - component: {fileID: 1458311299}
+  - component: {fileID: 1458311298}
+  - component: {fileID: 1458311300}
+  m_Layer: 11
+  m_Name: OutLine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1458311297
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458311296}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 918602556}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1458311298
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458311296}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1458311299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458311296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5929b4c1d5b200b42a886f4b0f19c101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &1458311300
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458311296}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1479334427
 GameObject:
   m_ObjectHideFlags: 0
@@ -6347,10 +7576,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI3"
-  _myParentPanel: {fileID: 0}
+  _myParentPanel: {fileID: 785059015}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1508050296
 GameObject:
   m_ObjectHideFlags: 0
@@ -6404,10 +7646,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI"
   _myParentPanel: {fileID: 763834594}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1585071619
 GameObject:
   m_ObjectHideFlags: 0
@@ -6461,10 +7716,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI2"
   _myParentPanel: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1626545289
 GameObject:
   m_ObjectHideFlags: 0
@@ -6518,10 +7786,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI3"
   _myParentPanel: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1628670322
 GameObject:
   m_ObjectHideFlags: 0
@@ -9116,10 +10397,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI5"
-  _myParentPanel: {fileID: 0}
+  _myParentPanel: {fileID: 1072790468}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1647587499
 GameObject:
   m_ObjectHideFlags: 0
@@ -9173,10 +10467,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI1"
   _myParentPanel: {fileID: 763834594}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1655087672 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8108457508976548315, guid: 67128c24351d81049ac7ab276c2c6420,
@@ -9473,7 +10780,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: AllElements
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElement,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElementCore,
         ES]], mscorlib
     - Name: comparer
       Entry: 7
@@ -9503,12 +10810,25 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u5B59\u5B50\u9762\u677F"
   _myParentPanel: {fileID: 680144753}
   testElement: "\u6D4B\u8BD5"
-  _myRoot: {fileID: 1043675915}
+  _myRoot: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &1828204754
 Transform:
   m_ObjectHideFlags: 0
@@ -9641,10 +10961,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI4"
   _myParentPanel: {fileID: 1062989489}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1871444734
 GameObject:
   m_ObjectHideFlags: 0
@@ -9698,10 +11031,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI"
   _myParentPanel: {fileID: 1437878306}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1916983617
 GameObject:
   m_ObjectHideFlags: 0
@@ -9755,10 +11101,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI5"
-  _myParentPanel: {fileID: 0}
+  _myParentPanel: {fileID: 83953390}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1948278172
 GameObject:
   m_ObjectHideFlags: 0
@@ -9818,10 +11177,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI"
   _myParentPanel: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &1948278175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9913,10 +11285,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI2"
-  _myParentPanel: {fileID: 0}
+  _myParentPanel: {fileID: 1072790468}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &2006177937
 GameObject:
   m_ObjectHideFlags: 0
@@ -11589,10 +12974,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI"
-  _myParentPanel: {fileID: 0}
+  _myParentPanel: {fileID: 1072790468}
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &2041855907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11684,10 +13082,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI4"
-  _myParentPanel: {fileID: 0}
+  _myParentPanel: {fileID: 1072790468}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &2068297868
 GameObject:
   m_ObjectHideFlags: 0
@@ -11741,10 +13152,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI3"
-  _myParentPanel: {fileID: 0}
+  _myParentPanel: {fileID: 1072790468}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &2099589334
 GameObject:
   m_ObjectHideFlags: 0
@@ -11798,10 +13222,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI5"
   _myParentPanel: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &2112144834
 GameObject:
   m_ObjectHideFlags: 0
@@ -11855,10 +13292,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI1"
-  _myParentPanel: {fileID: 0}
+  _myParentPanel: {fileID: 1072790468}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &2126835689
 GameObject:
   m_ObjectHideFlags: 0
@@ -11912,10 +13362,23 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u6CE8\u518CUI5"
   _myParentPanel: {fileID: 763834594}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &2135619807
 GameObject:
   m_ObjectHideFlags: 0
@@ -11979,7 +13442,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: AllElements
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElement,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.ESUIElementCore,
         ES]], mscorlib
     - Name: comparer
       Entry: 7
@@ -12045,12 +13508,25 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   IsLoading: 0
   register: 1
   registerKey: "\u5B59\u5B50\u9762\u677F"
   _myParentPanel: {fileID: 83953390}
   testElement: "\u6D4B\u8BD5"
-  _myRoot: {fileID: 1043675915}
+  _myRoot: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

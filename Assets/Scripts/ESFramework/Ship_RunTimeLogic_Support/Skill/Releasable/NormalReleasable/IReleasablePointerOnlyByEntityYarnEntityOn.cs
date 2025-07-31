@@ -299,7 +299,7 @@ namespace ES
         {
             if (handle == null) return null;
 
-            on.OnDestroyHappen += OnDes;
+          /*  on.OnDestroyHappen += OnDes;*/
             return 5;
             void OnDes(Link_DestroyWhy why)
             {

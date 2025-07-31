@@ -13,7 +13,7 @@ namespace ES
         [LabelText("想要应用的")]
         public SkillPointRunTime nextBinding;//现在绑定的
         // Start is called before the first frame update
-        private ArchitectureKeyValuePoolTypeListIOC _ioc;
+        private ArchitectureKeyValuePoolTypeListIOC_OBSULUTE _ioc;
         SkillControllerSourceCore _core;
 
         public Image showImage;
@@ -24,7 +24,7 @@ namespace ES
         void ApplyArchitectureKeyValuePool(SkillControllerSourceCore core)
         {
             _core = core;
-            _ioc = core.SkillControllerKeyValueArchitecture?.KeyValueParamIOC;
+            _ioc = core.SkillControllerArchitecture?.KeyValueParamIOC;
             if (lastBinding == null) return;
             
         }

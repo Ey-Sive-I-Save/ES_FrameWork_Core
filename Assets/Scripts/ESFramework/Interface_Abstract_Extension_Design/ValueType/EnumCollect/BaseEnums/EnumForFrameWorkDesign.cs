@@ -29,7 +29,7 @@ namespace ES
         }
 
         //原型支持的数据类型
-        public enum ArchitectureKeyValuePoolType
+        public enum ArchitectureValueType
         {
             [InspectorName("动态标签")] DynamicTag,//通常是某个技能解锁后会把自己放入
             [InspectorName("浮点值判据")] FloatValue,//浮点数值 通常是属性数值或者各种无法被整数确定的

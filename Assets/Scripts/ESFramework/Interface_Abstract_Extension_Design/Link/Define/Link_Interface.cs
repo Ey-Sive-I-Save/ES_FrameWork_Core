@@ -125,7 +125,7 @@ namespace ES
     public interface IReceiveLink<in Link> : IReceiveLink where Link : ILink
     {
         void OnLink(Link link);
-      
+        
     }
     public interface IReceiveChannelLink<in Channel,in Link> : IReceiveLink<Link> where Link : ILink
     {
@@ -143,6 +143,63 @@ namespace ES
     public interface IReceiveAnyLink : IReceiveAnyChanneLink<ILink>
     {
 
+    }
+    [Serializable]
+    //可用Class
+    public class ReceiveChannelLink<Channel, Link> : IReceiveChannelLink<Channel, Link> where Link : ILink
+    {
+        public Action<Channel, Link> Action;
+        public ReceiveChannelLink(Action<Channel, Link> action)
+        {
+            Action = action;
+        }
+
+        public void OnLink(Channel channel, Link link)
+        {
+            Action?.Invoke(channel,link);
+        }
+    }
+    [Serializable]
+    //可用Class
+    public class ReceiveLink<Link> : IReceiveLink<Link> where Link : ILink
+    {
+        public Action<Link> Action;
+        public ReceiveLink(Action<Link> action)
+        {
+            Action = action;
+        }
+
+        public void OnLink(Link link)
+        {
+            Action?.Invoke(link);
+        }
+    }
+    [Serializable]
+    public class ReceiveAnyChannelLink<Link> : IReceiveAnyChanneLink<Link> where Link : ILink
+    {
+        public Action<IChannel,Link> Action;
+        public ReceiveAnyChannelLink(Action<IChannel,Link> action)
+        {
+            Action = action;
+        }
+
+        public void OnLink(IChannel channel,Link link)
+        {
+            Action?.Invoke(channel,link);
+        }
+    }
+    [Serializable]
+    public class ReceiveAnyLink : IReceiveAnyLink
+    {
+        public Action<IChannel, ILink> Action;
+        public ReceiveAnyLink(Action<IChannel, ILink> action)
+        {
+            Action = action;
+        }
+        public void OnLink(IChannel channel, ILink link)
+        {
+            Action?.Invoke(channel, link);
+        }
     }
     #endregion
 
@@ -200,44 +257,11 @@ namespace ES
         [InfoBox("输入原型>绑定原型>游戏默认原型"), ShowInInspector, PropertyOrder(1), HideLabel]
         public string delta => "测试触发{←默认Link}";
         [FoldoutGroup("水平/按钮测试")]
-        [Button(name: "发射(默认Link)", icon: SdfIconType.SendPlusFill, Style = ButtonStyle.FoldoutButton, ButtonHeight = 40), GUIColor("orange"), PropertyOrder(1)]
-        public void SendLinkSelf(BaseArchitectureWithLinkAndConfiguration architecture)
-        {
-            SendLinkSelf(architecture, defaultLink);
-        }
+
         [PropertySpace(20)]
         [ShowInInspector]
         [FoldoutGroup("水平/按钮测试"), PropertyOrder(2), HideLabel]
         public string delta2 => "测试触发{自定义Link}";
-        [FoldoutGroup("水平/按钮测试")]
-        [Button(name: "发射(自定义Link)", icon: SdfIconType.SendPlusFill, Style = ButtonStyle.FoldoutButton, ButtonHeight = 40), GUIColor("orange"), PropertyOrder(2)]
-        public void SendLinkSelf(BaseArchitectureWithLinkAndConfiguration architecture, Link link)
-        {
-           /* switch (triggerType)
-            {
-                case EnumCollect.LinkEventType.SendThenInvoke:
-                    architecture ??= GetArchitecture();
-                    architecture.SendLink(link);
-                    unityEvent?.Invoke(defaultLink);
-                    break;
-                case EnumCollect.LinkEventType.InvokeThenSend:
-                    unityEvent?.Invoke(defaultLink);
-                    architecture ??= GetArchitecture();
-                    architecture.SendLink(link);
-                    break;
-                case EnumCollect.LinkEventType.OnlySend:
-                    architecture ??= GetArchitecture();
-                    architecture.SendLink(link);
-                    break;
-                case EnumCollect.LinkEventType.OnlyInvoke:
-                    unityEvent?.Invoke(defaultLink);
-                    break;
-                default: break;
-            }
-*/
-
-        }
-
     }
     /* [Serializable]
      public class PointerForSimpleUnityEvent_WithLink<ByON, Yarn, From> : IPointerOnlyBackSingle<UnityEvent<LinkDirect<ByON, Yarn, From>>>

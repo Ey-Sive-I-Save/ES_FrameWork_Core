@@ -22,7 +22,7 @@ public class ESDebugMaster : MonoBehaviour
         {
             if (TMP_Text != null)
             {
-                TMP_Text.text = "frame" + (int)((1 / Time.deltaTime)) + "entity" + entityNum;
+                TMP_Text.text = "frame" + (int)((1 / Time.deltaTime)) + "ob" + entityNum;
             }
             next = 0.35f;
         }

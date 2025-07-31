@@ -23,9 +23,9 @@ namespace ES
         }
     }
     [Serializable/*为原型参数键值池准备的专用针*/]
-    public abstract class PointerByArchitectureKeyValuePoolTypeListIOC<Back> : IPointer<Back, ArchitectureKeyValuePoolTypeListIOC, object, object>
+    public abstract class PointerByArchitectureKeyValuePoolTypeListIOC<Back> : IPointer<Back, ArchitectureKeyValuePoolTypeListIOC_OBSULUTE, object, object>
     {
-        public virtual Back Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public virtual Back Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             throw new System.NotImplementedException();
         }
@@ -41,7 +41,7 @@ namespace ES
        
         
 
-        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             return false;
         }
@@ -50,7 +50,7 @@ namespace ES
     public  class PointerForBoolByArKVP_RunLogic : PointerForBoolByArchitectureKeyValuePoolTypeListIOC
     {
         [LabelText("自定义逻辑"),SerializeReference]public IRunLogic runLogic;
-        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             object o = runLogic?.RunLogic();
             if(o is bool b)
@@ -66,7 +66,7 @@ namespace ES
         [LabelText("为空时的默认值")] public bool defaultIfNull = false;
         [LabelText("源布尔针"), SerializeReference] public IPointerForBool_Only bool_;
         
-        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             bool b = bool_?.Pick()?? defaultIfNull;
             return b;
@@ -80,15 +80,15 @@ namespace ES
         [LabelText("输入取出键"), SerializeReference] public string key;
         [LabelText("输入浮点数比较值"), SerializeReference] public float compare;
 
-        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             var dic = by?.Groups;
             if (dic != null)
             {
                 
-                if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.FloatValue))
+                if (dic.ContainsKey(EnumCollect.ArchitectureValueType.FloatValue))
                 {
-                    var list = dic[EnumCollect.ArchitectureKeyValuePoolType.FloatValue];
+                    var list = dic[EnumCollect.ArchitectureValueType.FloatValue];
                     if (list != null)
                     {
                         foreach(var i in list)
@@ -115,14 +115,14 @@ namespace ES
         [LabelText("输入取出键"), SerializeReference] public string key;
         [LabelText("输入整数比较值"), SerializeReference] public int compare;
 
-        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             var dic = by?.Groups;
             if (dic != null)
             {
-                if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.IntValue))
+                if (dic.ContainsKey(EnumCollect.ArchitectureValueType.IntValue))
                 {
-                    var list = dic[EnumCollect.ArchitectureKeyValuePoolType.IntValue];
+                    var list = dic[EnumCollect.ArchitectureValueType.IntValue];
                     if (list != null)
                     {
                         foreach (var i in list)
@@ -146,14 +146,14 @@ namespace ES
     {
         [LabelText("为空时的默认值")] public bool defaultIfNull = false;
         [LabelText("输入取出键"), SerializeReference] public string key;
-        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             var dic = by?.Groups;
             if (dic != null)
             {
-                if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.BoolValue))
+                if (dic.ContainsKey(EnumCollect.ArchitectureValueType.BoolValue))
                 {
-                    var list = dic[EnumCollect.ArchitectureKeyValuePoolType.BoolValue];
+                    var list = dic[EnumCollect.ArchitectureValueType.BoolValue];
                     if (list != null)
                     {
                         foreach (var i in list)
@@ -180,14 +180,14 @@ namespace ES
         [LabelText("输入取出键"), SerializeReference] public string key;
         [LabelText("输入字符串比较值"), SerializeReference] public string compare;
 
-        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             var dic = by?.Groups;
             if (dic != null)
             {
-                if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.EnumValue))
+                if (dic.ContainsKey(EnumCollect.ArchitectureValueType.EnumValue))
                 {
-                    var list = dic[EnumCollect.ArchitectureKeyValuePoolType.EnumValue];
+                    var list = dic[EnumCollect.ArchitectureValueType.EnumValue];
                     if (list != null)
                     {
                         foreach (var i in list)
@@ -214,14 +214,14 @@ namespace ES
         [LabelText("输入取出键"), SerializeReference] public string key;
         
 
-        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             var dic = by?.Groups;
             if (dic != null)
             {
-                if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.DynamicTag))
+                if (dic.ContainsKey(EnumCollect.ArchitectureValueType.DynamicTag))
                 {
-                    var list = dic[EnumCollect.ArchitectureKeyValuePoolType.DynamicTag];
+                    var list = dic[EnumCollect.ArchitectureValueType.DynamicTag];
                     if (list != null)
                     {
                         foreach (var i in list)
@@ -248,7 +248,7 @@ namespace ES
         [LabelText("!运算默认值")] public bool default_;
         [LabelText("!运算Bool针"), SerializeReference] public PointerForBoolByArchitectureKeyValuePoolTypeListIOC bool_;
 
-        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             return (!bool_?.Pick(by)) ?? default_;
         }
@@ -261,7 +261,7 @@ namespace ES
         [LabelText("&&Bool针1"), SerializeReference] public PointerForBoolByArchitectureKeyValuePoolTypeListIOC bool_1;
         [LabelText("&&Bool针2"), SerializeReference] public PointerForBoolByArchitectureKeyValuePoolTypeListIOC bool_2;
 
-        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             if (bool_1 == null || bool_2 == null) return default_;
             return bool_1.Pick(by) && bool_2.Pick(by);
@@ -274,7 +274,7 @@ namespace ES
         [LabelText("||运算Bool针1"), SerializeReference] public PointerForBoolByArchitectureKeyValuePoolTypeListIOC bool_1;
         [LabelText("||运算Bool针2"), SerializeReference] public PointerForBoolByArchitectureKeyValuePoolTypeListIOC bool_2;
 
-        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             if (bool_1 == null || bool_2 == null) return default_;
             return bool_1.Pick(by) || bool_2.Pick(by);
@@ -287,7 +287,7 @@ namespace ES
         [LabelText("运算结果默认值")] public bool default_;
         [LabelText("全部为否Bool针"), SerializeReference] public List<PointerForBoolByArchitectureKeyValuePoolTypeListIOC> bools_=new List<PointerForBoolByArchitectureKeyValuePoolTypeListIOC>();
 
-        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             if (bools_ == null || bools_.Count == 0) return default_;
             foreach(var i in bools_)
@@ -304,7 +304,7 @@ namespace ES
         [LabelText("运算结果默认值")] public bool default_;
         [LabelText("全部满足Bool针"), SerializeReference] public List<PointerForBoolByArchitectureKeyValuePoolTypeListIOC> bools_ = new List<PointerForBoolByArchitectureKeyValuePoolTypeListIOC>();
 
-        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override bool Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             if (bools_ == null || bools_.Count == 0) return default_;
             foreach (var i in bools_)
@@ -322,7 +322,7 @@ namespace ES
     [LabelText("运算结果默认值")] public bool default_;
     [LabelText("全部Bool针"), SerializeReference] public List<PointerForBoolByArchitectureKeyValuePoolTypeListIOC> bools_ = new List<PointerForBoolByArchitectureKeyValuePoolTypeListIOC>();
 
-    public override bool Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+    public override bool Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
     {
         if (bools_ == null || bools_.Count == 0) return default_;
         foreach (var i in bools_)
@@ -340,7 +340,7 @@ namespace ES
     public abstract class PointerNoneByArchitectureKeyValuePoolTypeListIOC : PointerByArchitectureKeyValuePoolTypeListIOC<object>,ICancellable
     {
         public abstract object Cancel();
-        public override object Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override object Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             return false;
         }
@@ -359,7 +359,7 @@ namespace ES
             return -1;
         }
 
-        public override object Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override object Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             object o = runLogic?.RunLogic();
             return -1;
@@ -380,7 +380,7 @@ namespace ES
             return -1;
         }
 
-        public override object Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override object Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             none?.Pick();
             return -1;
@@ -394,22 +394,22 @@ namespace ES
         [LabelText("输入取出键"), SerializeReference] public string key;
         [LabelText("用于操作的浮点数"), SerializeReference] public float handler;
         private float memori = 0;
-        private ArchitectureKeyValuePoolTypeListIOC use;
+        private ArchitectureKeyValuePoolTypeListIOC_OBSULUTE use;
         public override object Cancel()
         {
             Pick(use,false);
             return -1;
         }
 
-        public override object Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override object Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             var dic = by?.Groups;
             if (dic != null)
             {
                 use = by;
-                if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.FloatValue))
+                if (dic.ContainsKey(EnumCollect.ArchitectureValueType.FloatValue))
                 {
-                    var list = dic[EnumCollect.ArchitectureKeyValuePoolType.FloatValue];
+                    var list = dic[EnumCollect.ArchitectureValueType.FloatValue];
                     if (list != null)
                     {
                        
@@ -426,7 +426,7 @@ namespace ES
                                         float f;
                                         i.SetValue(f = KeyValueMatchingUtility.Function.FunctionForTwoFloat(left, handler, function));
                                         memori = f;
-                                        by.OnHandle(EnumCollect.ArchitectureKeyValuePoolType.FloatValue, i);
+                                        by.OnHandle(EnumCollect.ArchitectureValueType.FloatValue, i);
                                     }
                                     else if (yarn is bool b)
                                     {
@@ -434,13 +434,13 @@ namespace ES
                                         if (function == EnumCollect.HandleTwoFloatFunction.Set)
                                         {
                                             i.SetValue(memori);
-                                            by.OnHandle(EnumCollect.ArchitectureKeyValuePoolType.FloatValue, i);
+                                            by.OnHandle(EnumCollect.ArchitectureValueType.FloatValue, i);
                                         }else
                                         {
                                             float f;
                                             i.SetValue(f = KeyValueMatchingUtility.Function.FunctionForTwoFloat(left, -handler, function));
                                             memori = f;
-                                            by.OnHandle(EnumCollect.ArchitectureKeyValuePoolType.FloatValue, i);
+                                            by.OnHandle(EnumCollect.ArchitectureValueType.FloatValue, i);
                                         }
                                     }
 
@@ -461,20 +461,20 @@ namespace ES
         [LabelText("输入取出键"), SerializeReference] public string key;
         [LabelText("用于操作的整数"), SerializeReference] public int handler;
         
-        private ArchitectureKeyValuePoolTypeListIOC use;
+        private ArchitectureKeyValuePoolTypeListIOC_OBSULUTE use;
         public override object Cancel()
         {
             Pick(use, false);
             return -1;
         }
-        public override object Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override object Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             var dic = by?.Groups;
             if (dic != null)
             {
-                if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.IntValue))
+                if (dic.ContainsKey(EnumCollect.ArchitectureValueType.IntValue))
                 {
-                    var list = dic[EnumCollect.ArchitectureKeyValuePoolType.IntValue];
+                    var list = dic[EnumCollect.ArchitectureValueType.IntValue];
                     if (list != null)
                     {
                         foreach (var i in list)
@@ -484,7 +484,7 @@ namespace ES
                                 if (i.TheValue is int left)
                                 {
                                     i.SetValue((int)KeyValueMatchingUtility.Function.FunctionForTwoFloat(left, handler, function));
-                                    by.OnHandle(EnumCollect.ArchitectureKeyValuePoolType.IntValue, i);
+                                    by.OnHandle(EnumCollect.ArchitectureValueType.IntValue, i);
                                     
                                 }
                             }
@@ -501,20 +501,20 @@ namespace ES
         
         [LabelText("输入取出键"), SerializeReference] public string key;
         [LabelText("用于设置的布尔值"), SerializeReference] public bool handler;
-        private ArchitectureKeyValuePoolTypeListIOC use;
+        private ArchitectureKeyValuePoolTypeListIOC_OBSULUTE use;
         public override object Cancel()
         {
             Pick(use, false);
             return -1;
         }
-        public override object Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override object Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             var dic = by?.Groups;
             if (dic != null)
             {
-                if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.BoolValue))
+                if (dic.ContainsKey(EnumCollect.ArchitectureValueType.BoolValue))
                 {
-                    var list = dic[EnumCollect.ArchitectureKeyValuePoolType.BoolValue];
+                    var list = dic[EnumCollect.ArchitectureValueType.BoolValue];
                     if (list != null)
                     {
                         foreach (var i in list)
@@ -524,7 +524,7 @@ namespace ES
                                 if (i.TheValue is bool b)
                                 {
                                     i.SetValue(handler);
-                                    by.OnHandle(EnumCollect.ArchitectureKeyValuePoolType.BoolValue, i);
+                                    by.OnHandle(EnumCollect.ArchitectureValueType.BoolValue, i);
                                 }
                             }
                         }
@@ -539,20 +539,20 @@ namespace ES
     {
         [LabelText("输入取出键"), SerializeReference] public string key;
         [LabelText("输入设置字符串"), SerializeReference] public string handler;
-        private ArchitectureKeyValuePoolTypeListIOC use;
+        private ArchitectureKeyValuePoolTypeListIOC_OBSULUTE use;
         public override object Cancel()
         {
             Pick(use, false);
             return -1;
         }
-        public override object Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override object Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             var dic = by?.Groups;
             if (dic != null)
             {
-                if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.StringValue))
+                if (dic.ContainsKey(EnumCollect.ArchitectureValueType.StringValue))
                 {
-                    var list = dic[EnumCollect.ArchitectureKeyValuePoolType.StringValue];
+                    var list = dic[EnumCollect.ArchitectureValueType.StringValue];
                     if (list != null)
                     {
                         foreach (var i in list)
@@ -562,7 +562,7 @@ namespace ES
                                 if (i.TheValue is string left)
                                 {
                                     i.SetValue(handler);
-                                    by.OnHandle(EnumCollect.ArchitectureKeyValuePoolType.StringValue, i);
+                                    by.OnHandle(EnumCollect.ArchitectureValueType.StringValue, i);
                                 }
                             }
                         }
@@ -578,21 +578,21 @@ namespace ES
        
 
         [LabelText("输入取出键"), SerializeReference] public string key;
-        private ArchitectureKeyValuePoolTypeListIOC use;
+        private ArchitectureKeyValuePoolTypeListIOC_OBSULUTE use;
         public override object Cancel()
         {
             Pick(use, false);
             return -1;
         }
 
-        public override object Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override object Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             var dic = by?.Groups;
             if (dic != null)
             {
-                if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.DynamicTag))
+                if (dic.ContainsKey(EnumCollect.ArchitectureValueType.DynamicTag))
                 {
-                    var list = dic[EnumCollect.ArchitectureKeyValuePoolType.DynamicTag];
+                    var list = dic[EnumCollect.ArchitectureValueType.DynamicTag];
                     if (list != null)
                     {
                         bool has = false;
@@ -606,7 +606,7 @@ namespace ES
                         if (!has)
                         {
                             var tag = new ArchitectureTypeValue_DynamicTag();
-                            tag.SetKey(key);
+                            tag.key=(key);
                             list.Add(tag);
                         }
                     }
@@ -621,21 +621,21 @@ namespace ES
         [LabelText("为空时的默认值")] public bool defaultIfNull = false;
 
         [LabelText("输入取出键"), SerializeReference] public string key;
-        private ArchitectureKeyValuePoolTypeListIOC use;
+        private ArchitectureKeyValuePoolTypeListIOC_OBSULUTE use;
         public override object Cancel()
         {
             Pick(use, false);
             return -1;
         }
 
-        public override object Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override object Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             var dic = by?.Groups;
             if (dic != null)
             {
-                if (dic.ContainsKey(EnumCollect.ArchitectureKeyValuePoolType.DynamicTag))
+                if (dic.ContainsKey(EnumCollect.ArchitectureValueType.DynamicTag))
                 {
-                    var list = dic[EnumCollect.ArchitectureKeyValuePoolType.DynamicTag];
+                    var list = dic[EnumCollect.ArchitectureValueType.DynamicTag];
                     if (list != null)
                     {
                         ArchitectureTypeValue_DynamicTag it = default;
@@ -657,14 +657,14 @@ namespace ES
         }
     }
 
-    public abstract class PointerPackerForNoneByArKVP : PointerPackerBase<object, ArchitectureKeyValuePoolTypeListIOC, object, object, PointerNoneByArchitectureKeyValuePoolTypeListIOC>
+    public abstract class PointerPackerForNoneByArKVP : PointerPackerBase<object, ArchitectureKeyValuePoolTypeListIOC_OBSULUTE, object, object, PointerNoneByArchitectureKeyValuePoolTypeListIOC>
     {
 
     }
     [Serializable,TypeRegistryItem("原形键值池_遍历触发")]
     public class PointerNonePackOnlyActionByArKVP_LoopOnce : PointerPackerForNoneByArKVP
     {
-        public override object Pick(ArchitectureKeyValuePoolTypeListIOC by = null, object yarn = null, object on = null)
+        public override object Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             if (pointers != null)
             {

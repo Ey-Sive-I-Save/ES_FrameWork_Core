@@ -148,8 +148,8 @@ namespace ES
             lifeTimeHasGo += Time.deltaTime;
             if (lifeTimeHasGo > flyingData.missileLife_)
             {
-                Core.whyDes = new Link_DestroyWhy() { options = SetFlyingDestroyWhyOption.LifeTime };
-                Core.TryDestroyThisESObject();
+                /*Core.whyDes = new Link_DestroyWhy() { options = SetFlyingDestroyWhyOption.LifeTime };*/
+               /* Core.TryDestroyThisESObject();*/
             }
         }
         protected override void OnEnable()
@@ -157,15 +157,15 @@ namespace ES
             base.OnEnable();
             if (asTrigger)
             {
-                Core.OnTriEntityHappen += PassiveDelegate_OnTriOrColEntityHandles;
-                Core.OnTriHappen += PassiveDelegate_OnTriEvery;
+               /* Core.OnTriEntityHappen += PassiveDelegate_OnTriOrColEntityHandles;
+                Core.OnTriHappen += PassiveDelegate_OnTriEvery;*/
             }
             else
             {
-                Core.OnColHappen += PassiveDelegate_OnColEvery;
+              /*  Core.OnColHappen += PassiveDelegate_OnColEvery;
                 Core.OnColEntityHappen += PassiveDelegate_OnTriOrColEntityHandles;
-            }
-            Core.OnDestroyHappen += PassiveDelegate_OnDeS;
+         */   }
+          /*  Core.OnDestroyHappen += PassiveDelegate_OnDeS;*/
             Domain.OnFixedUpdate += FixedUpdate_MustSelfDelegate;
         }
 
@@ -174,15 +174,15 @@ namespace ES
             base.OnDisable();
             if (asTrigger)
             {
-                Core.OnTriHappen -= PassiveDelegate_OnTriEvery;
+                /*Core.OnTriHappen -= PassiveDelegate_OnTriEvery;
                 Core.OnTriEntityHappen -= PassiveDelegate_OnTriOrColEntityHandles;
-            }
+           */ }
             else
             {
-                Core.OnColHappen -= PassiveDelegate_OnColEvery;
+             /*   Core.OnColHappen -= PassiveDelegate_OnColEvery;
                 Core.OnColEntityHappen -= PassiveDelegate_OnTriOrColEntityHandles;
-            }
-            Core.OnDestroyHappen -= PassiveDelegate_OnDeS;
+           */ }
+          /*  Core.OnDestroyHappen -= PassiveDelegate_OnDeS;*/
             Domain.OnFixedUpdate -= FixedUpdate_MustSelfDelegate;
         }
         private void PassiveDelegate_OnTriOrColEntityHandles(Entity who, Vector3 at)
@@ -217,7 +217,7 @@ namespace ES
                 canColTimes--;
                 if (canColTimes <= 0)
                 {
-                    Core.TryDestroyThisESObject();
+                  /*  Core.TryDestroyThisESObject();*/
                 }
             }
         }
@@ -229,8 +229,8 @@ namespace ES
                 canColTimes--;
                 if (canColTimes <= 0)
                 {
-                    Core.whyDes.options = SetFlyingDestroyWhyOption.OnTriEntity;
-                    Core.TryDestroyThisESObject();
+                   /* Core.whyDes.options = SetFlyingDestroyWhyOption.OnTriEntity;*/
+                   /* Core.TryDestroyThisESObject();*/
                 }
             }
         }

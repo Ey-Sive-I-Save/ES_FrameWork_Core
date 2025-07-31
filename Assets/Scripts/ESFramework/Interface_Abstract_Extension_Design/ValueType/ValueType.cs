@@ -31,9 +31,9 @@ namespace ES
   
     #region 特殊IOC —— 原型参数键池专属参数集合
     [Serializable, TypeRegistryItem("原型参数IOC")/*技能树参数分类-*/]
-    public class ArchitectureKeyValuePoolTypeListIOC : KeyGroup<EnumCollect.ArchitectureKeyValuePoolType, IArchitectureKeyValuePoolTypeValue>
+    public class ArchitectureKeyValuePoolTypeListIOC_OBSULUTE : KeyGroup<EnumCollect.ArchitectureValueType, IArchitectureValue>
     {
-        public Action<EnumCollect.ArchitectureKeyValuePoolType, IArchitectureKeyValuePoolTypeValue> OnHandle = (at, who) => { };
+        public Action<EnumCollect.ArchitectureValueType, IArchitectureValue> OnHandle = (at, who) => { };
     }
 
     #endregion

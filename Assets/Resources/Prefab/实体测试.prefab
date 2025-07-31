@@ -76,7 +76,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf49b8e8b250e94ab54189a312bff81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Editor_IsNetObject: 0
+  OriginalDomain:
+    readMe:
+      edit: 1
+      ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   Rigid: {fileID: 0}
   Anim: {fileID: 0}
   ESTagsC:
@@ -84,6 +93,7 @@ MonoBehaviour:
   NetObject: {fileID: 0}
   NetBehaviour: {fileID: 0}
   _isNet: 0
+  LinkReceiveChannel_Channel_ColliderFrom: {}
   NormalDomain:
     rid: 2405589129531228996
   StateMachineDomain:
@@ -93,7 +103,7 @@ MonoBehaviour:
   BuffDomain:
     rid: 2405589129531228999
   CharacterController: {fileID: 0}
-  YV: 0
+  YSpeed: 0
   GroundCheck: {fileID: 0}
   IsGrounded: 0
   dataInfo: {fileID: 0}
@@ -101,6 +111,10 @@ MonoBehaviour:
     rid: -2
   entityVariableData:
     rid: -2
+  LinksForTest: {}
+  info_1: {fileID: 0}
+  info_2: {fileID: 0}
+  info_3: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -111,8 +125,8 @@ MonoBehaviour:
       data:
         readMe:
           edit: 1
-          ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-          readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+          ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+          readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
           showColor: {r: 1, g: 1, b: 1, a: 1}
         core: {fileID: 0}
         Modules:
@@ -123,8 +137,8 @@ MonoBehaviour:
       data:
         readMe:
           edit: 1
-          ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-          readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+          ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+          readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
           showColor: {r: 1, g: 1, b: 1, a: 1}
         core: {fileID: 0}
         Modules:
@@ -138,180 +152,6 @@ MonoBehaviour:
             ValuesNow: []
             MayHasElement: 1
           entity: {fileID: 0}
-          StateDomain:
-            readMe:
-              edit: 1
-              ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-              readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-              showColor: {r: 1, g: 1, b: 1, a: 1}
-            core: {fileID: 0}
-            Modules:
-              ValuesNow: []
-              MayHasElement: 1
-            StateMachine:
-              _enableSelf: 1
-              _SelfRunningState:
-                rid: -2
-              _SelfRunningStates:
-                ValuesNow: []
-                MayHasElement: 1
-              entity: {fileID: 0}
-              StateDomain:
-                readMe:
-                  edit: 1
-                  ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-                  readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-                  showColor: {r: 1, g: 1, b: 1, a: 1}
-                core: {fileID: 0}
-                Modules:
-                  ValuesNow: []
-                  MayHasElement: 1
-                StateMachine:
-                  _enableSelf: 1
-                  _SelfRunningState:
-                    rid: -2
-                  _SelfRunningStates:
-                    ValuesNow: []
-                    MayHasElement: 1
-                  entity: {fileID: 0}
-                  StateDomain:
-                    readMe:
-                      edit: 1
-                      ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-                      readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-                      showColor: {r: 1, g: 1, b: 1, a: 1}
-                    core: {fileID: 0}
-                    Modules:
-                      ValuesNow: []
-                      MayHasElement: 1
-                    StateMachine:
-                      _enableSelf: 1
-                      _SelfRunningState:
-                        rid: -2
-                      _SelfRunningStates:
-                        ValuesNow: []
-                        MayHasElement: 1
-                      entity: {fileID: 0}
-                      StateDomain:
-                        readMe:
-                          edit: 1
-                          ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-                          readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-                          showColor: {r: 1, g: 1, b: 1, a: 1}
-                        core: {fileID: 0}
-                        Modules:
-                          ValuesNow: []
-                          MayHasElement: 1
-                        StateMachine:
-                          _enableSelf: 1
-                          _SelfRunningState:
-                            rid: -2
-                          _SelfRunningStates:
-                            ValuesNow: []
-                            MayHasElement: 1
-                          entity: {fileID: 0}
-                          StateDomain:
-                            readMe:
-                              edit: 1
-                              ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-                              readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-                              showColor: {r: 1, g: 1, b: 1, a: 1}
-                            core: {fileID: 0}
-                            Modules:
-                              MayHasElement: 1
-                            StateMachine:
-                              _enableSelf: 1
-                            RegisterPack: {fileID: 0}
-                            DefaultStateName: "\u9759\u6B62"
-                          SkillMachine:
-                            _enableSelf: 1
-                            _SelfRunningState:
-                              rid: -2
-                            _SelfRunningStates:
-                              MayHasElement: 1
-                          BuffMachine:
-                            _enableSelf: 1
-                            _SelfRunningState:
-                              rid: -2
-                            _SelfRunningStates:
-                              MayHasElement: 1
-                          InteractionMachine:
-                            _enableSelf: 1
-                            _SelfRunningState:
-                              rid: -2
-                            _SelfRunningStates:
-                              MayHasElement: 1
-                        RegisterPack: {fileID: 0}
-                        DefaultStateName: "\u9759\u6B62"
-                      SkillMachine:
-                        _enableSelf: 1
-                        _SelfRunningState:
-                          rid: -2
-                        _SelfRunningStates:
-                          ValuesNow: []
-                          MayHasElement: 1
-                      BuffMachine:
-                        _enableSelf: 1
-                        _SelfRunningState:
-                          rid: -2
-                        _SelfRunningStates:
-                          ValuesNow: []
-                          MayHasElement: 1
-                      InteractionMachine:
-                        _enableSelf: 1
-                        _SelfRunningState:
-                          rid: -2
-                        _SelfRunningStates:
-                          ValuesNow: []
-                          MayHasElement: 1
-                    RegisterPack: {fileID: 0}
-                    DefaultStateName: "\u9759\u6B62"
-                  SkillMachine:
-                    _enableSelf: 1
-                    _SelfRunningState:
-                      rid: -2
-                    _SelfRunningStates:
-                      ValuesNow: []
-                      MayHasElement: 1
-                  BuffMachine:
-                    _enableSelf: 1
-                    _SelfRunningState:
-                      rid: -2
-                    _SelfRunningStates:
-                      ValuesNow: []
-                      MayHasElement: 1
-                  InteractionMachine:
-                    _enableSelf: 1
-                    _SelfRunningState:
-                      rid: -2
-                    _SelfRunningStates:
-                      ValuesNow: []
-                      MayHasElement: 1
-                RegisterPack: {fileID: 0}
-                DefaultStateName: "\u9759\u6B62"
-              SkillMachine:
-                _enableSelf: 1
-                _SelfRunningState:
-                  rid: -2
-                _SelfRunningStates:
-                  ValuesNow: []
-                  MayHasElement: 1
-              BuffMachine:
-                _enableSelf: 1
-                _SelfRunningState:
-                  rid: -2
-                _SelfRunningStates:
-                  ValuesNow: []
-                  MayHasElement: 1
-              InteractionMachine:
-                _enableSelf: 1
-                _SelfRunningState:
-                  rid: -2
-                _SelfRunningStates:
-                  ValuesNow: []
-                  MayHasElement: 1
-            RegisterPack: {fileID: 0}
-            DefaultStateName: "\u9759\u6B62"
           SkillMachine:
             _enableSelf: 1
             _SelfRunningState:
@@ -340,8 +180,8 @@ MonoBehaviour:
       data:
         readMe:
           edit: 1
-          ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-          readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+          ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+          readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
           showColor: {r: 1, g: 1, b: 1, a: 1}
         core: {fileID: 0}
         Modules:
@@ -352,8 +192,8 @@ MonoBehaviour:
       data:
         readMe:
           edit: 1
-          ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-          readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+          ReadMeOut: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
+          readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
           showColor: {r: 1, g: 1, b: 1, a: 1}
         core: {fileID: 0}
         Modules:

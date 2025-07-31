@@ -7,11 +7,11 @@ using UnityEngine;
 
 namespace ES {
     [AddComponentMenu("<ES>ESM支持/物理/2D触发入-可接收列表")]
-    public class EMS_Trigger2DEnter_LinkList : EMS_Coliider2D_Abstract_LinkList<Link_EMS_Trigger2DEnter>
+    public class EMS_Trigger2DEnter_LinkList : EMS_ColEvent_2D_LinkList_Abstract
     {
         private void OnTriggerEnter2D(Collider2D collider)
         {
-           SendLink(new Link_EMS_Trigger2DEnter() { collider = collider, posAT = collider.ClosestPoint(transform.position) }); ;
+            Links.SendLink(Channel_ColEvent.Enter, new Link_ColEvent_2D() { collider = collider, posAT = collider.ClosestPoint(transform.position) });
         }
     }
 }

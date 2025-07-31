@@ -128,37 +128,17 @@ namespace ES
 
         #region 委托事件
 
-        [FoldoutGroup("委托事件(Unity)")] public Action<Collision, Vector3, bool> OnColHappen = (col, where, isEntity) => { };
-        [FoldoutGroup("委托事件(Unity)")] public Action<Collider, Vector3, bool> OnTriHappen = (tri, where, isEntity) => { };
-
-        [FoldoutGroup("委托事件(Unity)")] public Action<Entity, Vector3> OnColEntityHappen = (col, where) => { };
-        [FoldoutGroup("委托事件(Unity)")] public Action<Entity, Vector3> OnTriEntityHappen = (tri, where) => { };
-
-        [FoldoutGroup("委托事件(Unity)")] public Action<Link_DestroyWhy> OnDestroyHappen = (why) => { };
+        [FoldoutGroup("选通Link"),LabelText("碰撞来源选通")] public LinkReceiveChannelPool<Channel_ColliderFrom,Link_ColEvent_3D> 
+            LinkReceiveChannel_Channel_ColliderFrom = new LinkReceiveChannelPool<Channel_ColliderFrom, Link_ColEvent_3D>();
 
 
         #endregion
 
         #region 隐藏属性表
-        [NonSerialized] public Link_DestroyWhy whyDes;
-        [NonSerialized] public Queue<Entity> ignoreEntities = new Queue<Entity>();
+
         #endregion
 
         #region 回调
-        public virtual void TryDestroyThisESObject()
-        {
-            OnDestroyHappen?.Invoke(whyDes);
-            Destroy(gameObject);
-        }
-        public void AddIgnoreEntity(Entity e)
-        {
-            ignoreEntities.Enqueue(e);
-
-            if (ignoreEntities.Peek() == null)
-            {
-                ignoreEntities.Dequeue();
-            }
-        }
 
         #endregion
 

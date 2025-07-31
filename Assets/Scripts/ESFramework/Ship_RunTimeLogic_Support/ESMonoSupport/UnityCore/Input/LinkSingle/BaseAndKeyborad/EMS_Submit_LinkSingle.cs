@@ -7,13 +7,12 @@ using UnityEngine.EventSystems;
 
 namespace ES {
     [AddComponentMenu("<ES>ESM支持/输入/确定提交-指定接收目标")]
-    public class EMS_Submit_LinkSingle : MonoBehaviour, ISubmitHandler
+    public class EMS_Submit_LinkSingle : EMS_InputBaseEvent_LinkSingle_Abstarct, ISubmitHandler
     {
-        public IReceiveLink<Link_BaseData> Link;
 
         public void OnSubmit(BaseEventData eventData)
         {
-            Link?.OnLink(new Link_BaseData() { eventData = eventData });
+            Link_?.OnLink(Channel_InputBaseEvent.Submit, new Link_InputBaseEvent() { eventData = eventData });
         }
     }
 }

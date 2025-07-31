@@ -8,14 +8,13 @@ using UnityEngine.EventSystems;
 namespace ES
 {
     [AddComponentMenu("<ES>ESM支持/输入/选择-可接收列表")]
-    public class EMS_Select  : MonoBehaviour, ISelectHandler
+    public class EMS_Select : EMS_InputBaseEvent_LinkList_Abstarct, ISelectHandler
     {
-        public LinkReceiveList<Link_BaseData> Links = new LinkReceiveList<Link_BaseData>();
 
 
         public void OnSelect(BaseEventData eventData)
         {
-            Links.SendLink(new Link_BaseData() { eventData = eventData });
+            Links.SendLink( Channel_InputBaseEvent.Select,new Link_InputBaseEvent() { eventData = eventData });
         }
     }
 }

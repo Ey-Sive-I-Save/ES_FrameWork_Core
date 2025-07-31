@@ -13,7 +13,7 @@ namespace ES
         [LabelText("绑定的技能点")]public SkillPointDataInfo bindingInfo;
         [LabelText("当前等级")]public int currentLevel = 0;
         public List<EnumCollect.SkillPointOneLevelState> levelStates_ = new List<EnumCollect.SkillPointOneLevelState>() { EnumCollect.SkillPointOneLevelState.None, EnumCollect.SkillPointOneLevelState.None, EnumCollect.SkillPointOneLevelState.None };
-        private ArchitectureKeyValuePoolTypeListIOC _ioc;
+        private ArchitectureKeyValuePoolTypeListIOC_OBSULUTE _ioc;
         SkillControllerSourceCore _core;
         public Image showImage;
         // Start is called before the first frame update
@@ -44,7 +44,7 @@ namespace ES
         void ApplyArchitectureKeyValuePool(SkillControllerSourceCore core)
         {
             _core = core;
-            _ioc = core.SkillControllerKeyValueArchitecture?.KeyValueParamIOC;
+            _ioc = core.SkillControllerArchitecture?.KeyValueParamIOC;
             if (bindingInfo == null) return;
             //应用它 每次只评估一次
             for(int i = 0; i < 10; i++)
@@ -53,7 +53,7 @@ namespace ES
                 if (!hasChange) break;
             }
         }
-        private bool AssessOnce(ArchitectureKeyValuePoolTypeListIOC ioc)
+        private bool AssessOnce(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE ioc)
         {
             bool hasChange = false;
 

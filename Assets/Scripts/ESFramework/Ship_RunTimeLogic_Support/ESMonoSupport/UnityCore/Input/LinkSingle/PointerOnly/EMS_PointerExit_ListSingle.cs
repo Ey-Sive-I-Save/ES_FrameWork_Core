@@ -7,11 +7,11 @@ using UnityEngine.EventSystems;
 
 namespace ES {
     [AddComponentMenu("<ES>ESM支持/输入/光标退出-指定接收目标")]
-    public class EMS_PointerExit_LinkSingle : EMS_Abstract_LinkSingle<Link_EMS_PointerExit>, IPointerExitHandler
+    public class EMS_PointerExit_LinkSingle : EMS_InputPointerEvent_LinkSingle_Abstarct, IPointerExitHandler
     {
         public void OnPointerExit(PointerEventData eventData)
         {
-            OnLink(new Link_EMS_PointerExit() { eventData = eventData });
+            OnLink( Channel_InputPointerEvent.PointerExit,new Link_InputPointerEvent() { eventData = eventData });
         }
     }
 }

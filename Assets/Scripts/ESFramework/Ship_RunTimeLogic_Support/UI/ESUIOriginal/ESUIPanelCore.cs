@@ -8,10 +8,10 @@ using UnityEngine;
 namespace ES
 {
 
-    public class ESUIPanel : ESUIElement
+    public class ESUIPanelCore : ESUIElementCore
     {
         [LabelText("全部元素(持久)")]
-        public Dictionary<string, ESUIElement> AllElements = new Dictionary<string, ESUIElement>();
+        public Dictionary<string, ESUIElementCore> AllElements = new Dictionary<string, ESUIElementCore>();
 #if UNITY_EDITOR
         [ValueDropdown("ElementKeys",AppendNextDrawer =true),LabelText("元素测试")]
         public string testElement = "测试";
@@ -19,14 +19,10 @@ namespace ES
 
         public ESUIRoot MyRoot { get { if (dirty) GetMyParentAndRegisteThis(); return _myRoot=_myRoot._IsNotNullAndUse()??_myParentPanel._IsNotNullAndUse().MyRoot; } set { _myRoot = value; } }
         [SerializeField, LabelText("所属根节点")] private ESUIRoot _myRoot;
-        private void Awake()
-        {
-           
-        }
         public List<string> ElementKeys()
         {
             List<string> strings = new List<string>(5);
-            var es = transform.GetComponentsInChildren<ESUIElement>();
+            var es = transform.GetComponentsInChildren<ESUIElementCore>();
             foreach (var i in es)
             {
                 if (i.register&&i!=this)
@@ -36,22 +32,22 @@ namespace ES
             }
             return strings;
         }
-        public void AddKeyReleThis(ESUIElement element, List<string> toAdd,string post="")
+        public void AddKeyReleThis(ESUIElementCore element, List<string> toAdd,string post="")
         {
-            var parent = element._GetCompoentInParentExcludeSelf<ESUIPanel>();
+            var parent = element._GetCompoentInParentExcludeSelf<ESUIPanelCore>();
             if (parent == this||parent==null) toAdd.Add(element.RegisterKey+post);
             else AddKeyReleThis(parent,toAdd,"/"+ element.RegisterKey + post); 
         }
-        public string GetKeyReleThis(ESUIElement element,string post = "")
+        public string GetKeyReleThis(ESUIElementCore element,string post = "")
         {
-            var parent = element._GetCompoentInParentExcludeSelf<ESUIPanel>();
+            var parent = element._GetCompoentInParentExcludeSelf<ESUIPanelCore>();
             if (parent == this || parent == null) return element.RegisterKey+post;
             else return GetKeyReleThis(parent, "/" + element.RegisterKey + post);
         }
         [Button("注册全部元素")]
         public void RegisterAllElements()
         {
-            var es = transform._GetCompoentsInChildExcludeSelf<ESUIElement>();
+            var es = transform._GetCompoentsInChildExcludeSelf<ESUIElementCore>();
             foreach (var i in es)
             {
                 i.GetMyParentAndRegisteThis();
@@ -59,7 +55,7 @@ namespace ES
  
             }
         }
-        public void _UnRegisterElement(ESUIElement i)
+        public void _UnRegisterElement(ESUIElementCore i)
         {
             if (AllElements.TryGetValue(i.RegisterKey, out var e))
             {
@@ -73,7 +69,7 @@ namespace ES
 
             }
         }
-        public void _RegisterElement(ESUIElement i)
+        public void _RegisterElement(ESUIElementCore i)
         {
             if (AllElements.TryGetValue(i.RegisterKey, out var e))
             {
@@ -87,7 +83,7 @@ namespace ES
         }
 
 
-        public override ESUIPanel GetMyParentAndRegisteThis()
+        public override ESUIPanelCore GetMyParentAndRegisteThis()
         {
             var root = this._GetCompoentInParentExcludeSelf<ESUIRoot>();
             if (root != null)

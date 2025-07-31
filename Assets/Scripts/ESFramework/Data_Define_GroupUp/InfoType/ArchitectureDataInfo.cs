@@ -7,18 +7,18 @@ namespace ES
 {
     //不融入全局配置
     [ESDisplayNameKeyToType("数据单元", "原型数据单元")]
-    public class ArchitectureDataInfo : SoDataInfo, IArchitectureKeyValuePoolTypeValue
+    public class ArchitectureDataInfo : SoDataInfo
     {
         [SerializeReference,LabelText("携带参数")]
-        public IArchitectureKeyValuePoolTypeValue Value=new ArchitectureTypeValue_Float();
-        public IArchitectureKeyValuePoolTypeValue getArch => Value;
+        public IArchitectureValue Value=new ArchitectureTypeValue_Float();
+        public IArchitectureValue getArch => Value;
 
         public object TheKey => Value?.TheKey;
 
         public object TheValue => Value?.TheValue;
         private void OnValidate()
         {
-           Value?.SetKey(key.str_direc);
+          
         }
         public void SetValue(object o)
         {

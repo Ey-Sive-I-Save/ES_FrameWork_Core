@@ -6,71 +6,38 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace ES {
-    public struct Link_EMS_Move : ILink
+    public enum Channel_InputBaseEvent
     {
-        public AxisEventData eventData;
+        [InspectorName("基本-移动")]Move,
+        [InspectorName("基本-取消")] Cancel,
+        [InspectorName("基本-选择")] Select,
+        [InspectorName("基本-提交")] Submit,
+        [InspectorName("基本-选择中(帧更新)")] UpdateSelected,
+        [InspectorName("轴-移动")] Axis_Move
     }
-    public struct Link_EMS_Cancel : ILink
-    {
-        public BaseEventData eventData;
-    }
-    public struct Link_EMS_Select : ILink
-    {
-        public BaseEventData eventData;
-    }
-    public struct Link_EMS_Submit : ILink
+    public struct Link_InputBaseEvent : ILink
     {
         public BaseEventData eventData;
     }
-    public struct Link_EMS_UpdateSelected : ILink
+    public enum Channel_InputPointerEvent
     {
-        public BaseEventData eventData;
+        [InspectorName("光标-点击")] PointerClick,
+        [InspectorName("光标-落下")] PointerDown,
+        [InspectorName("光标-抬起")] PointerUp,
+        [InspectorName("光标-进入")] PointerEnter,
+        [InspectorName("光标-退出")] PointerExit,
+        [InspectorName("光标-开始拖动")] BeginDrag,
+        [InspectorName("光标-拖动中")] Drag,
+        [InspectorName("光标-落放到这")] Drop,
+        [InspectorName("光标-停止拖动")] EndDrag,
+        [InspectorName("光标-最初始化拖动")] InitalizedPotentialDrag,
+       
     }
-    public struct Link_BaseData : ILink
-    {
-        public BaseEventData eventData;
-    }
-    public struct Link_EMS_BeginDrag : ILink
-    {
-        public PointerEventData eventData;
-    }
-    public struct Link_EMS_Drag : ILink
-    {
-        public PointerEventData eventData;
-    }
-    public struct Link_EMS_Drop : ILink
+    public struct Link_InputPointerEvent : ILink
     {
         public PointerEventData eventData;
     }
-    public struct Link_EMS_EndDrag: ILink
-    {
-        public PointerEventData eventData;
-    }
-    public struct Link_EMS_InitalizedPotentialDrag : ILink
-    {
-        public PointerEventData eventData;
-    }
-    public struct Link_EMS_PointerClick : ILink
-    {
-        public PointerEventData eventData;
-    }
-    public struct Link_EMS_PointerDown : ILink
-    {
-        public PointerEventData eventData;
-    }
-    public struct Link_EMS_PointerEnter : ILink
-    {
-        public PointerEventData eventData;
-    }
-    public struct Link_EMS_PointerExit : ILink
-    {
-        public PointerEventData eventData;
-    }
-    public struct Link_EMS_PointerUp : ILink
-    {
-        public PointerEventData eventData;
-    }
-    public struct Link_EMS_Scroll : ILink
+    public struct Link_InputAxisEvent : ILink
     {
         public PointerEventData eventData;
     }

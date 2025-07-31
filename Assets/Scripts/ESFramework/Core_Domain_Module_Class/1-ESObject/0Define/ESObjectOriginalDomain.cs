@@ -7,12 +7,12 @@ using UnityEngine;
 
 
 namespace ES {
-    [Serializable,TypeRegistryItem("原始扩展域")]
+    [Serializable,TypeRegistryItem("原始物体扩展域")]
     public class ESObjectOriginalDomain : Domain<ESObject, ESObjectOriginalModule>
     {
           
     }
-    [Serializable, TypeRegistryItem("原始模块")]
+    [Serializable, TypeRegistryItem("原始物体模块")]
     public abstract class ESObjectOriginalModule : Module<ESObject, ESObjectOriginalDomain>
     {
 

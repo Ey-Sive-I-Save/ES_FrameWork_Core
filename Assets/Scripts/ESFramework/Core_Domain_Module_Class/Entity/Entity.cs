@@ -124,7 +124,7 @@ namespace ES
 
 
         [FoldoutGroup("实体攻击事件收发选通")]
-        public LinkReceiveChannelList<Channel_EntityAttackLink, Link_EntityAttack>
+        public LinkReceiveChannelPool<Channel_EntityAttackLink, Link_EntityAttack>
             LinksForTest = new();
         void test()
         {

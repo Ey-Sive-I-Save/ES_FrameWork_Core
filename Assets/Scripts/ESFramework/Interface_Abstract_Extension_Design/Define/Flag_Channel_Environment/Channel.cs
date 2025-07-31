@@ -21,37 +21,22 @@ public interface IChannel
 public class Channel<T> : IChannel where T : Channel<T>,new()
 {
     public static T channel = new T();
+    
 }
-
-public interface IChannel_Example_ItemGetter_ : IChannel
+#region 示范以类定义--支持协变
+public class Channel_Example_ItemGetter_ : IChannel
 {
-
+    public static Channel_Example_ItemGetter_ GetByPick = new Channel_Example_ItemGetter_();
+    public static Channel_Example_ItemGetter_ GetBySplit = new Channel_Example_ItemGetter_();
+    public static Channel_Example_ItemGetter_ GetByBuy = new Channel_Example_ItemGetter_();
+    public static Channel_Example_ItemGetter_ GetByReward = new Channel_Example_ItemGetter_();
+    public static Channel_Example_ItemGetter_ GetByOtherGive = new Channel_Example_ItemGetter_();
 }
-public class Channel_Example_ItemGetter_<T> : Channel<T>, IChannel_Example_ItemGetter_ where T : Channel_Example_ItemGetter_<T>, new()
-{
 
-}
+#endregion
 
-public class Channel_Example_ItemGetter_GetByPick : Channel_Example_ItemGetter_<Channel_Example_ItemGetter_GetByPick>
-{
 
-}
-public class Channel_Example_ItemGetter_GetBySplit : Channel_Example_ItemGetter_<Channel_Example_ItemGetter_GetBySplit>
-{
-
-}
-public class Channel_Example_ItemGetter_GetByBuy : Channel_Example_ItemGetter_<Channel_Example_ItemGetter_GetByBuy>
-{
-
-}
-public class Channel_Example_ItemGetter_GetByReward : Channel_Example_ItemGetter_<Channel_Example_ItemGetter_GetByReward>
-{
-
-}
-public class Channel_Example_ItemGetter_GetByOtherGive : Channel_Example_ItemGetter_<Channel_Example_ItemGetter_GetByOtherGive>
-{
-
-}
+#region 枚举式
 //例子 收集物品时 物品获取来源
 public enum Channel_Example_ItemGetter
 {
@@ -61,23 +46,6 @@ public enum Channel_Example_ItemGetter
     [InspectorName("奖励的")] GetByReward,
     [InspectorName("被赠与的")] GetByOtherGive
 }
+#endregion
 
-//例子 恢复生命时 为何恢复
-public static class Channel_Example_HealType
-{
-    public static int ByAuto = 0;//自动恢复
-    public static int ByBuff = 1;//由于Buff
-    public static int ByReset = 2;//因为重置(比如开始游戏或者备战)
-    public static int ByItem= 3;//因为道具
-    public static int ByFriend = 4;//友方
-
-}
-
-//默认选通
-public enum Channel_DefaultLink
-{
-    [InspectorName("无类型")]None,
-    [InspectorName("从外到内")] OutToIn,
-    [InspectorName("从内到外")] InToOut
-}
 

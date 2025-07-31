@@ -567,7 +567,7 @@ namespace ES
                     fly.source = Core;
                 }
 
-                item.AddIgnoreEntity(Core);
+               /* item.AddIgnoreEntity(Core);*/
 
             }
         }

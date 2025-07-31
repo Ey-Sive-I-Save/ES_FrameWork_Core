@@ -7,12 +7,12 @@ using UnityEngine.EventSystems;
 
 namespace ES {
     [AddComponentMenu("<ES>ESM支持/输入/可拖动落入此处-指定接收目标")]
-    public class EMS_Drop_LinkSingle : EMS_Abstract_LinkSingle<Link_EMS_Drop>, IDropHandler
+    public class EMS_Drop_LinkSingle : EMS_InputPointerEvent_LinkSingle_Abstarct, IDropHandler
     {
         public void OnDrop(PointerEventData eventData)
         {
             /* eventData.pointerDrag*/
-            OnLink(new Link_EMS_Drop() { eventData = eventData });
+            OnLink( Channel_InputPointerEvent.Drop,new Link_InputPointerEvent() { eventData = eventData });
         }
     }
 }

@@ -7,11 +7,11 @@ using UnityEngine.EventSystems;
 
 namespace ES {
     [AddComponentMenu("<ES>ESM支持/输入/鼠标按下-可接收列表")]
-    public class EMS_PointerDown_LinkList : EMS_Abstract_LinkList<Link_EMS_PointerDown>, IPointerDownHandler
+    public class EMS_PointerDown_LinkList : EMS_InputPointerEvent_LinkList_Abstarct, IPointerDownHandler
     {
         public void OnPointerDown(PointerEventData eventData)
         {
-            SendLink(new Link_EMS_PointerDown() { eventData = eventData });
+            SendLink( Channel_InputPointerEvent.PointerDown, new Link_InputPointerEvent() { eventData = eventData });
         }
     }
 }
