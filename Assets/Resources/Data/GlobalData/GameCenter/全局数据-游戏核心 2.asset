@@ -21,4 +21,5 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  showGlobal: 0
   HasConfirm: 1

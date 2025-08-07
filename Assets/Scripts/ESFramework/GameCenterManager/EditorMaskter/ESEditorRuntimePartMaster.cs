@@ -127,32 +127,16 @@ namespace ES
         {
             IsQuit = false;
             base.Awake();
-            Load();
         }
         private void OnValidate()
         {
             Debug.Log("开始加载编辑器缓存数据");
-            Load();
         }
         private void Load()
         {
-            LoadESTags();
-            LoadSST();
+           
         }
-        private void LoadESTags()
-        {
-            GlobalDataForEditorRunTime.ESTags = new List<string>();
-            if (GlobalDataForEditorRunTime.Instance.ESTagsSO_ != null)
-            {
-                foreach (var i in GlobalDataForEditorRunTime.Instance.ESTagsSO_.LayerStrings)
-                {
-                    foreach (var ii in i.Value)
-                    {
-                        GlobalDataForEditorRunTime.ESTags.Add(i.Key + "/" + ii);
-                    }
-                }
-            }
-        }
+     
         private void LoadTypesInfoKeys()
         {
 
@@ -161,20 +145,7 @@ namespace ES
 
         #region 可寻类型分组键
   
-        private void LoadSST()
-        {
-            GlobalDataForEditorRunTime.Instance.SearchDataTypeKey = new SelectDic_StringsToType();
-            var assem = Assembly.GetExecutingAssembly();
-            var types = assem.GetTypes();
-            foreach (var i in types)
-            {
-                var at = i.GetCustomAttribute<ESDisplayNameKeyToTypeAttribute>();
-                if (at != null)
-                {
-                    GlobalDataForEditorRunTime.Instance.SearchDataTypeKey.TryAddOrSet(at.TeamCollect, at.DisplayKeyName, i);
-                }
-            }
-        }
+       
         #endregion
 
 

@@ -48,7 +48,7 @@ namespace ES
         #endregion
 
         [TabGroup("【固有】"), LabelText("刚体")] public Rigidbody Rigid;
-        [TabGroup("【固有】"), LabelText("原始动画器")] public Animator Anim;
+        [TabGroup("【固有】"), LabelText("动画器")] public Animator Anim;
         [TabGroup("【固有】"), LabelText("ES超级标签")]
         public ESTagCollection ESTagsC = new ESTagCollection();
 
@@ -131,14 +131,6 @@ namespace ES
         [FoldoutGroup("选通Link"),LabelText("碰撞来源选通")] public LinkReceiveChannelPool<Channel_ColliderFrom,Link_ColEvent_3D> 
             LinkReceiveChannel_Channel_ColliderFrom = new LinkReceiveChannelPool<Channel_ColliderFrom, Link_ColEvent_3D>();
 
-
-        #endregion
-
-        #region 隐藏属性表
-
-        #endregion
-
-        #region 回调
 
         #endregion
 

@@ -123,6 +123,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  showGlobal: 0
   HasConfirm: 1
   abPackType: 0
   abFoeAutoCodeGen: 1

@@ -21,5 +21,6 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  showGlobal: 0
   HasConfirm: 1
   ESTagsSO_: {fileID: 11400000, guid: f143e840114030e4c944bef944ba2dbe, type: 2}

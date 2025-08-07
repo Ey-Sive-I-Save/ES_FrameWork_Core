@@ -446,6 +446,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  showGlobal: 0
   HasConfirm: 1
   Project:
     EnableProjectShow: 0

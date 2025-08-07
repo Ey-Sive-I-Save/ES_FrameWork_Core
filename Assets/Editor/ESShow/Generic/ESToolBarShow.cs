@@ -14,6 +14,7 @@ using System.IO;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 using FishNet.Demo.AdditiveScenes;
 using static FishNet.Component.Transforming.NetworkTransform;
+using System.Linq;
 
 namespace ES
 {
@@ -190,6 +191,18 @@ namespace ES
                             break;
                         }
                     });
+                    menu.AddItem(new GUIContent("<框架总文件夹>"), false, () =>
+                    {
+                        string[] guids = AssetDatabase.FindAssets("ESFramework");
+                        foreach (var i in guids)
+                        {
+                            string path = AssetDatabase.GUIDToAssetPath(i);
+                            var use = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path);
+                            Selection.activeObject = use;
+                            EditorGUIUtility.PingObject(use);
+                            break;
+                        }
+                    });
                     menu.AddItem(new GUIContent("<So数据总文件夹>"), false, () =>
                     {
                         string[] guids = AssetDatabase.FindAssets("SingleData");
@@ -238,7 +251,7 @@ namespace ES
                             break;
                         }
                     });
-                    
+
                     menu.AddSeparator("");
                     menu.AddItem(new GUIContent("<玩家对象>"), false, () =>
                     {
@@ -265,8 +278,24 @@ namespace ES
                         var it = UnityEngine.Object.FindAnyObjectByType<ESNetManager>();
                         if (it != null) { Selection.activeGameObject = it.gameObject; EditorGUIUtility.PingObject(it.gameObject); }
                     });
-                  
+
                     // 添加菜单项
+
+                    var assembly = typeof(ESEditorExpand_QuickSelect).Assembly; // 获取父类所在程序集
+                    var use = assembly.GetTypes()
+                       .Where(t => t.IsClass && !t.IsAbstract && t.BaseType == typeof(ESEditorExpand_QuickSelect))
+                       .ToList();
+                    foreach (var i in use)
+                    {
+                        var aClass = Activator.CreateInstance(i) as ESEditorExpand_QuickSelect;
+                        menu.AddItem(new GUIContent(aClass.GetGroup._Get_ATT_ESStringMessage()+"/"+aClass.MenuName), false, () =>
+                        {
+                            var func = aClass.GetPingUnityObject();
+                            var ob=func.Invoke();
+                            if (ob != null) { Selection.activeObject = ob; EditorGUIUtility.PingObject(ob); }
+                        });
+                    }
+
 
                     menu.AddSeparator("");
                     menu.ShowAsContext();
@@ -274,6 +303,127 @@ namespace ES
             }
 
         }
+
+        #region 自主扩展
+        public enum ESEditorQuickSelectGroup
+        {
+            [ESMessage("【文件夹】")] Dir,
+            [ESMessage("【资产】")] AssetObject,
+            [ESMessage("【管理器】")] Manager,
+            [ESMessage("【场景特殊物体】")] SceneGameObjectObject,
+
+        }
+        public abstract class ESEditorExpand_QuickSelect
+        {
+            public abstract ESEditorQuickSelectGroup GetGroup { get; }
+            public abstract string MenuName { get; }
+            public abstract Func<UnityEngine.Object> GetPingUnityObject();
+            public static UnityEngine.Object Helper_GetFromTag(string tag)
+            {
+                return GameObject.FindGameObjectWithTag(tag);
+            }
+            public static UnityEngine.Object[] Helper_Get_S_FromTag(string tag)
+            {
+                return GameObject.FindGameObjectsWithTag(tag);
+            }
+            public static UnityEngine.Object Helper_GetFromCompo<T>() where T : Component
+            {
+                T t = UnityEngine.Object.FindAnyObjectByType<T>();
+                if (t != null)
+                {
+                    return t.gameObject;
+                }
+                return null;
+            }
+            public static UnityEngine.Object[] Helper_Get_S_FromCompo<T>() where T : Component
+            {
+                var ts = UnityEngine.Object.FindObjectsByType<T>(sortMode: FindObjectsSortMode.None);
+                return ts.Select((n) => n.gameObject).ToArray();
+            }
+            public static ScriptableObject Helper_GetSO<T>() where T : ScriptableObject
+            {
+                T t = UnityEngine.Object.FindAnyObjectByType<T>();
+                return t;
+            }
+            public static ScriptableObject[] Helper_Get_S_SO<T>() where T : ScriptableObject
+            {
+                var ts = UnityEngine.Object.FindObjectsByType<T>(sortMode: FindObjectsSortMode.None);
+                return ts;
+            }
+
+            public static UnityEngine.Object Helper_Asset_GetFromNameAndParent(string name, params string[] withparent)
+            {
+                string[] guids = AssetDatabase.FindAssets(name);
+                foreach (var i in guids)
+                {
+                    string path = AssetDatabase.GUIDToAssetPath(i);
+                    var use = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path);
+                    bool Cancel = false;
+                    if (use != null)
+                    {
+                        if (withparent != null && withparent.Length != 0)
+                        {
+                            foreach (var p in withparent)
+                            {
+                                if (!path.Contains(p))
+                                {
+                                    Cancel = true;
+                                    break;
+                                }
+                            }
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                    if (Cancel) continue;
+                    return use;
+                }
+                return name != "ESFramework" ? Helper_Asset_GetFromNameAndParent("ESFramework") : null;
+            }
+
+            public static string Name_ESFramework = "ESFramework";
+        }
+        #region 演示
+        public class ESEditorExpand_QuickSelect_EntityDir : ESEditorExpand_QuickSelect
+        {
+            public override ESEditorQuickSelectGroup GetGroup =>  ESEditorQuickSelectGroup.Dir;
+            public override string MenuName =>"实体定义文件夹";
+            public override Func<UnityEngine.Object> GetPingUnityObject()
+            {
+                return () => Helper_Asset_GetFromNameAndParent("Entity", Name_ESFramework);
+            }
+        }
+
+
+        public class ESEditorExpand_QuickSelect_LinkDir : ESEditorExpand_QuickSelect
+        {
+            public override ESEditorQuickSelectGroup GetGroup => ESEditorQuickSelectGroup.Dir;
+            public override string MenuName => "Link定义文件夹";
+            public override Func<UnityEngine.Object> GetPingUnityObject()
+            {
+                return () => Helper_Asset_GetFromNameAndParent("Link", "Assets/Scripts/ESFramework/Interface_Abstract_Extension_Design/Link");
+            }
+        }
+
+        public class ESEditorExpand_QuickSelect_SceneCamera : ESEditorExpand_QuickSelect
+        {
+            public override ESEditorQuickSelectGroup GetGroup => ESEditorQuickSelectGroup.SceneGameObjectObject;
+            public override string MenuName => "主相机";
+            public override Func<UnityEngine.Object> GetPingUnityObject()
+            {
+                return () => Helper_GetFromTag("MainCamera");
+            }
+        }
+        #endregion
+
+
+        #endregion
     }
 }
 

@@ -34,7 +34,8 @@ namespace ES
     {
         #region 总重要信息
 #if UNITY_EDITOR //只在编辑器下有用
-        [FoldoutGroup("扩展域固有"), LabelText("域功能解释", icon: SdfIconType.Palette), GUIColor("Editor_ColorGetter"), ShowInInspector, PropertyOrder(-100), SerializeField]
+        [BoxGroup("扩展域固有"), LabelText("域功能解释", icon: SdfIconType.Palette), GUIColor("Editor_ColorGetter"), ShowInInspector, PropertyOrder(-100), SerializeField]
+
         private Tool_ESReadMeClass readMe = new Tool_ESReadMeClass() { readMeIn = "这是一个扩展区域" };
 #endif
         [HideInInspector]
@@ -43,7 +44,7 @@ namespace ES
         public Core Core_Object => core;
 
 
-        [FoldoutGroup("扩展域固有"), LabelText("全部模块"), OdinSerialize]
+        [BoxGroup("扩展域固有"), LabelText("全部模块"), OdinSerialize]
         public SafeNormalList<Module_> Modules = new SafeNormalList<Module_>();
 
         #endregion

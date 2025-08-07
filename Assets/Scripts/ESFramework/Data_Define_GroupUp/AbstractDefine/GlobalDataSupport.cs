@@ -66,14 +66,16 @@ namespace ES
                 _instance = value;
             }
         }
-        [ShowInInspector]
+        [ToggleGroup("showGlobal", "显示关于全局数据")]
+        public bool showGlobal;
+        [ShowInInspector,ToggleGroup("showGlobal", "显示关于全局数据"),LabelText("选中单例")]
         private static This _instance;
-        [ShowInInspector, LabelText("该类型全部数据"), InlineButton("TryConfirmSwitchThis", "选中当前为主数据")]
+        [ShowInInspector, ToggleGroup("showGlobal", "显示关于全局数据"), LabelText("该类型全部数据"), InlineButton("TryConfirmSwitchThis", "选中当前为主数据")]
         private static HashSet<This> AllCaches = new HashSet<This>();
         private static Action<This> OnConfirmOneSO = (who) => { };
 
 
-        [LabelText("被选中为主数据"), ReadOnly, PropertyOrder(-3)]
+        [LabelText("被选中为主数据"), ToggleGroup("showGlobal", "显示关于全局数据"), ReadOnly, PropertyOrder(-3)]
         public bool HasConfirm = false;//选定一个
         private static Dictionary<Type, bool> HasReactiveTable = new Dictionary<Type, bool>();//敏感互动表(自动创建)
         private void OnValidate()
@@ -91,10 +93,10 @@ namespace ES
             if (HasConfirm)
             {
                 HasReactiveTable[typeof(This)] = false;
-                Debug.Log(666);
+                
             }
         }
-        private void Refresh()
+        protected virtual void Refresh()
         {
           
             if (this is This use )
