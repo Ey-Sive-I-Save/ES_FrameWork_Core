@@ -32,7 +32,7 @@ namespace ES.EvPointer
         [LabelText("浮点值"), SerializeReference] public IPointerForFloat_Only float_Only = new PointerForFloat_Direct();
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null) return -1;
+            if (animator == null) return null;
             animator.SetFloat(ParaName, float_Only?.Pick() ?? 0);
             return base.Pick(on,from,with);
         }
@@ -46,7 +46,7 @@ namespace ES.EvPointer
         [LabelText("乘上帧时间")] public bool mutiTimeDelta = true;
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null) return -1;
+            if (animator == null) return null;
             animator.SetFloat(ParaName, animator.GetFloat(ParaName) + (float_Only?.Pick() ?? 0) * (mutiTimeDelta ? Time.deltaTime : 1));
             return base.Pick(on,from,with);
         }
@@ -61,7 +61,7 @@ namespace ES.EvPointer
         [LabelText("Lerp乘上帧时间")] public bool mutiTimeDelta = true;
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null) return -1;
+            if (animator == null) return null;
             float t = lerp_Only?.Pick() ?? 0;
             animator.SetFloat(ParaName, Mathf.Lerp(animator.GetFloat(ParaName), +(float_Only?.Pick() ?? 0), t * (mutiTimeDelta ? Time.deltaTime : 1)));
             return base.Pick(on,from,with);
@@ -75,7 +75,7 @@ namespace ES.EvPointer
         [LabelText("整数值"), SerializeReference] public IPointerForInt_Only int_Only = new PointerForInt_Direct();
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null) return -1;
+            if (animator == null) return null;
             animator.SetInteger(ParaName, int_Only?.Pick() ?? 0);
             return base.Pick(on,from,with);
         }
@@ -89,7 +89,7 @@ namespace ES.EvPointer
         [LabelText("布尔值"), SerializeReference] public IPointerForBool_Only bool_Only = new PointerForBool_Direc();
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null) return -1;
+            if (animator == null) return null;
             animator.SetBool(ParaName, bool_Only?.Pick() ?? false);
             return base.Pick(on,from,with);
         }
@@ -102,7 +102,7 @@ namespace ES.EvPointer
 
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null) return -1;
+            if (animator == null) return null;
             animator.SetBool(ParaName, !animator.GetBool(ParaName));
             return base.Pick(on,from,with);
         }
@@ -115,7 +115,7 @@ namespace ES.EvPointer
         [LabelText("是否触发"), SerializeReference] public IPointerForBool_Only tri_Only = new PointerForBool_Direc();
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null) return -1;
+            if (animator == null) return null;
             bool b = tri_Only?.Pick() ?? false;
             if (b) animator.SetTrigger(ParaName);
             else animator.ResetTrigger(ParaName);
@@ -130,7 +130,7 @@ namespace ES.EvPointer
         [LabelText("权重值"), SerializeReference] public IPointerForFloat_Only float_Only = new PointerForFloat_Direct();
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null) return -1;
+            if (animator == null) return null;
             int index = layerIndex?.Pick() ?? 0;
             float weight = float_Only?.Pick() ?? 0;
             animator.SetLayerWeight(index, weight);
@@ -147,7 +147,7 @@ namespace ES.EvPointer
         [LabelText("乘上帧时间")] public bool mutiTimeDelta = true;
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null) return -1;
+            if (animator == null) return null;
             int index = layerIndex?.Pick() ?? 0;
             float weight = (float_Only?.Pick() ?? 0) * (mutiTimeDelta ? Time.deltaTime : 1);
             animator.SetLayerWeight(index, weight + animator.GetLayerWeight(index));
@@ -165,7 +165,7 @@ namespace ES.EvPointer
         [LabelText("Lerp乘上帧时间")] public bool mutiTimeDelta = true;
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null) return -1;
+            if (animator == null) return null;
             int index = layerIndex?.Pick() ?? 0;
             float weight = (float_Only?.Pick() ?? 0);
             float t = (lerp_Only?.Pick() ?? 0) * (mutiTimeDelta ? Time.deltaTime : 1);
@@ -183,7 +183,7 @@ namespace ES.EvPointer
 
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null || str_only == null) return -1;
+            if (animator == null || str_only == null) return null;
             int index = layerIndex?.Pick() ?? 0;
             float progress = start_Only?.Pick() ?? 0;
             animator.Play(str_only.Pick(), index, progress);
@@ -201,7 +201,7 @@ namespace ES.EvPointer
 
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null || str_only == null) return -1;
+            if (animator == null || str_only == null) return null;
             int index = layerIndex?.Pick() ?? 0;
             float progress = start_Only?.Pick() ?? 0;
             float cross = cross_Only?.Pick() ?? 0.15f;
@@ -220,7 +220,7 @@ namespace ES.EvPointer
 
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null || str_only == null) return -1;
+            if (animator == null || str_only == null) return null;
             int index = layerIndex?.Pick() ?? 0;
             float progress = start_Only?.Pick() ?? 0;
             float cross = cross_Only?.Pick() ?? 0.15f;
@@ -380,7 +380,7 @@ namespace ES.EvPointer
         [LabelText("浮点值"), SerializeReference] public IPointerForFloat_Only float_Only = new PointerForFloat_Direct();
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null) return -1;
+            if (animator == null) return null;
             int i = NameHash?.Pick() ?? 0;
             if (i != 0)
             {
@@ -398,7 +398,7 @@ namespace ES.EvPointer
         [LabelText("乘上帧时间")] public bool mutiTimeDelta = true;
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null) return -1;
+            if (animator == null) return null;
             int i = NameHash?.Pick() ?? 0;
             if (i != 0)
             {
@@ -418,7 +418,7 @@ namespace ES.EvPointer
         [LabelText("Lerp乘上帧时间")] public bool mutiTimeDelta = true;
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null) return -1;
+            if (animator == null) return null;
             float t = lerp_Only?.Pick() ?? 0;
             int i = NameHash?.Pick() ?? 0;
             if (i != 0)
@@ -436,7 +436,7 @@ namespace ES.EvPointer
         [LabelText("整数值"), SerializeReference] public IPointerForInt_Only int_Only = new PointerForInt_Direct();
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null) return -1;
+            if (animator == null) return null;
             int i = NameHash?.Pick() ?? 0;
             if (i != 0)
             {
@@ -454,7 +454,7 @@ namespace ES.EvPointer
         [LabelText("布尔值"), SerializeReference] public IPointerForBool_Only bool_Only = new PointerForBool_Direc();
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null) return -1;
+            if (animator == null) return null;
             int i = NameHash?.Pick() ?? 0;
             if (i != 0)
             {
@@ -471,7 +471,7 @@ namespace ES.EvPointer
 
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null) return -1;
+            if (animator == null) return null;
             int i = NameHash?.Pick() ?? 0;
             if (i != 0)
             {
@@ -488,7 +488,7 @@ namespace ES.EvPointer
         [LabelText("是否触发"), SerializeReference] public IPointerForBool_Only tri_Only = new PointerForBool_Direc();
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null) return -1;
+            if (animator == null) return null;
             bool b = tri_Only?.Pick() ?? false;
             int i = NameHash?.Pick() ?? 0;
             if (i != 0)
@@ -510,7 +510,7 @@ namespace ES.EvPointer
 
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null || NameHash == null) return -1;
+            if (animator == null || NameHash == null) return null;
             int index = layerIndex?.Pick() ?? 0;
             float progress = start_Only?.Pick() ?? 0;
             int i = NameHash?.Pick() ?? 0;
@@ -533,7 +533,7 @@ namespace ES.EvPointer
 
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (animator == null || NameHash == null) return -1;
+            if (animator == null || NameHash == null) return null;
             int index = layerIndex?.Pick() ?? 0;
             float progress = start_Only?.Pick() ?? 0;
             float cross = cross_Only?.Pick() ?? 0.15f;

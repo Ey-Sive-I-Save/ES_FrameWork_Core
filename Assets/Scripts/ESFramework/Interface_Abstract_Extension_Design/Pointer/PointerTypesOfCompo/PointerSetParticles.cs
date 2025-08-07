@@ -31,7 +31,7 @@ namespace ES
             {
                 PickTruly(system);
             }
-            return -1;
+            return null;
         }
         public abstract void PickTruly(ParticleSystem system_);
     }

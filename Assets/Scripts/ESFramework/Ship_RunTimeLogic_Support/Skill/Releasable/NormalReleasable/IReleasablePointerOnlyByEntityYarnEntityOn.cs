@@ -240,7 +240,7 @@ namespace ES
                 if (on != null) on.OnTriEntityHappen -= OnTri;
                 hasSubmitCol = false;
             };
-            return -1;
+            return null;
             void OnTri(Entity col, Vector3 pos)
             {
                 if (handlePos == OLDEnumCollect.HandleCacheOption.None)

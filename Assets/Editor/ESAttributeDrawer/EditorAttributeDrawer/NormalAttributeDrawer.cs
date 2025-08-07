@@ -8,11 +8,13 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 namespace ES
 {
+
 #if UNITY_EDITOR
+    #region ESMessage
     public class ESMessageAttributeDrawer : OdinAttributeDrawer<ESMessage>
     {
         private float xAT = 50;
@@ -75,5 +77,122 @@ namespace ES
         }
 
     }
+    #endregion
+
+    #region ESDragResolver
+
+    public class ESDragToFieldSolverAttributeDrawer : OdinAttributeDrawer<ESDragToFieldSolver>
+    {
+        private float lastHeight;
+        private bool drag = false;
+        protected override void DrawPropertyLayout(GUIContent label)
+        {
+            EditorGUILayout.Space(0);
+            var space = GUILayoutUtility.GetLastRect();
+            var startY1 = space.yMax;
+
+            this.CallNextDrawer(label);
+            float startY2 = GUILayoutUtility.GetLastRect().yMax;
+            float f = startY2 - startY1;
+            lastHeight = f > 0 ? f : lastHeight;
+
+            Rect rect = space.SetYMax(space.yMin + lastHeight);
+            var cc = Event.current;
+            if (cc.type == EventType.DragExited || cc.type == EventType.MouseUp)
+            {
+                drag = false;
+            }
+            if (cc.type == EventType.DragUpdated)
+            {
+                drag = true;
+            }
+            if (drag)
+            {
+                EditorGUI.DrawRect(rect, Color.black._WithAlpha(0.25f));
+            }
+            if (cc.type == EventType.DragUpdated || cc.type == EventType.DragPerform)
+            {
+                DragAndDrop.visualMode = DragAndDropVisualMode.Link;
+
+                if (cc.type == EventType.DragPerform && rect.Contains(cc.mousePosition))
+                {
+                    DragAndDrop.AcceptDrag();
+                    var use = DragAndDrop.objectReferences[0];
+                    if (this.Attribute.solverOptions == ESDragToFieldSolverOptions.SimpleAssetToABSearchKey)
+                    {
+
+                        string prePath = AssetDatabase.GetAssetPath(use);
+                        if (prePath == null) return;
+                        string nowPath = prePath;
+                        bool start = true;
+                        while (nowPath != prePath || start)
+                        {
+                            start = false;
+                            if (nowPath != null && !nowPath.IsNullOrWhitespace())
+                            {
+                                var ai = AssetImporter.GetAtPath(nowPath);
+                                if (ai == null || ai.assetBundleName == null || ai.assetBundleName.IsNullOrWhitespace())
+                                {
+                                    prePath = nowPath.ToString();
+                                    nowPath = nowPath._KeepBeforeByLast("/");
+                                }
+                                else
+                                {
+                                    var ab = ai.assetBundleName;
+                                    Property.ValueEntry.WeakSmartValue = " AB名: " + ab + " ，资源名 ： " + use.name;
+                                    break;
+                                }
+
+                            }
+                        }
+                        cc.Use();
+                    }
+                    else if (this.Attribute.solverOptions == ESDragToFieldSolverOptions.UnityEventNewInvoke)
+                    {
+                        if (Property.ValueEntry.WeakSmartValue is UnityEvent ue)
+                        {
+                            if (use is GameObject gg)
+                            {
+                                
+                                MethodInfo addCall = typeof(UnityEvent).GetMethod("AddCall", BindingFlags.NonPublic | BindingFlags.Instance);
+                                MethodInfo dele = typeof(UnityEvent).GetMethod("GetDelegate", BindingFlags.NonPublic | BindingFlags.Instance);
+
+                                MethodInfo StringDELE = typeof(UnityEvent).GetMethod("AddStringPersistentListener", BindingFlags.NonPublic | BindingFlags.Instance);
+
+                                MethodInfo BoolDELE = typeof(UnityEvent).GetMethod("AddBoolPersistentListener", BindingFlags.NonPublic | BindingFlags.Instance);
+
+
+           /*                     Debug.Log(addCall + " ADD ");
+                                Debug.Log(dele + " DELE ");
+                                Debug.Log(StringDELE + " String ");*/
+
+                                UnityAction<bool> unityAction = gg.SetActive;
+                                var ThisDele = BoolDELE.Invoke(ue, new object[] { unityAction,true });
+                                addCall.Invoke(ue, new object[] { ThisDele });
+                                
+                               /* Activator.CreateInstance(BaseInvokableCall)
+                                ue.AddListener*/
+
+
+                            }
+                            else if (use is MonoBehaviour mb)
+                            {
+
+                            }
+                            else if (use is Component com)
+                            {
+
+                            }
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+    }
+
+    #endregion
 #endif
 }

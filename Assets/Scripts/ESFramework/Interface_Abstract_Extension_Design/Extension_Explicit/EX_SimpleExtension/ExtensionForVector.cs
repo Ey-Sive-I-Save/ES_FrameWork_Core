@@ -28,6 +28,10 @@ namespace ES
         {
             return new Vector3(v.x * v2.x, v.y * v2.y, v.z * v2.z);
         }
+        public static Vector3 _DivideVector3(this Vector3 v, Vector3 v2)
+        {
+            return new Vector3(v.x ._SafeDivide( v2.x), v.y._SafeDivide(v2.y), v.z._SafeDivide(v2.z));
+        }
         // 11. 设置Vector3的Y值
         public static Vector3 _WithY(this Vector3 v, float y)
         {

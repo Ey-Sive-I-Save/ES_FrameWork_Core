@@ -8,20 +8,6 @@ using UnityEngine;
 
 namespace ES
 {
-    public class PinByArchitectureKeyValuePoolTypeListIOC_ : MonoBehaviour
-    {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
-    }
     [Serializable/*为原型参数键值池准备的专用针*/]
     public abstract class PointerByArchitectureKeyValuePoolTypeListIOC<Back> : IPointer<Back, ArchitectureKeyValuePoolTypeListIOC_OBSULUTE, object, object>
     {
@@ -95,7 +81,7 @@ namespace ES
                         {
                             if (i.TheKey.Equals(key))
                             {
-                               if(i.TheValue is float left)
+                               if(i.TheSmartValue is float left)
                                 {
                                     return KeyValueMatchingUtility.Function.FunctionForCompareTwoFloat(left,compare,useFunction:function);
                                 }
@@ -129,7 +115,7 @@ namespace ES
                         {
                             if (i.TheKey.Equals(key))
                             {
-                                if (i.TheValue is int left)
+                                if (i.TheSmartValue is int left)
                                 {
                                     return KeyValueMatchingUtility.Function.FunctionForCompareTwoFloat(left, compare, useFunction: function);
                                 }
@@ -160,7 +146,7 @@ namespace ES
                         {
                             if (i.TheKey.Equals(key))
                             {
-                                if (i.TheValue is bool b)
+                                if (i.TheSmartValue is bool b)
                                 {
                                     return b;
                                 }
@@ -194,7 +180,7 @@ namespace ES
                         {
                             if (i.TheKey.Equals(key))
                             {
-                                if (i.TheValue is string left)
+                                if (i.TheSmartValue is string left)
                                 {
                                     return left == compare;
                                 }
@@ -228,7 +214,7 @@ namespace ES
                         {
                             if (i.TheKey.Equals(key))
                             {
-                                if (i.TheValue is bool use)
+                                if (i.TheSmartValue is bool use)
                                 {
                                     return use;
                                 }
@@ -356,13 +342,13 @@ namespace ES
             {
                 cancellable.Cancel();
             }
-            return -1;
+            return null;
         }
 
         public override object Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             object o = runLogic?.RunLogic();
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("原形键值池_执行任意触发针", "原型键值池")]
@@ -377,20 +363,20 @@ namespace ES
             {
                 cancellable.Cancel();
             }
-            return -1;
+            return null;
         }
 
         public override object Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
             none?.Pick();
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("原形键值池_操作池中浮点数", "原型键值池")]
     public class PointerNoneByArKVP_FloatInPool : PointerNoneByArchitectureKeyValuePoolTypeListIOC
     {
         
-        [LabelText("操作函数")] public EnumCollect.HandleTwoFloatFunction function;
+        [LabelText("操作函数")] public EnumCollect.HandleTwoNumberFunction function;
         [LabelText("输入取出键"), SerializeReference] public string key;
         [LabelText("用于操作的浮点数"), SerializeReference] public float handler;
         private float memori = 0;
@@ -398,7 +384,7 @@ namespace ES
         public override object Cancel()
         {
             Pick(use,false);
-            return -1;
+            return null;
         }
 
         public override object Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
@@ -419,26 +405,26 @@ namespace ES
                             if (i.TheKey.Equals(key))
                             {
                                
-                                if (i.TheValue is float left)
+                                if (i.TheSmartValue is float left)
                                 {
                                     if (yarn == null)
                                     {
                                         float f;
-                                        i.SetValue(f = KeyValueMatchingUtility.Function.FunctionForTwoFloat(left, handler, function));
+                                        i.SetValue(f = KeyValueMatchingUtility.Function.FunctionForHandleTwoFloat(left, handler, function));
                                         memori = f;
                                         by.OnHandle(EnumCollect.ArchitectureValueType.FloatValue, i);
                                     }
                                     else if (yarn is bool b)
                                     {
                                         //撤销情况 只支持加减和设置捏
-                                        if (function == EnumCollect.HandleTwoFloatFunction.Set)
+                                        if (function == EnumCollect.HandleTwoNumberFunction.Set)
                                         {
                                             i.SetValue(memori);
                                             by.OnHandle(EnumCollect.ArchitectureValueType.FloatValue, i);
                                         }else
                                         {
                                             float f;
-                                            i.SetValue(f = KeyValueMatchingUtility.Function.FunctionForTwoFloat(left, -handler, function));
+                                            i.SetValue(f = KeyValueMatchingUtility.Function.FunctionForHandleTwoFloat(left, -handler, function));
                                             memori = f;
                                             by.OnHandle(EnumCollect.ArchitectureValueType.FloatValue, i);
                                         }
@@ -450,14 +436,14 @@ namespace ES
                     }
                 }
             }
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("原形键值池_操作池中整数", "原型键值池")]
     public class PointerNoneByArKVP_IntInPool : PointerNoneByArchitectureKeyValuePoolTypeListIOC
     {
         [LabelText("为空时的默认值")] public bool defaultIfNull = false;
-        [LabelText("操作函数")] public EnumCollect.HandleTwoFloatFunction function= EnumCollect.HandleTwoFloatFunction.Sub;
+        [LabelText("操作函数")] public EnumCollect.HandleTwoNumberFunction function= EnumCollect.HandleTwoNumberFunction.Sub;
         [LabelText("输入取出键"), SerializeReference] public string key;
         [LabelText("用于操作的整数"), SerializeReference] public int handler;
         
@@ -465,7 +451,7 @@ namespace ES
         public override object Cancel()
         {
             Pick(use, false);
-            return -1;
+            return null;
         }
         public override object Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
@@ -481,9 +467,9 @@ namespace ES
                         {
                             if (i.TheKey.Equals(key))
                             {
-                                if (i.TheValue is int left)
+                                if (i.TheSmartValue is int left)
                                 {
-                                    i.SetValue((int)KeyValueMatchingUtility.Function.FunctionForTwoFloat(left, handler, function));
+                                    i.SetValue((int)KeyValueMatchingUtility.Function.FunctionForHandleTwoFloat(left, handler, function));
                                     by.OnHandle(EnumCollect.ArchitectureValueType.IntValue, i);
                                     
                                 }
@@ -505,7 +491,7 @@ namespace ES
         public override object Cancel()
         {
             Pick(use, false);
-            return -1;
+            return null;
         }
         public override object Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
@@ -521,7 +507,7 @@ namespace ES
                         {
                             if (i.TheKey.Equals(key))
                             {
-                                if (i.TheValue is bool b)
+                                if (i.TheSmartValue is bool b)
                                 {
                                     i.SetValue(handler);
                                     by.OnHandle(EnumCollect.ArchitectureValueType.BoolValue, i);
@@ -531,7 +517,7 @@ namespace ES
                     }
                 }
             }
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("原形键值池_设置池中字符串", "原型键值池")]
@@ -543,7 +529,7 @@ namespace ES
         public override object Cancel()
         {
             Pick(use, false);
-            return -1;
+            return null;
         }
         public override object Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
         {
@@ -559,7 +545,7 @@ namespace ES
                         {
                             if (i.TheKey.Equals(key))
                             {
-                                if (i.TheValue is string left)
+                                if (i.TheSmartValue is string left)
                                 {
                                     i.SetValue(handler);
                                     by.OnHandle(EnumCollect.ArchitectureValueType.StringValue, i);
@@ -569,7 +555,7 @@ namespace ES
                     }
                 }
             }
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("原形键值池_添加标签", "原型键值池")]
@@ -582,7 +568,7 @@ namespace ES
         public override object Cancel()
         {
             Pick(use, false);
-            return -1;
+            return null;
         }
 
         public override object Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
@@ -612,7 +598,7 @@ namespace ES
                     }
                 }
             }
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("原形键值池_删除标签", "原型键值池")]
@@ -625,7 +611,7 @@ namespace ES
         public override object Cancel()
         {
             Pick(use, false);
-            return -1;
+            return null;
         }
 
         public override object Pick(ArchitectureKeyValuePoolTypeListIOC_OBSULUTE by = null, object yarn = null, object on = null)
@@ -676,7 +662,7 @@ namespace ES
                     }
                 }
             }
-            return -1;
+            return null;
         }
     }
     #endregion

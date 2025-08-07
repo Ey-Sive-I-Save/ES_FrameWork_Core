@@ -30,7 +30,7 @@ namespace ES.EvPointer
         {
 
             cancelSource?.Pick()?.Cancel();
-            return -1;
+            return null;
         }
     }
     #endregion

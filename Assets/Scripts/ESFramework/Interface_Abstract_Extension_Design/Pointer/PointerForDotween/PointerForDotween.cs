@@ -891,7 +891,7 @@ namespace ES.EvPointer
             {
                 return DOTween.Complete(oo, withCallBack);
             }
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("Dotween_局部_翻转", "其他插件支持")]
@@ -907,7 +907,7 @@ namespace ES.EvPointer
             {
                 return DOTween.Flip(oo);
             }
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("Dotween_局部_重启", "其他插件支持")]
@@ -923,7 +923,7 @@ namespace ES.EvPointer
             {
                 return DOTween.Restart(oo);
             }
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("Dotween_局部_回退", "其他插件支持")]
@@ -939,7 +939,7 @@ namespace ES.EvPointer
             {
                 return DOTween.Rewind(oo);
             }
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("Dotween_局部_平滑回退", "其他插件支持")]
@@ -956,7 +956,7 @@ namespace ES.EvPointer
             {
                 return DOTween.SmoothRewind(oo);
             }
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("Dotween_局部_击杀销毁", "其他插件支持")]
@@ -971,7 +971,7 @@ namespace ES.EvPointer
             {
                 return DOTween.Kill(oo, withCallBack);
             }
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("Dotween_全局_完成全部", "其他插件支持")]

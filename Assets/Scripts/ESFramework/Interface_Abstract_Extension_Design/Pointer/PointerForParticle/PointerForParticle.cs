@@ -13,7 +13,7 @@ namespace ES
         {
             if (ParticleSystem != null)
                 PickTruely(ParticleSystem);
-            return -1;
+            return null;
         }
 
         public abstract void PickTruely(ParticleSystem particleSystem);
@@ -292,7 +292,7 @@ namespace ES
     {
         [LabelText("自动随机种子")] public bool value;
 
-        [ShowIf("@!this.value")] [LabelText("随机种子值")]
+        [ShowIf("@!this.Value")] [LabelText("随机种子值")]
         public uint seedValue;
 
         public override void PickTruely(ParticleSystem ps)

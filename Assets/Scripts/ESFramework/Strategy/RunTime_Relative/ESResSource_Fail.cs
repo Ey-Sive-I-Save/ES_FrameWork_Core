@@ -1049,14 +1049,14 @@ namespace ES
 
             if (string.IsNullOrEmpty(name))
             {
-                return -1;
+                return null;
             }
 
             var key = GetKeyFromABName(name);
 
             if (key == null)
             {
-                return -1;
+                return null;
             }
 
             group = GetAssetDataGroup(key);
@@ -1456,7 +1456,7 @@ namespace ES
         {
             if (string.IsNullOrEmpty(name))
             {
-                return -1;
+                return null;
             }
 
             if (mABUnitArray == null)

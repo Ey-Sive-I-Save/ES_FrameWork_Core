@@ -32,7 +32,7 @@ namespace ES {
         }
 
         //操作两个Float 获得 Float ,详见KeyValueMatching.Function
-        public enum HandleTwoFloatFunction
+        public enum HandleTwoNumberFunction
         {
             [InspectorName("设置")] Set,
             [InspectorName("加")] Add,
@@ -47,6 +47,30 @@ namespace ES {
             [InspectorName("Mask且反(关闭)")] Mask_And_Not
         }
 
+        //操作两个bool 获得 bool ,详见KeyValueMatching.Function
+        public enum HandleTwoBoolFunction
+        {
+            [InspectorName("设置")] Set,
+            [InspectorName("并且")] And,
+            [InspectorName("或者")] Or,
+            [InspectorName("设置-反")] SetNot,
+            [InspectorName("如果则设置为真")] On_If,
+            [InspectorName("如果则设置为假")] Off_If,
+            [InspectorName("如果则切换")] Switch_If,
+        }
+        //操作两个string 获得 string ,详见KeyValueMatching.Function
+        public enum HandleTwoBoolString
+        {
+            [InspectorName("设置")] Set,
+            [InspectorName("添加到后")] AddPost,
+            [InspectorName("添加到前")] AddPre,
+            [InspectorName("移除")]Remove,
+            [InspectorName("以-分割为前后")] AddPreAndPost,
+            [InspectorName("添加到后(不重复)")] AddPostNotRepeat,
+            [InspectorName("添加到前(不重复)")] AddPreNotRepeat,
+            [InspectorName("以-分割为前后(不重复)")] AddPreAndPostNotRepeat,
+
+        }
         //从列表选择出一个,详见KeyValueMatching.Function
         public enum PointerSelectOneType
         {

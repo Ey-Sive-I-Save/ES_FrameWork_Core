@@ -317,7 +317,7 @@ namespace ES.EvPointer
     [Serializable, TypeRegistryItem("反射_特殊操作浮点数_字段", "反射/设置")]
     public class PointerHanldeFloat_Field_Reflection : PointerSetFloat_Field_Reflection
     {
-        [LabelText("使用的处理")] public EnumCollect.HandleTwoFloatFunction hanlde;
+        [LabelText("使用的处理")] public EnumCollect.HandleTwoNumberFunction hanlde;
         public override void Handle(object o)
         {
             KeyValueMatchingUtility.Reflection.EasyHandleField<float>(o, fieldName, getValue, hanlde);
@@ -333,7 +333,7 @@ namespace ES.EvPointer
     [Serializable, TypeRegistryItem("反射_特殊操作整数_字段", "反射/设置")]
     public class PointerHanldeInt_Field_Reflection : PointerSetInt_Field_Reflection
     {
-        [LabelText("使用的处理")] public EnumCollect.HandleTwoFloatFunction hanlde;
+        [LabelText("使用的处理")] public EnumCollect.HandleTwoNumberFunction hanlde;
         public override void Handle(object o)
         {
             KeyValueMatchingUtility.Reflection.EasyHandleField<int>(o, fieldName, getValue, hanlde);
@@ -343,7 +343,7 @@ namespace ES.EvPointer
     public class PointerHanldeEnum_Field_Reflection : PointerSetInt_Field_Reflection
     {
 
-        [LabelText("使用的处理")] public EnumCollect.HandleTwoFloatFunction hanlde;
+        [LabelText("使用的处理")] public EnumCollect.HandleTwoNumberFunction hanlde;
 
         public override void Handle(object o)
         {
@@ -355,7 +355,7 @@ namespace ES.EvPointer
     {
         [LabelText("设置的值")] public LayerMask layerMask_;
         public override int getValue => layerMask_;
-        [LabelText("使用的处理")] public EnumCollect.HandleTwoFloatFunction hanlde;
+        [LabelText("使用的处理")] public EnumCollect.HandleTwoNumberFunction hanlde;
 
         public override void Handle(object o)
         {
@@ -414,7 +414,7 @@ namespace ES.EvPointer
     [Serializable, TypeRegistryItem("反射_特殊操作浮点数_属性", "反射/设置")]
     public class PointerHandleFloat_Property_Reflection : PointerSetFloat_Property_Reflection
     {
-        [LabelText("使用的处理")] public EnumCollect.HandleTwoFloatFunction hanlde;
+        [LabelText("使用的处理")] public EnumCollect.HandleTwoNumberFunction hanlde;
         public override void Handle(object o)
         {
             KeyValueMatchingUtility.Reflection.EasyHandleProperty<float>(o, propertyName, getValue, hanlde);
@@ -430,7 +430,7 @@ namespace ES.EvPointer
     [Serializable, TypeRegistryItem("反射_特殊操作整数_属性", "反射/设置")]
     public class PointerHandleInt_Property_Reflection : PointerSetInt_Property_Reflection
     {
-        [LabelText("使用的处理")] public EnumCollect.HandleTwoFloatFunction hanlde;
+        [LabelText("使用的处理")] public EnumCollect.HandleTwoNumberFunction hanlde;
         public override void Handle(object o)
         {
             KeyValueMatchingUtility.Reflection.EasyHandleProperty<int>(o, propertyName, getValue, hanlde);
@@ -440,7 +440,7 @@ namespace ES.EvPointer
     public class PointerHanldeEnum_Property_Reflection : PointerSetInt_Property_Reflection
     {
 
-        [LabelText("使用的处理")] public EnumCollect.HandleTwoFloatFunction hanlde;
+        [LabelText("使用的处理")] public EnumCollect.HandleTwoNumberFunction hanlde;
 
         public override void Handle(object o)
         {

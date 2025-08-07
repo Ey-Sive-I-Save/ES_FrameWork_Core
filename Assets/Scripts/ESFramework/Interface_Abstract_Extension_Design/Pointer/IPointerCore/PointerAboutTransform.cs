@@ -214,7 +214,7 @@ namespace ES.EvPointer
                 {
                     lock_ = tt;
                 }
-                if (tt == null) return -1;
+                if (tt == null) return null;
             }
             //应用
             if (relaValue == EnumCollect.TransformHandle_ValueReleSpace.WorldSpace)
@@ -336,7 +336,7 @@ namespace ES.EvPointer
                 {
                     lock_trans = tt;
                 }
-                if (tt == null) return -1;
+                if (tt == null) return null;
             }
             //应用
             Vector3 startPos = pv3_simulation?.Pick() ?? default;
@@ -431,7 +431,7 @@ namespace ES.EvPointer
                 {
                     lock_trans = tt;
                 }
-                if (tt == null) return -1;
+                if (tt == null) return null;
             }
             //应用
 
@@ -526,7 +526,7 @@ namespace ES.EvPointer
                 {
                     lock_trans = tt;
                 }
-                if (tt == null) return -1;
+                if (tt == null) return null;
             }
             //应用
             Vector3 rela = tt.position - vector3_anchor;
@@ -644,7 +644,7 @@ namespace ES.EvPointer
                 {
                     lock_ = tt;
                 }
-                if (tt == null) return -1;
+                if (tt == null) return null;
             }
             //应用
             if (relaValue == EnumCollect.TransformHandle_ValueReleSpace.WorldSpace)
@@ -773,7 +773,7 @@ namespace ES.EvPointer
                 {
                     lock_ = tt;
                 }
-                if (tt == null) return -1;
+                if (tt == null) return null;
             }
             //应用
             if (relaValue == EnumCollect.TransformHandle_ValueReleSpace.WorldSpace)

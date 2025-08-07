@@ -39,7 +39,7 @@ namespace ES
                     fieldInfo.SetValue(o, t);
                 }
             }
-            public static void EasyHandleField<T>(object o, string field, T t, EnumCollect.HandleTwoFloatFunction func, Type type = null)
+            public static void EasyHandleField<T>(object o, string field, T t, EnumCollect.HandleTwoNumberFunction func, Type type = null)
             {
                 FieldInfo fieldInfo = o.GetType().GetField(field);
                 if (fieldInfo != null)
@@ -49,27 +49,27 @@ namespace ES
                     {
                         float left = Convert.ToSingle(fieldInfo.GetValue(o));
                         float right = f;
-                        fieldInfo.SetValue(o, KeyValueMatchingUtility.Function.FunctionForTwoFloat(left, right, func));
+                        fieldInfo.SetValue(o, KeyValueMatchingUtility.Function.FunctionForHandleTwoFloat(left, right, func));
                     }
                     else if (t is int i && fieldInfo.FieldType.IsAssignableFrom(typeof(int)))
                     {
                         int left = (int)Convert.ToSingle(fieldInfo.GetValue(o));
                         int right = i;
-                        fieldInfo.SetValue(o, (int)KeyValueMatchingUtility.Function.FunctionForTwoFloat(left, right, func));
+                        fieldInfo.SetValue(o, (int)KeyValueMatchingUtility.Function.FunctionForHandleTwoFloat(left, right, func));
                     }
                     else if (t is int e && typeof(Enum).IsAssignableFrom(fieldInfo.FieldType))
                     {
 
                         int left = (int)Convert.ToSingle(fieldInfo.GetValue(o));
                         int right = e.GetHashCode();
-                        fieldInfo.SetValue(o, (int)KeyValueMatchingUtility.Function.FunctionForTwoFloat(left, right, func));
+                        fieldInfo.SetValue(o, (int)KeyValueMatchingUtility.Function.FunctionForHandleTwoFloat(left, right, func));
                     }
                     else if (t is int lay && typeof(LayerMask).IsAssignableFrom(fieldInfo.FieldType))
                     {
 
                         int left = (LayerMask)fieldInfo.GetValue(o);//LayerMask.GetMask((LayerMask.LayerToName((LayerMask)fieldInfo.GetValue(o))));
                         int right = lay;
-                        fieldInfo.SetValue(o, (LayerMask)KeyValueMatchingUtility.Function.FunctionForTwoFloat(left, right, func));
+                        fieldInfo.SetValue(o, (LayerMask)KeyValueMatchingUtility.Function.FunctionForHandleTwoFloat(left, right, func));
                     }
 
 
@@ -83,7 +83,7 @@ namespace ES
                     propertyInfo.SetValue(o, t);
                 }
             }
-            public static void EasyHandleProperty<T>(object o, string field, T t, EnumCollect.HandleTwoFloatFunction func)
+            public static void EasyHandleProperty<T>(object o, string field, T t, EnumCollect.HandleTwoNumberFunction func)
             {
                 PropertyInfo propertyInfo = o.GetType().GetProperty(field);
                 if (propertyInfo != null)
@@ -93,21 +93,21 @@ namespace ES
                     {
                         float left = (int)Convert.ToSingle(propertyInfo.GetValue(o));
                         float right = f;
-                        propertyInfo.SetValue(o, KeyValueMatchingUtility.Function.FunctionForTwoFloat(left, right, func));
+                        propertyInfo.SetValue(o, KeyValueMatchingUtility.Function.FunctionForHandleTwoFloat(left, right, func));
                     }
                     //开始处理 
                     else if (t is int i && propertyInfo.PropertyType.IsAssignableFrom(typeof(int)))
                     {
                         int left = Convert.ToInt32(propertyInfo.GetValue(o));
                         int right = i;
-                        propertyInfo.SetValue(o, (int)KeyValueMatchingUtility.Function.FunctionForTwoFloat(left, right, func));
+                        propertyInfo.SetValue(o, (int)KeyValueMatchingUtility.Function.FunctionForHandleTwoFloat(left, right, func));
                     }
                     else if (t is int e && typeof(Enum).IsAssignableFrom(propertyInfo.PropertyType))
                     {
                         Debug.Log("Yes");
                         int left = (int)Convert.ToSingle(propertyInfo.GetValue(o));
                         int right = e.GetHashCode();
-                        propertyInfo.SetValue(o, (int)KeyValueMatchingUtility.Function.FunctionForTwoFloat(left, right, func));
+                        propertyInfo.SetValue(o, (int)KeyValueMatchingUtility.Function.FunctionForHandleTwoFloat(left, right, func));
                     }
 
                 }

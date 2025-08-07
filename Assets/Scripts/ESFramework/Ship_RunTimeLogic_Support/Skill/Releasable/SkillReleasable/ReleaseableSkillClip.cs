@@ -81,7 +81,7 @@ namespace ES
         [Button("按触发时间排序", ButtonHeight = 50), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
         public void Sort()
         {
-            AllModules.Sort((le, ri) => { if (le.triggerAtTime >= ri.triggerAtTime) return 1;return -1; });
+            AllModules.Sort((le, ri) => { if (le.triggerAtTime >= ri.triggerAtTime) return 1;return null; });
             HandleAndRefreshCurrentIndex();
         }
 

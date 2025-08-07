@@ -46,7 +46,7 @@ namespace ES.EvPointer
     {
         public virtual object Pick(object on= null, object from = null, object with = null)
         {
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("触发针包_选中一个")]
@@ -85,7 +85,7 @@ namespace ES.EvPointer
         {
             if (gameObject != null)
                 gameObject.SetActive(activeTo);
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("触发针_设置游戏物体活动状态_简易来源针")]
@@ -97,7 +97,7 @@ namespace ES.EvPointer
         {
             GameObject gg = gameObjectP?.Pick();
             if (gg != null) gg.SetActive(activeTo);
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("触发针_设置脚本活动状态_超简易")]
@@ -109,7 +109,7 @@ namespace ES.EvPointer
         {
             if (mono != null)
                 mono.enabled = (activeTo);
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("触发针_设置脚本活动状态_简易来源针")]
@@ -121,7 +121,7 @@ namespace ES.EvPointer
         {
             MonoBehaviour mono = comP?.Pick() as MonoBehaviour;
             if (mono != null) mono.enabled = (activeTo);
-            return -1;
+            return null;
         }
     }
     /*[Serializable, TypeRegistryItem("触发针_设置游戏物体活动状态_操作函数")]
@@ -135,7 +135,7 @@ namespace ES.EvPointer
             GameObject mono = comP?.Pick();
             KeyValueMatchingUtility.Function.
             if (mono != null) mono.SetActive(activeTo);
-            return -1;
+            return null;
         }
     }*/
     //抽象基类，生成物体
@@ -149,7 +149,7 @@ namespace ES.EvPointer
         [LabelText("使用的游戏物体")] public GameObject gameObject;
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (gameObject == null) return -1;
+            if (gameObject == null) return null;
             ESPoolMaster.Instance.CreatePool(gameObject, num);
             return base.Pick(on,from,with);
         }
@@ -161,7 +161,7 @@ namespace ES.EvPointer
 
         public override object Pick(object on= null, object from = null, object with = null)
         {
-            if (mono == null) return -1;
+            if (mono == null) return null;
             ESPoolMaster.Instance.CreatePool(mono.gameObject, num);
             return base.Pick(on,from,with);
         }
@@ -291,7 +291,7 @@ namespace ES.EvPointer
                     MonoBehaviour.Destroy(g);
                 }
             }
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("触发针_延迟销毁游戏物体(针来源)")]
@@ -318,7 +318,7 @@ namespace ES.EvPointer
                  ));
 
             }
-            return -1;
+            return null;
         }
     }
     #endregion

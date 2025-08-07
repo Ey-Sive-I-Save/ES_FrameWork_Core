@@ -161,7 +161,7 @@ namespace ES.EvPointer
                 intHepler = UnityEngine.Random.Range(0, pointers.Count);
                 pointers[intHepler]?.Pick();
             }
-            return -1;
+            return null;
         }
     }
     //循环每次触发下一个")]
@@ -176,7 +176,7 @@ namespace ES.EvPointer
                 intHepler %= pointers.Count;
                 pointers[intHepler]?.Pick();
             }
-            return -1;
+            return null;
         }
     }
     //循环触发一遍")]
@@ -195,7 +195,7 @@ namespace ES.EvPointer
                     }
                 }
             }
-            return -1;
+            return null;
         }
     }
 
@@ -337,7 +337,7 @@ namespace ES.EvPointer
             {
                 playerCaster_.Receive(cancelSourceToken);
             }
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("触发针_协程重复")]
@@ -370,7 +370,7 @@ namespace ES.EvPointer
                 applyCancellationSource ? cancelSourceToken = new CancellationTokenSource() : default
                 ));
             if (applyCancellationSource && usePlayerCaster) playerCaster_?.Receive(cancelSourceToken);
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("触发针_协程帧运行一段时间")]
@@ -408,7 +408,7 @@ namespace ES.EvPointer
             {
                 playerCaster_.Receive(cancelSourceToken);
             }
-            return -1;
+            return null;
         }
     }
     #endregion
@@ -444,7 +444,7 @@ namespace ES.EvPointer
                     break;
                 default: break;
             }
-            return -1;
+            return null;
         }
     }
     [Serializable, TypeRegistryItem("发送消息<SendMessage>_简易无参")]

@@ -9,20 +9,7 @@ namespace ES
     [ESDisplayNameKeyToType("数据单元", "原型数据单元")]
     public class ArchitectureDataInfo : SoDataInfo
     {
-        [SerializeReference,LabelText("携带参数")]
-        public IArchitectureValue Value=new ArchitectureTypeValue_Float();
-        public IArchitectureValue getArch => Value;
-
-        public object TheKey => Value?.TheKey;
-
-        public object TheValue => Value?.TheValue;
-        private void OnValidate()
-        {
-          
-        }
-        public void SetValue(object o)
-        {
-            Value.SetValue(o); 
-        }
+        [SerializeReference, LabelText("携带参数")]
+        public List<IArchitectureValue> Values = new List<IArchitectureValue>() { new ArchitectureTypeValue_Float() };
     }
 }

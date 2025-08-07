@@ -33,7 +33,7 @@ namespace ES.EvPointer
         public override object Pick(object on= null, object from = null, object with = null)
         {
             String s = string_Only?.Pick();
-            if (s == null || s == "") return -1;
+            if (s == null || s == "") return null;
             SceneManager.LoadScene(s);
             return base.Pick(on,from,with);
         }
@@ -47,7 +47,7 @@ namespace ES.EvPointer
         public override object Pick(object on= null, object from = null, object with = null)
         {
             String s = string_Only?.Pick();
-            if (s == null || s == "") return -1;
+            if (s == null || s == "") return null;
             SceneManager.LoadSceneAsync(s);
             return base.Pick(on,from,with);
         }
@@ -61,7 +61,7 @@ namespace ES.EvPointer
         public override object Pick(object on= null, object from = null, object with = null)
         {
             String s = string_Only?.Pick();
-            if (s == null || s == "") return -1;
+            if (s == null || s == "") return null;
             SceneManager.LoadScene(s, LoadSceneMode.Additive);
             return base.Pick(on,from,with);
         }
@@ -75,7 +75,7 @@ namespace ES.EvPointer
         public override object Pick(object on= null, object from = null, object with = null)
         {
             String s = string_Only?.Pick();
-            if (s == null || s == "") return -1;
+            if (s == null || s == "") return null;
             SceneManager.LoadSceneAsync(s, LoadSceneMode.Additive);
             return base.Pick(on,from,with);
         }

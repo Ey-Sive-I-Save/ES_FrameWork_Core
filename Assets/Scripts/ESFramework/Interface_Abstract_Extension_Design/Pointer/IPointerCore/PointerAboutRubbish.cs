@@ -89,7 +89,7 @@ namespace ES.EvPointer
     {
         public virtual object Pick(object on= null, object from = null, object with = null)
         {
-            return -1;
+            return null;
         }
     }
     [Serializable]

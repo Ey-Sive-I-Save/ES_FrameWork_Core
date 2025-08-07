@@ -16,7 +16,7 @@ namespace ES
             {
                 if(rigidbody!=null)
                 PickTruely(rigidbody);
-                return -1;
+                return null;
             }
             public abstract void PickTruely(Rigidbody rigidbody);
         }
@@ -103,7 +103,7 @@ namespace ES
         {
             if (rigidbody2D != null)
                 PickTruely(rigidbody2D);
-            return -1;
+            return null;
         }
         public abstract void PickTruely(Rigidbody2D rigidbody2D);
     }

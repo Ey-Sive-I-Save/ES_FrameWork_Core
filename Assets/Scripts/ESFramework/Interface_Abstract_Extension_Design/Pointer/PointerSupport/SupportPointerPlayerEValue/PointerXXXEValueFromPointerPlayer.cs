@@ -179,19 +179,19 @@ namespace ES
     [Serializable, TypeRegistryItem("直接特殊操作浮点数ES值_从针播放器", "ES值")]
     public class PointerHandleDirectESValueFromPointerPlayer_Float : PointerHandleDirectESValueFromPointerPlayer<PointerPlayerWithFloat_ESValue, float>
     {
-        [LabelText("选择的浮点数特殊操作")] public EnumCollect.HandleTwoFloatFunction function;
+        [LabelText("选择的浮点数特殊操作")] public EnumCollect.HandleTwoNumberFunction function;
         public override float GetHandleValue()
         {
-            return KeyValueMatchingUtility.Function.FunctionForTwoFloat(withPlayer.ESValue,direct, function);
+            return KeyValueMatchingUtility.Function.FunctionForHandleTwoFloat(withPlayer.ESValue,direct, function);
         }
     }
     [Serializable, TypeRegistryItem("直接特殊操作整数ES值_从针播放器", "ES值")]
     public class PointerHandleDirectESValueFromPointerPlayer_Int : PointerHandleDirectESValueFromPointerPlayer<PointerPlayerWithInt_ESValue, int>
     {
-        [LabelText("选择的整数特殊操作")] public EnumCollect.HandleTwoFloatFunction function;
+        [LabelText("选择的整数特殊操作")] public EnumCollect.HandleTwoNumberFunction function;
         public override int GetHandleValue()
         {
-            return (int)KeyValueMatchingUtility.Function.FunctionForTwoFloat(withPlayer.ESValue, direct, function);
+            return (int)KeyValueMatchingUtility.Function.FunctionForHandleTwoFloat(withPlayer.ESValue, direct, function);
         }
     }
     [Serializable, TypeRegistryItem("直接特殊操作字符串ES值_从针播放器", "ES值")]
@@ -291,25 +291,25 @@ namespace ES
     [Serializable, TypeRegistryItem("针特殊操作浮点数ES值_从针播放器", "ES值")]
     public class PointerHandlePointerESValueFromPointerPlayer_Float : PointerHandlePointerESValueFromPointerPlayer<PointerPlayerWithFloat_ESValue, float>
     {
-        [LabelText("选择的浮点数特殊操作")] public EnumCollect.HandleTwoFloatFunction function;
+        [LabelText("选择的浮点数特殊操作")] public EnumCollect.HandleTwoNumberFunction function;
         [LabelText("特殊操作的浮点数来源"), SerializeReference] public IPointerForFloat_Only pointerFor = new PointerForFloat_Direct();
         
         
         public override float GetHandleValue()
         {
-            return KeyValueMatchingUtility.Function.FunctionForTwoFloat(withPlayer.ESValue, pointerFor?.Pick() ?? default, function);
+            return KeyValueMatchingUtility.Function.FunctionForHandleTwoFloat(withPlayer.ESValue, pointerFor?.Pick() ?? default, function);
         }
     }
     [Serializable, TypeRegistryItem("针特殊操作整数ES值_从针播放器", "ES值")]
     public class PointerHandlePointerESValueFromPointerPlayer_Int : PointerHandlePointerESValueFromPointerPlayer<PointerPlayerWithInt_ESValue, int>
     {
-        [LabelText("选择的整数特殊操作")] public EnumCollect.HandleTwoFloatFunction function;
+        [LabelText("选择的整数特殊操作")] public EnumCollect.HandleTwoNumberFunction function;
         [LabelText("特殊操作的整数来源"), SerializeReference] public IPointerForInt_Only pointerFor = new PointerForInt_Direct();
 
         
         public override int GetHandleValue()
         {
-            return (int)KeyValueMatchingUtility.Function.FunctionForTwoFloat(withPlayer.ESValue, pointerFor?.Pick() ?? default, function);
+            return (int)KeyValueMatchingUtility.Function.FunctionForHandleTwoFloat(withPlayer.ESValue, pointerFor?.Pick() ?? default, function);
         }
     }
     [Serializable, TypeRegistryItem("针特殊操作字符串ES值_从针播放器", "ES值")]

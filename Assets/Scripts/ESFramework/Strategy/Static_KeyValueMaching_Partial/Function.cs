@@ -19,24 +19,27 @@ namespace ES
         {
             #region 数学
             //操作两个FLoat
-            public static float FunctionForTwoFloat(float f1, float f2, EnumCollect.HandleTwoFloatFunction twoFloatFunction)
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public static float FunctionForHandleTwoFloat(float f1, float f2, EnumCollect.HandleTwoNumberFunction twoFloatFunction)
             {
                 switch (twoFloatFunction)
                 {
-                    case EnumCollect.HandleTwoFloatFunction.Add: return f1 + f2;
-                    case EnumCollect.HandleTwoFloatFunction.Sub: return f1 - f2;
-                    case EnumCollect.HandleTwoFloatFunction.Muti: return f1 * f2;
-                    case EnumCollect.HandleTwoFloatFunction.Divide: if (f2 == 0) f2 = 1; return f1 / f2;
-                    case EnumCollect.HandleTwoFloatFunction.Model: if (f2 == 0) f2 = 1; return f1 % f2;
-                    case EnumCollect.HandleTwoFloatFunction.Mask_And: return (int)f1 & (int)f2;
-                    case EnumCollect.HandleTwoFloatFunction.Mask_Or: return (int)f1 | (int)f2;
-                    case EnumCollect.HandleTwoFloatFunction.Mask_Xor: return (int)f1 ^ (int)f2;
-                    case EnumCollect.HandleTwoFloatFunction.Mask_And_Not: return (int)f1 & ~(int)f2;
+                    case EnumCollect.HandleTwoNumberFunction.Set: return f2;
+                    case EnumCollect.HandleTwoNumberFunction.Add: return f1 + f2;
+                    case EnumCollect.HandleTwoNumberFunction.Sub: return f1 - f2;
+                    case EnumCollect.HandleTwoNumberFunction.Muti: return f1 * f2;
+                    case EnumCollect.HandleTwoNumberFunction.Divide: if (f2 == 0) f2 = 1; return f1 / f2;
+                    case EnumCollect.HandleTwoNumberFunction.Model: if (f2 == 0) f2 = 1; return f1 % f2;
+                    case EnumCollect.HandleTwoNumberFunction.Mask_And: return (int)f1 & (int)f2;
+                    case EnumCollect.HandleTwoNumberFunction.Mask_Or: return (int)f1 | (int)f2;
+                    case EnumCollect.HandleTwoNumberFunction.Mask_Xor: return (int)f1 ^ (int)f2;
+                    case EnumCollect.HandleTwoNumberFunction.Mask_And_Not: return (int)f1 & ~(int)f2;
                     default: return f2;
                 }
             }
 
             //比较两个Float
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public static bool FunctionForCompareTwoFloat(float left, float right, EnumCollect.CompareTwoFunction useFunction)
             {
                 switch (useFunction)
@@ -71,6 +74,43 @@ namespace ES
                 }
                 return false;
             }
+
+            //操作两个Int
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public static int FunctionForHandleTwoInt(int i1, int i2, EnumCollect.HandleTwoNumberFunction twoIntFunction)
+            {
+                switch (twoIntFunction)
+                {
+                    case EnumCollect.HandleTwoNumberFunction.Set: return i2;
+                    case EnumCollect.HandleTwoNumberFunction.Add: return i1 + i2;
+                    case EnumCollect.HandleTwoNumberFunction.Sub: return i1 - i2;
+                    case EnumCollect.HandleTwoNumberFunction.Muti: return i1 * i2;
+                    case EnumCollect.HandleTwoNumberFunction.Divide: if (i2 == 0) i2 = 1; return i1 / i2;
+                    case EnumCollect.HandleTwoNumberFunction.Model: if (i2 == 0) i2 = 1; return i1 % i2;
+                    case EnumCollect.HandleTwoNumberFunction.Mask_And: return (int)i1 & (int)i2;
+                    case EnumCollect.HandleTwoNumberFunction.Mask_Or: return (int)i1 | (int)i2;
+                    case EnumCollect.HandleTwoNumberFunction.Mask_Xor: return (int)i1 ^ (int)i2;
+                    case EnumCollect.HandleTwoNumberFunction.Mask_And_Not: return (int)i1 & ~(int)i2;
+                    default: return i2;
+                }
+            }
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public static bool FunctionForHandleTwoBool(bool b1, bool b2, EnumCollect.HandleTwoBoolFunction twoBoolFunction)
+            {
+                switch (twoBoolFunction)
+                {
+                    case EnumCollect.HandleTwoBoolFunction.Set: return b2;
+                    case EnumCollect.HandleTwoBoolFunction.And: return b1 && b2;
+                    case EnumCollect.HandleTwoBoolFunction.Or: return b1 || b2;
+                    case EnumCollect.HandleTwoBoolFunction.SetNot: return b2?false:true;
+                    case EnumCollect.HandleTwoBoolFunction.On_If: return b2 ? true : b1;
+                    case EnumCollect.HandleTwoBoolFunction.Off_If: return b2 ? false : b1;
+                    case EnumCollect.HandleTwoBoolFunction.Switch_If: return b2?b1^true:b1;
+                    default: return b2;
+                }
+            }
+            //操作两个bool
+
             #endregion
 
             #region 字符串

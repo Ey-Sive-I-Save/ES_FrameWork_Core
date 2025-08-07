@@ -7,8 +7,6 @@ using UnityEngine;
 
 
 namespace ES {
-    public class LinkReceiveChannelList : MonoBehaviour
-    {
         public class LinkReceiveList<Channel,Link> where Link : ILink
         {
             public SafeNormalList<IReceiveChannelLink<Channel,Link>> IRS = new SafeNormalList<IReceiveChannelLink<Channel, Link>>();
@@ -52,5 +50,5 @@ namespace ES {
                 IRS.TryRemove(receive);
             }
         }
-    }
+    //
 }
