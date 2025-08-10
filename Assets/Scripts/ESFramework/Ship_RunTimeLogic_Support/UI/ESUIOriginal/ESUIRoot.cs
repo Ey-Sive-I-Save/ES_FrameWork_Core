@@ -22,7 +22,7 @@ namespace ES
             var es = transform.GetComponentsInChildren<ESUIPanelCore>();
             foreach (var i in es)
             {
-                if (i.register && i != this)
+                if (i.RegisterToPanel && i != this)
                 {
                     _AddKeyReleThis(i, strings);
                 }

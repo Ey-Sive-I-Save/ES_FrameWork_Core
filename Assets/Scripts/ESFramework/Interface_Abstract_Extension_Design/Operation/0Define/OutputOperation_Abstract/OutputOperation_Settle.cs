@@ -18,7 +18,7 @@ namespace ES {
     }
     public abstract class OutputOperationSettle<On, From, With, ValueType_> : IOutputOperation<On, From, With>
     {
-        public abstract void TryOpeation(On on, From from, With with);
+        public abstract void TryOperation(On on, From from, With with);
         public abstract void TryCancel(On on, From from, With with);
     }
     [Serializable]
@@ -35,7 +35,7 @@ namespace ES {
         [LabelText("优先级")] public int Priority = 0;
         [LabelText("基值")] public float baseValue = 1;
         [LabelText("每级偏移")] public float offsetPerLevel = 0.1f;
-        public sealed override void TryOpeation(Entity on, Entity from, EntityState_Buff with)
+        public sealed override void TryOperation(Entity on, Entity from, EntityState_Buff with)
         {
             var settle = GetSettlement(on, from, with);
             var operation = GetEnableSettle(on, from, with);

@@ -1,0 +1,114 @@
+using DG.Tweening;
+using ES;
+using Sirenix.OdinInspector;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+
+
+namespace ES {
+    public class UITweenOutputOperation : IOutputOperationUI
+    {
+        [SerializeReference,LabelText("使用的Tween")]
+        public UITweenGetter TweenGetter;
+
+        [ToggleGroup("enableCancel", "可取消的")]
+        public bool enableCancel = true;
+        [ToggleGroup("enableCancel")]//可取消的话-就会存入缓冲并且可以移除掉
+        public UITweenType uiTweenType;
+        [ToggleGroup("enableCancel"),LabelText("重启时尽可能选择重头开始")]
+        public bool alwaysReStart = true;
+        [ToggleGroup("enableCancel"), LabelText("取消时直接完成")]
+        public bool cancelToComplete= true;
+        [ToggleGroup("enableCancel"), LabelText("取消时完成-使用回调"),ShowIf("cancelToComplete")]
+        public bool cancelToCompleteAndCallBack = true;
+
+
+        [ToggleGroup("enableEase", "带曲线的")]
+        public bool enableEase = false;
+        [ToggleGroup("enableEase"), LabelText("完全自定义曲线")]
+        public bool SelfDefine = false;
+        [ToggleGroup("enableEase"), LabelText("曲线类型"),ShowIf("@!SelfDefine")]
+        public Ease ease = Ease.Unset;
+        [ToggleGroup("enableEase"), LabelText("完全自定义曲线"), ShowIf("SelfDefine")]
+        public AnimationCurve SelfDefineCurve = AnimationCurve.Linear(0,0,1,1);
+
+        [ToggleGroup("enableTimeControl", "时间扩展控制")]
+        public bool enableTimeControl = false;
+        [ToggleGroup("enableTimeControl"),LabelText("延迟时间")]
+        public float delay = -1;
+        [ToggleGroup("enableTimeControl"), LabelText("忽略Unity的TimeScale")]
+        public bool ignoreUnityTimeScale = false;
+        public void TryCancel(ESUIElementCore on, ESUIElementCore from, ILink_UI_OperationOptions with)
+        {
+            if (enableCancel)//可取消，则会缓存内容
+            {
+                var t = on.UITweens.GetElement(uiTweenType, this);
+                if (t == null)
+                {
+                    var newT = GetAndDecorateNewTween(on, from);
+                    newT.SetAutoKill(false);
+                    on.UITweens.TryAddOnly(uiTweenType, this, newT);
+                }
+                else
+                {
+                    if (alwaysReStart||t.IsComplete())
+                    {
+                        t.Restart();
+                    }
+                }
+            }
+            else
+            {
+                GetAndDecorateNewTween(on,from);//自动就执行了哈-√
+            }
+        }
+
+        public void TryOperation(ESUIElementCore on, ESUIElementCore from, ILink_UI_OperationOptions with)
+        {
+            if (enableCancel)//可取消，则会缓存内容
+            {
+                var t = on.UITweens.GetElement(uiTweenType, this);
+                if (t == null)
+                {
+                    if (t.IsComplete())
+                    {
+
+                    }
+                    else
+                    {
+                        //没完成
+                        if (cancelToComplete)
+                        {
+                            t.Complete(cancelToCompleteAndCallBack);
+                        }
+                    }
+                }
+            }
+            //滚-不支持取消
+        }
+        public Tween GetAndDecorateNewTween(ESUIElementCore on, ESUIElementCore from)
+        {
+            Tween tween = TweenGetter.GetTween(on,from);
+            if (tween != null)
+            {
+                if (enableEase)
+                {
+                    if (SelfDefine) tween.SetEase(SelfDefineCurve);
+                    else tween.SetEase(ease);
+                }
+
+                if (enableTimeControl)
+                {
+                    if (delay > 0) tween.SetDelay(delay);
+                    if (ignoreUnityTimeScale) tween.SetUpdate(true);
+                }
+            }
+
+            return tween;
+        }
+    }
+}
+

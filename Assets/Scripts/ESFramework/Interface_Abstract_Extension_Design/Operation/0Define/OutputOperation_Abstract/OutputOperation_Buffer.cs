@@ -19,7 +19,7 @@ namespace ES
         where BufferSource : BufferDataSource<ValueType>
         where This : OutputOperationBuffer<On, From, With, ValueType, Buffer, BufferSource, This>
     {
-        public abstract void TryOpeation(On on, From from, With with);
+        public abstract void TryOperation(On on, From from, With with);
         public abstract void TryCancel(On on, From from, With with);
         public Buffer GetBufferOnEnableExpand(On on, From from, With with)
         {
@@ -112,7 +112,7 @@ namespace ES
     [Serializable, TypeRegistryItem("缓冲输出-浮点数-导向-直接输入-EEB")]
     public class OutputOperationBufferrFloatEEB_TargetAndDirectInput : OutputOperationBufferFloat_TargetAndDirectInput<Entity, Entity, EntityState_Buff, ITargetOperationFloatEEB>, IOutputOperationEEB
     {
-        public override void TryOpeation(Entity on, Entity from, EntityState_Buff with)
+        public override void TryOperation(Entity on, Entity from, EntityState_Buff with)
         {
             GetBufferOnEnableExpand(on, from, with);
         }

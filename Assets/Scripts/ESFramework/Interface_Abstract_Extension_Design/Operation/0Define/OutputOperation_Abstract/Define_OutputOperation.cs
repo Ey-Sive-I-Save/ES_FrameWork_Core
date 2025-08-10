@@ -16,11 +16,11 @@ namespace ES
     */
     public interface IOutputOperation<On, From, With> : IOperation<On, From, With>, IPointerNotBack<On, From, With>
     {
-        void TryOpeation(On on, From from, With with);
+        void TryOperation(On on, From from, With with);
         void TryCancel(On on, From from, With with);
         void IPointerNotBack<On, From, With>.Pick(On on, From from, With with)
         {
-            TryOpeation(on, from, with);
+            TryOperation(on, from, with);
         }
 
     }
@@ -31,7 +31,7 @@ namespace ES
 
         }
         public Action<On, From, With> OnCancel = DefaultAction;
-        public  abstract void TryOpeation(On on, From from, With with);
+        public  abstract void TryOperation(On on, From from, With with);
         public virtual void TryCancel(On on, From from, With with) {
             OnCancel?.Invoke(on,from,with);
         }
@@ -53,11 +53,11 @@ namespace ES
         {
             foreach(var i in handles)
             {
-                i.TryOpeation(on,from,with);
+                i.TryOperation(on,from,with);
             }
         }
 
-        public void TryOpeation(Entity on, Entity from, EntityState_Buff with)
+        public void TryOperation(Entity on, Entity from, EntityState_Buff with)
         {
             foreach (var i in handles)
             {

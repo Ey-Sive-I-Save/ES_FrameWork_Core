@@ -48,6 +48,7 @@ namespace ES
             HasDelegate = true;
         }
         #endregion
+
         [MenuItem("Tools/ES工具/ES数据窗口")]
         public static void TryOpenWindow()
         {
@@ -69,7 +70,7 @@ namespace ES
         public const string PageName_DataGroupOnChooseEditInfo = "选中组和编辑";
 
 
-        [NonSerialized] public Page_Root_StartUse pageForStartUsePage;
+        [NonSerialized] public Page_Root_Data_StartUse pageForStartUsePage;
         [NonSerialized] public PageRoot_DataScpirtCodeTool pageRootForCodeGen;
         [NonSerialized] public Page_CreateNewSoPackOrSearch pageForSodataPack;
         [NonSerialized] public Page_CreateNewGroupOrSearch pageForSodataGroup;
@@ -249,7 +250,7 @@ namespace ES
     #region 开始
     //开始使用界面
     [Serializable]
-    public class Page_Root_StartUse : ESWindowPageBase
+    public class Page_Root_Data_StartUse : ESWindowPageBase
     {
         [Title("开始使用ES SO数据管理窗口！！", subtitle: "为了快速入门，我们从最简单的概念开始排列介绍和布局")]
         [DisplayAsString(alignment: TextAlignment.Center, fontSize: 20), HideLabel]

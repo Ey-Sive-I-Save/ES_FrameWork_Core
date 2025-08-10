@@ -3,8 +3,9 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-
+using UnityEngine.UIElements;
 
 namespace ES
 {
@@ -16,13 +17,23 @@ namespace ES
         public ESUIOriginalDomain OriginalDomain;
 
         #endregion
-        [LabelText("正在加载")] public bool IsLoading = false;
+
+
+
+        #region 自主开关
+        [ToggleGroup("AutoOpenAndCloseByEnableState","打开自主活动")]
+        public bool AutoOpenAndCloseByEnableState = true;
+       
+        #endregion
+
+
+        #region 开关
         public void TryOpen(ILink link = default)
         {
             if (enabled) return;//还在使用呢
             this.enabled = true;  //可见不一定可用把
             OnOpen(link);
-            gameObject.SetActive(true);//打开必可见
+            gameObject.SetActive(true);//打开必可见-√
         }
         public void TryClose(ILink link = default)
         {
@@ -33,12 +44,34 @@ namespace ES
         }
         protected virtual void OnOpen(ILink link)
         {
-
+            //
+            
         }
         protected virtual void OnClose(ILink link)
         {
 
         }
+        #endregion
+
+        #region 控件和脚本
+        [TabGroup("常规脚本引用"), LabelText("引用Rect Tran")]
+        public ESReferLazy<RectTransform> Refer_Rect = new ESReferLazy<RectTransform>();
+/*        [TabGroup("常规脚本引用"),LabelText("启用Imahge")]
+        public bool EnableImage = false;
+        [TabGroup("常规脚本引用")]
+        public ESReferLazy<Image> Refer_Image = new ESReferLazy<Image>();
+        [TabGroup("常规脚本引用"), LabelText("启用TMP_Text")]
+        public bool EnableTMP = false;
+        [TabGroup("常规脚本引用")]
+        public ESReferLazy<TMP_Text> Refer_TextPro = new ESReferLazy<TMP_Text>();
+        [TabGroup("常规脚本引用"), LabelText("启用Button")]
+        public bool EnableButton = false;
+        [TabGroup("常规脚本引用")]
+        public ESReferLazy<Button> Refer_Button = new ESReferLazy<Button>();*/
+
+
+        #endregion
+
         //注册和注销
         #region 检查器专属
 
@@ -91,7 +124,7 @@ namespace ES
         //注册扩展Domain前发生前
         protected virtual void OnBeforeAwakeRegister()
         {
-
+            Refer_Rect.SetValueSourceGetter(()=>transform as RectTransform);
         }
         //仅用于手动注册
         protected virtual void OnAwakeRegisterOnly()
@@ -119,6 +152,7 @@ namespace ES
 
         protected virtual void OnEnable()
         {
+            if (AutoOpenAndCloseByEnableState) TryOpen();
             for (int i = 0; i < domains.Count; i++)
             {
                 domains[i].TryEnableSelf();
@@ -130,6 +164,7 @@ namespace ES
 #if UNITY_EDITOR
             if (ESEditorRuntimePartMaster.IsQuit) return;
 #endif
+            if (AutoOpenAndCloseByEnableState) TryClose();
             for (int i = 0; i < domains.Count; i++)
             {
                 domains[i].TryDisableSelf();

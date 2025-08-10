@@ -48,7 +48,7 @@ namespace ES
     [Serializable]
     public sealed class ESReferLazy<T> where T : class
     {
-        [ShowInInspector]
+        [ShowInInspector,LabelText("引用值")]
         public T Value
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -62,9 +62,10 @@ namespace ES
             set
             { _SetDirtyInternal(_value = value); }
         }
-        
+        [SerializeField,HideInInspector]
         private T _value;
         private float lastTime = -1;
+        [ReadOnly,LabelText("已赋值")]
         public bool HasValue = false;
         private bool safe = true;
         public ESReferLazy() { }

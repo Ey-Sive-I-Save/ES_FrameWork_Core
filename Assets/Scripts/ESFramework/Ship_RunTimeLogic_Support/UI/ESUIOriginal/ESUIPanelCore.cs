@@ -25,7 +25,7 @@ namespace ES
             var es = transform.GetComponentsInChildren<ESUIElementCore>();
             foreach (var i in es)
             {
-                if (i.register&&i!=this)
+                if (i.RegisterToPanel&&i!=this)
                 {
                     AddKeyReleThis(i,strings);
                 }
@@ -89,7 +89,7 @@ namespace ES
             if (root != null)
             {
                 _myRoot = root;
-                if (register)
+                if (RegisterToPanel)
                 {
                     _myRoot._RegisterPanel(this);
                 }

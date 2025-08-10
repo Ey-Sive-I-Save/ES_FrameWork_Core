@@ -354,7 +354,7 @@ namespace ES
             //启用操作
             if (buffSharedData.EnableOnOffTrigger)
             {
-                buffSharedData.opeationForOnOff.TryOpeation(Entity, from, this);
+                buffSharedData.opeationForOnOff.TryOperation(Entity, from, this);
             }
             base.RunStateEnterLogic();
         }
@@ -403,7 +403,7 @@ namespace ES
                 {
                     triggerTimer = buffSharedData.triggerTimeDis;
                     //执行
-                    buffSharedData.opeationForTimeDis.TryOpeation(Entity, from, this);
+                    buffSharedData.opeationForTimeDis.TryOperation(Entity, from, this);
                 }
             }
             //缓冲支持更迭

@@ -7,8 +7,12 @@ using UnityEngine;
 
 namespace ES
 {
+    [Serializable]
+    public struct ILink_UI_OperationOptions
+    {
 
-    public interface IUILink : ILink
+    }
+    public interface ILink_UI: ILink
     {
        
     }

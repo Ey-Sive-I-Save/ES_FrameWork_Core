@@ -15,7 +15,7 @@ namespace ES
     {
         public abstract void TryCancel(On on, From from, With with);
 
-        public abstract void TryOpeation(On on, From from, With with);
+        public abstract void TryOperation(On on, From from, With with);
     }
     [Serializable]
     public abstract class OutputOperationValue_CompositeWithSupportAndTarget<On, From, With, ValueType, OperationType, HandleOptions,Support, Target> :
@@ -26,7 +26,7 @@ namespace ES
         [SerializeReference, LabelText("数据支持")] public Support support=new Support();
 
         [SerializeReference, LabelText("数据支持")] public Target target;
-        public override void TryOpeation(On on, From from, With with)
+        public override void TryOperation(On on, From from, With with)
         {
             var value = support.GetOpeationValue(on,from,with);
             target.TargetOpeation(on,from,with,value, support.GetOperationOptions);

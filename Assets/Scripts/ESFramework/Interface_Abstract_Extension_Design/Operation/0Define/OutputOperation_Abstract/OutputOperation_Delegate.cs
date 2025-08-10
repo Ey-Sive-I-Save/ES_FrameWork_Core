@@ -92,7 +92,7 @@ namespace ES
         {
             if (WhenHappen != null)
             {
-                WhenHappen.TryOpeation(on, from, with);
+                WhenHappen.TryOperation(on, from, with);
                 if(WhenHappen is IOutputOperationFlag_MustCancel) OnCancel += WhenHappen.TryCancel;
             }
             SetWhenActionHappenCountChange(on, from, with);
@@ -104,7 +104,7 @@ namespace ES
     [Serializable,TypeRegistryItem("委托输出-输出操作-真实攻击他人时")]
     public class OnAttack : OutputOperationDelegate_EEB_BaseOutput<Action<Entity,Damage>>
     {
-        public override void TryOpeation(Entity on, Entity from, EntityState_Buff with)
+        public override void TryOperation(Entity on, Entity from, EntityState_Buff with)
         {
             on.OnTruelyAttack += GetActionOnEnableExpand(on,from,with);
         }
@@ -121,7 +121,7 @@ namespace ES
     [Serializable, TypeRegistryItem("委托输出-输出操作-被真实攻击时")]
     public class OnBeAttack : OutputOperationDelegate_EEB_BaseOutput<Action<Entity, Damage>>
     {
-        public override void TryOpeation(Entity on, Entity from, EntityState_Buff with)
+        public override void TryOperation(Entity on, Entity from, EntityState_Buff with)
         {
             on.OnTruelyBeAttack += GetActionOnEnableExpand(on, from, with);
         }
@@ -138,7 +138,7 @@ namespace ES
     [Serializable, TypeRegistryItem("委托输出-输出操作-尝试攻击他人时")]
     public class OnTryAttack : OutputOperationDelegate_EEB_BaseOutput<Action<Entity, Damage>>
     {
-        public override void TryOpeation(Entity on, Entity from, EntityState_Buff with)
+        public override void TryOperation(Entity on, Entity from, EntityState_Buff with)
         {
             on.OnTryAttack += GetActionOnEnableExpand(on, from, with);
         }
@@ -155,7 +155,7 @@ namespace ES
     [Serializable, TypeRegistryItem("委托输出-输出操作-被尝试攻击时")]
     public class OnTryBeAttack : OutputOperationDelegate_EEB_BaseOutput<Action<Entity, Damage>>
     {
-        public override void TryOpeation(Entity on, Entity from, EntityState_Buff with)
+        public override void TryOperation(Entity on, Entity from, EntityState_Buff with)
         {
             on.OnTryBeAttack += GetActionOnEnableExpand(on, from, with);
         }
@@ -173,7 +173,7 @@ namespace ES
     [Serializable, TypeRegistryItem("委托输出-输出操作-捡起物品")]
     public class OnTryTake: OutputOperationDelegate_EEB_BaseOutput<Action<Entity, Damage>>
     {
-        public override void TryOpeation(Entity on, Entity from, EntityState_Buff with)
+        public override void TryOperation(Entity on, Entity from, EntityState_Buff with)
         {
             on.OnTestOnly_TakeAObject += GetActionOnEnableExpand(on, from, with);
         }
@@ -190,7 +190,7 @@ namespace ES
     [Serializable, TypeRegistryItem("委托输出-输出操作-击杀时")]
     public class OnKill : OutputOperationDelegate_EEB_BaseOutput<Action<Entity, Damage>>
     {
-        public override void TryOpeation(Entity on, Entity from, EntityState_Buff with)
+        public override void TryOperation(Entity on, Entity from, EntityState_Buff with)
         {
             on.OnTestOnly_Kill += GetActionOnEnableExpand(on, from, with);
         }
