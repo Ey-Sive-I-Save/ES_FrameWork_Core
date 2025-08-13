@@ -12,7 +12,7 @@ namespace ES {
     {
        
     }
-    public abstract class EMS_Abstarct_Define <Channel, Link> : MonoBehaviour where Link : ILink
+    public abstract class EMS_Abstarct_Define <Channel, Link> : EMS_Abstract where Link : ILink
     {
         public abstract void SendLink(Channel channel, Link link);
         public abstract void AddRecieve(IReceiveChannelLink<Channel, Link> ir);

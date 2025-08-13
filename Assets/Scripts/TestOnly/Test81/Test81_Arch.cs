@@ -10,6 +10,7 @@ using UnityEngine.Events;
 namespace ES {
     public class Test81_Arch : MonoBehaviour,IReceiveLink<Link_ArchEvent_FloatChange>,IReceiveChannelLink<string, Link_ArchEvent_FloatChange>
     {
+        public Transform t;
         [Button]
         public void aa()
         {
