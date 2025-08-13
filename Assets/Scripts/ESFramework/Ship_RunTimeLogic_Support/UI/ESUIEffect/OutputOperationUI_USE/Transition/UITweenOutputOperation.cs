@@ -9,6 +9,7 @@ using UnityEngine;
 
 
 namespace ES {
+    [Serializable,TypeRegistryItem("UI操作-Dotween")]
     public class UITweenOutputOperation : IOutputOperationUI
     {
         [SerializeReference,LabelText("使用的Tween")]
@@ -18,11 +19,11 @@ namespace ES {
         public bool enableCancel = true;
         [ToggleGroup("enableCancel")]//可取消的话-就会存入缓冲并且可以移除掉
         public UITweenType uiTweenType;
-        [ToggleGroup("enableCancel"),LabelText("重启时尽可能选择重头开始")]
-        public bool alwaysReStart = true;
+        [ToggleGroup("enableCancel"),LabelText("重启时尽可能选择重头开始(存储初始态)")]
+        public bool alwaysReStart = false;
         [ToggleGroup("enableCancel"), LabelText("取消时直接完成")]
         public bool cancelToComplete= true;
-        [ToggleGroup("enableCancel"), LabelText("取消时完成-使用回调"),ShowIf("cancelToComplete")]
+        [ToggleGroup("enableCancel"), LabelText("取消时完成-会使用回调"),ShowIf("cancelToComplete")]
         public bool cancelToCompleteAndCallBack = true;
 
 
@@ -41,8 +42,14 @@ namespace ES {
         public float delay = -1;
         [ToggleGroup("enableTimeControl"), LabelText("忽略Unity的TimeScale")]
         public bool ignoreUnityTimeScale = false;
-        public void TryCancel(ESUIElementCore on, ESUIElementCore from, ILink_UI_OperationOptions with)
+
+        [ToggleGroup("enableOther", "其他设置")]
+        public bool enableOther = false;
+        [ToggleGroup("enableOther"), LabelText("是相对的<Reletive>")]
+        public bool rele = false;
+        public void TryOperation(ESUIElementCore on, ESUIElementCore from, ILink_UI_OperationOptions with)
         {
+            
             if (enableCancel)//可取消，则会缓存内容
             {
                 var t = on.UITweens.GetElement(uiTweenType, this);
@@ -66,12 +73,12 @@ namespace ES {
             }
         }
 
-        public void TryOperation(ESUIElementCore on, ESUIElementCore from, ILink_UI_OperationOptions with)
+        public void TryCancel(ESUIElementCore on, ESUIElementCore from, ILink_UI_OperationOptions with)
         {
             if (enableCancel)//可取消，则会缓存内容
             {
                 var t = on.UITweens.GetElement(uiTweenType, this);
-                if (t == null)
+                if (t != null)
                 {
                     if (t.IsComplete())
                     {
@@ -104,6 +111,10 @@ namespace ES {
                 {
                     if (delay > 0) tween.SetDelay(delay);
                     if (ignoreUnityTimeScale) tween.SetUpdate(true);
+                }
+                if (enableOther)
+                {
+                    if (rele) tween.SetRelative();
                 }
             }
 

@@ -18,38 +18,39 @@ namespace ES
 
         #endregion
 
-
-
         #region 自主开关
-        [ToggleGroup("AutoOpenAndCloseByEnableState","打开自主活动")]
+        [ToggleGroup("AutoOpenAndCloseByEnableState", "打开自主活动")]
         public bool AutoOpenAndCloseByEnableState = true;
-       
+        [ToggleGroup("AutoOpenAndCloseByEnableState"),LabelText("第一次开启时认为已经完成初始化")]
+        public bool InitOpen = false;
         #endregion
 
-
         #region 开关
-        public void TryOpen(ILink link = default)
+        [ButtonGroup("oc"), Button("打开")]
+        public void TryOpen(bool must=false)
         {
-            if (enabled) return;//还在使用呢
+            if (!must&&enabled && InitOpen) return;//还在使用呢
+            InitOpen = true;
             this.enabled = true;  //可见不一定可用把
-            OnOpen(link);
+            OnOpen();
             gameObject.SetActive(true);//打开必可见-√
         }
-        public void TryClose(ILink link = default)
+        [ButtonGroup("oc"),Button("关闭")]
+        public void TryClose(bool must = false)
         {
-            if (!enabled) return;//已经禁用了哈
-            this.enabled = false;
-            OnClose(link);
+            if (!must&&!enabled) return;//已经禁用了哈
+            if(gameObject.activeInHierarchy)this.enabled = false;
+            OnClose();
             //关闭不一定可见--或者需要等待不可见
         }
-        protected virtual void OnOpen(ILink link)
+        protected virtual void OnOpen()
         {
             //
             
         }
-        protected virtual void OnClose(ILink link)
+        protected virtual void OnClose()
         {
-
+            
         }
         #endregion
 
@@ -152,7 +153,9 @@ namespace ES
 
         protected virtual void OnEnable()
         {
-            if (AutoOpenAndCloseByEnableState) TryOpen();
+            if (AutoOpenAndCloseByEnableState) {
+                TryOpen(true); 
+            }
             for (int i = 0; i < domains.Count; i++)
             {
                 domains[i].TryEnableSelf();
@@ -161,10 +164,15 @@ namespace ES
 
         protected virtual void OnDisable()
         {
+            
 #if UNITY_EDITOR
             if (ESEditorRuntimePartMaster.IsQuit) return;
 #endif
-            if (AutoOpenAndCloseByEnableState) TryClose();
+            
+            if (AutoOpenAndCloseByEnableState) {
+                //防止不小心关掉
+                TryClose(true); 
+            }
             for (int i = 0; i < domains.Count; i++)
             {
                 domains[i].TryDisableSelf();

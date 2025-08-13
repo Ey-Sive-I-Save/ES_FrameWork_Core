@@ -27,7 +27,7 @@ public class ReadmeEditor : Editor
             
             $"All contents under {s_ReadmeSourceDirectory} will be removed, are you sure you want to proceed?",
             "Proceed",
-            "Cancel"))
+            "CanCancel"))
         {
             if (Directory.Exists(s_ReadmeSourceDirectory))
             {

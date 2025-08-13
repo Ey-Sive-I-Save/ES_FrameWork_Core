@@ -19,12 +19,17 @@ public abstract class UITweenGetter
 [Serializable,TypeRegistryItem("UITween_简易位移")]
 public class UITweenGetter_EasyAnchorPos : UITweenGetter
 {
+    [LabelText("位置")]
     public Vector2 vector2;
+    [LabelText("是From的")]
+    public bool isFrom;
     public override Tween GetTween(ESUIElementCore on, ESUIElementCore from)
     {
         if (on.Refer_Rect != null)
         {
-            return on.Refer_Rect.Value.DOAnchorPos(vector2, duar);
+            var d = on.Refer_Rect.Value.DOAnchorPos(vector2, duar);
+            if (isFrom) d.From();
+            return d;
         }
         return null;
     }

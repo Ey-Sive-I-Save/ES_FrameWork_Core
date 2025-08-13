@@ -62,20 +62,28 @@ namespace ES
         [TabGroup("开关执行"), LabelText("关闭时执行"), SerializeReference]
         public IOutputOperationUI whenClose;
 
-        protected override void OnOpen(ILink link)
+        protected override void OnOpen()
         {
-            base.OnOpen(link);
+            base.OnOpen();
             if (whenOpen != null)
             {
                 whenOpen.TryOperation(this,_myParentPanel, defaultLink);
             }
+            if (whenClose != null)
+            {
+                whenClose.TryCancel(this, _myParentPanel, defaultLink);
+            }
         }
-        protected override void OnClose(ILink link)
+        protected override void OnClose()
         {
-            base.OnClose(link);
+            base.OnClose();
             if (whenOpen != null)
             {
-                whenOpen.TryOperation(this, _myParentPanel, defaultLink);
+                whenOpen.TryCancel(this, _myParentPanel, defaultLink);
+            }
+            if (whenClose != null)
+            {
+                whenClose.TryOperation(this, _myParentPanel, defaultLink);
             }
         }
 
