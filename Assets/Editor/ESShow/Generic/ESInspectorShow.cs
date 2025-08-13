@@ -51,7 +51,7 @@ namespace ES
         }
         #endregion
 
-        #region 选开部分声明变量
+        #region 分组部分声明变量
         private static bool showAllFold = false;
         public static bool IsCacheingDirty = true;
         public static List<Component> CachingCompos = new List<Component>();
