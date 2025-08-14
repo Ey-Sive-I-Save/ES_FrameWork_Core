@@ -363,7 +363,7 @@ namespace ES
             string cleanedCode = Regex.Replace(code, @"\r?\n", "\n"); // 统一换行符
             string pattern = @"[ \t]+";  // \s 匹配使用的空白符（空格、制表符等）
             cleanedCode = Regex.Replace(cleanedCode, pattern, " "); // 最多保留两个连续空行和空格
-            
+
             StringBuilder sb = new StringBuilder();
             foreach (char c in cleanedCode)
             {
@@ -380,7 +380,7 @@ namespace ES
                 }
             }
 
-            return sb.ToString()+"\n//ES已修正";
+            return sb.ToString() + "\n//ES已修正";
         }
         #endregion
 

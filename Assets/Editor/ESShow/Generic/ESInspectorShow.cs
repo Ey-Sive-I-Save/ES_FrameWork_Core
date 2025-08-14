@@ -131,7 +131,7 @@ namespace ES
                         #endregion
 
                         #region 绘制脚本收集
-                        {//尝试绘制收集
+                        if(go==null/*关闭*/) {//尝试绘制收集
                             SirenixEditorGUI.BeginBox();
                             SirenixEditorGUI.BeginBoxHeader();
                             showAllFold = SirenixEditorGUI.Foldout(showAllFold, "脚本收集");

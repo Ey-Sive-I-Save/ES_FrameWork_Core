@@ -79,6 +79,16 @@ namespace ES
             [InspectorName("该事件将会在游戏核心进行处理")] ServerToClients = 4,
             [InspectorName("该事件将会在游戏核心进行处理")] ServerToTarget = 8
         }
+
+        public enum Axis_XY
+        {
+            [InspectorName("X轴")] X, [InspectorName("Y轴")] Y
+        }
+
+        public enum Axis_XYZ
+        {
+            [InspectorName("X轴")] X, [InspectorName("Y轴")] Y, [InspectorName("Z轴")]Z
+        }
     }
 }
 

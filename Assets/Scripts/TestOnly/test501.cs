@@ -41,11 +41,18 @@ public class test501 : SerializedMonoBehaviour
         target6 = KeyValueMatchingUtility.Creator.DeepClone(source6);
         target5 = KeyValueMatchingUtility.Creator.DeepClone(source5);*/
     }
+    float a, b;
     private void Update()
     {
-       
-        for (int i = 0; i < 100_000; i++)
+       /* (int left, int right) s = (6,8);
+        switch (s)
         {
+            case (_, _) w  > s.right: return;
+        }*/
+        for (int i = 0; i < 100_0000; i++)
+        {
+         
+           // aa._SafeDivide(b);
             //隐式调用
           /*  _deepcloneT _DeepcloneT_ = KeyValueMatchingUtility.Creator.DeepClone(source5);
 */

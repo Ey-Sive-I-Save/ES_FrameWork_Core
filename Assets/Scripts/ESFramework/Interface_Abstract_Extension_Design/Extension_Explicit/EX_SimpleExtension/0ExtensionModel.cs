@@ -6,10 +6,15 @@ using UnityEngine;
 
 namespace ES
 {
-
+    //扩展模板
     public static class ExtensionModel 
     {
-        
+        public static object _Method(this object source)
+        {
+            //DO
+
+            return source;
+        }
     }
 }
 

@@ -9,7 +9,7 @@ using UnityEngine;
 
 
 namespace ES {
-    [Serializable,TypeRegistryItem("UI操作-Dotween")]
+    [Serializable,TypeRegistryItem("0※UI操作-Dotween",icon:SdfIconType.BatteryCharging)]
     public class UITweenOutputOperation : IOutputOperationUI
     {
         [SerializeReference,LabelText("使用的Tween")]

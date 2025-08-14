@@ -3,7 +3,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Text;
+using Unity.Burst;
 using UnityEngine;
 
 namespace ES
@@ -12,6 +14,8 @@ namespace ES
     public static class ExtensionForFloatAndInt
     {
         #region 运算辅助
+        
+        [BurstCompile]
         public static float _SafeDivide(this float f, float b)
         {
             if (b == 0) b = 1;
