@@ -143,14 +143,6 @@ namespace ES
 
         #region 重写逻辑
 
-        protected virtual void Update()
-        {
-            for (int i = 0; i < domains.Count; i++)
-            {
-                domains[i].TryUpdateSelf();
-            }
-        }
-
         protected virtual void OnEnable()
         {
             if (AutoOpenAndCloseByEnableState) {

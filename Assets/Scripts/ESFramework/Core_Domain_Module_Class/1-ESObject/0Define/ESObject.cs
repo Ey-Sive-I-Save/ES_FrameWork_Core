@@ -68,7 +68,7 @@ namespace ES
             , InlineButton("DebugNO", "输出NO信息")]
         [LabelText("链接为网络对象")]
 #endif
-        [ ToggleGroup("IsNet"), ShowIf("IsNet"),ESBackGround("yellow",0.25f)]
+        [ ToggleGroup("IsNet"), ShowIf("IsNet"),ESBackGround("yellow",0.25f,withAlpha =0.1f)]
         public ESNetObject NetObject;
         [ToggleGroup("IsNet"), ShowIf("IsNet"), ESBackGround("yellow", 0.25f)]
         public ESNetBehaviour NetBehaviour;

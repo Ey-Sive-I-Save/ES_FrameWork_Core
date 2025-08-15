@@ -8,6 +8,20 @@ using UnityEngine;
 
 public class test501 : SerializedMonoBehaviour
 {
+    [ESBoolOption("放弃转化标准格式","转化为标准格式")]
+    public bool YeO = false;
+
+    [ESBoolOption("使用旧版功能", "使用新版功能")]
+    public bool YeO1 = false;
+
+    [ESBoolOption("@hello()", "@hello2")]
+    public bool YeO2 = false;
+
+    public string hello()
+    {
+        return "只能作用于自己";
+    }
+    public string hello2 = "灵活获取作用源";
 
     public Stack<Attackable> aaa = new Stack<Attackable>();
 
@@ -49,7 +63,7 @@ public class test501 : SerializedMonoBehaviour
         {
             case (_, _) w  > s.right: return;
         }*/
-        for (int i = 0; i < 100_0000; i++)
+       //for (int i = 0; i < 100_0000; i++)
         {
          
            // aa._SafeDivide(b);

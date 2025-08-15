@@ -52,12 +52,12 @@ namespace ES {
             
             if (enableCancel)//可取消，则会缓存内容
             {
-                var t = on.UITweens.GetElement(uiTweenType, this);
+                var t = on.CachingUITweens.GetElement(uiTweenType, this);
                 if (t == null)
                 {
                     var newT = GetAndDecorateNewTween(on, from);
                     newT.SetAutoKill(false);
-                    on.UITweens.TryAddOnly(uiTweenType, this, newT);
+                    on.CachingUITweens.TryAddOnly(uiTweenType, this, newT);
                 }
                 else
                 {
@@ -77,7 +77,7 @@ namespace ES {
         {
             if (enableCancel)//可取消，则会缓存内容
             {
-                var t = on.UITweens.GetElement(uiTweenType, this);
+                var t = on.CachingUITweens.GetElement(uiTweenType, this);
                 if (t != null)
                 {
                     if (t.IsComplete())

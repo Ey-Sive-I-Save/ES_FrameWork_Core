@@ -225,6 +225,16 @@ namespace ES
      " ******【3】英文Group,为它的专属名词\n" +
      " ******【#】以一个资产容纳一系列数据单元,高效分类整理，可以绑定到数据包来做到输出最新的内容";
 
+        [TabGroup("概念", "关于编辑器扩展支持"), HideLabel, TextArea(5, 10), DisplayAsString(alignment: TextAlignment.Left)]
+        public string aboutEditor = "" +
+      "数据包，同样以持久字典直接引用一些数据单元，跳过了数据组，一般来说一个包可以涵盖一套功能的基本结构！\n" +
+       "包并不推荐为数据单元重命名,而是一般简单地从多个数据组缓冲入数据，他主要是为了能快速收集足够有效数据\n" +
+      " 他的数据组主要有一个单元更新关系,，在游戏运行时，不推荐从包获得组再进行操作\n，" +
+      "其中\n******【1】包只是一类数据单元引用的持久字典\n" +
+      " ******【2】包可以选定和数据组建立更新链接，以便防止忘记手动载入\n " +
+      " ******【3】英文Pack,为它的专属名词\n" +
+      " ******【#】建议广泛使用包来简化游戏逻辑流程";
+
         [TabGroup("概念", "关于Dotween补充说明"), HideLabel, TextArea(5, 10), DisplayAsString(alignment: TextAlignment.Left)]
         public string aboutDataPack = "" +
        "数据包，同样以持久字典直接引用一些数据单元，跳过了数据组，一般来说一个包可以涵盖一套功能的基本结构！\n" +

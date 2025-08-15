@@ -193,7 +193,7 @@ namespace ES
             }
         }
 
-        #region GET
+        #region GET-仅值
         public bool Contains(string key)
         {
             if (_ArchValues.TryGetValue(key, out var _))
@@ -416,6 +416,19 @@ namespace ES
             if (_ArchValues.TryGetValue(key, out var vv))
             {
                 vv.SetFloat(f);//对于Tag来说--就是重制时间
+            }
+            else
+            {
+                TryAddNewArchValueBySplits(EnumCollect.ArchitectureValueType.DynamicTag, key, f);
+            }
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void SetTag_SetUseableAndEnable(string key, float f)
+        {
+            if (_ArchValues.TryGetValue(key, out var vv))
+            {
+                vv.SetFloat(f);//对于Tag来说--就是重制时间
+                vv.SetBool(true);
             }
             else
             {

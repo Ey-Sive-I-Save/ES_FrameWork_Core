@@ -1,9 +1,5 @@
 using DG.Tweening;
-using ES;
 using Sirenix.OdinInspector;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ES
@@ -17,7 +13,8 @@ namespace ES
         #endregion
 
         #region Tween容器
-        public SelectDic<UITweenType, UITweenOutputOperation, Tween> UITweens = new ();
+        [FoldoutGroup("缓冲")]
+        public SelectDic<UITweenType, UITweenOutputOperation, Tween> CachingUITweens = new ();
 
 
         #endregion
@@ -27,7 +24,8 @@ namespace ES
         [ToggleGroup("RegisterToPanel")]
         [LabelText("唯一标识"),SerializeField] private string _registerKey = "注册UI";
         public string RegisterKey { get { return _registerKey; } set { _registerKey = value; } }
-        public ESUIPanelCore MyPanel { get { if (dirty) GetMyParentAndRegisteThis(); return _myParentPanel; } set { _myParentPanel = value; } }
+        [ShowInInspector,ReadOnly,LabelText("依赖面板"),FoldoutGroup("详细信息")]
+        public virtual ESUIPanelCore MyPanel { get { if (dirty) GetMyParentAndRegisteThis(); return _myParentPanel; } set { _myParentPanel = value; } }
         [ToggleGroup("RegisterToPanel")]
         [SerializeField,LabelText("所属面板"),HideInInspector] protected ESUIPanelCore _myParentPanel;
         protected bool dirty = false;
@@ -36,6 +34,8 @@ namespace ES
             var use = this._GetCompoentInParentExcludeSelf<ESUIPanelCore>(includeInactive:true);
             if (use != null) { 
                 _myParentPanel = use;
+
+                Debug.Log(66666);
                 if (RegisterToPanel)
                 {
                     _myParentPanel._RegisterElement(this);
@@ -43,8 +43,10 @@ namespace ES
             }
             return _myParentPanel;
         }
-        protected override void Awake()
+        protected override void OnAwakeRegisterOnly()
         {
+            base.OnAwakeRegisterOnly();
+            
             GetMyParentAndRegisteThis();
         }
         protected override void OnEnable()
@@ -65,13 +67,13 @@ namespace ES
         protected override void OnOpen()
         {
             base.OnOpen();
-            if (whenOpen != null)
-            {
-                whenOpen.TryOperation(this,_myParentPanel, defaultLink);
-            }
             if (whenClose != null)
             {
                 whenClose.TryCancel(this, _myParentPanel, defaultLink);
+            }
+            if (whenOpen != null)
+            {
+                whenOpen.TryOperation(this,_myParentPanel, defaultLink);
             }
         }
         protected override void OnClose()

@@ -15,7 +15,8 @@ namespace ES
         protected override string KeyLabel => "【tag】";
         protected override string ValueLabel => "标签获得时间";
         [LabelText("最长生效时间")]
-        public float MaxUseable = 999999;
+        public float MaxUseableDURA = 999999;
+        //Value=>获得时间
         public override EnumCollect.ArchitectureValueType ArchType => EnumCollect.ArchitectureValueType.DynamicTag;
         public override object TheSmartValue { get { return Value; } }
 
@@ -39,52 +40,52 @@ namespace ES
             }
             else if (o is bool b)
             {
-                Value = b ? Time.time: -MaxUseable;
+                Value = b ? Time.time: -MaxUseableDURA;
             }
         }
         #region GET
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public sealed override bool GetBool()
         {
-            return Time.time - Value < MaxUseable;
+            return Time.time - Value < MaxUseableDURA;
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public sealed override float GetFloat()
         {
-            //获得最长时间
-            return MaxUseable-(Time.time - Value);
+            //获得剩余持续时间
+            return MaxUseableDURA-(Time.time - Value);
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public sealed override int GetInt()
         {
-            return Mathf.RoundToInt(Value);
+            return Mathf.RoundToInt(MaxUseableDURA - (Time.time - Value));
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public sealed override string GetString()
         {
-            return Value.ToString();
+            return (MaxUseableDURA - (Time.time - Value)).ToString();
         }
         #endregion
         #region SET
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public sealed override void SetBool(bool b)
         {
-            Value = b ? Time.time : -MaxUseable;
+            Value = b ? Time.time : -MaxUseableDURA;
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public sealed override void SetFloat(float f)
         {
-            MaxUseable=f;
+            MaxUseableDURA=f;
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public sealed override void SetInt(int i)
         {
-            MaxUseable = i;
+            MaxUseableDURA = i;
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public sealed override void SetString(string s)
         {
-            MaxUseable = s?.Length ?? 0;
+            MaxUseableDURA = s?.Length ?? 0;
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public sealed override bool IsNotEqual(float value1, float value2)

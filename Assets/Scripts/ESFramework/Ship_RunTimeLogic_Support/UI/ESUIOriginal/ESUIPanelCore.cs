@@ -10,13 +10,15 @@ namespace ES
 
     public class ESUIPanelCore : ESUIElementCore
     {
-        [LabelText("全部元素(持久)")]
+        [LabelText("原型参数池")]
+        public ArchPool archPool = new ArchPool();
+        [LabelText("全部UI元素(持久)")]
         public Dictionary<string, ESUIElementCore> AllElements = new Dictionary<string, ESUIElementCore>();
 #if UNITY_EDITOR
         [ValueDropdown("ElementKeys",AppendNextDrawer =true),LabelText("元素测试")]
         public string testElement = "测试";
-#endif
-
+#endif 
+        public override ESUIPanelCore MyPanel { get { if (dirty) GetMyParentAndRegisteThis(); return _myParentPanel??this; } set { _myParentPanel = value; } }
         public ESUIRoot MyRoot { get { if (dirty) GetMyParentAndRegisteThis(); return _myRoot=_myRoot._IsNotNullAndUse()??_myParentPanel._IsNotNullAndUse().MyRoot; } set { _myRoot = value; } }
         [SerializeField, LabelText("所属根节点")] private ESUIRoot _myRoot;
         public List<string> ElementKeys()
@@ -43,6 +45,12 @@ namespace ES
             var parent = element._GetCompoentInParentExcludeSelf<ESUIPanelCore>();
             if (parent == this || parent == null) return element.RegisterKey+post;
             else return GetKeyReleThis(parent, "/" + element.RegisterKey + post);
+        }
+
+        protected override void OnBeforeAwakeRegister()
+        {
+            base.OnBeforeAwakeRegister();
+            archPool.Init();
         }
         [Button("注册全部元素")]
         public void RegisterAllElements()
