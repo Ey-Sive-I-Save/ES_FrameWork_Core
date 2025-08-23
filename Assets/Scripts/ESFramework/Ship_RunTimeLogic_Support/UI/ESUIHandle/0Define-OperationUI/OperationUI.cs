@@ -14,9 +14,9 @@ namespace ES {
     {
 
     }
-    #region 组分
+    #region 组分定义
     [Serializable/* 变对象执行 把本身的 on 和 from 替换为这个新的 元素 和 它的 from */]
-    public abstract class ESUIElement_ON_Getter
+    public abstract class ESUIElementGetter
     {
         public abstract ESUIElementCore Get(ESUIElementCore on, ESUIElementCore from);
     }

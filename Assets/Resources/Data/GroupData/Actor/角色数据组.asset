@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7048163960527032063
+--- !u!114 &-7346216577941120622
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb8e29337b698c4eac266d96779292d, type: 3}
-  m_Name: "\u6570\u636E\u5355\u5143\u73A9\u5BB6\u4F9D\u8587\u5C14"
+  m_Name: "\u6570\u636E\u5355\u5143\u4EBA\u7269X"
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -22,9 +22,9 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   DataKey:
-    str_direc: "\u73A9\u5BB6\u4F9D\u8587\u5C14"
+    str_direc: "\u4EBA\u7269X"
   entitySharedData:
-    enemyName: "\u6211\u662F\u73A9\u5BB6\u4F9D\u8587\u5C14\u54C8"
+    enemyName: OUX
     characters: []
     bindingEnemyPrefab: {fileID: 0}
     weightedStrenthValue: 100
@@ -39,6 +39,9 @@ MonoBehaviour:
     AlertRange: 8
     Attacks_:
     - rid: 3913062410175905792
+  testTitle: huj,ppp
+  testStory: no body know me
+  sprite: {fileID: 21300000, guid: df03a809a6ef80c4db762c7ca7a5b76d, type: 3}
   entityVariableData:
     Health: 100
     DamageAdd: 0
@@ -46,6 +49,14 @@ MonoBehaviour:
     AttackSpeed: 0
     SpeedPerUp: 0
     Attack:
+      _baseValue: 10
+      _normalValue: 0
+      _settlementValue: 0
+    Defend:
+      _baseValue: 10
+      _normalValue: 0
+      _settlementValue: 0
+    Cri:
       _baseValue: 10
       _normalValue: 0
       _settlementValue: 0
@@ -77,6 +88,270 @@ MonoBehaviour:
       type: {class: PointerForGameObject_Direct, ns: ES.EvPointer, asm: ES}
       data:
         g: {fileID: 0}
+--- !u!114 &-7048163960527032063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb8e29337b698c4eac266d96779292d, type: 3}
+  m_Name: "\u6570\u636E\u5355\u5143\u73A9\u5BB6\u4F9D\u8587\u5C14"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  DataKey:
+    str_direc: "\u73A9\u5BB6\u4F9D\u8587\u5C14"
+  entitySharedData:
+    enemyName: Everey
+    characters: []
+    bindingEnemyPrefab: {fileID: 0}
+    weightedStrenthValue: 100
+    Health: 100
+    VisionRangeAngle: 90
+    VisionRangeDis: 20
+    PatrolSpeed: 1
+    ChaseSpeed: 2
+    ChaseDistance: 100
+    UseAlert: 0
+    AlertTime: 2
+    AlertRange: 8
+    Attacks_:
+    - rid: 3913062410175905792
+  testTitle: ppp,lll
+  testStory: i kill the dog
+  sprite: {fileID: 21300000, guid: 07896d08487bbb049b494e9e216360ad, type: 3}
+  entityVariableData:
+    Health: 100
+    DamageAdd: 0
+    DamagePerUp: 0
+    AttackSpeed: 0
+    SpeedPerUp: 0
+    Attack:
+      _baseValue: 10
+      _normalValue: 0
+      _settlementValue: 0
+    Defend:
+      _baseValue: 10
+      _normalValue: 0
+      _settlementValue: 0
+    Cri:
+      _baseValue: 10
+      _normalValue: 0
+      _settlementValue: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 3913062410175905792
+      type: {class: Attackable_SimpleEnemy, ns: ES, asm: ES}
+      data:
+        Damage: 10
+        AttackRangeDis: 1
+        AttackSpeed: 1
+        attackType: 1
+        require: 0
+        attackOn: 1
+        preDelay: 0.25
+        attackExit_: 0.8
+        playSound: {fileID: 0}
+        prefabForShow:
+          rid: 3913062410175905793
+        prefabForEffector:
+          rid: 3913062410175905794
+        AttackRangeAngle: 60
+    - rid: 3913062410175905793
+      type: {class: PointerForGameObject_Direct, ns: ES.EvPointer, asm: ES}
+      data:
+        g: {fileID: 0}
+    - rid: 3913062410175905794
+      type: {class: PointerForGameObject_Direct, ns: ES.EvPointer, asm: ES}
+      data:
+        g: {fileID: 0}
+--- !u!114 &-6259097681222540992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb8e29337b698c4eac266d96779292d, type: 3}
+  m_Name: "\u6570\u636E\u5355\u5143\u4EBA\u7269P"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  DataKey:
+    str_direc: "\u4EBA\u7269P"
+  entitySharedData:
+    enemyName: APP
+    characters: []
+    bindingEnemyPrefab: {fileID: 0}
+    weightedStrenthValue: 100
+    Health: 100
+    VisionRangeAngle: 90
+    VisionRangeDis: 20
+    PatrolSpeed: 1
+    ChaseSpeed: 2
+    ChaseDistance: 100
+    UseAlert: 0
+    AlertTime: 2
+    AlertRange: 8
+    Attacks_:
+    - rid: 3913062410175905792
+  testTitle: huj,Fly
+  testStory: story,i am a person from china
+  sprite: {fileID: 21300000, guid: b76b8b216adf64f4bbdb78f7977f0310, type: 3}
+  entityVariableData:
+    Health: 100
+    DamageAdd: 0
+    DamagePerUp: 0
+    AttackSpeed: 0
+    SpeedPerUp: 0
+    Attack:
+      _baseValue: 10
+      _normalValue: 0
+      _settlementValue: 0
+    Defend:
+      _baseValue: 10
+      _normalValue: 0
+      _settlementValue: 0
+    Cri:
+      _baseValue: 10
+      _normalValue: 0
+      _settlementValue: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 3913062410175905792
+      type: {class: Attackable_SimpleEnemy, ns: ES, asm: ES}
+      data:
+        Damage: 10
+        AttackRangeDis: 1
+        AttackSpeed: 1
+        attackType: 1
+        require: 0
+        attackOn: 1
+        preDelay: 0.25
+        attackExit_: 0.8
+        playSound: {fileID: 0}
+        prefabForShow:
+          rid: 3913062410175905793
+        prefabForEffector:
+          rid: 3913062410175905794
+        AttackRangeAngle: 60
+    - rid: 3913062410175905793
+      type: {class: PointerForGameObject_Direct, ns: ES.EvPointer, asm: ES}
+      data:
+        g: {fileID: 0}
+    - rid: 3913062410175905794
+      type: {class: PointerForGameObject_Direct, ns: ES.EvPointer, asm: ES}
+      data:
+        g: {fileID: 0}
+--- !u!114 &-4359270211366709324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb8e29337b698c4eac266d96779292d, type: 3}
+  m_Name: "\u6570\u636E\u5355\u5143\u4EBA\u7269R"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  DataKey:
+    str_direc: "\u4EBA\u7269R"
+  entitySharedData:
+    enemyName: SDE
+    characters: []
+    bindingEnemyPrefab: {fileID: 0}
+    weightedStrenthValue: 100
+    Health: 100
+    VisionRangeAngle: 90
+    VisionRangeDis: 20
+    PatrolSpeed: 1
+    ChaseSpeed: 2
+    ChaseDistance: 100
+    UseAlert: 0
+    AlertTime: 2
+    AlertRange: 8
+    Attacks_:
+    - rid: 2433349439102386177
+  testTitle: huj,IOI
+  testStory: i love everey
+  sprite: {fileID: 21300000, guid: af4678468def76a47a61384560b08f46, type: 3}
+  entityVariableData:
+    Health: 100
+    DamageAdd: 0
+    DamagePerUp: 0
+    AttackSpeed: 0
+    SpeedPerUp: 0
+    Attack:
+      _baseValue: 10
+      _normalValue: 0
+      _settlementValue: 0
+    Defend:
+      _baseValue: 10
+      _normalValue: 0
+      _settlementValue: 0
+    Cri:
+      _baseValue: 10
+      _normalValue: 0
+      _settlementValue: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 2433349439102386177
+      type: {class: Attackable_SimpleEnemy, ns: ES, asm: ES}
+      data:
+        Damage: 10
+        AttackRangeDis: 1
+        AttackSpeed: 1
+        attackType: 1
+        require: 0
+        attackOn: 1
+        preDelay: 0.25
+        attackExit_: 0.8
+        playSound: {fileID: 0}
+        prefabForShow:
+          rid: 2433349439102386178
+        prefabForEffector:
+          rid: 2433349439102386179
+        AttackRangeAngle: 60
+    - rid: 2433349439102386178
+      type: {class: PointerForGameObject_Direct, ns: ES.EvPointer, asm: ES}
+      data:
+        g: {fileID: 0}
+    - rid: 2433349439102386179
+      type: {class: PointerForGameObject_Direct, ns: ES.EvPointer, asm: ES}
+      data:
+        g: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +369,9 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: -7048163960527032063}
+    - {fileID: -4359270211366709324}
+    - {fileID: -7346216577941120622}
+    - {fileID: -6259097681222540992}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -112,7 +390,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 4
     - Name: 
       Entry: 7
       Data: 
@@ -122,6 +400,42 @@ MonoBehaviour:
     - Name: $v
       Entry: 10
       Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: "\u4EBA\u7269R"
+    - Name: $v
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: "\u4EBA\u7269X"
+    - Name: $v
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: "\u4EBA\u7269P"
+    - Name: $v
+      Entry: 10
+      Data: 3
     - Name: 
       Entry: 8
       Data: 

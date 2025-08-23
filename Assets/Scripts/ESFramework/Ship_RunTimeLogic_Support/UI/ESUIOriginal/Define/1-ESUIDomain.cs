@@ -12,7 +12,7 @@ namespace ES
         ESUICore_Original Core_Object { get; }
         //编辑器情况下的链接创建
         void RegisterAllButOnlyCreateRelationship(ICore core_);
-        void RegisterAllWithCore(ICore core);
+        void RegisterThisWithCore(ICore core);
         void TryRemoveNullModules(bool rightnow = false);
 
     }
@@ -28,8 +28,8 @@ namespace ES
     {
         #region 总重要信息
 #if UNITY_EDITOR //只在编辑器下有用
-        [FoldoutGroup("扩展域固有"), LabelText("域功能解释", icon: SdfIconType.Palette), GUIColor("Editor_ColorGetter"), ShowInInspector, PropertyOrder(-100), SerializeField]
-        private Tool_ESReadMeClass readMe = new Tool_ESReadMeClass() { readMeIn = "这是一个扩展区域" };
+        [BoxGroup("扩展域固有",CenterLabel =true), LabelText("域功能解释", icon: SdfIconType.Palette), GUIColor("Editor_ColorGetter"), ShowInInspector, PropertyOrder(-100), SerializeField]
+        private Tool_ESReadMeClass readMe = new Tool_ESReadMeClass() { readMeIn = ".." };
 #endif
         [HideInInspector]
         public Core_ core;
@@ -37,7 +37,7 @@ namespace ES
         public ESUICore_Original Core_Object => core;
 
 
-        [FoldoutGroup("扩展域固有"), LabelText("全部模块"), OdinSerialize]
+        [BoxGroup("扩展域固有"), LabelText("全部模块"), OdinSerialize]
         public SafeNormalList<Module_> Modules = new SafeNormalList<Module_>();
 
         #endregion
@@ -118,7 +118,7 @@ namespace ES
         #region 初始化
 
         //注册到核心
-        public void RegisterAllWithCore(ICore core)
+        public void RegisterThisWithCore(ICore core)
         {
             Debug.Log("RE4");
             if (core is Core_ use)

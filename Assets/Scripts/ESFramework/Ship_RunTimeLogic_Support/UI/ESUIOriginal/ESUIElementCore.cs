@@ -9,7 +9,7 @@ namespace ES
     {
         #region 辅助杂项
 
-        public static ILink_UI_OperationOptions defaultLink = new ILink_UI_OperationOptions();
+        public static ILink_UI_OperationOptions defaultLink = new Link_UI_Default();
         #endregion
 
         #region Tween容器
@@ -21,7 +21,7 @@ namespace ES
 
         [ToggleGroup("RegisterToPanel","注册到面板")]
         [LabelText("注册到父级Panel")] public bool RegisterToPanel = false;
-        [ToggleGroup("RegisterToPanel")]
+        [ToggleGroup("RegisterToPanel")] 
         [LabelText("唯一标识"),SerializeField] private string _registerKey = "注册UI";
         public string RegisterKey { get { return _registerKey; } set { _registerKey = value; } }
         [ShowInInspector,ReadOnly,LabelText("依赖面板"),FoldoutGroup("详细信息")]
@@ -34,20 +34,19 @@ namespace ES
             var use = this._GetCompoentInParentExcludeSelf<ESUIPanelCore>(includeInactive:true);
             if (use != null) { 
                 _myParentPanel = use;
-
-                Debug.Log(66666);
+                Debug.Log("DOTRUE" + gameObject);
                 if (RegisterToPanel)
                 {
                     _myParentPanel._RegisterElement(this);
                 }
             }
+            whenRegister?.TryOperation(this, _myParentPanel, default);
             return _myParentPanel;
         }
         protected override void OnAwakeRegisterOnly()
         {
-            base.OnAwakeRegisterOnly();
-            
             GetMyParentAndRegisteThis();
+            base.OnAwakeRegisterOnly();
         }
         protected override void OnEnable()
         {
@@ -58,10 +57,11 @@ namespace ES
             base.OnDisable();
         }
 
-
-        [TabGroup("开关执行"), LabelText("开启时执行"), SerializeReference]
+        [TabGroup("开关执行",Icon =SdfIconType.ToggleOn), LabelText("注册时执行"), SerializeReference,ESBackGround("black",0.5f)]
+        public IOutputOperationUI whenRegister;
+        [TabGroup("开关执行"), LabelText("开启时执行"), SerializeReference, ESBackGround("black", 0.5f)]
         public IOutputOperationUI whenOpen;
-        [TabGroup("开关执行"), LabelText("关闭时执行"), SerializeReference]
+        [TabGroup("开关执行"), LabelText("关闭时执行"), SerializeReference, ESBackGround("black", 0.5f)]
         public IOutputOperationUI whenClose;
 
         protected override void OnOpen()

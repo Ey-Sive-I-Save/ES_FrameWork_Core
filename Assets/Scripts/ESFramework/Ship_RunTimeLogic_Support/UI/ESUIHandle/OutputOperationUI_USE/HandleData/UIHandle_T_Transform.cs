@@ -9,7 +9,8 @@ using static ES.EnumCollect;
 
 namespace ES
 {
-    [Serializable, TypeRegistryItem("A变换-【POS】设置锚定位置(死赋值-低级)")]
+    /*T Transform 系列 -》*/
+    [Serializable, TypeRegistryItem("T变换-【POS】设置锚定位置(死赋值-低级)")]
     public class OutputOperationUI_Handle_SetAnchorPos : IOutputOperationUI
     {
         [LabelText("设置锚定坐标")] public Vector2 pos;
@@ -26,7 +27,7 @@ namespace ES
     }
 
 
-    [Serializable, TypeRegistryItem("A变换-【POS】设置锚定位置<单轴>(死赋值-低级)")]
+    [Serializable, TypeRegistryItem("T变换-【POS】设置锚定位置<单轴>(死赋值-低级)")]
     public class OutputOperationUI_Handle_SetAnchorPos_SingleAxis : IOutputOperationUI
     {
         [LabelText("设置锚定坐标")] public float singleValue;
@@ -50,7 +51,7 @@ namespace ES
     }
 
 
-    [Serializable, TypeRegistryItem("A变换-【POS】设置锚定位置(随机增益-中级)")]
+    [Serializable, TypeRegistryItem("T变换-【POS】设置锚定位置(随机增益-中级)")]
     public class OutputOperationUI_Handle_SetAnchorPos_RandomAdding : IOutputOperationUI
     {
         [LabelText("设置基本锚定坐标")] public Vector2 pos;
@@ -69,7 +70,7 @@ namespace ES
 
     }
 
-    [Serializable, TypeRegistryItem("A变换-【Scale】设置缩放(死赋值-单值)")]
+    [Serializable, TypeRegistryItem("T变换-【Scale】设置缩放(死赋值-单值)")]
     public class OutputOperationUI_Handle_SetScale_XYSame : IOutputOperationUI
     {
         [LabelText("设置缩放")] public float scale = 1;
@@ -86,7 +87,7 @@ namespace ES
     }
 
 
-    [Serializable, TypeRegistryItem("A变换-【Scale】设置缩放[XY不同](死赋值-低级)")]
+    [Serializable, TypeRegistryItem("T变换-【Scale】设置缩放[XY不同](死赋值-低级)")]
     public class OutputOperationUI_Handle_SetScale_XY : IOutputOperationUI
     {
         [LabelText("设置缩放")] public Vector2 xyScale = Vector3.one;
@@ -101,7 +102,7 @@ namespace ES
 
     }
 
-    [Serializable, TypeRegistryItem("A变换-【Scale】设置缩放<单轴>(死赋值-低级)")]
+    [Serializable, TypeRegistryItem("T变换-【Scale】设置缩放<单轴>(死赋值-低级)")]
     public class OutputOperationUI_Handle_SetScale_SingleAxis : IOutputOperationUI
     {
         [LabelText("设置单轴缩放")] public float scaleSingle = 1;
@@ -120,7 +121,7 @@ namespace ES
 
     }
 
-    [Serializable, TypeRegistryItem("A变换-【Scale】设置旋转[X](死赋值-低级)")]
+    [Serializable, TypeRegistryItem("T变换-【Scale】设置旋转[X](死赋值-低级)")]
     public class OutputOperationUI_Handle_SetRot_X : IOutputOperationUI
     {
         [LabelText("设置旋转X")] public float xRot;
@@ -135,7 +136,7 @@ namespace ES
 
     }
 
-    [Serializable, TypeRegistryItem("A变换-【Scale】设置旋转[Y](死赋值-低级)")]
+    [Serializable, TypeRegistryItem("T变换-【Scale】设置旋转[Y](死赋值-低级)")]
     public class OutputOperationUI_Handle_SetRot_Y : IOutputOperationUI
     {
         [LabelText("设置旋转X")] public float yRot;
@@ -149,7 +150,7 @@ namespace ES
         }
 
     }
-    [Serializable, TypeRegistryItem("A变换-【Scale】设置旋转[Z](死赋值-低级)")]
+    [Serializable, TypeRegistryItem("T变换-【Scale】设置旋转[Z](死赋值-低级)")]
     public class OutputOperationUI_Handle_SetRot_Z : IOutputOperationUI
     {
         [LabelText("设置旋转Z")] public float zRot;

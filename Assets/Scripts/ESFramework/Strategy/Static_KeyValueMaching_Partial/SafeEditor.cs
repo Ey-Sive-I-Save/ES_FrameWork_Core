@@ -33,18 +33,18 @@ namespace ES
                 return new List<string>();
 #endif
             }
-            public static Dictionary<int,string> GetAllLayers()
+            public static Dictionary<int, string> GetAllLayers()
             {
-               
+
 #if UNITY_EDITOR
                 Dictionary<int, string> keyValuePairs = new Dictionary<int, string>();
                 // 获取Tags管理器
                 var layers = UnityEditorInternal.InternalEditorUtility.layers;
-                foreach(var i in layers)
+                foreach (var i in layers)
                 {
-                    int mask=LayerMask.GetMask(i);
-                    int layer=mask>0?(int)Mathf.Round(Mathf.Log(mask,(2))):0 ;
-                    keyValuePairs.TryAdd(layer,i);
+                    int mask = LayerMask.GetMask(i);
+                    int layer = mask > 0 ? (int)Mathf.Round(Mathf.Log(mask, (2))) : 0;
+                    keyValuePairs.TryAdd(layer, i);
                 }
                 return keyValuePairs;
 #else
@@ -97,7 +97,7 @@ namespace ES
 #endif
             }
 
-            public static void CreateFolderDic(string path,string name)
+            public static void CreateFolderDic(string path, string name)
             {
 #if UNITY_EDITOR
                 AssetDatabase.CreateFolder(path, name);
@@ -108,7 +108,7 @@ namespace ES
             {
                 GUIUtility.systemCopyBuffer = content;
             }
-#endregion
+            #endregion
 
             #region 资产查询
 
@@ -221,16 +221,43 @@ namespace ES
                 return null;
             }
 
-            public static  string GetAssetGUID(UnityEngine.Object s)
+            public static string GetAssetGUID(UnityEngine.Object s)
             {
 #if UNITY_EDITOR
                 string path = AssetDatabase.GetAssetPath(s);
-               string guid=AssetDatabase.AssetPathToGUID(path);
+                string guid = AssetDatabase.AssetPathToGUID(path);
                 if (guid != null && !guid.IsNullOrWhitespace()) return guid;
 #endif
                 return null;
             }
 
+            public static string GetAssetPath(UnityEngine.Object s)
+            {
+#if UNITY_EDITOR
+                if (s != null)
+                {
+                    string path = AssetDatabase.GetAssetPath(s);
+                    return path;
+                }
+#endif
+                return "";
+            }
+
+
+            #endregion
+
+            #region 判定
+            public static bool IsObjectAsFolder(UnityEngine.Object ob)
+            {
+#if UNITY_EDITOR
+                if (ob != null)
+                {
+                    var path = GetAssetPath(ob);
+                    return AssetDatabase.IsValidFolder(path);
+                }
+#endif
+                return false;
+            }
 
 
             #endregion
@@ -251,11 +278,26 @@ namespace ES
 #endif
             }
 
-            public static string CreateEasySelectMenu(string title, string[] select,string[] back)
+            public static void SelectAssetByPath(string path)
+            {
+#if UNITY_EDITOR
+                var asset = AssetDatabase.LoadAssetAtPath(path, typeof(UnityEngine.Object));
+                if (asset != null)
+                {
+                   Selection.activeObject=(asset);
+                }
+                else
+                {
+                    Debug.LogError("未发现资产在路径" + path);
+                }
+#endif
+            }
+
+            public static string CreateEasySelectMenu(string title, string[] select, string[] back)
             {
 #if UNITY_EDITOR
                 GenericMenu menu = new GenericMenu();
-                for(int i = 0; i < select.Length; i++)
+                for (int i = 0; i < select.Length; i++)
                 {
 
                 }

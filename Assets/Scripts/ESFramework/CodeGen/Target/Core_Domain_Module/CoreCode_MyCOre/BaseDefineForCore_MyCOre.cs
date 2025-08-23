@@ -11,7 +11,8 @@ using UnityEngine;
      {
          protected override void OnAwakeRegisterOnly()
          {
-             RegisterAllDomains(Domain_Normal,Domain_Next);
+             RegisterDomain(Domain_Normal);
+            RegisterDomain(Domain_Next);
              }
          [TabGroup("新的域", TextColor = "@Editor_DomainTabColor(Domain_Normal)")]
          [SerializeReference,InlineProperty, HideLabel] 

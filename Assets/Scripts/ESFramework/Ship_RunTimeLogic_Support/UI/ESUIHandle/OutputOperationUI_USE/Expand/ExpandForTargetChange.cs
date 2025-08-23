@@ -16,7 +16,7 @@ namespace ES {
     public class OutputOperationUI_Expand_SwitchOnFrom : IOutputOperationUI
     {
         [SerializeReference, LabelText("作用在")]
-        public ESUIElement_ON_Getter getter = new ESUIElementGetter_DirectHandRefer();
+        public ESUIElementGetter getter = new ESUIElementGetter_DirectHandRefer();
 
         [SerializeReference, LabelText("执行内容")]
         public IOutputOperationUI op;

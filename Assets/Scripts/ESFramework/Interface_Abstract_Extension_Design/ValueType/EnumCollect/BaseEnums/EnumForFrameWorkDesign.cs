@@ -9,7 +9,16 @@ namespace ES
 
     public static partial class EnumCollect
     {
-        
+
+        //支持本地化-多语言 ES全程支持
+        public enum LanguageType
+        {
+            [InspectorName("未指定")] NotClear= Chinese | Japan| English,
+            [InspectorName("中文")] Chinese=1,
+            [InspectorName("日文")] Japan=2,
+
+            [InspectorName("英文")] English=4
+        }
 
         //有关委托集成式Link的发送类型 详见-》LinkUnityEvent
         public enum LinkEventType
@@ -20,13 +29,6 @@ namespace ES
             [InspectorName("仅发送Invoke")] OnlyInvoke
         }
 
-        //支持本地化
-        public enum LanguagesSupport
-        {
-            [InspectorName("日文")] Japan,
-            [InspectorName("中文")] Chinese,
-            [InspectorName("英文")] English
-        }
 
         //原型支持的数据类型
         public enum ArchitectureValueType

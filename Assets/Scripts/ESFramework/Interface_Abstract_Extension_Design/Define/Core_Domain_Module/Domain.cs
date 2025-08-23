@@ -18,7 +18,7 @@ namespace ES
         Core Core_Object { get; }
         //编辑器情况下的链接创建
         void RegisterAllButOnlyCreateRelationship(ICore core_);
-        void RegisterAllWithCore(ICore core);
+        void RegisterThisWithCore(ICore core);
         void TryRemoveNullModules(bool rightnow = false);
 
     }
@@ -125,14 +125,14 @@ namespace ES
         #region 初始化
 
         //注册到核心
-        public void RegisterAllWithCore(ICore core)
+        public void RegisterThisWithCore(ICore core)
         {
-            Debug.Log("RE4");
             if (core is Core_ use)
             {
-                Debug.Log("RE5");
                 this.core = use;
+                
                 AwakeRegisterAllModules();
+                
             }
         }
 

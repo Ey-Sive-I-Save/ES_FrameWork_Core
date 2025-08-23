@@ -14,7 +14,6 @@ namespace ES {
         public ESUICore_Original Core_Object { get; }
         public void _SetDomainAndCreateRelationshipOnly(IESUIDomain Domain);
         public void _TrySetupPresetModule();
-        public void FixedUpdate_MustSelfDelegate();
 
     }
     [TypeRegistryItem("抽象模块定义")]
@@ -176,25 +175,6 @@ namespace ES {
 
         #endregion
 
-        #region 自主扩展手动委托功能(为了性能考虑)
-        public virtual void FixedUpdate_MustSelfDelegate()
-        {
-
-        }
-        #endregion
-
-        #region 显示提示等
-        [ShowInInspector, GUIColor("Editor_ColorGetter"), LabelText(SdfIconType.CashCoin, Text = @"@ ""功能：""+ Editor_Description_  "),
-            PropertyOrder(-100), Indent(-2), Tooltip("模块细则")]
-        protected virtual string Editor_Description_ => "描述";
-
-
-        protected virtual Color Editor_ColorGetter()
-        {
-            return Color.yellow;
-        }
-        #endregion
-
         #region 辅助功能
         //一般编辑器模式会用--用来单纯链接而不进行逻辑运行
         public void _SetDomainAndCreateRelationshipOnly(IESUIDomain Domain)
@@ -232,7 +212,7 @@ namespace ES {
 
         #region 预设相关
 #if UNITY_EDITOR
-        [ValueDropdown("Editor_AllPresets"), LabelText("选择预设", SdfIconType.CaretDownSquareFill), SerializeField, InlineButton("_TrySetupPresetModule", "使用该预设"), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_01")]
+        [ValueDropdown("Editor_AllPresets"), LabelText("选择预设", SdfIconType.CaretDownSquareFill), SerializeField,HideInInspector, InlineButton("_TrySetupPresetModule", "使用该预设"), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_01")]
         private string Editor_Preset = "预设1";
 #endif
         public virtual string[] Editor_AllPresets => Editor_DefaultPresets;

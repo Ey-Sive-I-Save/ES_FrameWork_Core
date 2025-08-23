@@ -10,7 +10,7 @@ namespace ES
     {
     
         [LabelText("信息类型")]public EnumCollect.GameEventMessageType messageType;
-        [LabelText("本地化信息内容")]public Dictionary<EnumCollect.LanguagesSupport, string> LocalizedStringMessage = new Dictionary<EnumCollect.LanguagesSupport, string>();
+        [LabelText("本地化信息内容")]public Dictionary<EnumCollect.LanguageType, string> LocalizedStringMessage = new Dictionary<EnumCollect.LanguageType, string>();
 
     }
 }

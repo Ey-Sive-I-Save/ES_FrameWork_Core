@@ -23,12 +23,12 @@ namespace ES {
     [HideMonoScript]
     public abstract class EMS_Abstract_ChannelLinkList<Channel,Link> : EMS_Abstarct_Define<Channel, Link> where Link:ILink
     {
-        public LinkReceiveList<Channel, Link> Links = new LinkReceiveList<Channel, Link>();
+        [ShowInInspector, LabelText("发送到"), ReadOnly]
+        public LinkReceiveChannelList<Channel, Link> Links = new LinkReceiveChannelList<Channel, Link>();
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public sealed override void SendLink(Channel channel, Link link)
         {
             Links.SendLink(channel,link);
-            Debug.Log("Hanppen："+channel+" by "+link);
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public sealed override void AddRecieve(IReceiveChannelLink<Channel,Link> t) 
@@ -45,17 +45,16 @@ namespace ES {
     [HideMonoScript]
     public abstract class EMS_Abstract_ChannelLinkSingle<Channel,Link> : EMS_Abstarct_Define<Channel, Link> where Link : ILink
     {
+        [ShowInInspector,LabelText("发送到"),ReadOnly]
         public IReceiveChannelLink<Channel, Link> Link_;
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public sealed override void SendLink(Channel channel,Link link)
         {
-            Debug.Log("Hanppen：" + channel + " by " + link);
             Link_.OnLink(channel,link);
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void OnLink(Channel channel, Link link)
         {
-            Debug.Log("Hanppen：" + channel + " by " + link);
             Link_.OnLink(channel, link);
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

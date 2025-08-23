@@ -6,8 +6,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class test501 : SerializedMonoBehaviour
+public class test501 : MonoBehaviour
 {
+    public float ff;
     [ESBoolOption("放弃转化标准格式","转化为标准格式")]
     public bool YeO = false;
 

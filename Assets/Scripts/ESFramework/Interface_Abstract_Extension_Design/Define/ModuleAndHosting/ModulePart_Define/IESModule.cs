@@ -80,13 +80,13 @@ namespace ES
         public virtual bool CanUpdating => true;
         protected virtual void OnEnable() {
 #if TEST
-            Debug.Log("Enable");
+            
 #endif
         }
         //禁用时逻辑
         protected virtual void OnDisable() {
 #if TEST
-            Debug.Log("Disable");
+            
 #endif
         }
         //更新时逻辑

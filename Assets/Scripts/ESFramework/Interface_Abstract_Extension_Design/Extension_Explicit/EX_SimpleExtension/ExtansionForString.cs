@@ -256,6 +256,12 @@ namespace ES
             return false;
         }
 
+        public static int _GetSlashCount(this string selfStr,int defalutCount=0)
+        {
+            string nor = selfStr.Replace("\\", "/");
+            return nor?.Count((n) => n == '/')?? defalutCount;
+
+        }
         #endregion
 
         #region 操作部分

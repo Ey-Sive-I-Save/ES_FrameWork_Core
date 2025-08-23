@@ -7,7 +7,7 @@ using UnityEngine;
 
 
 namespace ES {
-        public class LinkReceiveList<Channel,Link> where Link : ILink
+        public class LinkReceiveChannelList<Channel,Link> where Link : ILink
         {
             public SafeNormalList<IReceiveChannelLink<Channel,Link>> IRS = new SafeNormalList<IReceiveChannelLink<Channel, Link>>();
             public IReceiveChannelLink<Channel, Link> cache;

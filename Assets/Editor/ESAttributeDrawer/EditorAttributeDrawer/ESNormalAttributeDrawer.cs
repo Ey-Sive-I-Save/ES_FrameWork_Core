@@ -207,7 +207,7 @@ namespace ES
             EditorGUILayout.Space(0);
             var space = GUILayoutUtility.GetLastRect();
             var startY1 = space.yMax;
-            SirenixEditorGUI.DrawBorders(space, (int)space.width, 0, (int)lastHeight + 2, 0, this.Attribute.color._WithAlpha(this.Attribute.withAlpha));
+            SirenixEditorGUI.DrawBorders(space, (int)space.width, 0, (int)lastHeight + 2, 0, this.Attribute.color._WithAlpha(this.Attribute.WithAlpha));
             this.CallNextDrawer(label);
             float startY2 = GUILayoutUtility.GetLastRect().yMax;
             float f = startY2 - startY1;
@@ -280,27 +280,34 @@ namespace ES
 
                 // 计算按钮宽度（均分剩余空间）
                 float buttonWidth = (EditorGUIUtility.currentViewWidth) * 0.4f;
-                float leftSpace = EditorGUIUtility.currentViewWidth*0.05f;
-                GUILayout.Space(leftSpace);
+                float leftSpace = EditorGUIUtility.currentViewWidth*0.015f;
+                //GUILayout.Space(leftSpace);
                 // 绘制 "False" 按钮
+                var rect = EditorGUILayout.GetControlRect();
+                rect.height = 20;
+               
+                var rectLeft = new Rect(rect.x,rect.y,rect.width*0.4f,rect.height);
+                var rectRight = new Rect(rect.x + 0.5f * rect.width, rect.y, rect.width * 0.4f, rect.height);
+                rect.x -= 20;
+                rect.width += 40;
+                EditorGUI.DrawRect(rect, Color.black._WithAlpha(0.5f));
                 GUIHelper.PushColor(ValueEntry.SmartValue ? Color.gray : GUI.color);
-                if (GUILayout.Button(falseText, GUILayout.Width(buttonWidth)))
+                if (GUI.Button(rectLeft, falseText))
                 {
                     ValueEntry.SmartValue = false; // 假按钮绘制
                 }
                 GUIHelper.PopColor();
-
                 // 绘制 "True" 按钮
-                GUILayout.Space(leftSpace*2);//占位挤到右边
+                //GUILayout.Space(leftSpace*2);//占位挤到右边
                 GUIHelper.PushColor(ValueEntry.SmartValue ?  GUI.color : Color.gray);
-                if (GUILayout.Button(trueText, GUILayout.Width(buttonWidth)))
+                if (GUI.Button(rectRight,trueText))
                 {
                     ValueEntry.SmartValue = true; // 真按钮绘制
                 }
                 GUIHelper.PopColor();
             }
             GUILayout.EndHorizontal();
-            EditorGUILayout.Space(5);
+            EditorGUILayout.Space(1);
 
 
 

@@ -7,14 +7,26 @@ using UnityEngine;
 
 namespace ES
 {
-    [Serializable]
-    public struct ILink_UI_OperationOptions
+    public interface ILink_UI : ILink
     {
 
     }
-    public interface ILink_UI: ILink
+    //有各种Flag 和 携带信息 的变体，支持的行为自己去拆
+    public interface ILink_UI_OperationOptions : ILink_UI
     {
-       
+
     }
+    public struct Link_UI_Default : ILink_UI_OperationOptions
+    {
+
+    }
+    #region Flag支持
+    public struct Link_UI_NotFlag : ILink_UI_OperationOptions
+    {
+
+    }
+
+
+    #endregion
 }
 

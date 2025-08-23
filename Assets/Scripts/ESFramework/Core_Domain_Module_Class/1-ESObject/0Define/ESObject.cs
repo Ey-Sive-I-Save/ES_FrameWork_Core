@@ -20,11 +20,10 @@ namespace ES
 
         #region 总重要信息
 
-        //载入固定的原始域
-        public sealed override void RegisterAllDomains(params IDomain[] rgdomains)
+        protected override void OnAwakeRegisterOnly()
         {
-            if (OriginalDomain != null) OriginalDomain.RegisterAllWithCore(this);
-            base.RegisterAllDomains(rgdomains);
+            base.OnAwakeRegisterOnly();
+            RegisterDomain(OriginalDomain);
         }
 
         #region 联网
@@ -68,7 +67,7 @@ namespace ES
             , InlineButton("DebugNO", "输出NO信息")]
         [LabelText("链接为网络对象")]
 #endif
-        [ ToggleGroup("IsNet"), ShowIf("IsNet"),ESBackGround("yellow",0.25f,withAlpha =0.1f)]
+        [ ToggleGroup("IsNet"), ShowIf("IsNet"),ESBackGround("yellow",0.25f,WithAlpha =0.1f)]
         public ESNetObject NetObject;
         [ToggleGroup("IsNet"), ShowIf("IsNet"), ESBackGround("yellow", 0.25f)]
         public ESNetBehaviour NetBehaviour;

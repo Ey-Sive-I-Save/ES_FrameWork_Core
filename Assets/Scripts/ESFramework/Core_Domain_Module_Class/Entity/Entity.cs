@@ -41,7 +41,10 @@ namespace ES
         //仅注册扩展域
         protected override void OnAwakeRegisterOnly()
         {
-            RegisterAllDomains(NormalDomain, StateMachineDomain, AIDomain, BuffDomain);
+            RegisterDomain(NormalDomain);
+            RegisterDomain(StateMachineDomain);
+            RegisterDomain(AIDomain);
+            RegisterDomain(BuffDomain);
         }
 
         //注册完成--》 初始化

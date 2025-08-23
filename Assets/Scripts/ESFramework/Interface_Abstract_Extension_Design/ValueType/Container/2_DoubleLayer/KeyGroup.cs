@@ -92,6 +92,15 @@ namespace ES
             return NULL;
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public List<Element> GetGroupAsList(Key key)
+        {
+            if (Groups.TryGetValue(key, out var list))
+            {
+                return list;
+            }
+            return NULL;
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool TryContains(Key key, Element who)
         {
             if (Groups.TryGetValue(key, out var list))

@@ -89,7 +89,7 @@ namespace ES
     {
 
     }
-    public interface IReceiveChannelLink_Arch_String : IReceiveChannelLink<string, Link_ArchEvent_TagChange>
+    public interface IReceiveChannelLink_Arch_String : IReceiveChannelLink<string, Link_ArchEvent_StringChange>
     {
 
     }

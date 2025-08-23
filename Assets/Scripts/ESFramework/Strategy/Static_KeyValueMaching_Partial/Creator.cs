@@ -192,7 +192,7 @@ namespace ES
                 if (addMethod != null)
                 {
                     var keyPro = typeof(DictionaryEntry).GetProperty("Key");
-                    var valuePro = typeof(DictionaryEntry).GetProperty("Value");
+                    var valuePro = typeof(DictionaryEntry).GetProperty("DefaultBoolValue");
                     if (keyPro != null && valuePro != null)
                     {   // 遍历复制键值对
                         foreach (var pair in (dictionary as IDictionary))
@@ -310,7 +310,7 @@ namespace ES
                 // 遍历链表
                 Type nodeType = firstNode.GetType();
                 PropertyInfo nextProperty = nodeType.GetProperty("Next");
-                PropertyInfo valueProperty = nodeType.GetProperty("Value");
+                PropertyInfo valueProperty = nodeType.GetProperty("DefaultBoolValue");
 
                 object currentNode = firstNode;
                 while (currentNode != null)

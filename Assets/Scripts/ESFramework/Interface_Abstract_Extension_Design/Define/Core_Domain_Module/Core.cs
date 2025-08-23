@@ -46,7 +46,7 @@ namespace ES
         #region 补充信息
 
         //获取特定域
-        private List<IDomain> domains = new List<IDomain>(3);
+        protected List<IDomain> domains = new List<IDomain>(3);
 
 
 
@@ -74,13 +74,12 @@ namespace ES
         //仅用于手动注册
         protected virtual void OnAwakeRegisterOnly()
         {
-            /* 演示 一句完成
-             * RegisterDomains(domain1,domain2,...);*/
+            //RegisterDomain(xxx1);  //修改后的方案
         }
         //注册扩展Domain发生的事
         protected virtual void OnAfterAwakeRegister()
         {
-            /*RegisterDomains*/
+            
         }
 
         #endregion
@@ -130,14 +129,12 @@ namespace ES
         #region 常用功能
 
         //手动注册
-        public virtual void RegisterAllDomains(params IDomain[] rgdomains)
+        public void RegisterDomain(IDomain domain)
         {
-           
-            foreach (var i in rgdomains)
+            if (domain != null)
             {
-                if (i == null) continue;
-                i.RegisterAllWithCore(this);
-                domains.Add(i);
+                domain.RegisterThisWithCore(this);
+                domains.Add(domain);
             }
         }
 

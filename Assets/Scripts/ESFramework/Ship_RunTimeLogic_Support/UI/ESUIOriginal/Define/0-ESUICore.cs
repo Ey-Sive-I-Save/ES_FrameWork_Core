@@ -1,20 +1,23 @@
-using ES;
 using Sirenix.OdinInspector;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace ES
 {
-    [DefaultExecutionOrder(-2)]//顺序在前
+    [DefaultExecutionOrder(-2),]//顺序在前
     public abstract class ESUICore_Original : SerializedMonoBehaviour, ICore
     {
         #region 原始通用域
-        [LabelText("ESUI原始扩展域"), TabGroup("【固有】")]
+        [LabelText("ESUI原始扩展域"), TabGroup("【固有】",Icon =SdfIconType.BorderAll)]
         public ESUIOriginalDomain OriginalDomain;
+
+        #endregion
+
+        #region 可选扩展域
+        [TabGroup("信息域", Icon = SdfIconType.FileSpreadsheetFill, TextColor = "@Editor_DomainTabColor(MessageProviderDomain)")]
+        [SerializeReference, InlineProperty, HideLabel]
+        public ESUIMessageProviderDomain MessageProviderDomain;
 
         #endregion
 
@@ -55,7 +58,7 @@ namespace ES
         #endregion
 
         #region 控件和脚本
-        [TabGroup("常规脚本引用"), LabelText("引用Rect Tran")]
+        [TabGroup("常规脚本引用",Icon = SdfIconType.CodeSquare), LabelText("引用Rect Tran")]
         public ESReferLazy<RectTransform> Refer_Rect = new ESReferLazy<RectTransform>();
 /*        [TabGroup("常规脚本引用"),LabelText("启用Imahge")]
         public bool EnableImage = false;
@@ -77,7 +80,7 @@ namespace ES
         #region 检查器专属
 
         //域颜色赋予
-        public Color Editor_DomainTabColor(IDomain domain)
+        public Color Editor_DomainTabColor(IESUIDomain domain)
         {
             if (domain == null) return Color.gray;
             else return Color.yellow;
@@ -103,7 +106,7 @@ namespace ES
         #region 补充信息
 
         //获取特定域
-        private List<IDomain> domains = new List<IDomain>(3);
+        private List<IESUIDomain> domains = new List<IESUIDomain>(3);
 
 
 
@@ -111,8 +114,9 @@ namespace ES
 
         #region Awake流程
         //Awake回调
-        protected virtual void Awake()
+        protected void Awake()
         {
+            Debug.Log("AWAKE UI");
             _DoAwake();
         }
         public void _DoAwake()
@@ -130,8 +134,8 @@ namespace ES
         //仅用于手动注册
         protected virtual void OnAwakeRegisterOnly()
         {
-            /* 演示 一句完成
-             * RegisterDomains(domain1,domain2,...);*/
+            RegisterDomain(OriginalDomain);
+            RegisterDomain(MessageProviderDomain);
         }
         //注册扩展Domain发生的事
         protected virtual void OnAfterAwakeRegister()
@@ -145,6 +149,7 @@ namespace ES
 
         protected virtual void OnEnable()
         {
+            Debug.Log("ENable UI");
             if (AutoOpenAndCloseByEnableState) {
                 TryOpen(true); 
             }
@@ -187,14 +192,12 @@ namespace ES
         #region 常用功能
 
         //手动注册
-        public virtual void RegisterAllDomains(params IDomain[] rgdomains)
+        public void RegisterDomain(IESUIDomain domain)
         {
-            if (OriginalDomain != null) OriginalDomain.RegisterAllWithCore(this);
-            foreach (var i in rgdomains)
+            if (domain != null)
             {
-                if (i == null) continue;
-                i.RegisterAllWithCore(this);
-                domains.Add(i);
+                domain.RegisterThisWithCore(this);
+                domains.Add(domain);
             }
         }
 

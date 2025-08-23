@@ -19,7 +19,7 @@ namespace ES
     public class ESBackGroundAttribute : Attribute
     {
         public Color color;
-        public float withAlpha = 1;
+        public float WithAlpha = 1;
         public ESBackGroundAttribute()
         {
             color = Color.white;
@@ -29,7 +29,7 @@ namespace ES
         {
 
             color = new Color(r, g, b);
-            withAlpha = a;
+            WithAlpha = a;
         }
         public ESBackGroundAttribute(float r, float g, float b)
         {
@@ -41,17 +41,18 @@ namespace ES
             color = Color.white;
             KeyValueMatchingUtility.ColorSelector.normalColors.TryGetValue(colorName, out color);
         }
-        public ESBackGroundAttribute(string colorName, float withMuti = 1)
+        public ESBackGroundAttribute(string colorName, float withAlpha = 1)
         {
             KeyValueMatchingUtility.ColorSelector.normalColors.TryGetValue(colorName, out color);
-            color *= withMuti;
+            this.WithAlpha = withAlpha;
+            
         }
-        public ESBackGroundAttribute(string colorName, float withRGBMuti, float withAMuti)
+        public ESBackGroundAttribute(string colorName, float withRGBMuti, float withAlpha)
         {
             KeyValueMatchingUtility.ColorSelector.normalColors.TryGetValue(colorName, out color);
-            float a = color.a * withAMuti;
+            
             color = color * withRGBMuti;
-            color.a = a;
+            WithAlpha = withAlpha;
         }
     }
 

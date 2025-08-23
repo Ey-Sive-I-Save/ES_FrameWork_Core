@@ -52,6 +52,16 @@ namespace ES
             base.OnBeforeAwakeRegister();
             archPool.Init();
         }
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            archPool.Enable();
+        }
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            archPool.Disable();
+        }
         [Button("注册全部元素")]
         public void RegisterAllElements()
         {

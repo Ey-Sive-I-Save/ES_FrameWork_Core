@@ -434,8 +434,10 @@ namespace ES
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set
             {
+                Debug.Log("111");
                 if (IsNotEqual(_value, value))
                 {
+                    Debug.Log("2222"+"    "+pools.Count);
                     ValueT cache = _value;
                     _value = value;
                     int count = pools.Count;
@@ -443,7 +445,9 @@ namespace ES
                     {
                         var use = pools[i];
                         if (use == null) continue;
-                        if (SendLink) SendLinkToPool(use, cache);
+                        if (SendLink) { SendLinkToPool(use, cache);
+                            Debug.Log("6666");
+                        }
                     }
                 }
             }

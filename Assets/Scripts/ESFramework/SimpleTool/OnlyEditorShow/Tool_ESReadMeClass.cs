@@ -11,11 +11,11 @@ namespace ES
     public class Tool_ESReadMeClass
     {
         [LabelText("---开始编辑---")]
-        public bool edit = true;
+        public bool edit = false;
         [DisplayAsString(fontSize: 20, EnableRichText = true), ShowIf("@!edit"), GUIColor("showColor"), ShowInInspector, HideLabel]
-        public string ReadMeOut = "编写提示文件";
+        public string ReadMeOut = "...";
         [TextArea(3, 10), ShowIf("edit"), OnValueChanged("SetString")]
-        public string readMeIn = "编写提示文件";
+        public string readMeIn = "...";
         [ColorPalette, ShowIf("edit")]
         public Color showColor = Color.white;
         private void SetString(string edit)
