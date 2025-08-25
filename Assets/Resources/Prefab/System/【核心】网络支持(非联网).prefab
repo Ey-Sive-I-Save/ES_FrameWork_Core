@@ -46,11 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb9cd28b81d116419be700354cd5768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NO: {fileID: 0}
   DontDestroy: 1
-  _netBehaviourCore: {fileID: 0}
-  NetBehaviourCorePrefab: {fileID: 0}
-  NetBehaviourCoreScenes: {fileID: 0}
+  ESNetRPCMasterPrefab: {fileID: 0}
+  _NetBehaviourCoreScenes: {fileID: 0}
   NetPlayer:
     PlayerID: 
     PlayerName: "\u662F\u4F9D\u8587\u5C14\u5417"
@@ -150,7 +148,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4456262497661571422}
-  - component: {fileID: 7864314924296223924}
   m_Layer: 0
   m_Name: "\u6269\u5C55"
   m_TagString: Untagged
@@ -173,18 +170,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3479377324305165750}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7864314924296223924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6220738578568357332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cbd7faf058b3b74887db06d1a40a991, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &9170965540595833403
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68828c85278210948b9d50a8db3aab74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _authenticator: {fileID: 7864314924296223924}
+  _authenticator: {fileID: 0}
   _remoteClientTimeout: 2
   _remoteClientTimeoutDuration: 60
   _allowPredictedSpawning: 0

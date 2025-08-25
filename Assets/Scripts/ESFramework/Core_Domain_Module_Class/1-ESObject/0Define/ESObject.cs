@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace ES
 {
-    [TypeRegistryItem("Entity,Item的父类")]
+    [TypeRegistryItem("ES Object")]
     public abstract class ESObject : Core, IWithID
     {
         #region 原始通用域
@@ -64,11 +64,11 @@ namespace ES
         }
         #endregion
         [Required(errorMessage: "如果你制作网络游戏，一般需要配置给他一个FinshnetNetworkObject"), PropertyOrder(-10), PropertySpace(5, 15)
-            , InlineButton("DebugNO", "输出NO信息")]
+           /* , InlineButton("DebugNO", "输出NO信息")*/]
         [LabelText("链接为网络对象")]
 #endif
         [ ToggleGroup("IsNet"), ShowIf("IsNet"),ESBackGround("yellow",0.25f,WithAlpha =0.1f)]
-        public ESNetObject NetObject;
+        public NetworkObject NetObject;
         [ToggleGroup("IsNet"), ShowIf("IsNet"), ESBackGround("yellow", 0.25f)]
         public ESNetBehaviour NetBehaviour;
         [ToggleGroup("IsNet","联网对象"), ShowInInspector, LabelText("是联网的")]

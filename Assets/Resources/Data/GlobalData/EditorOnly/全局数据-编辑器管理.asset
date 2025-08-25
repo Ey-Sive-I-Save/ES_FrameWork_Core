@@ -39,7 +39,7 @@ MonoBehaviour:
         ES]], mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 7
       Data: 2|ES.GlobalDataForEditorOnly+IconSelector_DependCompo_ClassName, ES
@@ -69,46 +69,7 @@ MonoBehaviour:
       Data: 1
     - Name: contentName
       Entry: 1
-      Data: d_GameObject Icon
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: typeName
-      Entry: 1
-      Data: Transform
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 4|ES.GlobalDataForEditorOnly+IconSelector_DependCompo_ClassName, ES
-    - Name: contentGetter
-      Entry: 7
-      Data: 5|ES.GlobalDataForEditorOnly+ContentGetter_SystemIcon_English, ES
-    - Name: color
-      Entry: 7
-      Data: UnityEngine.Color, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: scale
-      Entry: 4
-      Data: 1
-    - Name: contentName
-      Entry: 1
-      Data: CanvasRenderer Icon
+      Data: Image Icon
     - Name: 
       Entry: 8
       Data: 
@@ -129,13 +90,13 @@ MonoBehaviour:
       Data: 
     - Name: Ins
       Entry: 7
-      Data: 6|ES.GlobalDataForEditorOnly+ESInspectorControl, ES
+      Data: 4|ES.GlobalDataForEditorOnly+ESInspectorControl, ES
     - Name: EnableCompoentShowControl_
       Entry: 5
       Data: true
     - Name: cacheToggleFalseNames
       Entry: 7
-      Data: 7|System.Collections.Generic.HashSet`1[[System.String, mscorlib]], System.Core
+      Data: 5|System.Collections.Generic.HashSet`1[[System.String, mscorlib]], System.Core
     - Name: 
       Entry: 12
       Data: 0
@@ -150,14 +111,14 @@ MonoBehaviour:
       Data: 
     - Name: TypeDis
       Entry: 7
-      Data: 8|ES.GlobalDataForEditorOnly+TypeDisplay, ES
+      Data: 6|ES.GlobalDataForEditorOnly+TypeDisplay, ES
     - Name: HandSelfRename
       Entry: 7
-      Data: 9|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.String,
+      Data: 7|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.String,
         mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 10|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+      Data: 8|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
@@ -185,13 +146,13 @@ MonoBehaviour:
       Data: 
     - Name: TagAndLayer
       Entry: 7
-      Data: 11|ES.GlobalDataForEditorOnly+TagsAndLayers, ES
+      Data: 9|ES.GlobalDataForEditorOnly+TagsAndLayers, ES
     - Name: autoRefresh
       Entry: 5
       Data: true
     - Name: memoryTags
       Entry: 7
-      Data: 12|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+      Data: 10|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 14
@@ -245,11 +206,11 @@ MonoBehaviour:
       Data: 
     - Name: memoryLayers
       Entry: 7
-      Data: 13|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+      Data: 11|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
         mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 14|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+      Data: 12|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8

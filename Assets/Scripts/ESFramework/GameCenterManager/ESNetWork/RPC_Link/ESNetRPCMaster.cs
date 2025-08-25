@@ -12,17 +12,17 @@ namespace ES
 
     public class ESNetRPCMaster : ESNetBehaviour
     {
-        public ESNetObject NetObject;
+        public NetworkObject NetObject;
         public bool IsNetWorked = false;
         #region 声明
         private void Awake()
         {
             if (NetObject == null)
             {
-                NetObject = GetComponentInParent<ESNetObject>();
+                NetObject = GetComponentInParent<NetworkObject>();
                 if (NetObject == null)
                 {
-                    NetObject = gameObject.AddComponent<ESNetObject>();
+                    NetObject = gameObject.AddComponent<NetworkObject>();
                 }
             }
             ESNetManager.Instance.ESNetRPC = this;

@@ -22,9 +22,9 @@ namespace ES
         [LabelText("默认状态"),SerializeReference] public ESStandardStateVariableData stateStatus=new ESStandardStateVariableData();
 
 
-        [ShowIfGroup("add",VisibleIf = "@IsSonMachine"),LabelText("绑定状态机基准状态(可选)", SdfIconType.Link45deg), GUIColor("@new Color(0.95f,0.5f,0.7f)")]
+        [ShowIfGroup("IsAdd",VisibleIf = "@IsSonMachine"),LabelText("绑定状态机基准状态(可选)", SdfIconType.Link45deg), GUIColor("@new Color(0.95f,0.5f,0.7f)")]
         public StateDataInfo BindingStandState;
-        [ShowIfGroup("add"),LabelText("绑定状态机管理状态(可选)", SdfIconType.Link45deg), GUIColor("@new Color(0.95f,0.5f,0.7f)")]
+        [ShowIfGroup("IsAdd"),LabelText("绑定状态机管理状态(可选)", SdfIconType.Link45deg), GUIColor("@new Color(0.95f,0.5f,0.7f)")]
         public List<StateDataInfo> BindingAllStates; 
 
         public virtual bool TypeFilterBoolMayMachine(Type type)

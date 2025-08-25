@@ -4,7 +4,7 @@ using Sirenix.Serialization;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FishNet;
 public class StateTestMono : ESHostingMono_BaseESModule, IWithESMachine
 {
     

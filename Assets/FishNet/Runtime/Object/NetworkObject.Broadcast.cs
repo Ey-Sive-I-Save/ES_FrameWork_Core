@@ -26,6 +26,5 @@ namespace FishNet.Object
             NetworkManager.ServerManager.Broadcast(Observers, message, requireAuthenticated, channel);
         }
     }
-
 }
 

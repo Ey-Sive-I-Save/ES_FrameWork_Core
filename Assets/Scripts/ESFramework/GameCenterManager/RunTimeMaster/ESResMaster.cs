@@ -465,17 +465,27 @@ namespace ES
                     string jsonContentHash = File.ReadAllText(PathFordownLoadPreToHashFile);
 
                     SerializedDictionary<string, string> handleAgo = JsonUtility.FromJson<SerializedDictionary<string, string>>(jsonContentDepend);
-                    ABHelper.Depends = new Dictionary<string, WrapListString>() { };
-                    foreach (var (i, k) in handleAgo)
+                    if (handleAgo != null)
                     {
-                        ABHelper.Depends.Add(i, new WrapListString() { strings = k.Split('&').ToList() });
+                        ABHelper.Depends = new Dictionary<string, WrapListString>() { };
+                        foreach (var (i, k) in handleAgo)
+                        {
+                            ABHelper.Depends.Add(i, new WrapListString() { strings = k.Split('&').ToList() });
+                        }
                     }
 
                     SerializedDictionary<string, string> handleAgo2 = JsonUtility.FromJson<SerializedDictionary<string, string>>(jsonContentHash);
-                    ABHelper.Hashs = new Dictionary<string, string>();
-                    foreach (var (i, k) in handleAgo2)
+                    if (handleAgo2 != null)
                     {
-                        ABHelper.Hashs.Add(i, k);
+                        ABHelper.Hashs = new Dictionary<string, string>();
+                        foreach (var (i, k) in handleAgo2)
+                        {
+                            ABHelper.Hashs.Add(i, k);
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError(jsonContentHash);
                     }
                     IsFileCompareComplete = true;
                     TestAllABStartState();

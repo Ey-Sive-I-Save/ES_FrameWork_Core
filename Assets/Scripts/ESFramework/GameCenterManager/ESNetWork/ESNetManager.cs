@@ -4,6 +4,7 @@ using FishNet.Connection;
 using FishNet.Managing;
 using FishNet.Managing.Client;
 using FishNet.Managing.Server;
+using FishNet.Object;
 using FishNet.Transporting;
 using Sirenix.OdinInspector;
 using System;
@@ -39,7 +40,7 @@ namespace ES
 
                 }
                 GameObject cache = new GameObject();
-                cache.AddComponent<ESNetObject>();
+                cache.AddComponent<NetworkObject>();
                 return _NetBehaviourCoreScenes=cache.AddComponent<ESNetRPCMaster>();
             }
 

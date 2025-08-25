@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 8861678765863218422}
   - component: {fileID: 5672997064287072122}
   - component: {fileID: 5655631747717845945}
-  - component: {fileID: 955481343422018069}
+  - component: {fileID: 3259460824714498373}
   m_Layer: 11
   m_Name: "\u4E1C\u897F_2"
   m_TagString: Player
@@ -86,7 +86,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf49b8e8b250e94ab54189a312bff81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Editor_IsNetObject: 1
+  OriginalDomain:
+    readMe:
+      edit: 0
+      ReadMeOut: ...
+      readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+      showColor: {r: 1, g: 1, b: 1, a: 1}
+    core: {fileID: 0}
+    Modules:
+      ValuesNow: []
+      MayHasElement: 1
   Rigid: {fileID: 0}
   Anim: {fileID: 0}
   ESTagsC:
@@ -94,9 +103,10 @@ MonoBehaviour:
     - content: "\u9635\u8425/\u6211\u65B9"
       getTime: 0
       times: 0
-  NetObject: {fileID: 955481343422018069}
+  NetObject: {fileID: 0}
   NetBehaviour: {fileID: 5655631747717845945}
   _isNet: 1
+  LinkReceiveChannel_Channel_ColliderFrom: {}
   NormalDomain:
     rid: 2405589145629753510
   StateMachineDomain:
@@ -106,7 +116,7 @@ MonoBehaviour:
   BuffDomain:
     rid: 2405589129531228995
   CharacterController: {fileID: 0}
-  YV: 0
+  YSpeed: 0
   GroundCheck: {fileID: 763744516154443331}
   IsGrounded: 0
   dataInfo: {fileID: -701346399224484441, guid: ef6fa3665d3cd4247a83d9c972c202ea,
@@ -115,6 +125,10 @@ MonoBehaviour:
     rid: -2
   entityVariableData:
     rid: -2
+  LinksForTest: {}
+  info_1: {fileID: 0}
+  info_2: {fileID: 0}
+  info_3: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -125,8 +139,8 @@ MonoBehaviour:
       data:
         readMe:
           edit: 1
-          ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-          readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+          ReadMeOut: ...
+          readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
           showColor: {r: 1, g: 1, b: 1, a: 1}
         core: {fileID: 0}
         Modules:
@@ -137,8 +151,8 @@ MonoBehaviour:
       data:
         readMe:
           edit: 1
-          ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-          readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
+          ReadMeOut: ...
+          readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
           showColor: {r: 1, g: 1, b: 1, a: 1}
         core: {fileID: 0}
         Modules:
@@ -152,180 +166,6 @@ MonoBehaviour:
             ValuesNow: []
             MayHasElement: 0
           entity: {fileID: 0}
-          StateDomain:
-            readMe:
-              edit: 1
-              ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-              readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-              showColor: {r: 1, g: 1, b: 1, a: 1}
-            core: {fileID: 0}
-            Modules:
-              ValuesNow: []
-              MayHasElement: 0
-            StateMachine:
-              _enableSelf: 1
-              _SelfRunningState:
-                rid: -2
-              _SelfRunningStates:
-                ValuesNow: []
-                MayHasElement: 0
-              entity: {fileID: 0}
-              StateDomain:
-                readMe:
-                  edit: 1
-                  ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-                  readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-                  showColor: {r: 1, g: 1, b: 1, a: 1}
-                core: {fileID: 0}
-                Modules:
-                  ValuesNow: []
-                  MayHasElement: 0
-                StateMachine:
-                  _enableSelf: 1
-                  _SelfRunningState:
-                    rid: -2
-                  _SelfRunningStates:
-                    ValuesNow: []
-                    MayHasElement: 0
-                  entity: {fileID: 0}
-                  StateDomain:
-                    readMe:
-                      edit: 1
-                      ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-                      readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-                      showColor: {r: 1, g: 1, b: 1, a: 1}
-                    core: {fileID: 0}
-                    Modules:
-                      ValuesNow: []
-                      MayHasElement: 0
-                    StateMachine:
-                      _enableSelf: 1
-                      _SelfRunningState:
-                        rid: -2
-                      _SelfRunningStates:
-                        ValuesNow: []
-                        MayHasElement: 0
-                      entity: {fileID: 0}
-                      StateDomain:
-                        readMe:
-                          edit: 1
-                          ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-                          readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-                          showColor: {r: 1, g: 1, b: 1, a: 1}
-                        core: {fileID: 0}
-                        Modules:
-                          ValuesNow: []
-                          MayHasElement: 0
-                        StateMachine:
-                          _enableSelf: 1
-                          _SelfRunningState:
-                            rid: -2
-                          _SelfRunningStates:
-                            ValuesNow: []
-                            MayHasElement: 0
-                          entity: {fileID: 0}
-                          StateDomain:
-                            readMe:
-                              edit: 1
-                              ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-                              readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-                              showColor: {r: 1, g: 1, b: 1, a: 1}
-                            core: {fileID: 0}
-                            Modules:
-                              MayHasElement: 0
-                            StateMachine:
-                              _enableSelf: 1
-                            RegisterPack: {fileID: 0}
-                            DefaultStateName: "\u9759\u6B62"
-                          SkillMachine:
-                            _enableSelf: 1
-                            _SelfRunningState:
-                              rid: -2
-                            _SelfRunningStates:
-                              MayHasElement: 0
-                          BuffMachine:
-                            _enableSelf: 1
-                            _SelfRunningState:
-                              rid: -2
-                            _SelfRunningStates:
-                              MayHasElement: 0
-                          InteractionMachine:
-                            _enableSelf: 1
-                            _SelfRunningState:
-                              rid: -2
-                            _SelfRunningStates:
-                              MayHasElement: 0
-                        RegisterPack: {fileID: 0}
-                        DefaultStateName: "\u9759\u6B62"
-                      SkillMachine:
-                        _enableSelf: 1
-                        _SelfRunningState:
-                          rid: -2
-                        _SelfRunningStates:
-                          ValuesNow: []
-                          MayHasElement: 0
-                      BuffMachine:
-                        _enableSelf: 1
-                        _SelfRunningState:
-                          rid: -2
-                        _SelfRunningStates:
-                          ValuesNow: []
-                          MayHasElement: 0
-                      InteractionMachine:
-                        _enableSelf: 1
-                        _SelfRunningState:
-                          rid: -2
-                        _SelfRunningStates:
-                          ValuesNow: []
-                          MayHasElement: 0
-                    RegisterPack: {fileID: 0}
-                    DefaultStateName: "\u9759\u6B62"
-                  SkillMachine:
-                    _enableSelf: 1
-                    _SelfRunningState:
-                      rid: -2
-                    _SelfRunningStates:
-                      ValuesNow: []
-                      MayHasElement: 0
-                  BuffMachine:
-                    _enableSelf: 1
-                    _SelfRunningState:
-                      rid: -2
-                    _SelfRunningStates:
-                      ValuesNow: []
-                      MayHasElement: 0
-                  InteractionMachine:
-                    _enableSelf: 1
-                    _SelfRunningState:
-                      rid: -2
-                    _SelfRunningStates:
-                      ValuesNow: []
-                      MayHasElement: 0
-                RegisterPack: {fileID: 0}
-                DefaultStateName: "\u9759\u6B62"
-              SkillMachine:
-                _enableSelf: 1
-                _SelfRunningState:
-                  rid: -2
-                _SelfRunningStates:
-                  ValuesNow: []
-                  MayHasElement: 0
-              BuffMachine:
-                _enableSelf: 1
-                _SelfRunningState:
-                  rid: -2
-                _SelfRunningStates:
-                  ValuesNow: []
-                  MayHasElement: 0
-              InteractionMachine:
-                _enableSelf: 1
-                _SelfRunningState:
-                  rid: -2
-                _SelfRunningStates:
-                  ValuesNow: []
-                  MayHasElement: 0
-            RegisterPack: {fileID: 0}
-            DefaultStateName: "\u9759\u6B62"
           SkillMachine:
             _enableSelf: 1
             _SelfRunningState:
@@ -354,8 +194,8 @@ MonoBehaviour:
       data:
         readMe:
           edit: 0
-          ReadMe: "\u8FD9\u91CC\u7528\u6765\u79FB\u52A8"
-          readMe: "\u8FD9\u91CC\u7528\u6765\u79FB\u52A8"
+          ReadMeOut: ...
+          readMeIn: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
           showColor: {r: 1, g: 1, b: 1, a: 1}
         core: {fileID: 0}
         Modules:
@@ -494,11 +334,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 955481343422018069}
-  _networkObjectCache: {fileID: 955481343422018069}
+  _addedNetworkObject: {fileID: 3259460824714498373}
+  _networkObjectCache: {fileID: 3259460824714498373}
   ConnectedObject: {fileID: 9112251378766090210}
+  StartSpawn: 0
   AllOnlyOwmer: []
---- !u!114 &955481343422018069
+--- !u!114 &3259460824714498373
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -507,7 +348,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5250313586738345627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5d73935ea17f2042937f9e63dfe795b, type: 3}
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <IsNested>k__BackingField: 0
@@ -519,8 +360,8 @@ MonoBehaviour:
   <NestedRootNetworkBehaviours>k__BackingField: []
   SerializedTransformProperties:
     Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 0}
-    LocalScale: {x: 0, y: 0, z: 0}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+    LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1
   _isSpawnable: 1
   _isGlobal: 0
@@ -540,7 +381,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 7
+  <PrefabId>k__BackingField: 0
   <SpawnableCollectionId>k__BackingField: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 15374955268720054583

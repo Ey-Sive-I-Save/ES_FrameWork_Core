@@ -22,10 +22,8 @@ namespace ES
         public Queue<ILink> WaitingSendLinkAtServer = new Queue<ILink>();
         [ShowInInspector]
         public Queue<ILink> WaitingSendLinkAtClient = new Queue<ILink>();
-
         [ShowInInspector]
         public Queue<Action> WaitingTaskAtServer = new Queue<Action>();
-
         [ShowInInspector]
         public Queue<Action> WaitingTaskAtClient = new Queue<Action>();
         private float maxWait = 2;
@@ -101,7 +99,6 @@ namespace ES
             Debug.Log("Client DO" + link);
             if (link is Link_IDSet set)
             {
-                Debug.Log(set.id);
                 ConnectedObject.ID = set.id;
             }
         }

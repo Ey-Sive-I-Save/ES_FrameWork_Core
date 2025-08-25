@@ -52,7 +52,7 @@ namespace ES
         [FoldoutGroup("伤害")]
         [LabelText("伤害加成(1+%)")] public float DamagePerUp = 0;
         [FoldoutGroup("伤害")]
-        [LabelText("伤害加成(add)")] public float DamageAdd = 0;
+        [LabelText("伤害加成(IsAdd)")] public float DamageAdd = 0;
         [FoldoutGroup("伤害")]
         [LabelText("可伤害的Tag")] public PointerForStringList_Tag Tags = new PointerForStringList_Tag() { tagNames = new List<string>() { "Enemy" } };
 

@@ -129,10 +129,6 @@ namespace ES
         [FoldoutGroup("实体攻击事件收发选通")]
         public LinkReceiveChannelPool<Channel_EntityAttackLink, Link_EntityAttack>
             LinksForTest = new();
-        void test()
-        {
-    
-        }
 
         [FoldoutGroup("委托"), LabelText("尝试被攻击时")] public Action<Entity, Damage> OnTryBeAttack = (a, b) => { };
         [FoldoutGroup("委托"), LabelText("尝试攻击时")] public Action<Entity, Damage> OnTryAttack = (a, b) => { };
