@@ -28,7 +28,7 @@ namespace ES
         [MenuItem("Tools/ES工具/ES节点图管理窗口")]
         public static void TryOpenWindow()
         {
-            if (ESEditorRuntimePartMaster.Instance != null)
+            if (ESEditorRuntimePartMaster_OB.Instance != null)
                 OpenWindow();
             else Debug.LogError("确保场景中有EditorMaster");
         }

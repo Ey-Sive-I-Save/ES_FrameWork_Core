@@ -50,7 +50,6 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 2594906239915219160}
   ConnectedObject: {fileID: 0}
   StartSpawn: 0
-  AllOnlyOwmer: []
   NetObject: {fileID: 0}
   IsNetWorked: 0
 --- !u!114 &2594906239915219160
@@ -95,7 +94,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 0
+  <PrefabId>k__BackingField: 9
   <SpawnableCollectionId>k__BackingField: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 18445112531672260266

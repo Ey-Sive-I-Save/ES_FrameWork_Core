@@ -23,7 +23,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: ICON
       Entry: 7
-      Data: 0|ES.GlobalDataForEditorOnly+ESIconControl, ES
+      Data: 0|ES.GlobalDataForEditorOnly+ESIconControl, ESStand
     - Name: startOffset
       Entry: 4
       Data: -20
@@ -36,16 +36,16 @@ MonoBehaviour:
     - Name: HierachySelectorS
       Entry: 7
       Data: 1|System.Collections.Generic.List`1[[ES.GlobalDataForEditorOnly+HierachySelector,
-        ES]], mscorlib
+        ESStand]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 2|ES.GlobalDataForEditorOnly+IconSelector_DependCompo_ClassName, ES
+      Data: 2|ES.GlobalDataForEditorOnly+IconSelector_DependCompo_ClassName, ESStand
     - Name: contentGetter
       Entry: 7
-      Data: 3|ES.GlobalDataForEditorOnly+ContentGetter_SystemIcon_English, ES
+      Data: 3|ES.GlobalDataForEditorOnly+ContentGetter_SystemIcon_English, ESStand
     - Name: color
       Entry: 7
       Data: UnityEngine.Color, UnityEngine.CoreModule
@@ -90,7 +90,7 @@ MonoBehaviour:
       Data: 
     - Name: Ins
       Entry: 7
-      Data: 4|ES.GlobalDataForEditorOnly+ESInspectorControl, ES
+      Data: 4|ES.GlobalDataForEditorOnly+ESInspectorControl, ESStand
     - Name: EnableCompoentShowControl_
       Entry: 5
       Data: true
@@ -111,7 +111,7 @@ MonoBehaviour:
       Data: 
     - Name: TypeDis
       Entry: 7
-      Data: 6|ES.GlobalDataForEditorOnly+TypeDisplay, ES
+      Data: 6|ES.GlobalDataForEditorOnly+TypeDisplay, ESStand
     - Name: HandSelfRename
       Entry: 7
       Data: 7|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.String,
@@ -146,7 +146,7 @@ MonoBehaviour:
       Data: 
     - Name: TagAndLayer
       Entry: 7
-      Data: 9|ES.GlobalDataForEditorOnly+TagsAndLayers, ES
+      Data: 9|ES.GlobalDataForEditorOnly+TagsAndLayers, ESStand
     - Name: autoRefresh
       Entry: 5
       Data: true
@@ -410,10 +410,13 @@ MonoBehaviour:
   showGlobal: 0
   HasConfirm: 1
   Project:
-    EnableProjectShow: 0
-    startTextOffset_: -50
+    EnableProjectShow: 1
+    startTextOffset_: -96.3
     textwidth_: 50
-    nameToHandle: []
+    nameToHandle:
+    - oldName: Out
+      content:
+        rid: -2
     contentForNet:
       rid: -2
     contentForLocal:

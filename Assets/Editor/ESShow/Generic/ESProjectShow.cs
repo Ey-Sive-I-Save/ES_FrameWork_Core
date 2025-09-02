@@ -21,7 +21,8 @@ namespace ES
             EditorApplication.projectWindowItemOnGUI += ProjectItemDraw;
         }
         public static GlobalDataForEditorOnly.ProjectShow Show;
-        public static void ProjectItemDraw(string guid, Rect selectionRect)
+      
+            public static void ProjectItemDraw(string guid, Rect selectionRect)
         {
             Show ??= GlobalDataForEditorOnly.Instance?.Project;
             if (Show == null||!Show.EnableProjectShow) return;
@@ -95,9 +96,8 @@ namespace ES
                     Rect conRect = new Rect(selectionRect);
                     conRect.x = conRect.xMax + Show.startTextOffset_;
                     conRect.width = Show.textwidth_;
-
-                    GUIContent con = i.content.GetContent();
-
+                        SirenixEditorGUI.DrawSolidRect(selectionRect,UnityEngine.Color.blue._WithAlpha(0.25f));
+                        GUIContent con = i.content.GetContent();
 
                     GUIHelper.PushColor(i.content.color);
                     GUI.Label(conRect, con);

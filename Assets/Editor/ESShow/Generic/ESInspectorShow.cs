@@ -203,7 +203,7 @@ namespace ES
                 else //文件夹
                 {
 
-                    var path = KeyValueMatchingUtility.SafeEditor.GetAssetPath(editor.target);
+                    var path = ESStaticDesignUtility.SafeEditor.GetAssetPath(editor.target);
                     if (AssetDatabase.IsValidFolder(path))
                     {
                         #region 刷新
@@ -325,7 +325,7 @@ namespace ES
         #region 文件夹绘制支持
         public static void CheckAndAddAssetInKeyGroup(string path)
         {
-            if (KeyValueMatchingUtility.SafeEditor.IsValidFolder(path))
+            if (ESStaticDesignUtility.SafeEditor.IsValidFolder(path))
             {
                 CachingAssets.TryAdd(InpectorAssetTypeSelect.Folder, path);
                 return;
@@ -390,11 +390,11 @@ namespace ES
                     }
                     if (SirenixEditorGUI.Button(normalizedPath._KeepAfterByLast("/")._RemoveExtension(), ButtonSizes.Medium))
                     {
-                        KeyValueMatchingUtility.SafeEditor.PingAssetByPath(k);
+                        ESStaticDesignUtility.SafeEditor.PingAssetByPath(k);
                     }
                     if (GUILayout.Button("直接选中",GUILayout.Width(100)))
                     {
-                        KeyValueMatchingUtility.SafeEditor.SelectAssetByPath(k);
+                        ESStaticDesignUtility.SafeEditor.SelectAssetByPath(k);
                     }
                     SirenixEditorGUI.EndIndentedHorizontal();
                     if (indent) GUIHelper.PopIndentLevel();

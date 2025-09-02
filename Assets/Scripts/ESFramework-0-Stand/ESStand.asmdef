@@ -1,0 +1,22 @@
+{
+    "name": "ESStand",
+    "rootNamespace": "",
+    "references": [
+        "GUID:2bafac87e7f4b9b418d9448d219b01ab",
+        "GUID:d8b63aba1907145bea998dd612889d6b",
+        "GUID:df380645f10b7bc4b97d4f5eb6303d95",
+        "GUID:d45b0ee66b573c042b56be86060f8fe8",
+        "GUID:2665a8d13d1b3f18800f46e256720795",
+        "GUID:7c88a4a7926ee5145ad2dfa06f454c67",
+        "GUID:9341dc36b33c3984e97b22dac619ca50"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -19,11 +19,11 @@ public class testCopyTo : MonoBehaviour
         to1.SharedData = from.SharedData;
         to1.VariableData.DeepCloneFrom(from.VariableData);
 
-        KeyValueMatchingUtility.DataApply.CopyToClassSameType(from, to2);
+        ESStaticLogicUtility.DataApply.CopyToClassSameType(from, to2);
 
-        KeyValueMatchingUtility.DataApply.CopyTo<SHJSharedData, SHJVariableData>(from, to2);
+        ESStaticLogicUtility.DataApply.CopyTo<SHJSharedData, SHJVariableData>(from, to2);
 
-        KeyValueMatchingUtility.DataApply.CopyToClassDynamic(from2, to1);
+        ESStaticLogicUtility.DataApply.CopyToClassDynamic(from2, to1);
     }
     [Serializable]
     public class SHJ : IWithSharedAndVariableData<SHJSharedData, SHJVariableData>

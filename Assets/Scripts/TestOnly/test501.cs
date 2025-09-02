@@ -46,7 +46,7 @@ public class test501 : MonoBehaviour
     [Button("TEST深拷贝")]
     public void Test()
     {
-        aaa2 = KeyValueMatchingUtility.Creator.DeepCloneGenericStack(aaa) as Stack<Attackable>;
+        aaa2 = ESStaticDesignUtility.Creator.DeepCloneGenericStack(aaa) as Stack<Attackable>;
        /* target = KeyValueMatchingUtility.Creator.DeepClone(source);
         target1 = KeyValueMatchingUtility.Creator.DeepClone(source1);
         target2 = KeyValueMatchingUtility.Creator.DeepClone(source2);

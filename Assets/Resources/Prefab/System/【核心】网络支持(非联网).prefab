@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tag: "\u7F51\u7EDC\u652F\u6301"
   DontDes: 1
-  PrioityForToReplace: 0
+  PrioityForToReplace: 21
   PrioityForToBeReplaced: 0
 --- !u!1 &5993534828198471426
 GameObject:

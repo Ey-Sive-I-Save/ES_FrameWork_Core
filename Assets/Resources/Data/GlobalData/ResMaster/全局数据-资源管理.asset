@@ -80,7 +80,7 @@ MonoBehaviour:
     - Name: Depend
       Entry: 7
       Data: 2|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ES.WrapListString,
-        AOTHotUpdate]], mscorlib
+        ESStand]], mscorlib
     - Name: comparer
       Entry: 9
       Data: 1
@@ -95,7 +95,7 @@ MonoBehaviour:
       Data: prefab
     - Name: $v
       Entry: 7
-      Data: 3|ES.WrapListString, AOTHotUpdate
+      Data: 3|ES.WrapListString, ESStand
     - Name: strings
       Entry: 7
       Data: 4|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
@@ -131,7 +131,7 @@ MonoBehaviour:
   genarateFolder: Assets/StreamingAssets/AssetBundles
   genarateHotUpdateFolder_: Assets/StreamingAssets/AssetBundles
   abMaskType: 1
-  ABName: "\u5F97"
+  ABName: prefab
   applyPlatform: 7
   DownLoadURL: https://eysive-teset.oss-cn-beijing.aliyuncs.com
   LocalTestDownLoadPath: Assets/StreamingAssets/AssetBundles/DownLoadTest
