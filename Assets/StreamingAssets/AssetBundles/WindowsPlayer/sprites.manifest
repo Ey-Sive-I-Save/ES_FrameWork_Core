@@ -1,20 +1,20 @@
 ManifestFileVersion: 0
-CRC: 4171000295
+CRC: 1447621445
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4e1f036db2be221e347b5e2390cec832
+    Hash: be40a4c2c4c88294250746fb91bc6feb
   TypeTreeHash:
     serializedVersion: 2
     Hash: 9000e56e955832e18b547895309e5b00
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 4e1f036db2be221e347b5e2390cec832
+    Hash: be40a4c2c4c88294250746fb91bc6feb
 HashAppended: 1
 ClassTypes:
 - Class: 213
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Resources/Sprites/Boki.jpg
+- Assets/Editor/Icons/Boki.jpg
 Dependencies: []

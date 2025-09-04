@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 3951422110
+CRC: 1603169185
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ed0b9576d37673a126a967bd4bd60c0a
+    Hash: d4424aab846875b345f2d0f38a3ecb3f
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 4c7455182046d730ec2ae50275e492ad
+    Hash: 24124f83ec33b39853f9bee1cc42d808
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: ed0b9576d37673a126a967bd4bd60c0a
+    Hash: d4424aab846875b345f2d0f38a3ecb3f
 HashAppended: 1
 ClassTypes:
 - Class: 28
@@ -54,35 +54,33 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
-- Class: 687078895
-  Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
-- AssemblyName: ESCore
-  ClassName: ES.DomainSource
 - AssemblyName: ESCore
   ClassName: ES.ESBuffSharedData
 - AssemblyName: ESCore
   ClassName: ES.ESBuffVariableData
 - AssemblyName: ESCore
-  ClassName: ES.ESCode_CoreDomainSource/_DomainAndList
-- AssemblyName: ESCore
-  ClassName: ES.ESCode_CoreDomainSource/_DomainAndList/_ModuleClass
-- AssemblyName: ESCore
-  ClassName: ES.ESCode_EnumSource/EnumType
-- AssemblyName: ESCore
-  ClassName: ES.ESCode_EnumSource/OneEnumElement
-- AssemblyName: ESCore
   ClassName: ES.ESEntitySharedData
 - AssemblyName: ESCore
   ClassName: ES.ESEntityVariableData
-- AssemblyName: ESCore
-  ClassName: ES.ModuleSource
-- AssemblyName: ESCore
-  ClassName: ES.ModuleSource_Son
 - AssemblyName: ESDesign
   ClassName: ES.SelectDic_StringsToType
 - AssemblyName: ESDesign
   ClassName: ES.SettlementFloat
+- AssemblyName: ESLogic
+  ClassName: ES.DomainSource
+- AssemblyName: ESLogic
+  ClassName: ES.ESCode_CoreDomainSource/_DomainAndList
+- AssemblyName: ESLogic
+  ClassName: ES.ESCode_CoreDomainSource/_DomainAndList/_ModuleClass
+- AssemblyName: ESLogic
+  ClassName: ES.ESCode_EnumSource/EnumType
+- AssemblyName: ESLogic
+  ClassName: ES.ESCode_EnumSource/OneEnumElement
+- AssemblyName: ESLogic
+  ClassName: ES.ModuleSource
+- AssemblyName: ESLogic
+  ClassName: ES.ModuleSource_Son
 - AssemblyName: ESStand
   ClassName: ES.GlobalDataForEditorOnly/ProjectShow
 - AssemblyName: ESStand

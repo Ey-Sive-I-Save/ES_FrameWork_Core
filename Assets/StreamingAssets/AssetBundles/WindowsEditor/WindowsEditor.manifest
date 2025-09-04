@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 502015769
+CRC: 2164875309
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -9,28 +9,21 @@ AssetBundleManifest:
       Name: rubbish_e59a39171689cacd6c47e973cb49b339
       Dependencies: {}
     Info_2:
-      Name: prefab_5d6c4a42cafe6b681fed1294ca02b489
+      Name: prefab_f0a9a8a2d7c334c7177a9d3a794f16b8
       Dependencies:
         Dependency_0: material_cf0868ae79727aa7d4541b36a731fc40
-        Dependency_1: selfassets_f36ac404c4bd93973f086d08cb6cb3f0
     Info_3:
-      Name: "\u521D\u671F\u97F3\u6548\u8D44\u6E90_1d88476ed6b0a730b500b9ea0b6b2bea"
+      Name: sprites_be40a4c2c4c88294250746fb91bc6feb
       Dependencies: {}
     Info_4:
-      Name: "\u5730\u9762_mat_b1a43a5392158971408e42649e7c737a"
-      Dependencies: {}
-    Info_5:
-      Name: selfassets_f36ac404c4bd93973f086d08cb6cb3f0
-      Dependencies:
-        Dependency_0: "\u521D\u671F\u97F3\u6548\u8D44\u6E90_1d88476ed6b0a730b500b9ea0b6b2bea"
-    Info_6:
-      Name: sprites_4e1f036db2be221e347b5e2390cec832
-      Dependencies: {}
-    Info_7:
-      Name: scenes_fc9f5b5469e1bc473906d8bd8f2b4d54
+      Name: scenes_d6e9322e22e57bca4dca6942c7791b2b
       Dependencies:
         Dependency_0: material_cf0868ae79727aa7d4541b36a731fc40
-        Dependency_1: prefab_5d6c4a42cafe6b681fed1294ca02b489
-    Info_8:
-      Name: data_ed0b9576d37673a126a967bd4bd60c0a
+        Dependency_1: prefab_f0a9a8a2d7c334c7177a9d3a794f16b8
+        Dependency_2: system_2ea7bc3879e7fbf8ed1b92f8410773f1
+    Info_5:
+      Name: data_d4424aab846875b345f2d0f38a3ecb3f
+      Dependencies: {}
+    Info_6:
+      Name: system_2ea7bc3879e7fbf8ed1b92f8410773f1
       Dependencies: {}

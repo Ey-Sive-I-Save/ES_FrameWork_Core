@@ -1,28 +1,24 @@
 ManifestFileVersion: 0
-CRC: 725099134
+CRC: 3424630361
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 5d6c4a42cafe6b681fed1294ca02b489
+    Hash: f0a9a8a2d7c334c7177a9d3a794f16b8
   TypeTreeHash:
     serializedVersion: 2
-    Hash: a1623abe5062e2fa994f491a61a121ae
+    Hash: 587eeb8b3af1f86273adb3585f2c11b7
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 5d6c4a42cafe6b681fed1294ca02b489
+    Hash: f0a9a8a2d7c334c7177a9d3a794f16b8
 HashAppended: 1
 ClassTypes:
 - Class: 1
   Script: {instanceID: 0}
 - Class: 4
   Script: {instanceID: 0}
-- Class: 20
-  Script: {instanceID: 0}
 - Class: 21
   Script: {instanceID: 0}
 - Class: 23
-  Script: {instanceID: 0}
-- Class: 28
   Script: {instanceID: 0}
 - Class: 33
   Script: {instanceID: 0}
@@ -34,203 +30,15 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 65
   Script: {instanceID: 0}
-- Class: 81
-  Script: {instanceID: 0}
-- Class: 82
-  Script: {instanceID: 0}
-- Class: 91
-  Script: {instanceID: 0}
 - Class: 95
-  Script: {instanceID: 0}
-- Class: 108
-  Script: {instanceID: 0}
-- Class: 114
-  Script: {fileID: 11500000, guid: 24aca10204e94cd44902b20e51f66627, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 88b8e23379a790446b99333c65a5626f, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: db495d40c8fe011439337497e24be6c2, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 7d331f979d46e8e4a9fc90070c596d44, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 9880e85651efd71469092ce519317f7b, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: f942890b5810c1b4c821498eecb6f88c, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 23ecf27eb55a02f469a44a415cb89ffd, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: c718ab30626bbd648952910f74780a06, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 68828c85278210948b9d50a8db3aab74, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 2fd4b45f9189d94408d3ee4b72fce730, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 8aa3eae5f98478a4ea306a5ab3d460e4, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 10f399a5388d3b3459b7a8476ae13e6a, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: c71fd7f855ec523429999fc4e14a1928, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 3ad70174b079c2f4ebc7931d3dd1af6f, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: b9f908689a5228a4f8e1e3d2661e1012, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 2432663cf7179754a9aaaa6715055c0f, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 26e4f626a9ca9704f9befe7673a8dd15, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: d0d0522cc86ba704ea00ccbedaddb2ee, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: e6d656f377f37164d8d7431aa4e43cdb, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: fcb9cd28b81d116419be700354cd5768, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 369dc0545319383468974c578a85d9f4, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 9d3558aad46c24549bea48d0e3938264, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 211a9f6ec51ddc14f908f5acc0cd0423, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: c8541d1cca4da7043b84a0d563939dea, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: fab85d1c51ee2c344b7dd914dc262ec4, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: d2c95dfde7d73b54dbbdc23155d35d36, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 1c0496bc887ae7f4895eb3fd406d6b19, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 6d3606bfdac5a4743890fc1a5ecd8f24, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
-- Class: 115
-  Script: {instanceID: 0}
-- Class: 128
-  Script: {instanceID: 0}
-- Class: 135
   Script: {instanceID: 0}
 - Class: 136
   Script: {instanceID: 0}
 - Class: 143
   Script: {instanceID: 0}
-- Class: 212
-  Script: {instanceID: 0}
-- Class: 213
-  Script: {instanceID: 0}
-- Class: 222
-  Script: {instanceID: 0}
-- Class: 223
-  Script: {instanceID: 0}
-- Class: 224
-  Script: {instanceID: 0}
-SerializeReferenceClassIdentifiers:
-- AssemblyName: ESCore
-  ClassName: ES.ESNetPlayer
-- AssemblyName: ESCore
-  ClassName: ES.ESObjectOriginalDomain
-- AssemblyName: ESDesign
-  ClassName: ES.ESTagCollection
-- AssemblyName: ESDesign
-  ClassName: ES.SafeKeyGroup`2[ES.Channel_ColliderFrom,ES.IReceiveChannelLink`2[ES.Channel_ColliderFrom,ES.Link_ColEvent_3D]]
-- AssemblyName: ESDesign
-  ClassName: ES.SafeNormalList`1[ES.ESObjectOriginalModule]
-- AssemblyName: ESDesign
-  ClassName: LinkReceiveChannelPool`2[ES.Channel_ColliderFrom,ES.Link_ColEvent_3D]
-- AssemblyName: ESLogic
-  ClassName: ES.ESPoolMaster/FindParentTrans
-- AssemblyName: ESLogic
-  ClassName: ES.ESPoolMaster/TargetScenePrefab
-- AssemblyName: ESStand
-  ClassName: ES.GlobalDataStand.GlobalDataReferStand`1[ES.GlobalDataForEditorOnly]
-- AssemblyName: ESStand
-  ClassName: ES.GlobalDataStand.GlobalDataReferStand`1[ES.GlobalDataForResMaster]
-- AssemblyName: ESStand
-  ClassName: ES.Tool_ESReadMeClass
-- AssemblyName: FishNet.Runtime
-  ClassName: FishNet.Component.Transforming.NetworkTransform/ComponentConfigurationType
-- AssemblyName: FishNet.Runtime
-  ClassName: FishNet.Component.Transforming.NetworkTransform/SnappedAxes
-- AssemblyName: FishNet.Runtime
-  ClassName: FishNet.Object.NetworkObject/PredictionType
-- AssemblyName: FishNet.Runtime
-  ClassName: FishNet.Object.TransformProperties
-- AssemblyName: FishNet.Runtime
-  ClassName: FishNet.Serializing.TransformPackingData
-- AssemblyName: Sirenix.Serialization
-  ClassName: Sirenix.Serialization.SerializationData
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.FaceInfo_Legacy
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.FontAssetCreationSettings
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.KerningTable
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_Character
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_FontFeatureTable
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_FontWeightPair
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_GlyphAdjustmentRecord
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_GlyphPairAdjustmentRecord
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_GlyphValueRecord
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.VertexGradient
-- AssemblyName: UnityEngine.CoreModule
-  ClassName: UnityEngine.Events.ArgumentCache
-- AssemblyName: UnityEngine.CoreModule
-  ClassName: UnityEngine.Events.PersistentCallGroup
-- AssemblyName: UnityEngine.CoreModule
-  ClassName: UnityEngine.Events.PersistentListenerMode
-- AssemblyName: UnityEngine.CoreModule
-  ClassName: UnityEngine.Events.UnityEvent
-- AssemblyName: UnityEngine.CoreModule
-  ClassName: UnityEngine.Events.UnityEvent`1[System.Int32]
-- AssemblyName: UnityEngine.CoreModule
-  ClassName: UnityEngine.Events.UnityEvent`2[UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode]
-- AssemblyName: UnityEngine.IMGUIModule
-  ClassName: UnityEngine.GUIStyle
-- AssemblyName: UnityEngine.TextCoreFontEngineModule
-  ClassName: UnityEngine.TextCore.FaceInfo
-- AssemblyName: UnityEngine.TextCoreFontEngineModule
-  ClassName: UnityEngine.TextCore.Glyph
-- AssemblyName: UnityEngine.TextCoreFontEngineModule
-  ClassName: UnityEngine.TextCore.GlyphMetrics
-- AssemblyName: UnityEngine.TextCoreFontEngineModule
-  ClassName: UnityEngine.TextCore.GlyphRect
-- AssemblyName: UnityEngine.UI
-  ClassName: UnityEngine.UI.AnimationTriggers
-- AssemblyName: UnityEngine.UI
-  ClassName: UnityEngine.UI.Button/ButtonClickedEvent
-- AssemblyName: UnityEngine.UI
-  ClassName: UnityEngine.UI.ColorBlock
-- AssemblyName: UnityEngine.UI
-  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
-- AssemblyName: UnityEngine.UI
-  ClassName: UnityEngine.UI.Navigation
-- AssemblyName: UnityEngine.UI
-  ClassName: UnityEngine.UI.SpriteState
+SerializeReferenceClassIdentifiers: []
 Assets:
-- "Assets/Resources/Prefab/System/\u7F51\u7EDC\u5BA2\u6237\u7AEFRPC\u6A21\u5757.prefab"
 - "Assets/Resources/Prefab/Rub2/\u65B9\u5757 4.prefab"
-- "Assets/Resources/Prefab/System/\u3010\u6838\u5FC3\u3011\u7F51\u7EDC\u652F\u6301(\u975E\u8054\u7F51).prefab"
 - Assets/Resources/Prefab/Rub2/Lit Yellow.mat
 - "Assets/Resources/Prefab/Rub2/\u65B9\u5757.prefab"
 - "Assets/Resources/Prefab/Rub3/\u65B9\u5757 4.prefab"
@@ -241,11 +49,9 @@ Assets:
 - "Assets/Resources/Prefab/Rub2/\u65B9\u5757 1.mat"
 - "Assets/Resources/Prefab/Rub3/\u65B9\u5757 5.prefab"
 - "Assets/Resources/Prefab/Rub2/\u65B9\u5757 5.prefab"
-- "Assets/Resources/Prefab/System/\u3010\u6838\u5FC3\u3011\u4E0D\u6B7B\u7CFB\u7EDF\u6838\u5FC3.prefab"
 - "Assets/Resources/Prefab/Rub3/\u65B9\u5757.prefab"
 - "Assets/Resources/Prefab/Rub3/\u65B9\u5757 2.prefab"
 - "Assets/Resources/Prefab/Rub2/\u65B9\u5757 2.prefab"
 - "Assets/Resources/Prefab/Rub3/\u4E1C\u897F_2.prefab"
 Dependencies:
 - F:/aaProject/ESFrameWork_Core/Assets/StreamingAssets/AssetBundles/WindowsEditor/material_cf0868ae79727aa7d4541b36a731fc40
-- F:/aaProject/ESFrameWork_Core/Assets/StreamingAssets/AssetBundles/WindowsEditor/selfassets_f36ac404c4bd93973f086d08cb6cb3f0
