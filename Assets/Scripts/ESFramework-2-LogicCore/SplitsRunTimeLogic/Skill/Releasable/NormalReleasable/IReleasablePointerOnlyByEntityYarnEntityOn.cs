@@ -343,8 +343,8 @@ namespace ES
             if (on != null)
             {
 
-                ESStaticLogicUtility.ESProcess.Global.GlobalLink_EntityAttackEntityTryStart(
-                    new Link_EntityAttackEntityTryStart() { attacker = from, victim = on, damage = ApplyDamage });
+                /*ESStaticLogicUtility.ESProcess.Global.GlobalLink_EntityAttackEntityTryStart(
+                    new Link_EntityAttackEntityTryStart() { attacker = from, victim = on, damage = ApplyDamage });*/
                 //Link_EntityAttackEntityTruely 备忘录
             }
             return 5;

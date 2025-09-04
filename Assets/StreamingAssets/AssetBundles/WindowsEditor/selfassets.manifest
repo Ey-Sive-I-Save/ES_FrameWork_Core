@@ -1,0 +1,73 @@
+ManifestFileVersion: 0
+CRC: 3855790217
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f36ac404c4bd93973f086d08cb6cb3f0
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5f4b688344ad5aa9e47def6a89d8bf17
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: f36ac404c4bd93973f086d08cb6cb3f0
+HashAppended: 1
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 82
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 818efe8a5c4ed69418e925aee752ae39, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4a10fbde4769d3746abd84b3d6f60526, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8ca03b0337b564d4bb142c54b34a802e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 135
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: ESLogic
+  ClassName: ES.Pointer.PointerForStringList_Tag
+- AssemblyName: ESLogic
+  ClassName: ES.Pointer.PointerPickerEveryThing
+- AssemblyName: FishNet.Runtime
+  ClassName: FishNet.Object.NetworkObject/PredictionType
+- AssemblyName: FishNet.Runtime
+  ClassName: FishNet.Object.TransformProperties
+- AssemblyName: Sirenix.Serialization
+  ClassName: Sirenix.Serialization.SerializationData
+Assets:
+- "Assets/Scripts/ESFramework-2-LogicCore/\u6F14\u793A\u573A\u666F\u603B\u6587\u4EF6\u5939/\u6848\u4F8B\u5408\u96C6/\u6559\u7A0B\u6848\u4F8B-\u98DE\u673A\u5927\u6218/SelfAssets/\u5929\u7A7A\u76D2.mat"
+- "Assets/Scripts/ESFramework-2-LogicCore/\u6F14\u793A\u573A\u666F\u603B\u6587\u4EF6\u5939/\u6848\u4F8B\u5408\u96C6/\u6559\u7A0B\u6848\u4F8B-\u98DE\u673A\u5927\u6218/SelfAssets/\u654C\u4EBA.prefab"
+- "Assets/Scripts/ESFramework-2-LogicCore/\u6F14\u793A\u573A\u666F\u603B\u6587\u4EF6\u5939/\u6848\u4F8B\u5408\u96C6/\u6559\u7A0B\u6848\u4F8B-\u98DE\u673A\u5927\u6218/SelfAssets/\u73A9\u5BB6\u5B50\u5F39.prefab"
+- "Assets/Scripts/ESFramework-2-LogicCore/\u6F14\u793A\u573A\u666F\u603B\u6587\u4EF6\u5939/\u6848\u4F8B\u5408\u96C6/\u6559\u7A0B\u6848\u4F8B-\u98DE\u673A\u5927\u6218/SelfAssets/\u654C\u4EBA\u5B50\u5F39.prefab"
+- "Assets/Scripts/ESFramework-2-LogicCore/\u6F14\u793A\u573A\u666F\u603B\u6587\u4EF6\u5939/\u6848\u4F8B\u5408\u96C6/\u6559\u7A0B\u6848\u4F8B-\u98DE\u673A\u5927\u6218/SelfAssets/\u73A9\u5BB6\u5B50\u5F39Net.prefab"
+Dependencies:
+- "F:/aaProject/ESFrameWork_Core/Assets/StreamingAssets/AssetBundles/WindowsEditor/\u521D\u671F\u97F3\u6548\u8D44\u6E90_1d88476ed6b0a730b500b9ea0b6b2bea"

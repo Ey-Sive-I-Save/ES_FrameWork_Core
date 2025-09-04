@@ -1,0 +1,31 @@
+ManifestFileVersion: 0
+CRC: 3631688592
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 1d88476ed6b0a730b500b9ea0b6b2bea
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9a2ca7bdbd1871f7131daf57de908e0c
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 1d88476ed6b0a730b500b9ea0b6b2bea
+HashAppended: 1
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- "Assets/Scripts/ESFramework-2-LogicCore/\u6F14\u793A\u573A\u666F\u603B\u6587\u4EF6\u5939/\u6848\u4F8B\u5408\u96C6/\u8D44\u6E90\u6C47\u603B/Space
+  Shooter/GameRes/Audio/sound_weapon_player.wav"
+- "Assets/Scripts/ESFramework-2-LogicCore/\u6F14\u793A\u573A\u666F\u603B\u6587\u4EF6\u5939/\u6848\u4F8B\u5408\u96C6/\u8D44\u6E90\u6C47\u603B/Space
+  Shooter/GameRes/Audio/sound_weapon_enemy.wav"
+- "Assets/Scripts/ESFramework-2-LogicCore/\u6F14\u793A\u573A\u666F\u603B\u6587\u4EF6\u5939/\u6848\u4F8B\u5408\u96C6/\u8D44\u6E90\u6C47\u603B/Space
+  Shooter/GameRes/Audio/music_background.wav"
+- "Assets/Scripts/ESFramework-2-LogicCore/\u6F14\u793A\u573A\u666F\u603B\u6587\u4EF6\u5939/\u6848\u4F8B\u5408\u96C6/\u8D44\u6E90\u6C47\u603B/Space
+  Shooter/GameRes/Audio/sound_explosion_player.wav"
+- "Assets/Scripts/ESFramework-2-LogicCore/\u6F14\u793A\u573A\u666F\u603B\u6587\u4EF6\u5939/\u6848\u4F8B\u5408\u96C6/\u8D44\u6E90\u6C47\u603B/Space
+  Shooter/GameRes/Audio/sound_explosion_enemy.wav"
+- "Assets/Scripts/ESFramework-2-LogicCore/\u6F14\u793A\u573A\u666F\u603B\u6587\u4EF6\u5939/\u6848\u4F8B\u5408\u96C6/\u8D44\u6E90\u6C47\u603B/Space
+  Shooter/GameRes/Audio/sound_explosion_asteroid.wav"
+Dependencies: []

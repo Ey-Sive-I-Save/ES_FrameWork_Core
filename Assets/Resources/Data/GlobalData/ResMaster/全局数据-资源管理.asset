@@ -131,7 +131,7 @@ MonoBehaviour:
   genarateFolder: Assets/StreamingAssets/AssetBundles
   genarateHotUpdateFolder_: Assets/StreamingAssets/AssetBundles
   abMaskType: 1
-  ABName: prefab
+  ABName: resources
   applyPlatform: 7
   DownLoadURL: https://eysive-teset.oss-cn-beijing.aliyuncs.com
   LocalTestDownLoadPath: Assets/StreamingAssets/AssetBundles/DownLoadTest

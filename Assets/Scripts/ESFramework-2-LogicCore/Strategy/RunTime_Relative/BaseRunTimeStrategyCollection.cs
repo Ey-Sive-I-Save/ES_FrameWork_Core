@@ -17,6 +17,7 @@ namespace ES {
         public abstract Dictionary<Select, Self> AllStrategies { get; }
         public Self GetStrategy(Select enum_)
         {
+            
             if (AllStrategies == null) return null;
             if (AllStrategies.TryGetValue(enum_,out var str)) return str;
             return NULL;

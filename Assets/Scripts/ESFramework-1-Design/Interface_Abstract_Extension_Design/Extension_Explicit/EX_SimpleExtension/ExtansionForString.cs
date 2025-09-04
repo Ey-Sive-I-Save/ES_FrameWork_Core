@@ -11,7 +11,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Windows;
-using static UnityEditor.PlayerSettings.SplashScreen;
 
 namespace ES
 {

@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 1924338997
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b1a43a5392158971408e42649e7c737a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5e762ccb57c4caaabbb5a4199ac82c23
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: b1a43a5392158971408e42649e7c737a
+HashAppended: 1
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- "Assets/Scripts/ESFramework-2-LogicCore/\u6F14\u793A\u573A\u666F\u603B\u6587\u4EF6\u5939/\u6848\u4F8B\u5408\u96C6/\u6559\u7A0B\u6848\u4F8B-\u98DE\u673A\u5927\u6218/SelfAssets/\u5730\u9762.mat"
+Dependencies: []

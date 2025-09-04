@@ -368,10 +368,10 @@ namespace ES
     [Serializable, TypeRegistryItem("视觉支持(MC版)")]
     public class ModuleBase_Vision_MC : ModuleBase_AB_Vision
     {
-        [LabelText("视觉筛选标签")]
+        /*[LabelText("视觉筛选标签")]
         public PointerForStringList_Tag TargetSeeTags = new PointerForStringList_Tag();
 
-
+*/
 
         //[Line(VirtualColor.Gray, "These settings are overwritten automatically"," when the script is loaded and they are automatically"," downloaded until a solution is found in the editor.")]
 
@@ -523,11 +523,11 @@ namespace ES
             for (int i = 0; i < SeeESObjectList.Count; i++)
             {
                 var ee = SeeESObjectList[i].transform.GetComponent<Entity>();
-                if (ee != null && (TargetSeeTags.tagNames.Count == 0 && ee.tag == "Player" || TargetSeeTags.tagNames.Contains(ee.gameObject.tag)))
+              /*  if (ee != null && (TargetSeeTags.tagNames.Count == 0 && ee.tag == "Player" || TargetSeeTags.tagNames.Contains(ee.gameObject.tag)))
                 {
                     Core.AIDomain.Module_AB_AITarget.Target = ee;
                     return true;
-                }
+                }*/
             }
             return false;
         }

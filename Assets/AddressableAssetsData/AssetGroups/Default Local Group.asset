@@ -16,7 +16,17 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: cff1a803e61826e469c9b7e9a183c1b7
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 0e87abb2d00e6794c9aaff677de931ba
+    m_Address: Assets/StreamingAssets/ESCore.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a600b85a56bc5d448e2007ef5a35a64
+    m_Address: Assets/StreamingAssets/ESDesign.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 2f4cb2d3b2d5eb24ebc1877e2aed42ae, type: 2}
   m_SchemaSet:

@@ -95,12 +95,12 @@ namespace ES
         //入表
         public sealed override void _InTable()
         {
-            GameCenterManager.EntityIDPool.Add(ID, this);
+           /* GameCenterManager.EntityIDPool.Add(ID, this);*/
         }
         //出表
         public sealed override void _OutTable()
         {
-            GameCenterManager.EntityIDPool.Remove(ID);
+            /*GameCenterManager.EntityIDPool.Remove(ID);*/
         }
         #endregion
 

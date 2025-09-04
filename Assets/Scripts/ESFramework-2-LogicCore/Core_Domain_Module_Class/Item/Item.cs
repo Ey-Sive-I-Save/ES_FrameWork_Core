@@ -34,12 +34,12 @@ namespace ES
 
         public override void _InTable()
         {
-            GameCenterManager.ItemIDPool.Add(ID,this);
+           /* GameCenterManager.ItemIDPool.Add(ID,this);*/
         }
 
         public override void _OutTable()
         {
-            GameCenterManager.ItemIDPool.Remove(ID);
+           /* GameCenterManager.ItemIDPool.Remove(ID);*/
         }
 
         //注册前的操作

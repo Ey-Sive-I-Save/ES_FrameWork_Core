@@ -352,18 +352,13 @@ MonoBehaviour:
   readMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
   showColor: {r: 1, g: 1, b: 1, a: 1}
   OnValueChange:
-    rid: 4118737108498645006
+    rid: -2
   ESValue: 6
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 4118737108498645006
-      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointer1:
-          rid: -2
 --- !u!114 &272024105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,58 +386,22 @@ MonoBehaviour:
   readMe: "\u5728Update\u91CC\u64CD\u4F5CFloat\u7684ES\u503C"
   showColor: {r: 1, g: 1, b: 1, a: 1}
   pointerForAwake:
-    rid: 4118737108498645000
+    rid: -2
   pointerForStart:
-    rid: 4118737108498645001
+    rid: -2
   pointerForUpdate:
-    rid: 4118737108498645002
+    rid: -2
   pointerForEnable:
-    rid: 4118737108498645003
+    rid: -2
   pointerForDisable:
-    rid: 4118737108498645004
+    rid: -2
   pointerForDestroy:
-    rid: 4118737108498645005
+    rid: -2
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 4118737108498645000
-      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointer1:
-          rid: -2
-    - rid: 4118737108498645001
-      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointer1:
-          rid: -2
-    - rid: 4118737108498645002
-      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointer1:
-          rid: 4118737108498645007
-    - rid: 4118737108498645003
-      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointer1:
-          rid: -2
-    - rid: 4118737108498645004
-      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointer1:
-          rid: -2
-    - rid: 4118737108498645005
-      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointer1:
-          rid: -2
-    - rid: 4118737108498645007
-      type: {class: PointerHandleDirectESValueFromPointerPlayer_Float, ns: ES, asm: Assembly-CSharp}
-      data:
-        withPlayer: {fileID: 272024104}
-        direct: 5
-        function: 1
 --- !u!114 &272024106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,18 +826,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &654151060 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2742773149683855433, guid: d046073466220bc49a099430218c2884,
-    type: 3}
-  m_PrefabInstance: {fileID: 3334646214932273132}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &654151064 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4677900939888155928, guid: d046073466220bc49a099430218c2884,
-    type: 3}
-  m_PrefabInstance: {fileID: 3334646214932273132}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &736810007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,131 +1023,22 @@ MonoBehaviour:
   readMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
   showColor: {r: 1, g: 1, b: 1, a: 1}
   pointerForAwake:
-    rid: 4118737096444477440
+    rid: -2
   pointerForStart:
-    rid: 4118737096444477441
+    rid: -2
   pointerForUpdate:
-    rid: 4118737096444477442
+    rid: -2
   pointerForEnable:
-    rid: 4118737096444477443
+    rid: -2
   pointerForDisable:
-    rid: 4118737096444477444
+    rid: -2
   pointerForDestroy:
-    rid: 4118737096444477445
+    rid: -2
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 4118737096444477440
-      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointer1:
-          rid: 4118737096444477446
-    - rid: 4118737096444477441
-      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointer1:
-          rid: 4118737096444477447
-    - rid: 4118737096444477442
-      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointer1:
-          rid: 4118737096444477451
-    - rid: 4118737096444477443
-      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointer1:
-          rid: -2
-    - rid: 4118737096444477444
-      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointer1:
-          rid: -2
-    - rid: 4118737096444477445
-      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointer1:
-          rid: 4118737096444477456
-    - rid: 4118737096444477446
-      type: {class: PointerOnlyDebug, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        type: 0
-        debug: Awake!!!Erroe!!
-    - rid: 4118737096444477447
-      type: {class: PoinerInstantiateGameObject_Direct, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        usePlayerCaster: 0
-        playerCaster_: {fileID: 0}
-        pointerForVector3:
-          rid: 4118737096444477448
-        parent: {fileID: 2110474713}
-        atWorld: 1
-        localScaleIndentity: 0
-        localRotationIndentity: 1
-        last: {fileID: 0}
-        prefab: {fileID: 2742773149683855433, guid: d046073466220bc49a099430218c2884,
-          type: 3}
-    - rid: 4118737096444477448
-      type: {class: PointerForVector3_Add, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        v3_1:
-          rid: 4118737096444477449
-        v3_2:
-          rid: 4118737096444477450
-    - rid: 4118737096444477449
-      type: {class: PointerForVector3_Direct, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        vector: {x: 0, y: 3, z: 0}
-    - rid: 4118737096444477450
-      type: {class: PointerForVector3_Transform, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        transform: {fileID: 2110474713}
-        vector3: {x: 0, y: 0, z: 0}
-    - rid: 4118737096444477451
-      type: {class: PointerPicker_HandleTransform_WorldAndLocal_Scale, ns: ES.EvPointer,
-        asm: Assembly-CSharp}
-      data:
-        setValue: 1
-        relaValue: 0
-        tr:
-          rid: 4118737096444477452
-        lockTransform: 1
-        useDeltaTimeMutipler: 1
-        standardMutipler:
-          rid: 4118737096444477453
-        pv3:
-          rid: 4118737096444477454
-        pv3_helper_:
-          rid: 4118737096444477455
-        state0: 0
-    - rid: 4118737096444477452
-      type: {class: PointerForTransform_Direct, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        trans: {fileID: 654151064}
-    - rid: 4118737096444477453
-      type: {class: PointerForFloat_Direct, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        float_: 1
-    - rid: 4118737096444477454
-      type: {class: PointerForVector3_Direct, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        vector: {x: 0.5, y: 0.5, z: 0}
-    - rid: 4118737096444477455
-      type: {class: PointerForVector3_Direct, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        vector: {x: 0, y: 0, z: 0}
-    - rid: 4118737096444477456
-      type: {class: PointerDestroyGameObject_Delay, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointerFor:
-          rid: 4118737096444477458
-        pointerTime:
-          rid: -2
-    - rid: 4118737096444477458
-      type: {class: PointerForGameObject_Direct, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        g: {fileID: 654151060}
 --- !u!114 &960410514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1327,59 +1165,22 @@ MonoBehaviour:
   readMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
   showColor: {r: 0.49, g: 0.2353, b: 0.596, a: 1}
   pointerForAwake:
-    rid: 4118737108498645008
+    rid: -2
   pointerForStart:
-    rid: 4118737108498645009
+    rid: -2
   pointerForUpdate:
-    rid: 4118737108498645010
+    rid: -2
   pointerForEnable:
-    rid: 4118737108498645011
+    rid: -2
   pointerForDisable:
-    rid: 4118737108498645012
+    rid: -2
   pointerForDestroy:
-    rid: 4118737108498645013
+    rid: -2
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 4118737108498645008
-      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointer1:
-          rid: -2
-    - rid: 4118737108498645009
-      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointer1:
-          rid: -2
-    - rid: 4118737108498645010
-      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointer1:
-          rid: 4118737108498645014
-    - rid: 4118737108498645011
-      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointer1:
-          rid: -2
-    - rid: 4118737108498645012
-      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointer1:
-          rid: -2
-    - rid: 4118737108498645013
-      type: {class: PointerPickerEveryThing, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        pointer1:
-          rid: -2
-    - rid: 4118737108498645014
-      type: {class: PointerForStringCatcher, ns: ES.EvPointer, asm: Assembly-CSharp}
-      data:
-        useCatcherPlayer: 0
-        playerCaster_: {fileID: 0}
-        pointerCaster:
-          rid: -2
 --- !u!114 &1120285598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1571,53 +1372,6 @@ MonoBehaviour:
   readMe: "\u9488\u64AD\u653E\u5668\uFF1A\u8BA9\u9488\u5177\u81EA\u53D1\u7684\u751F\u547D\u5468\u671F\n\n\u6295\u5C04\u5668\u548C\u6293\u53D6\u5668
     : \u8BA9\u9488\u5B9E\u73B0\u6570\u636E\u4EA4\u6D41\n\nLink: \u4E0D\u5FC5\u8981\u548C\u9488\u96C6\u6210\uFF0C\u5728\u4E8B\u4EF6\u6536\u53D1\u4E0A\u5927\u5C55\u5B8F\u56FE"
   showColor: {r: 0.976, g: 0.792, b: 0.729, a: 1}
---- !u!1 &1340950752 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6040059378997878964, guid: 6a26c41f9f0efb342a826a4ce252c17f,
-    type: 3}
-  m_PrefabInstance: {fileID: 6057748839436808053}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1340950756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1340950752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 212dbdae92c0df84c85c8d0011c324f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  readMe:
-    edit: 1
-    ReadMe: "\u7F16\u5199\u63D0\u793A\u6587\u4EF6"
-    readMe: "\u8FD9\u662F\u4E00\u4E2A\u6269\u5C55\u533A\u57DF"
-    showColor: {r: 1, g: 1, b: 1, a: 1}
-  core: {fileID: 0}
-  Clips:
-    valuesNow_:
-    - rid: 165002684989476740
-    - rid: 165002684989476741
-    - rid: 165002684989476742
-  references:
-    version: 2
-    RefIds:
-    - rid: 165002684989476740
-      type: {class: module0, ns: ES, asm: Assembly-CSharp}
-      data:
-        Domain: {fileID: 0}
-        Preset: "\u9884\u8BBE1"
-    - rid: 165002684989476741
-      type: {class: module1, ns: ES, asm: Assembly-CSharp}
-      data:
-        Domain: {fileID: 0}
-        Preset: "\u9884\u8BBE1"
-    - rid: 165002684989476742
-      type: {class: module4, ns: ES, asm: Assembly-CSharp}
-      data:
-        Domain: {fileID: 0}
-        Preset: "\u9884\u8BBE1"
 --- !u!1 &1419177400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,6 +1420,64 @@ MonoBehaviour:
   ReadMe: "\u9488\u7684\u5F88\u591A\u7075\u611F\u6765\u81EAFeel\u63D2\u4EF6\n   \u672C\u9879\u76EE\u8FD8\u6CA1\u5BFC\u5165Feel\u63D2\u4EF6\n   "
   readMe: "\u9488\u7684\u5F88\u591A\u7075\u611F\u6765\u81EAFeel\u63D2\u4EF6\n   \u672C\u9879\u76EE\u8FD8\u6CA1\u5BFC\u5165Feel\u63D2\u4EF6\n   "
   showColor: {r: 0.984, g: 0.855, b: 0.725, a: 1}
+--- !u!1 &1510576080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1510576081}
+  - component: {fileID: 1510576083}
+  - component: {fileID: 1510576084}
+  m_Layer: 0
+  m_Name: HOT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1510576081
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510576080}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1510576083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510576080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29d04bc648deb44d8ba19c116e971dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fontSize: 15
+--- !u!114 &1510576084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510576080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18284937319e9d5449c96075b22148ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1634164151
 GameObject:
   m_ObjectHideFlags: 0
@@ -2207,11 +2019,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4893894732649707550, guid: 6a26c41f9f0efb342a826a4ce252c17f,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4893894732649707550, guid: 6a26c41f9f0efb342a826a4ce252c17f,
+        type: 3}
+    - target: {fileID: 5597002298226779426, guid: 6a26c41f9f0efb342a826a4ce252c17f,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 5597002298226779426, guid: 6a26c41f9f0efb342a826a4ce252c17f,
+        type: 3}
     - target: {fileID: 6200703271054772401, guid: 6a26c41f9f0efb342a826a4ce252c17f,
         type: 3}
       propertyPath: m_Name
       value: "\u3010\u6838\u5FC3\u3011\u4E0D\u6B7B\u7CFB\u7EDF\u6838\u5FC3"
       objectReference: {fileID: 0}
+    - target: {fileID: 6926977020706901368, guid: 6a26c41f9f0efb342a826a4ce252c17f,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 6926977020706901368, guid: 6a26c41f9f0efb342a826a4ce252c17f,
+        type: 3}
     - target: {fileID: 7714568205719317819, guid: 6a26c41f9f0efb342a826a4ce252c17f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2265,11 +2095,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6040059378997878964, guid: 6a26c41f9f0efb342a826a4ce252c17f,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1340950756}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a26c41f9f0efb342a826a4ce252c17f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -2283,3 +2109,4 @@ SceneRoots:
   - {fileID: 946371890}
   - {fileID: 960410515}
   - {fileID: 6057748839436808053}
+  - {fileID: 1510576081}

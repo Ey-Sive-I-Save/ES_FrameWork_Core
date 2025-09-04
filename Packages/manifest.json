@@ -1,11 +1,14 @@
 {
   "dependencies": {
+    "com.code-philosophy.hybridclr": "https://gitee.com/focus-creative-games/hybridclr_unity.git",
     "com.tuyoogame.yooasset": "2.3.12",
     "com.unity.feature.2d": "2.0.1",
     "com.unity.feature.cinematic": "1.0.0",
     "com.unity.feature.development": "1.0.1",
+    "com.unity.inputsystem": "1.11.2",
     "com.unity.nuget.newtonsoft-json": "3.2.1",
     "com.unity.render-pipelines.universal": "14.0.11",
+    "com.unity.textmeshpro": "3.0.9",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -37,7 +40,6 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  
   },
   "scopedRegistries": [
     {

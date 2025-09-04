@@ -62,8 +62,8 @@ namespace ES
                 if (attackOn.HasFlag(EnumCollect.EntityAttackOnHappenCondition.Direct) && target != null)
                 {
                     if (playSound != null) GameCenterManager.Instance.AudioMaster.PlayDirect_Sound_OneShot(playSound, 0.8f);
-                    ESStaticLogicUtility.ESProcess.Global.GlobalLink_EntityAttackEntityTryStart(
-                    new Link_EntityAttackEntityTryStart() { attacker = Who, victim = target, damage = new Damage() { damage = Damage } });
+                    /*ESStaticLogicUtility.ESProcess.Global.GlobalLink_EntityAttackEntityTryStart(
+                    new Link_EntityAttackEntityTryStart() { attacker = Who, victim = target, damage = new Damage() { damage = Damage } });*/
                 }
             }
             if (attackType.HasFlag(EnumCollect.EntityAttackBaseType.Range))

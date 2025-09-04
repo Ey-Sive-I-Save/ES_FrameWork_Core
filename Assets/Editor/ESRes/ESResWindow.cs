@@ -18,7 +18,6 @@ using UnityEngine.Networking;
 using UnityEngine.Rendering;
 using static ES.ESResMaster;
 using static ES.GlobalDataForResMaster;
-using static ES.SkillPointDataInfo.SkillPointLevelAllTransfomor.SkillPointSprites;
 using static UnityEngine.GraphicsBuffer;
 using Path = System.IO.Path;
 
@@ -42,7 +41,7 @@ namespace ES
         [MenuItem("Tools/ES工具/ES资源管理窗口")]
         public static void TryOpenWindow()
         {
-            if (GlobalDataForEditorRunTime.Instance != null)
+            
                 OpenWindow();
         }
 

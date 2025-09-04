@@ -23,9 +23,9 @@ namespace ES
             }
             public static class Global
             {
-                public static void GlobalLink_EntityAttackEntityTryStart(Link_EntityAttackEntityTryStart link_Attack_Try)
+               /* public static void GlobalLink_EntityAttackEntityTryStart(Link_EntityAttackEntityTryStart link_Attack_Try)
                 {
-                   /* if (link_Attack_Try.attacker == null || link_Attack_Try.victim == null) return;
+                   *//* if (link_Attack_Try.attacker == null || link_Attack_Try.victim == null) return;
                     Debug.Log("攻击测试开始");
                     //攻击者填充增益
                     link_Attack_Try.attacker.Invoke_TryAttackEntityCalculate(link_Attack_Try.victim, link_Attack_Try.damage);
@@ -53,8 +53,8 @@ namespace ES
                         }
                     }
 
-*/
-                }
+*//*
+                }*/
             }
         }
     }

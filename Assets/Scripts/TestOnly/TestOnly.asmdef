@@ -2,12 +2,13 @@
     "name": "TestOnly",
     "rootNamespace": "",
     "references": [
+        "GUID:2f6f8a93f9330b642a0f65e84e9df1d9",
+        "GUID:da55def977f6998449884460ed06d389",
         "GUID:89c22bb50d9f24946ae9754c437fb3da",
         "GUID:75469ad4d38634e559750d17036d5f7c",
         "GUID:6055be8ebefd69e48b49212b09b47b2f",
         "GUID:2665a8d13d1b3f18800f46e256720795",
-        "GUID:2f6f8a93f9330b642a0f65e84e9df1d9",
-        "GUID:da55def977f6998449884460ed06d389"
+        "GUID:81413a737f2cb5a4283b9c500389261e"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

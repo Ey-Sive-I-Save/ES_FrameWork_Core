@@ -1,0 +1,126 @@
+ManifestFileVersion: 0
+CRC: 1078463637
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 16aec5477d7e1eafc3cfe6f9f6f02b4c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4bac523f7fe72fc27408c022fea4ccaa
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 16aec5477d7e1eafc3cfe6f9f6f02b4c
+HashAppended: 1
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6745964699f2cda4aafa1706329d69e4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 37f30394300b68f488c165f502a8937a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6e9b7ba47d76df64fb4928c9936d91b2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2e75b0cc856d1a44fb2c7bc25def7cb9, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: adb8e29337b698c4eac266d96779292d, type: 3}
+- Class: 114
+  Script: {fileID: 16995157, guid: a811bde74b26b53498b4f6d872b09b6d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f09e4a947b0215408625947f00a140c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 33834eb1cb244794d835394adb07c3a3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e0ff4bdd0ffdfaf48a79197abde84fd0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 68eb8163cebea41458a07aca0d081a77, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6ef589ecd90337542b96d746c46cbd23, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc026fee4fa45a3468319d99e1f17b7b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc6631aa4d453584abf9bf27c1a6b0eb, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: bd6860c0238e6da44bfb0dc8abcf754b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 51b3b745040a35445acb94e6392a723b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 25fe33f5ac7b0a8418bdb6d1281a268d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c8f0cd8c35d5a674aac12cf777b89932, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ab205e5a05f03804e8bc15e5f4c26258, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 687078895
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: DOTween
+  ClassName: DG.Tweening.Core.DOTweenSettings/ModulesSetup
+- AssemblyName: DOTween
+  ClassName: DG.Tweening.Core.DOTweenSettings/SafeModeOptions
+- AssemblyName: ESCore
+  ClassName: ES.DomainSource
+- AssemblyName: ESCore
+  ClassName: ES.ESBuffSharedData
+- AssemblyName: ESCore
+  ClassName: ES.ESBuffVariableData
+- AssemblyName: ESCore
+  ClassName: ES.ESCode_CoreDomainSource/_DomainAndList
+- AssemblyName: ESCore
+  ClassName: ES.ESCode_CoreDomainSource/_DomainAndList/_ModuleClass
+- AssemblyName: ESCore
+  ClassName: ES.ESCode_EnumSource/EnumType
+- AssemblyName: ESCore
+  ClassName: ES.ESCode_EnumSource/OneEnumElement
+- AssemblyName: ESCore
+  ClassName: ES.ESEntitySharedData
+- AssemblyName: ESCore
+  ClassName: ES.ESEntityVariableData
+- AssemblyName: ESCore
+  ClassName: ES.ModuleSource
+- AssemblyName: ESCore
+  ClassName: ES.ModuleSource_Son
+- AssemblyName: ESDesign
+  ClassName: ES.SelectDic_StringsToType
+- AssemblyName: ESDesign
+  ClassName: ES.SettlementFloat
+- AssemblyName: ESStand
+  ClassName: ES.GlobalDataForEditorOnly/ProjectShow
+- AssemblyName: ESStand
+  ClassName: ES.GlobalDataForEditorOnly/ProjectShow/ProjectShowHandle
+- AssemblyName: ESStand
+  ClassName: ES.KeyString_Direct
+- AssemblyName: Sirenix.Serialization
+  ClassName: Sirenix.Serialization.SerializationData
+Assets:
+- "Assets/Resources/Data/SingleData/TypeList/\u7C7B\u578B\u8868_\u62E6\u622A\u522B\u4EBA\u7684\u6A21\u5757.asset"
+- "Assets/Resources/Data/GlobalData/EditorOnly/\u5168\u5C40\u6570\u636E-\u7F16\u8F91\u5668\u7BA1\u7406.asset"
+- Assets/Resources/Data/Luban/tbestest.json
+- "Assets/Resources/Data/NormalDataGroup/State/\u6807\u51C6AI\u72B6\u6001\u6570\u636E\u5305.asset"
+- "Assets/Resources/Data/PackData/Buff\u65B0\u5EFA\u6570\u636E\u530578497.asset"
+- Assets/Resources/DOTweenSettings.asset
+- "Assets/Resources/Data/GlobalData/GameCenter/\u5168\u5C40\u6570\u636E-\u6E38\u620F\u6838\u5FC3
+  1.asset"
+- "Assets/Resources/Data/GlobalData/GameCenter/\u5168\u5C40\u6570\u636E-\u6E38\u620F\u6838\u5FC3
+  2.asset"
+- "Assets/Resources/Data/GroupData/Buff\u4E13\u7528\u72B6\u6001\u7EC4.asset"
+- Assets/Resources/Data/SingleData/ESCoreSource/MyCOre_CoreSource.asset
+- "Assets/Resources/Data/NormalDataGroup/State/\u602A\u7269\u884C\u4E3A\u72B6\u6001\u7EC4.asset"
+- "Assets/Resources/Data/NormalDataGroup/State/\u72B6\u6001\u6280\u80FD\u4E13\u5C5E\u7684\u65B0\u5EFA\u6570\u636E\u7EC4.asset"
+- "Assets/Resources/Data/SingleData/ESSpawnType/\u72EC\u7ACB\u6570\u636E-\u5355\u673A-ES\u7269\u4F53\u751F\u6210\u673A\u5236\u8868.asset"
+- "Assets/Resources/Data/NormalDataGroup/State/\u72B6\u6001\u96F6\u4EF6\u6570\u636E\u7EC4.asset"
+- Assets/Resources/Data/SingleData/ESCoreSource/NewCore_CoreSource.asset
+- "Assets/Resources/Data/GlobalData/EditorRunTime/\u5168\u5C40\u6570\u636EGlobalDataForEditorRunTime.asset"
+- "Assets/Resources/Data/SingleData/ESEnumSource/Sort_\u679A\u4E3E\u5206\u7C7B_EnumSource.asset"
+- "Assets/Resources/Data/GlobalData/GameCenter/\u5168\u5C40\u6570\u636E-\u6E38\u620F\u6838\u5FC3.asset"
+- "Assets/Resources/Data/GlobalData/ResMaster/\u5168\u5C40\u6570\u636E-\u8D44\u6E90\u7BA1\u7406.asset"
+- "Assets/Resources/Data/SingleData/ESSpawnType/\u72EC\u7ACB\u6570\u636E-\u8054\u7F51-ES\u7269\u4F53\u751F\u6210\u673A\u5236\u8868.asset"
+- "Assets/Resources/Data/GroupData/Buff\u65B0\u5EFA\u914D\u7F6E\u7EC456415.asset"
+- "Assets/Resources/Data/SingleData/ESTags/\u72EC\u7ACB\u6570\u636E-ESTags\u914D\u7F6E.asset"
+- "Assets/Resources/Data/GroupData/Actor/\u89D2\u8272\u6570\u636E\u7EC4.asset"
+Dependencies: []

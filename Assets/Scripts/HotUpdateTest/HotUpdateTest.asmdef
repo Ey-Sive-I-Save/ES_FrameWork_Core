@@ -1,0 +1,16 @@
+{
+    "name": "HotUpdateTest",
+    "rootNamespace": "",
+    "references": [
+        "GUID:da55def977f6998449884460ed06d389"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

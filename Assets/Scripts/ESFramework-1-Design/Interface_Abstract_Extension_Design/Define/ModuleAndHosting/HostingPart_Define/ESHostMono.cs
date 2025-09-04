@@ -173,6 +173,7 @@ namespace ES
     [TypeRegistryItem("虚拟+带类型的托管脚本基类")]
     public abstract class ESHostingMono<USE_Module> : ESHostingMono, IESHosting<USE_Module> where USE_Module : class, IESModule
     {
+        
         public virtual IEnumerable<USE_Module> ModulesIEnumable { get; }
         #region 重写控制子模块
         public override void UpdateAsHosting()

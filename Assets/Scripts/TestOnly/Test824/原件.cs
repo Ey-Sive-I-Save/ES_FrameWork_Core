@@ -9,6 +9,7 @@ using UnityEngine;
 namespace ES {
     public class 原件 : MonoBehaviour
     {
+        
         [HideLabel]
         public VersionedList<string> source = new VersionedList<string>();
     }

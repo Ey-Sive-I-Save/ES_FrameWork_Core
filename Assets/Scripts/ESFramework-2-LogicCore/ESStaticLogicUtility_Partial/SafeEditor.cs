@@ -30,7 +30,7 @@ namespace ES
                 var tags = UnityEditorInternal.InternalEditorUtility.tags;
                 return tags;
 #else
-                return new List<string>();
+                return new string[0];
 #endif
             }
             public static Dictionary<int, string> GetAllLayers()
@@ -302,6 +302,8 @@ namespace ES
 
                 }
                 return null;
+#else
+                return null;
 #endif
             }
 
@@ -322,7 +324,7 @@ namespace ES
                 }
 #endif
             }
-            #endregion
+#endregion
 
             #region 资产创建
             public static T CreateSO<T>(string savePath, string name) where T : UnityEngine.ScriptableObject

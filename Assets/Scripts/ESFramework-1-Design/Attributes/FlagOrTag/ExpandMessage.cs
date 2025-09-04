@@ -1,14 +1,18 @@
 using ES;
-using Sirenix.OdinInspector.Editor;
+
 using Sirenix.Utilities;
-using Sirenix.Utilities.Editor;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using UnityEditor;
-using UnityEngine;
 
+using UnityEngine;
+#if UNITY_EDITOR
+using Sirenix.OdinInspector.Editor;
+using Sirenix.Utilities.Editor;
+using UnityEditor;
+#endif
 
 namespace ES {
     /*ES Message 用于非字段或者枚举(尤其)添加额外信息，减少使用键值匹配方法的手动书写

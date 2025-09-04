@@ -15,7 +15,7 @@ namespace ES
      */
     public partial class ESNetBehaviour : NetworkBehaviour
     {
-        public ESObject ConnectedObject;
+        //public ESObject ConnectedObject;
         public bool StartSpawn = false;
         #region 默认支持
         #endregion

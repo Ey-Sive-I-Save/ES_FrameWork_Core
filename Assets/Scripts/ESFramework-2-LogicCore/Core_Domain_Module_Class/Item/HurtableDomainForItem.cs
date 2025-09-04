@@ -54,8 +54,7 @@ namespace ES
         [FoldoutGroup("伤害")]
         [LabelText("伤害加成(IsAdd)")] public float DamageAdd = 0;
         [FoldoutGroup("伤害")]
-        [LabelText("可伤害的Tag")] public PointerForStringList_Tag Tags = new PointerForStringList_Tag() { tagNames = new List<string>() { "Enemy" } };
-
+       
         [FoldoutGroup("关于附加效果与生命")]
         [InfoBox("在共享数据中配置碰撞实体时触发的效果")]
         [LabelText("是否是Trigger")] public bool asTrigger = true;
@@ -187,7 +186,7 @@ namespace ES
         }
         private void PassiveDelegate_OnTriOrColEntityHandles(Entity who, Vector3 at)
         {
-            if (Tags.tagNames.Contains(who.tag))
+           /* if (Tags.tagNames.Contains(who.tag))
             {
 
                 ESStaticLogicUtility.ESProcess.Global.GlobalLink_EntityAttackEntityTryStart
@@ -208,7 +207,7 @@ namespace ES
                         }
                     }
                 }
-            }
+            }*/
         }
         private void PassiveDelegate_OnColEvery(Collision who, Vector3 at, bool b)
         {
@@ -246,8 +245,8 @@ namespace ES
 
             if (handle.OnDesPlaySound != null && (handle.optionForPlaySound & why.options) > 0)
             {
-                GameCenterManager.Instance.AudioMaster.PlayDirect_Sound_OneShot(handle.OnDesPlaySound, 0.8f);
-            }
+               /* GameCenterManager.Instance.AudioMaster.PlayDirect_Sound_OneShot(handle.OnDesPlaySound, 0.8f);
+         */   }
         }
         #region 预设
 

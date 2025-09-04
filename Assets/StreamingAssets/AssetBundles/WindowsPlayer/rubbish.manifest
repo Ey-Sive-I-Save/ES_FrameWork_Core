@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 109595188
+CRC: 1947674936
 Hashes:
   AssetFileHash:
     serializedVersion: 2
     Hash: e59a39171689cacd6c47e973cb49b339
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 8b3a200ff2925d48fe29ff40da923b24
+    Hash: b0b5a64ab2794b84d7f39e04c190423c
   IncrementalBuildHash:
     serializedVersion: 2
     Hash: e59a39171689cacd6c47e973cb49b339
@@ -21,8 +21,8 @@ ClassTypes:
 - Class: 115
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
-- AssemblyName: ES
-  ClassName: ES.EvPointer.KeyString_Direct
+- AssemblyName: ESStand
+  ClassName: ES.KeyString_Direct
 - AssemblyName: Sirenix.Serialization
   ClassName: Sirenix.Serialization.SerializationData
 Assets:

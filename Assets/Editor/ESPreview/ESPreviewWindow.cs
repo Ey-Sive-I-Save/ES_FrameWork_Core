@@ -320,6 +320,22 @@ namespace ES
             }
 
         }
+        [ButtonGroup("视觉组")]
+        [Button("修复选中物体的保存效果")]
+        public void Button_FixHideGameobjectSaveFlags()
+        {
+            var a = Selection.activeGameObject;
+            if (a != null)
+            {
+                a.hideFlags = a.hideFlags & ~HideFlags.DontSave;
+                var use = a.GetComponents<Component>();
+                foreach (var i in use)
+                {
+                    a.hideFlags = a.hideFlags & ~HideFlags.DontSave;
+                }
+            }
+
+        }
         [ButtonGroup("模块组")]
         [Button("移除全部空Clip")]
         public void Button_FixNullReferClips()

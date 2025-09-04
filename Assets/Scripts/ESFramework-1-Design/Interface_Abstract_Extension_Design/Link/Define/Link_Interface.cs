@@ -17,12 +17,12 @@ namespace ES
 
     #region 数据结构LINK
     #region 完成支持的结构类型声明
-    [Serializable, TypeRegistryItem("自定义事件名Link")]
+/*    [Serializable, TypeRegistryItem("自定义事件名Link")]
     public struct Link_StringNameEvent : ILink
     {
         [LabelText("事件名称")] public string eventName;
         [LabelText("传输的数据")] public object param;
-    }
+    }*/
 
     #endregion
 
