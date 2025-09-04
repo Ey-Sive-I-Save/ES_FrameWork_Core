@@ -8,7 +8,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		"DOTween.dll",
 		"ESStand.dll",
 		"FishNet.Runtime.dll",
-		"GameKit.Dependencies.dll",
 		"Sirenix.Utilities.dll",
 		"System.Core.dll",
 		"System.dll",
@@ -93,8 +92,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// ES.SingletonAsSeriMono<object>
 	// ES.SoDataGroup<object>
 	// ES.SoDataPack<object>
-	// FishNet.Broadcast.Helping.ClientBroadcastHandler<object>
-	// FishNet.Broadcast.Helping.ServerBroadcastHandler<object>
 	// FishNet.Serializing.GenericReader<ES.IESTESET>
 	// FishNet.Serializing.GenericReader<ES.aa>
 	// FishNet.Serializing.GenericReader<object>
@@ -114,8 +111,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Action<int>
 	// System.Action<object,ES.IESTESET>
 	// System.Action<object,ES.aa>
-	// System.Action<object,byte>
-	// System.Action<object,object,byte>
 	// System.Action<object,object,object>
 	// System.Action<object,object>
 	// System.Action<object>
@@ -155,7 +150,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Dictionary.Enumerator<object,byte>
 	// System.Collections.Generic.Dictionary.Enumerator<object,int>
 	// System.Collections.Generic.Dictionary.Enumerator<object,object>
-	// System.Collections.Generic.Dictionary.Enumerator<ushort,object>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<ES.es666.aaa,int>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<int,int>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<int,object>
@@ -163,7 +157,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<object,byte>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<object,int>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<object,object>
-	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<ushort,object>
 	// System.Collections.Generic.Dictionary.KeyCollection<ES.es666.aaa,int>
 	// System.Collections.Generic.Dictionary.KeyCollection<int,int>
 	// System.Collections.Generic.Dictionary.KeyCollection<int,object>
@@ -171,7 +164,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Dictionary.KeyCollection<object,byte>
 	// System.Collections.Generic.Dictionary.KeyCollection<object,int>
 	// System.Collections.Generic.Dictionary.KeyCollection<object,object>
-	// System.Collections.Generic.Dictionary.KeyCollection<ushort,object>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<ES.es666.aaa,int>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<int,int>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<int,object>
@@ -179,7 +171,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<object,byte>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<object,int>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<object,object>
-	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<ushort,object>
 	// System.Collections.Generic.Dictionary.ValueCollection<ES.es666.aaa,int>
 	// System.Collections.Generic.Dictionary.ValueCollection<int,int>
 	// System.Collections.Generic.Dictionary.ValueCollection<int,object>
@@ -187,7 +178,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Dictionary.ValueCollection<object,byte>
 	// System.Collections.Generic.Dictionary.ValueCollection<object,int>
 	// System.Collections.Generic.Dictionary.ValueCollection<object,object>
-	// System.Collections.Generic.Dictionary.ValueCollection<ushort,object>
 	// System.Collections.Generic.Dictionary<ES.es666.aaa,int>
 	// System.Collections.Generic.Dictionary<int,int>
 	// System.Collections.Generic.Dictionary<int,object>
@@ -195,13 +185,11 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Dictionary<object,byte>
 	// System.Collections.Generic.Dictionary<object,int>
 	// System.Collections.Generic.Dictionary<object,object>
-	// System.Collections.Generic.Dictionary<ushort,object>
 	// System.Collections.Generic.EqualityComparer<ES.es666.aaa>
 	// System.Collections.Generic.EqualityComparer<UnityEngine.Color>
 	// System.Collections.Generic.EqualityComparer<byte>
 	// System.Collections.Generic.EqualityComparer<int>
 	// System.Collections.Generic.EqualityComparer<object>
-	// System.Collections.Generic.EqualityComparer<ushort>
 	// System.Collections.Generic.HashSet.Enumerator<object>
 	// System.Collections.Generic.HashSet<object>
 	// System.Collections.Generic.HashSetEqualityComparer<object>
@@ -214,7 +202,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<object,byte>>
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<object,int>>
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<object,object>>
-	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<ushort,object>>
 	// System.Collections.Generic.ICollection<UnityEngine.Quaternion>
 	// System.Collections.Generic.ICollection<UnityEngine.Vector2>
 	// System.Collections.Generic.ICollection<UnityEngine.Vector3>
@@ -232,7 +219,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.IComparer<int>
 	// System.Collections.Generic.IComparer<object>
 	// System.Collections.Generic.IDictionary<int,object>
-	// System.Collections.Generic.IDictionary<ushort,object>
 	// System.Collections.Generic.IEnumerable<ES.ESTag>
 	// System.Collections.Generic.IEnumerable<ES.es666.aaa>
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<ES.es666.aaa,int>>
@@ -242,7 +228,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<object,byte>>
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<object,int>>
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<object,object>>
-	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<ushort,object>>
 	// System.Collections.Generic.IEnumerable<UnityEngine.Quaternion>
 	// System.Collections.Generic.IEnumerable<UnityEngine.Vector2>
 	// System.Collections.Generic.IEnumerable<UnityEngine.Vector3>
@@ -260,7 +245,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<object,byte>>
 	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<object,int>>
 	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<object,object>>
-	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<ushort,object>>
 	// System.Collections.Generic.IEnumerator<UnityEngine.Quaternion>
 	// System.Collections.Generic.IEnumerator<UnityEngine.Vector2>
 	// System.Collections.Generic.IEnumerator<UnityEngine.Vector3>
@@ -272,7 +256,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.IEqualityComparer<ES.es666.aaa>
 	// System.Collections.Generic.IEqualityComparer<int>
 	// System.Collections.Generic.IEqualityComparer<object>
-	// System.Collections.Generic.IEqualityComparer<ushort>
 	// System.Collections.Generic.IList<ES.ESTag>
 	// System.Collections.Generic.IList<ES.es666.aaa>
 	// System.Collections.Generic.IList<UnityEngine.Quaternion>
@@ -289,7 +272,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.KeyValuePair<object,byte>
 	// System.Collections.Generic.KeyValuePair<object,int>
 	// System.Collections.Generic.KeyValuePair<object,object>
-	// System.Collections.Generic.KeyValuePair<ushort,object>
 	// System.Collections.Generic.List.Enumerator<ES.ESTag>
 	// System.Collections.Generic.List.Enumerator<ES.es666.aaa>
 	// System.Collections.Generic.List.Enumerator<UnityEngine.Quaternion>
@@ -322,7 +304,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.ObjectEqualityComparer<byte>
 	// System.Collections.Generic.ObjectEqualityComparer<int>
 	// System.Collections.Generic.ObjectEqualityComparer<object>
-	// System.Collections.Generic.ObjectEqualityComparer<ushort>
 	// System.Collections.Generic.Queue.Enumerator<ES.ModuleStateMachine_CrashDodge.Applyable_CrashDodge>
 	// System.Collections.Generic.Queue.Enumerator<UnityEngine.Vector3>
 	// System.Collections.Generic.Queue.Enumerator<object>
@@ -527,14 +508,10 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// object DG.Tweening.TweenSettingsExtensions.SetRelative<object>(object,bool)
 		// object DG.Tweening.TweenSettingsExtensions.SetTarget<object>(object,object)
 		// object DG.Tweening.TweenSettingsExtensions.SetUpdate<object>(object,bool)
-		// ushort FishNet.Broadcast.Helping.BroadcastExtensions.GetKey<object>()
 		// FishNet.Serializing.PooledWriter FishNet.Broadcast.Helping.BroadcastsSerializers.WriteBroadcast<object>(FishNet.Managing.NetworkManager,FishNet.Serializing.PooledWriter,object,FishNet.Transporting.Channel&)
 		// System.Void FishNet.Managing.Client.ClientManager.Broadcast<object>(object,FishNet.Transporting.Channel)
-		// System.Void FishNet.Managing.Client.ClientManager.RegisterBroadcast<object>(System.Action<object,FishNet.Transporting.Channel>)
 		// System.Void FishNet.Managing.Server.ServerManager.Broadcast<object>(object,bool,FishNet.Transporting.Channel)
-		// System.Void FishNet.Managing.Server.ServerManager.RegisterBroadcast<object>(System.Action<FishNet.Connection.NetworkConnection,object,FishNet.Transporting.Channel>,bool)
 		// System.Void FishNet.Serializing.Writer.Write<object>(object)
-		// bool GameKit.Dependencies.Utilities.DictionaryFN.TryGetValueIL2CPP<ushort,object>(System.Collections.Generic.IDictionary<ushort,object>,ushort,object&)
 		// object Sirenix.Utilities.TypeExtensions.GetCustomAttribute<object>(System.Type)
 		// object Sirenix.Utilities.TypeExtensions.GetCustomAttribute<object>(System.Type,bool)
 		// object System.Activator.CreateInstance<object>()

@@ -36,7 +36,7 @@ namespace ES {
         {
             if (TryAddAndBackIsNewList(typeof(Link), e))
             {
-                ESNetManager.ServerManager.RegisterBroadcast<Link>(SendLink_ToServer_Internal);
+                /*ESNetManager.ServerManager.RegisterBroadcast<Link>(SendLink_ToServer_Internal);*/
             }
             void SendLink_ToServer_Internal(NetworkConnection connection, Link link, FishNet.Transporting.Channel channel)
             {
@@ -88,7 +88,7 @@ namespace ES {
         {
             if (TryAddAndBackIsNewList(typeof(Link), e))
             {
-                ESNetManager.ClientManager.RegisterBroadcast<Link>(SendLink_ToClient_Internal);
+              /*  ESNetManager.ClientManager.RegisterBroadcast<Link>(SendLink_ToClient_Internal);*/
             }
             void SendLink_ToClient_Internal(Link link, FishNet.Transporting.Channel channel)
             {
