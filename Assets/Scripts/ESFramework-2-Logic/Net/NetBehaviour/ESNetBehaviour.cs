@@ -13,7 +13,7 @@ namespace ES
         
      
      */
-    public partial class ESNetBehaviour : NetworkBehaviour
+    public class ESNetBehaviour : NetworkBehaviour
     {
         //public ESObject ConnectedObject;
         public bool StartSpawn = false;
@@ -23,7 +23,7 @@ namespace ES
         {
 
         }
-        public override void OnStartNetwork()
+      /*  public override void OnStartNetwork()
         {
             base.OnStartNetwork();
         }
@@ -42,10 +42,10 @@ namespace ES
         public override void OnStopServer()
         {
             base.OnStopServer();
-        }
-        public void Function_ClientSendStartWithPlayerAtServer(NetworkConnection connection, ESNetPlayer player)
+        }*/
+        /*public void Function_ClientSendStartWithPlayerAtServer(NetworkConnection connection, ESNetPlayer player)
         {
-            if (ESNetManager.Instance.Need_RoomIDMatch)
+            *//*if (ESNetManager.Instance.Need_RoomIDMatch)
             {
                 if (player.RoomNumber == ESNetManager.Instance.NetPlayer.RoomNumber)
                 {
@@ -56,13 +56,13 @@ namespace ES
                     Debug.LogWarning("房间号不对！" + "试图加入" + player.RoomNumber + "实际上这里是" + ESNetManager.Instance.NetPlayer.RoomNumber);
                     connection.Kick(FishNet.Managing.Server.KickReason.ExploitExcessiveData);
                 }
-            }
-        }
-        [ServerRpc]
+            }*//*
+        }*/
+       /* [ServerRpc]
         public void SpawnThis(GameObject g,NetworkConnection connection=null)
         {
             ServerManager.Spawn(g,connection);
-        }
+        }*/
     }
 }
 

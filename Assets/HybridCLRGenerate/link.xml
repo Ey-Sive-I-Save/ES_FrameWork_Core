@@ -88,20 +88,15 @@
     <type fullname="FishNet.Connection.NetworkConnection" preserve="all" />
     <type fullname="FishNet.InstanceFinder" preserve="all" />
     <type fullname="FishNet.Managing.Client.ClientManager" preserve="all" />
-    <type fullname="FishNet.Managing.Logging.LoggingType" preserve="all" />
     <type fullname="FishNet.Managing.NetworkManager" preserve="all" />
     <type fullname="FishNet.Managing.NetworkManagerExtensions" preserve="all" />
-    <type fullname="FishNet.Managing.Server.KickReason" preserve="all" />
     <type fullname="FishNet.Managing.Server.ServerManager" preserve="all" />
     <type fullname="FishNet.Object.DataOrderType" preserve="all" />
-    <type fullname="FishNet.Object.Delegating.ClientRpcDelegate" preserve="all" />
     <type fullname="FishNet.Object.Delegating.ServerRpcDelegate" preserve="all" />
     <type fullname="FishNet.Object.DespawnType" preserve="all" />
     <type fullname="FishNet.Object.NetworkBehaviour" preserve="all" />
     <type fullname="FishNet.Object.NetworkObject" preserve="all" />
-    <type fullname="FishNet.Object.ObserversRpcAttribute" preserve="all" />
     <type fullname="FishNet.Object.ServerRpcAttribute" preserve="all" />
-    <type fullname="FishNet.Object.TargetRpcAttribute" preserve="all" />
     <type fullname="FishNet.Serializing.GenericReader`1" preserve="all" />
     <type fullname="FishNet.Serializing.GenericWriter`1" preserve="all" />
     <type fullname="FishNet.Serializing.PooledReader" preserve="all" />

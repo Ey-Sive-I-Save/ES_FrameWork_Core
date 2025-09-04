@@ -13,7 +13,10 @@ namespace ES
         Assembly hotUpdateAssCore;
         Assembly hotUpdateAssHot;
         private void Awake()
-        { 
+        {
+            var str = File.ReadAllBytes($"{Application.streamingAssetsPath}/Unity.FishNet.Codegen.dll.bytes");
+            // Debug.Log("STR"+str.ToString()+str.Length);
+            hotUpdateAssDesign = Assembly.Load(str);
             
         }
         public void a()

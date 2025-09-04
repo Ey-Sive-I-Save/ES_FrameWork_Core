@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace ES
 {
-    public partial class ESNetBehaviour 
+    /*public partial class ESNetBehaviour 
     {
         [ServerRpc]
         private void Do_ServerRpc()
@@ -22,5 +22,5 @@ namespace ES
         {
 
         }
-    }
+    }*/
 }
