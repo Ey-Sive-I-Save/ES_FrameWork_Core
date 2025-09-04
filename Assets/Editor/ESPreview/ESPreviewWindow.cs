@@ -361,7 +361,22 @@ namespace ES
             }
 
         }
-
+        [ButtonGroup("视觉组")]
+        [Button("Bytes")]
+        public void Button_AddBytes()
+        {
+            foreach(var i in Selection.objects)
+            {
+                Debug.Log("EDIT" + i);
+                if (i.name.EndsWith(".bytes")) { }
+                else
+                {
+                    i.name = i.name + ".bytes";
+                }
+            }
+            AssetDatabase.Refresh();
+            AssetDatabase.SaveAssets();
+        }
 
         #region 命名组
         [Serializable]

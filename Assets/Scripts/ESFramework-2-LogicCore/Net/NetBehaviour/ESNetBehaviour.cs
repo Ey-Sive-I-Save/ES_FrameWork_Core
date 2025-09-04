@@ -23,26 +23,31 @@ namespace ES
         {
 
         }
-      /*  public override void OnStartNetwork()
+        [ServerRpc]
+        private void OnAnimator(int layerIndex)
         {
-            base.OnStartNetwork();
+            
         }
-        public override void OnStartClient()
-        {
-            base.OnStartClient();
-        }
-        public override void OnStopClient()
-        {
-            base.OnStopClient();
-        }
-        public override void OnStartServer()
-        {
-            base.OnStartServer();
-        }
-        public override void OnStopServer()
-        {
-            base.OnStopServer();
-        }*/
+        /*  public override void OnStartNetwork()
+          {
+              base.OnStartNetwork();
+          }
+          public override void OnStartClient()
+          {
+              base.OnStartClient();
+          }
+          public override void OnStopClient()
+          {
+              base.OnStopClient();
+          }
+          public override void OnStartServer()
+          {
+              base.OnStartServer();
+          }
+          public override void OnStopServer()
+          {
+              base.OnStopServer();
+          }*/
         /*public void Function_ClientSendStartWithPlayerAtServer(NetworkConnection connection, ESNetPlayer player)
         {
             *//*if (ESNetManager.Instance.Need_RoomIDMatch)
@@ -58,11 +63,11 @@ namespace ES
                 }
             }*//*
         }*/
-       /* [ServerRpc]
-        public void SpawnThis(GameObject g,NetworkConnection connection=null)
-        {
-            ServerManager.Spawn(g,connection);
-        }*/
+        /* [ServerRpc]
+         public void SpawnThis(GameObject g,NetworkConnection connection=null)
+         {
+             ServerManager.Spawn(g,connection);
+         }*/
     }
 }
 

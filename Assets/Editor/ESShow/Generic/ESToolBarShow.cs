@@ -13,7 +13,6 @@ using UnityEditor.SceneManagement;
 using System.IO;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 using FishNet.Demo.AdditiveScenes;
-using static FishNet.Component.Transforming.NetworkTransform;
 using System.Linq;
 
 namespace ES

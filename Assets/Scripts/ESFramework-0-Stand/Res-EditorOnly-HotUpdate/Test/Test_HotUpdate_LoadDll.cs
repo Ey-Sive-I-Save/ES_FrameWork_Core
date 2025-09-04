@@ -14,11 +14,18 @@ namespace ES
         Assembly hotUpdateAssHot;
         private void Awake()
         {
-            var str = File.ReadAllBytes($"{Application.streamingAssetsPath}/Unity.FishNet.Codegen.dll.bytes");
-            // Debug.Log("STR"+str.ToString()+str.Length);
-            hotUpdateAssDesign = Assembly.Load(str);
+                // 获取当前应用程序域中所有已加载的程序集
+                Assembly[] loadedAssemblies = AppDomain.CurrentDomain.GetAssemblies();
+
+                // 遍历并输出每个程序集的全名
+                foreach (Assembly assembly in loadedAssemblies)
+                {
+                    Debug.Log(assembly.FullName);
+                }
             
         }
+
+    
         public void a()
         {
 

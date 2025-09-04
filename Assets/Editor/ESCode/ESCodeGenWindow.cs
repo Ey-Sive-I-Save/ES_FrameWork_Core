@@ -7,7 +7,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using static ES.EnumCollect;
 using static ES.ESCodeGenWindow.PageRoot_CoreDomainModule;

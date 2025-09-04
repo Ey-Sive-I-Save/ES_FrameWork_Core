@@ -10,13 +10,14 @@ using UnityEngine.Events;
 namespace ES {
     public class Test81_Arch : MonoBehaviour,IReceiveLink<Link_ArchEvent_FloatChange>,IReceiveChannelLink<string, Link_ArchEvent_FloatChange>
     {
-       /* [Button]
-        public void aa()
-        {
-            unityEvent.Invoke();
-        }
-        [ESDragToFieldSolver(ESDragToFieldSolverOptions.UnityEventNewInvoke)]
-        public UnityEvent unityEvent;*/
+        
+        /* [Button]SerializedDictionary
+         public void aa()
+         {
+             unityEvent.Invoke();
+         }
+         [ESDragToFieldSolver(ESDragToFieldSolverOptions.UnityEventNewInvoke)]
+         public UnityEvent unityEvent;*/
         public ArchPool pool = new ArchPool();
         
 

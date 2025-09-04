@@ -1,3 +1,4 @@
+using FishNet.Broadcast;
 using FishNet.Connection;
 using FishNet.Object;
 using System.Collections;
@@ -5,9 +6,17 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace ES
 {
-    /*public partial class ESNetBehaviour 
+    public class es1 : IBroadcast
     {
-        [ServerRpc]
+
+    }
+   /* public class aaaa: NetworkBehaviour
+    {
+
+    }*/
+    public partial class ESNetBehaviour2 : NetworkObject
+    {
+       /* [ServerRpc]
         private void Do_ServerRpc()
         {
             
@@ -21,6 +30,6 @@ namespace ES
         private void Do_TargetRpc(NetworkConnection connection)
         {
 
-        }
-    }*/
+        }*/
+    }
 }
