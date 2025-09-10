@@ -42,7 +42,6 @@ namespace ES
             }
             return -1;
         }
-
         public float GetMessage(MessageFloatKey k, EnumCollect.LanguageType language = EnumCollect.LanguageType.NotClear, int hepler = default) {
             if (this is IMessageFloatProvider floatProvider)
             {
@@ -66,6 +65,7 @@ namespace ES
             return null;
         }
     }
+    
     [Serializable,TypeRegistryItem("信息提供注册")]//各种类型的注册器
     public abstract class IMessageProv_Reg_Ab
     {
@@ -77,8 +77,12 @@ namespace ES
         public IMessageProvider provider;
         public bool isMain;
     }
+    public interface IMessageProvider<out Back> : IMessageProvider
+    {
+        Back GetBack();
+    }
     //                                返回类型 键类型 第二判据(可以忽略)
-    public interface IMessageProvider<Back, Key, Hepler> : IMessageProvider
+    public interface IMessageProvider< Back, Key, Hepler> : IMessageProvider
     {
         public Back GetMessage(Key k, EnumCollect.LanguageType language = EnumCollect.LanguageType.NotClear, Hepler hepler = default);
     }

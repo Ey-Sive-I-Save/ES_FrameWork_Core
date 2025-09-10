@@ -62,9 +62,9 @@ namespace ES.Pointer
     {
         [LabelText("链接列"), SerializeReference]
         public List<IPointer> pointers = new List<IPointer>();
-        [LabelText("上次输出"), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")] public string cast;
-        [LabelText("发起投射?", SdfIconType.At), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")] public bool usePlayerCaster;
-        [LabelText("发送到Caster", SdfIconType.At), ShowIf("usePlayerCaster"), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")] public PointerPlayerSystemObjectCaster playerCaster_;
+        [LabelText("上次输出"), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")] public string cast;
+        [LabelText("发起投射?", SdfIconType.At), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")] public bool usePlayerCaster;
+        [LabelText("发送到Caster", SdfIconType.At), ShowIf("usePlayerCaster"), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")] public PointerPlayerSystemObjectCaster playerCaster_;
         public PointerPlayerSystemObjectCaster playerCaster => playerCaster_;
 
         public string Cast()

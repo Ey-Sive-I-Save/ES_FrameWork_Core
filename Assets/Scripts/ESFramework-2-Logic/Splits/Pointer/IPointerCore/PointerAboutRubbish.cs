@@ -550,7 +550,7 @@ namespace ES.Pointer
     //对原型池的IOC支持
     public abstract class BaseWithStringKeyValue<ValueT> : BaseWithKeyValue<KeyString, ValueT>
     {
-        [LabelText("-键-", SdfIconType.KeyboardFill), GUIColor("@ESStaticDesignUtility.ColorSelector.Color_03")] public KeyString_IOCKey IOCKey = new KeyString_IOCKey();
+        [LabelText("-键-", SdfIconType.KeyboardFill), GUIColor("@ESDesignUtility.ColorSelector.Color_03")] public KeyString_IOCKey IOCKey = new KeyString_IOCKey();
 
         public override void SetKey(object o)
         {

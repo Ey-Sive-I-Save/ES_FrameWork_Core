@@ -55,7 +55,7 @@ namespace ES
         [Button("生成",ButtonHeight =50)]
         public void GeneTruely()
         {
-            string content = ESStaticDesignUtility.SimpleScriptMaker.
+            string content = ESDesignUtility.SimpleScriptMaker.
                CreateNotes("该脚本为ES代码生成，\n时间：" + DateTime.Now + "\n");
             string nameCache = "";
             foreach (var i in trees)
@@ -79,7 +79,7 @@ namespace ES
                 using_ += "using " + i + ";\n";
             }
             
-            string back = ESStaticDesignUtility.SimpleScriptMaker.CreateScriptBounds
+            string back = ESDesignUtility.SimpleScriptMaker.CreateScriptBounds
                 (Folderpath: folderPath,
                 fileName: nameCache = fileName._AddPreAndLast(UseClassNameAtFirst ? nameCache : "", UseExtesionAtLast ? ".cs" : ""),
                 using_: using_,
@@ -87,11 +87,11 @@ namespace ES
                 content: content,
                 TruelyCreate: true
                 );
-            ESStaticDesignUtility.SafeEditor.PingAssetByPath(Path.Combine(folderPath, nameCache));
+            ESDesignUtility.SafeEditor.PingAssetByPath(Path.Combine(folderPath, nameCache));
         }
         public override string Pick(IESCodeTreeClass on = null, ESCodeTreeTarget from = null, ESCodeRune with = null)
         {
-            string content = ESStaticDesignUtility.SimpleScriptMaker.
+            string content = ESDesignUtility.SimpleScriptMaker.
                CreateNotes("该脚本为ES代码生成，\n时间：" + DateTime.Now + "\n");
             string nameCache = "";
             foreach (var i in trees)
@@ -114,7 +114,7 @@ namespace ES
             {
                 using_ += "using " + i + ";\n";
             }
-            string back= ESStaticDesignUtility.SimpleScriptMaker.CreateScriptBounds
+            string back= ESDesignUtility.SimpleScriptMaker.CreateScriptBounds
                 (Folderpath: folderPath,
                 fileName: nameCache = fileName._AddPreAndLast(UseClassNameAtFirst ? nameCache : "", UseExtesionAtLast ? ".cs" : ""),
                 using_: using_,
@@ -200,7 +200,7 @@ namespace ES
     public abstract class ESCodeNode_Standard : IESCodeTreeNode
     {
         public abstract string Pick(IESCodeTreeClass on = null, ESCodeTreeTarget from = null, ESCodeRune with = null);
-        [LabelText("预览"), DisplayAsString(TextAlignment.Left, Overflow = false), HideLabel, GUIColor("@ESStaticDesignUtility.ColorSelector.Color_02")] public string preview = "";
+        [LabelText("预览"), DisplayAsString(TextAlignment.Left, Overflow = false), HideLabel, GUIColor("@ESDesignUtility.ColorSelector.Color_02")] public string preview = "";
         private void Preview()
         {
             preview = Pick();
@@ -213,7 +213,7 @@ namespace ES
     [Serializable, TypeRegistryItem("基础生成类")]
     public class ESCodeTree_Class : PointerPackerBase<string, IESCodeTreeClass, ESCodeTreeTarget, ESCodeRune, IESCodeTreeNode>, IESCodeTreeClass
     {
-        [LabelText("预览"), DisplayAsString(TextAlignment.Left, Overflow = false), HideLabel, GUIColor("@ESStaticDesignUtility.ColorSelector.Color_02")] public string preview = "";
+        [LabelText("预览"), DisplayAsString(TextAlignment.Left, Overflow = false), HideLabel, GUIColor("@ESDesignUtility.ColorSelector.Color_02")] public string preview = "";
         private void Preview()
         {
             preview = Pick();
@@ -246,7 +246,7 @@ namespace ES
         public override string Pick(IESCodeTreeClass on = null, ESCodeTreeTarget from = null, ESCodeRune with = null)
         {
             string typeName = typeAndInit?.Pick(this, on, "AAA") ?? "int";
-            string back = ESStaticDesignUtility.SimpleScriptMaker.CreateClassContentByString(
+            string back = ESDesignUtility.SimpleScriptMaker.CreateClassContentByString(
                 className: nameCache = className_FIX,
                 beforeClassName: modifier_addition._Get_ATT_ESStringMessage(),
                 insideClass: GetContent(on, from, with),
@@ -288,7 +288,7 @@ namespace ES
         public override string Pick(IESCodeTreeClass on = null, ESCodeTreeTarget from = null, ESCodeRune with = null)
         {
             string typeName = typeAndInit.Pick(this, on, "AAA");
-            string back = ESStaticDesignUtility.SimpleScriptMaker.CreateMethod(
+            string back = ESDesignUtility.SimpleScriptMaker.CreateMethod(
                 methodName: methodName,
                 modifier: modifier_Access._Get_ATT_ESStringMessage() + " " + modifier_addition._Get_ATT_ESStringMessage(),
                 back: UseReturn ? typeName : "void",
@@ -314,7 +314,7 @@ namespace ES
         public override string Pick(IESCodeTreeClass on = null, ESCodeTreeTarget from = null, ESCodeRune with = null)
         {
             string typeName = typeAndInit?.Pick(this, on, "AAA") ?? "int";
-            string back = ESStaticDesignUtility.SimpleScriptMaker.CreateFieldContent(
+            string back = ESDesignUtility.SimpleScriptMaker.CreateFieldContent(
                 typeName: typeName,
                 fieldName: fieldName._ToValidIdentName(),
                 modifier: modifier_Access._Get_ATT_ESStringMessage() + " " + modifier_addition._Get_ATT_ESStringMessage(),
@@ -337,7 +337,7 @@ namespace ES
         public override string Pick(IESCodeTreeClass on = null, ESCodeTreeTarget from = null, ESCodeRune with = null)
         {
             string typeName = typeAndInit?.Pick(this, on, "AAA") ?? "int";
-            string back = ESStaticDesignUtility.SimpleScriptMaker.CreateParaOrDefineContent(
+            string back = ESDesignUtility.SimpleScriptMaker.CreateParaOrDefineContent(
                 typeName: typeName,
                 itName: paraName?._ToValidIdentName(),
                 modifier: "",
@@ -742,7 +742,7 @@ namespace ES
         public override string Pick(IESCodeTreeNode on = null, IESCodeTreeClass from = null, string with = null)
         {
             string typeName = typeAndInit?.Pick(on, from, with) ?? "int";
-            string back = ESStaticDesignUtility.SimpleScriptMaker.CreateParaOrDefineContent(
+            string back = ESDesignUtility.SimpleScriptMaker.CreateParaOrDefineContent(
                 typeName: typeName,
                 itName: paraName?._ToValidIdentName(),
                 modifier: "",

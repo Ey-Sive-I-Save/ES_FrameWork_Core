@@ -23,7 +23,7 @@ namespace ES
 
                 foreach (var (e, k) in Groups)
                 {
-                    if (k.MayHasElement)
+                    if (k.MayHasAddingElement)
                         foreach (var link in k)
                         {
                             HandleOneLink(e, link);
@@ -36,7 +36,7 @@ namespace ES
         public void RunEnviromentTasks(LinkTaskEnvironment e)
         {
             var group = GetGroupDirectly(e);
-            if (group.MayHasElement)
+            if (group.MayHasAddingElement)
                 foreach (var link in group)
                 {
                     HandleOneLink(e, link);

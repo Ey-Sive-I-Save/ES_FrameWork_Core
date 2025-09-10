@@ -20,7 +20,7 @@ namespace ES
         [LabelText("生成路径"), FolderPath, ReadOnly] public string path_= "Assets/Scripts/ESFramework/CodeGen/Enum";
 
 
-        [LabelText("全部枚举"), GUIColor("@ESStaticDesignUtility.ColorSelector.Color_03"),]
+        [LabelText("全部枚举"), GUIColor("@ESDesignUtility.ColorSelector.Color_03"),]
         public List<EnumType> EnumTypes = new List<EnumType>();
 
 
@@ -55,7 +55,7 @@ namespace ES
                 if (type != null)
                 {
                     int Now = 0;
-                    allContent += ESStaticDesignUtility.SimpleScriptMaker.CreateNotes($"枚举类型名:{type.EnumTypeName},枚举中文名{type.EnumChineseName}");
+                    allContent += ESDesignUtility.SimpleScriptMaker.CreateNotes($"枚举类型名:{type.EnumTypeName},枚举中文名{type.EnumChineseName}");
                     if (type.IsFlag)
                     {
                         allContent += $"[Flags]\n";
@@ -143,7 +143,7 @@ namespace ES
                     allContent += $"}}\n";
                 }
             }
-            ESStaticDesignUtility.SimpleScriptMaker.CreateScriptBounds(path_, "EnumDefineSort_" + EnumSortName_ + ".cs",
+            ESDesignUtility.SimpleScriptMaker.CreateScriptBounds(path_, "EnumDefineSort_" + EnumSortName_ + ".cs",
               using_: "using ES;\r\nusing Sirenix.OdinInspector;\r\nusing System;\r\nusing System.Collections;\r\nusing System.Collections.Generic;\r\nusing UnityEngine;",
               content: allContent
                  , TruelyCreate: true);
@@ -160,13 +160,13 @@ namespace ES
 
             [FoldoutGroup("枚举类", GroupName = "@EnumChineseName", Expanded = true)]
             [InfoBox("是Flag时，实际上的值是1<<N的N次方", VisibleIf = "IsFlag")]
-            [LabelText("是Flag的"), GUIColor("@ESStaticDesignUtility.ColorSelector.Color_04")] public bool IsFlag = false;
-            [FoldoutGroup("枚举类"), GUIColor("@ESStaticDesignUtility.ColorSelector.Color_04")]
+            [LabelText("是Flag的"), GUIColor("@ESDesignUtility.ColorSelector.Color_04")] public bool IsFlag = false;
+            [FoldoutGroup("枚举类"), GUIColor("@ESDesignUtility.ColorSelector.Color_04")]
             [LabelText("强制修改(有风险)"), OnValueChanged("Warn")]
             public bool EDIT = true;
             [FoldoutGroup("枚举类")][LabelText("枚举类型名"), EnableIf("EDIT")] public string EnumTypeName = "NewEnumType";
             [FoldoutGroup("枚举类")][LabelText("枚举中文名"), EnableIf("EDIT")] public string EnumChineseName = "新的枚举";
-            [FoldoutGroup("枚举类")][LabelText("全部元素"), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForESValue")] public List<OneEnumElement> All = new List<OneEnumElement>();
+            [FoldoutGroup("枚举类")][LabelText("全部元素"), GUIColor("@ESDesignUtility.ColorSelector.ColorForESValue")] public List<OneEnumElement> All = new List<OneEnumElement>();
 
 
 
@@ -188,7 +188,7 @@ namespace ES
             private void Warn()
             {
                 if (EDIT)
-                    EDIT = ESStaticDesignUtility.SafeEditor.DisplayDialog("开启强制修改", "这只能修改枚举源代码的内容，不会影响已经有的引用，可能造成大范围的Error", "继续", "算了");
+                    EDIT = ESDesignUtility.SafeEditor.DisplayDialog("开启强制修改", "这只能修改枚举源代码的内容，不会影响已经有的引用，可能造成大范围的Error", "继续", "算了");
             }
         }
 

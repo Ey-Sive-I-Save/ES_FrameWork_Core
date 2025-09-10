@@ -71,7 +71,7 @@ namespace ES
     {
         #region 显示控制状态
         [ShowInInspector, LabelText("控制自身启用状态"), PropertyOrder(-1)] public bool EnabledSelfControl { get => EnabledSelf; set { if (value) TryEnableSelf(); else TryDisableSelf(); } }
-        [ShowInInspector, LabelText("显示活动状态"), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
+        [ShowInInspector, LabelText("显示活动状态"), GUIColor("@ESDesignUtility.ColorSelector.ColorForUpdating")]
         public bool IsActiveAndEnableShow { get => Signal_IsActiveAndEnable; }
         #endregion
 
@@ -123,6 +123,7 @@ namespace ES
                 }
             }
         }
+        [NonSerialized]
         private bool _isActiveAndEnable = false;
         public bool EnabledSelf { get => _enableSelf; set { _enableSelf = value; StateTestForSelfEnable(); } }
 
@@ -137,8 +138,11 @@ namespace ES
 
         private void StateTestForSelfSubmit()
         {
-            if (_isActiveAndEnable && !_hasSubmit) _TryInActiveAndDisable();
-            else if (!_isActiveAndEnable && _hasSubmit) _TryActiveAndEnable();
+           /* if (_isActiveAndEnable && !_hasSubmit) _TryInActiveAndDisable();
+            else if (!_isActiveAndEnable && _hasSubmit)
+            {
+                _TryActiveAndEnable();
+            }*/
         }
 
         [SerializeField, HideInInspector] private bool _enableSelf = true;
@@ -201,9 +205,10 @@ namespace ES
 
         public bool _TryStartWithHost(IESOringinHosting host)
         {
+            Debug.Log("XXXXXXXXX33" + EnabledSelf);
             if (Signal_HasSubmit) return true;
             if (host != null)
-            {
+            { 
                 _SetHost(host);
                 Signal_HasSubmit = true;
                 return true;

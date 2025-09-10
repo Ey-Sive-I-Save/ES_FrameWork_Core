@@ -17,7 +17,7 @@ namespace ES
     [Serializable, TypeRegistryItem("队列循环安全列表_持久")]
     public class SafeBasicList<T> : ISafeList<T>
     {
-        [LabelText("正在更新", SdfIconType.ArrowRepeat), SerializeReference, GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
+        [LabelText("正在更新", SdfIconType.ArrowRepeat), SerializeReference, GUIColor("@ESDesignUtility.ColorSelector.ColorForUpdating")]
         public List<T> ValuesNow = new List<T>(10);
         [FoldoutGroup("缓冲")][LabelText("缓冲添加", SdfIconType.BoxArrowInLeft), SerializeReference] public List<T> ValuesBufferToAdd = new List<T>();
         [FoldoutGroup("缓冲")][LabelText("缓冲移除", SdfIconType.BoxArrowRight), SerializeReference] public List<T> ValuesBufferToRemove = new List<T>();
@@ -110,16 +110,17 @@ namespace ES
     [Serializable, TypeRegistryItem("队列循环安全脏列表_持久")]
     public class SafeNormalList<T> : ISafeList<T>
     {
-        [LabelText("正在更新", SdfIconType.ArrowRepeat), SerializeReference, GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
+        [LabelText("正在更新", SdfIconType.ArrowRepeat), SerializeReference, GUIColor("@ESDesignUtility.ColorSelector.ColorForUpdating")]
         public List<T> ValuesNow = new List<T>(10);
-        [FoldoutGroup("缓冲")]
+        [FoldoutGroup("缓冲中")]
         [ShowInInspector, NonSerialized, LabelText("缓冲添加队列", SdfIconType.BoxArrowInLeft)]
         private Queue<T> ValuesBufferToAdd = new Queue<T>();
-        [FoldoutGroup("缓冲")]
+        [FoldoutGroup("缓冲中")]
         [ShowInInspector,NonSerialized,LabelText("缓冲移除队列", SdfIconType.BoxArrowRight)]
         private Queue<T> ValuesBufferToRemove = new Queue<T>();
         private bool isDirty;
-        public bool MayHasElement = true;
+        [HideInInspector]
+        public bool MayHasAddingElement = true;
         public bool AutoApplyBuffers { [MethodImpl(MethodImplOptions.AggressiveInlining)] get; [MethodImpl(MethodImplOptions.AggressiveInlining)] set; } = true;
         public void SetAutoApplyBuffers(bool b) => AutoApplyBuffers = b;
         public IEnumerable<T> ValuesIEnumable
@@ -139,7 +140,7 @@ namespace ES
         {
             ValuesBufferToAdd.Enqueue(add);
             isDirty = true;
-            MayHasElement = true;
+            MayHasAddingElement = true;
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void TryRemove(T add)
@@ -209,7 +210,7 @@ namespace ES
             ValuesNow.Clear();
             ValuesBufferToAdd.Clear();
             ValuesBufferToRemove.Clear();
-            MayHasElement = false;
+            MayHasAddingElement = false;
         }
         #region 杂项
 
@@ -221,7 +222,7 @@ namespace ES
         }
 
         [Button("强制更新")]
-        [FoldoutGroup("缓冲")]
+        [FoldoutGroup("缓冲中")]
         private void ForceUpdate()
         {
             ApplyBuffers(true);
@@ -237,7 +238,7 @@ namespace ES
     [Serializable, TypeRegistryItem("队列线程安全列表_持久")]
     public class SafeThreadBasicList<T> : ISafeList<T>
     {
-        [LabelText("正在更新", SdfIconType.ArrowRepeat), SerializeReference, GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
+        [LabelText("正在更新", SdfIconType.ArrowRepeat), SerializeReference, GUIColor("@ESDesignUtility.ColorSelector.ColorForUpdating")]
         public List<T> ValuesNow = new List<T>(10);
         [FoldoutGroup("缓冲")][LabelText("缓冲添加", SdfIconType.BoxArrowInLeft), SerializeReference] public List<T> ValuesBufferToAdd = new List<T>();
         [FoldoutGroup("缓冲")][LabelText("缓冲移除", SdfIconType.BoxArrowRight), SerializeReference] public List<T> ValuesBufferToRemove = new List<T>();
@@ -332,7 +333,7 @@ namespace ES
     [Serializable, TypeRegistryItem("队列线程安全脏列表_持久")]
     public class SafeThreadNormalList<T> : ISafeList<T>
     {
-        [LabelText("正在更新", SdfIconType.ArrowRepeat), SerializeReference, ShowInInspector, GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
+        [LabelText("正在更新", SdfIconType.ArrowRepeat), SerializeReference, ShowInInspector, GUIColor("@ESDesignUtility.ColorSelector.ColorForUpdating")]
         public List<T> ValuesNow = new List<T>(10);
         [FoldoutGroup("缓冲")]
         [ShowInInspector, LabelText("缓冲添加队列", SdfIconType.BoxArrowInLeft)]
@@ -474,7 +475,7 @@ namespace ES
     public class OB_SafeUpdateSet_EasyQueue_SeriNot<T>
     {
 
-        [LabelText("正在更新", SdfIconType.ArrowRepeat), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
+        [LabelText("正在更新", SdfIconType.ArrowRepeat), GUIColor("@ESDesignUtility.ColorSelector.ColorForUpdating")]
         public HashSet<T> valuesNow_ = new HashSet<T>(10);
         [FoldoutGroup("缓冲")]
         [ShowInInspector, LabelText("缓冲添加队列", SdfIconType.BoxArrowInLeft)]
@@ -499,7 +500,7 @@ namespace ES
     [Serializable, TypeRegistryItem("队列安全脏集合_不持久")]
     public class OB_SafeUpdateSet_EasyQueue_SeriNot_Dirty<T>
     {
-        [LabelText("正在更新", SdfIconType.ArrowRepeat), ShowInInspector, GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
+        [LabelText("正在更新", SdfIconType.ArrowRepeat), ShowInInspector, GUIColor("@ESDesignUtility.ColorSelector.ColorForUpdating")]
         public HashSet<T> valuesNow_ = new HashSet<T>(10);
         [FoldoutGroup("缓冲")]
         [ShowInInspector, LabelText("缓冲添加队列", SdfIconType.BoxArrowInLeft)]

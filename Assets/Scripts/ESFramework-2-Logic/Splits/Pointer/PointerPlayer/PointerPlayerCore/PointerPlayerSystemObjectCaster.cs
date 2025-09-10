@@ -11,9 +11,9 @@ namespace ES
     {
         public override IPointer Pointer => pointerFoSystemObject;
         public PointerPlayerSystemObjectCaster playerCaster => this;
-        [LabelText("投射的物体", SdfIconType.Link45deg), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")]
+        [LabelText("投射的物体", SdfIconType.Link45deg), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")]
         public object aObject;
-        [LabelText("Pick一个物体"), SerializeReference, GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")] public IPointer pointerFoSystemObject;
+        [LabelText("Pick一个物体"), SerializeReference, GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")] public IPointer pointerFoSystemObject;
         public object Cast()
         {
             return aObject;

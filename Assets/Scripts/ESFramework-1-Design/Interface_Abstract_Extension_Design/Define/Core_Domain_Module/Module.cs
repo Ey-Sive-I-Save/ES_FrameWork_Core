@@ -15,9 +15,8 @@ namespace ES
     {
         public Core Core_Object { get; }
         public void _SetDomainAndCreateRelationshipOnly(IDomain Domain);
-        public void _TrySetupPresetModule();
         public void FixedUpdate_MustSelfDelegate();
-
+        public Type DomainType { get; }
     }
     [TypeRegistryItem("抽象模块定义")]
     public abstract class Module<Core_, Domain_> : BaseESModule<Domain_>, IModule where Core_ : Core where Domain_ : class, IDomain<Core_>
@@ -34,7 +33,8 @@ namespace ES
         #endregion
 
         #region 只读便捷属性
-
+        public Type DomainType => typeof(Domain_);
+        public abstract Type TableKeyType { get; }
         public Core_ Core//核心
         {
             get => Domain.Core;
@@ -50,7 +50,7 @@ namespace ES
 
             get =>null GameCenterManager.Instance.NormalDomain;
         }*/
-
+        
         #endregion
 
         #region 补充逻辑
@@ -100,7 +100,7 @@ namespace ES
         public sealed override void TryDestroySelf()
         {
             Signal_HasSubmit = false;
-            Domain.TryRemoveFromIEnumableOnly(this);
+            Domain.TryRemoveFromListOnly(this);
         }
         #endregion
 
@@ -160,10 +160,14 @@ namespace ES
                
           }*/
 
-        //仅用于创建双向引用--不要写逻辑
-        protected virtual void CreateRelationshipOnly() //创建   域 对自己 的 显性引用关系
+        protected virtual void CreateRelationshipOnly() 
         {
-            //演示：  Domain.Module_AABB=this;
+            //
+            Debug.Log("ADD IN"+this.TableKeyType);
+            if (TableKeyType != null)
+            {
+                Core.ModuleTables[this.TableKeyType] = this;
+            }
         }
 
         #endregion
@@ -198,7 +202,7 @@ namespace ES
             }
         }
         //进行预设的设置
-        public void _TrySetupPresetModule()
+       /* public void _TrySetupPresetModule()
         {
 #if UNITY_EDITOR
             if (Domain == null)
@@ -219,12 +223,12 @@ namespace ES
             }
             Editor_SetupModuleByPreset(Editor_Preset);
 #endif
-        }
+        }*/
         #endregion
 
-        #region 预设相关
-#if UNITY_EDITOR
-        [ValueDropdown("Editor_AllPresets"), LabelText("选择预设", SdfIconType.CaretDownSquareFill), SerializeField, InlineButton("_TrySetupPresetModule", "使用该预设"), GUIColor("@KeyValueMatchingUtility.ColorSelector.Color_01")]
+        #region 预设相关-弃用
+/*#if UNITY_EDITOR
+        [ValueDropdown("Editor_AllPresets"), LabelText("选择预设", SdfIconType.CaretDownSquareFill), SerializeField, InlineButton("_TrySetupPresetModule", "使用该预设"), GUIColor("@ESDesignUtility.ColorSelector.Color_01")]
         private string Editor_Preset = "预设1";
 #endif
         public virtual string[] Editor_AllPresets => Editor_DefaultPresets;
@@ -236,7 +240,7 @@ namespace ES
         protected virtual void Editor_SetupModuleByPreset(string preset)
         {
             //演示
-            /* switch (preset)
+            *//* switch (preset)
              {
                  case "预设1":
                      Debug.Log("使用预设1，把对象移动到000处");
@@ -250,10 +254,12 @@ namespace ES
                      Debug.Log("使用预设1，把对象移动到000处");
                      Core.transform.position = default;
                      break;
-             }*/
-        }
+             }*//*
+        }*/
         #endregion
 
     }
+
+    
 
 }

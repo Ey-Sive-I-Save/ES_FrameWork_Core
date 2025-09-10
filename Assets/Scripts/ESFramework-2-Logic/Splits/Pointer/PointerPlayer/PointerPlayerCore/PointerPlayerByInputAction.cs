@@ -44,8 +44,8 @@ namespace ES
         [LabelText("读取的布尔值"), FoldoutGroup("值相关")] public bool readBool = default;
         #endregion
         [DetailedInfoBox("", "此处需要引用一个PointerPlayerCaster,把自己的值投射给他它", Message = @"@ ""【绑定投射目标备注："" + (playerCaster != null ? playerCaster.des : ""！未绑定"") ", VisibleIf = "@usePlayerCaster")]
-        [LabelText("发起投射?", SdfIconType.At), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")] public bool usePlayerCaster;
-        [LabelText("发送到Caster", SdfIconType.At), ShowIf("usePlayerCaster"), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")] public PointerPlayerSystemObjectCaster playerCaster_;
+        [LabelText("发起投射?", SdfIconType.At), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")] public bool usePlayerCaster;
+        [LabelText("发送到Caster", SdfIconType.At), ShowIf("usePlayerCaster"), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")] public PointerPlayerSystemObjectCaster playerCaster_;
         public PointerPlayerSystemObjectCaster playerCaster => playerCaster_;
 
         // Start is called before the first frame update

@@ -15,13 +15,52 @@ namespace ES
     [DefaultExecutionOrder(-2)]//顺序在前
     public abstract class Core : MonoBehaviour, ICore
     {
+        [NonSerialized,ShowInInspector,TabGroup("常规","模块表"),ReadOnly,HideLabel,PropertyOrder(5),HideReferenceObjectPicker]
+        public Dictionary<Type, IModule> ModuleTables = new Dictionary<Type, IModule>();
+        public T GetMoudle<T>() where T : class, IModule, new()
+        {
+            if (ModuleTables.TryGetValue(typeof(T), out var module))
+            {
+                return module as T;
+            }
+            Debug.Log("CREATENEW"+ModuleTables.Count);
+            var moduleNew = new T();
+            for (int i = 0; i < domains.Count; i++)
+            {
+                var d = domains[i];
+                
+                if (d != null&&d.GetType()==moduleNew.DomainType)
+                {
+                    d.TryAddModule(moduleNew);
+                }
+            }
+            return moduleNew;
+        }
+        public T GetMoudle<ABKey,T>() where ABKey:class,IModule where T : class, IModule, new()
+        {
+            if (ModuleTables.TryGetValue(typeof(ABKey), out var module))
+            {
+                return module as T;
+            }
+            var moduleNew = new T();
+            Debug.Log("CREATENEW---AB" + ModuleTables.Count);
+            for (int i = 0; i < domains.Count; i++)
+            {
+                var d = domains[i];
 
+                if (d != null && d.GetType() == moduleNew.DomainType)
+                {
+                    d.TryAddModule(moduleNew);
+                }
+            }
+            return moduleNew;
+        }
         #region 检查器专属
 
         //域颜色赋予
         public Color Editor_DomainTabColor(IDomain domain)
         {
-            if (domain == null) return Color.gray;
+            if (domain == null) return Color.gray*1.25f;
             else return Color.yellow;
         }
 
@@ -85,6 +124,14 @@ namespace ES
 
         #region 重写逻辑
 
+        public bool TESTFIXONLY = true;
+        private void FixedUpdate()
+        {
+            for (int i = 0; i < domains.Count; i++)
+            {
+                domains[i].FixedUpdate();
+            }
+        }
         protected virtual void Update()
         {
             for(int i = 0; i < domains.Count; i++)
@@ -132,7 +179,7 @@ namespace ES
         {
             if (domain != null)
             {
-                domain.RegisterThisWithCore(this);
+                domain.RegisterThisDomainWithCore(this);
                 domains.Add(domain);
             }
         }

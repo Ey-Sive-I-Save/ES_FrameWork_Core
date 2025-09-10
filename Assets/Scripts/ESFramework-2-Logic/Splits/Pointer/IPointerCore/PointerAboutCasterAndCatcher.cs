@@ -135,8 +135,8 @@ namespace ES.Pointer
     public class PointerSendSystemObjectToPlayerCaster : IPointerNone, IWithPointerPlayerSystemObjectCaster
     {
         public PointerPlayerSystemObjectCaster playerCaster => playerCaster_;
-        [LabelText("发起投射?", SdfIconType.At), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")] public bool usePlayerCaster;
-        [LabelText("发送到Caster", SdfIconType.At), ShowIf("usePlayerCaster"), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")] public PointerPlayerSystemObjectCaster playerCaster_;
+        [LabelText("发起投射?", SdfIconType.At), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")] public bool usePlayerCaster;
+        [LabelText("发送到Caster", SdfIconType.At), ShowIf("usePlayerCaster"), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")] public PointerPlayerSystemObjectCaster playerCaster_;
         [LabelText("发送的物体"), SerializeReference] public IPointer object_;
         public object Pick(object on= null, object from = null, object with = null)
         {
@@ -151,8 +151,8 @@ namespace ES.Pointer
     {
         [LabelText("直接投射")] public T cast;
         [DetailedInfoBox("", "此处需要引用一个PointerPlayerCaster,把自己的值投射给他它", Message = @"@ ""【绑定投射目标备注："" + (playerCaster != null ? playerCaster.des : ""！未绑定"") ", VisibleIf = "@usePlayerCaster")]
-        [LabelText("发起投射?", SdfIconType.At), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")] public bool usePlayerCaster;
-        [LabelText("发送到Caster", SdfIconType.At), ShowIf("usePlayerCaster"), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")] public PointerPlayerSystemObjectCaster playerCaster_;
+        [LabelText("发起投射?", SdfIconType.At), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")] public bool usePlayerCaster;
+        [LabelText("发送到Caster", SdfIconType.At), ShowIf("usePlayerCaster"), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")] public PointerPlayerSystemObjectCaster playerCaster_;
         public PointerPlayerSystemObjectCaster playerCaster => playerCaster_;
         public T Cast()
         {
@@ -263,14 +263,14 @@ namespace ES.Pointer
         public PointerPlayerSystemObjectCaster playerCaster => playerCaster_;
 
         [DetailedInfoBox("", "此处需要引用一个PointerPlayerCaster,抓取它持有的值来应用自身", Message = @"@ ""【绑定抓取目标备注："" + (playerCaster != null ? playerCaster.des : ""！未绑定"") ", VisibleIf = "@useCatcherPlayer")]
-        [LabelText("使用Player抓取?", SdfIconType.At), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCatcher")] public bool useCatcherPlayer;
-        [LabelText("抓取Player", SdfIconType.At), ShowIf("useCatcherPlayer"), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCatcher")] public PointerPlayerSystemObjectCaster playerCaster_;
+        [LabelText("使用Player抓取?", SdfIconType.At), GUIColor("@ESDesignUtility.ColorSelector.ColorForCatcher")] public bool useCatcherPlayer;
+        [LabelText("抓取Player", SdfIconType.At), ShowIf("useCatcherPlayer"), GUIColor("@ESDesignUtility.ColorSelector.ColorForCatcher")] public PointerPlayerSystemObjectCaster playerCaster_;
         public virtual T Catch()
         {
             if (useCatcherPlayer && playerCaster_ != null)
             {
                 
-                return ESStaticDesignUtility.Matcher.SystemObjectToT<T>(playerCaster_.Cast());
+                return ESDesignUtility.Matcher.SystemObjectToT<T>(playerCaster_.Cast());
             }
             if (caster == default) return default;
 

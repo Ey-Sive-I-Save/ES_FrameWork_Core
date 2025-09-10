@@ -207,7 +207,7 @@ namespace ES.Pointer
         {
             float left = float_Left?.Pick() ?? default_;
             float right = float_Right?.Pick() ?? default_;
-            return ESStaticDesignUtility.Function.FunctionForCompareTwoFloat(left, right, useFunction);
+            return ESDesignUtility.Function.FunctionForCompareTwoFloat(left, right, useFunction);
 
         }
     }

@@ -22,7 +22,7 @@ namespace ES
     public abstract class PointerPlayer : SerializedMonoBehaviour,IPointer
     {
         public abstract IPointer Pointer { get; }
-        [LabelText("备注信息", SdfIconType.At),PropertyOrder(-1), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForDes")] 
+        [LabelText("备注信息", SdfIconType.At),PropertyOrder(-1), GUIColor("@ESDesignUtility.ColorSelector.ColorForDes")] 
         public string des = "备注";
 
 
@@ -36,7 +36,7 @@ namespace ES
         [TextArea(3, 10), ShowIf("edit"), OnValueChanged("SetString")]
         [FoldoutGroup("<编写注释>")] public string readMe = "编写提示文件";
         [ColorPalette, ShowIf("edit")]
-        [FoldoutGroup("<编写注释>")] public Color showColor = ESStaticDesignUtility.ColorSelector.ColorForPlayerReadMe;
+        [FoldoutGroup("<编写注释>")] public Color showColor = ESDesignUtility.ColorSelector.ColorForPlayerReadMe;
         private void SetString(string edit)
         {
             ReadMe = edit;

@@ -7,13 +7,13 @@ namespace ES
 {
     public abstract class PointerPlayerWithESValue : PointerPlayer { 
         public override IPointer Pointer => null; 
-        [LabelText("值改变时，调用-↓"), SerializeReference, GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForESValue")]
+        [LabelText("值改变时，调用-↓"), SerializeReference, GUIColor("@ESDesignUtility.ColorSelector.ColorForESValue")]
         public IPointer OnValueChange = new PointerPickerEveryThing();
     }
     public abstract class PointerPlayerWithESValue<T> : PointerPlayerWithESValue
     {
         
-        [LabelText("",Text = @"@ValueLabelName()"), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForESValue")] public T ESValue;
+        [LabelText("",Text = @"@ValueLabelName()"), GUIColor("@ESDesignUtility.ColorSelector.ColorForESValue")] public T ESValue;
         
         public string ValueLabelName()
         {

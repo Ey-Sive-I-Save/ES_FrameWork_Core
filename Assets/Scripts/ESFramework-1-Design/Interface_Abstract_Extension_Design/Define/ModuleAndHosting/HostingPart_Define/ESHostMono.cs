@@ -19,7 +19,7 @@ namespace ES
 
         #region 显示控制和信息
         [ShowInInspector, LabelText("控制自身启用状态"), PropertyOrder(-1), FoldoutGroup("作为托管器")] public bool EnabledSelfControl { get => enabled; set { if (value) TryEnableSelf(); else TryDisableSelf(); } }
-        [ShowInInspector, LabelText("显示活动状态"), PropertyOrder(-1), FoldoutGroup("作为托管器"), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
+        [ShowInInspector, LabelText("显示活动状态"), PropertyOrder(-1), FoldoutGroup("作为托管器"), GUIColor("@ESDesignUtility.ColorSelector.ColorForUpdating")]
         public bool IsActiveAndEnableShow { get => Signal_IsActiveAndEnable; }
         #endregion
 
@@ -163,8 +163,8 @@ namespace ES
             DisableAsHosting();
         }
 
-        public abstract void TryAddToIEnumableOnly(IESModule module);
-        public abstract void TryRemoveFromIEnumableOnly(IESModule module);
+        public abstract void TryAddToListOnly(IESModule module);
+        public abstract void TryRemoveFromListOnly(IESModule module);
 
         #endregion
 
@@ -227,12 +227,12 @@ namespace ES
     [TypeRegistryItem("虚拟的可用托管脚本")]
     public class ESHostingMono_BaseESModule : ESHostingMono
     {
-        public override void TryAddToIEnumableOnly(IESModule module)
+        public override void TryAddToListOnly(IESModule module)
         {
             
         }
 
-        public override void TryRemoveFromIEnumableOnly(IESModule module)
+        public override void TryRemoveFromListOnly(IESModule module)
         {
            
         }

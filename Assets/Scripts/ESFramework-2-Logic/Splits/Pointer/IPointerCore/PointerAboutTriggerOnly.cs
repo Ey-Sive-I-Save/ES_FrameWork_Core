@@ -170,8 +170,8 @@ namespace ES.Pointer
     public abstract class PoinerInstantiateGameObject : PointerOnlyAction, IPointerForGameObjectCaster
     {
         [DetailedInfoBox("", "此处需要引用一个PointerPlayerCaster,把自己的值投射给他它", Message = @"@ ""【绑定投射目标备注："" + (playerCaster != null ? playerCaster.des : ""！未绑定"") ", VisibleIf = "@usePlayerCaster")]
-        [LabelText("发起投射?", SdfIconType.At), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")] public bool usePlayerCaster;
-        [LabelText("发送到Caster", SdfIconType.At), ShowIf("usePlayerCaster"), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")] public PointerPlayerSystemObjectCaster playerCaster_;
+        [LabelText("发起投射?", SdfIconType.At), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")] public bool usePlayerCaster;
+        [LabelText("发送到Caster", SdfIconType.At), ShowIf("usePlayerCaster"), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")] public PointerPlayerSystemObjectCaster playerCaster_;
 
         [LabelText("位置点"), SerializeReference] public IPointerForVector3_Only pointerForVector3;
         [LabelText("进入父级")] public Transform parent;
@@ -198,7 +198,7 @@ namespace ES.Pointer
                 last = t.gameObject;
                 if (usePlayerCaster) playerCaster_?.Receive(last);
             }
-            ESStaticDesignUtility.TransformSetter.HandleTransformAtParent
+            ESDesignUtility.TransformSetter.HandleTransformAtParent
                 (t, parent, pointerForVector3?.Pick() ?? default, atWorld, localScaleIndentity, localRotationIndentity);
         }
     }

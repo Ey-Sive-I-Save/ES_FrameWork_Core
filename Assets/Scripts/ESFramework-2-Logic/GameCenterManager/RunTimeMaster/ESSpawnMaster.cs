@@ -1,4 +1,7 @@
 using ES;
+using FishNet;
+using FishNet.Managing.Server;
+using FishNet.Object;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
@@ -62,9 +65,13 @@ namespace ES {
         public GameObject Ins(GameObject g, Vector3 pos, Transform parent, Quaternion? qq = null)
         {
             if (g == null) return null;
-
-            if (parent != null) return Instantiate(g, pos, qq ?? Quaternion.identity, parent);
-            else return Instantiate(g, pos, qq ?? Quaternion.identity);
+            var gg = (parent != null) ? Instantiate(g, pos, qq ?? Quaternion.identity, parent) : Instantiate(g, pos, qq ?? Quaternion.identity);
+            /*if (gg.TryGetComponent<NetworkObject>(out _))
+            {
+                InstanceFinder.ServerManager.Spawn(gg);
+                Debug.Log("NET");
+            }*/
+            return gg;
         }
 
     }

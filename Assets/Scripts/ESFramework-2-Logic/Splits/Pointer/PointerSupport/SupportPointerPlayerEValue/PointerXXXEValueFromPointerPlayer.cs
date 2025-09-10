@@ -20,7 +20,7 @@ namespace ES
     public abstract class PointerXXXESValueFromPointerPlayer<WithPlayer> : IWithPointerPlayerWithESValue where WithPlayer : PointerPlayerWithESValue
     {
         [DetailedInfoBox("", "此处需要引用一个PointerPlayerWithESValue,用来获得或者设置它的值", Message = @"@ ""【绑定ES值目标备注："" + (playerESValue != null ? playerESValue.des : ""！未绑定"") ")]
-        [LabelText("引用ES值播放器"),GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForESValue")] public WithPlayer withPlayer;
+        [LabelText("引用ES值播放器"),GUIColor("@ESDesignUtility.ColorSelector.ColorForESValue")] public WithPlayer withPlayer;
 
         public PointerPlayerWithESValue playerESValue => withPlayer;
     }
@@ -181,7 +181,7 @@ namespace ES
         [LabelText("选择的浮点数特殊操作")] public EnumCollect.HandleTwoNumberFunction function;
         public override float GetHandleValue()
         {
-            return ESStaticDesignUtility.Function.FunctionForHandleTwoFloat(withPlayer.ESValue,direct, function);
+            return ESDesignUtility.Function.FunctionForHandleTwoFloat(withPlayer.ESValue,direct, function);
         }
     }
     [Serializable, TypeRegistryItem("直接特殊操作整数ES值_从针播放器", "ES值")]
@@ -190,7 +190,7 @@ namespace ES
         [LabelText("选择的整数特殊操作")] public EnumCollect.HandleTwoNumberFunction function;
         public override int GetHandleValue()
         {
-            return (int)ESStaticDesignUtility.Function.FunctionForHandleTwoFloat(withPlayer.ESValue, direct, function);
+            return (int)ESDesignUtility.Function.FunctionForHandleTwoFloat(withPlayer.ESValue, direct, function);
         }
     }
     [Serializable, TypeRegistryItem("直接特殊操作字符串ES值_从针播放器", "ES值")]
@@ -296,7 +296,7 @@ namespace ES
         
         public override float GetHandleValue()
         {
-            return ESStaticDesignUtility.Function.FunctionForHandleTwoFloat(withPlayer.ESValue, pointerFor?.Pick() ?? default, function);
+            return ESDesignUtility.Function.FunctionForHandleTwoFloat(withPlayer.ESValue, pointerFor?.Pick() ?? default, function);
         }
     }
     [Serializable, TypeRegistryItem("针特殊操作整数ES值_从针播放器", "ES值")]
@@ -308,7 +308,7 @@ namespace ES
         
         public override int GetHandleValue()
         {
-            return (int)ESStaticDesignUtility.Function.FunctionForHandleTwoFloat(withPlayer.ESValue, pointerFor?.Pick() ?? default, function);
+            return (int)ESDesignUtility.Function.FunctionForHandleTwoFloat(withPlayer.ESValue, pointerFor?.Pick() ?? default, function);
         }
     }
     [Serializable, TypeRegistryItem("针特殊操作字符串ES值_从针播放器", "ES值")]

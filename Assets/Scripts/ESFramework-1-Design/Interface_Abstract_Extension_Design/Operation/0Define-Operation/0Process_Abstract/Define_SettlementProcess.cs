@@ -12,7 +12,7 @@ namespace ES {
     {
         Normal, Dynamic
     }
-    public class Settlement<ValueType, Opeation_, This> : IProcess<ValueType, ValueType, Opeation_, SettlementChannel, This> 
+    public class Settlement<ValueType, Opeation_, This> : IProcess<ValueType, ValueType, Opeation_, SettlementChannel> 
         where This: Settlement<ValueType, Opeation_, This>
         where Opeation_:SettleOperation<ValueType,This, Opeation_>,new()
     {

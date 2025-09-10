@@ -11,6 +11,9 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
+using UnityEngine.InputSystem;
+using System.Runtime.CompilerServices;
 
 namespace ES
 {
@@ -155,7 +158,7 @@ namespace ES
                         {
                             if (use is GameObject gg)
                             {
-                                
+
                                 MethodInfo addCall = typeof(UnityEvent).GetMethod("AddCall", BindingFlags.NonPublic | BindingFlags.Instance);
                                 MethodInfo dele = typeof(UnityEvent).GetMethod("GetDelegate", BindingFlags.NonPublic | BindingFlags.Instance);
 
@@ -164,16 +167,16 @@ namespace ES
                                 MethodInfo BoolDELE = typeof(UnityEvent).GetMethod("AddBoolPersistentListener", BindingFlags.NonPublic | BindingFlags.Instance);
 
 
-           /*                     Debug.Log(addCall + " ADD ");
-                                Debug.Log(dele + " DELE ");
-                                Debug.Log(StringDELE + " String ");*/
+                                /*                     Debug.Log(addCall + " ADD ");
+                                                     Debug.Log(dele + " DELE ");
+                                                     Debug.Log(StringDELE + " String ");*/
 
                                 UnityAction<bool> unityAction = gg.SetActive;
-                                var ThisDele = BoolDELE.Invoke(ue, new object[] { unityAction,true });
+                                var ThisDele = BoolDELE.Invoke(ue, new object[] { unityAction, true });
                                 addCall.Invoke(ue, new object[] { ThisDele });
-                                
-                               /* Activator.CreateInstance(BaseInvokableCall)
-                                ue.AddListener*/
+
+                                /* Activator.CreateInstance(BaseInvokableCall)
+                                 ue.AddListener*/
 
 
                             }
@@ -255,7 +258,7 @@ namespace ES
     #endregion
 
     #region ESBoolOption-ESbool两级描述
-    public class ESBoolOptionDrawer : OdinAttributeDrawer<ESBoolOption,bool>
+    public class ESBoolOptionDrawer : OdinAttributeDrawer<ESBoolOption, bool>
     {
         //使用解析器
         private ValueResolver<string> trueLabelResolver;
@@ -270,22 +273,22 @@ namespace ES
         protected override void DrawPropertyLayout(GUIContent label)
         {
             EditorGUILayout.Space(5);
-            string trueText = trueLabelResolver.GetValue() ?? Property.Name+">是";
+            string trueText = trueLabelResolver.GetValue() ?? Property.Name + ">是";
             string falseText = falseLabelResolver.GetValue() ?? Property.Name + ">否";
             GUILayout.BeginHorizontal();
             {
                 // 放弃绘制标签
-               
+
 
                 // 计算按钮宽度（均分剩余空间）
                 float buttonWidth = (EditorGUIUtility.currentViewWidth) * 0.4f;
-                float leftSpace = EditorGUIUtility.currentViewWidth*0.015f;
+                float leftSpace = EditorGUIUtility.currentViewWidth * 0.015f;
                 //GUILayout.Space(leftSpace);
                 // 绘制 "False" 按钮
                 var rect = EditorGUILayout.GetControlRect();
                 rect.height = 20;
-               
-                var rectLeft = new Rect(rect.x,rect.y,rect.width*0.4f,rect.height);
+
+                var rectLeft = new Rect(rect.x, rect.y, rect.width * 0.4f, rect.height);
                 var rectRight = new Rect(rect.x + 0.5f * rect.width, rect.y, rect.width * 0.4f, rect.height);
                 rect.x -= 20;
                 rect.width += 40;
@@ -298,8 +301,8 @@ namespace ES
                 GUIHelper.PopColor();
                 // 绘制 "True" 按钮
                 //GUILayout.Space(leftSpace*2);//占位挤到右边
-                GUIHelper.PushColor(ValueEntry.SmartValue ?  GUI.color : Color.gray);
-                if (GUI.Button(rectRight,trueText))
+                GUIHelper.PushColor(ValueEntry.SmartValue ? GUI.color : Color.gray);
+                if (GUI.Button(rectRight, trueText))
                 {
                     ValueEntry.SmartValue = true; // 真按钮绘制
                 }
@@ -315,6 +318,224 @@ namespace ES
 
     }
     #endregion
+
+    #region ESGetOrAdd 
+
+    public class ESGetOrAddDrawer : OdinAttributeDrawer<ESGetOrAdd>
+    {
+        protected override void DrawPropertyLayout(GUIContent label)
+        {
+            EditorGUILayout.BeginHorizontal();
+            this.CallNextDrawer(label);
+            int i = 0;
+            Component comPO = this.Property.FindParent((f)=> { var yv = f.ValueEntry.TypeOfValue;i++;
+                return yv.IsSubclassOf(typeof(Component)); 
+            },false)?.ValueEntry.WeakSmartValue as Component;
+            if (this.Property.BaseValueEntry.TypeOfValue.IsSubclassOf(typeof(Component)))
+            {
+                if (((Component)this.Property.ValueEntry.WeakSmartValue)==null)
+                {
+                    if (comPO != null)
+                    {
+                        GUIHelper.PushColor(Color.gray);
+                        bool b = GUILayout.Button("*", GUILayout.Width(18));
+                        bool b2 = GUILayout.Button("@", GUILayout.Width(18));
+                        GUIHelper.PopColor();
+                        if (b)
+                        {
+                            TryGetOrAdd(comPO, this.Attribute.option, this.Property.ValueEntry);
+                        }
+                        else if (b2)
+                        {
+                            GenericMenu menu = new GenericMenu();
+                            menu.AddItem(new GUIContent(ESGetOrAddOption.Self._Get_ATT_ESStringMessage()), this.Attribute.option == ESGetOrAddOption.Self, () => { TryGetOrAdd(comPO, ESGetOrAddOption.Self, this.Property.ValueEntry); });
+                            menu.AddItem(new GUIContent(ESGetOrAddOption.ContainsParent._Get_ATT_ESStringMessage()), this.Attribute.option == ESGetOrAddOption.ContainsParent, () => { TryGetOrAdd(comPO, ESGetOrAddOption.ContainsParent, this.Property.ValueEntry); });
+                            menu.AddItem(new GUIContent(ESGetOrAddOption.ContainsSon._Get_ATT_ESStringMessage()), this.Attribute.option == ESGetOrAddOption.ContainsSon, () => { TryGetOrAdd(comPO, ESGetOrAddOption.ContainsSon, this.Property.ValueEntry); });
+                            menu.AddItem(new GUIContent(ESGetOrAddOption.ContainsParentAndSon._Get_ATT_ESStringMessage()), this.Attribute.option == ESGetOrAddOption.ContainsParentAndSon, () => { TryGetOrAdd(comPO, ESGetOrAddOption.ContainsParentAndSon, this.Property.ValueEntry); });
+
+                            menu.ShowAsContext();
+                        }
+                    }
+                }
+            }
+            
+            EditorGUILayout.EndHorizontal();
+        }
+        public void TryGetOrAdd(Component go,ESGetOrAddOption option, IPropertyValueEntry entry)
+        {
+            Component cNow= null;
+            if (option== ESGetOrAddOption.Self)
+            {
+                cNow= go.gameObject.GetComponent(entry.BaseValueType);
+            }else if(option== ESGetOrAddOption.ContainsParent) {
+                cNow = go.gameObject.GetComponentInParent(entry.BaseValueType);
+            }
+            else if (option == ESGetOrAddOption.ContainsSon)
+            {
+                cNow = go.gameObject.GetComponentInChildren(entry.BaseValueType);
+            }
+            else if (option == ESGetOrAddOption.ContainsParentAndSon)
+            {
+                cNow = go.gameObject.GetComponentInParent(entry.BaseValueType)?? go.gameObject.GetComponentInChildren(entry.BaseValueType);
+            }
+
+            if (cNow != null)
+            {
+                entry.WeakSmartValue = cNow;
+                EditorUtility.SetDirty(go);
+            }
+            else
+            {
+                cNow = go.gameObject.AddComponent(entry.BaseValueType);
+                entry.WeakSmartValue = cNow;
+                EditorUtility.SetDirty(go);
+            }
+        }
+    }
+
+    #endregion
+
+    public class ESDragToFieldSolverAttributeDrawer2 : OdinValueDrawer<ESAssetRefer>
+    {
+
+        private float Height = 40;
+        private bool drag = false;
+        bool refresh = true;
+        private ESAssetRefer target;
+        private ResSourceSearchKey key;
+        protected override void DrawPropertyLayout(GUIContent label)
+        {
+            EditorGUILayout.Space(0);
+            var space = GUILayoutUtility.GetLastRect();
+            var startY1 = space.yMax;
+            target = this.ValueEntry.SmartValue ??= new ESAssetRefer();
+            key = target.key ??= new ResSourceSearchKey();
+
+            // this.CallNextDrawer(label); 
+            Rect rect = space.SetYMax(space.yMin + Height);
+
+            this.Property.FindChild((n) => n.Name == "key", false)?.Draw(new GUIContent("a"));
+            this.Property.FindChild((n) => n.Name == "vAsset", false)?.Draw(new GUIContent("b"));
+
+
+            var cc = Event.current;
+            if (cc.type == EventType.DragExited || cc.type == EventType.MouseUp)
+            {
+                drag = false;
+            }
+            if (!drag && cc.type == EventType.DragUpdated)
+            {
+                drag = true;
+            }
+            if (drag)
+            {
+                if (rect.Contains(cc.mousePosition))
+                {
+                    EditorGUI.DrawRect(rect, Color.black._WithAlpha(0.8f));
+                }
+                else
+                {
+                    EditorGUI.DrawRect(rect, Color.black._WithAlpha(0.25f));
+                }
+            }
+            else
+            {
+                EditorGUI.DrawRect(rect, Color.yellow._WithAlpha(0.10f));
+            }
+            if (cc.type == EventType.DragUpdated || cc.type == EventType.DragPerform)
+            {
+                DragAndDrop.visualMode = DragAndDropVisualMode.Link;
+
+                if (cc.type == EventType.DragPerform && rect.Contains(cc.mousePosition))
+                {
+                    DragAndDrop.AcceptDrag();
+                    var use = DragAndDrop.objectReferences[0];
+
+
+                    string prePath = AssetDatabase.GetAssetPath(use);
+                    if (prePath == null) return;
+                    string nowPath = prePath;
+                    bool start = true;
+                    while (nowPath != prePath || start)
+                    {
+                        start = false;
+                        if (nowPath != null && !nowPath.IsNullOrWhitespace())
+                        {
+                            var ai = AssetImporter.GetAtPath(nowPath);
+                            if (ai == null || ai.assetBundleName == null || ai.assetBundleName.IsNullOrWhitespace())
+                            {
+                                prePath = nowPath.ToString();
+                                nowPath = nowPath._KeepBeforeByLast("/");
+                            }
+                            else
+                            {
+                                var ab = ai.assetBundleName;
+
+                                key.AssetPath = use.name;
+                                key.OwnerAssetBundle = ab;
+                                target.EditorOnly_SetVAsset(use);
+                                // Property.ValueEntry.va = " AB名: " + ab + " ，资源名 ： " + use.name;
+                                break;
+                            }
+
+                        }
+                    }
+                    cc.Use();
+
+
+                }
+
+            }
+            if (cc.type == EventType.KeyDown)
+            {
+                if (cc.keyCode == KeyCode.Space) refresh = true;
+            }
+            if (refresh)
+            {
+                refresh = false;
+                var u = target.EditorOnly_GetVAsset();
+                if (u != null)
+                {
+                    ApplyObject(u);
+                }
+            }
+        }
+
+        private void ApplyObject(UnityEngine.Object use)
+        {
+            if (use != null)
+            {
+                string prePath = AssetDatabase.GetAssetPath(use);
+                if (prePath == null) return;
+                string nowPath = prePath;
+                bool start = true;
+                while (nowPath != prePath || start)
+                {
+                    start = false;
+                    if (nowPath != null && !nowPath.IsNullOrWhitespace())
+                    {
+                        var ai = AssetImporter.GetAtPath(nowPath);
+                        if (ai == null || ai.assetBundleName == null || ai.assetBundleName.IsNullOrWhitespace())
+                        {
+                            prePath = nowPath.ToString();
+                            nowPath = nowPath._KeepBeforeByLast("/");
+                        }
+                        else
+                        {
+                            var ab = ai.assetBundleName;
+
+                            key.AssetPath = use.name;
+                            key.OwnerAssetBundle = ab;
+                            target.EditorOnly_SetVAsset(use);
+                            // Property.ValueEntry.va = " AB名: " + ab + " ，资源名 ： " + use.name;
+                            break;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
 
 #endif
 }

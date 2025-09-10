@@ -39,10 +39,11 @@ namespace ES
     [Serializable, TypeRegistryItem("模块01")]
     public class module1 : ModuleForGamecenterManager
     {
+        public override Type TableKeyType =>typeof(module1);
         float f = 5;
         ESResLoader loader;
         public string StartWith = "来自模块1";
-        public override string[] Editor_AllPresets => base.Editor_AllPresets;
+       
         protected override void Start()
         {
             base.Start();
@@ -87,6 +88,7 @@ namespace ES
     [Serializable, TypeRegistryItem("模块网络下载")]
     public class module0 : ModuleForGamecenterManager
     {
+        public override Type TableKeyType => typeof(module0);
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -131,6 +133,7 @@ namespace ES
     [Serializable, TypeRegistryItem("模块02")]
     public class module2 : ModuleForGamecenterManager
     {
+        public override Type TableKeyType => typeof(module2);
         protected override void Update()
         {
 
@@ -140,6 +143,7 @@ namespace ES
     [Serializable, TypeRegistryItem("模块03")]
     public class module3 : ModuleForGamecenterManager
     {
+        public override Type TableKeyType => typeof(module3);
         protected override void Update()
         {
 
@@ -151,26 +155,13 @@ namespace ES
     [Serializable, TypeRegistryItem("模块04")]
     public class module4 : ModuleForGamecenterManager
     {
+        public override Type TableKeyType => typeof(module4);
         protected override void Update()
         {
             base.Update();
         }
 
-        public override string[] Editor_AllPresets => presetsForModule04;
-        public static string[] presetsForModule04 = {"弱小的","强大的","特殊的" };
-        protected override void Editor_SetupModuleByPreset(string preset)
-        {
-            switch (preset)
-            {
-                case "弱小的":
-                    Core.gameObject.AddComponent<Rigidbody>();
-                    break;
-                case "强大的":
-                    Core.transform.position = default;
-                    break;
-
-            }
-        }
+       
     }
 }
 

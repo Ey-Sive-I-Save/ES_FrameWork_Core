@@ -299,7 +299,7 @@ namespace ES
             public bool GetDirty()
             {
                 bool dirty = false;
-                var nowTags = ESStaticStandUtility.SafeEditor.GetAllTags();
+                var nowTags = ESStandUtility.SafeEditor.GetAllTags();
                 foreach (var i in nowTags)
                 {
                     //不包含当前的任意值
@@ -311,7 +311,7 @@ namespace ES
                     }
                 }
 
-                var nowLayers = ESStaticStandUtility.SafeEditor.GetAllLayers();
+                var nowLayers = ESStandUtility.SafeEditor.GetAllLayers();
                 foreach(var (k,v) in nowLayers)
                 {
                     if(memoryLayers.TryGetValue(k,out var value))

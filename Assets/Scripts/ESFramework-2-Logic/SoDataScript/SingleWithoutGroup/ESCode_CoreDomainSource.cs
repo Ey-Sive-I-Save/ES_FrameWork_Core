@@ -22,13 +22,13 @@ namespace ES
         [ShowInInspector, LabelText("首次生成(没用)"),PropertyOrder(-1)] private bool FirstCreate { get; set; } = false;
         [TabGroup("关系脚本生成(不可修改)")][LabelText("生成路径"), FolderPath, ReadOnly] public string path;
         [TabGroup("关系脚本生成(不可修改)"), TabGroup("逻辑脚本生成(建议只生成一次)")]
-        [LabelText("核心命名"), ReadOnly, GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")]
+        [LabelText("核心命名"), ReadOnly, GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")]
         public string CoreClassName = "NewCore";
         [TabGroup("关系脚本生成(不可修改)"),TabGroup("逻辑脚本生成(建议只生成一次)"),]
-        [LabelText("核心中文命名"), ReadOnly, GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")]
+        [LabelText("核心中文命名"), ReadOnly, GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")]
         public string CoreClassChinaName = "新核心";
 
-        [LabelText("继承核心选择"), ReadOnly, GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")]
+        [LabelText("继承核心选择"), ReadOnly, GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")]
         public ParentCore parent =  ParentCore.Core;
 
         public enum ParentCore
@@ -39,7 +39,7 @@ namespace ES
             [InspectorName("物品")] Item
         }
         [TabGroup("关系脚本生成(不可修改)")]
-        [LabelText("全部扩展域"), GUIColor("@ESStaticDesignUtility.ColorSelector.Color_03")] 
+        [LabelText("全部扩展域"), GUIColor("@ESDesignUtility.ColorSelector.Color_03")] 
         public List<DomainSource> Domains = new List<DomainSource>() { new DomainSource() { DomainClassName = "Normal" } };
         [TabGroup("关系脚本生成(不可修改)")]
         [Button("生成关系脚本", ButtonHeight = 50)]
@@ -48,7 +48,7 @@ namespace ES
             string CoreName = CoreClassName._ToValidIdentName();
             string CoreChinaName = CoreClassChinaName._ToValidIdentName();
             //创建总文件夹并且获得最新路劲
-            ESStaticDesignUtility.SafeEditor.CreateFolderDic(path, "CoreCode_" + CoreName);
+            ESDesignUtility.SafeEditor.CreateFolderDic(path, "CoreCode_" + CoreName);
             string newFolder = Path.Combine(path, "CoreCode_" + CoreName);
             string domainFieldNames = "";
             //第一个文件写基础定义
@@ -74,7 +74,7 @@ namespace ES
 
                 //抽象的
                 string absName = CoreName + i.DomainClassName._ToValidIdentName() + "Module";
-                string abs = ESStaticDesignUtility.SimpleScriptMaker.CreateClassContentByString(
+                string abs = ESDesignUtility.SimpleScriptMaker.CreateClassContentByString(
                    className: absName,
                    beforeClassName: "abstract",
                    insideClass: $"/* 抽象模块,核心:{CoreName},域:{DomainName}  */",
@@ -94,7 +94,7 @@ namespace ES
                         moduleInDefine += $"[NonSerialized] public {moduleName} {defineName};";
                     }
                     string inside = $"  protected override void CreateRelationshipOnly()\r\n        {{\r\n            Domain.{defineName} = this;\r\n            base.CreateRelationshipOnly();\r\n        }}";
-                    string aModule = ESStaticDesignUtility.SimpleScriptMaker.CreateClassContentByString(
+                    string aModule = ESDesignUtility.SimpleScriptMaker.CreateClassContentByString(
                    className: moduleName,
                    beforeClassName: "partial",
                    insideClass: mm.DefineAtDomain ? inside : "",
@@ -105,7 +105,7 @@ namespace ES
                         foreach (var mm_mm in mm.modules)
                         {
                             string module_SONChinaName = "扩展模块_" + mm.ModuleChinaClassName + "_" + mm_mm.ModuleChinaClassName;
-                            string sonModule = ESStaticDesignUtility.SimpleScriptMaker.CreateClassContentByString(
+                            string sonModule = ESDesignUtility.SimpleScriptMaker.CreateClassContentByString(
                    className: moduleName + "_" + mm_mm.ModuleClassName._ToValidIdentName(),
                    beforeClassName: "partial",
                    insideClass: mm.DefineAtDomain ? inside : "",
@@ -119,7 +119,7 @@ namespace ES
                     //加入
                     DomainModules_SingleContent += aModule;
                 }
-                domainPart += ESStaticDesignUtility.SimpleScriptMaker.CreateClassContentByString(
+                domainPart += ESDesignUtility.SimpleScriptMaker.CreateClassContentByString(
                     className: DomainName,
                     beforeClassName: "partial",
                     insideClass: moduleInDefine,
@@ -132,14 +132,14 @@ namespace ES
                 
                 domainFieldNames += (domainFieldNames.IsNullOrWhitespace() ? "" : ",") + field;
 
-                ESStaticDesignUtility.SimpleScriptMaker.CreateScriptBounds(newFolder, "ModulesDefineFor_" + DomainName + ".cs",
+                ESDesignUtility.SimpleScriptMaker.CreateScriptBounds(newFolder, "ModulesDefineFor_" + DomainName + ".cs",
                     using_: "using ES;\r\nusing Sirenix.OdinInspector;\r\nusing System;\r\nusing System.Collections;\r\nusing System.Collections.Generic;\r\nusing UnityEngine;",
                     content: DomainModules_SingleContent,
                     TruelyCreate: true
                     );
             }
 
-            corePart = ESStaticDesignUtility.SimpleScriptMaker.CreateClassContentByString(
+            corePart = ESDesignUtility.SimpleScriptMaker.CreateClassContentByString(
                     className: CoreName,
                     beforeClassName: "partial",
                     insideClass: $" protected override void OnAwakeRegisterOnly()\r\n        {{\r\n            RegisterAllDomains({domainFieldNames});\r\n        }}\n" + domainInDefine,
@@ -148,7 +148,7 @@ namespace ES
                     );
 
 
-            ESStaticDesignUtility.SimpleScriptMaker.CreateScriptBounds(newFolder, "BaseDefineForCore_" + CoreName + ".cs",
+            ESDesignUtility.SimpleScriptMaker.CreateScriptBounds(newFolder, "BaseDefineForCore_" + CoreName + ".cs",
                 using_: "using ES;\r\nusing Sirenix.OdinInspector;\r\nusing System;\r\nusing System.Collections;\r\nusing System.Collections.Generic;\r\nusing UnityEngine;",
                 content: corePart + domainPart + modulePart
                    , TruelyCreate: true);
@@ -159,7 +159,7 @@ namespace ES
         [TabGroup("逻辑脚本生成(建议只生成一次)"),LabelText("生成路径"),FolderPath]
         public string pathForLogic_ = "Assets/Scripts/ESFramework/Core_Domain_Module_Class";
 
-        [TabGroup("逻辑脚本生成(建议只生成一次)"), LabelText("生成逻辑类"), GUIColor("@ESStaticDesignUtility.ColorSelector.Color_03")]
+        [TabGroup("逻辑脚本生成(建议只生成一次)"), LabelText("生成逻辑类"), GUIColor("@ESDesignUtility.ColorSelector.Color_03")]
         public List<_DomainAndList> domains_copycontent = new List<_DomainAndList>();
 
         [TabGroup("逻辑脚本生成(建议只生成一次)"), Button("生成逻辑脚本", ButtonHeight = 50)]
@@ -175,12 +175,12 @@ namespace ES
         public void GenerateLogic(bool create)
         {
             
-            if (!create||ESStaticDesignUtility.SafeEditor.DisplayDialog("创建逻辑脚本","只推荐创建一次，因为该脚本时允许你自己修改的，强制创建会覆盖以前的内容","我是第一次/覆盖","算了"))
+            if (!create||ESDesignUtility.SafeEditor.DisplayDialog("创建逻辑脚本","只推荐创建一次，因为该脚本时允许你自己修改的，强制创建会覆盖以前的内容","我是第一次/覆盖","算了"))
             {
                 string CoreName = CoreClassName._ToValidIdentName();
                 string CoreChinaName = CoreClassChinaName._ToValidIdentName();
                 //创建总文件夹并且获得最新路劲
-                ESStaticDesignUtility.SafeEditor.CreateFolderDic(pathForLogic_, CoreName);
+                ESDesignUtility.SafeEditor.CreateFolderDic(pathForLogic_, CoreName);
                 string coreFolder = Path.Combine(pathForLogic_, CoreName);
 
                 //第一个文件写基础定义
@@ -224,7 +224,7 @@ namespace ES
                         string moduleChinaName = "扩展模块_" + mm.ModuleChinaClassName;
                         string defineName = "Module_" + mm.ModuleClassName._ToValidIdentName();
                         string inside = $"  protected override void CreateRelationshipOnly()\r\n        {{\r\n            Domain.{defineName} = this;\r\n            base.CreateRelationshipOnly();\r\n        }}";
-                        string aModule = ESStaticDesignUtility.SimpleScriptMaker.CreateClassContentByString(
+                        string aModule = ESDesignUtility.SimpleScriptMaker.CreateClassContentByString(
                        className: moduleName,
                        beforeClassName: "partial",
                        insideClass: " protected override void OnEnable()\r\n        {\r\n            base.OnEnable();\r\n        }\r\n        protected override void Update()\r\n        {\r\n            base.Update();\r\n        }\r\n        protected override void OnDisable()\r\n        {\r\n            base.OnDisable();\r\n        }",
@@ -238,7 +238,7 @@ namespace ES
                             foreach (var mm_mm in mm.modules)
                             {
                                 string module_SONChinaName = "扩展模块_" + mm.ModuleChinaClassName + "_" + mm_mm.ModuleChinaClassName;
-                                string sonModule = ESStaticDesignUtility.SimpleScriptMaker.CreateClassContentByString(
+                                string sonModule = ESDesignUtility.SimpleScriptMaker.CreateClassContentByString(
                        className: moduleName + "_" + mm_mm.ModuleClassName._ToValidIdentName(),
                        beforeClassName: "partial",
                        insideClass: " protected override void OnEnable()\r\n        {\r\n            base.OnEnable();\r\n        }\r\n        protected override void Update()\r\n        {\r\n            base.Update();\r\n        }\r\n        protected override void OnDisable()\r\n        {\r\n            base.OnDisable();\r\n        }",
@@ -257,7 +257,7 @@ namespace ES
                         //加入
                         DomainModules_SingleContent += aModule;
                     }
-                    aDomainContent.content= domainPart += ESStaticDesignUtility.SimpleScriptMaker.CreateClassContentByString(
+                    aDomainContent.content= domainPart += ESDesignUtility.SimpleScriptMaker.CreateClassContentByString(
                         className: DomainName,
                         beforeClassName: "partial",
                         insideClass: " protected override void OnEnable()\r\n        {\r\n            base.OnEnable();\r\n        }\r\n        protected override void Update()\r\n        {\r\n            base.Update();\r\n        }\r\n        protected override void OnDisable()\r\n        {\r\n            base.OnDisable();\r\n        }",
@@ -268,14 +268,14 @@ namespace ES
                     string field = "Domain_" + i.DomainClassName._ToValidIdentName();
                     domainInDefine += $"// {DomainChinese}：{DomainName},作为核心的{field}";
 
-                    ESStaticDesignUtility.SimpleScriptMaker.CreateScriptBounds(coreFolder, "ModulesFor_" + DomainName + ".cs",
+                    ESDesignUtility.SimpleScriptMaker.CreateScriptBounds(coreFolder, "ModulesFor_" + DomainName + ".cs",
                         using_: "using ES;\r\nusing Sirenix.OdinInspector;\r\nusing System;\r\nusing System.Collections;\r\nusing System.Collections.Generic;\r\nusing UnityEngine;",
                         content: DomainModules_SingleContent,
                         TruelyCreate: create
                         );
                 }
 
-                corePart = ESStaticDesignUtility.SimpleScriptMaker.CreateClassContentByString(
+                corePart = ESDesignUtility.SimpleScriptMaker.CreateClassContentByString(
                         className: CoreName,
                         beforeClassName: "partial",
                         insideClass: domainInDefine,
@@ -284,7 +284,7 @@ namespace ES
                         );
 
 
-                ESStaticDesignUtility.SimpleScriptMaker.CreateScriptBounds(coreFolder, CoreName + ".cs",
+                ESDesignUtility.SimpleScriptMaker.CreateScriptBounds(coreFolder, CoreName + ".cs",
                     using_: "using ES;\r\nusing Sirenix.OdinInspector;\r\nusing System;\r\nusing System.Collections;\r\nusing System.Collections.Generic;\r\nusing UnityEngine;",
                     content: corePart + domainPart + modulePart
                        , TruelyCreate: create);
@@ -299,7 +299,7 @@ namespace ES
             public string domainName = "";
             [HideInInspector]
             public string content = "";
-            [LabelText("模块"), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForESValue")]
+            [LabelText("模块"), GUIColor("@ESDesignUtility.ColorSelector.ColorForESValue")]
             public List<_ModuleClass> modules = new List<_ModuleClass>();
 
             private void GetModel()
@@ -329,7 +329,7 @@ namespace ES
     {
         [LabelText("扩展域命名")] public string DomainClassName = "NewDomainName";
         [LabelText("扩展域中文命名")] public string DomainChinaClassName = "新的域";
-        [LabelText("全部剪影"), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForESValue")]
+        [LabelText("全部剪影"), GUIColor("@ESDesignUtility.ColorSelector.ColorForESValue")]
         public List<ModuleSource> Modules = new List<ModuleSource>();
 
     }
@@ -341,7 +341,7 @@ namespace ES
         [LabelText("模块中文命名")] public string ModuleChinaClassName = "新的剪影";
         [LabelText("显式声明的")]
         public bool DefineAtDomain = false;
-        [LabelText("有继承"), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForDes")]
+        [LabelText("有继承"), GUIColor("@ESDesignUtility.ColorSelector.ColorForDes")]
         public List<ModuleSource_Son> modules = new List<ModuleSource_Son>();
     }
     [Serializable]

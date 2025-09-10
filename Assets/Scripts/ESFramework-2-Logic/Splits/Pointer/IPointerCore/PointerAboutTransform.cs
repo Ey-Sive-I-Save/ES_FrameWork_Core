@@ -148,7 +148,7 @@ namespace ES.Pointer
             Transform par = parent?.Pick() ?? null;
             string ss = str?.Pick() ?? null;
             if (par == null || par.childCount == 0 || ss == null) return default;
-            return ESStaticDesignUtility.Foreach.ForeachFindTransform(par, ss);
+            return ESDesignUtility.Foreach.ForeachFindTransform(par, ss);
         }
     }
     [Serializable, TypeRegistryItem("变换查找_根据标签")]

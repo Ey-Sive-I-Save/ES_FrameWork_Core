@@ -99,7 +99,13 @@ MonoBehaviour:
       Data: 5|System.Collections.Generic.HashSet`1[[System.String, mscorlib]], System.Core
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 2
+    - Name: 
+      Entry: 1
+      Data: EntityNetBehaviour
+    - Name: 
+      Entry: 1
+      Data: NetworkObject
     - Name: 
       Entry: 13
       Data: 

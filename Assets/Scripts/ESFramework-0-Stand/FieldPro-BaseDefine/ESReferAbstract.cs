@@ -55,7 +55,8 @@ namespace ES
             get
             {
                 /*if (HasValue) { return _value; }*/
-               
+/*                if (HasValue&& safe) return _value;
+                UpdateValueBySource();*/
                 return _value;
             }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -95,6 +96,7 @@ namespace ES
         public void SetValueSourceGetter(Func<T> func)
         {
             ValueSourceGetter = func;
+            
         }
         public void SetValueToDO(Action<T> todo)
         {
@@ -126,7 +128,11 @@ namespace ES
         {
             return from.Value;
         }
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static implicit operator bool(ESReferLazy<T> from)
+        {
+            return from != null;
+        }
         private void _SetDirtyInternal(T who)
         {
             if (!HasValue&& who!=null)
@@ -157,7 +163,20 @@ namespace ES
             return a.HasValue;
             // 自定义NULL判断逻辑（例如检查内部GameObject是否激活）
         }
+        public static bool operator !=(ESReferLazy<T> a,object b)
+        {
+            if (a.safe && a.HasValue) return true;
+            a.UpdateValueBySource();
+            return a.HasValue;
+            // 自定义NULL判断逻辑（例如检查内部GameObject是否激活）
+        }
         public static bool operator ==(ESReferLazy<T> a, ESReferLazy<T> b)
+        {
+            if (a.safe && a.HasValue) return false;
+            a.UpdateValueBySource();
+            return !a.HasValue;
+        }
+        public static bool operator ==(ESReferLazy<T> a, object b)
         {
             if (a.safe && a.HasValue) return false;
             a.UpdateValueBySource();

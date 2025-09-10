@@ -1,4 +1,5 @@
 using ES;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -330,11 +331,13 @@ namespace ES
         [InspectorName("网络图片")] NetImageRes = 4,
         [InspectorName("本地图片")] LocalImageRes = 5,
     }
+    [Serializable]
     public class ResSourceSearchKey : IPoolable, IPoolablebAndSelfControlToWhere
     {
-        public string AssetPath { get; set; }
-
-        public string OwnerAssetBundle { get; set; }
+        [LabelText("资源名"),HorizontalGroup("q")]
+        public string AssetPath;
+        [LabelText("所属包"), HorizontalGroup("q")]
+        public string OwnerAssetBundle;
 
         public Type AssetType { get; set; }
 

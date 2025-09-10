@@ -33,7 +33,7 @@ namespace ES.Pointer
                 Debug.Log("尝试" + o);
                 if (o != null)
                 {
-                    T t = ESStaticDesignUtility.Reflection.EasyGetField<T>(o, fieldName);
+                    T t = ESDesignUtility.Reflection.EasyGetField<T>(o, fieldName);
                     Debug.Log("获得" + t);
                     return t;
                 }
@@ -58,7 +58,7 @@ namespace ES.Pointer
                 Debug.Log("尝试" + o);
                 if (o != null)
                 {
-                    T t = ESStaticDesignUtility.Reflection.EasyGetProperty<T>(o, propertyInfo);
+                    T t = ESDesignUtility.Reflection.EasyGetProperty<T>(o, propertyInfo);
                     Debug.Log("获得" + t);
                     return t;
                 }
@@ -82,7 +82,7 @@ namespace ES.Pointer
                 var o = every.Pick();
                 if (o != null)
                 {
-                    return ESStaticDesignUtility.Reflection.EasyGetMethod<T>(o, fieldName);
+                    return ESDesignUtility.Reflection.EasyGetMethod<T>(o, fieldName);
                 }
             }
             return default;
@@ -246,7 +246,7 @@ namespace ES.Pointer
         }
         public virtual void Handle(object o)
         {
-            ESStaticDesignUtility.Reflection.EasySetField<T>(o, fieldName, getValue);
+            ESDesignUtility.Reflection.EasySetField<T>(o, fieldName, getValue);
         }
     }
     [TypeRegistryItem("抽象_反射_设置属性", "反射/设置")]
@@ -269,7 +269,7 @@ namespace ES.Pointer
         }
         public virtual void Handle(object o)
         {
-            ESStaticDesignUtility.Reflection.EasySetProperty<T>(o, propertyName, getValue);
+            ESDesignUtility.Reflection.EasySetProperty<T>(o, propertyName, getValue);
         }
     }
     [TypeRegistryItem("抽象_反射_调用方法", "反射/设置")]
@@ -296,7 +296,7 @@ namespace ES.Pointer
                         }
                     }
                     Debug.Log("调用");
-                    ESStaticDesignUtility.Reflection.EasyInvokeMethod(o, fieldName, os.ToArray());
+                    ESDesignUtility.Reflection.EasyInvokeMethod(o, fieldName, os.ToArray());
                 }
             }
             return default;
@@ -320,7 +320,7 @@ namespace ES.Pointer
         [LabelText("使用的处理")] public EnumCollect.HandleTwoNumberFunction hanlde;
         public override void Handle(object o)
         {
-            ESStaticDesignUtility.Reflection.EasyHandleField<float>(o, fieldName, getValue, hanlde);
+            ESDesignUtility.Reflection.EasyHandleField<float>(o, fieldName, getValue, hanlde);
         }
     }
     [Serializable, TypeRegistryItem("反射_设置整数_字段", "反射/设置")]
@@ -336,7 +336,7 @@ namespace ES.Pointer
         [LabelText("使用的处理")] public EnumCollect.HandleTwoNumberFunction hanlde;
         public override void Handle(object o)
         {
-            ESStaticDesignUtility.Reflection.EasyHandleField<int>(o, fieldName, getValue, hanlde);
+            ESDesignUtility.Reflection.EasyHandleField<int>(o, fieldName, getValue, hanlde);
         }
     }
     [Serializable, TypeRegistryItem("反射_特殊操作枚举(当整数处理)_字段", "反射/设置")]
@@ -347,7 +347,7 @@ namespace ES.Pointer
 
         public override void Handle(object o)
         {
-            ESStaticDesignUtility.Reflection.EasyHandleField<int>(o, fieldName, getValue, hanlde);
+            ESDesignUtility.Reflection.EasyHandleField<int>(o, fieldName, getValue, hanlde);
         }
     }
     [Serializable, TypeRegistryItem("反射_特殊操作LayerMask_字段", "反射/设置")]
@@ -359,7 +359,7 @@ namespace ES.Pointer
 
         public override void Handle(object o)
         {
-            ESStaticDesignUtility.Reflection.EasyHandleField<int>(o, fieldName, getValue, hanlde);
+            ESDesignUtility.Reflection.EasyHandleField<int>(o, fieldName, getValue, hanlde);
         }
     }
     [Serializable, TypeRegistryItem("反射_设置Vector3_字段", "反射/设置")]
@@ -417,7 +417,7 @@ namespace ES.Pointer
         [LabelText("使用的处理")] public EnumCollect.HandleTwoNumberFunction hanlde;
         public override void Handle(object o)
         {
-            ESStaticDesignUtility.Reflection.EasyHandleProperty<float>(o, propertyName, getValue, hanlde);
+            ESDesignUtility.Reflection.EasyHandleProperty<float>(o, propertyName, getValue, hanlde);
         }
     }
 
@@ -433,7 +433,7 @@ namespace ES.Pointer
         [LabelText("使用的处理")] public EnumCollect.HandleTwoNumberFunction hanlde;
         public override void Handle(object o)
         {
-            ESStaticDesignUtility.Reflection.EasyHandleProperty<int>(o, propertyName, getValue, hanlde);
+            ESDesignUtility.Reflection.EasyHandleProperty<int>(o, propertyName, getValue, hanlde);
         }
     }
     [Serializable, TypeRegistryItem("反射_特殊操作枚举(当Int处理)_属性", "反射/设置")]
@@ -444,7 +444,7 @@ namespace ES.Pointer
 
         public override void Handle(object o)
         {
-            ESStaticDesignUtility.Reflection.EasyHandleField<int>(o, propertyName, getValue, hanlde);
+            ESDesignUtility.Reflection.EasyHandleField<int>(o, propertyName, getValue, hanlde);
         }
     }
     [Serializable, TypeRegistryItem("反射_设置Vector3_属性", "反射/设置")]

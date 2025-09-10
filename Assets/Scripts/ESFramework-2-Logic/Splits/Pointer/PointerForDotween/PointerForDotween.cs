@@ -85,7 +85,7 @@ namespace ES.Pointer
     [Serializable, TypeRegistryItem("Dotween_<触发针包>同By包_选中一个", "其他插件支持")]
     public class PointerForTween_PackerSelectOneSameByTransform : PointerForTween_PackerSelectOneSameBy<Transform>
     {
-        [LabelText("同By 变换"), SerializeReference, PropertyOrder(-1), GUIColor("@ESStaticDesignUtility.ColorSelector.Color_03")] public IPointerForTransform_Only pointerForTransform = new PointerForTransform_Direct();
+        [LabelText("同By 变换"), SerializeReference, PropertyOrder(-1), GUIColor("@ESDesignUtility.ColorSelector.Color_03")] public IPointerForTransform_Only pointerForTransform = new PointerForTransform_Direct();
         public override Transform byFrom => pointerForTransform?.Pick();
 
         public override Tween PickOne(IPointerForTween use)
@@ -96,7 +96,7 @@ namespace ES.Pointer
     [Serializable, TypeRegistryItem("Dotween_<链式针包>", "其他插件支持")]
     public class PointerForTween_PackerChainTween : PointerPackForSimpleChain<Tween, IPointerChainForTween>, IPointerForTween
     {
-        [LabelText("链的头部"), SerializeReference, PropertyOrder(-1), GUIColor("@ESStaticDesignUtility.ColorSelector.Color_03")] public IPointerForTween headGetter;
+        [LabelText("链的头部"), SerializeReference, PropertyOrder(-1), GUIColor("@ESDesignUtility.ColorSelector.Color_03")] public IPointerForTween headGetter;
         public override Tween head => headGetter?.Pick();
     }
     [Serializable, TypeRegistryItem("Dotween_<触发针包>->_序列生成", "其他插件支持")]
@@ -236,7 +236,7 @@ namespace ES.Pointer
             if (use == null) return null;
             Action action = action_Only?.Pick();
             if (action == null) return use;
-            ESStaticDesignUtility.Function.SetCallBackFromTween(use, callBackType, new TweenCallback(() => { action?.Invoke(); }));
+            ESDesignUtility.Function.SetCallBackFromTween(use, callBackType, new TweenCallback(() => { action?.Invoke(); }));
             return use;
         }
     }
@@ -627,7 +627,7 @@ namespace ES.Pointer
         protected override Tween PickTruely(Transform by = null, object yarn = null, object on = null)
         {
             if (by == null) return null;
-            Vector3[] use = PathSort== EnumCollect.PathSortType.NoneSort? path().ToArray():ESStaticDesignUtility.Sorter.SortPath(path(),PathSort,by.position,by).ToArray();
+            Vector3[] use = PathSort== EnumCollect.PathSortType.NoneSort? path().ToArray():ESDesignUtility.Sorter.SortPath(path(),PathSort,by.position,by).ToArray();
             float d = float_Only?.Pick() ?? 1;
             if (use != null && use.Length > 0)
             {
@@ -820,7 +820,7 @@ namespace ES.Pointer
             if (by is Tweener tweener&& action_Only!=null)
             {
                Action action = action_Only?.Pick();
-               ESStaticDesignUtility.Function.SetCallBackFromTween(tweener, callBackType,new TweenCallback(() => { action?.Invoke(); }));
+               ESDesignUtility.Function.SetCallBackFromTween(tweener, callBackType,new TweenCallback(() => { action?.Invoke(); }));
             }
             return by;
         }
@@ -872,7 +872,7 @@ namespace ES.Pointer
         public Delegate Pick(object on= null, object from = null, object with = null)
         {
             var use = forTween?.Pick();
-            return ESStaticDesignUtility.Function.GetCallBackFromTween(use,callBackType);
+            return ESDesignUtility.Function.GetCallBackFromTween(use,callBackType);
         }
     }
 
@@ -1070,8 +1070,8 @@ namespace ES.Pointer
         }
         [LabelText("实时投射值")]public T caster;
         [DetailedInfoBox("", "此处需要引用一个PointerPlayerCaster,把自己的值投射给他它", Message = @"@ ""【绑定投射目标备注："" + (playerCaster != null ? playerCaster.des : ""！未绑定"") ", VisibleIf = "@usePlayerCaster")]
-        [LabelText("发起投射?", SdfIconType.At), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")] public bool usePlayerCaster;
-        [LabelText("发送到Caster", SdfIconType.At), ShowIf("usePlayerCaster"), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")] public PointerPlayerSystemObjectCaster playerCaster_;
+        [LabelText("发起投射?", SdfIconType.At), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")] public bool usePlayerCaster;
+        [LabelText("发送到Caster", SdfIconType.At), ShowIf("usePlayerCaster"), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")] public PointerPlayerSystemObjectCaster playerCaster_;
         public PointerPlayerSystemObjectCaster playerCaster => playerCaster_;
         public T Cast()
         {

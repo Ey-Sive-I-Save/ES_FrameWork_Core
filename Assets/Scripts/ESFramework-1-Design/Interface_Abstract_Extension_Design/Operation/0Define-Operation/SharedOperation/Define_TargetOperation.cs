@@ -35,11 +35,11 @@ namespace ES
     {
         protected sealed override void ExpandOperation(ref float or, float Opeation, OperationOptionsForFloat SelectType_)
         {
-            or = ESStaticDesignUtility.Function.OpearationFloat_Inline(or, Opeation, SelectType_);
+            or = ESDesignUtility.Function.OpearationFloat_Inline(or, Opeation, SelectType_);
         }
         protected sealed override void ExpandCancel(ref float or, float Opeation, OperationOptionsForFloat SelectType_ = OperationOptionsForFloat.Add)
         {
-            or = ESStaticDesignUtility.Function.OpearationFloat_Cancel_Inline(or, Opeation, SelectType_);
+            or = ESDesignUtility.Function.OpearationFloat_Cancel_Inline(or, Opeation, SelectType_);
         }
     }
 

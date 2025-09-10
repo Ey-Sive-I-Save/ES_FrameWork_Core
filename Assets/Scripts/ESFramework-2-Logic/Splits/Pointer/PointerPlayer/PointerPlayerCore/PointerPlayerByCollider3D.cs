@@ -78,7 +78,7 @@ namespace ES
     public abstract class PointerPlayerByColliderOrTrigger<Cast> : PointerPlayer where Cast:IPointer
     {
        
-        [DisplayAsString(fontSize:20),ShowInInspector,HideLabel, GUIColor("@ESStaticDesignUtility.ColorSelector.Color_03"),PropertyOrder(-1)]
+        [DisplayAsString(fontSize:20),ShowInInspector,HideLabel, GUIColor("@ESDesignUtility.ColorSelector.Color_03"),PropertyOrder(-1)]
         public string ss=> title;
         public virtual string title => "针播放器：";
         [Header("启用开关"), FoldoutGroup("《启用开关》"),Indent(2)]

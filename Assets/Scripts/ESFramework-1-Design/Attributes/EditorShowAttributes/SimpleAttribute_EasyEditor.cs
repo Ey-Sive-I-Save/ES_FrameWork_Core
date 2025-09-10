@@ -39,18 +39,18 @@ namespace ES
         public ESBackGroundAttribute(string colorName)
         {
             color = Color.white;
-            ESStaticDesignUtility.ColorSelector.normalColors.TryGetValue(colorName, out color);
+            ESDesignUtility.ColorSelector.normalColors.TryGetValue(colorName, out color);
         }
         public ESBackGroundAttribute(string colorName, float withAlpha = 1)
         {
-            ESStaticDesignUtility.ColorSelector.normalColors.TryGetValue(colorName, out color);
+            ESDesignUtility.ColorSelector.normalColors.TryGetValue(colorName, out color);
             this.WithAlpha = withAlpha;
-            
+
         }
         public ESBackGroundAttribute(string colorName, float withRGBMuti, float withAlpha)
         {
-            ESStaticDesignUtility.ColorSelector.normalColors.TryGetValue(colorName, out color);
-            
+            ESDesignUtility.ColorSelector.normalColors.TryGetValue(colorName, out color);
+
             color = color * withRGBMuti;
             WithAlpha = withAlpha;
         }
@@ -82,11 +82,36 @@ namespace ES
 
         public ESBoolOption(string forFalse, string forTrue)
         {
-            this.FalseLabel = forFalse; 
+            this.FalseLabel = forFalse;
             this.TrueLabel = forTrue;
         }
     }
 
+
+    #endregion
+
+    #region ESGetOrAdd
+
+    [AttributeUsage(AttributeTargets.Field , AllowMultiple = false)]
+    public class ESGetOrAdd : Attribute
+    {
+        public ESGetOrAddOption option;
+        public ESGetOrAdd()
+        {
+            option = ESGetOrAddOption.Self;
+        }
+        public ESGetOrAdd(ESGetOrAddOption option_)
+        {
+            option = option_;
+        }
+    }
+    public enum ESGetOrAddOption
+    {
+        [ESMessage("自己")] Self,
+        [ESMessage("包含父级")] ContainsParent,
+        [ESMessage("包含子级")] ContainsSon,
+        [ESMessage("包含父子")] ContainsParentAndSon
+    }
 
     #endregion
 

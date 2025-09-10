@@ -12,7 +12,7 @@ using static ES.EnumCollect;
 using static ES.ESCodeGenWindow.PageRoot_CoreDomainModule;
 using static ES.ESCodeGenWindow.PageRoot_Enum;
 using static ES.GlobalDataForEditorOnly;
-using static ES.ESStaticDesignUtility;
+using static ES.ESDesignUtility;
 namespace ES
 {
 
@@ -78,7 +78,7 @@ namespace ES
         private void Part_BuildCoreDomain(OdinMenuTree tree)
         {
             QuickBuildRootMenu(tree, PageNameCoreDomain, ref pageForCoreDomain, SdfIconType.Diagram2);
-            var AllSoCoreSource = ESStaticDesignUtility.SafeEditor.FindSOAssets<ESCode_CoreDomainSource>();
+            var AllSoCoreSource = ESDesignUtility.SafeEditor.FindSOAssets<ESCode_CoreDomainSource>();
             foreach(var i in AllSoCoreSource)
             {
                 if (i != null && !i.CoreClassName.IsNullOrWhitespace())
@@ -90,7 +90,7 @@ namespace ES
         private void Part_BuildEnum(OdinMenuTree tree)
         {
             QuickBuildRootMenu(tree, PageNameEnum, ref pageForEnum, SdfIconType.FlagFill);
-            var AllSoCoreSource = ESStaticDesignUtility.SafeEditor.FindSOAssets<ESCode_EnumSource>();
+            var AllSoCoreSource = ESDesignUtility.SafeEditor.FindSOAssets<ESCode_EnumSource>();
             foreach (var i in AllSoCoreSource)
             {
                 if (i != null && !i.EnumSortName_.IsNullOrWhitespace())
@@ -189,16 +189,16 @@ namespace ES
                     foreach(var i in TagAndLayer.memoryTags)
                     {
                         string fieldName = "Tag_"+ i._ToValidIdentName();
-                        fieldName = ESStaticDesignUtility.Function.FunctionForStringAsIndentNameCase(fieldName,handleIndentNames);
+                        fieldName = ESDesignUtility.Function.FunctionForStringAsIndentNameCase(fieldName,handleIndentNames);
                         content += SimpleScriptMaker.CreateFieldContent("string", fieldName, modifier: "public static", valueDefine:"="+ i._AsStringValue());
                     }
                     foreach(var (layer,name) in TagAndLayer.memoryLayers)
                     {
                         string fieldName = "Layer_" + name._ToValidIdentName();
-                        fieldName = ESStaticDesignUtility.Function.FunctionForStringAsIndentNameCase(fieldName, handleIndentNames);
+                        fieldName = ESDesignUtility.Function.FunctionForStringAsIndentNameCase(fieldName, handleIndentNames);
                         content += SimpleScriptMaker.CreateFieldContent("int", fieldName, modifier: "public static", valueDefine:"="+layer.ToString());
                         string fieldName2 = "LayerMask_" + name._ToValidIdentName();
-                        fieldName2 = ESStaticDesignUtility.Function.FunctionForStringAsIndentNameCase(fieldName2, handleIndentNames);
+                        fieldName2 = ESDesignUtility.Function.FunctionForStringAsIndentNameCase(fieldName2, handleIndentNames);
 
                         content += SimpleScriptMaker.CreateFieldContent("int", fieldName2, modifier: "public static", valueDefine:"="+((int)Mathf.Round(Mathf.Pow(2,layer))).ToString());
                     }
@@ -207,7 +207,7 @@ namespace ES
                 }
                 else
                 {
-                   bool reTry= ESStaticDesignUtility.SafeEditor.DisplayDialog("不可用的保存路径", "想要保存代码到" + pathToSave + "\n" +
+                   bool reTry= ESDesignUtility.SafeEditor.DisplayDialog("不可用的保存路径", "想要保存代码到" + pathToSave + "\n" +
                         $"，这是不可用的路径，是否替换为推荐的\n{DefaultSavePath}" +
                         "并再次生成");
                     if (reTry)
@@ -223,7 +223,7 @@ namespace ES
                 {
                     if (TagAndLayer.GetDirty())
                     {
-                       bool b= ESStaticDesignUtility.SafeEditor.DisplayDialog("代码重生成", "检测到标签层级声称代码需要更新！！", "开始生成", "算了");
+                       bool b= ESDesignUtility.SafeEditor.DisplayDialog("代码重生成", "检测到标签层级声称代码需要更新！！", "开始生成", "算了");
                         if (b)
                         {
                             reGenCode();
@@ -241,11 +241,11 @@ namespace ES
             [LabelText("生成脚本路径"), FolderPath] public string genePathFolder = "Assets/Scripts/ESFramework/CodeGen/Target/Core_Domain_Module";
             [LabelText("生成源路径"), FolderPath,ReadOnly] public string geneSourcePathFolder = "Assets/Resources/Data/SingleData/ESCoreSource";
 
-            [LabelText("核心命名"),InlineButton("Gene","生成源"), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")] 
+            [LabelText("核心命名"),InlineButton("Gene","生成源"), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")] 
             public string CoreClassName = "NewCore";
-            [LabelText("核心中文命名"),GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")]
+            [LabelText("核心中文命名"),GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")]
             public string CoreClassChinaName = "新核心";
-            [LabelText("全部扩展域"), GUIColor("@ESStaticDesignUtility.ColorSelector.Color_03")] public List<DomainSource> Domains = new List<DomainSource>() { new DomainSource() { DomainClassName = "Normal" } };
+            [LabelText("全部扩展域"), GUIColor("@ESDesignUtility.ColorSelector.Color_03")] public List<DomainSource> Domains = new List<DomainSource>() { new DomainSource() { DomainClassName = "Normal" } };
 
  
             private void Gene()
@@ -284,9 +284,9 @@ namespace ES
             [LabelText("生成脚本路径"), FolderPath] public string genePathFolder = "Assets/Scripts/ESFramework/CodeGen/Enum";
             [LabelText("生成源路径"), FolderPath, ReadOnly] public string geneSourcePathFolder = "Assets/Resources/Data/SingleData/ESEnumSource";
 
-            [LabelText("枚举分类命名"), InlineButton("Gene", "生成源"), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")]
+            [LabelText("枚举分类命名"), InlineButton("Gene", "生成源"), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")]
             public string EnumSortName = "EnumSort";
-            [LabelText("全部枚举"), GUIColor("@ESStaticDesignUtility.ColorSelector.Color_03"),] public List<ESCode_EnumSource.EnumType> EnumTypes = new List<ESCode_EnumSource.EnumType>() {  };
+            [LabelText("全部枚举"), GUIColor("@ESDesignUtility.ColorSelector.Color_03"),] public List<ESCode_EnumSource.EnumType> EnumTypes = new List<ESCode_EnumSource.EnumType>() {  };
 
 
             private void Gene()

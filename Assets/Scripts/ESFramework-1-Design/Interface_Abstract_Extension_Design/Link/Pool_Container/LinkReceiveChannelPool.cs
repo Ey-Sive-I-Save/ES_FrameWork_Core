@@ -15,7 +15,7 @@ using UnityEngine;
 [Serializable]
 public class LinkReceiveChannelPool<Channel,Link> 
 {
-    [LabelText("选通接收池")]
+    [HideLabel]
     public SafeKeyGroup<Channel, IReceiveChannelLink<Channel,Link>> CIRS = new SafeKeyGroup<Channel, IReceiveChannelLink<Channel, Link>>();
     public IReceiveChannelLink<Channel,Link> cache;
     public void SendLink(Channel c,Link link)

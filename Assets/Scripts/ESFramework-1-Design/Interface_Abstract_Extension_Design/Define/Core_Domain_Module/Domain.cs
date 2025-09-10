@@ -18,9 +18,11 @@ namespace ES
         Core Core_Object { get; }
         //编辑器情况下的链接创建
         void RegisterAllButOnlyCreateRelationship(ICore core_);
-        void RegisterThisWithCore(ICore core);
+        void RegisterThisDomainWithCore(ICore core);
         void TryRemoveNullModules(bool rightnow = false);
+        void TryAddModule(IModule module);
 
+        void FixedUpdate();
     }
     public interface IDomain<Core_> : IDomain
     {
@@ -33,18 +35,14 @@ namespace ES
     public abstract class Domain<Core_, Module_> : IESHosting<Module_>, IDomain<Core_> where Core_ : Core where Module_ : class, IModule, IESModule
     {
         #region 总重要信息
-#if UNITY_EDITOR //只在编辑器下有用
-        [BoxGroup("扩展域固有"), LabelText("域功能解释", icon: SdfIconType.Palette), GUIColor("Editor_ColorGetter"), ShowInInspector, PropertyOrder(-100), SerializeField]
 
-        private Tool_ESReadMeClass readMe = new Tool_ESReadMeClass() { readMeIn = "这是一个扩展区域" };
-#endif
         [HideInInspector]
         public Core_ core;
 
         public Core Core_Object => core;
 
 
-        [BoxGroup("扩展域固有"), LabelText("全部模块"), OdinSerialize]
+        [BoxGroup("扩展模块"), OdinSerialize,HideLabel]
         public SafeNormalList<Module_> Modules = new SafeNormalList<Module_>();
 
         #endregion
@@ -88,28 +86,29 @@ namespace ES
         {
             return Color.green;
         }
-        public void TryRemoveFromIEnumableOnly(IESModule module)
+        public void TryRemoveFromListOnly(IESModule module)
         {
             if (module is Module_ m)
             {
-                _RemoveModuleFromList(m);
+                _RemoveModuleFromListOnly(m);
             }
         }
         //单纯从列表中移除
-        public void _RemoveModuleFromList(Module_ use)
+        protected void _RemoveModuleFromListOnly(Module_ use)
         {
             Modules.TryRemove(use);
         }
-        public void TryAddToIEnumableOnly(IESModule module)
+        public void TryAddToListOnly(IESModule module)
         {
             if (module is Module_ m)
             {
-                _RemoveModuleFromList(m);
+                Modules.TryAdd(m);
             }
         }
         //尝试移除全部的空模块(一般在编辑器使用)--(立刻清理还是留到)
         public void TryRemoveNullModules(bool rightNow = false)
         {
+            
             foreach (var i in Modules.ValuesNow)
             {
                 if (i == null)
@@ -125,7 +124,7 @@ namespace ES
         #region 初始化
 
         //注册到核心
-        public void RegisterThisWithCore(ICore core)
+        public void RegisterThisDomainWithCore(ICore core)
         {
             if (core is Core_ use)
             {
@@ -283,7 +282,7 @@ namespace ES
         //为了节约性能，采用委托
         public Action OnFixedUpdate = () => { };
 
-        protected virtual void FixedUpdate()
+        public virtual void FixedUpdate()
         {
             OnFixedUpdate?.Invoke();
         }
@@ -309,6 +308,16 @@ namespace ES
                 use.Signal_HasSubmit = false;//自己包含移除
             }
         }
+        public void TryAddModule(IModule module)
+        {
+            Debug.Log("ADD2"+module+"   "+typeof(Module_));
+            if (module is Module_ M)
+            {
+                AddModule(M);
+                Debug.Log("3");
+            }
+            
+        }
         public void AddModule(Module_ module)
         {
             if (module != null)
@@ -317,6 +326,8 @@ namespace ES
                 {
                     Modules.TryAdd(module);
                     module._TryStartWithHost(this);
+                   /* if (this.Signal_IsActiveAndEnable)
+                    module._TryActiveAndEnable();//连带*/
                 }
             }
         }

@@ -85,7 +85,7 @@ namespace ES
 
 
             //生成--按钮
-            [TabGroup("全局设置", TextColor = "@ESStaticDesignUtility.ColorSelector.Color_03"), PropertyOrder(-4), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForApply")]
+            [TabGroup("全局设置", TextColor = "@ESDesignUtility.ColorSelector.Color_03"), PropertyOrder(-4), GUIColor("@ESDesignUtility.ColorSelector.ColorForApply")]
             [Button("生成AB包 (需要额外确定)"), PropertySpace(15)]
             private void Handle_BuildAB()
             {
@@ -138,7 +138,7 @@ namespace ES
             }
 
             //清空AB包 按钮
-            [TabGroup("全局设置"), PropertyOrder(-4), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")]
+            [TabGroup("全局设置"), PropertyOrder(-4), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")]
             [Button("清空AB包 (需要额外确定)", DrawResult = false), PropertySpace(15)]
             private bool Handle_ClearAB()
             {
@@ -225,13 +225,13 @@ namespace ES
                         if (pre == ab)
                         {
                             AllHashDicContent += "{\"" + ab + "\",\"" + withHash + "\"},\n";
-                            SingleABField += ESStaticDesignUtility.SimpleScriptMaker.CreateFieldContent
+                            SingleABField += ESDesignUtility.SimpleScriptMaker.CreateFieldContent
                       ("string", "PreName", "public static", "=" + $"\"{ab}\"");
 
-                            SingleABField += ESStaticDesignUtility.SimpleScriptMaker.CreateFieldContent
+                            SingleABField += ESDesignUtility.SimpleScriptMaker.CreateFieldContent
                                ("string", "WithHash", "public static", "=" + $"\"{withHash}\"");
 
-                            SingleABField += ESStaticDesignUtility.SimpleScriptMaker.CreateFieldContent
+                            SingleABField += ESDesignUtility.SimpleScriptMaker.CreateFieldContent
                               ("string", "Hash", "public static", "=" + $"\"{GlobalDataForResMaster.Instance.GetHashFromCompleteNameWithHash(withHash)}\"");
                         }
                     }
@@ -263,17 +263,17 @@ namespace ES
                             tryUse = origin + "_" + repeat;
                             repeat++;
                         }
-                        string key = $"{ESStaticDesignUtility.SimpleScriptMaker.HandleString_RemoveExtension(ESStaticDesignUtility.SimpleScriptMaker.HandleString_ToValidName(tryUse))}";
+                        string key = $"{ESDesignUtility.SimpleScriptMaker.HandleString_RemoveExtension(ESDesignUtility.SimpleScriptMaker.HandleString_ToValidName(tryUse))}";
                         if (codeType == GlobalDataForResMaster.ABForAutoCodeGen.CodeAsUpper) key = key.ToUpper();
                         else if (codeType == GlobalDataForResMaster.ABForAutoCodeGen.CodeAsLower) key = key.ToLower();
-                        string value = $"\"{ESStaticDesignUtility.SimpleScriptMaker.HandleString_RemoveExtension(dir.Name)}\"";
+                        string value = $"\"{ESDesignUtility.SimpleScriptMaker.HandleString_RemoveExtension(dir.Name)}\"";
                         allPathsNoRepeatOriginal.Add(tryUse);
                         allPathsNoRepeatToUse.Add(key);
                         allValueNoRepeat.Add(value);
 
 
 
-                        string aField = ESStaticDesignUtility.SimpleScriptMaker.CreateFieldContent
+                        string aField = ESDesignUtility.SimpleScriptMaker.CreateFieldContent
                             ("string", key,
                             modifier: "public static", valueDefine: $"={value}");
                         SingleABField += aField;
@@ -287,25 +287,25 @@ namespace ES
                             AllPathsKeyValueContent += '\n';
                         }
                     }
-                    string AllPathsListString = ESStaticDesignUtility.SimpleScriptMaker.CreateFieldContent
+                    string AllPathsListString = ESDesignUtility.SimpleScriptMaker.CreateFieldContent
                     ("Dictionary<string, string> ", "AllPaths",
                             modifier: "public static", valueDefine: $"\n=new Dictionary<string, string> {{ {AllPathsKeyValueContent} }}");
 
 
-                    string ABClass = ESStaticDesignUtility.SimpleScriptMaker.CreateClassContentByString(showAB, "static", insideClass: SingleABField + AllPathsListString, parent: "");
+                    string ABClass = ESDesignUtility.SimpleScriptMaker.CreateClassContentByString(showAB, "static", insideClass: SingleABField + AllPathsListString, parent: "");
                     theContent.Append(ABClass);
                 }
 
-                string hashTest = ESStaticDesignUtility.SimpleScriptMaker.CreateNotes(AllHashDicContent);
+                string hashTest = ESDesignUtility.SimpleScriptMaker.CreateNotes(AllHashDicContent);
 
-                string ABAssetDic = ESStaticDesignUtility.SimpleScriptMaker.CreateFieldContent("Dictionary<string, Dictionary<string,string>>",
+                string ABAssetDic = ESDesignUtility.SimpleScriptMaker.CreateFieldContent("Dictionary<string, Dictionary<string,string>>",
                     "AllPathsDic", "public static", "\n=new Dictionary<string, Dictionary<string, string>>()\n{" + AllABDicContent + "}");
 
-                string ABHashDic = ESStaticDesignUtility.SimpleScriptMaker.CreateFieldContent("Dictionary<string,string>",
+                string ABHashDic = ESDesignUtility.SimpleScriptMaker.CreateFieldContent("Dictionary<string,string>",
                     "AllABHashDic", "public static", "\n=new Dictionary<string, string>()\n{" + AllHashDicContent + "}");
 
 
-                ESStaticDesignUtility.SimpleScriptMaker.CreateScriptNormal
+                ESDesignUtility.SimpleScriptMaker.CreateScriptNormal
                     (genarateCodeFolder, "ESAssetBundlePath", "static partial",
                     insideClass: hashTest + ABAssetDic + ABHashDic + theContent.ToString(), parent: "", using_: "using System.Collections.Generic;");
             }
@@ -351,7 +351,7 @@ namespace ES
 
             //按钮-刷新显示AB标记
             [Button("刷新显示AB标记"), PropertySpace(15)]
-            [TabGroup("标记收集与查询", TextColor = "@ESStaticDesignUtility.ColorSelector.ColorForCatcher"), PropertyOrder(-4), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForApply")]
+            [TabGroup("标记收集与查询", TextColor = "@ESDesignUtility.ColorSelector.ColorForCatcher"), PropertyOrder(-4), GUIColor("@ESDesignUtility.ColorSelector.ColorForApply")]
             public void RefreshBundleList()
             {
                 AllPath = new List<string>();
@@ -365,7 +365,7 @@ namespace ES
 
             //按钮-清除AB标记
             [Button("清除AB标记(需要额外确认)"), PropertySpace(15)]
-            [TabGroup("标记收集与查询"), PropertyOrder(-1), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")]
+            [TabGroup("标记收集与查询"), PropertyOrder(-1), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")]
             public void ClearBundleList()
             {
                 bool b = EditorUtility.DisplayDialog("是否清空AB包标记", "这会移除全部的AB包标记，意味着要重新标记", "我确定", "放弃");
@@ -413,18 +413,18 @@ namespace ES
 
             //警告信息
             [TabGroup("标记收集与查询")]
-            [ShowIf("warnIfChineseOrSymbol"), ShowInInspector, HideLabel, DisplayAsString(fontSize: 22, Alignment = TextAlignment.Center, EnableRichText = true), GUIColor("@ESStaticDesignUtility.ColorSelector.Color_03")]
+            [ShowIf("warnIfChineseOrSymbol"), ShowInInspector, HideLabel, DisplayAsString(fontSize: 22, Alignment = TextAlignment.Center, EnableRichText = true), GUIColor("@ESDesignUtility.ColorSelector.Color_03")]
             private string warn_ = "！不要使用包含<b><i>中文或者违规符号</i></b> ,  \"_\"可用 包名！！！";
 
             //警告信息
             [TabGroup("标记收集与查询")]
-            [ShowIf("warnIfPoint"), ShowInInspector, HideLabel, DisplayAsString(fontSize: 18, Alignment = TextAlignment.Center, EnableRichText = true), GUIColor("@ESStaticDesignUtility.ColorSelector.Color_02")]
+            [ShowIf("warnIfPoint"), ShowInInspector, HideLabel, DisplayAsString(fontSize: 18, Alignment = TextAlignment.Center, EnableRichText = true), GUIColor("@ESDesignUtility.ColorSelector.Color_02")]
             private string warn2 = "！包名所有的<b><i>\".\"</i></b> 会被替换为 <b><i>\"_\"</i></b> ！";
 
             //选中查询AB包名
             [LabelText("", Text = "@showAssetBundleName()"), OnValueChanged("PingABAsset")]
             [TabGroup("标记收集与查询"), PropertySpace(15)]
-            [ValueDropdown("allAssetBundleNames", AppendNextDrawer = true), ShowInInspector, GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")]
+            [ValueDropdown("allAssetBundleNames", AppendNextDrawer = true), ShowInInspector, GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")]
             public string selectBundleName
             {
                 get => GlobalDataForResMaster.Instance.ABName; set
@@ -437,7 +437,7 @@ namespace ES
             //标记模式
             [LabelText("标记模式"), ShowInInspector]
             [TabGroup("标记收集与查询")]
-            [InfoBox("", Message = "@desMaskType()"), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCatcher")]
+            [InfoBox("", Message = "@desMaskType()"), GUIColor("@ESDesignUtility.ColorSelector.ColorForCatcher")]
             public GlobalDataForResMaster.ABMaskType maskType { get => GlobalDataForResMaster.Instance.abMaskType; set { GlobalDataForResMaster.Instance.abMaskType = value; EditorUtility.SetDirty(GlobalDataForResMaster.Instance); } }
 
             [LabelText("该AB包名对应的资源")]
@@ -520,7 +520,7 @@ namespace ES
                 }
             }
             //末尾放置全部信息
-            [TabGroup("标记收集与查询"), LabelText("全部的资源路径"), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForDes")]
+            [TabGroup("标记收集与查询"), LabelText("全部的资源路径"), GUIColor("@ESDesignUtility.ColorSelector.ColorForDes")]
             [PropertyOrder(1), ReadOnly, ListDrawerSettings(DefaultExpandedState = false)]
             public List<string> AllPath = new List<string>();
 
@@ -567,7 +567,7 @@ namespace ES
             #endregion
 
             #region 热更新
-            [TabGroup("热更新配置", TextColor = "@ESStaticDesignUtility.ColorSelector.Color_03"), PropertyOrder(-4), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForApply")]
+            [TabGroup("热更新配置", TextColor = "@ESDesignUtility.ColorSelector.Color_03"), PropertyOrder(-4), GUIColor("@ESDesignUtility.ColorSelector.ColorForApply")]
             [Button("创建热更新数据"), PropertySpace(15)]
             private void Handle_CreateHotUpdateData()
             {
@@ -654,7 +654,7 @@ namespace ES
 
 
             //清空AB包 按钮
-            [TabGroup("热更新配置"), PropertyOrder(-4), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")]
+            [TabGroup("热更新配置"), PropertyOrder(-4), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")]
             [Button("刷新热更新信息", DrawResult = false), PropertySpace(15)]
             private void Handle_RefresgHotUpdateData()
             {
@@ -718,7 +718,7 @@ namespace ES
                 #endregion
             }
 
-            [TabGroup("热更新配置"), PropertyOrder(-4), GUIColor("@ESStaticDesignUtility.ColorSelector.ColorForCaster")]
+            [TabGroup("热更新配置"), PropertyOrder(-4), GUIColor("@ESDesignUtility.ColorSelector.ColorForCaster")]
             [Button("打开下载目标文件夹(persistent)", DrawResult = false), PropertySpace(15)]
             private void Handle_OpenDownloadHotUpdateDir()
             {

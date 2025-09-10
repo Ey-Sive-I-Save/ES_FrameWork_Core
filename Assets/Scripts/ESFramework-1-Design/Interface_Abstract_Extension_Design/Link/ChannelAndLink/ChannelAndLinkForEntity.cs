@@ -29,6 +29,6 @@ namespace ES
 
     public struct Link_EntityAttack : ILink
     {
-
+        public float f;
     }
 }

@@ -21,8 +21,8 @@ namespace ES
         void UpdateAsHosting();
         void EnableAsHosting();
         void DisableAsHosting();
-        void TryAddToIEnumableOnly(IESModule module);
-        void TryRemoveFromIEnumableOnly(IESModule module);
+        void TryAddToListOnly(IESModule module);
+        void TryRemoveFromListOnly(IESModule module);
         #endregion
     }
     public abstract class BaseESHosting : IESHosting
@@ -155,8 +155,8 @@ namespace ES
              }*/
         }
 
-        public abstract void TryAddToIEnumableOnly(IESModule module);
-        public abstract void TryRemoveFromIEnumableOnly(IESModule module);
+        public abstract void TryAddToListOnly(IESModule module);
+        public abstract void TryRemoveFromListOnly(IESModule module);
         public abstract void TryDestroySelf();
         #endregion
     }
@@ -235,7 +235,7 @@ namespace ES
 
         #region 检查器显示控制与信息
         [ShowInInspector, LabelText("控制自身启用状态"), PropertyOrder(-1)] public bool EnabledSelfControl { get => EnabledSelf; set { if (value) TryEnableSelf(); else TryDisableSelf(); } }
-        [ShowInInspector, LabelText("显示活动状态"), PropertyOrder(-1), GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
+        [ShowInInspector, LabelText("显示活动状态"), PropertyOrder(-1), GUIColor("@ESDesignUtility.ColorSelector.ColorForUpdating")]
         public bool IsActiveAndEnableShow { get => Signal_IsActiveAndEnable; }
         [ShowInInspector, LabelText("是否已经Submit"), PropertyOrder(-1)] public bool ShowHasSubmit => Signal_HasSubmit;
         #endregion
@@ -264,7 +264,7 @@ namespace ES
         public override void TryDestroySelf()
         {
             Signal_HasSubmit = false;
-            host.TryRemoveFromIEnumableOnly(this);
+            host.TryRemoveFromListOnly(this);
         }
 
         public void _TryActiveAndEnable()
@@ -358,12 +358,12 @@ namespace ES
             //无事发生
         }
 
-        public override void TryAddToIEnumableOnly(IESModule module)
+        public override void TryAddToListOnly(IESModule module)
         {
             throw new NotImplementedException();
         }
 
-        public override void TryRemoveFromIEnumableOnly(IESModule module)
+        public override void TryRemoveFromListOnly(IESModule module)
         {
             throw new NotImplementedException();
         }

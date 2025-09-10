@@ -87,7 +87,7 @@ namespace ES {
         [LabelText("结算操作类型")] public OperationOptionsForFloat settleType = OperationOptionsForFloat.Add;
         public override float HandleOperation(float value)
         {
-            return ESStaticDesignUtility.Function.OpearationFloat_Inline(value, Value, settleType);
+            return ESDesignUtility.Function.OpearationFloat_Inline(value, Value, settleType);
         }
 
         public override void SetValue(float f)

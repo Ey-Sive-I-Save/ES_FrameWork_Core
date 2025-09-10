@@ -14,7 +14,7 @@ namespace ES
     [Serializable, TypeRegistryItem("版本化列表")]
     public class VersionedList<T>
     {
-        [LabelText("正在更新", SdfIconType.ArrowRepeat), SerializeReference, GUIColor("@KeyValueMatchingUtility.ColorSelector.ColorForUpdating")]
+        [LabelText("正在更新", SdfIconType.ArrowRepeat), SerializeReference, GUIColor("@ESDesignUtility.ColorSelector.ColorForUpdating")]
         public List<T> ValuesNow = new List<T>(10);
         [FoldoutGroup("缓冲")]
         [ShowInInspector, NonSerialized, LabelText("缓冲添加队列", SdfIconType.BoxArrowInLeft)]

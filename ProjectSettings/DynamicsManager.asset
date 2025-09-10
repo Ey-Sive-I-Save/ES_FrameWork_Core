@@ -19,7 +19,7 @@ PhysicsManager:
   m_ClothInterCollisionStiffness: 0.2
   m_ContactsGeneration: 1
   m_LayerCollisionMatrix: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-  m_SimulationMode: 0
+  m_SimulationMode: 2
   m_AutoSyncTransforms: 0
   m_ReuseCollisionCallbacks: 1
   m_InvokeCollisionCallbacks: 1

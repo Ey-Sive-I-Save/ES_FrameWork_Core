@@ -9,13 +9,20 @@ using UnityEngine;
  
  */
 
-public interface IProcess<ValueSource, ValueOutput, Opeation_,Channel_, This> 
+
+/// <summary>
+/// 
+/// </summary>
+/// <typeparam name="ValueSource"> 输入的内容本体 </typeparam>
+/// <typeparam name="ValueOutput"> 输出的结果 </typeparam>
+/// <typeparam name="Opeation_"> 执行的具体操作  </typeparam>
+/// <typeparam name="Channel_"> 管道 </typeparam>
+public interface IProcess<ValueSource, ValueOutput, Opeation_,Channel_> 
     where Opeation_: IOperation
-    where This : IProcess<ValueSource, ValueOutput, Opeation_, Channel_, This>
 
 {
     ValueSource Source { get; set; }
-    ValueOutput Output { get; set; }
+    ValueOutput Output { get; set; }//输出值
     void DoProcess(ValueSource source);
     void AddOpearation(Opeation_ op, Channel_ channel);
     void RemoveOpearation(Opeation_ op, Channel_ channel);

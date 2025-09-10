@@ -23,16 +23,16 @@ namespace ES
     */
     public partial class GameCenterManager
     {
-        [TabGroup("全局事件"),ShowInInspector]
+        [TabGroup("常规", "全局事件"),ShowInInspector]
         //仅游戏核心收发
         public static LinkReceivePool LinkReceiveForGameCenter = new LinkReceivePool();
-       /* [TabGroup("全局事件"), ShowInInspector]
+        [TabGroup("全局事件"), ShowInInspector]
         //作为服务器 接受
         public static LinkReceivePoolServer LinkReceivePoolForServer = new LinkReceivePoolServer();
         [TabGroup("全局事件"), ShowInInspector]
         //作为客户端 接受
-        public static LinkReceivePoolClient LinkReceivePoolForClient = new LinkReceivePoolClient();*/
-        [TabGroup("全局事件"), ShowInInspector]
+        public static LinkReceivePoolClient LinkReceivePoolForClient = new LinkReceivePoolClient();
+        [TabGroup("常规", "全局事件"), ShowInInspector]
         //作为特定接受目标
         public static LinkReceivePool LinkReceivePoolForTarget = new LinkReceivePool();
 

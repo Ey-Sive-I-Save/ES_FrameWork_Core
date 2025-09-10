@@ -5,6 +5,12 @@ using UnityEngine;
 namespace FishNet.Example.ColliderRollbacks
 {
 
+    public struct A {
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+    }
 
     /// <summary>
     /// DEMO. CODE IS NOT OPTIMIZED.

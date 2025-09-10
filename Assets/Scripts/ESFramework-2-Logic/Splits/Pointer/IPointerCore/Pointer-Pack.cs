@@ -153,7 +153,7 @@ namespace ES.Pointer
         public override Back Pick(object on = null, object from = null, object with = null)
         {
 
-            var p = ESStaticDesignUtility.Function.GetOne(pointers, PointerSelectOneType, ref intHepler);
+            var p = ESDesignUtility.Function.GetOne(pointers, PointerSelectOneType, ref intHepler);
             if (intHepler >= 0 && p != null) return p.Pick();
             return base.Pick(on, from, with);
         }
@@ -171,7 +171,7 @@ namespace ES.Pointer
 
         public override List<Back> Pick(object on = null, object from = null, object with = null)
         {
-            var p = ESStaticDesignUtility.Function.GetSome(values, selectSomeType, ref intHepler);
+            var p = ESDesignUtility.Function.GetSome(values, selectSomeType, ref intHepler);
             if (intHepler >= 0 && p != null) return p;
 
             return base.Pick(on, from, with);
@@ -195,7 +195,7 @@ namespace ES.Pointer
         public override Back Pick(object on = null, object from = null, object with = null)
         {
 
-            var p = ESStaticDesignUtility.Function.GetOne(values, PointerSelectOneType, ref intHepler);
+            var p = ESDesignUtility.Function.GetOne(values, PointerSelectOneType, ref intHepler);
             if (intHepler >= 0 && p != null) return p;
             return base.Pick(on, from, with);
         }
@@ -214,7 +214,7 @@ namespace ES.Pointer
         public EnumCollect.PointerSelectOneType selectSomeType;
         public override Back Pick(By by = default, object yarn = null, object on = null)
         {
-            var p = ESStaticDesignUtility.Function.GetOne(pointers, selectSomeType, ref intHepler);
+            var p = ESDesignUtility.Function.GetOne(pointers, selectSomeType, ref intHepler);
             if (intHepler >= 0 && p != null) return PickOne(p);
             return default;
         }
@@ -271,7 +271,7 @@ namespace ES.Pointer
                 }
             }
             //Debug.Log("尾部"+current+headUse+launcherEntity);
-            Back back = ESStaticDesignUtility.Matcher.SystemObjectToT<Back>(end.Pick(current, launcherEntity));
+            Back back = ESDesignUtility.Matcher.SystemObjectToT<Back>(end.Pick(current, launcherEntity));
             return back;
 
         }
