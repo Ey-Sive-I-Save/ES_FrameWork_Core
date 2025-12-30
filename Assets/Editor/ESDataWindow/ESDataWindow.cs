@@ -152,7 +152,7 @@ namespace ES
                 Part_BuildSoPackPage(tree);
                 Part_BuildSoDataGroupPage(tree);
                 Part_BuildSoDataGroupOnChooseAndInfos(tree);
-
+                Part_AboutPage(tree);
             }
             ES_LoadData();
         }
@@ -234,14 +234,7 @@ namespace ES
             return;
         }
 
-        private void Part_BuildArchutectureShowerPage(OdinMenuTree tree)
-        {
-
-        }
-        private void Part_EasyToolsPage(OdinMenuTree tree)
-        {
-
-        }
+      
         private void Part_AboutPage(OdinMenuTree tree)
         {
             tree.Add("关于", new Page_About(), SdfIconType.ChatSquareQuoteFill);

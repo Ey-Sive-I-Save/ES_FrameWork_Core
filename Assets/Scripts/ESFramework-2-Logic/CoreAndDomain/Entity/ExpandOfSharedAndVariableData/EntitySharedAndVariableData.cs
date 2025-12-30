@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace ES {
     [Serializable,TypeRegistryItem("实体共享数据")]
-    public class ESEntitySharedData : ISharedData,IMessageProvider
+    public class ESEntitySharedData : ISharedData,IAnyMessageProvider
     {
 
         [LabelText("怪物名称")] public string enemyName = "";

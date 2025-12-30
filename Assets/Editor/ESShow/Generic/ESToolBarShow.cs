@@ -57,7 +57,7 @@ namespace ES
                     {
                         string assetsPath = Application.dataPath;
                         string[] allFiles = Directory.GetFiles(assetsPath, "*.unity", SearchOption.AllDirectories);
-
+                        Debug.Log(assetsPath);
                         foreach (string file in allFiles)
                         {
                             // 转换为Unity相对路径（如 "Assets/Scenes/Menu.unity"）

@@ -44,6 +44,7 @@ namespace ES
 
         public string GetLocalAssetBundlePath()
         {
+            
             return Path.Combine(genarateFolder, applyPlatform.ToString());
         }
         public string GetLocalAssetBundlePath(string platform)

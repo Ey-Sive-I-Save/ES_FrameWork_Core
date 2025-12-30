@@ -32,7 +32,7 @@ namespace ES
         [LabelText("等待支持---字符串修饰器")]
         public string waiting;
 
-        public override void ApplyMessage(IMessageProvider provider)
+        public override void ApplyMessage(IAnyMessageProvider provider)
         {
             tmp_text.text= provider.GetMessage(messageKey);
         }
@@ -48,7 +48,7 @@ namespace ES
         [LabelText("等待支持---字符串修饰器")]
         public string waiting;
 
-        public override void ApplyMessage(IMessageProvider provider)
+        public override void ApplyMessage(IAnyMessageProvider provider)
         {
             tmp_text.text = provider.GetMessage(messageKey).ToString();
         }
@@ -63,7 +63,7 @@ namespace ES
         [LabelText("等待支持---字符串修饰器")]
         public string waiting;
 
-        public override void ApplyMessage(IMessageProvider provider)
+        public override void ApplyMessage(IAnyMessageProvider provider)
         {
             tmp_text.text = provider.GetMessage(messageKey).ToString();
         }
@@ -78,7 +78,7 @@ namespace ES
         [LabelText("等待支持---字符串修饰器")]
         public string waiting;
 
-        public override void ApplyMessage(IMessageProvider provider)
+        public override void ApplyMessage(IAnyMessageProvider provider)
         {
             tmp_text.text = provider.GetMessage(messageKey).ToString();
         }
@@ -89,7 +89,7 @@ namespace ES
         public override Type TableKeyType => typeof(MessageProviderModule_Sprite_Image);
         [LabelText("应用到")]
         public Image image;
-        public override void ApplyMessage(IMessageProvider provider)
+        public override void ApplyMessage(IAnyMessageProvider provider)
         {
             image.sprite = provider.GetMessage(messageKey);
         }

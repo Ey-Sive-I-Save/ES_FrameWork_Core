@@ -12,7 +12,7 @@ namespace ES
 { 
     /*BufferOperation是一个可执行的对值的缓冲处理，他是动态生成和销毁的，类似于*/
 
-    public interface IBufferOperation:IPoolablebAndSelfControlToWhere
+    public interface IBufferOperation:IPoolablebAuto
     {
        
     }
@@ -23,7 +23,7 @@ namespace ES
 
         public abstract bool IsRecycled { get; set; }
         public abstract void OnResetAsPoolable();
-        public abstract void TryAutoBePushedToPool();
+        public abstract void TryAutoPushedToPool();
     }
     #region 缓冲操作
     public class BufferOperation<ValueType,Source,This> : BufferOperationAbstract
@@ -47,8 +47,8 @@ namespace ES
         {
             return POOL.GetInPool();
         }
-        public static ESSimpleObjectPool<This> POOL = new ESSimpleObjectPool<This>(()=>new This(),null,10);
-        public sealed override void TryAutoBePushedToPool()
+        public static ESSimplePool<This> POOL = new ESSimplePool<This>(()=>new This(),null,10);
+        public sealed override void TryAutoPushedToPool()
         {
             POOL.PushToPool(this as This);
         }

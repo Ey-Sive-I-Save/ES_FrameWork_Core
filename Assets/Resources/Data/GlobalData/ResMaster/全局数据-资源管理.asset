@@ -131,8 +131,8 @@ MonoBehaviour:
   genarateFolder: Assets/StreamingAssets/AssetBundles
   genarateHotUpdateFolder_: Assets/StreamingAssets/AssetBundles
   abMaskType: 1
-  ABName: rub3
-  applyPlatform: 7
+  ABName: rubbish
+  applyPlatform: 2
   DownLoadURL: https://eysive-teset.oss-cn-beijing.aliyuncs.com
   LocalTestDownLoadPath: Assets/StreamingAssets/AssetBundles/DownLoadTest
   LocalDownLoadAdditionPath: DownLoad

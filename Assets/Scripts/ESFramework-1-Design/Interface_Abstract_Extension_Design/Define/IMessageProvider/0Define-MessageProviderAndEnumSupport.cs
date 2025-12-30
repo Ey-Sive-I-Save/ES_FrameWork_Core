@@ -19,13 +19,11 @@ using UnityEngine;
      Int
      Bool
      其他的自己实现接口
-     
- 
  */
 namespace ES
 {
 
-    public interface IMessageProvider
+    public interface IAnyMessageProvider
     {
         public string GetMessage(MessageStringKey k, EnumCollect.LanguageType language = EnumCollect.LanguageType.NotClear, int hepler = default)
         {
@@ -69,20 +67,16 @@ namespace ES
     [Serializable,TypeRegistryItem("信息提供注册")]//各种类型的注册器
     public abstract class IMessageProv_Reg_Ab
     {
-        public abstract IMessageProvider Registe { get; }
+        public abstract IAnyMessageProvider Registe { get; }
     }
     public struct Link_MessageProvider : ILink
     {
         public string key;
-        public IMessageProvider provider;
+        public IAnyMessageProvider provider;
         public bool isMain;
     }
-    public interface IMessageProvider<out Back> : IMessageProvider
-    {
-        Back GetBack();
-    }
     //                                返回类型 键类型 第二判据(可以忽略)
-    public interface IMessageProvider< Back, Key, Hepler> : IMessageProvider
+    public interface IMessageProvider< Back, Key, Hepler> : IAnyMessageProvider
     {
         public Back GetMessage(Key k, EnumCollect.LanguageType language = EnumCollect.LanguageType.NotClear, Hepler hepler = default);
     }
@@ -172,6 +166,20 @@ namespace ES
     {
 
     }
+    #endregion
+
+    #region 测试
+    public class TestClass : IAnyMessageProvider
+    {
+
+    }
+    public class Tester
+    {
+        void a()
+        {
+        }
+    }
+
     #endregion
 }
 

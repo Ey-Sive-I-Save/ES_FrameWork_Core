@@ -7,7 +7,7 @@ using UnityEngine;
 
 
 namespace ES {
-    public interface ISettleOperation : IPoolablebAndSelfControlToWhere
+    public interface ISettleOperation : IPoolablebAuto
     {
         public void SetValue(float f);
         public void SetValue(bool b);
@@ -37,8 +37,8 @@ namespace ES {
         {
             return POOL.GetInPool();
         }
-        public static ESSimpleObjectPool<This> POOL = new ESSimpleObjectPool<This>(() => new This(), null, 10);
-        public void TryAutoBePushedToPool()
+        public static ESSimplePool<This> POOL = new ESSimplePool<This>(() => new This(), null, 10);
+        public void TryAutoPushedToPool()
         {
             POOL.PushToPool(this as This);
         }

@@ -11,13 +11,14 @@ namespace ES
     {
 
         //支持本地化-多语言 ES全程支持
+        [Flags]
         public enum LanguageType
         {
-            [InspectorName("未指定")] NotClear= Chinese | Japan| English,
-            [InspectorName("中文")] Chinese=1,
-            [InspectorName("日文")] Japan=2,
+            [InspectorName("未指定")] NotClear = Chinese | Japan | English,
+            [InspectorName("中文")] Chinese = 1,
+            [InspectorName("日文")] Japan = 2,
 
-            [InspectorName("英文")] English=4
+            [InspectorName("英文")] English = 4
         }
 
         //有关委托集成式Link的发送类型 详见-》LinkUnityEvent
@@ -67,17 +68,17 @@ namespace ES
         // 1 未建立链接前，可以堆积到这里 等待完成处理
         public enum LinkTaskEnvironment
         {
-            [InspectorName("任意")]Any=0,
-            [InspectorName("会在游戏核心进行处理")]GameCenter=1,
-            [InspectorName("在客户端处理")] Client=2,
-            [InspectorName("在服务器处理")] Server=4,
-            [InspectorName("在指定目标处理")] Target=8
+            [InspectorName("任意")] Any = 0,
+            [InspectorName("会在游戏核心进行处理")] GameCenter = 1,
+            [InspectorName("在客户端处理")] Client = 2,
+            [InspectorName("在服务器处理")] Server = 4,
+            [InspectorName("在指定目标处理")] Target = 8
         }
         //立刻发送消息-
         public enum LinkSendChannel
         {
-            [InspectorName("无")]None=0,
-            [InspectorName("任意")] Any = GameCenter| ClientToServer| ServerToClients| ServerToTarget,
+            [InspectorName("无")] None = 0,
+            [InspectorName("任意")] Any = GameCenter | ClientToServer | ServerToClients | ServerToTarget,
             [InspectorName("会在游戏核心进行处理")] GameCenter = 1,
             [InspectorName("从客户端发到服务器")] ClientToServer = 2,
             [InspectorName("该事件将会在游戏核心进行处理")] ServerToClients = 4,
@@ -91,7 +92,7 @@ namespace ES
 
         public enum Axis_XYZ
         {
-            [InspectorName("X轴")] X, [InspectorName("Y轴")] Y, [InspectorName("Z轴")]Z
+            [InspectorName("X轴")] X, [InspectorName("Y轴")] Y, [InspectorName("Z轴")] Z
         }
     }
 }

@@ -397,7 +397,6 @@ namespace ES
 
     public class ESDragToFieldSolverAttributeDrawer2 : OdinValueDrawer<ESAssetRefer>
     {
-
         private float Height = 40;
         private bool drag = false;
         bool refresh = true;

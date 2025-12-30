@@ -124,6 +124,7 @@ namespace ES
                             }
                             else if (PlatformToApply == RuntimePlatform.IPhonePlayer)
                             {
+
                                 BuildAB(genarateFolder, PlatformToApply.ToString(),
                                     assetBundleOptions: options,
                                     targetPlatform: BuildTarget.iOS);

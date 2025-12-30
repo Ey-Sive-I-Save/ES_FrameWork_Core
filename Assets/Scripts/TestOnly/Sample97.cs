@@ -6,12 +6,15 @@ using System.Linq;
 using UnityEngine;
 namespace ES
 {
+    
     public class Sample97 : MonoBehaviour
     {
         ParticleSystem system;
         ParticleSystem.Particle[] particles;
         void test()
         {
+            ESResLoader loader = new ESResLoader();
+            
             system.GetParticles(particles);
             // DO Change On <particles>
             system.SetParticles(particles);

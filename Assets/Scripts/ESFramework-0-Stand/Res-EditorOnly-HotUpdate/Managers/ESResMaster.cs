@@ -94,7 +94,7 @@ namespace ES
         #endregion
 
         #region 池化
-        public ESSimpleObjectPool<ResSourceSearchKey> PoolForResSourceSearchKey = new ESSimpleObjectPool<ResSourceSearchKey>(() => new ResSourceSearchKey(),
+        public ESSimplePool<ResSourceSearchKey> PoolForResSourceSearchKey = new ESSimplePool<ResSourceSearchKey>(() => new ResSourceSearchKey(),
             (f) =>
             {
                 f.AssetPath = null;
@@ -103,32 +103,32 @@ namespace ES
             }
             , 30);
 
-        public ESSimpleObjectPool<InternalResourceRes> PoolForInternalResSource = new ESSimpleObjectPool<InternalResourceRes>(() => new InternalResourceRes(),
+        public ESSimplePool<InternalResourceRes> PoolForInternalResSource = new ESSimplePool<InternalResourceRes>(() => new InternalResourceRes(),
           (f) =>
           {
 
           }
           , 30);
 
-        public ESSimpleObjectPool<AssetResSource> PoolForAssetResSource = new ESSimpleObjectPool<AssetResSource>(() => new AssetResSource(),
+        public ESSimplePool<AssetResSource> PoolForAssetResSource = new ESSimplePool<AssetResSource>(() => new AssetResSource(),
            (f) =>
            {
 
            }
            , 30);
-        public ESSimpleObjectPool<LocalAssetBundleResSource> PoolForAssetBundleResSource = new ESSimpleObjectPool<LocalAssetBundleResSource>(() => new LocalAssetBundleResSource(),
+        public ESSimplePool<LocalAssetBundleResSource> PoolForAssetBundleResSource = new ESSimplePool<LocalAssetBundleResSource>(() => new LocalAssetBundleResSource(),
          (f) =>
          {
 
          }
          , 30);
-        public ESSimpleObjectPool<LocalABAssetResSource> PoolForABAssetResSource = new ESSimpleObjectPool<LocalABAssetResSource>(() => new LocalABAssetResSource(),
+        public ESSimplePool<LocalABAssetResSource> PoolForABAssetResSource = new ESSimplePool<LocalABAssetResSource>(() => new LocalABAssetResSource(),
          (f) =>
          {
 
          }
          , 30);
-        public ESSimpleObjectPool<ESResLoader> PoolForESLoader = new ESSimpleObjectPool<ESResLoader>(() => new ESResLoader(),
+        public ESSimplePool<ESResLoader> PoolForESLoader = new ESSimplePool<ESResLoader>(() => new ESResLoader(),
        (f) =>
        {
 
@@ -440,14 +440,13 @@ namespace ES
             string netpathDependence = ABHelper.DownLoadUrlWithPlatform + "/" +ReferGlobalData.Current.HotUpdateDependenceFileName;
             string netpathToHash = ABHelper.DownLoadUrlWithPlatform + "/" + ReferGlobalData.Current.HotUpdatePreToHashFileName;
             Debug.Log(netpathDependence);
-            var unityWebRequest1 = UnityWebRequest.Get(netpathDependence);
-
+         
 
 
             string PathFordownLoadDependenceFile = ABHelper.DownLoadLocalPath + "/" + ReferGlobalData.Current.HotUpdateDependenceFileName;
             string PathFordownLoadPreToHashFile = ABHelper.DownLoadLocalPath + "/" + ReferGlobalData.Current.HotUpdatePreToHashFileName;
 
-
+            var unityWebRequest1 = UnityWebRequest.Get(netpathDependence);
             unityWebRequest1.downloadHandler = new DownloadHandlerFile(PathFordownLoadDependenceFile);
             unityWebRequest1.SendWebRequest();
 

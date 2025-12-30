@@ -129,10 +129,7 @@ namespace ES
             {
                 return;
             }
-
             State = ResSourceState.Loading;
-
-            /* ResMgr.Instance.PushIEnumeratorTask(this);*/
         }
         public override bool LoadSync()
         {
@@ -186,67 +183,6 @@ namespace ES
             {
                 ESResMaster.Instance.StartCoroutine(LoadSelf(finishCallback));
             }
-            //开启的时候已经结束了
-            /*  if (RefCountNow <= 0)
-              {
-                  OnResLoadFaild();
-                  finishCallback();
-                  yield break;
-              }*/
-
-            /*if (AssetBundlePathHelper.SimulationMode)
-            {
-                yield return null;
-            }
-            else
-            {
-                var url = AssetBundleSettings.AssetBundleName2Url(mHash != null
-                    ? mAssetPath + "_" + mHash
-                    : mAssetPath);
-
-                if (PlatformCheck.IsWebGL || PlatformCheck.IsWeixinMiniGame)
-                {
-                    var abcR = UnityWebRequestAssetBundle.GetAssetBundle(url);
-                    var request = abcR.SendWebRequest();
-
-                    mAssetBundleCreateRequest = request;
-                    yield return request;
-                    mAssetBundleCreateRequest = null;
-
-                    if (!request.isDone)
-                    {
-                        Debug.LogError("AssetBundleCreateRequest Not Done! Path:" + mAssetPath);
-                        OnResLoadFaild();
-                        finishCallback();
-                        yield break;
-                    }
-
-                    var ab = DownloadHandlerAssetBundle.GetContent(abcR);
-
-                    Asset_Bundle = ab;
-
-                    // 销毁
-                    abcR.Dispose();
-                }
-                else *//*
-                {
-                    var abcR = Asset_Bundle.LoadFromFileAsync(url);
-
-                    mAssetBundleCreateRequest = abcR;
-                    yield return abcR;
-                    mAssetBundleCreateRequest = null;
-
-                    if (!abcR.isDone)
-                    {
-                        Debug.LogError("AssetBundleCreateRequest Not Done! Path:" + mAssetPath);
-                        OnResLoadFaild();
-                        finishCallback();
-                        yield break;
-                    }
-
-                    Asset_Bundle = abcR.assetBundle;
-                }
-            }*/
         }
         public IEnumerator LoadSelf(System.Action finishCallback)
         {
@@ -279,7 +215,7 @@ namespace ES
             return true;
         }
 
-        public override void TryAutoBePushedToPool()
+        public override void TryAutoPushedToPool()
         {
             ESResMaster.Instance.PoolForAssetBundleResSource.PushToPool(this);
         }
@@ -524,7 +460,7 @@ namespace ES
             return true;
         }
 
-        public override void TryAutoBePushedToPool()
+        public override void TryAutoPushedToPool()
         {
             ESResMaster.Instance.PoolForABAssetResSource.PushToPool(this);
         }

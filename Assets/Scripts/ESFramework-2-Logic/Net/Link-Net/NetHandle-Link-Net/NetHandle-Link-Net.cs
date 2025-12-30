@@ -15,6 +15,7 @@ namespace ES
         public virtual NetHanlderSyncOption SyncOption => NetHanlderSyncOption.Normal;
         public void Handle(Base baseOn, HandleTargeter targeter, Link_ServerStart link_Server, bool IsNet = true,bool fromClient=true)
         {
+            
             if (fromClient)
             {
                 if (IsNet)

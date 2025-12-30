@@ -26,7 +26,7 @@ namespace ES
         [LabelText("全局数据引用")]
         public GlobalDataReferStand<GlobalDataForEditorOnly> ReferGlobal = new GlobalDataReferStand<GlobalDataForEditorOnly>();
 #if UNITY_EDITOR
-       
+        
 #endif
     }
 

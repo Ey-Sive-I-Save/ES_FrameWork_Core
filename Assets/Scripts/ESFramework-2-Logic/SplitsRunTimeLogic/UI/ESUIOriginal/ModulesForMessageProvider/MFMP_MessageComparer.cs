@@ -19,7 +19,7 @@ namespace ES
 
         public override Type TableKeyType => typeof(MessageProviderModule_EqualWithAndDo);
 
-        public sealed override void ApplyMessage(IMessageProvider provider)
+        public sealed override void ApplyMessage(IAnyMessageProvider provider)
         {
             if (operation == null) return;
             var comTo = getter?.Get(Core, Core.MyPanel) ?? Core;

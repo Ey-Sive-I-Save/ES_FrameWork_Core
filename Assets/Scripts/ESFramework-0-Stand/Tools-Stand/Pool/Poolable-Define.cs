@@ -6,16 +6,17 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 
 
-namespace ES {
-    #region 万能对象池
+namespace ES
+{
+    #region 常用对象池
     public interface IPoolable
     {
         void OnResetAsPoolable();
         bool IsRecycled { get; set; }
     }
-    public interface IPoolablebAndSelfControlToWhere : IPoolable
+    public interface IPoolablebAuto : IPoolable
     {
-        void TryAutoBePushedToPool();
+        void TryAutoPushedToPool();
     }
     public interface IPool<T> where T : IPoolable
     {
@@ -38,9 +39,9 @@ namespace ES {
             mFactory = factory;
         }
 
-        public void SetHowToCreate(Func<T> factoryMethod)
+        public void SetFactoryByFunc(Func<T> factoryMethod)
         {
-            mFactory = new ESFactory_CustomFunction<T>(factoryMethod);
+            mFactory = new ESFactory_Custom<T>(factoryMethod);
         }
 
         /// <summary>
@@ -78,13 +79,13 @@ namespace ES {
         public abstract bool PushToPool(T obj);
     }
 
-    public class ESSimpleObjectPool<T> : Pool<T> where T : IPoolable
+    public class ESSimplePool<T> : Pool<T> where T : IPoolable
     {
         protected readonly Action<T> mResetMethod;
 
-        public ESSimpleObjectPool(Func<T> factoryMethod, Action<T> resetMethod = null, int initCount = 0)
+        public ESSimplePool(Func<T> factoryMethod, Action<T> resetMethod = null, int initCount = 0)
         {
-            mFactory = new ESFactory_CustomFunction<T>(factoryMethod);
+            mFactory = new ESFactory_Custom<T>(factoryMethod);
             mResetMethod = resetMethod;
 
             for (var i = 0; i < initCount; i++)
@@ -96,24 +97,33 @@ namespace ES {
         public override bool PushToPool(T obj)
         {
             mResetMethod?.Invoke(obj);
+            obj.OnResetAsPoolable();
             obj.IsRecycled = true;
             mObjectStack.Push(obj);
-
             return true;
         }
     }
-    public class ESSimpleObjectPoolSingleton<T> : ESSimpleObjectPool<T> where T : IPoolable, new()
+    public class ESSimplePoolSingleton<T> : ESSimplePool<T> where T : IPoolable, new()
     {
-        private static ESSimpleObjectPoolSingleton<T> pool;
-        public static ESSimpleObjectPoolSingleton<T> Pool { [MethodImpl(MethodImplOptions.AggressiveInlining)] get { if (pool != null) return pool; return CreatePool(); } set { } }
-        public ESSimpleObjectPoolSingleton(Func<T> factoryMethod, Action<T> resetMethod, int initCount)
+        private static ESSimplePoolSingleton<T> pool;
+        public static ESSimplePoolSingleton<T> Pool
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get
+            {
+                if (pool != null) return pool;
+                return CreatePool();
+            }
+            set { }
+        }
+        public ESSimplePoolSingleton(Func<T> factoryMethod, Action<T> resetMethod, int initCount)
         : base(factoryMethod, resetMethod, initCount)
         {
             pool = this;
         }
-        public static ESSimpleObjectPoolSingleton<T> CreatePool()
+        public static ESSimplePoolSingleton<T> CreatePool()
         {
-            return pool = new ESSimpleObjectPoolSingleton<T>(() => new T(), null, 10);
+            return pool = new ESSimplePoolSingleton<T>(() => new T(), null, 10);
         }
         public override bool PushToPool(T obj)
         {

@@ -27,7 +27,7 @@ namespace ES {
         /// 如果需要，可以 配合 "messageKey"来获得想要的数据并且应用 
         /// </summary>
         /// <param name="provider"></param>
-        public abstract void ApplyMessage(IMessageProvider provider);
+        public abstract void ApplyMessage(IAnyMessageProvider provider);
 
         protected override void OnEnable()
         {

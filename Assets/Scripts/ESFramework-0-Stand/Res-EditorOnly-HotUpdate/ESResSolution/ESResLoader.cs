@@ -15,7 +15,7 @@ namespace ES
         void LoadAll_Async(System.Action listener = null);
         void LoadAll_Sync();
     }
-    public class ESResLoader : IPoolablebAndSelfControlToWhere, IESResLoader
+    public class ESResLoader : IPoolablebAuto, IESResLoader
     {
         #region 池化
         public bool IsRecycled { get ; set; }
@@ -25,7 +25,7 @@ namespace ES
             
         }
 
-        public void TryAutoBePushedToPool()
+        public void TryAutoPushedToPool()
         {
             if (AllResSources != null)
             {
@@ -72,7 +72,6 @@ namespace ES
         }
         #endregion
 
-
         #region 异步队列实现
         public void Add2Load(ResSourceSearchKey resSearchKeys, Action<bool, IResSource> listener = null, bool AtLastOrFirst = true)
         {
@@ -99,7 +98,7 @@ namespace ES
                         {
                             var searchRule = ESResMaster.Instance.GetInPool_ResSourceSearchKey(depend, null,loadType: ResSourceLoadType.AssetBundle, typeof(AssetBundle));
                             Add2Load(searchRule);
-                            searchRule.TryAutoBePushedToPool();
+                            searchRule.TryAutoPushedToPool();
                         }
                     }
                 }
@@ -235,40 +234,7 @@ namespace ES
 
         private int mLoadingCount;
 
-        /*包裹机制
-         class OneResLoadCallBackWrap
-        {
-            private readonly Action<bool, IResSource> mListener_ForLoadAllOK;
-            private readonly IResSource mRes;
-
-            public OneResLoadCallBackWrap(IResSource r, Action<bool, IResSource> l)
-            {
-                mRes = r;
-                mListener_ForLoadAllOK = l;
-            }
-
-            public void Release()
-            {
-                mRes.OnLoadOK_WithDraw(mListener_ForLoadAllOK);
-            }
-
-            public bool IsRes(IResSource res)
-            {
-                return res.AssetPath == mRes.AssetPath;
-            }
-        }
-        private LinkedList<OneResLoadCallBackWrap> mCallbackRecordList = new LinkedList<OneResLoadCallBackWrap>();
-
-
-        private void AddResListenerRecord(IResSource res, Action<bool, IResSource> listener)
-        {
-            if (mCallbackRecordList == null)
-            {
-                mCallbackRecordList = new LinkedList<OneResLoadCallBackWrap>();
-            }
-            mCallbackRecordList.AddLast(new OneResLoadCallBackWrap(res, listener));
-        }
-    */
+        
         public float Progress
         {
             get

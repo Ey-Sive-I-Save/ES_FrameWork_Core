@@ -53,7 +53,7 @@ namespace ES
         }
         private void OnDisable()
         {
-            loader.TryAutoBePushedToPool();
+            loader.TryAutoPushedToPool();
         }
 
 
@@ -87,6 +87,8 @@ namespace ES
         {
 #if UNITY_EDITOR
             return vAsset;
+#else
+return null;
 #endif
         }
     }

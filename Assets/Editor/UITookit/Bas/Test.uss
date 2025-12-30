@@ -1,0 +1,21 @@
+.custom-label {
+    font-size: 20px;
+    -unity-font-style: bold;
+    color: rgb(68, 138, 255);
+    border-left-color: rgb(255, 235, 0);
+    border-right-color: rgb(255, 235, 0);
+    border-top-color: rgb(255, 235, 0);
+    border-bottom-color: rgb(255, 235, 0);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+    border-bottom-left-radius: 1px;
+    background-color: rgba(233, 144, 144, 0.4);
+}
+
+.graphView {
+}

@@ -23,7 +23,8 @@ MonoBehaviour:
   - {fileID: 5897886265953266890, guid: 6b430f879029c664d8eefdd99777b09c, type: 3}
   - {fileID: 5897886265953266890, guid: 3e1eebf389e73584bb9eaadafa69df87, type: 3}
   hotUpdateAssemblies: []
-  preserveHotUpdateAssemblies: []
+  preserveHotUpdateAssemblies:
+  - ESStand
   hotUpdateDllCompileOutputRootDir: HybridCLRData/HotUpdateDlls
   externalHotUpdateAssembliyDirs: []
   strippedAOTDllOutputRootDir: Assets/StreamingAssets/TestHotAOT

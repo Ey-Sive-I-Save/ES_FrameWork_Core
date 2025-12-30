@@ -10,17 +10,17 @@ namespace ES
     {
         T Create();
     }
-    public class ESFactory_DefaultNew<T> : IFactory<T> where T : new()
+    public class ESFactory_New<T> : IFactory<T> where T : new()
     {
         public T Create()
         {
             return new T();
         }
     }
-    public class ESFactory_CustomFunction<T> : IFactory<T>
+    public class ESFactory_Custom<T> : IFactory<T>
     {
         protected Func<T> createFunc;
-        public ESFactory_CustomFunction(Func<T> factoryMethod)
+        public ESFactory_Custom(Func<T> factoryMethod)
         {
             createFunc = factoryMethod;
         }
@@ -28,10 +28,6 @@ namespace ES
         {
             return createFunc();
         }
-    }
-    public class Factory
-    {
-
     }
 }
 

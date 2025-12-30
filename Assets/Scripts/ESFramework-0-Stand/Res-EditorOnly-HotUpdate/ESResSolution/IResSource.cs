@@ -42,10 +42,10 @@ namespace ES
 
         bool ReleaseTheResSource();
 
-        void TryAutoBePushedToPool();
+        void TryAutoPushedToPool();
 
     }
-    public class ESResSource : IResSource, IPoolable, IPoolablebAndSelfControlToWhere
+    public class ESResSource : IResSource, IPoolable, IPoolablebAuto
     {
         #region 字段被保护，使用属性获取
 
@@ -185,7 +185,7 @@ namespace ES
             {
                 var resSearchRule = ESResMaster.Instance.GetInPool_ResSourceSearchKey(depends[i], null, assetType: typeof(AssetBundle));
                 var res = ESResMaster.Instance.GetResSourceBySearchKeys(resSearchRule, false);
-                resSearchRule.TryAutoBePushedToPool();
+                resSearchRule.TryAutoPushedToPool();
             }
         }
 
@@ -201,8 +201,8 @@ namespace ES
             {
                 var resSearchRule = ESResMaster.Instance.GetInPool_ResSourceSearchKey(depends[i]);
                 var res = ESResMaster.Instance.GetResSourceBySearchKeys(resSearchRule, false);
-                resSearchRule.TryAutoBePushedToPool();
-                res.TryAutoBePushedToPool();
+                resSearchRule.TryAutoPushedToPool();
+                res.TryAutoPushedToPool();
             }
         }
 
@@ -246,7 +246,7 @@ namespace ES
             {
                 var resSearchRule = ESResMaster.Instance.GetInPool_ResSourceSearchKey(depends[i]);
                 var res = ESResMaster.Instance.GetResSourceBySearchKeys(resSearchRule, false);
-                resSearchRule.TryAutoBePushedToPool();
+                resSearchRule.TryAutoPushedToPool();
 
                 if (res == null || res.State != ResSourceState.Ready)
                 {
@@ -296,7 +296,7 @@ namespace ES
 
        
 
-        public virtual void TryAutoBePushedToPool()
+        public virtual void TryAutoPushedToPool()
         {
             
         }
@@ -332,7 +332,7 @@ namespace ES
         [InspectorName("本地图片")] LocalImageRes = 5,
     }
     [Serializable]
-    public class ResSourceSearchKey : IPoolable, IPoolablebAndSelfControlToWhere
+    public class ResSourceSearchKey : IPoolable, IPoolablebAuto
     {
         [LabelText("资源名"),HorizontalGroup("q")]
         public string AssetPath;
@@ -347,7 +347,7 @@ namespace ES
 
 
 
-        public void TryAutoBePushedToPool()
+        public void TryAutoPushedToPool()
         {
             ESResMaster.Instance.PoolForResSourceSearchKey.PushToPool(this);
         }
@@ -538,7 +538,7 @@ namespace ES
             //Object obj = null;
             var ResSourceSearchKey = ESResMaster.Instance.GetInPool_ResSourceSearchKey(AssetBundleName, null,assetType: typeof(AssetBundle));
             var abR = ESResMaster.Instance.GetRes<LocalAssetBundleResSource>(ResSourceSearchKey);
-            ResSourceSearchKey.TryAutoBePushedToPool();
+            ResSourceSearchKey.TryAutoPushedToPool();
 
             /*   if (AssetBundlePathHelper.SimulationMode && !string.Equals(mAssetPath, "assetbundlemanifest"))
                {
@@ -635,7 +635,7 @@ namespace ES
             mAssetBundleArray = null;
         }
 
-        public override void TryAutoBePushedToPool()
+        public override void TryAutoPushedToPool()
         {
             ESResMaster.Instance.PoolForAssetResSource.PushToPool(this);
         }

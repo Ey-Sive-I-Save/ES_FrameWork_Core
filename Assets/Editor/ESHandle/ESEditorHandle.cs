@@ -10,7 +10,7 @@ namespace ES {
     [InitializeOnLoad]
     public class ESEditorHandle
     {
-        public static ESSimpleObjectPool<ESEditorHandleTask> TaskPool = new ESSimpleObjectPool<ESEditorHandleTask>(
+        public static ESSimplePool<ESEditorHandleTask> TaskPool = new ESSimplePool<ESEditorHandleTask>(
             ()=>new ESEditorHandleTask(),
             (f)=> { },
             5
@@ -33,7 +33,7 @@ namespace ES {
                         use.action?.Invoke();
                         if (use.OnlyOnce|| use.MaxFrame<=0||use.CanExit())
                         {
-                            use.TryAutoBePushedToPool();
+                            use.TryAutoPushedToPool();
                             RunningTasks.Dequeue();
                         }
                         else
@@ -44,7 +44,7 @@ namespace ES {
                 }
                 else
                 {
-                    use.TryAutoBePushedToPool();
+                    use.TryAutoPushedToPool();
                     RunningTasks.Dequeue();
                 }
             }
@@ -68,7 +68,7 @@ namespace ES {
         }
     }
 
-    public class ESEditorHandleTask : IPoolablebAndSelfControlToWhere
+    public class ESEditorHandleTask : IPoolablebAuto
     {
         public int waitFrame = 2;
         public Action action;
@@ -85,7 +85,7 @@ namespace ES {
             CanExit= () => false;
         }
 
-        public void TryAutoBePushedToPool()
+        public void TryAutoPushedToPool()
         {
             ESEditorHandle.TaskPool.PushToPool(this);
         }

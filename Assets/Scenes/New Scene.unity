@@ -458,6 +458,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NetworkHudCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4393252310969058995, guid: 0570b6f7f713dc44a90463654bbcd8d0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -481,7 +486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &548817131
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1178,14 +1183,13 @@ GameObject:
   - component: {fileID: 1075960496}
   - component: {fileID: 1075960495}
   - component: {fileID: 1075960494}
-  - component: {fileID: 1075960497}
   m_Layer: 0
   m_Name: HOT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1075960494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1227,43 +1231,6 @@ Transform:
   - {fileID: 408947466}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1075960497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075960493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e74b5f1d98775d4a9895185033b6178, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  assetrefer:
-    key:
-      AssetPath: "\u65B9\u5757 1sdsadadsf"
-      OwnerAssetBundle: rub3
-    vAsset: {fileID: 2742773149683855433, guid: 471e5a5bde7290b4cb184f63f20deaf9,
-      type: 3}
-  assetrefer2:
-    key:
-      AssetPath: "\u65B9\u5757 1sdsadadsf"
-      OwnerAssetBundle: rub3
-    vAsset: {fileID: 2742773149683855433, guid: 471e5a5bde7290b4cb184f63f20deaf9,
-      type: 3}
-  ss: 
-  assetrefer3:
-    key:
-      AssetPath: "\u65B9\u5757 3"
-      OwnerAssetBundle: rub3
-    vAsset: {fileID: 2742773149683855433, guid: 6f968d104f4af8140bfa2a2719250b6f,
-      type: 3}
-  assetrefer4:
-    key:
-      AssetPath: "\u65B9\u5757 3"
-      OwnerAssetBundle: prefab
-    vAsset: {fileID: 2742773149683855433, guid: aba13ae1bdf36d54595bcdcba7c57f45,
-      type: 3}
 --- !u!1 &1623423281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1552,7 +1519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1819599262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2045,6 +2012,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NetworkManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7443408887813606051, guid: 0b650fca685f2eb41a86538aa883e4c1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7443408887813606060, guid: 0b650fca685f2eb41a86538aa883e4c1,
         type: 3}
       propertyPath: _playerPrefab
@@ -2075,7 +2047,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2047450842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7232,7 +7204,7 @@ PrefabInstance:
     - target: {fileID: 5171929509951324488, guid: 58b145f373993224bb4f31b9cd11dd78,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.95
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5171929509951324488, guid: 58b145f373993224bb4f31b9cd11dd78,
         type: 3}
@@ -7273,6 +7245,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 5731700264833996777, guid: 58b145f373993224bb4f31b9cd11dd78,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8668457702720939590, guid: 58b145f373993224bb4f31b9cd11dd78,
         type: 3}

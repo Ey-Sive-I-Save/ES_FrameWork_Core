@@ -10,7 +10,7 @@ namespace ES
     public class ESValueMaster : SingletonAsMono<ESValueMaster>
     {
         #region 池化-结算与缓冲等
-        public ESSimpleObjectPool<SettleOperationFloat> floatSettleOpsPool = new ESSimpleObjectPool<SettleOperationFloat>(
+        public ESSimplePool<SettleOperationFloat> floatSettleOpsPool = new ESSimplePool<SettleOperationFloat>(
             () => new SettleOperationFloat(),
             (it) => { it.Source = null;it.Value = 0; }
             );

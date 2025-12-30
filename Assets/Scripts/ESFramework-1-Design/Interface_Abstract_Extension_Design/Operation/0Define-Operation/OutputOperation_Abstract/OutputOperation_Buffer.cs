@@ -35,7 +35,7 @@ namespace ES
                 cacher.Groups.Remove(this as This);
                 foreach(var i in use)
                 {
-                    i.TryAutoBePushedToPool();
+                    i.TryAutoPushedToPool();
                 }
                 return use as Buffer;
             }
@@ -92,7 +92,7 @@ namespace ES
                 } 
                 foreach(var i in use)
                 {
-                    i.TryAutoBePushedToPool();
+                    i.TryAutoPushedToPool();
                 }
             }
            

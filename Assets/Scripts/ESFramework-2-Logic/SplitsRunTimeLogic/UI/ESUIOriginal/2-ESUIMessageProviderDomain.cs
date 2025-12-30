@@ -7,9 +7,9 @@ namespace ES
     public class ESUIMessageProviderDomain : Domain<ESUIElement, ESUIMessageProviderModule>
     {
         [ShowInInspector, HideInEditorMode, LabelText("主信息提供源(运行时实时更换测试)")]
-        public IMessageProvider MainProvider { get=> _mainProvider;private set { if (_mainProvider != value) {  _mainProvider = value; if(EnableMainLink) DO_SendMainReaderLink(); } } }
+        public IAnyMessageProvider MainProvider { get=> _mainProvider;private set { if (_mainProvider != value) {  _mainProvider = value; if(EnableMainLink) DO_SendMainReaderLink(); } } }
         [HideInInspector]
-        private IMessageProvider _mainProvider;
+        private IAnyMessageProvider _mainProvider;
         [SerializeReference,LabelText("预注册主信息提供"),HideLabel,HideInPlayMode]
         public IMessageProv_Reg_Ab RegisterMain;
         [ESBoolOption("禁用信息更新事件发送", "启用信息更新事件发送")]
@@ -26,7 +26,7 @@ namespace ES
              LinkReceive.SendLink(new Link_MessageProvider() { key = "Main", provider = _mainProvider, isMain = true });
         }
 
-        public void SetMainMessageProvider(IMessageProvider reader)
+        public void SetMainMessageProvider(IAnyMessageProvider reader)
         {
             if (reader != _mainProvider)
             {
@@ -35,7 +35,7 @@ namespace ES
             }
         }
     
-        public IMessageProvider GetMainMessageProvider()
+        public IAnyMessageProvider GetMainMessageProvider()
         {
             return _mainProvider;
         }
